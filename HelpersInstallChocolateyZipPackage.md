@@ -10,16 +10,15 @@ This is an arbitrary name.
 Example: `'7zip'`  
   
 ###URL (very important)
-The Url to the native installer.  
-Example: `'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi'`  
+The Url to the zip file.  
+Example: `'https://github.com/downloads/spraints/git-tfs/GitTfs-0.11.0.zip'`  
   
-###UNZIP_LOCATION
-Silent and other arguments to pass to the native installer.  
+###UNZIP_LOCATION (very important)
+Where to unzip contents of the downloaded zip file.  
 Example: `'/S'`  
-If there are no silent arguments, pass this as `''`  
   
 ##Examples
-`Install-ChocolateyPackage 'StExBar' 'msi' '/quiet' 'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi' 'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'`  
+`Install-ChocolateyZipPackage 'gittfs' 'https://github.com/downloads/spraints/git-tfs/GitTfs-0.11.0.zip' $gittfsPath`  
   
 `Install-ChocolateyPackage 'mono' 'exe' '/SILENT' 'http://ftp.novell.com/pub/mono/archive/2.10.2/windows-installer/5/mono-2.10.2-gtksharp-2.12.10-win32-5.exe'`  
   
