@@ -14,13 +14,16 @@ Example: `'exe'`
   
 ###SILENT_ARGS
 Silent and other arguments to pass to the native installer.  
+Example: `'/S'`  
 If there are no silent arguments, pass this as `''`  
   
 ###URL (very important)
 The Url to the native installer.  
+Example: `'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi'`  
   
 ###64BIT_URL_DELETE_IF_NO_64BIT (optional)
 If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly.  
+Example: `'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'`  
 Defaults to the 32bit url.  
 
 ##Examples
