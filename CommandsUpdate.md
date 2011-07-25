@@ -14,8 +14,12 @@ Defaults to official chocolatey feed.
   
 ##Examples
 `chocolatey update` - updates chocolatey to the latest version  
+  
 `chocolatey update nunit`  
+  
 `chocolatey update nunit -source http://somelocalfeed.com/nuget`  
+  
 `cup nunit -source http://somelocalfeed.com/nuget`  
+  
   
 [[Command Reference|CommandsReference]]

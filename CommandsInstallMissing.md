@@ -17,8 +17,12 @@ Defaults to official chocolatey feed.
   
 ##Examples
 `chocolatey installmissing nunit`  
+  
 `chocolatey installmissing nunit -version 2.5.7.10213`  
+  
 `chocolatey installmissing nunit -version 2.5.7.10213 -source http://somelocalfeed.com/nuget`  
+  
 `cinstm nunit -version 2.5.7.10213 -source http://somelocalfeed.com/nuget`  
+  
   
 [[Command Reference|CommandsReference]]
