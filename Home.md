@@ -17,7 +17,7 @@ Chocolatey is a machine package manager. Where NuGet/OW are focused on developer
 
 [[Installing chocolatey|Installation]]  
 [[Getting Started|GettingStarted]]  
-[[Command Reference|CommandsReference]]
+[[Command Reference|CommandsReference]]  
 [[Creating packages|CreatePackages]]
 
 ##Google Group

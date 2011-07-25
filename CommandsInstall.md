@@ -16,4 +16,9 @@ Source (directory, share or remote url feed) the package comes from.
 Defaults to official chocolatey feed.  
   
 ##Examples
+`chocolatey install nunit`  
+`chocolatey install nunit -version 2.5.7.10213`  
+`chocolatey install nunit -version 2.5.7.10213 -source http://somelocalfeed.com/nuget`  
+`cinst nunit -version 2.5.7.10213 -source http://somelocalfeed.com/nuget`  
   
+[[Command Reference|CommandsReference]]
