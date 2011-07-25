@@ -1,11 +1,10 @@
 #Install-ChocolateyPackage
 ###NOTE: This command will assert UAC/Admin privileges on the machine.  
-Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].  
 
 `Install-ChocolateyPackage $packageName $fileType $silentArgs $url $url64bit`  
   
 ##Description
-This will download a native installer from a url and install it on your machine.  
+This will download a native installer from a url and install it on your machine. Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].  
 
 ##Parameters
 ###$packageName
