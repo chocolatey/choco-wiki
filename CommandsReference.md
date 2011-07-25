@@ -3,3 +3,4 @@
 [[Install Missing Command|CommandsInstallMissing]]  
 [[Update Command|CommandsUpdate]]  
 [[Version Command|CommandsVersion]]  
+[[List Command|CommandsList]]  
