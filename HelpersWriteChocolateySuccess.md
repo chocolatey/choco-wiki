@@ -2,6 +2,9 @@
 
 `Write-ChocolateySuccess $packageName`  
   
+##Description
+Notes a successful chocolatey install.    
+     
 ##Parameters
 ###$packageName
 This is an arbitrary name.  
