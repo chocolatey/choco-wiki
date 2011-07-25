@@ -19,6 +19,7 @@ Chocolatey is a machine package manager. Where NuGet/OW are focused on developer
 [[Getting Started|GettingStarted]]  
 [[Command Reference|CommandsReference]]  
 [[Creating packages|CreatePackages]]
+[[Legalities and distribution|Legal]]
 
 ##Google Group
 Chocolatey has a [google group](http://groups.google.com/group/chocolatey). Please join and ask questions/send feedback.  

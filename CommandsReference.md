@@ -4,3 +4,6 @@
 [[Update Command|CommandsUpdate]]  
 [[Version Command|CommandsVersion]]  
 [[List Command|CommandsList]]  
+[[Help Command|CommandsHelp]]  
+  
+[[Home]]  
