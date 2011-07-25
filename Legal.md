@@ -8,7 +8,7 @@ The act of running chocolatey to install a package constitutes acceptance of the
 The use of chocolatey means that an individual using chocolatey assumes the responsibility for any changes (including any damages of any sort) that occur to the system as a result of using chocolatey. This does not supercede the verbage or enforcement of the license for chocolatey (currently Apache 2.0), it is only noted here that you are waiving any rights to collect damages by your use of chocolatey. It is recommended you read the license (http://www.apache.org/licenses/LICENSE-2.0) to gain a full understanding (especially section 8. Limitation of Liability) prior to using chocolatey.  
   
 ##Distributions aka chocolatey packages
-Chocolatey packages do not contain actual software distributions, only instructions for getting distributions (in powershell).  In a nutshell, the instructions are:  
+Most chocolatey packages do not contain actual software distributions, only instructions for getting distributions (in powershell).  In a nutshell, the instructions are:  
   
  * Download a distribution from remote location, most likely the published download location  
  * Run an installer (possibly in silent mode)  
