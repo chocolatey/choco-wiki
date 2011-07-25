@@ -30,13 +30,13 @@ Installing mSysGit silently:
 ![msysgit install](images/msysgit2.png "msysgit install")  
   
 NHProf:  
-![nhprof](images/ChocolateyNHProf.png "nhprof")  
+![nhprof](images/chocolateynhprofiler.png "nhprof")  
   
 Statlight:  
 ![statlight](images/statlight.png "statlight")  
   
 Git-Tfs:  
-![git tfs](images/gittfs.png "git tfs chocolatey")  
-![git tfs helper run](images/gittfs2.png "git tfs chocolatey helper")  
+![git tfs](images/git-tfs.png "git tfs chocolatey")  
+![git tfs helper run](images/git-tfs2.png "git tfs chocolatey helper")  
   
 [[Command Reference|CommandsReference]]
