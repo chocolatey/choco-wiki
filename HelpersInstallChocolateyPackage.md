@@ -2,27 +2,27 @@
 ###NOTE: This command will assert UAC/Admin privileges on the machine.  
 Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].  
 
-`Install-ChocolateyPackage '__NAME__' 'EXE_OR_MSI' 'SILENT_ARGS' 'URL' '64BIT_URL_DELETE_IF_NO_64BIT'`  
+`Install-ChocolateyPackage $packageName $fileType $silentArgs $url $url64bit`  
   
 ##Parameters
-###__NAME__
+###$packageName
 This is an arbitrary name.  
 Example: `'7zip'`  
   
-###EXE_OR_MSI (very important)
+###$fileType (very important)
 Pick only  one to leave here.  
-Example: `'exe'`  
+Example: `'exe'` or `'msi'`  
   
-###SILENT_ARGS
+###$silentArgs
 Silent and other arguments to pass to the native installer.  
 Example: `'/S'`  
 If there are no silent arguments, pass this as `''`  
   
-###URL (very important)
+###$url (very important)
 The Url to the native installer.  
 Example: `'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi'`  
   
-###64BIT_URL_DELETE_IF_NO_64BIT (optional)
+###$url64bit (optional)
 If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly.  
 Example: `'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'`  
 Defaults to the 32bit url.  
