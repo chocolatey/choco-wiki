@@ -13,3 +13,10 @@ Chocolatey is a machine package manager. Where NuGet/OW are focused on developer
 
 [[Installing chocolatey|Installation]]  
 [[Getting Started|GettingStarted]]  
+
+##Google Group
+Chocolatey has a [google group](http://groups.google.com/group/chocolatey). Please join and ask questions/send feedback.  
+
+##Requirements
+Windows XP/Vista/7/2003/2008  
+.NET Framework 4.0  
