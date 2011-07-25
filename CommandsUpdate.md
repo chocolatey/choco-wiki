@@ -21,5 +21,6 @@ Defaults to official chocolatey feed.
   
 `cup nunit -source http://somelocalfeed.com/nuget`  
   
+![cup in action](images/cup.png "cup in action")  
   
 [[Command Reference|CommandsReference]]
