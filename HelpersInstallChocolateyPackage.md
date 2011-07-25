@@ -4,6 +4,9 @@ Has error handling built in. You do not need to surround this with try catch if 
 
 `Install-ChocolateyPackage $packageName $fileType $silentArgs $url $url64bit`  
   
+##Description
+This will download a native installer from a url and install it on your machine.  
+
 ##Parameters
 ###$packageName
 This is an arbitrary name.  
