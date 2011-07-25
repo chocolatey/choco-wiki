@@ -36,6 +36,7 @@ Some chocolatey packages are tagged with chocolatey. To see what chocolatey pack
 ##Packages
 [[Creating packages|CreatePackages]]  
 Keep in Mind [[Distribution|Legal]] Rights  
+[[Helper Reference|HelpersReference]]  
   
 ##Google Group
 Chocolatey has a [google group](http://groups.google.com/group/chocolatey). Please join and ask questions/send feedback.  
