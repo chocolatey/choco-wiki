@@ -1,3 +1,3 @@
 # Chocolatey
 
-[[GettingStarted|Getting Started]]
+[[Getting Started|GettingStarted]]
