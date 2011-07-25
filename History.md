@@ -10,8 +10,7 @@ At that time it became a tool that could install, upgrade and configure software
 So where [vanilla] nuget packages are developer focused library packages, chocolatey nuget packages are application/tool packages, and not necessarily 
 developer focused.  
 
-And then we made creating packages stupid simple by including helpers. 
-And now we are about to make it even more juicy by helping you create the entire package from a website by entering a little information.  
+And then we made creating packages stupid simple by including helpers.  Soon we are about to make it even more juicy by helping you create the entire package from a website by entering a little information.  
 
 ###References
 [Apt-Get](http://en.wikipedia.org/wiki/Apt-get)  
