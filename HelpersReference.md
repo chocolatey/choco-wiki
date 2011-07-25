@@ -11,7 +11,7 @@ These helpers call other helpers and have error handling built in. When using ju
 [[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]  
 [[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  
   
-If you use the helpers in the next section, it is strong suggested you format your chocolateyInstall.ps1 as follows:  
+If do anything besides use the main helpers, it is strong suggested you format your chocolateyInstall.ps1 as follows:  
 ```powershell
 try {
   
