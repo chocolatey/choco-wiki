@@ -14,16 +14,19 @@ How about updates? Wouldn't it be nice to update nearly everything on your machi
 Chocolatey is a machine package manager. Where NuGet/OW are focused on developer library packages, chocolatey is focused on applications and tools, and not necessarily developer focused.
 
 ##Information
-
+  
+[[Understand License Acceptance Terms/Waiver of Responsibility|Legal]]  
 [[Installing chocolatey|Installation]]  
 [[Getting Started|GettingStarted]]  
 [[Command Reference|CommandsReference]]  
-[[Creating packages|CreatePackages]]
-[[Legalities and distribution|Legal]]
-
+  
+##Packages
+[[Creating packages|CreatePackages]]  
+Keep in Mind [[Distribution|Legal]] Rights  
+  
 ##Google Group
 Chocolatey has a [google group](http://groups.google.com/group/chocolatey). Please join and ask questions/send feedback.  
 
 ##Requirements
-Windows XP/Vista/7/2003/2008  
-.NET Framework 4.0  
+ * Windows XP/Vista/7/2003/2008  
+ * .NET Framework 4.0  
