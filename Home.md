@@ -1,8 +1,9 @@
 # Chocolatey NuGet - like apt-get, but for Windows
 ###You can just call me chocolatey.  
 ![Chocolatey Logo](wiki/images/chocolateyicon.gif "Chocolatey")  
-
-##What is chocolatey?  
+  
+##chocolatey?
+###What is chocolatey?  
 Chocolatey is like apt-get, but for Windows (with windows comes limitations). It is a machine level package manager that is built on top of nuget command line and the nuget infrastructure.  
 [[More behind the name|History]]
 
@@ -10,7 +11,7 @@ Chocolatey is like apt-get, but for Windows (with windows comes limitations). It
   
 How about updates? Wouldn't it be nice to update nearly everything on your machine with a few simple keystrokes? We think so, too.  Chocolatey does that.  
   
-##How is chocolatey different than NuGet and/or OpenWrap?
+###How is chocolatey different than NuGet and/or OpenWrap?
 Chocolatey is a machine package manager. Where NuGet/OW are focused on developer library packages, chocolatey is focused on applications and tools, and not necessarily developer focused.
 
 ##Information
