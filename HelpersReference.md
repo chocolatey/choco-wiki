@@ -27,3 +27,5 @@ try {
 ##More Helpers
 These helpers require you to wrap a try catch around your chocolateyInstall.ps1 file. See the example script above.    
   
+  
+[[Home]]
