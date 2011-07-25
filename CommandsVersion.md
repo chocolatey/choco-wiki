@@ -20,5 +20,6 @@ Defaults to official chocolatey feed.
   
 `cver nunit -source http://somelocalfeed.com/nuget`  
   
+![cver in action](images/cverExample.png "cver in action")  
   
 [[Command Reference|CommandsReference]]
