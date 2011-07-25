@@ -1,8 +1,9 @@
 #Install-ChocolateyPackage
-###NOTE: This command will assert UAC/Admin privileges on the machine.
+###NOTE: This command will assert UAC/Admin privileges on the machine.  
+Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].  
 
 `Install-ChocolateyPackage '__NAME__' 'EXE_OR_MSI' 'SILENT_ARGS' 'URL' '64BIT_URL_DELETE_IF_NO_64BIT'`  
-
+  
 ##Parameters
 ###__NAME__
 This is an arbitrary name.  
