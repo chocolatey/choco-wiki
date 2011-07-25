@@ -5,20 +5,27 @@ These helpers call other helpers and have error handling built in. When using ju
 
 [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]  
 [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]  
-
-##More Helpers
-These helpers require you to wrap a try catch around your chocolateyInstall.ps1 file. Two of these helpers are strongly suggested every time you have to wrap.  
-
-
+  
+##Error/SuccessHelpers
+  
+[[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]  
+[[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  
+  
+If you use the helpers in the next section, it is strong suggested you format your chocolateyInstall.ps1 as follows:  
 ```powershell
 try {
   
   #Your code here...
 
-  Write-ChocolateySuccess 'gittfs'
+  Write-ChocolateySuccess '__NAME__'
 } catch {
-  Write-ChocolateyFailure 'gittfs' $($_.Exception.Message)
+  Write-ChocolateyFailure '__NAME__' $($_.Exception.Message)
   throw 
 }
-
 ```
+  
+##More Helpers
+These helpers require you to wrap a try catch around your chocolateyInstall.ps1 file. Two of these helpers are strongly suggested every time you have to wrap.  
+  
+
+  
