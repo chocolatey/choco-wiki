@@ -10,7 +10,7 @@ The use of chocolatey means that an individual using chocolatey assumes the resp
 ##Distributions aka chocolatey packages
 Chocolatey packages do not contain actual software distributions, only instructions for getting distributions (in powershell).  In a nutshell, the instructions are:  
   
- * Download a distribution from source  
+ * Download a distribution from remote location, most likely the published download location  
  * Run an installer (possibly in silent mode)  
   
 Because this is no different than what a human would do, and b/c a human kicks off this process, it's reasonable to determine that there is no violation of distribution rights.  
