@@ -10,6 +10,8 @@
  * New Helper! Install-ChocolateyPath - give it a path for out of band items that are not imported to path with chocolatey 
  * New Helper! Start-ChocolateyProcessAsAdmin - this allows you to run processes as administrator
  * New Helper! Install-ChocolateyDesktopLink - put shortcuts on the desktop
+ * chocolatey no longer needs administrative rights to install itself.
+ * chocolatey no longer runs the entire powershell script as an administrator. With the addition of the Start-ChocolateyProcessAsAdmin, this is how you will get to administrative tasks outside of the helpers.
   
 ###0.9.8.2
  * You now have the option of a custom installation folder. Thanks Jason Jarrett!
