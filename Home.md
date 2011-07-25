@@ -14,9 +14,8 @@ How about updates? Wouldn't it be nice to update nearly everything on your machi
 ###How is chocolatey different than NuGet and/or OpenWrap?
 Chocolatey is a machine package manager. Where NuGet/OW are focused on developer library packages, chocolatey is focused on applications and tools, and not necessarily developer focused.
   
-###Is there something I can watch to show me this?
-There is! This is a long video due to slow internet connections, but watch the first 1:30ish minutes and the last 1:30ish minutes and that will give you a general idea.  
-<iframe width="560" height="349" src="http://www.youtube.com/embed/N-hWOUL8roU" frameborder="0" allowfullscreen></iframe>  
+###Is there a video I can watch to show me chocolatey in action?
+There is! This is a long video due to slow internet connections, but watch the first 1:30ish minutes and the last 1:30ish minutes and that will give you a general idea. [http://www.youtube.com/watch?v=N-hWOUL8roU](http://www.youtube.com/watch?v=N-hWOUL8roU)  
   
 ##Information
   
