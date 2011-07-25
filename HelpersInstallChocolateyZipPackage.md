@@ -15,11 +15,11 @@ Example: `'https://github.com/downloads/spraints/git-tfs/GitTfs-0.11.0.zip'`
   
 ###UNZIP_LOCATION (very important)
 Where to unzip contents of the downloaded zip file.  
-Example: `'/S'`  
+Example: `"$(Split-Path -parent $MyInvocation.MyCommand.Definition)"` - will install it to the tools folder of your package.  
   
 ##Examples
 `Install-ChocolateyZipPackage 'gittfs' 'https://github.com/downloads/spraints/git-tfs/GitTfs-0.11.0.zip' $gittfsPath`  
   
-`Install-ChocolateyPackage 'mono' 'exe' '/SILENT' 'http://ftp.novell.com/pub/mono/archive/2.10.2/windows-installer/5/mono-2.10.2-gtksharp-2.12.10-win32-5.exe'`  
+`Install-ChocolateyZipPackage 'sysinternals' 'http://download.sysinternals.com/Files/SysinternalsSuite.zip' "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"`  
   
 [[Helper Reference|HelpersReference]]
