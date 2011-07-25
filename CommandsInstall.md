@@ -24,5 +24,19 @@ Defaults to official chocolatey feed.
   
 `cinst nunit -version 2.5.7.10213 -source http://somelocalfeed.com/nuget`  
   
+##Screenshots
+Installing mSysGit silently:  
+![msysgit](images/msysgit.png "msysgit")  
+![msysgit install](images/msysgit2.png "msysgit install")  
+  
+NHProf:  
+![nhprof](images/ChocolateyNHProf.png "nhprof")  
+  
+Statlight:  
+![statlight](images/statlight.png "statlight")  
+  
+Git-Tfs:  
+![git tfs](images/gittfs.png "git tfs chocolatey")  
+![git tfs helper run](images/gittfs2.png "git tfs chocolatey helper")  
   
 [[Command Reference|CommandsReference]]
