@@ -3,6 +3,8 @@ Lists packages available from a remote source.
 `chocolatey list packageName` or shortcut with 
 `cinst packageName` 
   
+###NOTE: Some chocolatey packages are tagged with chocolatey. To see what chocolatey packages are available, type `clist chocolatey`. This is not a comprenhensitve listing, but it's enough to give you an idea.  
+  
 ##Parameters
 ###Filter
 A way to filter down results. Searches against name/description/tag.  
