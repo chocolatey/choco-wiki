@@ -1,11 +1,8 @@
 #Install-ChocolateyZipPackage
-
-Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].  
-
 `Install-ChocolateyZipPackage $packageName $url $unzipLocation`  
   
 ##Description
-This will download a file from a url and unzip it on your machine.  
+This will download a file from a url and unzip it on your machine. Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].  
 
 ##Parameters
 ###$packageName
