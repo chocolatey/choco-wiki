@@ -1,5 +1,5 @@
 # Chocolatey Install (cinst)
-
+Unconditionally installs a package, even if it already exists.  
 `chocolatey install packageName` or shortcut with 
 `cinst packageName` 
   
