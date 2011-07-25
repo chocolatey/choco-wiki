@@ -1,4 +1,4 @@
 # Chocolatey
 
-[[Installing Chocolatey|Installation]]
-[[Getting Started|GettingStarted]]
+[[Installing Chocolatey|Installation]]  
+[[Getting Started|GettingStarted]]  
