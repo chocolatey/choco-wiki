@@ -1,1 +1,3 @@
-Welcome to the chocolatey wiki!
+# Chocolatey
+
+[[Getting Started]]
