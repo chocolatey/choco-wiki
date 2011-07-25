@@ -1,22 +1,14 @@
 # Installing Chocolatey
-There are a few ways to install chocolatey.  
+There are a few ways to install chocolatey. Chocolatey exists as a [nuget package](http://nuget.org/list/packages/chocolatey) so virtually any way you can get a nuget package, you have the opportunity to then install it.  
 
-
-## PowerShell Through Batch Method
-
-This is probably the easiest method.
-
-Download the two items from [chocolateyInstall](https://github.com/ferventcoder/chocolatey/tree/master/chocolateyInstall).
-
-Run `installChocolatey.cmd` and it will install and update to the latest version of chocolatey.
+If you have Visual Studio 2010 and the NuGet extension installed, perhaps the quickest method is to use NuGet Package Manager. Three commands in succession and you are done. See it below.  
 
 ## PowerShell
-
-This is maybe the second easiest method. Open a powershell command line and run the following:
-
+This is the easiest method. Open a powershell command line and run the following:  
+  
 ```powershell
 # variables
-$url = "http://packages.nuget.org/v1/Package/Download/Chocolatey/0.9.8.3"
+$url = "http://packages.nuget.org/v1/Package/Download/Chocolatey/0.9.8.4"
 $chocTempDir = Join-Path $env:TEMP "chocolatey"
 $tempDir = Join-Path $chocTempDir "chocInstall"
 if (![System.IO.Directory]::Exists($tempDir)) {[System.IO.Directory]::CreateDirectory($tempDir)}
@@ -41,27 +33,32 @@ $chocInstallPS1 = Join-Path $toolsFolder "chocolateyInstall.ps1"
 
 & $chocInstallPS1
 
-
 # update chocolatey to the latest version
 Write-Host "Updating chocolatey to the latest version"
 cup chocolatey
-
 ```
+  
+## PowerShell Through Batch Method
+This is the best method if you want to repeat it or include it in source control. It requires no change to your existing powershell to allow for remote unsigned scripts.  
 
+Download the two items from [chocolateyInstall](https://github.com/ferventcoder/chocolatey/tree/master/chocolateyInstall).  
+  
+Run `installChocolatey.cmd` and it will install and update to the latest version of chocolatey.  
+  
 ## NuGet Package Manager Method
   
-Chocolatey exists as a [nuget package](http://nuget.org/list/packages/chocolatey).  
+When you have Visual Studio 2010 and the NuGet extension installed, you can simply type the following three commands and you will have chocolatey installed on your machine.  
   
  `Install-Package chocolatey`  
  `Initialize-Chocolatey`  
  `Uninstall-Package chocolatey`  
 
-## NuGet.exe Method
+## NuGet.exe + PowerShell Method
 
-Use nuget command line to download chocolatey:  
+You can also use nuget command line to download chocolatey:  
   
  `nuget install chocolatey`  
   
-Once you download it, open powershell (remote unsigned) and run 
+Once you download it, open powershell (remote unsigned) and run:  
 
  `Initialize-Chocolatey`
