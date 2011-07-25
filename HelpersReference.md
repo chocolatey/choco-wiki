@@ -25,7 +25,12 @@ try {
 ```
   
 ##More Helpers
-These helpers require you to wrap a try catch around your chocolateyInstall.ps1 file. See the example script above.    
-  
+These helpers require you to wrap a try catch around your chocolateyInstall.ps1 file. See the example script above.  
+[[Start-ChocolateyProcessAsAdmin|HelpersStartChocolateyProcessAsAdmin]]  
+[[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]  
+[[Install-ChocolateyInstallPackage|HelpersInstallChocolateyInstallPackage]]  
+[[Get-ChocolateyUnzip|HelpersGetChocolateyUnzip]]  
+[[Install-ChocolateyPath|HelpersInstallChocolateyPath]]  
+[[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]]  
   
 [[Home]]
