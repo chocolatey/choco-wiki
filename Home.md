@@ -16,6 +16,7 @@ Chocolatey is a machine package manager. Where NuGet/OW are focused on developer
   
 ###Is there a video I can watch to show me chocolatey in action?
 There is! This is a long video due to slow internet connections, but watch the first 1:30ish minutes and the last 1:30ish minutes and that will give you a general idea. [http://www.youtube.com/watch?v=N-hWOUL8roU](http://www.youtube.com/watch?v=N-hWOUL8roU)  
+NOTE: This video shows dependency chaining, so you are seeing it install 11 applications/tools.  
   
 ##Information
   
