@@ -1,6 +1,7 @@
 # Chocolatey NuGet - like apt-get, but for Windows
 ###You can just call me chocolatey.  
 ![Chocolatey Logo](wiki/images/chocolateyicon.gif "Chocolatey")  
+###Let's get chocolatey!
   
 ##chocolatey?
 ###What is chocolatey?  
