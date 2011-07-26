@@ -7,6 +7,7 @@ Create a package for your project and call it projectname*.dev*.  It should take
 Now, in [[chocolateyInstall.ps1|ChocolateyInstallPS1]], you just need the following: 
 
 ```powershell
+se
 ```
 
 ## Set up From the Source
