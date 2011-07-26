@@ -33,15 +33,25 @@ These helpers require you to wrap a try catch around your chocolateyInstall.ps1 
 [[Install-ChocolateyPath|HelpersInstallChocolateyPath]]  
 [[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]]  
 
+#Administrative Access Packages
+When creating packages that need to run one of the following commands below, one should add the tag `admin` to the nuspec.  
+
+* [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]  
+* [[Start-ChocolateyProcessAsAdmin|HelpersStartChocolateyProcessAsAdmin]]   
+* [[Install-ChocolateyInstallPackage|HelpersInstallChocolateyInstallPackage]]  
+* [[Install-ChocolateyPath|HelpersInstallChocolateyPath]] - when specifying machine path  
+  
 ##Non-Administrator Safe Helpers
-Some folks expressed a desire to have chocolatey not run as administrator to reach continuous integration and developers that are not administrators on their machines. Starting with chocolatey [[v0.9.8.3|ReleaseNotes]], this has been possible.    
+Some folks expressed a desire to have chocolatey not run as administrator to reach continuous integration and developers that are not administrators on their machines. Starting with chocolatey [[v0.9.8.3|ReleaseNotes]], this has been possible.  
+
+These are the helpers from above as one list.    
 
 * [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]  
 * [[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]  
 * [[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  
 * [[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]  
 * [[Get-ChocolateyUnzip|HelpersGetChocolateyUnzip]]  
-* [[Install-ChocolateyPath|HelpersInstallChocolateyPath]] - as long as you use user path and not machine path  
+* [[Install-ChocolateyPath|HelpersInstallChocolateyPath]] - when specifying user path  
 * [[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]]  
   
 [[Home]]
