@@ -37,9 +37,6 @@ This does the following:
 * restores nuget packages from the configs
 * builds the source with rake 
   
-  
-Original [on github](https://gist.github.com/1107920).   
-
 ###setup.ps1:  
   
 ```powershell
@@ -99,3 +96,4 @@ SET DIR=%~dp0%
 pause
 ```
   
+The original is [on github](https://gist.github.com/1107920).   
