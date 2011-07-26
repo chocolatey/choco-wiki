@@ -1,8 +1,18 @@
 #Set Up A Development Environment using chocolatey
 
+This does the following:  
+  
+* downloads and installs chocolatey  
+* installs nuget.commandline if it is not installed
+* installs ruby if it is not installed
+* updates gems and installs some required gems for rake
+* restores nuget packages from the configs
+* builds the source with rake 
+  
+  
 Original [on github](https://gist.github.com/1107920):  
   
-```ps
+```powershell
 ### install chocolatey ###
 $url = "http://packages.nuget.org/v1/Package/Download/Chocolatey/0.9.8.4"
 $tempDir = "$env:TEMP\chocolatey\chocInstall"
