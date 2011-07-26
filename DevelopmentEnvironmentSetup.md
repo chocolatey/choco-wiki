@@ -10,7 +10,8 @@ This does the following:
 * builds the source with rake 
   
   
-Original [on github](https://gist.github.com/1107920):  
+Original [on github](https://gist.github.com/1107920).   
+This file is setup.ps1:  
   
 ```powershell
 ### install chocolatey ###
@@ -60,7 +61,7 @@ foreach ($nugetConfig in $nugetConfigs) {
 rake
 ```
 
-setup.cmd: 
+This file is setup.cmd: 
   
 ```
 @echo off
