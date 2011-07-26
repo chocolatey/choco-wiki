@@ -13,3 +13,6 @@ The video is a bit outdated in showing the contents of the chocolateyInstall.ps1
 ```powershell
 Install-ChocolateyPackage 'windirstat' 'exe' '/S' 'http://windirstat.info/wds_current_setup.exe'
 ```
+  
+##Dependency Chaining
+You can make packages that depend on other packages just by adding those dependencies to the nuspec. Take a look at [ferventcoder.chocolatey.utilities nuspec](https://github.com/ferventcoder/nugetpackages/blob/master/ferventcoder.chocolatey.utilities/ferventcoder.chocolatey.utilities.nuspec)
