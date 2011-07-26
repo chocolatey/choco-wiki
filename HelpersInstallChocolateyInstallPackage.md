@@ -1,4 +1,6 @@
 #Install-ChocolateyInstallPackage
+###NOTE: This command will assert UAC/Admin privileges on the machine.  
+  
 `Install-ChocolateyInstallPackage $packageName $fileType $silentArgs $file`  
   
 ##Description

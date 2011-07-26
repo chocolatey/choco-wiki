@@ -1,4 +1,6 @@
 #Install-ChocolateyPath
+###NOTE: This command will assert UAC/Admin privileges on the machine if you pick $pathType 'Machine'.  
+  
 `Install-ChocolateyPath $pathToInstall $pathType`  
   
 ##Description
