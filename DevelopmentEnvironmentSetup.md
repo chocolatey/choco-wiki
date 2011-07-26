@@ -97,5 +97,3 @@ pause
 ```
   
 The original is [on github](https://gist.github.com/1107920).   
-
-<script src="https://gist.github.com/1107920.js?file=setup.ps1"></script>
