@@ -25,7 +25,7 @@ Error Occurred: $($_.Exception.Message)
 }
 ```
   
-Example: [DropkicK.Dev](https://github.com/ferventcoder/nugetpackages/blob/master/dropkick.dev/tools/chocolateyInstall.ps1)
+The above is from [DropkicK.Dev](https://github.com/ferventcoder/nugetpackages/blob/master/dropkick.dev/tools/chocolateyInstall.ps1)
   
 ## Set up From the Source
 This does the following:  
