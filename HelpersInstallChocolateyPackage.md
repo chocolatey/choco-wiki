@@ -5,7 +5,7 @@
   
 ##Description
 This will download a native installer from a url and install it on your machine. Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].  
-
+  
 ##Parameters
 ###$packageName
 This is an arbitrary name.  
@@ -28,7 +28,7 @@ Example: `'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi'`
 If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly.  
 Example: `'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'`  
 Defaults to the 32bit url.  
-
+  
 ##Examples
 `Install-ChocolateyPackage 'StExBar' 'msi' '/quiet' 'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi' 'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'`  
   
