@@ -1,6 +1,6 @@
 #Install-ChocolateyPackage
 ###NOTE: This command will assert UAC/Admin privileges on the machine.  
-
+  
 `Install-ChocolateyPackage $packageName $fileType $silentArgs $url $url64bit`  
   
 ##Description
@@ -11,7 +11,7 @@ This will download a native installer from a url and install it on your machine.
 This is an arbitrary name.  
 Example: `'7zip'`  
   
-###$fileType (very important)
+###$fileType (important)
 Pick only  one to leave here.  
 Example: `'exe'` or `'msi'`  
   
@@ -20,7 +20,7 @@ Silent and other arguments to pass to the native installer.
 Example: `'/S'`  
 If there are no silent arguments, pass this as `''`  
   
-###$url (very important)
+###$url (important)
 The Url to the native installer.  
 Example: `'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi'`  
   

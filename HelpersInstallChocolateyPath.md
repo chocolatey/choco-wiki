@@ -7,7 +7,7 @@
 This puts a directory on the PATH environment variable. This is used when the application/tool is not being linked by chocolatey (not in the lib folder).  
   
 ##Parameters
-###$pathToInstall
+###$pathToInstall (important)
 This is a directory that you want to add to the PATH environment variable.  
 Example: `"$env:SystemDrive\tools\gittfs"`  
   

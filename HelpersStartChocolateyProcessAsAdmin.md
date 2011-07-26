@@ -7,11 +7,11 @@
 Runs a process as an administrator. If $exeToRun is not specified, it is run with powershell.  
   
 ##Parameters
-###$statements (very important)
+###$statements (important)
 These are statements and/or arguments for an application.  
 Example: `'/i package /q'`  
   
-###$exeToRun (also important)
+###$exeToRun (important)
 This is the executable/application to run.  
 Example: `cmd.exe`  
 Defaults to `powershell`  

@@ -9,7 +9,7 @@ This will download a file from a url and unzip it on your machine. Has error han
 This is an arbitrary name.  
 Example: `'7zip'`  
   
-###$url (very important)
+###$url (important)
 The Url to the zip file.  
 Example: `'https://github.com/downloads/spraints/git-tfs/GitTfs-0.11.0.zip'`  
   

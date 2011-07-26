@@ -11,7 +11,7 @@ This will run a native installer to perform an install/upgrade on your machine.
 This is an arbitrary name.  
 Example: `'7zip'`  
   
-###$fileType (very important)
+###$fileType (important)
 Pick only one : 'exe' or 'msi'  
 Example: `'exe'` or `'msi'`  
   
@@ -20,7 +20,7 @@ Silent and other arguments to pass to the native installer.
 Example: `'/S'`  
 If there are no silent arguments, pass this as `''`  
   
-###$file  
+###$file (important)  
 This is the file to install. This is a full path to the file.  
 Example: `'c:\somepath\someinstaller.msi'`  
   

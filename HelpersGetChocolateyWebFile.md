@@ -13,7 +13,7 @@ Example: `'7zip'`
 The full path and name of the file to save. This should include the name of the file and extension.  
 Example: `'c:\tools\nodejs\node.exe'`  
   
-###$url (very important)
+###$url (important)
 The Url to the file.  
 Example: `'http://nodejs.org/dist/v0.5.2/node.exe'`  
   
