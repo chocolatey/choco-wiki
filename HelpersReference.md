@@ -32,5 +32,16 @@ These helpers require you to wrap a try catch around your chocolateyInstall.ps1 
 [[Get-ChocolateyUnzip|HelpersGetChocolateyUnzip]]  
 [[Install-ChocolateyPath|HelpersInstallChocolateyPath]]  
 [[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]]  
+
+##Non-Administrator Safe Helpers
+Some folks expressed a desire to have chocolatey not run as administrator to reach continuous integration and developers that are not administrators on their machines. Starting with chocolatey [[v0.9.8.3|ReleaseNotes]], this has been possible.    
+
+[[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]  
+[[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]  
+[[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  
+[[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]  
+[[Get-ChocolateyUnzip|HelpersGetChocolateyUnzip]]  
+[[Install-ChocolateyPath|HelpersInstallChocolateyPath]]  
+[[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]]  
   
 [[Home]]
