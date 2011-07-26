@@ -59,6 +59,6 @@ You can also use nuget command line to download chocolatey:
   
  `nuget install chocolatey`  
   
-Once you download it, open powershell (remote unsigned) and run:  
+Once you download it, open powershell (remote unsigned), navigate to the tools folder and run:  
 
- `Initialize-Chocolatey`
+`& 'chocolateyInstall.ps1'`
