@@ -15,10 +15,11 @@
   
 * Chocolatey NuGet gallery with moderation turned on
 * Create and save packages on the web
+* RSS/Atom feed
 
-
-##Thoughts for future directions  
+##Thoughts for future directions (undecided directions)  
   
+* GUI
 * Pluggable compositional model  
 * Ruby Gems Support  
 * [Chef Integration](http://wiki.opscode.com/display/chef/Resources#Resources-Package)  
