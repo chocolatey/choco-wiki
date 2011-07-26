@@ -33,7 +33,7 @@ These helpers require you to wrap a try catch around your chocolateyInstall.ps1 
 [[Install-ChocolateyPath|HelpersInstallChocolateyPath]]  
 [[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]]  
 
-#Administrative Access Packages
+##Administrative Access Packages
 When creating packages that need to run one of the following commands below, one should add the tag `admin` to the nuspec.  
 
 * [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]  
