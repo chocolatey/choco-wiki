@@ -32,6 +32,7 @@ Some chocolatey packages are tagged with chocolatey. To see what chocolatey pack
 [[Installing chocolatey|Installation]]  
 [[Getting Started|GettingStarted]]  
 [[Command Reference|CommandsReference]]  
+Use chocolatey to set up [[source code development environments|DevelopmentEnvironmentSetup]]!  
   
 ##Packages
 [[Creating packages|CreatePackages]]  
