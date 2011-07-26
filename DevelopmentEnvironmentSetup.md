@@ -1,5 +1,15 @@
-#Set Up A Development Environment using chocolatey
+#Set Up A Development Environment Using Chocolatey
 
+How many of you out there are rake fans? Getting developers to look at your source code can sometimes be an issue. Wouldn't it be nice if it was simple for them to get all set up? It doesn't have to be due to rake. It would be nice, right?  
+
+## Downloading the Source
+Create a package for your project and call it projectname*.dev*.  It should take a nuspec dependency on whatever source control you use. So in the case of git, a dependency on msysgit.  
+Now, in [[chocolateyInstall.ps1|ChocolateyInstallPS1]], you just need the following: 
+
+```powershell
+```
+
+## Set up From the Source
 This does the following:  
   
 * downloads and installs chocolatey  
