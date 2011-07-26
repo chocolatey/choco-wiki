@@ -4,7 +4,7 @@ How many of you out there are rake fans? Getting developers to look at your sour
 
 ## Getting the Source
 Create a package for your project and call it projectname*.dev*.  It should take a nuspec dependency on whatever source control you use. So in the case of git, a dependency on msysgit.  
-Now, in [[chocolateyInstall.ps1|ChocolateyInstallPS1]], you just need the following: 
+Now, in [[chocolateyInstall.ps1|ChocolateyInstallPS1]], you just need something like the following: 
 
 ```powershell
 try {
