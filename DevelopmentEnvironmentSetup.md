@@ -41,7 +41,7 @@ This does the following:
   
 ```powershell
 ### install chocolatey ###
-$url = "http://packages.nuget.org/v1/Package/Download/Chocolatey/0.9.8.4"
+$url = "http://packages.nuget.org/v1/Package/Download/Chocolatey/0.9.8.5"
 $tempDir = "$env:TEMP\chocolatey\chocInstall"
 if (![System.IO.Directory]::Exists($tempDir)) {[System.IO.Directory]::CreateDirectory($tempDir)}
 $file = Join-Path $tempDir "chocolatey.zip"
