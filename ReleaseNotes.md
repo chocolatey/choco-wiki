@@ -1,7 +1,7 @@
 #Release Notes
   
 ###0.9.8.6
- * Fixed a bug introduced in Start-ChocolateyProcessAsAdmin as a result of trying to log error messages.  
+ * Fixed a bug introduced in 0.9.8.5 - Start-ChocolateyProcessAsAdmin erroring out when setting machine path as a result of trying to log the message.  
   
 ###0.9.8.5
  * Improving Run-ChocolateyProcessAsAdmin to allow for running entire functions as administrator by importing helpers to that command if using PowerShell.
