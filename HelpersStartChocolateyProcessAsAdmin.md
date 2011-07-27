@@ -21,5 +21,9 @@ Defaults to `powershell`
   
 `Start-ChocolateyProcessAsAdmin "$silentArgs" $file`  
   
+```powershell
+$psFile = Join-Path "$(Split-Path -parent $MyInvocation.MyCommand.Definition)" 'someInstall.ps1'
+Start-ChocolateyProcessAsAdmin "& `'$psFile`'"
+```  
   
 [[Helper Reference|HelpersReference]]  
