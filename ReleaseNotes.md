@@ -1,5 +1,10 @@
 #Release Notes
   
+###0.9.8.5
+ * Improving Run-ChocolateyProcessAsAdmin to allow for running entire functions as administrator by importing helpers to that command if using PowerShell.
+ * Fixed bug in installer when User Environment Path is null.  
+ * Updating some of the notes.
+  
 ###0.9.8.4
  * Fixed a small issue with the Install-ChocolateyDesktopLink
   
