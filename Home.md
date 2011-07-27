@@ -48,3 +48,4 @@ Chocolatey has a [google group](http://groups.google.com/group/chocolatey). Plea
 ##Requirements
  * Windows XP/Vista/7/2003/2008  
  * .NET Framework 4.0  
+ * Powershell 2.0  
