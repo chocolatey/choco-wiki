@@ -8,7 +8,7 @@ This is the easiest method. Open a powershell command line and paste in the foll
   
 ```powershell
 # variables
-$url = "http://packages.nuget.org/v1/Package/Download/Chocolatey/0.9.8.5"
+$url = "http://packages.nuget.org/v1/Package/Download/Chocolatey/0.9.8.6"
 $chocTempDir = Join-Path $env:TEMP "chocolatey"
 $tempDir = Join-Path $chocTempDir "chocInstall"
 if (![System.IO.Directory]::Exists($tempDir)) {[System.IO.Directory]::CreateDirectory($tempDir)}
