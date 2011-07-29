@@ -4,6 +4,7 @@
   
 * Uninstall (cunst)
 * More general improvements to the rest of the commands
+* [Virtual packages](https://github.com/ferventcoder/nugetpackages/issues/30)
 
 ##chocolatey v2  
   
