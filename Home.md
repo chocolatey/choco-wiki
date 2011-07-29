@@ -20,7 +20,13 @@ There is! This is a long video due to slow internet connections, but watch the f
 NOTE: This video shows dependency chaining, so you are seeing it install 11 applications/tools.  
   
 ###What can I install?
-Some chocolatey packages are tagged with chocolatey. To see what chocolatey packages are available, type `clist chocolatey`. This is not a comprenhensitve listing.
+Some chocolatey packages are tagged with chocolatey. To see what chocolatey packages are available, type `clist chocolatey`. This is not a comprenhensitve listing because not all tools add the chocolatey tag.  
+  
+###What kind of package types does chocolatey support?
+  
+* Binary Packages are the main type.  
+* Source code packages are packages that have the suffix *.dev*.
+* Coming soon - Virtual Packages
   
 ##Information
   
