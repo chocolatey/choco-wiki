@@ -4,8 +4,12 @@
 ###Let's get chocolatey!
   
 ##chocolatey?
+
+Develop your tools and applications with NuGet, release them on Chocolatey!   
+But wait, chocolatey is not just for .NET tools. It's for any windows application or tool.  
+
 ###What is chocolatey?  
-Chocolatey is like apt-get, but for Windows (with windows comes limitations). It is a machine level package manager that is built on top of nuget command line and the nuget infrastructure.  
+Now that I have your attention, let's talk about chocolatey. Chocolatey is like apt-get, but for Windows (with windows comes limitations). It is a machine level package manager that is built on top of nuget command line and the nuget infrastructure.  
 [[More behind the name|History]]
 
 "Okay, machine package manager, that's nice. What does that mean though?" It means you can simply install software with a few keystrokes and go get coffee while your co-workers are downloading and running an install manually (and I do mean something like an MSI).  
