@@ -6,7 +6,7 @@
 ##chocolatey?
 
 You can develop your tools and applications with NuGet, and release them on Chocolatey!  
-But chocolatey is not just for .NET tools. It's for nearly any windows application or tool!  
+But chocolatey is not just for .NET tools. It's for nearly any windows application/tool!  
 
 ###What is chocolatey?  
 Now that I have your attention, let's talk about chocolatey. Chocolatey is like apt-get, but for Windows (with windows comes limitations). It is a machine level package manager that is built on top of nuget command line and the nuget infrastructure.  
