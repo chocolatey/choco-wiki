@@ -10,7 +10,7 @@ This is the easiest method. Open a powershell command line and paste in the foll
 iex ((new-object net.webclient).DownloadString("http://bit.ly/psChocInstall"))
 ```  
 
-It downloads and runs [https://raw.github.com/chocolatey/chocolatey/master/chocolateyInstall/InstallChocolatey.ps1].  
+It downloads and runs (https://raw.github.com/chocolatey/chocolatey/master/chocolateyInstall/InstallChocolatey.ps1).  
   
 ## PowerShell Through Batch Method
 This is the best method if you want to repeat it or include it in source control. It requires no change to your existing powershell to allow for remote unsigned scripts.  
