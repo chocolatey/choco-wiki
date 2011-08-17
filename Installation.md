@@ -1,6 +1,8 @@
 # Installing Chocolatey
 There are a few ways to install chocolatey. Chocolatey exists as a [nuget package](http://nuget.org/list/packages/chocolatey) so virtually any way you can get a nuget package, you have the opportunity to then install it.  
-
+  
+Chocolatey installs in seconds painlessly and quietly.  
+  
 If you have Visual Studio 2010 and the NuGet extension installed, perhaps the quickest method is to use NuGet Package Manager. Three commands in succession and you are done. See below.  
 
 ## PowerShell
