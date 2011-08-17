@@ -7,6 +7,10 @@ If you have Visual Studio 2010 and the NuGet extension installed, perhaps the qu
 This is the easiest method. Open a powershell command line and paste in the following and press &lt;Enter&gt;:  
   
 ```powershell
+iex ((new-object net.webclient).DownloadString("http://bit.ly/psChocInstall"))
+```  
+  
+```powershell
 # variables
 $url = "http://packages.nuget.org/v1/Package/Download/Chocolatey/0.9.8.6"
 $chocTempDir = Join-Path $env:TEMP "chocolatey"
