@@ -9,38 +9,8 @@ This is the easiest method. Open a powershell command line and paste in the foll
 ```powershell
 iex ((new-object net.webclient).DownloadString("http://bit.ly/psChocInstall"))
 ```  
-  
-```powershell
-# variables
-$url = "http://packages.nuget.org/v1/Package/Download/Chocolatey/0.9.8.6"
-$chocTempDir = Join-Path $env:TEMP "chocolatey"
-$tempDir = Join-Path $chocTempDir "chocInstall"
-if (![System.IO.Directory]::Exists($tempDir)) {[System.IO.Directory]::CreateDirectory($tempDir)}
-$file = Join-Path $tempDir "chocolatey.zip"
 
-# download the package
-Write-Host "Downloading $url to $file"
-$downloader = new-object System.Net.WebClient
-$downloader.DownloadFile($url, $file)
-
-# unzip the package
-Write-Host "Extracting $file to $destination..."
-$shellApplication = new-object -com shell.application 
-$zipPackage = $shellApplication.NameSpace($file) 
-$destinationFolder = $shellApplication.NameSpace($tempDir) 
-$destinationFolder.CopyHere($zipPackage.Items(),0x10)
-
-# call chocolatey install
-Write-Host "Installing chocolatey on this machine"
-$toolsFolder = Join-Path $tempDir "tools"
-$chocInstallPS1 = Join-Path $toolsFolder "chocolateyInstall.ps1"
-
-& $chocInstallPS1
-
-# update chocolatey to the latest version
-Write-Host "Updating chocolatey to the latest version"
-cup chocolatey
-```
+It downloads and runs [https://raw.github.com/chocolatey/chocolatey/master/chocolateyInstall/InstallChocolatey.ps1].  
   
 ## PowerShell Through Batch Method
 This is the best method if you want to repeat it or include it in source control. It requires no change to your existing powershell to allow for remote unsigned scripts.  
