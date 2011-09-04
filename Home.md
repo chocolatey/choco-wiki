@@ -2,7 +2,9 @@
 ###You can just call me chocolatey.  
 ![Chocolatey Logo](wiki/images/chocolateyicon.gif "Chocolatey")  
 ###Let's get chocolatey!
-http://chocolatey.org  
+Home: http://chocolatey.org  
+Forum: http://groups.google.com/group/chocolatey  
+Twitter: http://twitter.com/chocolateynuget  
   
 ##chocolatey?
 
