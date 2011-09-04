@@ -8,7 +8,7 @@ Twitter: http://twitter.com/chocolateynuget
   
 ##chocolatey?
 
-You can develop your tools and applications with NuGet, and release them on Chocolatey!  
+You can develop your tools and applications with NuGet, and release them on chocolatey!  
 But chocolatey is not just for .NET tools. It's for nearly any windows application/tool!  
 
 ###What is chocolatey?  
