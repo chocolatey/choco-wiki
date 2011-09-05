@@ -12,6 +12,7 @@ These helpers call other helpers and have error handling built in. When using ju
 [[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  
   
 If do anything besides use the main helpers, it is strong suggested you format your chocolateyInstall.ps1 as follows:  
+  
 ```powershell
 try {
   
@@ -22,7 +23,7 @@ try {
   Write-ChocolateyFailure '__NAME__' $($_.Exception.Message)
   throw 
 }
-```
+```  
   
 ##More Helpers
 These helpers require you to wrap a try catch around your chocolateyInstall.ps1 file. See the example script above.  
