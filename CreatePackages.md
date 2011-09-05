@@ -1,6 +1,6 @@
 #Creating Chocolatey Packages
 
-There are four main elements to a chocolatey package.  
+There are four main elements to a chocolatey package. Only the nuspec is required (#1 below).  
   
 1. [nuspec](https://github.com/ferventcoder/nugetpackages/blob/master/_template/chocolatey/__NAME__.nuspec)
 1. [nuget blocker with chocolatey note](https://github.com/ferventcoder/nugetpackages/blob/master/_template/chocolatey/tools/install.ps1)
