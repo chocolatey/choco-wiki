@@ -2,15 +2,18 @@
 Chocolatey uses powershell and will look for this file in the package. If it finds it, it will execute the contents of the file, attaching the helper modules.  Check out the [[Helper Reference|HelpersReference]] for more information on each of the helpers you can include.  
   
 This is what it takes to install [StExBar](https://github.com/ferventcoder/nugetpackages/blob/master/StExBar/tools/chocolateyInstall.ps1):  
+  
 ```powershell
 Install-ChocolateyPackage 'StExBar' 'msi' '/quiet' 'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi' 'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'
-```
+```  
+  
 The Install-ChocolateyPackage helper uses the url, msi, and silent args to download and silently install and update stexbar.  
   
   
   
   
 This is a template for creating a new chocolatey package:  
+  
 ```powershell
 #try { #error handling is only necessary if you need to do anything in addition to/instead of the main helpers
   # main helpers - these have error handling tucked into them so they become the only line of your script if that is all you need.
@@ -48,4 +51,4 @@ This is a template for creating a new chocolatey package:
   #Write-ChocolateyFailure '__NAME__' "$($_.Exception.Message)"
   #throw 
 #}
-```
+```  
