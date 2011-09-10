@@ -2,7 +2,7 @@
 ###You can just call me chocolatey.  
 ![Chocolatey Logo](wiki/images/chocolateyicon.gif "Chocolatey")  
 ###Let's get chocolatey!
-"I'm a tools enabler, I'm a global silent app installer. Some people want to call me apt-get for Windows, I just want to get #chocolatey!"  
+"I'm a tools enabler, I'm a global silent application installer. I configure stuff. Some people want to call me apt-get for Windows, I just want to get #chocolatey!"  
   
 Home: http://chocolatey.org (if this is down, try the backup at http://chocolatey.apphb.com )  
 Forum: http://groups.google.com/group/chocolatey  
