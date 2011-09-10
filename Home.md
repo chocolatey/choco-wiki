@@ -2,6 +2,8 @@
 ###You can just call me chocolatey.  
 ![Chocolatey Logo](wiki/images/chocolateyicon.gif "Chocolatey")  
 ###Let's get chocolatey!
+"I'm a tools enabler, I'm a global silent app installer. Some people want to call me apt-get for Windows, I just want to get #chocolatey!"  
+  
 Home: http://chocolatey.org (if this is down, try the backup at http://chocolatey.apphb.com )  
 Forum: http://groups.google.com/group/chocolatey  
 Twitter: http://twitter.com/chocolateynuget  
@@ -12,7 +14,7 @@ You can develop your tools and applications with NuGet, and release them with ch
 But chocolatey is not just for .NET tools. It's for nearly any windows application/tool!  
 
 ###What is chocolatey?  
-Now that I have your attention, let's talk about chocolatey. Chocolatey is like apt-get, but for Windows (with windows comes limitations). It is a machine level package manager that is built on top of nuget command line and the nuget infrastructure.  
+Now that I have your attention, let's talk about chocolatey. Chocolatey is kind of like apt-get, but for Windows (with windows comes limitations). It is a machine level package manager that is built on top of nuget command line and the nuget infrastructure.  
 [[More behind the name|History]]
 
 "Okay, machine package manager, that's nice. What does that mean though?" It means you can simply install software with a few keystrokes and go get coffee while your co-workers are downloading and running an install manually (and I do mean something like an MSI).  
