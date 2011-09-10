@@ -11,7 +11,8 @@ This is the easiest method. Open a powershell command line and paste in the foll
 ```powershell
 iex ((new-object net.webclient).DownloadString("http://bit.ly/psChocInstall"))
 ```  
-
+  
+Note: You must have your execution policy set to remote unsigned for this to work.  
 It downloads and runs (https://raw.github.com/chocolatey/chocolatey/master/chocolateyInstall/InstallChocolatey.ps1).  
   
 ## PowerShell Through Batch Method
