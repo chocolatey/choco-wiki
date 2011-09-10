@@ -2,30 +2,7 @@
 
 How many of you out there are rake fans? Getting developers to look at your source code can sometimes be an issue. Wouldn't it be nice if it was simple for them to get all set up? It doesn't have to be due to rake. It would be nice, right?  
 
-## Getting the Source
-Create a package for your project and call it projectname*.dev*.  It should take a nuspec dependency on whatever source control you use. So in the case of git, a dependency on msysgit.  
-Now, in [[chocolateyInstall.ps1|ChocolateyInstallPS1]], you just need something like the following: 
 
-```powershell
-try {
-
-  $dirSelected = Read-Host "Please tell me the directory where you want to clone dropkick. Press enter to use .\dropkick"
-  
-  if ($dirSelected -eq '') {$dirSelected = '.\dropkick'}
-  
-  git clone git://github.com/chucknorris/dropkick.git $dirSelected
-  
-  Start-Sleep 6
-} catch {
-@"
-Error Occurred: $($_.Exception.Message)
-"@ | Write-Host -ForegroundColor White -BackgroundColor DarkRed
-	Start-Sleep 8
-	throw 
-}
-```
-  
-The above is from [DropkicK.Dev](https://github.com/ferventcoder/nugetpackages/blob/master/dropkick.dev/tools/chocolateyInstall.ps1)
   
 ## Set up From the Source
 This does the following:  
@@ -72,3 +49,28 @@ pause
 ```
   
 The original is [on github](https://gist.github.com/1107920).   
+
+## Getting the Source
+Create a package for your project and call it projectname*.dev*.  It should take a nuspec dependency on whatever source control you use. So in the case of git, a dependency on msysgit.  
+Now, in [[chocolateyInstall.ps1|ChocolateyInstallPS1]], you just need something like the following: 
+
+```powershell
+try {
+
+  $dirSelected = Read-Host "Please tell me the directory where you want to clone dropkick. Press enter to use .\dropkick"
+  
+  if ($dirSelected -eq '') {$dirSelected = '.\dropkick'}
+  
+  git clone git://github.com/chucknorris/dropkick.git $dirSelected
+  
+  Start-Sleep 6
+} catch {
+@"
+Error Occurred: $($_.Exception.Message)
+"@ | Write-Host -ForegroundColor White -BackgroundColor DarkRed
+	Start-Sleep 8
+	throw 
+}
+```
+  
+The above is from [DropkicK.Dev](https://github.com/ferventcoder/nugetpackages/blob/master/dropkick.dev/tools/chocolateyInstall.ps1)  
