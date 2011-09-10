@@ -1,5 +1,12 @@
 #Release Notes
   
+###0.9.8.9
+ * Reinstalls an existing package if -version is passed (first surfaced in 0.9.8.7 w/NuGet 1.5) - https://github.com/chocolatey/chocolatey/issues/9  
+    
+###0.9.8.8
+ * Fixing version comparison - https://github.com/chocolatey/chocolatey/issues/4  
+ * Fixed package selector to not select like named packages (i.e. ruby.devkit when getting information about ruby) - https://github.com/chocolatey/chocolatey/issues/3  
+    
 ###0.9.8.7
  * Added proxy support based on https://github.com/chocolatey/chocolatey/issues/1  
  * Updated to work with NuGet 1.5 - https://github.com/chocolatey/chocolatey/issues/2  
