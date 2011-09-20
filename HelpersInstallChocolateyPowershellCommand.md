@@ -9,13 +9,14 @@ This will download a file from a url and unzip it on your machine. Has error han
 This is an arbitrary name.  
 Example: `'7zip'`  
   
-###$url (important)
-The Url to the zip file.  
-Example: `'https://github.com/downloads/spraints/git-tfs/GitTfs-0.11.0.zip'`  
+###$psFileFullPath (important)
+The full path and name of the file to save. This should include the name of the file and extension.  
+Example: `'c:\tools\nodejs\node.exe'`  
   
-###$unzipLocation (very important)
-Where to unzip contents of the downloaded zip file.  
-Example: `"$(Split-Path -parent $MyInvocation.MyCommand.Definition)"` - will install it to the tools folder of your package.  
+###$url (optional)
+The Url to the file.  
+Example: `'http://nodejs.org/dist/v0.5.2/node.exe'`  
+  
   
 ##Examples
 `Install-ChocolateyZipPackage 'gittfs' 'https://github.com/downloads/spraints/git-tfs/GitTfs-0.11.0.zip' $gittfsPath`  
