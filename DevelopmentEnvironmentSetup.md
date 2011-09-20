@@ -21,7 +21,7 @@ This does the following:
 ### install chocolatey ###
 iex ((new-object net.webclient).DownloadString("http://bit.ly/psChocInstall"))
 
-# install nuget and ruby if they are missing
+# install nuget, ruby.devkit, and ruby if they are missing
 cinstm nuget.commandline
 cinstm ruby.devkit
 cinstm ruby
