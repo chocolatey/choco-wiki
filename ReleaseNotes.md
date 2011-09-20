@@ -1,5 +1,8 @@
 #Release Notes
   
+###0.9.8.10
+ * New Helper! Install-ChocolateyPowershellCommand - install a powershell script as a command - https://github.com/chocolatey/chocolatey/issues/11  
+      
 ###0.9.8.9
  * Reinstalls an existing package if -version is passed (first surfaced in 0.9.8.7 w/NuGet 1.5) - https://github.com/chocolatey/chocolatey/issues/9  
     
