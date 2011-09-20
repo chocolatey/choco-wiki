@@ -5,6 +5,7 @@ These helpers call other helpers and have error handling built in. When using ju
 
 [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]  
 [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]  
+[[Install-ChocolateyPowershellCommand|HelpersInstallChocolateyPowershellCommand]]  
   
 ##Error/SuccessHelpers
   
@@ -48,6 +49,7 @@ Some folks expressed a desire to have chocolatey not run as administrator to rea
 These are the helpers from above as one list.    
 
 * [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]  
+* [[Install-ChocolateyPowershellCommand|HelpersInstallChocolateyPowershellCommand]]  
 * [[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]  
 * [[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  
 * [[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]  
