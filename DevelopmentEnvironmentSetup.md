@@ -9,6 +9,7 @@ This does the following:
   
 * downloads and installs chocolatey  
 * installs nuget.commandline if it is not installed
+* installs ruby.devkit if it is not installed
 * installs ruby if it is not installed
 * updates gems and installs some required gems for rake
 * restores nuget packages from the configs
@@ -22,6 +23,7 @@ iex ((new-object net.webclient).DownloadString("http://bit.ly/psChocInstall"))
 
 # install nuget and ruby if they are missing
 cinstm nuget.commandline
+cinstm ruby.devkit
 cinstm ruby
 
 #perform ruby updates and get gems
