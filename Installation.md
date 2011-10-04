@@ -10,7 +10,13 @@ If you have Visual Studio 2010 and the NuGet extension installed, perhaps the qu
   
 1. Create a user environment variable named ```ChocolateyInstall``` and set it to the folder you want chocolatey to install to prior to installation.  
 1. Create the folder manually.  
-1. If you have already installed - follow the above steps. Install chocolatey again. Then copy over the items, and in the bin folder you will need to update links. Grep is a great tool for doing that wholesale.
+1. If you have already installed  
+  
+  * Follow the above steps. 
+  * Install chocolatey again. 
+  * Copy over the items from the old install directory.
+  * In the bin folder you will need to update links on nearly EVERY item here. Grep is a great tool for doing that wholesale.
+  * Delete your old install directory.
   
 ## PowerShell
 This is the easiest method. Open a powershell command line and paste in the following and press &lt;Enter&gt;:  
