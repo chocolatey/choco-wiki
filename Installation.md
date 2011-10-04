@@ -8,7 +8,7 @@ If you have Visual Studio 2010 and the NuGet extension installed, perhaps the qu
 ## Before You Install  
 **Can I install chocolatey to another location?** Yes  
   
-* Create a System variable named ChocolateyInstall and set it to the folder you want chocolatey to install to prior to installation.  
+* Create a user environment variable named ```ChocolateyInstall``` and set it to the folder you want chocolatey to install to prior to installation.  
   
 ## PowerShell
 This is the easiest method. Open a powershell command line and paste in the following and press &lt;Enter&gt;:  
