@@ -17,7 +17,7 @@ This does the following:
   
 ### setup.ps1:  
   
-```powershell  
+```powershell
 #install chocolatey
 iex ((new-object net.webclient).DownloadString("http://bit.ly/psChocInstall"))
 
@@ -32,17 +32,18 @@ gem install rake
 gem install bundler
 
 #restore the nuget packages
-$nugetConfigs = Get-ChildItem '.\' -Recurse | ?{$_.name -match "packages\.config"} | select
+$nugetConfigs = Get-ChildItem '.\\' -Recurse | ?{$_.name -match "packages\\.config"} | select
 foreach ($nugetConfig in $nugetConfigs) {
   Write-Host "restoring packages from $($nugetConfig.FullName)"
   nuget install $($nugetConfig.FullName) /OutputDirectory packages
 }
 
 rake
-```  
+
+```
   
 ### setup.cmd:  
-   
+  
 ```
 @echo off
 SET DIR=%~dp0%
