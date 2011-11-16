@@ -15,10 +15,10 @@ This does the following:
 * restores nuget packages from the configs
 * builds the source with rake 
   
-###setup.ps1:  
+### setup.ps1:  
   
 ```powershell
-### install chocolatey ###
+#install chocolatey
 iex ((new-object net.webclient).DownloadString("http://bit.ly/psChocInstall"))
 
 # install nuget, ruby.devkit, and ruby if they are missing
