@@ -17,7 +17,7 @@ This does the following:
   
 ### setup.ps1:  
   
-```powershell
+```powershell  
 #install chocolatey
 iex ((new-object net.webclient).DownloadString("http://bit.ly/psChocInstall"))
 
@@ -39,16 +39,16 @@ foreach ($nugetConfig in $nugetConfigs) {
 }
 
 rake
-```
-
-###setup.cmd: 
+```  
   
+### setup.cmd:  
+   
 ```
 @echo off
 SET DIR=%~dp0%
 %windir%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy unrestricted -Command "& '%DIR%setup.ps1' %*"
 pause
-```
+```  
   
 The original is [on github](https://gist.github.com/1107920).   
 
