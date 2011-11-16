@@ -44,12 +44,13 @@ rake
   
 ### setup.cmd:  
   
-```
+```  
 @echo off
 SET DIR=%~dp0%
-%windir%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy unrestricted -Command "& '%DIR%setup.ps1' %*"
+%windir%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy unrestricted -Command "& '%DIR%setup.ps1' %*"
 pause
-```  
+
+```
   
 The original is [on github](https://gist.github.com/1107920).   
 
@@ -60,9 +61,9 @@ Now, in [[chocolateyInstall.ps1|ChocolateyInstallPS1]], you just need something 
 ```powershell
 try {
 
-  $dirSelected = Read-Host "Please tell me the directory where you want to clone dropkick. Press enter to use .\dropkick"
+  $dirSelected = Read-Host "Please tell me the directory where you want to clone dropkick. Press enter to use .\\dropkick"
   
-  if ($dirSelected -eq '') {$dirSelected = '.\dropkick'}
+  if ($dirSelected -eq '') {$dirSelected = '.\\dropkick'}
   
   git clone git://github.com/chucknorris/dropkick.git $dirSelected
   
