@@ -4,6 +4,7 @@
  * Enhancement - Reducing the number of window pop ups - https://github.com/chocolatey/chocolatey/issues/25  
  * Fixed an issue with write-host and write-error overrides that happens in the next version of powershell - https://github.com/chocolatey/chocolatey/pull/24  
  * Fixing an issue that happens when powershell is not on the path - https://github.com/chocolatey/chocolatey/issues/23  
+ * Fixing the replacement of capital ".EXE" in addition to lowercase ".exe" when creating batch redirects - https://github.com/chocolatey/chocolatey/issues/26  
         
 ###0.9.8.11
  * Fixing an update issue if the package only exists on chocolatey.org - https://github.com/chocolatey/chocolatey/issues/16  
