@@ -1,5 +1,14 @@
 #Release Notes
   
+###0.9.8.12
+ * Enhancement - Reducing the number of window pop ups - https://github.com/chocolatey/chocolatey/issues/25  
+ * Fixed an issue with write-host and write-error overrides that happens in the next version of powershell - https://github.com/chocolatey/chocolatey/pull/24  
+ * Fixing an issue that happens when powershell is not on the path - https://github.com/chocolatey/chocolatey/issues/23  
+        
+###0.9.8.11
+ * Fixing an update issue if the package only exists on chocolatey.org - https://github.com/chocolatey/chocolatey/issues/16  
+ * Fixing an issue with install missing if the package never existed - https://github.com/chocolatey/chocolatey/issues/13  
+        
 ###0.9.8.10
  * New Helper! Install-ChocolateyPowershellCommand - install a powershell script as a command - https://github.com/chocolatey/chocolatey/issues/11  
       
