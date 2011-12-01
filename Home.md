@@ -1,6 +1,6 @@
 # Chocolatey NuGet - kind of like apt-get, but for Windows
 ###You can just call me chocolatey.  
-![Chocolatey Logo](wiki/images/chocolateyicon.gif "Chocolatey")  
+![Chocolatey Logo](https://github.com/chocolatey/chocolatey/wiki/images/chocolateyicon.gif "Chocolatey")  
 ###Let's get chocolatey!
 "I'm a tools enabler, I'm a global silent application installer. I configure stuff. Some people want to call me apt-get for Windows, I just want to get #chocolatey!"  
   
