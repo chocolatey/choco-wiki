@@ -8,9 +8,9 @@
 
 ##chocolatey v2  
   
-* cpack - v0.9.8.13  
-* cpush - v0.9.8.13  
-* chocolatey using its own feed and gallery (see below) and not in the nuget.org gallery except where overlap should occur. - done as well  
+* cpack - Done in v0.9.8.13  
+* cpush - Done in v0.9.8.13  
+* chocolatey using its own feed and gallery (see below) and not in the nuget.org gallery except where overlap should occur. - Done as well  
   
 ## Exterior  
   
@@ -22,6 +22,6 @@
   
 * GUI
 * Pluggable compositional model  
-* Ruby Gems Support - v0.9.8.13  
+* Ruby Gems Support - Done in v0.9.8.13  
 * [Chef Integration](http://wiki.opscode.com/display/chef/Resources#Resources-Package)  
-* Web PI feed support - [webpicommandline](http://msdn.microsoft.com/en-us/library/gg433092.aspx) - v0.9.8.13  
+* Web PI feed support - [webpicommandline](http://msdn.microsoft.com/en-us/library/gg433092.aspx) - Done in v0.9.8.13  
