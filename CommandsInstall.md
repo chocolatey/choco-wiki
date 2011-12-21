@@ -15,10 +15,10 @@ Defaults to the latest version available.
 Source (directory, share or remote url feed) the package comes from.  
 Defaults to official chocolatey feed.  
   
-### -source Ruby (v0.9.8.13+)  
+#### -source Ruby (v0.9.8.13+)  
 This specifies the source is Ruby Gems and that we are installing a gem. If you do not have ruby installed prior to running this command, the command will install that first.  
   
-### -source webpi (v0.9.8.13+)
+#### -source webpi (v0.9.8.13+)
 This specifies the source is Web PI and that we are installing a WebPI product, such as IISExpress. If you do not have the Web PI command line installed, it will install that first and then the product requested.  
   
 ##Examples
