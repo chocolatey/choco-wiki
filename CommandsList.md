@@ -9,6 +9,10 @@ Lists packages available from a remote source.
 ###Filter
 A way to filter down results. Searches against name/description/tag.  
   
+###AllVersions (optional)
+Whether to display more than one version of given results or not. Specified by either `-allversions` or `-all`.  
+Defaults to false. 
+  
 ###Source (optional)
 Source (directory, share or remote url feed) the package comes from.  
 Defaults to official chocolatey feed.  
@@ -17,6 +21,8 @@ Defaults to official chocolatey feed.
 `chocolatey list nunit`  
   
 `chocolatey list nunit -source http://somelocalfeed.com/nuget`  
+  
+`chocolatey list nunit -source http://somelocalfeed.com/nuget -all`  
   
 `clist nunit -source http://somelocalfeed.com/nuget`  
   
