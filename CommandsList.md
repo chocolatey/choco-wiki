@@ -9,13 +9,16 @@ Lists packages available from a remote source.
 ###Filter
 A way to filter down results. Searches against name/description/tag.  
   
-###AllVersions (optional)
+###AllVersions (optional) - v0.9.8.13+
 Whether to display more than one version of given results or not. Specified by either `-allversions` or `-all`.  
 Defaults to false. 
   
 ###Source (optional)
 Source (directory, share or remote url feed) the package comes from.  
 Defaults to official chocolatey feed.  
+  
+#### -source webpi (v0.9.8.13+)
+This retrieves a lising from what's available and installed based on WebPI.  
   
 ##Examples
 `chocolatey list nunit`  
