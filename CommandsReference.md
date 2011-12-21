@@ -1,8 +1,8 @@
 #Command Reference
 ## User Commands
 [[Install Command|CommandsInstall]]  
-[[WebPI Command|CommandsWebPI]]  
-[[Gem Command|CommandsGem]]  
+[[WebPI Command|CommandsWebPI]] - Web PI Integration!  
+[[Gem Command|CommandsGem]] - Ruby Gems Integration!  
 [[Install Missing Command|CommandsInstallMissing]]  
 [[Update Command|CommandsUpdate]]  
 [[Version Command|CommandsVersion]]  
