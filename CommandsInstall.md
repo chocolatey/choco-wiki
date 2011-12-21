@@ -30,6 +30,10 @@ This specifies the source is Web PI and that we are installing a WebPI product, 
   
 `cinst nunit -version 2.5.7.10213 -source http://somelocalfeed.com/nuget`  
   
+`cinst nunit -source \\someserver\someshare`  
+  
+`cinst nunit -source c:\somefolder`  
+  
 ##Screenshots
 Installing mSysGit silently:  
 ![msysgit](images/msysgit.png "msysgit")  
