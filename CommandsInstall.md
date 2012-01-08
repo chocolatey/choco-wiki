@@ -7,7 +7,7 @@ Unconditionally installs a package or a list of packages in a packages.config, e
 ###PackageName
 Name of package to install.  
   
-###Packages.config (v0.9.8.13+)
+###Packages.config - v0.9.8.13+
 Alternative to PackageName. This is a list of packages in an xml manifest for chocolatey to install.  This is like the packages.config that NuGet uses except it also adds the source element.  
   
 ```xml
