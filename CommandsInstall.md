@@ -1,11 +1,23 @@
 # Chocolatey Install (cinst)
-Unconditionally installs a package, even if it already exists.  
+Unconditionally installs a package or a list of packages in a packages.config, even if it already exists.  
 `chocolatey install packageName` or shortcut with 
-`cinst packageName` 
+`cinst packageName` or `cinst packages.config`  
   
 ##Parameters
 ###PackageName
 Name of package to install.  
+  
+###Packages.config (v0.9.8.13+)
+Alternative to PackageName. This is a list of packages in an xml manifest for chocolatey to install.  This is like the packages.config that NuGet uses except it also adds the source element.  
+  
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="apackage" />
+  <package id="anotherPackage" version="1.1" />
+  <package id="chocolateytestpackage" version="0.1" source="somelocation" />
+</packages>  
+```  
   
 ###Version (optional)
 The version of the package to install.  
@@ -53,6 +65,8 @@ Defaults to false.
 `cinst nodejs.install -installArgs "/qb" -override`  
   
 `cinst nodejs.install -notSilent`  
+  
+`cinst packages.config`  
   
 ##Screenshots
 Installing mSysGit silently:  
