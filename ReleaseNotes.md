@@ -1,12 +1,20 @@
 #Release Notes
   
 ###0.9.8.13
- * New Command! Enhancement - Integration with Ruby Gems (`cgem packageName` or `cinst packageName -source ruby`) - https://github.com/chocolatey/chocolatey/issues/28  
- * Enhancement - List available Web PI packages (`clist -source webpi`) - https://github.com/chocolatey/chocolatey/issues/28  
+ * New Command! Enhancement - Integration with Ruby Gems (`cgem packageName` or `cinst packageName -source ruby`) - https://github.com/chocolatey/chocolatey/issues/29  
  * New Command! Enhancement - Integration with Web PI (`cwebpi packageName` or `cinst packageName -source webpi`) - https://github.com/chocolatey/chocolatey/issues/28  
+ * Enhancement - Call chocolatey install with packages.config file (thanks AnthonyMastrean!) - https://github.com/chocolatey/chocolatey/issues/31 and https://github.com/chocolatey/chocolatey/pull/43 and https://github.com/chocolatey/chocolatey/issues/50  
+ * New Command! Enhancement - Chocolatey Push (`chocolatey push packageName.nupkg` or `cpush packageName.nupkg`) - https://github.com/chocolatey/chocolatey/issues/36  
+ * New Command! Enhancement - Chocolatey Pack (`chocolatey pack [packageName.nuspec]` or `cpack [packageName.nuspec]`) - https://github.com/chocolatey/chocolatey/issues/35  
+ * Enhancement - @datachomp feature - Override Installer Arguments `chocolatey install packageName -installArgs "args to override" -override` or `cinst packageName -ia "args to override" -o`) - https://github.com/chocolatey/chocolatey/issues/40  
+ * Enhancement - @datachomp feature - Append Installer Arguments (`chocolatey install packageName -installArgs "args to append"` or `cinst packageName -ia "args to append"`) - https://github.com/chocolatey/chocolatey/issues/39  
+ * Enhancement - Run installer in not silent mode (`chocolatey install packageName -notSilent` or `cinst packageName -notSilent`) - https://github.com/chocolatey/chocolatey/issues/42  
+ * Enhancement - List available Web PI packages (`clist -source webpi`) - https://github.com/chocolatey/chocolatey/issues/37  
+ * Enhancement - List command should allow the All or AllVersions switch - https://github.com/chocolatey/chocolatey/issues/38  
+ * Enhancement - Any install will create the ChocolateyInstall environment variable so that installers can take advantage of it - https://github.com/chocolatey/chocolatey/issues/30  
  * Fixing an issue on proxy display message (Thanks jasonmueller!) - https://github.com/chocolatey/chocolatey/pull/44  
  * Fixing the source path to allow for spaces (where chocolatey is installed) - https://github.com/chocolatey/chocolatey/issues/33  
- * Fixing the culture to InvariantCulture to eliminate the turkish I - https://github.com/chocolatey/chocolatey/issues/22  
+ * Fixing the culture to InvariantCulture to eliminate the turkish "I" issue - https://github.com/chocolatey/chocolatey/issues/22  
   
 ###0.9.8.12
  * Enhancement - Reducing the number of window pop ups - https://github.com/chocolatey/chocolatey/issues/25  
