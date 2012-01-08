@@ -1,6 +1,6 @@
 #Release Notes
   
-###0.9.8.13 - https://github.com/chocolatey/chocolatey/issues?labels=0.9.8.13&sort=created&direction=desc&state=closed&page=1  
+###[0.9.8.13](https://github.com/chocolatey/chocolatey/issues?labels=0.9.8.13&sort=created&direction=desc&state=closed&page=1)  
  * New Command! Enhancement - Integration with Ruby Gems (`cgem packageName` or `cinst packageName -source ruby`) - https://github.com/chocolatey/chocolatey/issues/29  
  * New Command! Enhancement - Integration with Web PI (`cwebpi packageName` or `cinst packageName -source webpi`) - https://github.com/chocolatey/chocolatey/issues/28  
  * Enhancement - Call chocolatey install with packages.config file (thanks AnthonyMastrean!) - https://github.com/chocolatey/chocolatey/issues/31 and https://github.com/chocolatey/chocolatey/pull/43 and https://github.com/chocolatey/chocolatey/issues/50  
