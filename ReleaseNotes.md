@@ -1,11 +1,19 @@
 #Release Notes
   
+###0.9.8.13
+ * New Command! Enhancement - Integration with Ruby Gems (`cgem packageName` or `cinst packageName -source ruby`) - https://github.com/chocolatey/chocolatey/issues/28  
+ * Enhancement - List available Web PI packages (`clist -source webpi`) - https://github.com/chocolatey/chocolatey/issues/28  
+ * New Command! Enhancement - Integration with Web PI (`cwebpi packageName` or `cinst packageName -source webpi`) - https://github.com/chocolatey/chocolatey/issues/28  
+ * Fixing an issue on proxy display message (Thanks jasonmueller!) - https://github.com/chocolatey/chocolatey/pull/44  
+ * Fixing the source path to allow for spaces (where chocolatey is installed) - https://github.com/chocolatey/chocolatey/issues/33  
+ * Fixing the culture to InvariantCulture to eliminate the turkish I - https://github.com/chocolatey/chocolatey/issues/22  
+  
 ###0.9.8.12
  * Enhancement - Reducing the number of window pop ups - https://github.com/chocolatey/chocolatey/issues/25  
  * Fixed an issue with write-host and write-error overrides that happens in the next version of powershell - https://github.com/chocolatey/chocolatey/pull/24  
  * Fixing an issue that happens when powershell is not on the path - https://github.com/chocolatey/chocolatey/issues/23  
  * Fixing the replacement of capital ".EXE" in addition to lowercase ".exe" when creating batch redirects - https://github.com/chocolatey/chocolatey/issues/26  
-        
+  
 ###0.9.8.11
  * Fixing an update issue if the package only exists on chocolatey.org - https://github.com/chocolatey/chocolatey/issues/16  
  * Fixing an issue with install missing if the package never existed - https://github.com/chocolatey/chocolatey/issues/13  
