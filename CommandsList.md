@@ -23,11 +23,15 @@ This retrieves a lising from what's available and installed based on WebPI.
 ##Examples
 `chocolatey list nunit`  
   
+`chocolatey list nunit -all`  
+  
 `chocolatey list nunit -source http://somelocalfeed.com/nuget`  
   
 `chocolatey list nunit -source http://somelocalfeed.com/nuget -all`  
   
 `clist nunit -source http://somelocalfeed.com/nuget`  
+  
+`clist -source webpi`  
   
 ![clist in action](images/clistExample.png "clist in action")  
   
