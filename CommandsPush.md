@@ -5,6 +5,8 @@ Pushes a package to chocolatey.org (or somewhere else if source is specified).
 `cpush filename.nupkg`.  
   
 ###NOTE: To use this command, you must have your API key saved for chocolatey.org or the source you want to push to.  
+In order to save your API key, copy the access key from your chocolatey.org account into the following command:
+NuGet SetApiKey <your key here> -source http://chocolatey.org/
   
 ##Parameters
 ###PackageName
