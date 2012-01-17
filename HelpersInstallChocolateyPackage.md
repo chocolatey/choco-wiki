@@ -29,6 +29,11 @@ If there is a 64 bit installer available, put the link next to the other url. Ch
 Example: `'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'`  
 Defaults to the 32bit url.  
   
+###$validExitCodes (optional) - v0.9.8.14+  
+If there are other valid exit codes besides zero signifying a successful install, please pass `-validExitCodes` with the value, including 0 as long as it is still valid.  
+Example: `-validExitCodes @(0,44)`  
+Defaults to `@(0)`.  
+  
 ##Examples
 `Install-ChocolateyPackage 'StExBar' 'msi' '/quiet' 'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi' 'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'`  
   
