@@ -19,6 +19,10 @@ Alternative to PackageName. This is a list of packages in an xml manifest for ch
 </packages>  
 ```  
   
+###All - v0.9.8.15+
+Alternative to PackageName. This allows you to keep your packages in a feed somewhere and maintain that feed over maintaining a file. 
+When this is specified you must pass in a source that is not MS official or Chocolatey official as the hit would likely be way too big.  
+  
 ###Version (optional)
 The version of the package to install.  
 Defaults to the latest version available.  
