@@ -16,13 +16,22 @@ Example: `Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) 'In
 ###$url (optional)
 The Url to the file.  
 Example: `http://somewhere.com/downloads/Install-WindowsImage.ps1`  
-  
+   
+###$url64bit (optional) - v0.9.8.14+
+If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly.  
+Example: `'http://somewhere.com/downloads/Install-WindowsImagex64.ps1'`  
+Defaults to the 32bit url.  
   
 ##Examples  
   
 ```powershell
 $psFile = Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) "Install-WindowsImage.ps1"
 Install-ChocolateyPowershellCommand 'installwindowsimage.powershell' $psFile 'http://somewhere.com/downloads/Install-WindowsImage.ps1'
+```  
+  
+```powershell
+$psFile = Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) "Install-WindowsImage.ps1"
+Install-ChocolateyPowershellCommand 'installwindowsimage.powershell' $psFile 'http://somewhere.com/downloads/Install-WindowsImage.ps1' 'http://somewhere.com/downloads/Install-WindowsImagex64.ps1'
 ```  
   
 ```powershell
