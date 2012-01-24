@@ -39,7 +39,8 @@ Some chocolatey packages are tagged with chocolatey. To see what chocolatey pack
 * Coming soon - Virtual Packages - Packages that are like a category, and you just want one package from that category. [Read more ...](https://github.com/ferventcoder/nugetpackages/issues/30)
   
 ##Information
-  
+
+[[ChocolateyFAQs|Frequently Asked Questions]]  
 [[License Acceptance Terms|Legal]]  
 [[Waiver of Responsibility|Legal]]  
 [[Release Notes|ReleaseNotes]]
