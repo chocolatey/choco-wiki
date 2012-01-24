@@ -19,6 +19,7 @@ Want to [[learn more?|ChocolateyFAQs]]
 ##Information
 
 [[Frequently Asked Questions|ChocolateyFAQs]]  
+[[Why Chocolatey|Why]]  
 [[License Acceptance Terms|Legal]]  
 [[Waiver of Responsibility|Legal]]  
 [[Release Notes|ReleaseNotes]]
