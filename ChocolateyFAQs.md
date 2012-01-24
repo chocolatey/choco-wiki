@@ -9,7 +9,7 @@ Chocolatey is kind of like apt-get, but for Windows (with windows comes limitati
 How about updates? Wouldn't it be nice to update nearly everything on your machine with a few simple keystrokes? We think so, too.  Chocolatey does that.  
   
 ###Why chocolatey?
-Why chocolatey?  
+[[Why chocolatey|Why]]  
   
 ###How is chocolatey different than NuGet and/or OpenWrap?
 Chocolatey is a machine package manager. Where NuGet/OW are focused on developer library packages, chocolatey is focused on applications and tools, and not necessarily developer focused.
