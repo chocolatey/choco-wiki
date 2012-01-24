@@ -1,4 +1,5 @@
-#Why Chocolatey? Purpose
+#Why Chocolatey? 
+##What is the purpose of Chocolatey?
 
 How many times do you hear about an awesome tool from your friends and want to try it out? How much effort do you go through to set a tool and all of it's requirements up on your machine? Do you realize that all of this manual effort is a pain? It's a pain we are used to. It's something we just do and don't realize we are spending time doing all of this manual process. And worse when we install applications. Next Next Next Finish.  
   
