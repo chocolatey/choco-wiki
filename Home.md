@@ -9,12 +9,13 @@ Forum: http://groups.google.com/group/chocolatey
 Twitter: http://twitter.com/chocolateynuget  
   
 ##chocolatey?
-
+Chocolatey is a global automation tool that makes use of PowerShell and the NuGet infrastructure to allow you to do virtually anything. It is kind of like apt-get, but for Windows (with windows comes limitations).  
+  
 You can develop your tools and applications with NuGet, and release them with chocolatey!  
 But chocolatey is not just for .NET tools. It's for nearly any windows application/tool!  
 
-Chocolatey is a global automation tool that makes use of PowerShell and the NuGet infrastructure to allow you to do virtually anything. It is kind of like apt-get, but for Windows (with windows comes limitations). 
-  
+Want to [[learn more?|ChocolateyFAQs]]  
+
 ##Information
 
 [[Frequently Asked Questions|ChocolateyFAQs]]  
