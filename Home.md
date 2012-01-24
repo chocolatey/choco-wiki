@@ -40,7 +40,7 @@ Some chocolatey packages are tagged with chocolatey. To see what chocolatey pack
   
 ##Information
 
-[[ChocolateyFAQs|Frequently Asked Questions]]  
+[[Frequently Asked Questions|ChocolateyFAQs]]  
 [[License Acceptance Terms|Legal]]  
 [[Waiver of Responsibility|Legal]]  
 [[Release Notes|ReleaseNotes]]
