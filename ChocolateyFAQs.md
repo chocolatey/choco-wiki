@@ -9,6 +9,7 @@ Chocolatey is kind of like apt-get, but for Windows (with windows comes limitati
 How about updates? Wouldn't it be nice to update nearly everything on your machine with a few simple keystrokes? We think so, too.  Chocolatey does that.  
   
 ###Why chocolatey?
+First a [[story|ChocolateyStory]]  
 [[Why chocolatey|Why]]  
   
 ###How is chocolatey different than NuGet and/or OpenWrap?
