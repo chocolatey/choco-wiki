@@ -6,7 +6,7 @@ Richard goes off to research. After a while he learns the tool he wants to insta
   
 Bob has recently installed this neat tool called Chocolatey. He heads out to [chocolatey.org](http://chocolatey.org) and searches for Git. He learns that there are several cool tools for working with Git on Windows. He decides that he wants to use Git Extensions for helping him visualize some of the Git work. He opens a command line, types cinst gitextensions and hits Enter. Git Extensions has a dependency on mSysGit, so Chocolatey downloads and installs it silently on his machine. It configures Git for proper Windows usage. Then Chocolatey downloads and silently installs Git Extensions on his machine. In less than ten minutes Bob is ready to go and has some of the best tools for working with Git available to him.  
   
-Did Bob get lucky? No. It’s just that Bob didn’t have to really make that many decisions. He decided he wanted a tool. Then Chocolatey did all of the work, made all of the decisions, got the dependent applications, and even configured his machine properly.  
+Did Bob get lucky? No. It’s just that Bob didn’t have to really make that many decisions. He decided he wanted a tool. Then Chocolatey did all of the work, made all of the decisions, got the dependent applications, and even configured his machine properly. He has little left to do to finish setting up the machine for access to [GitHub](http://github.com).  
   
 The moral of the story? Richard took 3-4 hours to get somewhat up to speed. Bob came fully up to speed in less than ten minutes. Don’t be a Richard.  
   
