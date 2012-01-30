@@ -1,7 +1,7 @@
 # Chocolatey List (clist)
 Lists packages available from a remote source.  
 `chocolatey list packageName` or shortcut with 
-`cinst packageName` 
+`clist packageName` 
   
 ###NOTE: Some chocolatey packages are tagged with chocolatey. To see what chocolatey packages are available, type `clist chocolatey`. This is not a comprenhensive listing, but it's enough to give you an idea.  
   
