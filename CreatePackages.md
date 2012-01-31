@@ -1,6 +1,6 @@
 #Creating Chocolatey Packages
 
-## What version should I create?
+## What version of the software should I package?
 The main release of a product versions are usually sufficient. If there are also beta versions available and you would rather have that, it is fine to set the prerelease on those items so that regular users of packages are getting the official release of an item.
   
 ## Okay, how do I create the packages?
