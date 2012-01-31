@@ -1,7 +1,7 @@
 #Creating Chocolatey Packages
 
 ## What version of the software should I package?
-The main release of a product versions are usually sufficient. If there are also beta versions available and you would rather have that, it is fine to set the prerelease on those items so that regular users of packages are getting the official release of an item.
+The main release of a product versions are usually sufficient. If there are also beta versions available and you would rather have that, then please create both the official release and the beta (and set the beta as a prerelease when pushing the item to chocolatey.org). Regular users of packages may want to use official releases only and not betas.
   
 ## Okay, how do I create the packages?
 There are four main elements to a chocolatey package. Only the nuspec is required (#1 below).  
