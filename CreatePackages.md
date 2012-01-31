@@ -1,5 +1,9 @@
 #Creating Chocolatey Packages
 
+## What version should I create?
+The main release of a product versions are usually sufficient. If there are also beta versions available and you would rather have that, it is fine to set the prerelease on those items so that regular users of packages are getting the official release of an item.
+  
+## Okay, how do I create the packages?
 There are four main elements to a chocolatey package. Only the nuspec is required (#1 below).  
   
 1. [Nuspec](https://github.com/ferventcoder/nugetpackages/blob/master/_template/chocolatey/__NAME__.nuspec) - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
