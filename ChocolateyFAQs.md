@@ -31,8 +31,8 @@ Some chocolatey packages are tagged with chocolatey. To see what chocolatey pack
   
 ###What distinction does chocolatey make between an application and a tool?  
 #### App/Application 
-An application is something that comes with a native installer and ends up in the add/remove programs of the system.  
-Apps end up where the native installer wants them to end up (i.e. Program Files).  If you want to override that, please feel free to with the proper commands using InstallArgs (-ia) at the command line and possibly override - [[Install Command|CommandsInstall]].  
+An application is something that comes with a native installer and ends up in the add/remove programs (in control panel of the system).  
+Applications end up where the native installer wants them to end up (i.e. Program Files).  If you want to override that, please feel free to with the proper commands using InstallArgs (-ia) at the command line and possibly override - [[Install Command|CommandsInstall]]. Yes this does mean you will need to have intimate knowledge of the installer. Having chocolatey itself make the override directory is likely at some point, but it is wwwwaaaaayyyy out on the radar (like after I am somehow paid to work on chocolatey full time ;) ).  
   
 #### Tool - something that doesn't require a system install to use.
 A tool is something that doesn't require a native installer to use. In other words, it is not "installed" on your system (where you can go to uninstall in the control panel).  
