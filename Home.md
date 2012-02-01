@@ -28,7 +28,7 @@ Want to [[learn more?|ChocolateyFAQs]]
 [[Installing chocolatey|Installation]]  
 [[Getting Started|GettingStarted]]  
 [[Command Reference|CommandsReference]]  
-Use chocolatey to set up [[source code development environments|DevelopmentEnvironmentSetup]]! 
+Use chocolatey to set up [[source code development environments|DevelopmentEnvironmentSetup]]!  
 What distinction does chocolatey make between an [[application and a tool|ChocolateyFAQs]]?   
   
 ##Packages
