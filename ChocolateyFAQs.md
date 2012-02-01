@@ -37,5 +37,5 @@ Applications end up where the native installer wants them to end up (i.e. Progra
 #### Tool - something that doesn't require a system install to use.
 A tool is something that doesn't require a native installer to use. In other words, it is not "installed" on your system (where you can go to uninstall in the control panel).  
   
-Tools end up in the %ChocolateyInstall%/lib (i.e. C:\Nuget\lib) folder yes, but they get a batch redirect to put them on the path of the machine. This behavior is very much to how chocolatey works and is not configurable (the directory). Where the tools end up is still going to be %ChocolateyInstall%/lib no matter where you move the directory, unless a package itself unpacks the tool elsewhere (as in the case of [git-tfs])http://chocolatey.org/packages/gittfs)).  
+Tools end up in the %ChocolateyInstall%/lib (i.e. C:\Nuget\lib) folder yes, but they get a batch redirect to put them on the path of the machine. This behavior is very much to how chocolatey works and is not configurable (the directory). Where the tools end up is still going to be %ChocolateyInstall%/lib no matter where you move the directory, unless a package itself unpacks the tool elsewhere (as in the case of [git-tfs](http://chocolatey.org/packages/gittfs)).  
   
