@@ -29,3 +29,13 @@ Some chocolatey packages are tagged with chocolatey. To see what chocolatey pack
 * Development Packages - Packages that have the suffix **.dev**. For instance [dropkick.dev](http://nuget.org/list/packages/dropkick.dev).
 * Coming soon - Virtual Packages - Packages that are like a category, and you just want one package from that category. [Read more ...](https://github.com/ferventcoder/nugetpackages/issues/30)
   
+###What distinction does chocolatey make between an application and a tool?  
+#### App/Application 
+An application is something that comes with a native installer and ends up in the add/remove programs of the system.  
+Apps end up where the native installer wants them to end up (i.e. Program Files).  If you want to override that, please feel free to with the proper commands using InstallArgs (-ia) at the command line and possibly override - [[Install Command|CommandsInstall]].  
+  
+#### Tool - something that doesn't require a system install to use.
+A tool is something that doesn't require a native installer to use. In other words, it is not "installed" on your system (where you can go to uninstall in the control panel).  
+  
+Tools end up in the %ChocolateyInstall%/lib (i.e. C:\Nuget\lib) folder yes, but they get a batch redirect to put them on the path of the machine. This behavior is very much to how chocolatey works and is not configurable (the directory). Where the tools end up is still going to be %ChocolateyInstall%/lib no matter where you move the directory, unless a package itself unpacks the tool elsewhere (as in the case of (git-tfs)[http://chocolatey.org/packages/gittfs]).  
+  
