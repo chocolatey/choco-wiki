@@ -1,6 +1,6 @@
 #Release Notes
   
-###[0.9.8.14](https://github.com/chocolatey/chocolatey/issues?labels=0.9.8.14&sort=created&direction=desc&state=closed&page=1)  
+###[0.9.8.14](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.14&sort=created&direction=desc&state=closed&page=1)  
  * Enhancement - Pass ValidExitCodes to Install Helpers - https://github.com/chocolatey/chocolatey/issues/54  
  * Enhancement - Add 64-bit url to Install-ChocolateyZipPackage - https://github.com/chocolatey/chocolatey/issues/48  
  * Enhancement - Add 64-bit url to Install-ChocolateyPowershellCommand - https://github.com/chocolatey/chocolatey/issues/57  
