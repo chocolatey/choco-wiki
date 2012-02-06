@@ -5,9 +5,9 @@
  * Enhancement - Add 64-bit url to Install-ChocolateyZipPackage - https://github.com/chocolatey/chocolatey/issues/48  
  * Enhancement - Add 64-bit url to Install-ChocolateyPowershellCommand - https://github.com/chocolatey/chocolatey/issues/57  
  * Enhancement - Make the main helpers work with files not coming over HTTP - https://github.com/chocolatey/chocolatey/issues/51  
+ * Enhancement - Upgrade NuGet.exe to 1.6.0 to take advantage of prerelease packaging - https://github.com/chocolatey/chocolatey/issues/64  
  * Fix - The packages.config feature has broken naming packages with '.config' - https://github.com/chocolatey/chocolatey/issues/56  
  * Fix - CList includes all versions without adding the switch - https://github.com/chocolatey/chocolatey/issues/60  
- * Enhancement - Upgrade NuGet.exe to 1.6.0 to take advantage of prerelease packaging - https://github.com/chocolatey/chocolatey/issues/64  
  * Fix - When NuGet.exe failes to run due to .NET Framework 4.0 not installed, chocolatey should report that. - https://github.com/chocolatey/chocolatey/issues/65  
   
 ###[0.9.8.13](https://github.com/chocolatey/chocolatey/issues?labels=0.9.8.13&sort=created&direction=desc&state=closed&page=1)  
