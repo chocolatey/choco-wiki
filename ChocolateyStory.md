@@ -10,3 +10,6 @@ Did Bob get lucky? No. It’s just that Bob didn’t have to really make that ma
   
 The moral of the story? Richard took 3-4 hours to get somewhat up to speed. Bob came fully up to speed in less than ten minutes. Don’t be a Richard.  
   
+References  
+  
+ * http://lostechies.com/jimmybogard/2012/02/01/improving-the-git-windows-experience-downloads/  
