@@ -23,6 +23,12 @@ Alternative to PackageName. This is a list of packages in an xml manifest for ch
 Alternative to PackageName. This allows you to keep your packages in a feed somewhere and maintain that feed over maintaining a file. 
 When this is specified you must pass in a source that is not MS official or Chocolatey official as the hit would likely be way too big.  
   
+###Prerelease (optional) - v0.9.8.15+
+Whether to include prerelease packages in results.  
+This is optional if you explicitly ask for a specific version that is a pre-release package.  
+You can pass this as `-pre` or `-prerelease`.  
+Defaults to false.  
+  
 ###Version (optional)
 The version of the package to install.  
 Defaults to the latest version available.  
@@ -38,7 +44,7 @@ This specifies the source is Ruby Gems and that we are installing a gem. If you 
 This specifies the source is Web PI and that we are installing a WebPI product, such as IISExpress. If you do not have the Web PI command line installed, it will install that first and then the product requested.  
   
 ###InstallArguments (optional) - v0.9.8.13+
-Install arguments that you want to pass to the native installer (if you have some custom ones that you know). By default this appends to the items already passed, unless you also pass `-overrideArguments`.
+Install arguments that you want to pass to the native installer (if you have some custom ones that you know). By default this appends to the items already passed, unless you also pass `-overrideArguments`.  
 You can pass this as `-ia` `-installArgs` or `-installArguments`.  
 Defaults to ''.  
 
