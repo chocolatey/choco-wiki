@@ -11,6 +11,12 @@ Name of package to check. If left empty, assumes you meant check chocolatey.
 Source (directory, share or remote url feed) the package comes from.  
 Defaults to official chocolatey feed.  
   
+###Prerelease (optional) - v0.9.8.15+
+Whether to include prerelease packages in results.  
+This is optional if you explicitly ask for a specific version that is a pre-release package.  
+You can pass this as `-pre` or `-prerelease`.  
+Defaults to false.  
+  
 ##Examples
 `chocolatey version` - looks to see if there is an update available for chocolatey  
   
