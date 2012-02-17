@@ -13,6 +13,12 @@ A way to filter down results. Searches against name/description/tag.
 Whether to display more than one version of given results or not. Specified by either `-allversions` or `-all`.  
 Defaults to false. 
   
+###Prerelease (optional) - v0.9.8.15+
+Whether to include prerelease packages in results.  
+This is optional if you explicitly ask for a specific version that is a pre-release package.  
+You can pass this as `-pre` or `-prerelease`.  
+Defaults to false.  
+  
 ###Source (optional)
 Source (directory, share or remote url feed) the package comes from.  
 Defaults to official chocolatey feed.  
