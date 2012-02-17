@@ -3,7 +3,7 @@
 ###[0.9.8.15](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.15&sort=created&direction=desc&state=closed&page=1)  
  * **Breaking change** : Enhancement - Chocolatey's default folder is now C:\Chocolatey (and no longer C:\NuGet) - https://github.com/chocolatey/chocolatey/issues/58  
  * **Breaking change** : Enhancement - Use -force to reinstall existing packages - https://github.com/chocolatey/chocolatey/issues/45  
- * Enhancement - Install now support **all** with a custom package source to install every package! - https://github.com/chocolatey/chocolatey/issues/46  
+ * Enhancement - Install now supports **all** with a custom package source to install every package from a source! - https://github.com/chocolatey/chocolatey/issues/46  
  * Enhancement - Support Prerelease flag for Install - https://github.com/chocolatey/chocolatey/issues/71  
  * Enhancement - Support Prerelease flag for Update/Version - https://github.com/chocolatey/chocolatey/issues/72  
  * Enhancement - Support Prerelease flag in List - https://github.com/chocolatey/chocolatey/issues/74  
