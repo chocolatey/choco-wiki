@@ -1,5 +1,11 @@
 #Release Notes
   
+###[0.9.8.15](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.15&sort=created&direction=desc&state=closed&page=1)  
+ * Enhancement - Support Prerelease flag for Install - https://github.com/chocolatey/chocolatey/issues/71  
+ * Enhancement - Support Prerelease flag for Update/Version - https://github.com/chocolatey/chocolatey/issues/72  
+ * Enhancement - Support Prerelease flag in List - https://github.com/chocolatey/chocolatey/issues/74  
+ * Fix - Parsing the wrong version when trying to update - https://github.com/chocolatey/chocolatey/issues/73  
+  
 ###[0.9.8.14](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.14&sort=created&direction=desc&state=closed&page=1)  
  * Enhancement - Pass ValidExitCodes to Install Helpers - https://github.com/chocolatey/chocolatey/issues/54  
  * Enhancement - Add 64-bit url to Install-ChocolateyZipPackage - https://github.com/chocolatey/chocolatey/issues/48  
