@@ -15,6 +15,11 @@ First a [[story|ChocolateyStory]]
 ###How is chocolatey different than NuGet and/or OpenWrap?
 Chocolatey is a machine package manager. Where NuGet/OW are focused on developer library packages, chocolatey is focused on applications and tools, and not necessarily developer focused.
   
+###How is/will chocolatey be different than apt?  
+  
+ * Chocolatey does not support the idea of source packages, which are packages that must be built to be used. For someone interested in that, check out https://github.com/coapp.  
+ * Library packages are not completely off the plate, but mostly. How would you link the library up to the application/tool?  
+  
 ###Is there a video I can watch to show me chocolatey in action?
 There is! This is a long video due to slow internet connections, but watch the first 1:30ish minutes and the last 1:30ish minutes and that will give you a general idea. [http://www.youtube.com/watch?v=N-hWOUL8roU](http://www.youtube.com/watch?v=N-hWOUL8roU)  
 NOTE: This video shows dependency chaining, so you are seeing it install 11 applications/tools.  
@@ -29,11 +34,6 @@ and any package on another feed (nuget.org, rubygems.org, web pi tools, etc).
 * Powershell Command Packages - Packages that have the suffix **.powershell** will install powershell scripts as commands for you to call from anywhere.
 * Development Packages - Packages that have the suffix **.dev**. For instance [dropkick.dev](http://nuget.org/list/packages/dropkick.dev).
 * Coming soon - Virtual Packages - Packages that are like a category, and you just want one package from that category. [Read more ...](https://github.com/ferventcoder/nugetpackages/issues/30)
-  
-###How is/will chocolatey be different than APT?  
-  
- * Chocolatey does not support the idea of source packages, which are packages that must be built to be used. For someone interested in that, check out https://github.com/coapp.  
- * Library packages are not completely off the plate, but mostly. How would you link the library up to the application/tool?  
   
 ###What distinction does chocolatey make between an application and a tool?  
 #### App/Application 
