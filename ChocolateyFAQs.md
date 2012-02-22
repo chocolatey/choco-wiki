@@ -30,6 +30,11 @@ and any package on another feed (nuget.org, rubygems.org, web pi tools, etc).
 * Development Packages - Packages that have the suffix **.dev**. For instance [dropkick.dev](http://nuget.org/list/packages/dropkick.dev).
 * Coming soon - Virtual Packages - Packages that are like a category, and you just want one package from that category. [Read more ...](https://github.com/ferventcoder/nugetpackages/issues/30)
   
+###How is/will chocolatey be different than APT?  
+  
+ * Chocolatey does not support the idea of source packages, which are packages that must be built to be used. For someone interested in that, check out https://github.com/coapp.  
+ * Library packages are not completely off the plate, but mostly. How would you link the library up to the application/tool?  
+  
 ###What distinction does chocolatey make between an application and a tool?  
 #### App/Application 
 An application is something that comes with a native installer and ends up in the add/remove programs (in control panel of the system).  
