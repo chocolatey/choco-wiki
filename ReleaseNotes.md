@@ -1,5 +1,8 @@
 #Release Notes
   
+###0.9.8.16
+ * Small fix to installer for upgrade issues from 0.9.8.15  
+  
 ###[0.9.8.15](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.15&sort=created&direction=desc&state=closed&page=1)  
  * **Breaking change** : Enhancement - Chocolatey's default folder is now C:\Chocolatey (and no longer C:\NuGet) - https://github.com/chocolatey/chocolatey/issues/58  
  * **Breaking change** : Enhancement - Use -force to reinstall existing packages - https://github.com/chocolatey/chocolatey/issues/45  
@@ -143,4 +146,3 @@
   
 ###0.9.1 
  * Shortcut for 'chocolatey install' - 'cinst' now available.
-
