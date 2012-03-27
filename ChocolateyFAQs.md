@@ -24,6 +24,9 @@ Chocolatey is a machine package manager. Where NuGet/OW are focused on developer
 There is! This is a long video due to slow internet connections, but watch the first 1:30ish minutes and the last 1:30ish minutes and that will give you a general idea. [http://www.youtube.com/watch?v=N-hWOUL8roU](http://www.youtube.com/watch?v=N-hWOUL8roU)  
 NOTE: This video shows dependency chaining, so you are seeing it install 11 applications/tools.  
   
+###What is the feed URL?
+http://chocolatey.org/api/v2/  
+  
 ###What can I install?
 Check out http://chocolatey.org/packages 
 and any package on another feed (nuget.org, rubygems.org, web pi tools, etc).  
