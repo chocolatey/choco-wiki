@@ -18,8 +18,15 @@ If you have Visual Studio 2010 and the NuGet extension installed, perhaps the qu
   * In the bin folder you will need to update links on nearly EVERY item here. Grep is a great tool for doing that wholesale.
   * Delete your old install directory.
   
+## Command Line
+This really is the easiest method because it requires no configuration of powershell prior to executing it. Open a command line, paste the following and press &lt;Enter&gt;:  
+  
+```cmd
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('http://bit.ly/psChocInstall'))";
+```  
+  
 ## PowerShell
-This is the easiest method. Open a powershell command line and paste in the following and press &lt;Enter&gt;:  
+This is the second easiest method. Open a powershell command line and paste in the following and press &lt;Enter&gt;:  
   
 ```powershell
 iex ((new-object net.webclient).DownloadString("http://bit.ly/psChocInstall"))
