@@ -32,7 +32,7 @@ This is the second easiest method. Open a powershell command line and paste in t
 iex ((new-object net.webclient).DownloadString("http://bit.ly/psChocInstall"))
 ```  
   
-**<font color="red">Note: You must have your execution policy set to unrestricted for this to work (`Set-ExecutionPolicy Unrestricted`). Some have reported that RemoteSigned is enough for the install to work.</font>**  
+**<font color="red">Note: You must have your execution policy set to unrestricted for this to work (`Set-ExecutionPolicy Unrestricted`). There have been [reports](https://github.com/chocolatey/chocolatey/issues/70) that RemoteSigned is enough for the install to work.</font>**  
 It downloads and runs (https://raw.github.com/chocolatey/chocolatey/master/chocolateyInstall/InstallChocolatey.ps1).  
   
 ## PowerShell Through Batch Method
