@@ -19,7 +19,7 @@ This does the following:
   
 ```powershell
 #install chocolatey
-iex ((new-object net.webclient).DownloadString("http://bit.ly/psChocInstall"))
+iex ((new-object net.webclient).DownloadString('http://bit.ly/psChocInstall'))
 
 # install nuget, ruby.devkit, and ruby if they are missing
 cinstm nuget.commandline
