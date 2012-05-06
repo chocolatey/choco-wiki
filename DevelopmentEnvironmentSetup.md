@@ -53,7 +53,7 @@ cinstm nuget.commandline
 
 if (Install-NeededFor 'ruby / ruby devkit') {
   cinstm ruby.devkit
-  #cinstm ruby #devkit will automatically install ruby
+  #cinstm ruby #devkit install will automatically install ruby
 }
 
 #perform ruby updates and get gems
