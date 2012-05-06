@@ -46,6 +46,7 @@ This specifies the source is Web PI and that we are installing a WebPI product, 
 ###InstallArguments (optional) - v0.9.8.13+
 Install arguments that you want to pass to the native installer (if you have some custom ones that you know). By default this appends to the items already passed, unless you also pass `-overrideArguments`.  
 You can pass this as `-ia` `-installArgs` or `-installArguments`.  
+You may need to specify double quotes (`""some args""`) as powershell wants to strip off one set of quotes.  
 Defaults to ''.  
 
 ###OverrideArguments (optional) - v0.9.8.13+
