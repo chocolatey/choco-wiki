@@ -22,7 +22,7 @@ If you have Visual Studio 2010 and the NuGet extension installed, perhaps the qu
 This really is the easiest method because it requires no configuration of powershell prior to executing it. Open a command line, paste the following and press &lt;Enter&gt;:  
   
 ```cmd
-@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('http://bit.ly/psChocInstall'))";
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('http://bit.ly/psChocInstall'))"
 ```  
   
 ## PowerShell
