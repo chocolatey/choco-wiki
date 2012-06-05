@@ -2,6 +2,7 @@
   
 ###[0.9.8.17](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.17&sort=created&direction=desc&state=closed&page=1)  
  * Enhancement - Support for naive uninstall - https://github.com/chocolatey/chocolatey/issues/96  
+ * More notes coming...
   
 ###0.9.8.16
  * Small fix to installer for upgrade issues from 0.9.8.15  
