@@ -53,7 +53,7 @@ When you have Visual Studio 2010 and the NuGet extension installed, you can simp
 
 You can also use nuget command line to download chocolatey:  
   
- `nuget install chocolatey`  
+ `nuget install chocolatey` or `nuget install chocolatey -pre`  
   
 Once you download it, open powershell (remote unsigned), navigate to the tools folder and run:  
 
