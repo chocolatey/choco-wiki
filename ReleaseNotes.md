@@ -9,11 +9,12 @@
  * Enhancement - Reduce the verbosity of running chocolatey - https://github.com/chocolatey/chocolatey/issues/84
  * Enhancement - Add a -debug switch - https://github.com/chocolatey/chocolatey/issues/85  
  * Enhancement - Improve pipelining of cver by returning an object - https://github.com/chocolatey/chocolatey/pull/94  
+ * Fix - Packages.config source now uses chocolatey/nuget sources by default instead of empty - https://github.com/chocolatey/chocolatey/issues/79
  * Fix - Executable batch links not created for "prerelease" versions - https://github.com/chocolatey/chocolatey/issues/88
  * Fix - Issue where latest version is not returned - https://github.com/chocolatey/chocolatey/pull/92  
  * Fix - Prerelease versions now broken out as separate versions - https://github.com/chocolatey/chocolatey/issues/90
+ * Fix - During install PowerShell session gets bad $env:ChocolateyInstall variable - https://github.com/chocolatey/chocolatey/issues/80
  * Fix - Build path with spaces now works - https://github.com/chocolatey/chocolatey/pull/102  
- * More notes coming...
   
 ###0.9.8.16
  * Small fix to installer for upgrade issues from 0.9.8.15  
