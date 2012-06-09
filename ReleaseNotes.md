@@ -9,6 +9,7 @@
  * Enhancement - Use Default Credentials before Get-Credentials when using proxy on web call - https://github.com/chocolatey/chocolatey/pull/83
  * Enhancement - Reduce the verbosity of running chocolatey - https://github.com/chocolatey/chocolatey/issues/84
  * Enhancement - Support opening links to "GUI" type applications in a different way than the console apps -  https://github.com/chocolatey/chocolatey/issues/76
+ * Enhancement - Do not create batch redirects for certain executables in package folder - https://github.com/chocolatey/chocolatey/issues/106
  * Enhancement - Add a -debug switch - https://github.com/chocolatey/chocolatey/issues/85  
  * Enhancement - Improve pipelining of cver by returning an object - https://github.com/chocolatey/chocolatey/pull/94  
  * Fix - Packages.config source now uses chocolatey/nuget sources by default instead of empty - https://github.com/chocolatey/chocolatey/issues/79
