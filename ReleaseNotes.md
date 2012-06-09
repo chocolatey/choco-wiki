@@ -2,6 +2,9 @@
   
 ###[0.9.8.17](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.17&sort=created&direction=desc&state=closed&page=1)  
  * Enhancement - Support for naive uninstall - https://github.com/chocolatey/chocolatey/issues/96  
+ * Enhancement - Sources specified through config (or nuget.config) - https://github.com/chocolatey/chocolatey/pull/101    
+ * Enhancement - Use Python as a package source (uses easy_install) - https://github.com/chocolatey/chocolatey/issues/100  
+ * Fix - Build path with spaces now works - https://github.com/chocolatey/chocolatey/pull/102  
  * More notes coming...
   
 ###0.9.8.16
