@@ -6,6 +6,9 @@
  * Enhancement - Use CygWin as a package source - https://github.com/chocolatey/chocolatey/pull/93  
  * Enhancement - Use Python as a package source (uses easy_install) - https://github.com/chocolatey/chocolatey/issues/100  
  * Enhancement - Improve pipelining of cver by returning an object - https://github.com/chocolatey/chocolatey/pull/94  
+ * Fix - Executable batch links not created for "prerelease" versions - https://github.com/chocolatey/chocolatey/issues/88
+ * Fix - Issue where latest version is not returned - https://github.com/chocolatey/chocolatey/pull/92  
+ * Fix - Prerelease versions now broken out as separate versions - https://github.com/chocolatey/chocolatey/issues/90
  * Fix - Build path with spaces now works - https://github.com/chocolatey/chocolatey/pull/102  
  * More notes coming...
   
