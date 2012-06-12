@@ -1,6 +1,7 @@
 #Command Reference
 ## User Commands
 [[Install Command|CommandsInstall]]  
+[[Uninstall Command|CommandsUninstall]]  
 [[WebPI Command|CommandsWebPI]] - Web PI Integration! v0.9.8.13+  
 [[Gem Command|CommandsGem]] - Ruby Gems Integration! v0.9.8.13+  
 [[Cygwin Command|CommandsCygwin]] - CygWin Integration! v0.9.8.17+  
