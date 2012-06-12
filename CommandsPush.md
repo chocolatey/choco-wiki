@@ -6,7 +6,9 @@ Pushes a package to chocolatey.org (or somewhere else if source is specified).
   
 ###NOTE: To use this command, you must have your API key saved for chocolatey.org or the source you want to push to.  
 In order to save your API key, copy the access key from your chocolatey.org account into the following command:
-`NuGet SetApiKey <your key here> -source http://chocolatey.org/`
+`NuGet SetApiKey <your key here> -source http://chocolatey.org/`  
+  
+To get nuget.exe, you can install `nuget.commandline` with chocolatey. You may have noticed that it only exists on nuget.org and not chocolatey.org. That's right, chocolatey by default looks at both chocolatey.org and nuget.org!  
   
 ##Parameters
 ###PackageName

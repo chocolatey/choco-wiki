@@ -37,11 +37,17 @@ Defaults to the latest version available.
 Source (directory, share or remote url feed) the package comes from.  
 Defaults to official chocolatey feed.  
   
-#### -source Ruby (v0.9.8.13+)  
+#### -source ruby (v0.9.8.13+)  
 This specifies the source is Ruby Gems and that we are installing a gem. If you do not have ruby installed prior to running this command, the command will install that first.  
   
 #### -source webpi (v0.9.8.13+)
 This specifies the source is Web PI and that we are installing a WebPI product, such as IISExpress. If you do not have the Web PI command line installed, it will install that first and then the product requested.  
+  
+#### -source cygwin (v0.9.8.17+)
+This specifies the source is Cygwin and that we are installing a cygwin package, such as bash. If you do not have Cygwin installed, it will install that first and then the product requested.  
+  
+#### -source python (v0.9.8.17+)
+This specifies the source is Python and that we are installing a python package, such as Sphinx. If you do not have easy_install and Python installed, it will install that first and then the product requested.  
   
 ###InstallArguments (optional) - v0.9.8.13+
 Install arguments that you want to pass to the native installer (if you have some custom ones that you know). By default this appends to the items already passed, unless you also pass `-overrideArguments`.  
