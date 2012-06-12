@@ -15,3 +15,6 @@ Let's install [Notepad++](http://notepad-plus-plus.org/).
 When a package has an exe file, chocolatey will create a link "shortcut" to the file so that you can run that tool anywhere on the machine.  
 When a package has a chocolateyInstall.ps1, it will run the script. The instructions in the file can be anything. This is limited only by the .NET framework and powershell.  
 Most of the chocolatey packages that take advantage of the powershell download an application installer and execute it silently.  
+
+##Where does chocolatey install packages from?
+By default it installs packages from both chocolatey.org and nuget.org. That means you can install packages that don't appear to exist on chocolatey.org. Go ahead, install nuget.exe `cinst nuget.commandline`.
