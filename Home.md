@@ -1,4 +1,4 @@
-#Chocolatey NuGet - kind of like apt-get, but for Windows
+##Chocolatey NuGet - kind of like apt-get, but for Windows
 ###You can just call me chocolatey.  
 ![Chocolatey Logo](https://github.com/chocolatey/chocolatey/wiki/images/chocolateyicon.gif "Chocolatey")  
 ###Let's get chocolatey!
