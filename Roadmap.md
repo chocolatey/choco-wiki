@@ -2,7 +2,7 @@
 
 ##chocolatey v1  
   
-* [Uninstall (cunst)](https://github.com/ferventcoder/nugetpackages/issues/28)
+* [Uninstall (cuninst)](https://github.com/ferventcoder/nugetpackages/issues/28)
 * More general improvements to the rest of the commands
 * [Virtual packages](https://github.com/ferventcoder/nugetpackages/issues/30)
 
