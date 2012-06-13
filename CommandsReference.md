@@ -12,7 +12,7 @@
 [[List Command|CommandsList]]  
 [[Help Command|CommandsHelp]]  
 
-**NOTE:** If any argument has spaces please surround with double quotes.  
+**NOTE:** If any argument has spaces please surround with double quotes. This is due to the hand off to PowerShell - seems to strip off the outer set of quotes.  
   
 ## Creator Commands
 [[Pack Command|CommandsPack]] - v0.9.8.13+  
