@@ -34,7 +34,8 @@ The version of the package to install.
 Defaults to the latest version available.  
   
 ###Source (optional)
-Source (directory, share or remote url feed) the package comes from.  
+Source (directory, share or remote url feed) the package comes from. You can specify multiple sources by separating with a semi-colon and double quotes surrounding source.  
+Example `-source ""http://chocolatey.org/api/v2/;http://someother/feed/""`  
 Defaults to official chocolatey feed.  
   
 #### -source ruby (v0.9.8.13+)  
