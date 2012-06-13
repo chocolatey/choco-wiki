@@ -11,6 +11,8 @@
 [[Version Command|CommandsVersion]]  
 [[List Command|CommandsList]]  
 [[Help Command|CommandsHelp]]  
+
+**NOTE:** If any argument has spaces please surround with double quotes.  
   
 ## Creator Commands
 [[Pack Command|CommandsPack]] - v0.9.8.13+  
