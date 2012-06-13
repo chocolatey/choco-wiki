@@ -78,6 +78,8 @@ Defaults to false.
   
 `cinst nunit -source c:\somefolder`  
   
+`cinst nunit -source ""http://chocolatey.org/api/v2/;c:\somefolder""`  
+  
 `cinst nodejs.install -installArgs "/qb"`  
   
 `cinst nodejs.install -installArgs "/qb" -override`  
