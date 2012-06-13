@@ -4,7 +4,7 @@
  * Enhancement - Support for naive uninstall - https://github.com/chocolatey/chocolatey/issues/96  
  * Enhancement - Sources specified through config (or nuget.config) - https://github.com/chocolatey/chocolatey/pull/101  
  * Enhancement - Chocolatey should support multiple sources - https://github.com/chocolatey/chocolatey/issues/82  
- * Enhancement - Use CygWin as a package source - https://github.com/chocolatey/chocolatey/pull/93  
+ * Enhancement - Use Cygwin as a package source - https://github.com/chocolatey/chocolatey/pull/93  
  * Enhancement - Use Python as a package source (uses easy_install) - https://github.com/chocolatey/chocolatey/issues/100  
  * Enhancement - Use Default Credentials before Get-Credentials when using proxy on web call - https://github.com/chocolatey/chocolatey/pull/83
  * Enhancement - Reduce the verbosity of running chocolatey - https://github.com/chocolatey/chocolatey/issues/84
