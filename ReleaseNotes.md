@@ -1,4 +1,7 @@
-#Release Notes
+##Release Notes
+  
+###[0.9.8.18](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.18&sort=created&direction=desc&state=closed&page=1) 
+ * Fix - 0.9.8.17 installer doesn't create chocolatey folder if it doesn't exist - https://github.com/chocolatey/chocolatey/issues/112  
   
 ###[0.9.8.17](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.17&sort=created&direction=desc&state=closed&page=1)  
  * Enhancement - Support for naive uninstall - https://github.com/chocolatey/chocolatey/issues/96  
