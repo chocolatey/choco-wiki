@@ -83,3 +83,4 @@ Now open a command line, navigate to your source code top level folder and type 
  git clone git://github.com/ferventcoder/chocolateytemplates.git
 ```
   
+The package owner name (__CHOCO_PKG_OWNER_NAME__) would be you. Your packages repository (__CHOCO_PKG_OWNER_REPO__) is part of a github repo just **ferventcoder/nugetpackages** if your repository is https://github.com/**ferventcoder/nugetpackages** where you keep your packages.
