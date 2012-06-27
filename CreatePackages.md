@@ -73,10 +73,9 @@ You can also log into chocolatey.org and upload your package from there.
 
 ##Is there a SIMPLER way of creating packages?
 I'm so glad you asked. Take a look at this repository - https://github.com/ferventcoder/chocolateytemplates (note the _templates folder).
-Now open a command line and type the following:
+Now open a command line, navigate to your source code top level folder and type the following:
   
 ```cmd
- cd to your code folder
  cinst warmup
  git clone git://github.com/ferventcoder/chocolateytemplates.git
 ```
