@@ -21,15 +21,26 @@ Install-ChocolateyPackage 'windirstat' 'exe' '/S' 'http://windirstat.info/wds_cu
 You can make packages that depend on other packages just by adding those dependencies to the nuspec. Take a look at [ferventcoder.chocolatey.utilities nuspec](https://github.com/ferventcoder/nugetpackages/blob/master/ferventcoder.chocolatey.utilities/ferventcoder.chocolatey.utilities.nuspec)
   
 ##Naming your package
-The best recommendation I can give is to name the package the same as the actual application/tool. If you are going to offer a package that has both an installer and an archive (zip or executable only) version of the application, I'd recommend three packages - see my guidance on this: http://devlicio.us/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx  
+Name the package the same as the actual application/tool (or as close as you can get). This aids in discoverability. Folks love it when they try something like `cinst curl` and it just works.  
+  
+If you are going to offer a package that has both an installer and an archive (zip or executable only) version of the application, create three packages - see Rob's guidance on this: http://devlicio.us/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx  
   
 ##Versioning Recommendations
-Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the application/tool uses.
-With chocolatey you get four version segments. If the application/tool only uses 1, 2 or 3 version segments, follow suit. If you need to fix the package for some reason, you can use the fourth number for a package fix notation. Some folks use year month day package fix notation (yyyyMMdd as in 20120627 seen as 1.2.0.20120627) and others use sequential numbering (0 1 2 as in 0 for no fix, 1 for first fix and so on seen as 1.2.0.0 and 1.2.0.1).
+Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the application/tool uses. With chocolatey you get four version segments. If the application/tool only uses 1, 2 or 3 version segments, follow suit.  
+  
+If the 4th segment is used, some folks like to drop the segment altogether and use that as only the package fix notation using one of those above. There is no recommendations at this time.  
+  
+##Package Fix Version Notation
+If you need to fix the package for some reason, you can use the fourth number for a package fix notation. There are two recommended methods of package fix version notation:  
+  
+ * **Date (Year/Month/Day)** - Some folks use year month day package fix notation (yyyyMMdd as in 20120627 seen as 1.2.0.20120627) 
+ * Sequential - Some folks use sequential numbering (0, then 1, etc as in 0 for no fix, 1 for first fix and so on seen as 1.2.0.0 and 1.2.0.1).  
+  
+Date Package Fix Version Notation is recommended because one can ascertain what it is immediately upon seeing it.   
   
 Package fix version notation is only acceptable in the fourth segment. Do not use any of the other segments for package fix notation. If an app/tool only uses 1 or 2 version segments, add zeros into the other segments until you get to the 4th segment (i.e. 1.0.0.20120627).   
   
-If the 4th segment is used, some folks like to drop the segment altogether and use that as only the package fix notation using one of those above. I have no recommendations at this time.   
+
   
 ##Build Your Package
 
