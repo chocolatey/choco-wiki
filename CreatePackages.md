@@ -76,7 +76,8 @@ I'm so glad you asked. Take a look at this repository - https://github.com/ferve
 Now open a command line and type the following:
   
 ```cmd
+ cd to your code folder
  cinst warmup
- git clone https://github.com/ferventcoder/chocolateytemplates
+ git clone git://github.com/ferventcoder/chocolateytemplates.git
 ```
   
