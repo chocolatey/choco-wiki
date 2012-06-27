@@ -28,7 +28,7 @@ If you are going to offer a package that has both an installer and an archive (z
 ##Versioning Recommendations
 Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the application/tool uses. With chocolatey you get four version segments. If the application/tool only uses 1, 2 or 3 version segments, follow suit.  
   
-If the 4th segment is used, some folks like to drop the segment altogether and use that as only the package fix notation using one of those above. There is no recommendations at this time.  
+If the 4th segment is used, some folks like to drop the segment altogether and use that as only the package fix notation using one of the notations in the next section. There is no recommendations at this time.  
   
 ##Package Fix Version Notation
 If you need to fix the package for some reason, you can use the fourth number for a package fix notation. There are two recommended methods of package fix version notation:  
