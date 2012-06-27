@@ -83,4 +83,8 @@ Now open a command line, navigate to your source code top level folder and type 
  git clone git://github.com/ferventcoder/chocolateytemplates.git
 ```
   
-The package owner name (__CHOCO_PKG_OWNER_NAME__) would be you. Your packages repository (__CHOCO_PKG_OWNER_REPO__) is part of a github repo just **ferventcoder/nugetpackages** if your repository is https://github.com/**ferventcoder/nugetpackages** where you keep your packages.
+ * The package owner name (__CHOCO_PKG_OWNER_NAME__) would be you. 
+ * Your packages repository (__CHOCO_PKG_OWNER_REPO__) is part of a github repo just **ferventcoder/nugetpackages** if your repository is https://github.com/ferventcoder/nugetpackages. This is only used for image urls.
+ * Your chocolatey automatic packages repository (__CHOCO_AUTO_PKG_OWNER_REPO__) could be the same as your regular packages repository. This is also the same as package owner repo. This is only used for image urls.  
+
+Automatic package repositories? It's coming and it will make chocolatey one of the most up to date package repositories in the world (if not the most up to date)...stay tuned to the chocolatey google group for more information.
