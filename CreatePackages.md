@@ -1,4 +1,4 @@
-#Creating Chocolatey Packages
+##Creating Chocolatey Packages
 
 ## What version of the software should I package?
 The main release of a product versions are usually sufficient. If there are also beta versions available and you would rather have that, then please create both the official release and the beta (and set the beta as a prerelease when pushing the item to chocolatey.org). Regular users of packages may want to use official releases only and not betas.
