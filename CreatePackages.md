@@ -41,7 +41,7 @@ Date Package Fix Version Notation is recommended because one can ascertain what 
 Package fix version notation is only acceptable in the fourth segment. Do not use any of the other segments for package fix notation. If an app/tool only uses 1 or 2 version segments, add zeros into the other segments until you get to the 4th segment (i.e. 1.0.0.20120627).   
   
 ## How do I exclude executables from getting batch redirects?
-If you have executables in the package or brought into the package folder during powershell run and you want to exclude them you need to create an empty file named exactly like (case sensitive) the executable with `.no` suffixed on the end in the same directory where the executable is or will be. In the case of `Bob.exe` you would create a file named `Bob.exe.no` and that file would not get a redirect batch link.
+If you have executables in the package or brought into the package folder during powershell run and you want to exclude them you need to create an empty file named exactly like (case sensitive) the executable with `.ignore` suffixed on the end in the same directory where the executable is or will be. In the case of `Bob.exe` you would create a file named `Bob.exe.ignore` and that file would not get a redirect batch link.
   
 ##Build Your Package
 
