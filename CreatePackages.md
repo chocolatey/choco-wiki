@@ -59,4 +59,6 @@ This will install the package right out of your source. As you find things you m
 ##Push Your Package
 
 To push your package after you have built and tested it, you type `cpush packageName.nupkg` where *packageName.nupkg* is the name of the nupkg that was built with a version number as part of the package name.  You must have an api key for http://chocolatey.org/ set. You can do that with nuget.exe. You can install nuget.commandline so you can set this (notice it is on nuget.org and not on chocolatey.org - chocolatey installs packages from both sources!). 
-Take a look at [[cpush|CommandsPush]]
+Take a look at [[cpush|CommandsPush]]  
+  
+You can also log into chocolatey.org and upload your package from there.  
