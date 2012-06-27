@@ -41,10 +41,14 @@ Date Package Fix Version Notation is recommended because one can ascertain what 
 Package fix version notation is only acceptable in the fourth segment. Do not use any of the other segments for package fix notation. If an app/tool only uses 1 or 2 version segments, add zeros into the other segments until you get to the 4th segment (i.e. 1.0.0.20120627).   
   
 ## How do I exclude [executables from getting batch redirects](https://github.com/chocolatey/chocolatey/issues/106)?
-If you have executables in the package or brought into the package folder during powershell run and you want to exclude them you need to create an empty file named exactly like (case sensitive) the executable with `.ignore` suffixed on the end in the same directory where the executable is or will be. In the case of `Bob.exe` you would create a file named `Bob.exe.ignore` and that file would not get a redirect batch link. The chocolatey package has an example of that.
+If you have executables in the package or brought into the package folder during powershell run and you want to exclude them you need to create an empty file named exactly like (case sensitive) the executable with `.ignore` suffixed on the end in the same directory where the executable is or will be.  
+  
+Example: In the case of `Bob.exe` you would create a file named `Bob.exe.ignore` and that file would not get a redirect batch link. The chocolatey package has an example of that.  
   
 ## How do I set up batch redirects for [applications that have a GUI](https://github.com/chocolatey/chocolatey/issues/76)?
-If you don't want to see a hanging window when you open an application from the command line that was set up with chocolatey, you want to create a file next to the executable that is named exactly the same (case sensitive) with `.gui` suffixed on the end. In the case of `Bob.exe` you would create a file named `Bob.exe.gui` and that file would be set up as a GUI application so the window will call it and then move on without waiting for it to finish.  
+If you don't want to see a hanging window when you open an application from the command line that was set up with chocolatey, you want to create a file next to the executable that is named exactly the same (case sensitive) with `.gui` suffixed on the end.  
+  
+Example: In the case of `Bob.exe` you would create a file named `Bob.exe.gui` and that file would be set up as a GUI application so the window will call it and then move on without waiting for it to finish.  
   
 ##Build Your Package
 
