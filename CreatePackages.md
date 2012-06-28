@@ -80,7 +80,7 @@ Now open a command line, navigate to your source code top level folder and type 
  warmup addTextReplacement __CHOCO_PKG_OWNER_NAME__ "Your Name"
  warmup addTextReplacement __CHOCO_PKG_OWNER_REPO__ "Your Repository"
  warmup addTextReplacement __CHOCO_AUTO_PKG_OWNER_REPO__ "Your Choco Automatic Packages Repository (could be same as other)"
- git clone git://github.com/ferventcoder/chocolateytemplates.git
+ git clone git://github.com/chocolatey/chocolateytemplates.git
  cd chocolateytemplates\_templates
  warmup addTemplateFolder chocolatey "%cd%\chocolatey"
  warmup addTemplateFolder chocolatey3 "%cd%\chocolatey3"
