@@ -1,5 +1,10 @@
 ##Release Notes
   
+###[0.9.8.19](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.19&page=1&state=closed)
+ * Fix - PowerShell v3 doesn't like foreach loop (prefers ForEach-Object) - https://github.com/chocolatey/chocolatey/pull/116
+ * Fix - Cannot install Python packages on Windows 8 - https://github.com/chocolatey/chocolatey/issues/117
+ * Enhancement - Allow community extensions - https://github.com/chocolatey/chocolatey/issues/115 
+  
 ###[0.9.8.18](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.18&sort=created&direction=desc&state=closed&page=1) 
  * Fix - 0.9.8.17 installer doesn't create chocolatey folder if it doesn't exist - https://github.com/chocolatey/chocolatey/issues/112  
   
