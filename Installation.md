@@ -14,7 +14,7 @@ If you have Visual Studio 2010 and the NuGet extension installed, perhaps the qu
   
   * Follow the above steps. 
   * Install chocolatey again. 
-  * Copy over the items from the old install directory.
+  * Copy over the items from the old install directory. (not sure this is true anymore, need someone to verify)
   * Delete your old install directory.
   
 ## Command Line
