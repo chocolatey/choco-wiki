@@ -25,4 +25,9 @@ Defaults to official chocolatey feed.
   
 `cpush somefile.nuspec -source http://somewhere.com/`  
   
+##Common Errors
+ `Failed to process request. 'The specified API key does not provide the authority to push packages.'
+  The remote server returned an error: (403) Forbidden..`  
+This means the package already exists with a different user (api key).  
+  
 [[Command Reference|CommandsReference]]
