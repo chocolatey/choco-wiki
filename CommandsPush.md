@@ -28,6 +28,6 @@ Defaults to official chocolatey feed.
 ##Common Errors
  `Failed to process request. 'The specified API key does not provide the authority to push packages.'
   The remote server returned an error: (403) Forbidden..`  
-This means the package already exists with a different user (api key).  
+This means the package already exists with a different user (api key).  The package could be unlisted. Please contact one of the administrators of chocolatey.org if you see this and you don't see a good reason for it.  
   
 [[Command Reference|CommandsReference]]
