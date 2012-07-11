@@ -25,7 +25,8 @@ Want to [[learn more?|ChocolateyFAQs]]
 [[Release Notes|ReleaseNotes]]
 
 ##Using Chocolatey
-[[Installing chocolatey|Installation]]  
+[[Installing chocolatey|Installation]]
+[[Uninstalling chocolatey|Uninstallation]]  
 [[Getting Started|GettingStarted]]  
 [[Command Reference|CommandsReference]]  
 Use chocolatey to set up [[source code development environments|DevelopmentEnvironmentSetup]]!  
