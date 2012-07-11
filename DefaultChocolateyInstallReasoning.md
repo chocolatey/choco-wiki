@@ -5,6 +5,6 @@ Lots of people tend to ask why the system root for an installation of chocolatey
 That's a great question. Let's get into use cases for chocolatey first.  
   
 ### Low Privilege Install and Use
-Chocolatey should be able to be installed on a machine where the user does not have administrative rights.  A user with non-administrative access should be able to install (through one of the methods, possibly not the default) chocolatey and use it to install tools (non-administrative chocolatey packages, see tools versus applications) on their system.  
+Chocolatey should be able to be installed on a machine where the user does not have administrative rights.  A user with non-administrative access should be able to install (through one of the methods, possibly not the default) chocolatey and use it to install tools (non-administrative chocolatey packages, see [[tools versus applications at the bottom of FAQs|ChocolateyFAQs]]) on their system.  
   
 This use case is the hardest to accommodate when it comes to Windows and how it expects you to put new software on it.
