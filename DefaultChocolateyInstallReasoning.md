@@ -9,8 +9,10 @@ Chocolatey should be able to be installed on a machine where the user does not h
   
 This use case is the hardest to accommodate when it comes to Windows and how it expects you to put new software on it.  
   
-This immediately removes the ability to install to Program Files (although I'm not a fan of that location in the first place for things that are not actually "installed applications" on a system) since it requires higher privileges to modify the directory than you get if you are in the Users group.
-
+This immediately removes the ability to install to Program Files (although I'm not a fan of that location in the first place for things that are not actually "installed applications" on a system) since it requires higher privileges to modify the directory than you get if you are in the Users group.  
+  
+The environment variables that chocolatey sets are also user environment variables. This is (again) an accommodation for low privilege folks to be able to use chocolatey. Let's not forget that chocolatey is a system wide/machine repository.  Two folks on the same machine can install chocolatey without hurting the repository. This is due to the idempotence of chocolatey packages.  
+  
 ### Why not Program Files? Is it because you don't like spaces?
 Two reasons really:  
   
