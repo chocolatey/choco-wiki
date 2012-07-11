@@ -9,4 +9,9 @@ Chocolatey should be able to be installed on a machine where the user does not h
   
 This use case is the hardest to accommodate when it comes to Windows and how it expects you to put new software on it.  
   
-This immediately removes the ability to install to Program Files (although I'm not a fan of that location in the first place for things that are not actually "installed applications" on a system) since it requires administrative privileges.  
+This immediately removes the ability to install to Program Files (although I'm not a fan of that location in the first place for things that are not actually "installed applications" on a system) since it requires something greater than Users group privileges to write to.
+
+### Why not Program Files? Is it because you don't like spaces?
+To me if something goes to the program files it also goes to the registry as an installed application, one that can be uninstalled from programs list in the control panel. To me having things in there that are not controlled through the system install registry is not clean so I wouldn't see chocolatey there.  
+  
+Program Files also requires higher privileges than the Users group to be able to write to the folder (at least on Windows 7, I didn't check all the others). Understanding low privilege install, this makes sense.    
