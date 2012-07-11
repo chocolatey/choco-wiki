@@ -15,3 +15,10 @@ This immediately removes the ability to install to Program Files (although I'm n
 To me if something goes to the program files it also goes to the registry as an installed application, one that can be uninstalled from programs list in the control panel. To me having things in there that are not controlled through the system install registry is not clean so I wouldn't see chocolatey there.  
   
 Program Files also requires higher privileges than the Users group to be able to write to the folder (at least on Windows 7, I didn't check all the others). Understanding low privilege install, this makes sense.    
+  
+### Why not User Path?
+This actually seems the most reasonable place to install it since the environment variables are user variables. The reasoning against this location is:  
+  
+* It's a machine repository, not a user repository
+* I use chocolatey to install applications to the system (not the user). 
+* User2 would not be able to uninstall an application (with chocolatey) that User1 installed with chocolatey since they couldn't reach the directory.
