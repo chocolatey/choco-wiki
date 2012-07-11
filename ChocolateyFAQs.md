@@ -39,7 +39,7 @@ and any package on another feed (nuget.org, rubygems.org, web pi tools, etc).
 * Coming soon - Virtual Packages - Packages that are like a category, and you just want one package from that category. [Read more ...](https://github.com/ferventcoder/nugetpackages/issues/30)
   
 <a name="AppVsTool" />
-###What distinction does chocolatey make between an application and a tool? [AppVersusTool] ###  
+###What distinction does chocolatey make between an application and a tool? [AppVersusTool]  
 #### App/Application  
 An application is something that comes with a native installer and ends up in the add/remove programs (in control panel of the system).  
 Applications end up where the native installer wants them to end up (i.e. Program Files).  If you want to override that, please feel free to with the proper commands using InstallArgs (-ia) at the command line and possibly override - [[Install Command|CommandsInstall]]. Yes this does mean you will need to have intimate knowledge of the installer. Having chocolatey itself make the override directory is likely at some point, but it is wwwwaaaaayyyy out on the radar (like after [Rob](https://github.com/ferventcoder) is somehow paid to work on chocolatey full time ;) ).  
