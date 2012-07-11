@@ -19,7 +19,7 @@ Two reasons really:
   
 To me if something goes to the program files it also goes to the registry as an installed application, one that can be uninstalled from programs list in the control panel. To me having things in there that are not controlled through the system install registry is not clean so I wouldn't see chocolatey there.  
   
-Program Files also requires higher privileges than the Users group to be able to write to the folder (at least on Windows 7, I didn't check all the others). If you agree with the idea of low privilege install, then program files is out. If you don't, it's still out because it won't install there without a higher set of privileges.    
+Program Files also requires higher privileges than the Users group to be able to write to the folder (at least on Windows 7, this has not been verified against all OSes). If you agree with the idea of low privilege install, then program files is out. If you don't, it's still out because it won't install there without a higher set of privileges.    
   
 ### Why not User Path (C:\Users\someuser / C:\Documents and Settings\someuser)?
 This actually seems the most reasonable place to install it since the environment variables are user variables. The reasoning against this location is:  
