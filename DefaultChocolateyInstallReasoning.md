@@ -39,7 +39,7 @@ Some folks don't like anyone cluttering up system root, but really much of progr
 Chocolatey IMHO is a core component tool, which gives it the privilege to go into the root system folder. You may not agree with me and that's fine, that's why we provide the ChocolateyInstall variable so you can have it installed wherever you want.  
     
 ### Where would you install it?
-Since Program Files and User Path are out, what's left? C:\Windows?  I wouldn't install it there. So logically all that is left is to either create a Tools directory (or something else at root) and put it under that or install it to the root itself. But creating the tools directory (whatever the name) doesn't really subvert the fact that I am still adding to the system root folder.    
+Since Program Files and User Path are out, what's left? C:\Windows?  I wouldn't install it there. So logically all that seems left is to either create a Tools directory (or something else at root) and put it under that or install it to the root itself. But creating the tools directory (whatever the name) doesn't really subvert the fact that I am still adding to the system root folder.    
   
 But really, where would/do you install chocolatey?  
   
