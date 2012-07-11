@@ -31,6 +31,9 @@ http://chocolatey.org/api/v2/
 Check out http://chocolatey.org/packages 
 and any package on another feed (nuget.org, rubygems.org, web pi tools, etc).  
   
+###Why does chocolatey install to C:\Chocolatey by default? Why the system root folder?
+Excellent question, deserving of a full page - [[Default Install Reasoning|DefaultChocolateyInstallReasoning]]  
+  
 ###What kind of package types does chocolatey support?
   
 * Binary Packages - Tools/Applications - This is 98% of the chocolatey packages - most are pointers to the real deal installers / zips.  
