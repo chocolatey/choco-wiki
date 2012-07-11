@@ -21,7 +21,7 @@ To me if something goes to the program files it also goes to the registry as an 
   
 Program Files also requires higher privileges than the Users group to be able to write to the folder (at least on Windows 7, I didn't check all the others). Understanding low privilege install, this makes sense.    
   
-### Why not User Path?
+### Why not User Path (C:\Users\someuser / C:\Documents and Settings\someuser)?
 This actually seems the most reasonable place to install it since the environment variables are user variables. The reasoning against this location is:  
   
 * It's a machine repository, not a user repository
@@ -29,7 +29,7 @@ This actually seems the most reasonable place to install it since the environmen
 * User2 would not be able to uninstall an application (with chocolatey) that User1 installed with chocolatey since they couldn't reach the directory.
 * Some of the pathing could get very long (maybe beyond the limits of some older operating systems DOS) for the batch redirects.
 
-### Why systemroot?
+### Why the System Root (C:\ on most computers)?
 This is really terse but the number of folders one has to navigate to get to something useful is a pain we don't really know we have. If you think about the amount of folders you need to navigate just to get to some configuration file in program files (which is already 3 levels deep). Not that I always use folder navigation starting with "Computer."  
   
 Some folks don't like anyone cluttering up system root, but really much of program files and other directories are already pretty cluttered.  
