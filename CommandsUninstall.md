@@ -9,7 +9,8 @@ Uninstalls a package.
 * There are no functions defined in the chocolatey powershell module that would help with uninstall
 * There is no automatic removal of MSIs
 * Uninstall only removes the most current version of a package in the machine repository (instead of giving you options to remove a certain one or all of them) 
-
+* Requires a chocolateyUninstall.ps1 in the package itself, of which many of the currently available packages do not have.  
+  
 ##Parameters
 ###PackageName
 Name of package to uninstall.  
