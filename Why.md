@@ -10,7 +10,7 @@ Because Chocolatey is built on top of the NuGet infrastructure, that means you c
 [[Tell me a story|ChocolateyStory]]  
   
 ### Why not use an existing windows package manager?
-Believe me, I wanted there to be something existing on windows that would fit the bill. Package management is not a glorious job. Especially on Windows. It's like taking all of the different native installers, archives, and straight executable downloads and making a simple interface for consumers to issue the same install command for all of them. Here are/were my needs:
+Believe me, I wanted there to be something existing on windows that would fit the bill. Package management is not a glorious job. Especially on Windows. It's taking all of the different native installers, archives, and straight executable downloads and making a simple interface for consumers to issue the same install command for all of them. Here are/were my needs:
   
 * Good CLI that is simple to use.
 * Main repository that takes packages contributions from the community (and is being maintained).
