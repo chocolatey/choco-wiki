@@ -31,6 +31,12 @@ http://chocolatey.org/api/v2/
 Check out http://chocolatey.org/packages 
 and any package on another feed (nuget.org, rubygems.org, web pi tools, etc).  
   
+###What if I install X and I already have X installed?
+With most packages when you already have something installed, the chocolatey process will just perform the install again silently. Most times this means that it does nothing and in the end you have what you already had.
+  
+###What does chocolatey do? Are you redistributing software?
+Chocolatey does the same thing that you would do based on the package instructions. This usually means going out and downloading an installer from the official distribution point and then silently installing it on your machine. With most packages this means chocolatey is not redistributing software because they are going to the same distribution point that you yourself would go get the software if you were performing this process manually.
+  
 ###Why does chocolatey install to C:\Chocolatey by default? Why the system root folder?
 Excellent question, deserving of a full page - [[Default Install Reasoning|DefaultChocolateyInstallReasoning]]  
   
