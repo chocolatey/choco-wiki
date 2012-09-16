@@ -37,6 +37,11 @@ With most packages when you already have something installed, the chocolatey pro
 ###What does chocolatey do? Are you redistributing software?
 Chocolatey does the same thing that you would do based on the package instructions. This usually means going out and downloading an installer from the official distribution point and then silently installing it on your machine. With most packages this means chocolatey is not redistributing software because they are going to the same distribution point that you yourself would go get the software if you were performing this process manually.
   
+###When I install a tool like nuget.commandline, how is it on my path? Without littering my path?
+When you install tools that have executables in the package, chocolatey automatically creates a batch file redirect file and puts that in a folder that is on the path. That allows you to run a tool by asking for it on the command line.  
+  
+When you install an application, say like WinDirStat (something that has a native installer), it is only on your path if the native installer has put it there or the instructions in the chocolatey package itself has requested for it to be on the path. In this case, this is the "littering" the path concept.  
+  
 ###Why does chocolatey install to C:\Chocolatey by default? Why the system root folder?
 Excellent question, deserving of a full page - [[Default Install Reasoning|DefaultChocolateyInstallReasoning]]  
   
