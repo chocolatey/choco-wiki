@@ -45,6 +45,22 @@ When you install an application, say like WinDirStat (something that has a nativ
 ###What is with the "chocolatey gods" in the installs?
 We like humor. You should try some.  
   
+###No executables in the packages? Is this an error?
+You see 
+  
+```
+-------------------------
+   Executable Links (*.exe)
+  -------------------------
+There are no executables (that are not ignored) in the package.
+-------------------------
+=====================================================
+Chocolatey has finished installing 'windirstat' - check log for errors.
+=====================================================
+```
+
+Is this an error? It's not. It will likely be removed from future versions.
+  
 ###Why does chocolatey install to C:\Chocolatey by default? Why the system root folder?
 Excellent question, deserving of a full page - [[Default Install Reasoning|DefaultChocolateyInstallReasoning]]  
   
