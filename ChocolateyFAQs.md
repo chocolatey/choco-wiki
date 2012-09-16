@@ -59,7 +59,7 @@ Chocolatey has finished installing 'windirstat' - check log for errors.
 =====================================================
 ```
 
-Is this an error? It's not. It will likely be removed from future versions.
+Is this an error? It's not. It will be removed from future versions.
   
 ###Why does chocolatey install to C:\Chocolatey by default? Why the system root folder?
 Excellent question, deserving of a full page - [[Default Install Reasoning|DefaultChocolateyInstallReasoning]]  
