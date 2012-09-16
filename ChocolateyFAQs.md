@@ -42,6 +42,9 @@ When you install tools that have executables in the package, chocolatey automati
   
 When you install an application, say like WinDirStat (something that has a native installer), it is only on your path if the native installer has put it there or the instructions in the chocolatey package itself has requested for it to be on the path. In this case, this is the "littering" the path concept.  
   
+###What is with the "chocolatey gods" in the installs?
+We like humor. You should try some.  
+  
 ###Why does chocolatey install to C:\Chocolatey by default? Why the system root folder?
 Excellent question, deserving of a full page - [[Default Install Reasoning|DefaultChocolateyInstallReasoning]]  
   
