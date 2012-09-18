@@ -16,6 +16,33 @@ The video is a bit outdated in showing the contents of the chocolateyInstall.ps1
 ```powershell
 Install-ChocolateyPackage 'windirstat' 'exe' '/S' 'http://windirstat.info/wds_current_setup.exe'
 ```
+
+## Installation paths
+
+As the package owner, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *"What distinction does chocolatey make between an application and a tool?"* at the bottom of the [FAQ](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
+
+### 1. `%chocolatey_bin_root%` environment variable
+
+The environment variable `%chocolatey_bin_root%` can be used as the parent directory for the installation. If existing, `%chocolatey_bin_root%` points to a subfolder of the system partition, e.g. "Packages". 
+
+As an example, the [ruby package](http://chocolatey.org/packages/ruby) uses `%chocolatey_bin_root%` for installing ruby. If the environment variable is not set, ruby installs to `C:\ruby193` by default. If `%chocolatey_bin_root%` is set to "Packages", ruby installs to `C:\Packages\ruby193`.
+
+`%chocolatey_bin_root%` gives the chocolatey user a way of controlling where packages are installed. If you want to allow customizing the installation path, then this is currently the way to go.
+
+### 2. The default installation path of your .msi/.exe setup file
+
+The original creator probably had a reason for choosing a specific default installation path.  
+If you think, the user should be able to customize this path and you, the package owner, know how to pass a custom path on to the installer, then you should use `%chocolatey_bin_root%`.
+
+### 3. The package directory in `%ChocolateyInstall%\lib\mypackage`
+
+You can extract the application within the package directory itself (or even ship an extracted version with the package). This allows chocolatey to automatically find executables and put those on `%path%`.
+
+### Make it clear in the package description
+
+No matter how you decide, you are advised to state the default installation directory in your package description. This prevents confusion about where the application will end up being installed.
+
+If you allow customizing the installation path, then append instructions on how to do that, too.
   
 ##Dependency Chaining
 You can make packages that depend on other packages just by adding those dependencies to the nuspec. Take a look at [ferventcoder.chocolatey.utilities nuspec](https://github.com/ferventcoder/nugetpackages/blob/master/ferventcoder.chocolatey.utilities/ferventcoder.chocolatey.utilities.nuspec)
