@@ -19,27 +19,34 @@ This does the following:
   
 ```powershell
 function Install-NeededFor {
-param([string]$packageName = '')
+param(
+   [string] $packageName = ''
+  ,[bool] $defaultAnswer = $true
+)
   if ($packageName -eq '') {return $false}
   
   $yes = '6'
   $no = '7'
   $msgBoxTimeout='-1'
+  $defaultAnswerDisplay = 'Yes'
+  if (!$defaultAnswer) { $defaultAnswerDisplay = 'No'}
   
   $answer = $msgBoxTimeout
   try {
     $timeout = 10
-    $question = "Do you need to install $($packageName)? Defaults to 'Yes' after $timeout seconds"
+    $question = "Do you need to install $($packageName)? Defaults to `'$defaultAnswerDisplay`' after $timeout seconds"
     $msgBox = New-Object -ComObject WScript.Shell
     $answer = $msgBox.Popup($question, $timeout, "Install $packageName", 0x4)
   }
   catch {
   }
-
-  if ($answer -eq $yes -or $answer -eq $msgBoxTimeout) {
-    write-host 'returning true'
+  
+  if ($answer -eq $yes -or ($answer -eq $msgBoxTimeout -and $defaultAnswer -eq $true)) {
+    write-host "Installing $packageName"
     return $true
   }
+  
+  write-host "Not installing $packageName"
   return $false
 }
 
