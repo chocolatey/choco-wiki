@@ -29,14 +29,15 @@ param(
   $no = '7'
   $msgBoxTimeout='-1'
   $defaultAnswerDisplay = 'Yes'
-  if (!$defaultAnswer) { $defaultAnswerDisplay = 'No'}
+  $buttonType = 0x4;
+  if (!$defaultAnswer) { $defaultAnswerDisplay = 'No'; $buttonType= 0x104;}
   
   $answer = $msgBoxTimeout
   try {
     $timeout = 10
     $question = "Do you need to install $($packageName)? Defaults to `'$defaultAnswerDisplay`' after $timeout seconds"
     $msgBox = New-Object -ComObject WScript.Shell
-    $answer = $msgBox.Popup($question, $timeout, "Install $packageName", 0x4)
+    $answer = $msgBox.Popup($question, $timeout, "Install $packageName", $buttonType)
   }
   catch {
   }
