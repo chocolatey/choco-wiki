@@ -23,6 +23,8 @@ Stay tuned for this. Below may look like garbage; that's okay. I am collecting m
   
 ####Scheduled Tasks
   
+C:\Windows\System32\cmd.exe /c c:\tools\chocolateypackageupdater\ketarinupdate.cmd
+  
 ####Ketarin Global Settings Command
 This is for before updating app
   
