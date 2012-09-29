@@ -28,8 +28,15 @@ C:\Windows\System32\cmd.exe /c c:\tools\chocolateypackageupdater\ketarinupdate.c
 ####Ketarin Global Settings Command
 This is for before updating app
   
+![Ketarin Settings](images/chocopkgup/KetarinSettings.png "Ketarin Settings")    
+  
 ```cmd
 chocopkgup /p {appname} /v {version} /u {preupdate-url} /u64 {url64} /pp {file} 
 REM /disablepush
 ```
+
+![Ketarin Job Main](images/chocopkgup/KetarinMain.png "Ketarin Job Main")  
+![Ketarin Job Variables](images/chocopkgup/KetarinVariables.png "Ketarin Job Variables")  
+
+
   
