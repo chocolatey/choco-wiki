@@ -1,4 +1,4 @@
-# Install-ChocolateyEnvironmentVariable
+## Install-ChocolateyEnvironmentVariable
 ##New as of v0.9.8.20.
 ### NOTE: This command will assert UAC/Admin privileges on the machine if $variableType== 'Machine'.  
   
