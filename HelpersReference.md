@@ -39,6 +39,7 @@ When creating packages that need to run one of the following commands below, one
 * [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]] - when specifying machine path v0.9.8.20+
 * [[Install-ChocolateyExplorerMenuItem|HelpersInstallChocolateyExplorerMenuItem]] - v0.9.8.20+
 * [[Install-ChocolateyFileAssociation|HelpersInstallChocolateyFileAssociation]] - v0.9.8.20+
+* [[Update-SessionEnvironment|HelpersUpdateSessionEnvironment]] - v0.9.8.20+
 
 ###Non-Administrator Safe Helpers
 Some folks expressed a desire to have chocolatey not run as administrator to reach continuous integration and developers that are not administrators on their machines. Starting with chocolatey [[v0.9.8.3|ReleaseNotes]], this has been possible.  
