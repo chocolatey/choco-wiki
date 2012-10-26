@@ -54,5 +54,6 @@ These are the helpers from above as one list.
 * [[Install-ChocolateyPath|HelpersInstallChocolateyPath]] - when specifying user path
 * [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]] - when specifying user path v0.9.8.20+
 * [[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]]  
+* [[Install-ChocolateyPinnedTaskBarItem|HelpersInstallChocolateyPinnedTaskBarItem]] - v0.9.8.20+
   
 [[Home]]
