@@ -19,7 +19,9 @@ This is a template for creating a new chocolatey package:
   # main helpers - these have error handling tucked into them so they become the only line of your script if that is all you need.
   # installer, will assert administrative rights
   Install-ChocolateyPackage '__NAME__' 'EXE_OR_MSI' 'SILENT_ARGS' 'URL' '64BIT_URL_DELETE_IF_NO_64BIT' 
-  # "/s /S /q /Q /quiet /silent /SILENT /VERYSILENT" # try any of these to get the silent installer #msi is always /quiet
+  # "/s /S /q /Q /quiet /silent /SILENT /VERYSILENT" # try any of these to get the silent installer 
+  # msi is always /quiet
+  # For the URL, you can use an http:// URL or a network share using the UNC format (\\server\share).
   # download and unpack a zip file
   Install-ChocolateyZipPackage '__NAME__' 'URL' "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
   
