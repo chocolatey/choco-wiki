@@ -1,4 +1,4 @@
-# Chocolatey Install (cinst)
+## Chocolatey Install (cinst)
 Unconditionally installs a package or a list of packages in a packages.config, even if it already exists.  
 `chocolatey install packageName` or shortcut with 
 `cinst packageName` or `cinst packages.config`  
