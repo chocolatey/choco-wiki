@@ -36,7 +36,8 @@ When creating packages that need to run one of the following commands below, one
 * [[Start-ChocolateyProcessAsAdmin|HelpersStartChocolateyProcessAsAdmin]]   
 * [[Install-ChocolateyInstallPackage|HelpersInstallChocolateyInstallPackage]]  
 * [[Install-ChocolateyPath|HelpersInstallChocolateyPath]] - when specifying machine path  
-  
+* [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]] - when specifying machine path
+
 ###Non-Administrator Safe Helpers
 Some folks expressed a desire to have chocolatey not run as administrator to reach continuous integration and developers that are not administrators on their machines. Starting with chocolatey [[v0.9.8.3|ReleaseNotes]], this has been possible.  
 
@@ -48,7 +49,8 @@ These are the helpers from above as one list.
 * [[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  
 * [[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]  
 * [[Get-ChocolateyUnzip|HelpersGetChocolateyUnzip]]  
-* [[Install-ChocolateyPath|HelpersInstallChocolateyPath]] - when specifying user path  
+* [[Install-ChocolateyPath|HelpersInstallChocolateyPath]] - when specifying user path
+* [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]] - when specifying user path
 * [[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]]  
   
 [[Home]]
