@@ -6,6 +6,7 @@ These helpers call other helpers and have error handling built in. When using ju
 [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]  
 [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]  
 [[Install-ChocolateyPowershellCommand|HelpersInstallChocolateyPowershellCommand]]  
+[[Install-ChocolateyVsixPackage|HelpersInstallChocolateyVsixPackage]] - v0.9.8.20+
   
 ##Error/SuccessHelpers
   
