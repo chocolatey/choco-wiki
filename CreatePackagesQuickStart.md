@@ -22,7 +22,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
       * _warmup  addTemplateFolder chocolatey "%CD%\chocolatey"_
    * Add replacements. You can get more creative once you start making more complicated packages.
       * _warmup addTextReplacement __CHOCO_PKG_OWNER_NAME__ "Your Name"_
-(could be same as other)"_
+(could be same as other)
    * _warmup chocolatey PackageName_
 * **Edit template** using common sense
    * _cd PackageName_
