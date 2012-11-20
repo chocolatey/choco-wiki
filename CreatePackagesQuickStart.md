@@ -1,5 +1,4 @@
-
-# Creating Chocolatey Packages - TL;DR version
+## Creating Chocolatey Packages - TL;DR version
 
 Here's a TL;DR quick start version of the package creating tutorial. Follow these steps to create a simple package.
 
