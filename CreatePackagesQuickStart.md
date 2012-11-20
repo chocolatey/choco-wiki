@@ -70,11 +70,13 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
 
 ## Examples
 
+Here are some simple examples.
+
 ### chocolateyInstall.ps1 for .exe installer
 
 ```cmd
 $name = 'Package Name'
-$url  = 'http://path/to/download/program.exe'
+$url  = 'http://path/to/download/installer.exe'
 try {
     Install-ChocolateyPackage $name 'EXE' '/VERYSILENT' $url
     Write-ChocolateySuccess $name
