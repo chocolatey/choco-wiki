@@ -26,8 +26,8 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
    * _warmup chocolatey PackageName_
 * **Edit template** using common sense
    * _cd PackageName_
-   * Complete PackageName.nuspec
-   * Complete ./tools/chocolateyInstall.ps1
+   * Edit PackageName.nuspec
+   * Edit ./tools/chocolateyInstall.ps1
 * **Build the package**
    * Still in package directory
    * _cpack_
