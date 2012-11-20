@@ -21,7 +21,8 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
       * _cd chocolateytemplates\_templates_
       * _warmup  addTemplateFolder chocolatey "%CD%\chocolatey"_
    * Add replacements. You can get more creative once you start making more complicated packages.
-      * _warmup addTextReplacement __CHOCO_PKG_OWNER_NAME__ "Your Name"_
+      * *warmup addTextReplacement ____CHOCO_PKG_OWNER_NAME____ "Your Name"*
+       * **Note** that the CHOCO replacement starts and ends with **two** underscores. Wiki formatting makes it hard to write it down here.
 (could be same as other)
    * _warmup chocolatey PackageName_
 * **Edit template** using common sense
