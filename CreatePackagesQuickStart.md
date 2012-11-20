@@ -35,9 +35,9 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
 * **Test the package**
    * **Testing should probably be done on a Virtual Machine**
    * In your package directory, use: 
-      * _cinst PackageName -source '%cd%**
+      * _cinst PackageName -source '%cd%'_
    * Otherwise, use the full path:
-      * _cinst PackageName -source 'c:\path\to\PackageName.1.1.0.nupkg**
+      * _cinst PackageName -source 'c:\path\to\PackageName.1.1.0.nupkg'_
 * **Push the package** to the Chocolatey repository:
    * Get a Chocolatey account:
       * [[http://chocolatey.org/account/Register]]
