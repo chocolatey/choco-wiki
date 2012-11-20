@@ -67,3 +67,34 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
 * %ChocolateyInstall%\lib\PackageName - Package directory
 * %chocolatey_bin_root% - Path of Binaries
 * %cd% - current directory
+
+## Examples
+
+### chocolateyInstall.ps1 for .exe installer
+
+```cmd
+$name = 'Package Name'
+$url  = 'http://path/to/download/program.exe'
+try {
+    Install-ChocolateyPackage $name 'EXE' '/VERYSILENT' $url
+    Write-ChocolateySuccess $name
+} catch {
+  Write-ChocolateyFailure $name $($_.Exception.Message)
+  throw
+}
+```
+
+**Note** that you have to figure out the command line switch to make the installer silent, e.g. **/VERYSILENT**. This changes from installer to installer.
+
+### chocolateyInstall.ps1 for .msi installer
+
+```cmd
+$packageName = 'Package Name'
+$installerType = 'msi' 
+$url = 'http://path/to/download/installer_x86.msi'
+$url64 = 'http://path/to/download/installer_x64.msi'
+$silentArgs = '/quiet'
+$validExitCodes = @(0,3010)
+
+Install-ChocolateyPackage "$packageName" "$installerType" "$silentArgs" "$url" "$url64"  -validExitCodes $validExitCodes
+```
