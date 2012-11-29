@@ -42,7 +42,7 @@ Defaults to `@(0)`.
 `Install-ChocolateyPackage 'mono' 'exe' '/SILENT' 'http://somehwere/something.exe' -validExitCodes @(0,21)`  
   
 ##See Also
-[[HelpersInstallChocolateyZipPackage|Install-ChocolateyZipPackage]] for installing a zip package.
-To add executables to the path see [[HelpersGetChocolateyBins|Get-ChocolateyBins]]
+[[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]] for installing a zip package.
+To add executables to the path see [[Get-ChocolateyBins|HelpersGetChocolateyBins]]
 
 [[Helper Reference|HelpersReference]]
