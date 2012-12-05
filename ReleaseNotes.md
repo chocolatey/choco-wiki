@@ -19,13 +19,11 @@
  * Enhancement - Refresh env vars after Install - https://github.com/chocolatey/chocolatey/pull/158 & https://github.com/chocolatey/chocolatey/issues/153  
  * Enhancement - Add EditorConfig file denoting coding style. - https://github.com/chocolatey/chocolatey/pull/123  
  * Enhancement - Chocolatey-Version Remote Check - https://github.com/chocolatey/chocolatey/pull/119  
- * Enhancement - Write every unzip path/file to a text file - https://github.com/chocolatey/chocolatey/pull/114  
-  
+ * Enhancement - Write every unzip path/file to a text file - https://github.com/chocolatey/chocolatey/pull/114    
  * Fix - "Execution of NuGet not detected" error. - https://github.com/chocolatey/chocolatey/pull/151  
  * Fix - chocolatey.bat can't find chocolatey.cmd - https://github.com/chocolatey/chocolatey/issues/152  
  * Fix - `chocolatey version all` prints only the last package's information - https://github.com/chocolatey/chocolatey/pull/183  
- * Fix - Issue with $processor.addresswidth var - https://github.com/chocolatey/chocolatey/pull/121  
-  
+ * Fix - Issue with $processor.addresswidth var - https://github.com/chocolatey/chocolatey/pull/121   
   
 ###[0.9.8.19](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.19&page=1&state=closed)
  * Fix - PowerShell v3 doesn't like foreach loop (prefers ForEach-Object) - https://github.com/chocolatey/chocolatey/pull/116
