@@ -1,5 +1,37 @@
 ##Release Notes
   
+###[0.9.8.20](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.20&page=1&state=closed)
+ * Enhancement - Added FTP support for the chocolatey file downloader. - #137  
+ * Enhancement - Win feature feed - #150  
+ * Enhancement - Block installer exe from being "bin"-ed - #174  
+ * Enhancement - Add function to install environment variables - #149  
+ * Enhancement - Function to associate file extensions with installed executables - #146  
+ * Enhancement - Helper function to create explorer context menu items - #144  
+ * Enhancement - Helper function for pinning items to task bar - #143 & #141  
+ * Enhancement - Sources command - #138  
+ * Enhancement - Provide a way to list all the installed packages - #125  
+ * Enhancement - Making the unzip process silent - #180  
+ * Enhancement - Makes install args more explicit - #179  
+ * Enhancement - Update Write-Progress every 5000 iterations instead of every iteration - #177  
+ * Enhancement - Codeplex Support #176  
+ * Enhancement - fix downloads greater than 2GB - #173  
+ * Enhancement - add -verbose switch for clist support to see package description - #166  
+ * Enhancement - Refresh env vars after Install - #158  
+ * Enhancement - Chocolatey does not recapture PATHs modified by external installer - #153  
+ * Enhancement - Add EditorConfig file denoting coding style. - #123  
+ * Enhancement - Feature cver remotecheck - #119  
+ * Enhancement - Write every unzip path/file to a text file - #114  
+  
+ * Fix - "Execution of NuGet not detected" error. - #151  
+ * Fix - chocolatey.bat can't find chocolatey.cmd - #152  
+ * Fix - `chocolatey version all` prints only the last package's information - #183  
+ * Fix - issue with $processor.addresswidth var - #121  
+ * Enhancement - Write every unzip path/file to a text file - https://github.com/chocolatey/chocolatey/pull/114  
+* Enhancement - Chocolatey-Version Remote check - https://github.com/chocolatey/chocolatey/pull/119  
+* 
+* Fix - Issue with Processor Address Width Variable - https://github.com/chocolatey/chocolatey/pull/121  
+
+  
 ###[0.9.8.19](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.19&page=1&state=closed)
  * Fix - PowerShell v3 doesn't like foreach loop (prefers ForEach-Object) - https://github.com/chocolatey/chocolatey/pull/116
  * Fix - Cannot install Python packages on Windows 8 - https://github.com/chocolatey/chocolatey/issues/117
