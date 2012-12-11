@@ -229,8 +229,8 @@ if (Install-NeededFor 'IIS' $false) {
   cinst WindowsAuthentication -source webpi
 }
 
-
-$srcDir = Join-Path $scriptDir 'src\ProjectName.Web'
+$projectName = 'ProjectName'
+$srcDir = Join-Path $scriptDir "src\$($projectName).Web"
 if (Install-NeededFor 'website' $false) {
   $networkSvc = 'NT AUTHORITY\NETWORK SERVICE'
   Write-Host "Setting folder permissions on `'$srcDir`' to 'Read' for user $networkSvc"
@@ -241,7 +241,7 @@ if (Install-NeededFor 'website' $false) {
   Set-Acl $srcDir $acl
 
   Import-Module WebAdministration
-  $appPoolPath = 'IIS:\AppPools\ProjectName'
+  $appPoolPath = "IIS:\AppPools\$projectName"
   #$pool = new-object
   Write-Warning "You can safely ignore the next error if it occurs related to getting an app pool that doesn't exist"
   $pool = Get-Item $appPoolPath
@@ -254,9 +254,9 @@ if (Install-NeededFor 'website' $false) {
   $pool | Set-Item
   Set-itemproperty $appPoolPath -Name "managedRuntimeVersion" -Value "v4.0"
   #Set-itemproperty $appPoolPath -Name "managedPipelineMode" -Value "Integrated"
-  Start-WebAppPool "ProjectName"
-  Write-Host "Creating the site `'ProjectName`' with appPool `'ProjectName`'"
-  New-WebApplication "ProjectName" -Site "Default Web Site" -PhysicalPath $srcDir -ApplicationPool "ProjectName" -Force
+  Start-WebAppPool "$projectName"
+  Write-Host "Creating the site `'$projectName`' with appPool `'$projectName`'"
+  New-WebApplication "$projectName" -Site "Default Web Site" -PhysicalPath $srcDir -ApplicationPool "$projectName" -Force
   
   Write-Host 'You still need to open Visual Studio and build the application one time prior to going to the site in a browser.'
 }
