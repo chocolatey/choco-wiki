@@ -51,9 +51,10 @@ param(
   return $false
 }
 
+
 #install chocolatey
 if (Install-NeededFor 'chocolatey') {
-  iex ((new-object net.webclient).DownloadString('http://bit.ly/psChocInstall'))
+  iex ((new-object net.webclient).DownloadString('http://chocolatey.org/install.ps1'))
 }
 
 # install nuget, ruby.devkit, and ruby if they are missing
