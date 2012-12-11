@@ -118,6 +118,7 @@ Error Occurred: $($_.Exception.Message)
 The above is from [DropkicK.Dev](https://github.com/ferventcoder/nugetpackages/blob/master/dropkick.dev/tools/chocolateyInstall.ps1)  
   
 ## Setup A Full Environment Including Visual Studio Express
+The original [gist](https://gist.github.com/3825023)  
   
 ```powershell
 $scriptDir = $(Split-Path -parent $MyInvocation.MyCommand.Definition)
