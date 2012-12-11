@@ -231,7 +231,7 @@ if (Install-NeededFor 'IIS' $false) {
 
 
 $srcDir = Join-Path $scriptDir 'src\ProjectName.Web'
-if (Install-NeededFor 'website') {
+if (Install-NeededFor 'website' $false) {
   $networkSvc = 'NT AUTHORITY\NETWORK SERVICE'
   Write-Host "Setting folder permissions on `'$srcDir`' to 'Read' for user $networkSvc"
   $acl = Get-Acl $srcDir
