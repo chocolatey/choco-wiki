@@ -28,6 +28,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
    * _cd PackageName_
    * Edit the _PackageName.nuspec_ configuration file.
    * Edit the _./tools/chocolateyInstall.ps1_ install script.
+     * Make sure you [[figure out the installer's Silent Mode|http://unattended.sourceforge.net/installers.php]].
 * **Build the package**
    * Still in package directory
    * _cpack_
