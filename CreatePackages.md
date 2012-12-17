@@ -17,6 +17,10 @@ The video is a bit outdated in showing the contents of the chocolateyInstall.ps1
 Install-ChocolateyPackage 'windirstat' 'exe' '/S' 'http://windirstat.info/wds_current_setup.exe'
 ```
 
+## Quick start guide
+
+If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](https://github.com/chocolatey/chocolatey/wiki/CreatePackagesQuickStart) for you.
+
 ## Installation paths
 
 As the package owner, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *"What distinction does chocolatey make between an application and a tool?"* at the bottom of the [FAQ](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
