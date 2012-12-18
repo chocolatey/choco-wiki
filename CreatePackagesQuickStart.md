@@ -102,3 +102,7 @@ $validExitCodes = @(0,3010)
 
 Install-ChocolateyPackage "$packageName" "$installerType" "$silentArgs" "$url" "$url64"  -validExitCodes $validExitCodes
 ```
+
+## Tips
+
+* If you cannot find the installer silent mode, you can try an old tool called (http://www.softpedia.com/progDownload/Universal-Silent-Switch-Finder-Download-180984.html)[Universal Silent Switch Finder 1.5.0.0]
