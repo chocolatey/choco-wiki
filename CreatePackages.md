@@ -33,6 +33,8 @@ As an example, the [ruby package](http://chocolatey.org/packages/ruby) uses `%ch
 
 `%chocolatey_bin_root%` gives the chocolatey user a way of controlling where packages are installed. If you want to allow customizing the installation path, then this is currently the way to go.
 
+**Please note** that this variable is empty by default, and needs to be explicitly set by the user. Before installing to `%chocolatey_bin_root%`, your installation script should check if this variable is not empty.
+
 ### 2. The default installation path of your .msi/.exe setup file
 
 The original creator probably had a reason for choosing a specific default installation path.  
