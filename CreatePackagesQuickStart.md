@@ -105,4 +105,4 @@ Install-ChocolateyPackage "$packageName" "$installerType" "$silentArgs" "$url" "
 
 ## Tips
 
-* If you cannot find the installer silent mode, you can try an old tool called (http://www.softpedia.com/progDownload/Universal-Silent-Switch-Finder-Download-180984.html)[Universal Silent Switch Finder 1.5.0.0]
+* If you cannot find the installer silent mode, you can try an old tool called [[Universal Silent Switch Finder 1.5.0.0|http://www.softpedia.com/progDownload/Universal-Silent-Switch-Finder-Download-180984.html]]
