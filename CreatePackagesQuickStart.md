@@ -17,6 +17,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
    * Get templates:
       * _cinst git_
       * _cd %ChocolateyInstall%_
+      * close and reopen cmd prompt so git is in the PATH
       * _git clone [[https://github.com/chocolatey/chocolateytemplates.git]]_
       * _cd chocolateytemplates\\\_templates_
       * _warmup  addTemplateFolder chocolatey "%CD%\chocolatey"_
