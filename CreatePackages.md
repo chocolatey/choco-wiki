@@ -21,6 +21,25 @@ Install-ChocolateyPackage 'windirstat' 'exe' '/S' 'http://windirstat.info/wds_cu
 
 If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](https://github.com/chocolatey/chocolatey/wiki/CreatePackagesQuickStart) for you.
 
+##Nuspec?##
+
+The `Chocolatey` Windows package manager has its roots in the `[[NuGet|http://nuget.org/]]` `Visual Studio` package manager by `Microsoft`. Therefor, packages are based on the same principals. And one of them is a package description in `xml` format, known as the `Nuspec`.
+
+The `Nuspec` contains basic information such as the version, license, maintainer, and package dependencies.
+
+**Note:** You should indicate the version of `Chocolatey` that has the functionality your installation script requires. Otherwise, if your package uses functions that were recently introduced, the installation will fail for users with an older version of `Chocolatey` installed.
+
+You can indicate the `Chocolatey` dependency like any other dependency. E.g.:
+```xml
+    <dependencies>
+        <dependency id="Chocolatey" version="0.9.8.21" />
+    </dependencies>
+```
+
+Logically, the version is based on the lowest compatible version. But if you don't know and used a lot of sorcery in your package, depend on the version of `Chocolatey` that you succesfully tested your package on.
+
+**See also:** [[http://docs.nuget.org/docs/reference/versioning]]
+
 ## Installation paths
 
 As the package owner, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *"What distinction does chocolatey make between an application and a tool?"* at the bottom of the [FAQ](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
