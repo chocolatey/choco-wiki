@@ -39,7 +39,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
    * In your package directory, use: 
       * _cinst PackageName -source '%cd%'_
    * Otherwise, use the full path:
-      * _cinst PackageName -source 'c:\path\to\PackageName.1.1.0.nupkg'_
+      * _cinst PackageName -source 'c:\path\to\Package\'_
 * **Push the package** to the Chocolatey repository:
    * Get a Chocolatey account:
       * [[http://chocolatey.org/account/Register]]
@@ -58,8 +58,8 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
       * 'PackageName'
       * ""PackageName""
 * **Using NuGet tools**
-   * **Specify the source** if you accidentally use NuGet commands when following some guide in stead of Chocolatey commands. E.g.:
-      * _nuget push package.nupkg** -source [[http://chocolatey.org/]]**_ # in stead of:
+   * **Specify the source** if you accidentally use NuGet commands when following some guide instead of Chocolatey commands. E.g.:
+      * _nuget push package.nupkg** -source [[http://chocolatey.org/]]**_ # instead of:
       * _cpush package.nupkg_
 
 ## Environmental Variables
