@@ -79,13 +79,8 @@ Here are some simple examples.
 ```cmd
 $name = 'Package Name'
 $url  = 'http://path/to/download/installer.exe'
-try {
-    Install-ChocolateyPackage $name 'EXE' '/VERYSILENT' $url
-    Write-ChocolateySuccess $name
-} catch {
-  Write-ChocolateyFailure $name $($_.Exception.Message)
-  throw
-}
+
+Install-ChocolateyPackage $name 'EXE' '/VERYSILENT' $url
 ```
 
 **Note** that you have to figure out the command line switch to make the installer silent, e.g. **/VERYSILENT**. This changes from installer to installer.
