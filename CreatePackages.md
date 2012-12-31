@@ -23,11 +23,11 @@ If you think you got what it takes and just want to know the basic steps to get 
 
 ##Nuspec?##
 
-The `Chocolatey` Windows package manager has its roots in the `[[NuGet|http://nuget.org/]]` `Visual Studio` package manager by `Microsoft`. Therefor, packages are based on the same principals. And one of them is a package description in `xml` format, known as the `Nuspec`.
+The `Chocolatey` Windows package manager uses the same infrastructure as `[[NuGet|http://nuget.org/]]` , the `Visual Studio` package manager by `Microsoft`. Therefore packages are based on the same principals. One of those is a package description (specification) in `xml` format, known as the `Nuspec`.
 
 The `Nuspec` contains basic information such as the version, license, maintainer, and package dependencies.
 
-**Note:** You should indicate the version of `Chocolatey` that has the functionality your installation script requires. Otherwise, if your package uses functions that were recently introduced, the installation will fail for users with an older version of `Chocolatey` installed.
+**Note:** If your package uses recently introduced functionality, you might want to include `chocolatey` as a dependency with the version being the lowest version that has the introduced functionality. Otherwise the installation could fail for users with an older version of `Chocolatey` installed.
 
 You can indicate the `Chocolatey` dependency like any other dependency. E.g.:
 ```xml
