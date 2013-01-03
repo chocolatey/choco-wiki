@@ -38,8 +38,14 @@ More of this will become automated over time.
 1. Open Ketarin. Choose File –> Settings. 
 1. On the General Tab we are going to add the Version Column for all jobs. Click Add…, then put Version in Column name and {version} in Column value. ![Ketarin Settings Custom](images/chocopkgup/KetarinShowCustomField.png "Ketarin Custom Field Setup")  
 1. Click [OK]. This should add it to the list of Custom Columns.
-1. Click on the Commands Tab and set Edit command for event to “Before updating an application”.  
+1. Click on the Commands Tab and set Edit command for event to “Before updating an application”. 
+ 
+1. Add the following text: `chocopkgup /p {appname} /v {version} /u {preupdate-url} /u64 {url64} /pp {file} 
+REM /disablepushCheck` the bottom of this section to be sure it set to Command. 
+1. Click Okay. 
+1. Note the commented out /disablepush. This is so you can create a few packages and test that everything is working well before actually pushing those packages up to chocolatey. You may want to add that switch to the main command above it. 
 
+This gets Ketarin all set up with a global command for all packages we create. If you want to use this outside of chocolatey, all you need to do is remove the global setting for Before updating an application and instead apply it to every job that pertains to chocolatey update.
 
 ###Tutorial
 Stay tuned for this. Below may look like garbage; that's okay. I am collecting my thoughts prior to making it coherent. 
