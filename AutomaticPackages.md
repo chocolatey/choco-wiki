@@ -33,9 +33,11 @@ More of this will become automated over time.
 1. Choose a schedule for the task. I run mine once a day but you can set it to run more often. Choose a time when the computer is not that busy. 
 1. Save the following Ketarin template somewhere: https://github.com/ferventcoder/chocolateyautomaticpackages/blob/master/_template/KetarinChocolateyTemplate.xml 
 1. Open Ketarin. Choose File –> Settings. 
-1. On the **General Tab** we are going to add the Version Column for all jobs. Click Add…, then put Version in Column name and {version} in Column value. ![Ketarin Settings Custom](images/chocopkgup/KetarinShowCustomField.png "Ketarin Custom Field Setup")  
+1. On the **General Tab** we are going to add the Version Column for all jobs. Click Add…, then put Version in Column name and {version} in Column value.  
+![Ketarin Settings Custom](images/chocopkgup/KetarinShowCustomField.png "Ketarin Custom Field Setup")  
 1. Click **[OK]**. This should add it to the list of Custom Columns.
-1. Click on the **Commands Tab** and set **Edit command for event** to “Before updating an application”. ![Ketarin Settings](images/chocopkgup/KetarinSettings.png "Ketarin Settings")    
+1. Click on the **Commands Tab** and set **Edit command for event** to “Before updating an application”.  
+![Ketarin Settings](images/chocopkgup/KetarinSettings.png "Ketarin Settings")    
 1. Add the following text: 
 ```cmd
 chocopkgup /p {appname} /v {version} /u {preupdate-url} /u64 {url64} /pp {file} 
