@@ -51,14 +51,36 @@ REM /disablepush
 
 This gets Ketarin all set up with a global command for all packages we create. If you want to use this outside of chocolatey, all you need to do is remove the global setting for Before updating an application and instead apply it to every job that pertains to chocolatey update.
 
-###Tutorial
-Stay tuned for this. Below may look like garbage; that's okay. I am collecting my thoughts prior to making it coherent. 
+###Create an Automatic Package
+Preferably you are taking an existing package that you have tested and converting it to an automatic package.  
+  
+1. Open Ketarin. Choose File –> Import…  
+1. Choose the template you just saved earlier (KetarinChocolateyTemplate.xml). 
+1. Answer the questions. This will create a new job for Ketarin to check. 
+1. One important thing to keep in mind is that **the name of the job needs to match the name of the package folder exactly.**
+1. Right click on that new job and select Edit. Take a look at the following:  
+![Ketarin Job Main](images/chocopkgup/KetarinMain.png "Ketarin Job Main")
+1. Set the URL appropriately. I would shy away from FileHippo for now, the URL has been known to change and if you upload that as the download url in a chocolatey packages, it won’t work very well. 
+1. Click on Variables on the right of URL  
+![Ketarin Job Variables](images/chocopkgup/KetarinSetVariables.png "Ketarin Job Variables")  
+1. On the left side you should see a variable for version and one for url64. Click on version.
+1. Choose the appropriate method for you. Here I’ve chosen Content from URL (start/end).
+1. Enter the URL for versioning information.  
+![Ketarin Job Variables](images/chocopkgup/KetarinVariables.png "Ketarin Job Variables") 
+1. In the contents itself, highlight enough good information before a version to be able to select it uniquely during updates (but not so much it doesn’t work every time as the page changes). Click on **Use selection as start**.
+1. Now observe that it didn’t jump back too far. 
+1. Do the same with the ending part, keeping in mind that this side doesn’t need to be too much because it is found AFTER the start. Once selected click on **Use selection as end**.
+1. It should look somewhat similar to have is presented in the picture above.
+1. If you have a 64bit url you want to get, do the same for the url64 variable.
+1. When all of this is good, click **OK**.
+1. Click **OK** again. 
+
   
 
   
-![Ketarin Job Main](images/chocopkgup/KetarinSetVariables.png "Ketarin Job Main")  
-![Ketarin Job Main](images/chocopkgup/KetarinMain.png "Ketarin Job Main")  
-![Ketarin Job Variables](images/chocopkgup/KetarinVariables.png "Ketarin Job Variables")  
+
+  
+ 
 
 
   
