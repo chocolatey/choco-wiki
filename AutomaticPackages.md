@@ -16,8 +16,29 @@ This tool makes use of Ketarin and Nuget.exe. Both are awesome tools that help c
 ###Setup
 More of this will become automated over time.  
   
-1. You need a scheduled job to run ketarin. You want it to run the actual ketarin.exe and not the chocolatey batch redirect.  
+1. Ensure you are using a source control repository and file system for keeping packages. A good example is here. 
+1. Make sure you have installed the chocolatey package templates. If you’ve installed the chocolatey templates (ReadMe has instructions), then all you need to do is take a look at the chocolateyauto and chocolateyauto3. You will note this looks almost exactly like the regular chocolatey template, except this has some specially named token values. 
   
+```powershell 
+#Items that could be replaced based on what you call chocopkgup.exe with
+#{{PackageName}} - Package Name (should be same as nuspec file and folder) |/p
+#{{PackageVersion}} - The updated version | /v
+#{{DownloadUrl}} - The url for the native file | /u
+#{{PackageFilePath}} - Downloaded file if including it in package | /pp
+#{{PackageGuid}} - This will be used later | /pg
+#{{DownloadUrlx64}} - The 64bit url for the native file | /u64
+```
+  
+ These are what you now will be passing from chocopkgup to this package. 
+
+1. Install chocopkgup (which will install ketarin and nuget.commandline). cinst chocolateypackageupdater. 
+1. Create a scheduled task (in windows). This is the command (edit the path to cmd.exe accordingly): C:\Windows\System32\cmd.exe /c c:\tools\chocolateypackageupdater\ketarinupdate.cmd 
+Choose a schedule for the task. I run mine once a day but you can set it to run more often. Choose a time when the computer is not that busy. 
+Save this Ketarin template somewhere: https://github.com/ferventcoder/chocolateyautomaticpackages/blob/master/_template/KetarinChocolateyTemplate.xml 
+Open Ketarin. Choose File –> Settings. 
+On the General Tab we are going to add the Version Column for all jobs. Click Add…, then put Version in Column name and {version} in Column value. 
+
+
 ###Tutorial
 Stay tuned for this. Below may look like garbage; that's okay. I am collecting my thoughts prior to making it coherent. 
   
