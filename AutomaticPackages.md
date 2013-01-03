@@ -11,7 +11,7 @@ Check the license at http://realdimensions.net/licenses/chocolateypackageupdater
 Basically it boils down to this: if you want to use chocopkgup privately, you will need to pay for it. As long as you are publishing to chocolatey.org, the tool is completely free! The license does expire every once in awhile, but if you are keeping up on your chocolatey updates locally, you won't even notice (cup all, remember?).  
   
 ###Credits
-This tool makes use of Ketarin and Nuget.exe. Both are awesome tools that help chocopkgup accomplish it's tasks.  
+This tool makes use of Ketarin and Nuget.exe. Both are awesome tools that help chocopkgup accomplish its tasks.  
   
 ###Setup
 More of this will become automated over time.  
