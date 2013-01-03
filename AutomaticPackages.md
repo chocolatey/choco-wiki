@@ -85,11 +85,14 @@ Preferably you are taking an existing package that you have tested and convertin
 1. Inspect the resulting chocolatey package(s) for any issues.
 1. You should also test the scheduled task works appropriately.
   
-###Troubleshooting
+###Troubleshooting/Notes
 
 * Ketarin comes with a logging facility so you can see what it is doing. It’s under View –> Show Log. 
 * In the top level folder for chocopkgup (in program data), we log what we receive from Ketarin as well and the process of putting together a package.
 * The name of the application in ketarin matches exactly that of the folder that is in the automatic packages folder.
+* Every once in awhile you want to look in Ketarin to see what jobs might be failing. Then figure out why.
+* Every once in awhile you will want to inspect the chocopkgupfolder to see if there are any packages that did not make it up for some reason or another and then upload them.
+
   
 
   
