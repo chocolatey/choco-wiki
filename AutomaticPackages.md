@@ -3,7 +3,7 @@ Automatic packages are what set chocolatey apart from other package managers.
 http://chocolatey.org/packages/ChocolateyPackageUpdater  
   
 ##Chocolatey Package Updater aka chocopkgup  
-The tool that accomplishes this process is known as chocopkgup (Chocolatey Package Updater). It is a free tool (unless you want to use it for uploads to not chocolatey.org).  
+The tool that accomplishes this process is known as chocopkgup (Chocolatey Package Updater). It is a free tool (unless you want to use it for uploads to somewhere other than chocolatey.org).  
   
 ###Licensing
 Check the license at http://realdimensions.net/licenses/chocolateypackageupdater/license.txt to be sure that it applies to you.  
