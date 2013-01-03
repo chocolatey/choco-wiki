@@ -63,8 +63,8 @@ Preferably you are taking an existing package that you have tested and convertin
 1. Set the URL appropriately. I would shy away from FileHippo for now, the URL has been known to change and if you upload that as the download url in a chocolatey packages, it won’t work very well. 
 1. Click on Variables on the right of URL  
 ![Ketarin Job Variables](images/chocopkgup/KetarinSetVariables.png "Ketarin Job Variables")  
-1. On the left side you should see a variable for version and one for url64. Click on version.
-1. Choose the appropriate method for you. Here I’ve chosen Content from URL (start/end).
+1. On the left side you should see a variable for **version** and one for **url64**. Click on **version**.
+1. Choose the appropriate method for you. Here I’ve chosen **Content from URL (start/end)**.
 1. Enter the URL for versioning information.  
 ![Ketarin Job Variables](images/chocopkgup/KetarinVariables.png "Ketarin Job Variables") 
 1. In the contents itself, highlight enough good information before a version to be able to select it uniquely during updates (but not so much it doesn’t work every time as the page changes). Click on **Use selection as start**.
@@ -76,7 +76,20 @@ Preferably you are taking an existing package that you have tested and convertin
 1. Click **OK** again. 
 
   
+###Testing Ketarin/ChocoPkgUp: 
+  
+1. We need to get a good idea of whether this will work or not. 
+1. We’ve set /disablepush in Ketarin global so that it only goes as far as creating packages. 
+1. Navigate to C:\ProgramData\chocolateypackageupdater. 
+1. Open Ketarin, find your job, and right click Update.  If everything is set good, in moments you will have a chocolatey package in the chocopkgup folder.  
+1. Inspect the resulting chocolatey package(s) for any issues.
+1. You should also test the scheduled task works appropriately.
+  
+###Troubleshooting
 
+Ketarin comes with a logging facility so you can see what it is doing. It’s under View –> Show Log. 
+In the top level folder for chocopkgup (in program data), we log what we receive from Ketarin as well and the process of putting together a package.
+The name of the application in ketarin matches exactly that of the folder that is in the automatic packages folder.
   
 
   
