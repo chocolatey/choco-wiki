@@ -87,9 +87,9 @@ Preferably you are taking an existing package that you have tested and convertin
   
 ###Troubleshooting
 
-Ketarin comes with a logging facility so you can see what it is doing. It’s under View –> Show Log. 
-In the top level folder for chocopkgup (in program data), we log what we receive from Ketarin as well and the process of putting together a package.
-The name of the application in ketarin matches exactly that of the folder that is in the automatic packages folder.
+* Ketarin comes with a logging facility so you can see what it is doing. It’s under View –> Show Log. 
+* In the top level folder for chocopkgup (in program data), we log what we receive from Ketarin as well and the process of putting together a package.
+* The name of the application in ketarin matches exactly that of the folder that is in the automatic packages folder.
   
 
   
