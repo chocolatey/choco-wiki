@@ -60,6 +60,8 @@ This is for before updating app
 
   
   
+![Ketarin Job Main](images/chocopkgup/KetarinCustomCommand.png "Ketarin Job Main")  
+![Ketarin Job Main](images/chocopkgup/KetarinSetVariables.png "Ketarin Job Main")  
 ![Ketarin Job Main](images/chocopkgup/KetarinMain.png "Ketarin Job Main")  
 ![Ketarin Job Variables](images/chocopkgup/KetarinVariables.png "Ketarin Job Variables")  
 
