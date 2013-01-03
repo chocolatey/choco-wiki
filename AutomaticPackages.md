@@ -31,12 +31,14 @@ More of this will become automated over time.
   
  These are what you now will be passing from chocopkgup to this package. 
 
-1. Install chocopkgup (which will install ketarin and nuget.commandline). cinst chocolateypackageupdater. 
-1. Create a scheduled task (in windows). This is the command (edit the path to cmd.exe accordingly): C:\Windows\System32\cmd.exe /c c:\tools\chocolateypackageupdater\ketarinupdate.cmd 
-Choose a schedule for the task. I run mine once a day but you can set it to run more often. Choose a time when the computer is not that busy. 
-Save this Ketarin template somewhere: https://github.com/ferventcoder/chocolateyautomaticpackages/blob/master/_template/KetarinChocolateyTemplate.xml 
-Open Ketarin. Choose File –> Settings. 
-On the General Tab we are going to add the Version Column for all jobs. Click Add…, then put Version in Column name and {version} in Column value. 
+1. Install chocopkgup (which will install ketarin and nuget.commandline). `cinst chocolateypackageupdater`. 
+1. Create a scheduled task (in windows). This is the command (edit the path to cmd.exe accordingly): `C:\Windows\System32\cmd.exe /c c:\tools\chocolateypackageupdater\ketarinupdate.cmd` 
+1. Choose a schedule for the task. I run mine once a day but you can set it to run more often. Choose a time when the computer is not that busy. 
+1. Save the following Ketarin template somewhere: https://github.com/ferventcoder/chocolateyautomaticpackages/blob/master/_template/KetarinChocolateyTemplate.xml 
+1. Open Ketarin. Choose File –> Settings. 
+1. On the General Tab we are going to add the Version Column for all jobs. Click Add…, then put Version in Column name and {version} in Column value. ![Ketarin Settings Custom](images/chocopkgup/KetarinShowCustomField.png "Ketarin Custom Field Setup")  
+1. Click [OK]. This should add it to the list of Custom Columns.
+1. Click on the Commands Tab and set Edit command for event to “Before updating an application”.  
 
 
 ###Tutorial
@@ -56,7 +58,6 @@ chocopkgup /p {appname} /v {version} /u {preupdate-url} /u64 {url64} /pp {file}
 REM /disablepush
 ```
   
-![Ketarin Settings Custom](images/chocopkgup/KetarinShowCustomField.png "Ketarin Custom Field Setup")  
   
 ![Ketarin Job Main](images/chocopkgup/KetarinMain.png "Ketarin Job Main")  
 ![Ketarin Job Variables](images/chocopkgup/KetarinVariables.png "Ketarin Job Variables")  
