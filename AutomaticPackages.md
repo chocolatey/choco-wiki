@@ -16,8 +16,8 @@ This tool makes use of Ketarin and Nuget.exe. Both are awesome tools that help c
 ###Setup
 More of this will become automated over time.  
   
-1. Ensure you are using a source control repository and file system for keeping packages. A good example is here. 
-1. Make sure you have installed the chocolatey package templates. If you’ve installed the chocolatey templates (ReadMe has instructions), then all you need to do is take a look at the chocolateyauto and chocolateyauto3. You will note this looks almost exactly like the regular chocolatey template, except this has some specially named token values. 
+1. Optional (strongly recommended) - Ensure you are using a source control repository and file system for keeping packages. A good example is here. 
+1. Optional (strongly recommended) - Make sure you have installed the chocolatey package templates. If you’ve installed the chocolatey templates (ReadMe has instructions), then all you need to do is take a look at the chocolateyauto and chocolateyauto3. You will note this looks almost exactly like the regular chocolatey template, except this has some specially named token values. 
 ```powershell 
 #Items that could be replaced based on what you call chocopkgup.exe with
 #{{PackageName}} - Package Name (should be same as nuspec file and folder) |/p
