@@ -43,7 +43,8 @@ More of this will become automated over time.
 chocopkgup /p {appname} /v {version} /u {preupdate-url} /u64 {url64} /pp {file} 
 REM /disablepush
 ```
-1. Check the bottom of this section to be sure it set to **Command**. 
+1. Check the bottom of this section to be sure it set to **Command**.  
+![Ketarin Settings Command](images/chocopkgup/KetarinCustomCommand.png "Ketarin Settings Command")
 1. Click Okay. 
 1. Note the commented out /disablepush. This is so you can create a few packages and test that everything is working well before actually pushing those packages up to chocolatey. You may want to add that switch to the main command above it. 
 
@@ -54,13 +55,6 @@ Stay tuned for this. Below may look like garbage; that's okay. I am collecting m
   
 
   
-####Ketarin Global Settings Command
-This is for before updating app
-  
-
-  
-  
-![Ketarin Job Main](images/chocopkgup/KetarinCustomCommand.png "Ketarin Job Main")  
 ![Ketarin Job Main](images/chocopkgup/KetarinSetVariables.png "Ketarin Job Main")  
 ![Ketarin Job Main](images/chocopkgup/KetarinMain.png "Ketarin Job Main")  
 ![Ketarin Job Variables](images/chocopkgup/KetarinVariables.png "Ketarin Job Variables")  
