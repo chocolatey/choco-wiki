@@ -34,7 +34,9 @@ This is for before updating app
 chocopkgup /p {appname} /v {version} /u {preupdate-url} /u64 {url64} /pp {file} 
 REM /disablepush
 ```
-
+  
+![Ketarin Settings Custom](images/chocopkgup/KetarinShowCustomField.png "Ketarin Custom Field Setup")  
+  
 ![Ketarin Job Main](images/chocopkgup/KetarinMain.png "Ketarin Job Main")  
 ![Ketarin Job Variables](images/chocopkgup/KetarinVariables.png "Ketarin Job Variables")  
 
