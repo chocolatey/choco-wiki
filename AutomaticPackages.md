@@ -29,7 +29,7 @@ More of this will become automated over time.
 ```
 1. These are the tokens that chocopkgup will replace when it generates an instance of a package. 
 1. Install chocopkgup (which will install ketarin and nuget.commandline). `cinst chocolateypackageupdater`. 
-1. Check the config in C:\tools\ChocolateyPackageUpdater\chocopkgup.exe.config. The PackagesFolder key should point to where your repository is located.
+1. Check the config in `C:\tools\ChocolateyPackageUpdater\chocopkgup.exe.config` (or chocolatey_bin_root/ChocolateyPackageUpdater). The `PackagesFolder` key should point to where your repository is located.
 1. Create a scheduled task (in windows). This is the command (edit the path to cmd.exe accordingly): `C:\Windows\System32\cmd.exe /c c:\tools\chocolateypackageupdater\ketarinupdate.cmd` 
 1. Choose a schedule for the task. I run mine once a day but you can set it to run more often. Choose a time when the computer is not that busy. 
 1. Save the following Ketarin template somewhere: https://github.com/ferventcoder/chocolateyautomaticpackages/blob/master/_template/KetarinChocolateyTemplate.xml 
