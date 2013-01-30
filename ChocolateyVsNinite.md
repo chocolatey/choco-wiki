@@ -70,3 +70,12 @@ Install-ChocolateyPackage 'windirstat' 'exe' '/S' 'windirstat.info/wds_current_s
 ### Versioning/upgrades:
 * Ninite - sort of, you just rerun the installer every once in awhile
 * Chocolatey - Yes. Consider 'cup all'.
+
+## Conclusion
+Ninite is a solid solution if you don't mind not being able to script it and only install the applications that it has listed on it's page. You are also guaranteed that you have everything you need to install sheerly by having the Ninite Installer. In that way it is better than Chocolatey, which most packages require access to the internet to download installers that do not have distribution rights with them.   
+  
+Chocolatey has 600% more packages than Ninite and a community that is driving to continually make it better. If you need to get to older versions of packages, many of the packages on Chocolatey.org allow for this. What chocolatey lacks in the guarantee that Ninite provides, it makes up for in features and sheer amount of available items for install. Chocolatey can provide packages for non-free products, have multiple sources and folks can script the installations. Chocolatey is more than just an installer and with that does not require administrative privileges to use.  
+  
+Both solutions suffer from the issue of having the most up-to-date packages available, it's just that Chocolatey is more transparent about it.   
+  
+Whether you use Chocolatey or Ninite, consider that the two answer the same question differently and that is okay. They can live in harmony with each other.  
