@@ -43,14 +43,14 @@ A lot of folks out there are always wanting to point out that there is Ninite wh
 
 ### Interfaces:
 * Ninite - choose apps from a website, download installer just for those apps. Pay for the pro version and use the command line.
-* Chocolatey - open a command line. Install app with cinst appname. Lather rinse repeat.
+* Chocolatey - open a command line. Install app with `cinst appname`. Lather rinse repeat.
 
 ### Packages:
-* Ninite - closed, only items available are what ninite authors choose to make available.
+* Ninite - closed, only items available are what Ninite staff choose to make available.
 * Chocolatey - community packages on a central server
 
 ### Package sources:
-* Ninite - one, with ninite
+* Ninite - one at Ninite.com
 * Chocolatey - central one at chocolatey.org, create and use public/private sources (folder, network share, odata feed like nuget.org, [chocolatey.org] and/or myget.org)
 * Chocolatey (revisited) - cinst bash -source cygwin | cinst gemcutter -source ruby | cinst sphynx -source python | cinst IISExpress -source webpi
 
@@ -61,7 +61,7 @@ Install-ChocolateyPackage 'windirstat' 'exe' '/S' 'windirstat.info/wds_current_s
 
 ### Package updates:
 * Handled by Ninite staff, so there's less chance of anything being broken.
-* Handled by the community, reviewed by moderators. 
+* Handled by the community, reviewed by moderators. Possibility of breakages.
 
 ### Package dependencies:
 * Ninite - not really
