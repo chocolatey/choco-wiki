@@ -1,6 +1,6 @@
 ## Chocolatey vs Ninite
 
-A lot of folks out there are always wanting to point out that there is ninite when someone mentions chocolatey. That is fine, ninite works but it only has like 90+ things you can install. They are limited by what Ninite can rebundle and redistribute. Both are solid solutions in their own right, but you need to understand the needs and what the two solutions provide to really make a choice on them.
+A lot of folks out there are always wanting to point out that there is Ninite when someone mentions Chocolatey. That is fine, Ninite works but it only has like 90+ things you can install. They are limited by what Ninite can rebundle and redistribute. Both are solid solutions in their own right, but you need to understand the needs and what the two solutions provide to really make a choice on them.
 
 ## Package Management Approach
 
