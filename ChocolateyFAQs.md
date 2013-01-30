@@ -12,6 +12,9 @@ How about updates? Wouldn't it be nice to update nearly everything on your machi
 First a [[story|ChocolateyStory]]  
 [[Why chocolatey|Why]]  
   
+###How is chocolatey different than Ninite?
+Great question, see [[Chocolatey vs Ninite|ChocolateyVsNinite]].  
+  
 ###How is chocolatey different than NuGet and/or OpenWrap?
 Chocolatey is a machine package manager. Where NuGet/OW are focused on developer library packages, chocolatey is focused on applications and tools, and not necessarily developer focused.
   
