@@ -57,7 +57,7 @@ A lot of folks out there are always wanting to point out that there is Ninite wh
 ### Creating packages:
 * Ninite - no
 * Chocolatey - yes and stupid simple. Take a look at [github.com] and keep in mind that it is one line call to a powershell function to install many apps. Consider windirstat is:
-Install-ChocolateyPackage 'windirstat' 'exe' '/S' 'windirstat.info/wds_current_setup.exe'
+`Install-ChocolateyPackage 'windirstat' 'exe' '/S' 'windirstat.info/wds_current_setup.exe'`
 
 ### Package updates:
 * Handled by Ninite staff, so there's less chance of anything being broken.
