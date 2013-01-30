@@ -22,7 +22,7 @@ A lot of folks out there are always wanting to point out that there is ninite wh
 * Allows for community contributions.
 * Allows for pay for apps to be included as packages.
 * CLI focused.
-* Easily scriptable, which allows for adding setup scripts to things like source control.
+* Easily scriptable which allows for adding setup scripts to things like source control.
 * Update apps simply by running `cup packagename` or `cup all`.
 * Integration with other package managers (ruby, python, WebPI, cygwin, more coming)
 * Able to be used without needing administrative permissions (almost all tool packages are non-admin)
