@@ -81,4 +81,4 @@ Chocolatey has 600% more packages than Ninite and a community that is driving to
   
 Both solutions suffer from the issue of having the most up-to-date packages available, it's just that Chocolatey is more transparent about it.   
   
-Whether you use Chocolatey or Ninite, consider that the two answer the same question differently and that is okay. They can live in harmony with each other.  
+Whether you use Chocolatey or Ninite, consider that the two answer the same question differently and that is okay. They can live in harmony with each other and at some point Chocolatey may offer Ninite as package source.  
