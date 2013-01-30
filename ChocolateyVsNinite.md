@@ -42,8 +42,8 @@ A lot of folks out there are always wanting to point out that there is Ninite wh
 ## Chocolatey and  Ninite : Compare and Contrast
 
 ### Interfaces:
-Ninite - choose apps from a website, download installer just for those apps. Pay for the pro version and use the command line.
-Chocolatey - open a command line. Install app with cinst appname. Lather rinse repeat.
+* Ninite - choose apps from a website, download installer just for those apps. Pay for the pro version and use the command line.
+* Chocolatey - open a command line. Install app with cinst appname. Lather rinse repeat.
 
 ### Packages:
 * Ninite - closed, only items available are what ninite authors choose to make available.
