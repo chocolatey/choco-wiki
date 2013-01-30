@@ -1,18 +1,6 @@
 ## Chocolatey vs Ninite
 
-A lot of folks out there are always wanting to point out that there is ninite when someone mentions chocolatey. That is fine, ninite works but it only has like 30 things you can install. They are limited by what they can redistribute. Both are solid solutions in their own right, but you need to understand the needs and what the two solutions provide to really make a choice on them.
-
-### Packaging needs
-* Good CLI that is simple to use.
-* Main repository that takes packages contributions from the community (and is being maintained).
-* Ability to use additional/multiple sources.
-* Meta packages that can chain dependencies.
-* Virtual packages.
-* Packages should be easy to create / maintain.
-* Packages should be concise and be able to be created without worrying about distribution rights.
-* Unattended installs
-* Installation of multiple packages with one command.
-* Set up a full environment with a script - https://github.com/chocolatey/chocolatey/wiki/DevelopmentEnvironmentSetup
+A lot of folks out there are always wanting to point out that there is ninite when someone mentions chocolatey. That is fine, ninite works but it only has like 90+ things you can install. They are limited by what Ninite can rebundle and redistribute. Both are solid solutions in their own right, but you need to understand the needs and what the two solutions provide to really make a choice on them.
 
 ## Package Management Approach
 
@@ -32,6 +20,18 @@ A lot of folks out there are always wanting to point out that there is ninite wh
 * Allows for community contributions
 * CLI focused
 * Multiple sources including private ones really open up chocolatey as a multipurpose tool.
+
+#### Packaging solution needs (that brought about chocolatey in the first place)
+* Good CLI that is simple to use.
+* Main repository that takes packages contributions from the community (and is being maintained).
+* Ability to use additional/multiple sources.
+* Meta packages that can chain dependencies.
+* Virtual packages.
+* Packages should be easy to create / maintain.
+* Packages should be concise and be able to be created without worrying about distribution rights.
+* Unattended installs
+* Installation of multiple packages with one command.
+* Script setup of environments
 
 
 ## Chocolatey and  Ninite : Compare and Contrast
