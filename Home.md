@@ -32,7 +32,7 @@ Want to [[learn more?|ChocolateyFAQs]]
 [[Getting Started|GettingStarted]]  
 [[Command Reference|CommandsReference]]  
 Use chocolatey to set up [[source code development environments|DevelopmentEnvironmentSetup]]!  
-What distinction does chocolatey make between an [[application and a tool|ChocolateyFAQs]]?   
+What distinction does chocolatey make between an [[application and a tool|https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs#what-distinction-does-chocolatey-make-between-an-application-and-a-tool]]?   
   
 ##Packages
 [[Creating packages|CreatePackages]]  
