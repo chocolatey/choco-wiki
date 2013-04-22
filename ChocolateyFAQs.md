@@ -85,3 +85,14 @@ A tool is something that doesn't require a native installer to use. In other wor
   
 Tools end up in the %ChocolateyInstall%/lib (i.e. C:\Nuget\lib) folder yes, but they get a batch redirect to put them on the path of the machine. This behavior is very much to how chocolatey works and is not configurable (the directory). Where the tools end up is still going to be %ChocolateyInstall%/lib no matter where you move the directory, unless a package itself unpacks the tool elsewhere (as in the case of [git-tfs](http://chocolatey.org/packages/gittfs)).  
   
+###What is the difference between packages named \*.install/\*.app (ie.e git.install), \*.commandline/\*.tool (i.e. git.commandline), and \* (i.e git)?  
+  
+Hey, good question! You are paying attention! Chocolatey has the concept of virtual packages (coming) and meta packages. Virtual packages are packages that represent other packages when used as a dependency. Metapackages are packages that only exist to provide a grouping of dependencies.  
+  
+A package with no suffix that is surrounded by packages with suffixes is to provide a virtual package. So in the case of git, git.install, and git.commandline - git is that virtual package (currently it is really just a metapackage until the virtual packages feature is complete). That means that other packages could depend on it and you could have either git.install or git.commandline installed and you would meet the dependency of having git installed. That keeps chocolatey from trying to install something that already meets the dependency requirement for a package.
+  
+Talking specifically about the \*.install/\*.app package suffix - those are for the packages that have a native installer that they have bundled or they download and run.
+  
+The \*.commandline/\*.tool packages are the packages that will usually result in an executable on your path somewhere but do not get installed onto the system (Add/Remove Programs).
+
+Want more information? See http://devlicious.com/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx
