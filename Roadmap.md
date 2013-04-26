@@ -1,5 +1,7 @@
 ##RoadMap - Let's Get Chocolatey!
-
+  
+**NOTE:** This is not always going to be updated, one can take a look at the issues list here and in the chocolatey.org feed.  
+  
 ###chocolatey v1  
   
 * cpack - **Done in v0.9.8.13**  
@@ -8,19 +10,20 @@
 * [Uninstall (cuninst)](https://github.com/chocolatey/chocolatey/issues/6)
 * More general improvements to the rest of the commands
 * [Virtual packages](https://github.com/chocolatey/chocolatey/issues/7)
+* Ruby Gems Support - **Done in v0.9.8.13**  
+* [Puppet Integration](https://github.com/chocolatey/puppet-chocolatey) - **Done**
+* [Chef Integration](https://github.com/chocolatey/chocolatey-cookbook) - **Done**
+* Web PI feed support - [webpicommandline](http://msdn.microsoft.com/en-us/library/gg433092.aspx) - **Done in v0.9.8.13**  
+ 
+### Chocolatey.org
+  
+* Chocolatey Gallery - **Done**
+* Package inspector
+* Feed Moderation - **Done**
+* RSS/Atom Feed - **Done**
 
   
-### Exterior  
-  
-* Chocolatey NuGet gallery with moderation turned on
-* Create and save packages on the web
-* RSS/Atom feed
-
 ###Thoughts for future directions (undecided directions)  
   
 * GUI  
 * Pluggable compositional model  
-* Ruby Gems Support - **Done in v0.9.8.13**  
-* [Puppet Integration](https://github.com/rismoney/puppet-chocolatey)  
-* [Chef Integration](http://wiki.opscode.com/display/chef/Resources#Resources-Package)  
-* Web PI feed support - [webpicommandline](http://msdn.microsoft.com/en-us/library/gg433092.aspx) - **Done in v0.9.8.13**  
