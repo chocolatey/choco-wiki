@@ -65,6 +65,13 @@ Defaults to false.
 If you want to use the native installer to step through the installer, use `-notSilent` to have chocolatey download the package and installer and bring it up for you.  
 Defaults to false.  
   
+##Multiple installs
+https://github.com/chocolatey/chocolatey/issues/191
+  
+Workarounds:    
+PowerShell - `'pkg1','pkg2','pkgN' | %{ cinst $_ }`  
+Cmd Shell - `FOR %%G IN (pkg1, pkg2, pkgN) DO (cinst %%G)`  
+  
 ##Examples
 `chocolatey install nunit`  
   
