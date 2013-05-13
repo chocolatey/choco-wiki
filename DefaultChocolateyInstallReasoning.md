@@ -31,6 +31,8 @@ This actually seems the most reasonable place to install it since the environmen
 * User2 would not be able to uninstall an application (with chocolatey) that User1 installed with chocolatey since they couldn't reach the directory.
 * Some of the pathing could get very long (maybe beyond the limits of some older operating systems DOS) for the batch redirects.
 
+### Why not All Users (C:\Users\All Users)?
+
 ### Why the System Root (C:\ on most computers)?
 This is really terse but the number of folders one has to navigate to get to something useful is a pain we don't really know we have. If you think about the amount of folders you need to navigate just to get to some configuration file in program files (which is already 3 levels deep - C:\Program Files\someapp). Not that I always use folder navigation starting with "Computer."  
   
