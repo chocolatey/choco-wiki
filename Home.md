@@ -38,6 +38,7 @@ What distinction does chocolatey make between an [[application and a tool|https:
 [[Creating packages|CreatePackages]]  
 Keep in Mind [[Distribution|Legal]] Rights  
 [[Helper Reference|HelpersReference]]  
+[[Outdated packages? Triage process|PackageTriageProcess]]
   
 ##RoadMap
 Where are [[we|RoadMap]]? Where are we [[going|RoadMap]]?
