@@ -65,7 +65,9 @@ Defaults to false.
 If you want to use the native installer to step through the installer, use `-notSilent` to have chocolatey download the package and installer and bring it up for you.  
 Defaults to false.  
   
-##Multiple installs
+##Multiple installs  - v0.9.8.21+
+`cinst pkg1 pkg2 pkg3 pkgN`  
+  
 https://github.com/chocolatey/chocolatey/issues/191
   
 Workarounds:    
