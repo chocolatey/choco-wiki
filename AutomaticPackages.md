@@ -41,7 +41,7 @@ More of this will become automated over time.
 ![Ketarin Settings](images/chocopkgup/KetarinSettings.png "Ketarin Settings")    
 1. Add the following text: 
 ```cmd
-chocopkgup /p {appname} /v {version} /u {preupdate-url} /u64 {url64} /pp {file} 
+chocopkgup /p {appname} /v {version} /u "{preupdate-url}" /u64 "{url64}" /pp "{file}" 
 REM /disablepush
 ```
 1. Check the bottom of this section to be sure it set to **Command**.  
