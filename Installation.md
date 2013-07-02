@@ -11,7 +11,7 @@ Great question - [[why chocolatey installs where it does|DefaultChocolateyInstal
 ## Before You Install  
 **Can I install chocolatey to another location?** Yes  
   
-1. Create a user environment variable named ```ChocolateyInstall``` and set it to the folder you want chocolatey to install to prior to installation.  
+1. Create a user environment variable named ```ChocolateyInstall``` and set it to the folder you want chocolatey to install to prior to installation.  Keep in mind the [[restrictions|DefaultChocolateyInstallReasoning]] though!  
 1. Create the folder manually.  
 1. If you have already installed  
   
