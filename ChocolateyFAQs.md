@@ -40,10 +40,10 @@ With most packages when you already have something installed, the chocolatey pro
 ###What does chocolatey do? Are you redistributing software?
 Chocolatey does the same thing that you would do based on the package instructions. This usually means going out and downloading an installer from the official distribution point and then silently installing it on your machine. With most packages this means chocolatey is not redistributing software because they are going to the same distribution point that you yourself would go get the software if you were performing this process manually.
   
-###When I install a tool like nuget.commandline, how is it on my path? Without littering my path?
-When you install tools that have executables in the package, chocolatey automatically creates a batch file redirect file and puts that in a folder that is on the path. That allows you to run a tool by asking for it on the command line.  
+###When I install a portable app like imagemagick.tool, how is it on my path? Without littering my path?
+When you install portable apps that have executables in the package, chocolatey automatically creates a batch file redirect file and puts that in a folder that is on the path. That allows you to run a portable application by asking for it on the command line.  
   
-When you install an application, say like WinDirStat (something that has a native installer), it is only on your path if the native installer has put it there or the instructions in the chocolatey package itself has requested for it to be on the path. In this case, this is the "littering" the path concept.  
+When you take an application with a native installer, say like WinDirStat, it is only on your path if the native installer has put it there or the instructions in the chocolatey package itself has requested for it to be on the path. In this case, this is the “littering” the path concept.
   
 ###What is with the "chocolatey gods" in the installs?
 We like humor. You should try some.  
@@ -68,11 +68,10 @@ Is this an error? It's not. It will be removed from future versions.
 Excellent question, deserving of a full page - [[Default Install Reasoning|DefaultChocolateyInstallReasoning]]  
   
 ###What kind of package types does chocolatey support?
-  
-* Binary Packages - Tools/Applications - This is 98% of the chocolatey packages - most are pointers to the real deal installers / zips.  
-* Powershell Command Packages - Packages that have the suffix **.powershell** will install powershell scripts as commands for you to call from anywhere.
-* Development Packages - Packages that have the suffix **.dev**. For instance [dropkick.dev](http://nuget.org/list/packages/dropkick.dev).
-* Coming soon - Virtual Packages - Packages that are like a category, and you just want one package from that category. [Read more ...](https://github.com/ferventcoder/nugetpackages/issues/30)
+* Binary Packages – Installable/portable applications – This is 98 % of the chocolatey packages – most are pointers to the real deal installers/zips.  
+* Powershell Command Packages – Packages that have the suffix **.powershell** will install powershell scripts as commands for you to call from anywhere.
+* Development Packages – Packages that have the suffix **.dev**. For instance [dropkick.dev](http://nuget.org/list/packages/dropkick.dev).
+* Coming soon – Virtual Packages – Packages that are like a category, and you just want one package from that category. [Read more …](https://github.com/ferventcoder/nugetpackages/issues/30)
   
 <a name="AppVsTool" />
 ###What distinction does chocolatey make between an application and a tool?  
