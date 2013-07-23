@@ -74,24 +74,24 @@ Excellent question, deserving of a full page - [[Default Install Reasoning|Defau
 * Coming soon – Virtual Packages – Packages that are like a category, and you just want one package from that category. [Read more …](https://github.com/ferventcoder/nugetpackages/issues/30)
   
 <a name="AppVsTool" />
-###What distinction does chocolatey make between an application and a tool?  
-#### App/Application  
-An application is something that comes with a native installer and ends up in the add/remove programs (in control panel of the system).  
-Applications end up where the native installer wants them to end up (i.e. Program Files).  If you want to override that, please feel free to with the proper commands using InstallArgs (-ia) at the command line and possibly override - [[Install Command|CommandsInstall]]. Yes this does mean you will need to have intimate knowledge of the installer. Having chocolatey itself make the override directory is likely at some point, but it is wwwwaaaaayyyy out on the radar (like after [Rob](https://github.com/ferventcoder) is somehow paid to work on chocolatey full time ;) ).  
-  
-#### Tool - something that doesn't require a system install to use.
-A tool is something that doesn't require a native installer to use. In other words, it is not "installed" on your system (where you can go to uninstall in the control panel).  
-  
-Tools end up in the %ChocolateyInstall%/lib (i.e. C:\Nuget\lib) folder yes, but they get a batch redirect to put them on the path of the machine. This behavior is very much to how chocolatey works and is not configurable (the directory). Where the tools end up is still going to be %ChocolateyInstall%/lib no matter where you move the directory, unless a package itself unpacks the tool elsewhere (as in the case of [git-tfs](http://chocolatey.org/packages/gittfs)).  
-  
-###What is the difference between packages named \*.install/\*.app (ie.e git.install), \*.commandline/\*.tool (i.e. git.commandline), and \* (i.e git)?  
-  
-Hey, good question! You are paying attention! Chocolatey has the concept of virtual packages (coming) and meta packages. Virtual packages are packages that represent other packages when used as a dependency. Metapackages are packages that only exist to provide a grouping of dependencies.  
-  
-A package with no suffix that is surrounded by packages with suffixes is to provide a virtual package. So in the case of git, git.install, and git.commandline - git is that virtual package (currently it is really just a metapackage until the virtual packages feature is complete). That means that other packages could depend on it and you could have either git.install or git.commandline installed and you would meet the dependency of having git installed. That keeps chocolatey from trying to install something that already meets the dependency requirement for a package.
-  
-Talking specifically about the \*.install/\*.app package suffix - those are for the packages that have a native installer that they have bundled or they download and run.
-  
-The \*.commandline/\*.tool packages are the packages that will usually result in an executable on your path somewhere but do not get installed onto the system (Add/Remove Programs).
+###What distinction does chocolatey make between an installable and a portable application?
+####Installable application
+An installable application is something that comes with a native installer and ends up in the add/remove programs (in control panel of the system).
+Installable applications end up where the native installer wants them to end up (i.&nbsp;e. Program Files). If you want to override that, please feel free to with the proper commands using InstallArgs (-ia) at the command line and possibly override – Install Command. Yes this does mean you will need to have intimate knowledge of the installer. Having chocolatey itself make the override directory is likely at some point, but it is wwwwaaaaayyyy out on the radar (like after Rob is somehow paid to work on chocolatey full time ;) ).
+
+#### Portable application – something that doesn’t require a system install to use
+A portable application is something that doesn’t require a native installer to use. In other words, it is not “installed” on your system (where you can go to uninstall in the control panel).
+
+Portable applications end up in the %ChocolateyInstall%/lib (i.&nbsp;e. C:\Nuget\lib) folder yes, but they get a batch redirect to put them on the path of the machine. This behavior is very much to how chocolatey works and is not configurable (the directory). Where the portable apps end up is still going to be %ChocolateyInstall%/lib no matter where you move the directory, unless a package itself unpacks the portable app elsewhere (as in the case of [git-tfs](http://chocolatey.org/packages/gittfs)). 
+
+###What is the difference between packages named *.install (i.&nbsp;e. git.install), *.portable (i.&nbsp;e. git.portable) and * (i.&nbsp;e. git)?
+
+Hey, good question! You are paying attention! Chocolatey has the concept of virtual packages (coming) and meta packages. Virtual packages are packages that represent other packages when used as a dependency. Metapackages are packages that only exist to provide a grouping of dependencies.
+
+A package with no suffix that is surrounded by packages with suffixes is to provide a virtual package. So in the case of git, git.install, and git.commandline – git is that virtual package (currently it is really just a metapackage until the virtual packages feature is complete). That means that other packages could depend on it and you could have either git.install or git.portable installed and you would meet the dependency of having git installed. That keeps chocolatey from trying to install something that already meets the dependency requirement for a package.
+
+Talking specifically about the *.install package suffix – those are for the packages that have a native installer that they have bundled or they download and run. Note that the suffix *.app has been used previously to mean the same as *.install. But the *.app suffix is now deprecated and should not be used for new packages.
+
+The *.portable packages are the packages that will usually result in an executable on your path somewhere but do not get installed onto the system (Add/Remove Programs). Previously the suffixes *.tool and *.commandline have been used to refer to the same type of packages. Note that now *.tool and *.commandline are deprecated and should not be used for new packages.
 
 Want more information? See http://devlicious.com/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx
