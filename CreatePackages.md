@@ -78,13 +78,13 @@ The title of your package (`<title>` tag in the nuspec) should be the same as th
 There are some guidelines in terms of the package id (`<id>` tag in the nuspec):
 * Use only lowercase letters, even if you used uppercase letters in the package title.
 * If the original application name consists of compound words without spaces, just as *MKVToolNix*, *TightVNC* and *VirtualBox*, the package id’s are simply the same (lowercase of course): *mkvtoolnix*, *tightvnc*, and *virtualbox*.
-* If the name of the application contains multiple words separated by spaces, such as *MusicBrainz&nbsp;Picard* or *Aptana&nbsp;Studio*, replace the spaces with hyphens. Hence the correct id’s of the previously mentioned applications are *musicbrainz-picard* and *aptana-studio*.
+* If the name of the application contains multiple words separated by spaces, such as *MusicBrainz&nbsp;Picard* or *Adobe Reader*, replace the spaces with hyphens or just omit them. Hence the correct id’s of the previously mentioned applications can be *musicbrainz-picard* and *adobereader*. It’s a good idea to use the hyphen method when there are long package names, because that increases the readability.
 
-These guidelines are already widely applied on packages for all major Linux distributions, because they lead to a more consistent look of software repositories, easier to remember package id’s and less considerations about the naming for package creators.
+These guidelines are already commonly applied on packages for all major Linux distributions, because they lead to a more consistent look of software repositories, easier to remember package id’s and less considerations about the naming for package creators.
 
 Note that a lot of packages in the Chocolatey Gallery don’t follow these guidelines. The simple reason is that the affected packages were created before the introduction of these guidelines.
 
-If you are going to offer a package that has both an installer and an archive (zip or executable only) version of the application, create three packages&nbsp;– see Rob’s guidance on this: http://devlicio.us/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx  
+If you are going to offer a package that has both an installer and an archive (zip or executable only) version of the application, create three packages&nbsp;– see Rob’s guidance on this: http://devlicio.us/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx
   
 ##Versioning Recommendations
 Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the application/tool uses. With chocolatey you get four version segments. If the application/tool only uses 1, 2 or 3 version segments, follow suit.  
