@@ -94,4 +94,4 @@ Talking specifically about the *.install package suffix – those are for the pa
 
 The *.portable packages are the packages that will usually result in an executable on your path somewhere but do not get installed onto the system (Add/Remove Programs). Previously the suffixes *.tool and *.commandline have been used to refer to the same type of packages. Note that now *.tool and *.commandline are deprecated and should not be used for new packages.
 
-Want more information? See http://devlicious.com/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx
+Want more information? See http://devlicio.us/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx
