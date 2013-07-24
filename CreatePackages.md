@@ -8,7 +8,7 @@ There are three main elements to a chocolatey package. Only the nuspec is requir
   
 1. [Nuspec](https://github.com/chocolatey/chocolateytemplates/blob/master/_templates/chocolatey/__NAME__.nuspec) - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
 1. [[chocolateyInstall.ps1|ChocolateyInstallPS1]] - check out the [[helper reference|HelpersReference]]
-1. any tools to include (it is highly suggested that you are the author in this case or you have the right to [[distribute files|Legal]]). EXE files in the package/downloaded to package folder from chocolateyInstall.ps1 will get a link to the command line.
+1. any application files to include (it is highly suggested that you are the author in this case or you have the right to [[distribute files|Legal]]). EXE files in the package/downloaded to package folder from chocolateyInstall.ps1 will get a link to the command line.
   
 There is a video showing the creation of a package: [http://www.youtube.com/watch?v=Wt_unjS_SUo](http://www.youtube.com/watch?v=Wt_unjS_SUo)  
 The video is a bit outdated in showing the contents of the chocolateyInstall.ps1. Have a look at what the [chocolateyInstall.ps1](https://github.com/ferventcoder/nugetpackages/blob/master/windirstat/tools/chocolateyInstall.ps1) looks like now:
@@ -42,7 +42,7 @@ Logically, the version is based on the lowest compatible version. But if you don
 
 ## Installation paths
 
-As the package owner, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *"What distinction does chocolatey make between an application and a tool?"* at the bottom of the [FAQ](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
+As the package owner, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
 
 ### 1. `%chocolatey_bin_root%` environment variable
 
@@ -87,7 +87,7 @@ Note that a lot of packages in the Chocolatey Gallery don’t follow these guide
 If you are going to offer a package that has both an installer and an archive (zip or executable only) version of the application, create three packages&nbsp;– see Rob’s guidance on this: http://devlicio.us/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx
   
 ##Versioning Recommendations
-Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the application/tool uses. With chocolatey you get four version segments. If the application/tool only uses 1, 2 or 3 version segments, follow suit.  
+Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the installable/portable application uses. With chocolatey you get four version segments. If the application only uses 1, 2 or 3 version segments, follow suit.  
   
 If the 4th segment is used, some folks like to drop the segment altogether and use that as only the package fix notation using one of the notations in the next section. There is no recommendations at this time.  
   
@@ -99,7 +99,7 @@ If you need to fix the package for some reason, you can use the fourth number fo
   
 Date Package Fix Version Notation is recommended because one can ascertain what it is immediately upon seeing it.   
   
-Package fix version notation is only acceptable in the fourth segment. Do not use any of the other segments for package fix notation. If an app/tool only uses 1 or 2 version segments, add zeros into the other segments until you get to the 4th segment (i.e. 1.0.0.20120627).   
+Package fix version notation is only acceptable in the fourth segment. Do not use any of the other segments for package fix notation. If an application only uses 1 or 2 version segments, add zeros into the other segments until you get to the 4th segment (i.e. 1.0.0.20120627).   
   
 ## How do I exclude [executables from getting batch redirects](https://github.com/chocolatey/chocolatey/issues/106)?
 If you have executables in the package or brought into the package folder during powershell run and you want to exclude them you need to create an empty file named exactly like (**case sensitive**) the executable with `.ignore` suffixed on the end in the same directory where the executable is or will be.  
