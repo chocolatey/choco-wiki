@@ -183,6 +183,14 @@ cinst NETFramework4Update402_KB2544514_Only -source webpi
 cinst WindowsInstaller31 -source webpi
 cinst WindowsInstaller45 -source webpi
 
+cinst roundhouse -pre
+
+Write-Host "Checking for/installing SQLServer Express and Management Studio..."
+Write-Warning "You will need to supply a password on the screen that is minimized"
+cinst SQLManagementStudio -source webpi
+cinst SQLExpressTools -source webpi
+Write-Host "Finished checking for/install SQLServer Express and Management Studio"
+
 Write-Host "Checking for/installing Visual Studio Items..."
 if (Install-NeededFor 'VS2010 Express & SP1' $false) {
  cinst VWD_RTW -source webpi
@@ -197,11 +205,7 @@ cinst MVC3 -source webpi
 cinst MVC3Loc -source webpi
 Write-Host "Finished checking for/installing Visual Studio Items."
 
-cinst SQLManagementStudio -source webpi
-cinst SQLExpressTools -source webpi
-
 if (Install-NeededFor 'database' $false) {
-  cinstm roundhouse
   & .\build.bat
   $sqlFiles = Join-Path $scriptDir 'code_drop\ProjectName.Database\ProjectName'
   $dbServer = Read-Host "Please tell me the server\instance location of the database (i.e. '(local)'). Press enter to use .\SQLEXPRESS"
