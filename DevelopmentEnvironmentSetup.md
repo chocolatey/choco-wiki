@@ -187,8 +187,9 @@ cinst roundhouse -pre
 
 Write-Host "Checking for/installing SQLServer Express and Management Studio..."
 cinst SQLManagementStudio -source webpi
-Write-Warning "You will need to supply a password on the screen that is minimized"
 cinst SQLExpressTools -source webpi
+Write-Warning "You will need to supply a password on the screen that is minimized"
+cinst SQLExpress -source webpi
 Write-Host "Finished checking for/install SQLServer Express and Management Studio"
 
 Write-Host "Checking for/installing Visual Studio Items..."
