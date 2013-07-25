@@ -266,5 +266,7 @@ if (Install-NeededFor 'website' $false) {
   Write-Host 'You still need to open Visual Studio and build the application one time prior to going to the site in a browser.'
 }
 
+Write-Host "If you have made it here without errors, you should be setup and ready to hack on the apps."
+Write-Warning "If you see any failures happen, you may want to reboot and continue to let installers catch up. This script is idempotent and will only apply changes that have not yet been applied."
 ```
   
