@@ -93,10 +93,14 @@ Preferably you are taking an existing package that you have tested and convertin
 * Every once in awhile you want to look in Ketarin to see what jobs might be failing. Then figure out why.
 * Every once in awhile you will want to inspect the chocopkgupfolder to see if there are any packages that did not make it up for some reason or another and then upload them.
 
-  
+###Important notes for files hosted on SourceForge
+If you want to make an automatic package that downloads files hosted on SourceForge, it gets a bit tricky. Ketarin does not directly support download links from SourceForge in the format `http://sourceforge.net/projects/…/download`, because these download links automatically redirect to a mirror (e.&nbsp;g. `http://heanet.dl.sourceforge.net/project/…`). Ketarin does not support these kind of automatic redirections, but Chocolatey does.
 
-  
- 
-
-
-  
+It isn’t uncommon that certain SorceForge mirrors go offline or are extremely slow because of overload. Thus it is not recommended to use direct mirror links (e.&nbsp;g. `http://heanet.dl.sourceforge.net/project/…`) in your `chocolateyInstall.ps1` file, because this will frequently break your package and makes it unreliable.
+To avoid this, use the following convention for files hosted on SourceForge:
+* Don’t use `{{DownloadUrl}}` and `{{DownloadUrlx64}}` in your `chocolateyInstall.ps1` file, but use this instead (example of the app nomacs):
+`$url = 'http://sourceforge.net/projects/nomacs/files/nomacs-{{PackageVersion}}/nomacs-setup-{{PackageVersion}}-x86.exe/download'`
+and
+`$url64 = 'http://sourceforge.net/projects/nomacs/files/nomacs-{{PackageVersion}}/nomacs-setup-{{PackageVersion}}-x64.exe/download'`
+For other applications obviously you have to use the actual application/file names. Important is that you use `{{PackageVersion}}` and don’t use any direct links which include SourceForge mirrors.
+* In Ketarin there’s no other possibility than using the direct link to a file with an included mirror (e.&nbsp;g. `http://garr.dl.sourceforge.net/project/nomacs/nomacs-{version}/nomacs-setup-{version}-x86.exe`). Unfortunately then Ketarin will occasionally fail to download this file and you will have to manually replace the mirror with a working one to get your automatic package updated. Any clue to fix this issue will be appreciated.
