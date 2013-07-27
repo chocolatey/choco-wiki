@@ -76,6 +76,20 @@ Preferably you are taking an existing package that you have tested and convertin
 1. Click **OK** again. 
 
   
+### Notes about tri-packages (meta/virtual aka *, *.install, and *.portable)
+  
+When you have the three packages, you should set up only two jobs, one for *.install and one for *.portable.
+
+In whichever job the meta package points to, you should add a command to that like you did for the settings for all jobs in ketarin.
+
+1. Click on the **Commands Tab** and set **Edit command for event** to “Before updating an application”.  
+1. Add the following text (replace `name` with the actual name of the meta package folder): 
+```cmd
+chocopkgup /p name /v {version} /u "{preupdate-url}" /u64 "{url64}" /pp "{file}" 
+REM /disablepush
+```
+1. Check the bottom of this section to be sure it set to **Command**.
+  
 ###Testing Ketarin/ChocoPkgUp: 
   
 1. We need to get a good idea of whether this will work or not. 
