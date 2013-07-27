@@ -83,12 +83,14 @@ When you have the three packages, you should set up only two jobs, one for *.ins
 In whichever job the meta package points to, you should add a command to that like you did for the settings for all jobs in ketarin.
 
 1. Click on the **Commands Tab** and set **Edit command for event** to “Before updating an application”.  
+![Ketarin Settings](images/chocopkgup/KetarinJobSettings.png "Ketarin Settings")   
 1. Add the following text (replace `name` with the actual name of the meta package folder): 
 ```cmd
 chocopkgup /p name /v {version} /u "{preupdate-url}" /u64 "{url64}" /pp "{file}" 
 REM /disablepush
 ```
-1. Check the bottom of this section to be sure it set to **Command**.
+1. Check the bottom of this section to be sure it set to **Command**.  
+![Ketarin Settings Command](images/chocopkgup/KetarinCustomCommand.png "Ketarin Settings Command")  
   
 ###Testing Ketarin/ChocoPkgUp: 
   
