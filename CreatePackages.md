@@ -71,21 +71,23 @@ If you allow customizing the installation path, then append instructions on how 
   
 ##Dependency Chaining
 You can make packages that depend on other packages just by adding those dependencies to the nuspec. Take a look at [ferventcoder.chocolatey.utilities nuspec](https://github.com/ferventcoder/nugetpackages/blob/master/ferventcoder.chocolatey.utilities/ferventcoder.chocolatey.utilities.nuspec)
-  
+
 ##Naming your package
 The title of your package (`<title>` tag in the nuspec) should be the same as the name of the application. Follow the official spelling, use upper and lower case and don’t forget the spaces. Examples of correct package titles are: *Google&nbsp;Chrome*, *CCleaner*, *PuTTY* and *FileZilla*. The title will appear on the left side in the package list of the chocolatey gallery, followed by the version.
 
 There are some guidelines in terms of the package id (`<id>` tag in the nuspec):
 * Use only lowercase letters, even if you used uppercase letters in the package title.
-* If the original application name consists of compound words without spaces, just as *MKVToolNix*, *TightVNC* and *VirtualBox*, the package id’s are simply the same (lowercase of course): *mkvtoolnix*, *tightvnc*, and *virtualbox*.
-* If the name of the application contains multiple words separated by spaces, such as *MusicBrainz&nbsp;Picard* or *Adobe Reader*, replace the spaces with hyphens or just omit them. Hence the correct id’s of the previously mentioned applications can be *musicbrainz-picard* and *adobereader*. It’s a good idea to use the hyphen method when there are long package names, because that increases the readability.
+* If the original application name consists of compound words without spaces (CamelCase), just as *MKVToolNix*, *TightVNC* and *VirtualBox*, the package id’s are simply the same (lowercase of course): `mkvtoolnix`, `tightvnc`, and `virtualbox`.
+* If the name of the application contains multiple words separated by spaces, such as *MusicBrainz&nbsp;Picard* or *Adobe Reader*, replace the spaces with the hyphen-minus character “-” (U+002D) or just omit them. Don’t use dots. They should be used only if the original application name contains dots (e.&nbsp;g. *Paint.NET*) Hence the correct id’s of the previously mentioned applications can be `musicbrainz-picard` or `adobereader`. It is highly suggested to use the hyphen method when there are long package names, because that increases readability.
+* For sub-packages, use the hyphen-minus character “-” (U+002D) as separator, not a dot. Sub-packages are intended for separate packages that include extensions, modules or additional features/files for other applications. Therefore `keepass-langfiles` is a proper package id, because it adds the language files for the main application which in this case is KeePass. Another example is `libreoffice-help` for the help pack for LibreOffice, the open source office suite.
+* If you want to package an open source application, look on the repositories of some popular Linux distributions, such as [Debian](http://www.debian.org/distrib/packages#search_packages), [Ubuntu](http://packages.ubuntu.com/) and [Arch Linux](https://www.archlinux.org/packages/) if they already have a package of it. If that is the case, use the same package id. This will make it easier for Linux and Windows users, because then they don’t have to remember and use different package names.
 
 These guidelines are already commonly applied on packages for all major Linux distributions, because they lead to a more consistent look of software repositories, easier to remember package id’s and less considerations about the naming for package creators.
 
 Note that a lot of packages in the Chocolatey Gallery don’t follow these guidelines. The simple reason is that the affected packages were created before the introduction of these guidelines.
 
 If you are going to offer a package that has both an installer and an archive (zip or executable only) version of the application, create three packages&nbsp;– see Rob’s guidance on this: http://devlicio.us/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx
-  
+
 ##Versioning Recommendations
 Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the installable/portable application uses. With chocolatey you get four version segments. If the application only uses 1, 2 or 3 version segments, follow suit.  
   
