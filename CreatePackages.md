@@ -1,5 +1,16 @@
 ##Creating Chocolatey Packages
 
+## Rules to be observed before publishing packages 
+
+There are a few rules that you have to follow before pushing packages to chocolatey.org:
+* Packages of software that is illegal in most countries in the world are prohibited to publish on chocolatey.org. This applies in particular to software that violates the copyright, pirated software and activation cracks. Remember that this also affects software that is especially designed to accomplish software piracy.
+* Do not publish junk or malware packages.
+* A package creator should consider whether his package is also useful for others. If that is not the case, it shouldn’t be published on chocolatey.org. Reasons for that can be if the package would require a very special configuration that is unacceptable for other users or that would lead to serious vulnerabilities.
+* Packages of software that comes with bundled adware, spyware or any other unrelated software that installs even in silent mode are not allowed. But if you can figure out how to install the desired package without any adware or unrelated software, it is allowed to publish the package. That can be reached for example with additional command line switches or by adding specific values to the registry. Examples of packages which make use of this are [PDFCreator](https://github.com/stack72/MyChocolateyPackages/tree/master/PDFCreator) and [CCleaner](https://github.com/tonigellida/chocolateyautomaticpackages/tree/master/ccleaner).
+* Duplicate packages are undesirable. Use the search function in the chocolatey gallery and look if there is already a package for the desired software. If you would like to improve the already existing  package or if you have suggestions, just contact the package owner or open a pull request at the owner’s package repository.
+* If a package requires another software of which there is already a package, the already existing package should be used as dependency instead of including all needed software into one package.
+* Try to split up packages as much as possible. If for example a program comes with additional modules/installers that are optional, make different packages for them instead of including all the things into one package. This idea is already widely applied for Linux packages, because it leads to a more lightweight system and reduces potential issues and conflicts.
+
 ## What version of the software should I package?
 The main release of a product versions are usually sufficient. If there are also beta versions available and you would rather have that, then please create both the official release and the beta (and set the beta as a prerelease when pushing the item to chocolatey.org). Regular users of packages may want to use official releases only and not betas.
   
