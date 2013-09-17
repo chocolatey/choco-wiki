@@ -11,7 +11,7 @@
 [[Update Command|CommandsUpdate]]  
 [[Version Command|CommandsVersion]]  
 [[List Command|CommandsList]]  
-[[Search Command|CommandsList]] - v0.9.8.21+
+[[Search Command|CommandsList]] - v0.9.8.21+  
 [[Help Command|CommandsHelp]]  
 
 **NOTE:** If any argument has spaces please surround with double double quotes (i.e. ""yo""). This is due to the hand off to PowerShell - seems to strip off the outer set of quotes. You can also use a single quote instead (').  
