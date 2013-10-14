@@ -5,6 +5,7 @@
 BREAKING CHANGES:
 
  * Enhancement - For local package searching, use choco list -lo or choco search -lo. The execution speed is greatly increased. cver for local has been deprecated. - [#276](https://github.com/chocolatey/chocolatey/issues/276)
+* Breaking - Chocolatey default sources no longer includes Nuget official feed. This will help improve response time and greatly increase relevant results. - [#349](https://github.com/chocolatey/chocolatey/issues/349)
 
 FEATURES:
 
