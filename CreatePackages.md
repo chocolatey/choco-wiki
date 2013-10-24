@@ -209,4 +209,4 @@ as in
 ```  
   
 ##Automatic package repositories? 
-It's coming and it will make chocolatey one of the most up to date package repositories in the world (if not the most up to date)...stay tuned to the chocolatey google group for more information.
+It's coming and it will make chocolatey one of the most up to date package repositories in the world (if not the most up to date)...stay tuned to the [chocolatey Google group](https://groups.google.com/forum/#!forum/chocolatey) for more information.
