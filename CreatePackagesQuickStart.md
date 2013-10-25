@@ -10,7 +10,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
 * You have Chocolatey installed.
 * You know how a package works
   * A package contains a `nuspec` file. This defines the package. ([Docs](http://docs.nuget.org/docs/reference/nuspec-reference)) ([Example](https://github.com/chocolatey/chocolateytemplates/blob/master/_templates/chocolatey/__NAME__.nuspec))
-  * A package contains an installation script. This can be [very simple](#Examples).
+  * A package contains an installation script. This can be [very simple](https://github.com/chocolatey/chocolatey/wiki/CreatePackagesQuickStart#examples).
 
 ## Quick start guide
 
