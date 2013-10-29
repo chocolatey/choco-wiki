@@ -12,7 +12,7 @@ There are a few rules that you have to follow before pushing packages to chocola
 * **Split dependencies into multiple packages.** Try to split up packages as much as possible. If for example a program comes with additional modules/installers that are optional, make different packages for them instead of including all the things into one package. This idea is already widely applied for Linux packages, because it leads to a more lightweight system and reduces potential issues and conflicts.
 
 ## Character encoding
-* Use the UTF-8 character encoding for the *.nuspec and *.ps1 files. If you don’t respect this rule, some characters are not displayed correctly in the Gallery on chocolatey.org, because the Gallery assumes UTF-8.
+* **Use the UTF-8 character encoding** for the *.nuspec and *.ps1 files. If you don’t respect this rule, some characters are not displayed correctly in the Gallery on chocolatey.org, because the Gallery assumes UTF-8.
 * Don’t save your nuspec files with a byte order mark (BOM). A BOM is neither required nor recommended for UTF-8, because it can lead to several issues.
 * Unfortunately, PowerShell scripts need to be saved in UTF-8 with BOM, otherwise PowerShell doesn’t recognize the script as UTF-8 and as a result, it processes non ASCII characters incorrectly. So you have to break the previous rule here, but always keep in mind that a BOM for UTF-8 is not recommended by the Unicode standard.
 * Don’t use the default Windows Editor. In addition to its lack of features, it can’t even save UTF-8 files without BOM.
