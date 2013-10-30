@@ -163,7 +163,9 @@ To test the package you just built, with the command line still open (and in the
  cinst packageName -source %cd%
 ```
 
-This will install the package right out of your source. As you find things you may need to fix, you will want to delete the particular package folder out of the %ChocolateyInstall%\lib folder.
+This will install the package right out of your source. As you find things you may need to fix, you will want to delete the particular package folder out of the %ChocolateyInstall%\lib folder. 
+
+If your changes to an existing package are not being loaded, check for a cached version of the package in %LocalAppData%\NuGet\Cache.
 
 `%cd%` points to the current directory. You can specify multiple directories separated by a semicolon;
 
