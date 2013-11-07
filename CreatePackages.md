@@ -7,7 +7,7 @@ There are a few rules that you have to follow before pushing packages to chocola
 * **Do not publish junk or malware** packages.
 * **Only post publicly relevant packages.** A package creator should consider whether his package is also useful for others. If that is not the case, it shouldn’t be published on Chocolatey.org. Reasons for that can be if the package would require a very special configuration that is unacceptable for other users or that would lead to serious vulnerabilities.
 * **Don't package software containing adware or spyware.** Packages of software that comes with bundled adware, spyware or any other unrelated software that installs even in silent mode are not allowed. But if you can figure out how to install the desired package without any adware or unrelated software, it is allowed to publish the package. That can be reached for example with additional command line switches or by adding specific values to the registry. Examples of packages which make use of this are [PDFCreator](https://github.com/stack72/MyChocolateyPackages/tree/master/PDFCreator) and [CCleaner](https://github.com/tonigellida/chocolateyautomaticpackages/tree/master/ccleaner).
-* **Don't package software that is already packaged**. Use the search function in the [Chocolatey.org gallery](http://chocolatey.org/packages) and look if there is already a package for the desired software. If you would like to improve the already existing  package or if you have suggestions, just contact the package owner or open a pull request at the owner’s package repository.
+* **Don't package software that is already packaged**. Use the search function in the [Chocolatey.org gallery](http://chocolatey.org/packages) and look if there is already a package for the desired software. If you would like to improve the already existing  package or if you have suggestions, just contact the package maintainer or open a pull request at the maintainer’s package repository.
 * **Don't include other required software if there's a package of it.** If a package requires another software of which there is already a package, the already existing package should be used as dependency instead of including all needed software into one package.
 * **Split dependencies into multiple packages.** Try to split up packages as much as possible. If for example a program comes with additional modules/installers that are optional, make different packages for them instead of including all the things into one package. This idea is already widely applied for Linux packages, because it leads to a more lightweight system and reduces potential issues and conflicts.
 
@@ -67,7 +67,7 @@ Logically, the version is based on the lowest compatible version. But if you don
 
 ## Installation paths
 
-As the package owner, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
+As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
 
 ### 1. `%chocolatey_bin_root%` environment variable
 
@@ -82,7 +82,7 @@ As an example, the [ruby package](http://chocolatey.org/packages/ruby) uses `%ch
 ### 2. The default installation path of your .msi/.exe setup file
 
 The original creator probably had a reason for choosing a specific default installation path.  
-If you think, the user should be able to customize this path and you, the package owner, know how to pass a custom path on to the installer, then you should use `%chocolatey_bin_root%`.
+If you think, the user should be able to customize this path and you, the package maintainer, know how to pass a custom path on to the installer, then you should use `%chocolatey_bin_root%`.
 
 ### 3. The package directory in `%ChocolateyInstall%\lib\mypackage`
 
@@ -206,9 +206,9 @@ Now open a command line, navigate to your source code top level folder and type 
  warmup addTemplateFolder chocolateyauto3 "%cd%\chocolateyauto3"
 ```
   
- * The package owner name (__CHOCO_PKG_OWNER_NAME__) would be you. 
+ * The package maintainer (owner) name (__CHOCO_PKG_OWNER_NAME__) would be you. 
  * Your packages repository (__CHOCO_PKG_OWNER_REPO__) is part of a github repo just **ferventcoder/nugetpackages** if your repository is https://github.com/ferventcoder/nugetpackages. This is only used for image urls.
- * Your chocolatey automatic packages repository (__CHOCO_AUTO_PKG_OWNER_REPO__) could be the same as your regular packages repository. This is also the same as package owner repo. This is only used for image urls.  
+ * Your chocolatey automatic packages repository (__CHOCO_AUTO_PKG_OWNER_REPO__) could be the same as your regular packages repository. This is also the same as package maintainer (owner) repo. This is only used for image urls.  
 
 Now whenever you want to create a new package you just open a command line and navigate to your packages repository source code folder (or install stexbar `cinst stexbar` and just hit Ctrl+M from explorer).  
   
