@@ -19,7 +19,7 @@ Most of the chocolatey packages that take advantage of the powershell download a
 
 ## Where are chocolatey packages installed to?
 
-Chocolatey packages are installed to various locations, depending on how the package owner created the package. 
+Chocolatey packages are installed to various locations, depending on how the package maintainer created the package. 
 
 Some packages are installed under `ChocolateyInstall\lib`, others - especially packages that are based on Windows installers (.msi-files) - install to the default path of the original installer (which is most likely within `Program Files`).
 
