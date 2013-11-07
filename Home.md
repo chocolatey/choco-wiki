@@ -45,7 +45,7 @@ Where are [[we|RoadMap]]? Where are we [[going|RoadMap]]?
 ##Google Group
 Chocolatey has a [Google Groups group](http://groups.google.com/group/chocolatey). Please join and ask questions and send feedback.
   
-If you have issues with a package (or it is out of date), please use the contact owners link on the package page itself. If the owner doesn't respond within a given time frame (say a day or two), feel free to bring it up with the group.  
+If you have issues with a package (or it is out of date), please use the contact maintainers link on the package page itself. If the maintainer doesn’t respond within a given time frame (say a day or two), feel free to bring it up with the group.  
   
 ##Requirements
  * Windows XP/Vista/7/2003/2008  
