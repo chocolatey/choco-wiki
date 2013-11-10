@@ -48,9 +48,9 @@ The version of the package to install. Do not use this when installing multiple 
 Defaults to the latest version available.
 
 ###Source (optional)
-Source (directory, share or remote url feed) the package comes from. You can specify multiple sources by separating with a comma and double double quotes surrounding source. If you use source for multiple packages, watch out for interesting results.
+Source (directory, share or remote url feed) the package comes from. You can specify multiple sources by separating with a comma and single quotes surrounding source. If you use source for multiple packages, watch out for interesting results.
 
-Example `-source ""http://chocolatey.org/api/v2/,http://someother/feed/""`
+Example `-source 'http://chocolatey.org/api/v2/;http://someother/feed/'`
 
 Defaults to official chocolatey feed.
 
@@ -69,7 +69,7 @@ This specifies the source is Python and that we are installing a python package,
 ###InstallArguments (optional) - v0.9.8.13+
 Install arguments that you want to pass to the native installer (if you have some custom ones that you know). By default this appends to the items already passed, unless you also pass `-overrideArguments`. You can pass this as `-ia` `-installArgs` or `-installArguments`.
 
-Note: You may need to specify double quotes (`""some args""`) as powershell wants to strip off one set of quotes.
+Note: You should pass this as `'/value1 /value2'`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'/value1=''some value''` where it is two single quotation marks instead of a `"`.
 
 Defaults to ''.
 
@@ -95,11 +95,11 @@ Defaults to false.
 
 `cinst nunit -source c:\somefolder`
 
-`cinst nunit -source ""http://chocolatey.org/api/v2/,c:\somefolder""`
+`cinst nunit -source 'http://chocolatey.org/api/v2/,c:\somefolder'`
 
-`cinst nodejs.install -installArgs "/qb"`
+`cinst nodejs.install -installArgs '/qb'`
 
-`cinst nodejs.install -installArgs "/qb" -override`
+`cinst nodejs.install -installArgs '/qb' -override`
 
 `cinst nodejs.install -notSilent`
 
