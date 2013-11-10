@@ -48,9 +48,9 @@ The version of the package to install. Do not use this when installing multiple 
 Defaults to the latest version available.
 
 ###Source (optional)
-Source (directory, share or remote url feed) the package comes from. You can specify multiple sources by separating with a semi-colon and double quotes surrounding source. If you use source for multiple packages, watch out for interesting results.
+Source (directory, share or remote url feed) the package comes from. You can specify multiple sources by separating with a comma and double double quotes surrounding source. If you use source for multiple packages, watch out for interesting results.
 
-Example `-source ""http://chocolatey.org/api/v2/;http://someother/feed/""`
+Example `-source ""http://chocolatey.org/api/v2/,http://someother/feed/""`
 
 Defaults to official chocolatey feed.
 
@@ -95,7 +95,7 @@ Defaults to false.
 
 `cinst nunit -source c:\somefolder`
 
-`cinst nunit -source ""http://chocolatey.org/api/v2/;c:\somefolder""`
+`cinst nunit -source ""http://chocolatey.org/api/v2/,c:\somefolder""`
 
 `cinst nodejs.install -installArgs "/qb"`
 
