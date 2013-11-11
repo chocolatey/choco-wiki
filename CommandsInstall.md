@@ -95,11 +95,11 @@ Defaults to false.
 
 `cinst nunit -source c:\somefolder`
 
-`cinst nunit -source 'http://chocolatey.org/api/v2/,c:\somefolder'`
+`cinst nunit -source 'http://chocolatey.org/api/v2/;c:\somefolder'`
 
 `cinst nodejs.install -installArgs '/qb'`
 
-`cinst nodejs.install -installArgs '/qb' -override`
+`cinst nodejs.install -installArgs '/qb /bob=''a value''' -override` -note that the `/bob=''a value''` will be converted to `/bob="a value"`.
 
 `cinst nodejs.install -notSilent`
 
