@@ -66,27 +66,40 @@ This specifies the source is Cygwin and that we are installing a cygwin package,
 #### -source python (v0.9.8.17+)
 This specifies the source is Python and that we are installing a python package, such as Sphinx. If you do not have easy_install and Python installed, it will install that first and then the product requested.
 
+### PackageParameters - v0.9.8.22+
+Parameters that you want to pass to the package (if the package accepts these). You can pass this as `-params` `-parameters` or `-packageparameters`.
+
+Note: You should pass this as `'value1=somevalue;value2=''value with spaces'''`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'value1=''some value'' '` using two single quotation marks instead of a `"`. Chocolatey will convert this back to double quotes (e.g. `value1="some value"` for the above).
+
+Defaults to ''.
+
 ###InstallArguments (optional) - v0.9.8.13+
 Install arguments that you want to pass to the native installer (if you have some custom ones that you know). By default this appends to the items already passed, unless you also pass `-overrideArguments`. You can pass this as `-ia` `-installArgs` or `-installArguments`.
 
-Note: You should pass this as `'/value1 /value2'`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'/value1=''some value'' '` using two single quotation marks instead of a `"`.
+Note: You should pass this as `'/value1 /value2'`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'/value1=''some value'' '` using two single quotation marks instead of a `"`. Chocolatey will convert this back to double quotes (e.g. `/value1="some value"` for the above).
 
 Defaults to ''.
 
 ###OverrideArguments flag (optional) - v0.9.8.13+
 If you want to override the original install arguments (for the native installer) in the package and use your own. Use with InstallArguments.
 You can pass this as `-o` `-override` `-overrideArgs` or `-overrideArguments`.
+
 Defaults to false.
 
 ###NotSilent flag (optional) - v0.9.8.13+
 If you want to use the native installer to step through the installer, use `-notSilent` to have chocolatey download the package and installer and bring it up for you.
+
 Defaults to false.
 
-###Ignore Dependencies Flag (optional) - 0.9.8.21+
-If you want to install something but ignore all of the dependencies, use `-ignoreDependencies` to force chocolatey to only install the package and not any of it's dependencies
+###IgnoreDependencies flag (optional) - 0.9.8.21+
+If you want to install something but ignore all of the dependencies, use `-ignoreDependencies` to force chocolatey to only install the package and not any of it's dependencies.
 
-###ForceX86 Flag (optional) - v0.9.8.22+
-If you want to install the 32 bit version of a package, you can pass `-x86` and chocolatey will ignore the 64 bit url and only use the 32 bit url. This only applies on an x64 system when you are installing packages that also have x64 versions.
+Defaults to false.
+
+###Forcex86 flag (optional) - v0.9.8.22+
+If you want to install the 32 bit version of a package, you can pass `-x86` and chocolatey will ignore the 64 bit url and only use the 32 bit url. This only applies on an x64 system when you are installing packages that also have x64 versions. You can pass this as `-x86` or `-forcex86`.
+
+Defaults to false.
 
 ##Examples
 `choco install nunit`
@@ -112,6 +125,8 @@ If you want to install the 32 bit version of a package, you can pass `-x86` and 
 `cinst packages.config`
 
 `choco install git ruby python`
+
+`choco install python -x86`
 
 ##Screenshots
 Installing mSysGit silently:
