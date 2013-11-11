@@ -82,6 +82,12 @@ Defaults to false.
 If you want to use the native installer to step through the installer, use `-notSilent` to have chocolatey download the package and installer and bring it up for you.
 Defaults to false.
 
+###Ignore Dependencies Flag (optional) - 0.9.8.21+
+If you want to install something but ignore all of the dependencies, use `-ignoreDependencies` to force chocolatey to only install the package and not any of it's dependencies
+
+###ForceX86 Flag (optional) - v0.9.8.22+
+If you want to install the 32 bit version of a package, you can pass `-x86` and chocolatey will ignore the 64 bit url and only use the 32 bit url. This only applies on an x64 system when you are installing packages that also have x64 versions.
+
 ##Examples
 `choco install nunit`
 
