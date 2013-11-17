@@ -1,5 +1,27 @@
 ##Release Notes
 
+##[0.9.8.23](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.23&page=1&state=closed) (November 11, 2013)
+
+BUG FIXES:
+
+ * Fix - Chocolatey 0.9.8.22 incorrectly reports version as alpha1 [#368](https://github.com/chocolatey/chocolatey/issues/368)
+ * Fix - Some chocolatey commands with no arguments error [#369](https://github.com/chocolatey/chocolatey/issues/369)
+
+##[0.9.8.22](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.22&page=1&state=closed) (November 10, 2013)
+
+BREAKING CHANGES:
+
+ * To use spaces and quotes, one should now use single quotation marks. It works best in both powershell and cmd.
+
+FEATURES:
+
+ * Enhancement - Add switch to force x86 when packages have both versions - [#365](https://github.com/chocolatey/chocolatey/issues/365)
+ * Enhancement - Allow passing parameters to packages - [#159](https://github.com/chocolatey/chocolatey/issues/159)
+
+BUG FIXES:
+
+ * Fix - Chocolatey 0.9.8.21 errors when using spaces or quotes with chocolatey or with batch redirect files [#367](https://github.com/chocolatey/chocolatey/issues/367)
+
 ##[0.9.8.21](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.21&page=1&state=closed) (November 7, 2013)
 
 BREAKING CHANGES:
