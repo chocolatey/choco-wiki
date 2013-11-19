@@ -14,7 +14,7 @@ Name of package to install.
 ##Examples
 `chocolatey webpi IISExpress`  
   
-`cwebpi IISExpress`  
+`choco webpi IISExpress`  
   
 `cinst IISExpress -source webpi`  
   
