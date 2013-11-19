@@ -22,7 +22,7 @@ Name of the source to work with.
 
 
 ##Examples
-`chocolatey source add bob c:\localpackages`
+`choco source add bob c:\localpackages`
 
 `choco source disable bob`
 
