@@ -3,6 +3,8 @@
 Installs packages from Python (easy_install).  
 `choco python packageName` or call `cinst packageName -source python` 
   
+####Deprecation Notice: The shortcut `cpython` was deprecated in 0.9.8.21 for the ubiquitous `choco command`.
+
 ##Parameters
 ###PackageName
 Name of package to install.  
