@@ -9,7 +9,7 @@ Packages a chocolatey nuget package.
 Name of nuspec file to build into a chocolatey nuget package.  
   
 ##Examples
-`chocolatey pack`  
+`choco pack`  
   
 `cpack`  
   
