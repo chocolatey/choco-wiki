@@ -1,6 +1,6 @@
 ##Release Notes
 
-#### <font color="red">Notice: Some command shortcuts have been deprecated as of 0.9.8.21 - Several shortcut files that were created have been deprecated for the ubiquitous `choco command` and will not be created in newer installs. If you are upgrading an existing install, those will continue to work at the current time. These shortcuts are `ccygwin`, `cpython`, `cwebpi`,`cgem`,`cwindowsfeatures`, and `csources`.</font>
+#### <font color="red">Notice: Some command shortcuts have been deprecated as of 0.9.8.21 (**This is JUST the SHORTCUT, not the command itself**) - Several shortcut files that were created have been deprecated for the ubiquitous `choco command` and will not be created in newer installs. If you are upgrading an existing install, those will continue to work at the current time. These shortcuts are `ccygwin`, `cpython`, `cwebpi`,`cgem`,`cwindowsfeatures`, and `csources`.</font>
 
 ##[0.9.8.23](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.23&page=1&state=closed) (November 11, 2013)
 
