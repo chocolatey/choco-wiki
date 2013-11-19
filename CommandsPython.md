@@ -1,8 +1,7 @@
 # Chocolatey Python (cpython)
 ##New as of v0.9.8.17.  
 Installs packages from Python (easy_install).  
-`chocolatey python packageName` or shortcut with 
-`cpython packageName`. Also can call `cinst packageName -source python` 
+`choco python packageName` or call `cinst packageName -source python` 
   
 ##Parameters
 ###PackageName
@@ -13,11 +12,11 @@ The version of the package to install.
 Defaults to the latest version available.  
 
 ##Examples
-`chocolatey python Sphinx`  
+`choco python Sphinx`  
   
-`cpython Sphinx`  
+`choco python Sphinx`  
   
-`cpython Sphinx -version 1.1.2`  
+`choco python Sphinx -version 1.1.2`  
   
 `cinst Sphinx -source python`  
   
