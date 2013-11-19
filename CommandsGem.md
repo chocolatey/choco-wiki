@@ -1,8 +1,7 @@
 # Chocolatey Gem (choco gem)
 ##New as of v0.9.8.13.
 Installs gems from Ruby Gems.
-`chocolatey gem packageName` or shortcut with
-`choco gem packageName`. Also can call `choco install packageName -source ruby`
+`choco gem packageName` or call `choco install packageName -source ruby`
 
 ####Deprecation Notice: The shortcut `cgem` was deprecated in 0.9.8.21 for the ubiquitous `choco command`.
 
