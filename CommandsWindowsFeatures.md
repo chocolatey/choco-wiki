@@ -1,10 +1,11 @@
 # Chocolatey WindowsFeatures (choco windowsfeatures)
 ##New as of v0.9.8.20.
 Installs Windows Features via the Deployment Image Servicing and Management tool on the local machine.
-`choco WindowsFeatures featureName` or shortcut with
-`cwindowsfeatures featureName`. Also can call `choco install featureName -source windowsfeatures`
+`choco WindowsFeatures featureName` or call `choco install featureName -source windowsfeatures`
 
 ###NOTE: You can also `clist -source windowsfeatures` to get an idea of what features are available and what is already enabled.
+
+###Deprecation: `cwindowsfeatures` was deprecated in 0.9.8.21.
 
 ##Parameters
 ###featureName
