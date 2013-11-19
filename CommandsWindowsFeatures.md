@@ -5,7 +5,7 @@ Installs Windows Features via the Deployment Image Servicing and Management tool
 
 ###NOTE: You can also `clist -source windowsfeatures` to get an idea of what features are available and what is already enabled.
 
-###Deprecation: `cwindowsfeatures` was deprecated in 0.9.8.21.
+####Deprecation Notice: The shortcut `cwindowsfeatures` was deprecated in 0.9.8.21 for the ubiquitous `choco command`.
 
 ##Parameters
 ###featureName
