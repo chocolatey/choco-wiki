@@ -1,4 +1,4 @@
-# Chocolatey Python (cpython)
+# Chocolatey Python (choco python)
 ##New as of v0.9.8.17.  
 Installs packages from Python (easy_install).  
 `choco python packageName` or call `cinst packageName -source python` 
