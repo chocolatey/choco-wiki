@@ -2,8 +2,7 @@
 ##New as of v0.9.8.20.
 Allows you to manage sources with several subcommands.
 
-
-###NOTE: You can also `clist -source windowsfeatures` to get an idea of what features are available and what is already enabled.
+####Deprecation Notice: The shortcut `csources` was deprecated in 0.9.8.21 for the ubiquitous `choco command`.
 
 ##Parameters
 ### Operation to perform
@@ -23,10 +22,10 @@ Name of the source to work with.
 
 
 ##Examples
-`chocolatey WindowsFeatures TelnetClient`
+`chocolatey source add bob c:\localpackages`
 
-`choco winfeatures IIS-WebServerRole`
+`choco source disable bob`
 
-`cinst Microsoft-Hyper-V-All -source windowsfeatures`
+`choco source remove bob`
 
 [[Command Reference|CommandsReference]]
