@@ -2,7 +2,7 @@
 
 This is a listing of all of the different things you can pass to chocolatey.
 
-**NOTE:** When you need to quote things, such as when using spaces, please use single quote marks (`'`). You can also use double double quotes (i.e. `""yo""`). This is due to the hand off to PowerShell - seems to strip off the outer set of quotes.
+**NOTE:** When you need to quote things, such as when using spaces, please use single quote marks (`'`). In cmd.exe, you can also use double double quotes (i.e. `""yo""`). This is due to the hand off to PowerShell - seems to strip off the outer set of quotes.
 
 ## Commands
 
