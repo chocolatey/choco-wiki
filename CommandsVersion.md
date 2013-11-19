@@ -1,6 +1,6 @@
-# Chocolatey Version (cver)
+# Chocolatey Version (choco version)
 Compares an installed package to the version available from a remote feed.  
-`chocolatey version packageName` or shortcut with 
+`choco version packageName` or shortcut with 
 `cver packageName`  
   
 ##Parameters
@@ -28,7 +28,7 @@ Defaults to false.
 ##Examples
 `chocolatey version` - looks to see if there is an update available for chocolatey  
   
-`chocolatey version nunit`  
+`choco version nunit`  
   
 `chocolatey version nunit -source http://somelocalfeed.com/nuget`  
   
