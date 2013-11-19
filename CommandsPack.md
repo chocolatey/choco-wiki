@@ -1,7 +1,7 @@
 # Chocolatey Pack (cpack)
 ##New as of v0.9.8.13.  
 Packages a chocolatey nuget package.  
-`chocolatey pack nuspecfile` or shortcut with 
+`choco pack nuspecfile` or shortcut with 
 `cpack packageName` or just `cpack`.  
   
 ##Parameters
