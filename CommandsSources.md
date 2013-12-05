@@ -22,12 +22,10 @@ Name of the source to work with.
 
 
 ##Examples
-`choco sources list`
+`choco source add bob c:\localpackages`
 
-`choco sources add bob c:\localpackages`
+`choco source disable bob`
 
-`choco sources disable bob`
-
-`choco sources remove bob`
+`choco source remove bob`
 
 [[Command Reference|CommandsReference]]
