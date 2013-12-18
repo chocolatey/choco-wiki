@@ -71,6 +71,8 @@ Parameters that you want to pass to the package (if the package accepts these). 
 
 Note: You should pass this as `'value1=somevalue;value2=''value with spaces'''`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'value1=''some value'' '` using two single quotation marks instead of a `"`. Chocolatey will convert this back to double quotes (e.g. `value1="some value"` for the above).
 
+For package creators: You would pick this up as `$env:chocolateyPackageParameters` and expect it to be a string that you need to parse.
+
 Defaults to ''.
 
 ###InstallArguments (optional) - v0.9.8.13+
