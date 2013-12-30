@@ -8,9 +8,10 @@ Updates an existing package to the latest version, if there is a newer version a
 ###PackageName
 Name of package to update. If left empty, assumes you meant for updating chocolatey itself to the latest version. If `all`, it compares against all installed packages.  
   
-###Source (optional)
+###Source (optional) 
 Source (directory, share or remote url feed) the package comes from.  
 Defaults to official chocolatey feed.  
+You can pass this as `-source` 
   
 ###Prerelease (optional) - v0.9.8.15+
 Whether to include prerelease packages in results.  
