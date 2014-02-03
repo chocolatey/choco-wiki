@@ -34,12 +34,13 @@ iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.p
 ```  
   
 **<font color="red">Note: You must have your execution policy set to unrestricted (or at least in bypass) for this to work (`Set-ExecutionPolicy Unrestricted`). There have been [reports](https://github.com/chocolatey/chocolatey/issues/70) that RemoteSigned is enough for the install to work.</font>**  
-It downloads and runs (https://raw.github.com/chocolatey/chocolatey/master/chocolateyInstall/InstallChocolatey.ps1).  
+It downloads and runs (https://chocolatey.org/install.ps1).  
   
 ## PowerShell Through Batch Method
+`NOTE: This method will give you a deprecated warning.`
 This is the best method if you want to repeat it or include it in source control. It requires no change to your existing powershell to allow for remote unsigned scripts.  
 
-Download the two items from [chocolateyInstall](https://github.com/ferventcoder/chocolatey/tree/master/chocolateyInstall).  
+Download the two items from [chocolateyInstall](https://github.com/chocolatey/chocolatey/tree/master/chocolateyInstall).  
   
 Run `installChocolatey.cmd` and it will install and update to the latest version of chocolatey.  
   
