@@ -49,7 +49,7 @@ If you think you got what it takes and just want to know the basic steps to get 
 
 For reference - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
   
-The `Chocolatey` Windows package manager uses the same infrastructure as `[[NuGet|http://nuget.org/]]` , the `Visual Studio` package manager by `Microsoft`. Therefore packages are based on the same principals. One of those is a package description (specification) in `xml` format, known as the `Nuspec`.
+The `Chocolatey` Windows package manager uses the same infrastructure as [NuGet](http://nuget.org/) , the `Visual Studio` package manager by `Microsoft`. Therefore packages are based on the same principals. One of those is a package description (specification) in `xml` format, known as the `Nuspec`.
 
 The `Nuspec` contains basic information such as the version, license, maintainer, and package dependencies.
 
