@@ -24,7 +24,7 @@ Name of the source to work with.
 ##Examples
 `choco sources list`
 
-`choco sources add bob c:\localpackages`
+`choco sources add -name bob -source c:\localpackages`
 
 `choco sources disable bob`
 
