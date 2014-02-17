@@ -48,6 +48,6 @@ Chocolatey has a [Google Groups group](http://groups.google.com/group/chocolatey
 If you have issues with a package (or it is out of date), please use the contact maintainers link on the package page itself. If the maintainer doesn’t respond within a given time frame (say a day or two), feel free to bring it up with the group.  
   
 ##Requirements
- * Windows XP/Vista/7/2003/2008  
+ * Windows XP/Vista/7/8/2003/2008  
  * .NET Framework 4.0  
  * PowerShell 2.0
