@@ -16,3 +16,5 @@ Most chocolatey packages do not contain actual software distributions, only inst
  * Run an installer (possibly in silent mode)  
   
 Because this is no different than what a human would do, and b/c a human kicks off this process, it's reasonable to determine that there is no violation of distribution rights.  
+
+In the cases where you would package the actual software in the package, please ensure you have distribution rights. Any package that is found not to be compliant with this rule will be removed immediately.
