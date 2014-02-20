@@ -35,7 +35,7 @@ What distinction does Chocolatey make between an [[installable and a portable ap
   
 ##Packages
 [[Creating packages|CreatePackages]]  
-Keep in Mind [Distribution|https://github.com/chocolatey/chocolatey/wiki/Legal#wiki-distributions-aka-chocolatey-packages] Rights  
+Keep in Mind [Distribution Rights](https://github.com/chocolatey/chocolatey/wiki/Legal#wiki-distributions-aka-chocolatey-packages)  
 [[Helper Reference|HelpersReference]]  
 [[Outdated packages? Triage process|PackageTriageProcess]]
 
