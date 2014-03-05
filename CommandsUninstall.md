@@ -16,6 +16,7 @@ Uninstalls a package.
 Name of package to uninstall.  
   
 ###Version (optional)
+**NOTE: At this point in time, the version parameter is NOT implemented, but this will change in future versions of Chocolatey.** 
 The version of the package to uninstall.  
 Defaults to the latest version installed.  
   
