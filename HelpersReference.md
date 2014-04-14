@@ -61,46 +61,46 @@ These are the helpers from above as one list.
 ###Helpers in alphabetical order
 _(needs updating)_
 
-* __Get-BinRoot__  
+* __Get-BinRoot__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-BinRoot.ps1)  
 Gets the path to where binaries should be installed. Either by environmental variable `ChocolateyBinRoot` or by default. E.g. `C:\Tools`
 ```powershell
 $installDir = Get-BinRoot;
 ```
-* __Get-CheckSumValid__
-* __Get-ChocolateyUnzip__
-* __Get-ChocolateyWebFile__
-* __Get-FtpFile__
-* __Get-ProcessorBits__  
+* __Get-CheckSumValid__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-CheckSumValid.ps1)
+* __Get-ChocolateyUnzip__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-ChocolateyUnzip.ps1)
+* __Get-ChocolateyWebFile__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-ChocolateyWebFile.ps1)
+* __Get-FtpFile__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-FtpFile.ps1)
+* __Get-ProcessorBits__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-ProcessorBits.ps1)  
 Get the system architecture address width; return the system architecture address width (`32` or `64`). Optionally return `true` or `false` by specifying a width to test against.
 ```powershell
 $architecture = Get-ProcessorBits; # 64
 $is32bit = Get-ProcessorBits 32; # false
 ```
-* __Get-UACEnabled__
-* __Get-VirusCheckValid__
-* __Get-WebFile__
-* __Get-WebHeaders__
-* __Install-ChocolateyDesktopLink__
-* __Install-ChocolateyEnvironmentVariable__
-* __Install-ChocolateyExplorerMenuItem__
-* __Install-ChocolateyFileAssociation__
-* __Install-ChocolateyInstallPackage__
-* __Install-ChocolateyPackage__
-* __Install-ChocolateyPath__
-* __Install-ChocolateyPinnedTaskBarItem__
-* __Install-ChocolateyPowershellCommand__
-* __Install-ChocolateyShortcut__
-* __Install-ChocolateyVsixPackage__
-* __Install-ChocolateyZipPackage__
-* __Start-ChocolateyProcessAsAdmin__
-* __UnInstall-ChocolateyZipPackage__
-* __Uninstall-ChocolateyPackage__
-* __Update-SessionEnvironment__
-* __Write-ChocolateyFailure__
-* __Write-ChocolateySuccess__
-* __Write-Debug__
-* __Write-Error__
-* __Write-FileUpdateLog__
-* __Write-Host__
+* __Get-UACEnabled__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-UACEnabled.ps1)
+* __Get-VirusCheckValid__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-VirusCheckValid.ps1)
+* __Get-WebFile__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-WebFile.ps1)
+* __Get-WebHeaders__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-WebHeaders.ps1)
+* __Install-ChocolateyDesktopLink__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyDesktopLink.ps1)
+* __Install-ChocolateyEnvironmentVariable__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyEnvironmentVariable.ps1)
+* __Install-ChocolateyExplorerMenuItem__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyExplorerMenuItem.ps1)
+* __Install-ChocolateyFileAssociation__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyFileAssociation.ps1)
+* __Install-ChocolateyInstallPackage__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyInstallPackage.ps1)
+* __Install-ChocolateyPackage__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyPackage.ps1)
+* __Install-ChocolateyPath__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyPath.ps1)
+* __Install-ChocolateyPinnedTaskBarItem__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyPinnedTaskBarItem.ps1)
+* __Install-ChocolateyPowershellCommand__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyPowershellCommand.ps1)
+* __Install-ChocolateyShortcut__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyShortcut.ps1)
+* __Install-ChocolateyVsixPackage__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyVsixPackage.ps1)
+* __Install-ChocolateyZipPackage__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyZipPackage.ps1)
+* __Start-ChocolateyProcessAsAdmin__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Start-ChocolateyProcessAsAdmin.ps1)
+* __UnInstall-ChocolateyZipPackage__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/UnInstall-ChocolateyZipPackage.ps1)
+* __Uninstall-ChocolateyPackage__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Uninstall-ChocolateyPackage.ps1)
+* __Update-SessionEnvironment__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Update-SessionEnvironment.ps1)
+* __Write-ChocolateyFailure__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Write-ChocolateyFailure.ps1)
+* __Write-ChocolateySuccess__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Write-ChocolateySuccess.ps1)
+* __Write-Debug__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Write-Debug.ps1)
+* __Write-Error__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Write-Error.ps1)
+* __Write-FileUpdateLog__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Write-FileUpdateLog.ps1)
+* __Write-Host__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Write-Host.ps1)
 
 [[Home]]
