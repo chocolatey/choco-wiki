@@ -56,4 +56,51 @@ These are the helpers from above as one list.
 * [[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]]  
 * [[Install-ChocolateyPinnedTaskBarItem|HelpersInstallChocolateyPinnedTaskBarItem]] - v0.9.8.20+
   
+##Overview
+
+###Helpers in alphabetical order
+_(needs updating)_
+
+* __Get-BinRoot__  
+Gets the path to where binaries should be installed. Either by environmental variable `ChocolateyBinRoot` or by default. E.g. `C:\Tools`
+```powershell
+$installDir = Get-BinRoot;
+```
+* __Get-CheckSumValid__
+* __Get-ChocolateyUnzip__
+* __Get-ChocolateyWebFile__
+* __Get-FtpFile__
+* __Get-ProcessorBits__  
+Get the system architecture address width; return the system architecture address width (`32` or `64`). Optionally return `true` or `false` by specifying a width to test against.
+```powershell
+$architecture = Get-ProcessorBits; # 64
+$is32bit = Get-ProcessorBits 32; # false
+```
+* __Get-UACEnabled__
+* __Get-VirusCheckValid__
+* __Get-WebFile__
+* __Get-WebHeaders__
+* __Install-ChocolateyDesktopLink__
+* __Install-ChocolateyEnvironmentVariable__
+* __Install-ChocolateyExplorerMenuItem__
+* __Install-ChocolateyFileAssociation__
+* __Install-ChocolateyInstallPackage__
+* __Install-ChocolateyPackage__
+* __Install-ChocolateyPath__
+* __Install-ChocolateyPinnedTaskBarItem__
+* __Install-ChocolateyPowershellCommand__
+* __Install-ChocolateyShortcut__
+* __Install-ChocolateyVsixPackage__
+* __Install-ChocolateyZipPackage__
+* __Start-ChocolateyProcessAsAdmin__
+* __UnInstall-ChocolateyZipPackage__
+* __Uninstall-ChocolateyPackage__
+* __Update-SessionEnvironment__
+* __Write-ChocolateyFailure__
+* __Write-ChocolateySuccess__
+* __Write-Debug__
+* __Write-Error__
+* __Write-FileUpdateLog__
+* __Write-Host__
+
 [[Home]]
