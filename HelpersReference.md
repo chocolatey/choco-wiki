@@ -77,7 +77,7 @@ $architecture = Get-ProcessorBits; # 64
 $is32bit = Get-ProcessorBits 32; # false
 ```
 * __Get-UACEnabled__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-UACEnabled.ps1)
-* __Get-VirusCheckValid__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-VirusCheckValid.ps1)
+* __Get-VirusCheckValid__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-VirusCheckValid.ps1) :warning: not implemented!
 * __Get-WebFile__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-WebFile.ps1)
 * __Get-WebHeaders__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-WebHeaders.ps1)
 * __Install-ChocolateyDesktopLink__ [src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyDesktopLink.ps1)
