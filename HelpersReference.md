@@ -62,9 +62,10 @@ These are the helpers from above as one list.
 _(needs updating)_
 
 * __Get-BinRoot__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-BinRoot.ps1)\]  
-Gets the path to where binaries should be installed. Either by environmental variable `ChocolateyBinRoot` or by default. E.g. `C:\Tools`
+Gets the path to where binaries should be installed. Either by environmental variable `ChocolateyBinRoot` or by default. E.g. `C:\Tools`  
 ```powershell
-$installDir = Get-BinRoot;
+$scriptPath = (Split-Path -parent $MyInvocation.MyCommand.Definition)
+Get-ChocolateyUnzip "c:\someFile.zip" $scriptPath somedirinzip\somedirinzip
 ```
 * __Get-CheckSumValid__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-CheckSumValid.ps1)\]  
 * __Get-ChocolateyUnzip__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-ChocolateyUnzip.ps1)\]  
@@ -80,17 +81,23 @@ Get-ChocolateyWebFile '__NAME__' 'C:\somepath\somename.exe' 'URL' '64BIT_URL_DEL
 ```
 * __Get-FtpFile__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-FtpFile.ps1)\]  
 * __Get-ProcessorBits__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-ProcessorBits.ps1)\]  
-Get the system architecture address width; return the system architecture address width (`32` or `64`). Optionally return `true` or `false` by specifying a width to test against.
+Get the system architecture address width; return the system architecture address width (`32` or `64`). Optionally return `true` or `false` by specifying a width to test against.  
 ```powershell
 $architecture = Get-ProcessorBits; # 64
 $is32bit = Get-ProcessorBits 32; # false
 ```
 * __Get-UACEnabled__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-UACEnabled.ps1)\]  
-* __Get-VirusCheckValid__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-VirusCheckValid.ps1)\] :warning: not implemented!  
+* __Get-VirusCheckValid__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-VirusCheckValid.ps1)\]  
+:warning: not implemented!    
 * __Get-WebFile__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-WebFile.ps1)\]  
 * __Get-WebHeaders__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-WebHeaders.ps1)\]  
 * __Install-ChocolateyDesktopLink__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyDesktopLink.ps1)\]  
 This adds a shortcut on the desktop to the specified file path.  
+```powershell
+Install-ChocolateyDesktopLink -TargetFilePath "C:\tools\NHibernatProfiler\nhprof.exe"
+
+This will create a new Desktop Shortcut pointing at the NHibernate Profiler exe.
+```
 * __Install-ChocolateyEnvironmentVariable__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyEnvironmentVariable.ps1)\]  
 Creates a persistent environment variable  
 ```powershell
@@ -109,6 +116,13 @@ This will create a context menu item in Windows Explorer when any file is right 
 ```
 * __Install-ChocolateyFileAssociation__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyFileAssociation.ps1)\]  
 Creates an association between a file extension and a executable  
+```powershell
+C:\PS>$sublimeDir = (Get-ChildItem $env:systemdrive\chocolatey\lib\sublimetext* | select $_.last)
+C:\PS>$sublimeExe = "$sublimeDir\tools\sublime_text.exe"
+C:\PS>Install-ChocolateyFileAssociation ".txt" $sublimeExe
+
+This will create an association between Sublime Text 2 and all .txt files. Any .txt file opened will by default open with Sublime Text 2.
+```
 * __Install-ChocolateyInstallPackage__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyInstallPackage.ps1)\]  
 Installs a package  
 ```powershell
@@ -122,6 +136,11 @@ Install-ChocolateyPackage '__NAME__' 'EXE_OR_MSI' 'SILENT_ARGS' 'URL' '64BIT_URL
 * __Install-ChocolateyPath__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyPath.ps1)\]  
 * __Install-ChocolateyPinnedTaskBarItem__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyPinnedTaskBarItem.ps1)\]  
 Creates an item in the task bar linking to the provided path.  
+```powershell
+Install-ChocolateyPinnedTaskBarItem "${env:ProgramFiles(x86)}\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
+
+This will create a Visual Studio task bar icon.
+```
 * __Install-ChocolateyPowershellCommand__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyPowershellCommand.ps1)\]  
 * __Install-ChocolateyShortcut__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyShortcut.ps1)\]  
 This adds a shortcut, at the specified location, with the option to specify 
@@ -166,4 +185,6 @@ package install.
 * __Write-Error__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Write-Error.ps1)\]  
 * __Write-FileUpdateLog__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Write-FileUpdateLog.ps1)\]  
 * __Write-Host__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Write-Host.ps1)\]  
+
+
 [[Home]]
