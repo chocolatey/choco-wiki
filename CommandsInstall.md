@@ -1,5 +1,5 @@
 ## Chocolatey Install (cinst / choco install)
-Unconditionally installs a package or a list of packages in a packages.config, even if it already exists.
+Installs a package or a list of packages in a packages.config.
 `choco install packageName` or shortcut with
 `cinst packageName` or `cinst packages.config`
 
