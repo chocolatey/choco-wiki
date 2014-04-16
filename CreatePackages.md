@@ -73,7 +73,7 @@ As the package maintainer, you decide where the packaged application is installe
 
 ### 1. Path provided by the `Get-BinRoot` helper
 
-The path returned by the helper `Get-BinRoot` can be used as the parent directory for the installation. `Get-BinRoot` will return the value of the  environment variable `%ChocolateyBinRoot%`. If the value does not contain a drive reference, the system drive will be prepended. If the environment variable is not set, the default path (~~`C:\Tools`~~ `C:\Chocolatey\bin) will be returned. 
+The path returned by the helper `Get-BinRoot` can be used as the parent directory for the installation. `Get-BinRoot` will return the value of the  environment variable `%ChocolateyBinRoot%`. If the value does not contain a drive reference, the system drive will be prepended. If the environment variable is not set, the default path (~~`C:\Tools`~~ `C:\Chocolatey\bin`) will be returned. 
 
 As an example, [MinGW](https://github.com/ferventcoder/nugetpackages/blob/master/mingw/tools/chocolateyInstall.ps1) uses `%ChocolateyBinRoot%`. If the environment variable is not set, MinGW installs to ~~`C:\Tools\MinGW`~~ `C:\Chocolatey\bin\MinGW` by default. If `%ChocolateyBinRoot%` is set to "C:\Common\bin", MinGW installs to `C:\Common\bin\MinGW`.
 
