@@ -71,20 +71,18 @@ Logically, the version is based on the lowest compatible version. But if you don
 
 As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
 
-### 1. `%chocolatey_bin_root%` environment variable
+### 1. Path provided by the `Get-BinRoot` helper
 
-The environment variable `%chocolatey_bin_root%` can be used as the parent directory for the installation. If existing, `%chocolatey_bin_root%` points to a subfolder of the system partition, e.g. "Packages". 
+The path returned by the helper `Get-BinRoot` can be used as the parent directory for the installation. `Get-BinRoot` will return the value of the  environment variable `%ChocolateyBinRoot%`. If the value does not contain a drive reference, the system drive will be prepended. If the environment variable is not set, the default path (~~`C:\Tools`~~ `C:\Chocolatey\bin) will be returned. 
 
-As an example, the [ruby package](http://chocolatey.org/packages/ruby) uses `%chocolatey_bin_root%` for installing ruby. If the environment variable is not set, ruby installs to `C:\ruby193` by default. If `%chocolatey_bin_root%` is set to "Packages", ruby installs to `C:\Packages\ruby193`.
+As an example, [MinGW](https://github.com/ferventcoder/nugetpackages/blob/master/mingw/tools/chocolateyInstall.ps1) uses `%ChocolateyBinRoot%`. If the environment variable is not set, MinGW installs to ~~`C:\Tools\MinGW`~~ `C:\Chocolatey\bin\MinGW` by default. If `%ChocolateyBinRoot%` is set to "C:\Common\bin", MinGW installs to `C:\Common\bin\MinGW`.
 
-`%chocolatey_bin_root%` gives the chocolatey user a way of controlling where packages are installed. If you want to allow customizing the installation path, then this is currently the way to go.
-
-**Please note** that this variable is empty by default, and needs to be explicitly set by the user. Before installing to `%chocolatey_bin_root%`, your installation script should check if this variable is not empty.
+`%ChocolateyBinRoot%` gives the chocolatey user a way of controlling where packages are installed. If you want to allow customizing the installation path, then this is currently the way to go.
 
 ### 2. The default installation path of your .msi/.exe setup file
 
 The original creator probably had a reason for choosing a specific default installation path.  
-If you think, the user should be able to customize this path and you, the package maintainer, know how to pass a custom path on to the installer, then you should use `%chocolatey_bin_root%`.
+If you think, the user should be able to customize this path and you, the package maintainer, know how to pass a custom path on to the installer, then you should use `%ChocolateyBinRoot%`.
 
 ### 3. The package directory in `%ChocolateyInstall%\lib\mypackage`
 
