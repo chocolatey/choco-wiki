@@ -13,6 +13,8 @@ There are a few rules that you have to follow before pushing packages to chocola
 * **Split dependencies into multiple packages.** Try to split up packages as much as possible. If for example a program comes with additional modules/installers that are optional, make different packages for them instead of including all the things into one package. This idea is already widely applied for Linux packages, because it leads to a more lightweight system and reduces potential issues and conflicts.
 * **Use a simple intuitive lowercase name for the package**. See the [package naming guidelines](http://github.com/chocolatey/chocolatey/wiki/CreatePackages#naming-your-package) for details.
 
+Is your package unqualified for the Chocolatey feed, but you like to be able to install it through Chocolatey? Don't worry, you can always host your package for free on MyGet. See [Hosting Chocolatey Packages on MyGet](https://github.com/chocolatey/chocolatey/wiki/Hosting-Chocolatey-Packages-on-MyGet).
+
 ## Character encoding
 
 * **Use the UTF-8 character encoding** for the `*.nuspec` and `*.ps1` files. If you don’t respect this rule, some characters are not displayed correctly in the [Gallery on Chocolatey.org](http://chocolatey.org/packages), because the Gallery assumes `UTF-8`.
