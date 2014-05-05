@@ -7,11 +7,11 @@ When trying to install chocolatey behind a proxy server, you may be faced with e
 Steps to help address this.
 
 1. Copy the Install.ps1 file locally.
-2. Edit the file and add proxy details (see code change).
+2. Edit the file and add proxy details (see code change). Replace the following entries with your specific proxy servers details: **PROXYSERVER:PROXYPORT; USERPASSWORD; USERNAME**
 3. Ensure you have the approapriate domain prefix for the user name. Try: 'AD\UserName' or just 'UserName'.
 4. Run the script to install Chocolatey.
 
-```
+```PowerShell
 function Download-File {
 param (
   [string]$url,
@@ -34,8 +34,9 @@ If you want chocolatey to go through a proxy, set the environment variables `htt
 
 ## Powershell - environment variable set-up
 
-``[Environment]::SetEnvironmentVariable("http_proxy", "PROXYSERVER:PROXYPORT","Machine")
-[Environment]::SetEnvironmentVariable("https_proxy", "PROXYSERVER:PROXYPORT","Machine")``
+ ``[Environment]::SetEnvironmentVariable ("http_proxy", "PROXYSERVER:PROXYPORT","Machine")``
+ ``[Environment]::SetEnvironmentVariable("https_proxy", "PROXYSERVER:PROXYPORT","Machine")``
+
 
 ## Windows - setting an environment variable set-up
 
