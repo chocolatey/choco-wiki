@@ -1,8 +1,9 @@
 If you want chocolatey to go through a proxy, set the environment variables `http_proxy` and `https_proxy` to point to the proxy address. The format would be `address:port`. 
 
-## Powershell commands to configure the http_proxy environment variable.
-[Environment]::SetEnvironmentVariable("http_proxy", "PROXYSERVER:PROXYPORT","Machine")
-[Environment]::SetEnvironmentVariable("https_proxy", "PROXYSERVER:PROXYPORT","Machine")
+### Powershell
+
+``[Environment]::SetEnvironmentVariable("http_proxy", "PROXYSERVER:PROXYPORT","Machine")
+[Environment]::SetEnvironmentVariable("https_proxy", "PROXYSERVER:PROXYPORT","Machine")``
 
 # Setting an environment variable in windows:
 
