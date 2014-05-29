@@ -11,6 +11,13 @@ Let's install [Notepad++](http://notepad-plus-plus.org/).
 1. If you have UAC turned on or are not an administrator, chocolatey is going to request administrative permission at some point (at least once during the process). Otherwise it will not be able to finish what it is doing successfully. If you don't have UAC turned on, it will just continue on without stopping to bother you. 
 1. That's it. Pretty simple but powerful little concept!
 
+### Overriding default install directory or other advanced install concepts
+
+1. Yes we support that through the use of installargs - see https://github.com/chocolatey/chocolatey/wiki/CommandsInstall#installarguments-optional---v09813
+1. If you wanted to pass native argument to the installer, like the install directory, you would need to know the silent argument passed to that particular installer and then you would specify it on the command line or in the packages.config (upcoming for packages.config).  
+1. If it was an MSI, then usually you could pass `-ia 'INSTALLDIR=''D:\Program Files'''` (note the double `'` - those get translated to double quotes `"`, posh seems to want to rip them out.
+1. For example, Notepad++ uses the [NSIS](http://nsis.sourceforge.net/Main_Page) (NullSoft Scriptable Install System) installer. If we look at the silent options, we see that [/D](http://nsis.sourceforge.net/Docs/Chapter3.html#3.2.1) is how we influence the install directory. So we would pass `cinst notepadplusplus.install -ia '/D=E:\SomeDirectory\somebody\npp'` -note that we are looking at the specific package over the virtual (this will be corrected in future releases).
+
 ##How does chocolatey work?
 When a package has an exe file, chocolatey will create a link "shortcut" to the file so that you can run that tool anywhere on the machine.  
 When a package has a chocolateyInstall.ps1, it will run the script. The instructions in the file can be anything. This is limited only by the .NET framework and powershell.  
