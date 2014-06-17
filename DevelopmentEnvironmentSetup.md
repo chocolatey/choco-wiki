@@ -58,11 +58,11 @@ if (Install-NeededFor 'chocolatey') {
 }
 
 # install nuget, ruby.devkit, and ruby if they are missing
-cinstm nuget.commandline
+cinst nuget.commandline
 
 if (Install-NeededFor 'ruby / ruby devkit') {
-  cinstm ruby.devkit
-  #cinstm ruby #devkit install will automatically install ruby
+  cinst ruby.devkit
+  cinst ruby -version 1.9.3.56500
 }
 
 #perform ruby updates and get gems
