@@ -2,7 +2,7 @@
 ##New as of v0.9.8.20.
 Allows you to manage sources with several subcommands.
 
-####Deprecation Notice: The shortcut `csources` was deprecated in 0.9.8.21 for the ubiquitous `choco command`.
+####Deprecation Notice: The shortcut `csources` was deprecated in 0.9.8.21 for the ubiquitous `choco sources`.
 
 ##Parameters
 ### Operation to perform
