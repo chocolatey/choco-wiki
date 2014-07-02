@@ -1,3 +1,5 @@
+## NOTICE: As of 0.9.8.24, Chocolatey's default install location is C:\ProgramData\Chocolatey
+
 ## Default Chocolatey Installation
   
 Lots of people tend to ask why the system root for an installation of chocolatey and why not Program Files or the User Path (C:\Users\username or C:\Documents and Settings\username).  
