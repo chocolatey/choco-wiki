@@ -69,7 +69,8 @@ Is this an error? It's not. It will be removed from future versions.
   
 ###Why does chocolatey install to C:\Chocolatey by default? Why the system root folder?
 Excellent question, deserving of a full page - [[Default Install Reasoning|DefaultChocolateyInstallReasoning]]  
-  
+**UPDATE**: AS of 0.9.8.24, it now installs to C:\ProgramData\chocolatey.  
+
 ###What kind of package types does chocolatey support?
 * Binary Packages – Installable/portable applications – This is 98 % of the chocolatey packages – most are pointers to the real deal installers/zips.  
 * Powershell Command Packages – Packages that have the suffix **.powershell** will install powershell scripts as commands for you to call from anywhere.
