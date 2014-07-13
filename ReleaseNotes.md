@@ -2,7 +2,15 @@
 
 #### <font color="red">Notice: Some command shortcuts have been deprecated as of 0.9.8.21 (**This is JUST the SHORTCUT, not the command itself**) - Several shortcut files that were created have been deprecated for the ubiquitous `choco command` and will not be created in newer installs. If you are upgrading an existing install, those will continue to work at the current time. These shortcuts are `ccygwin`, `cpython`, `cwebpi`,`cgem`,`cwindowsfeatures`, and `csources`.</font>
 
+##[0.9.8.27](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.27&page=1&state=closed) (July 13, 2014)
+
+BUG FIXES:
+
+ * Fix - Posh v3+ Ignores -Wait when run from cmd.exe - [#516](https://github.com/chocolatey/chocolatey/pull/516)
+
 ##[0.9.8.26](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.26&page=1&state=closed) (July 12, 2014)
+
+Pulled due to major breakage with #516 
 
 BUG FIXES:
 
