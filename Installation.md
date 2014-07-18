@@ -11,12 +11,12 @@ Great question - [[why chocolatey installs where it does|DefaultChocolateyInstal
 ## Before You Install  
 **Can I install chocolatey to another location?** Yes  
   
-1. Create a __user__ environment variable named ```ChocolateyInstall``` and set it to the folder you want chocolatey to install to prior to installation (this environment variable must be set globally or available to PowerShell- it is not enough to simply make it available to your current command prompt session).  Keep in mind the [[restrictions|DefaultChocolateyInstallReasoning]] though!  
+1. Create a __machine__ level (__user__ level will also work) environment variable named ```ChocolateyInstall``` and set it to the folder you want chocolatey to install to prior to installation (this environment variable must be set globally or available to PowerShell- it is not enough to simply make it available to your current command prompt session).  Keep in mind the [[restrictions|DefaultChocolateyInstallReasoning]] though!  
 1. Create the folder manually.
 1. If you have already installed (and want to change the location after the fact):
   * Follow the above steps. 
   * Install chocolatey again. 
-  * Copy over the items from the old install directory. (not sure this is true anymore, need someone to verify) (Well you're gonna want to in order to remove the clutter from the root. ~Rs)
+  * Copy/Move over the items from the old lib/bin directory.
   * Delete your old install directory.
   
 ## Command Line
