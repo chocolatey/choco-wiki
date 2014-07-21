@@ -1,4 +1,4 @@
-##Chocolatey NuGet - kind of like apt-get, but for Windows
+##Chocolatey NuGet - kind of like apt-get, but for Windows [![](http://img.shields.io/gittip/Chocolatey.svg)](https://www.gittip.com/Chocolatey/)
 ###You can just call me Chocolatey.  
 ![Chocolatey Logo](https://github.com/chocolatey/chocolatey/wiki/images/chocolateyicon.gif "Chocolatey")  
 ###Let's get Chocolatey!
