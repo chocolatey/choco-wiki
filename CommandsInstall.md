@@ -96,7 +96,7 @@ If you want to use the native installer to step through the installer, use `-not
 Defaults to false.
 
 ###IgnoreDependencies flag (optional) - 0.9.8.21+
-If you want to install something but ignore all of the dependencies, use `-ignoreDependencies` to force chocolatey to only install the package and not any of it's dependencies.
+If you want to install something but ignore all of the dependencies, use `-ignoreDependencies` to force chocolatey to only install the package and not any of its dependencies.
 
 Defaults to false.
 
