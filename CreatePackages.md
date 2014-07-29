@@ -12,6 +12,7 @@ There are a few rules that you have to follow before pushing packages to chocola
 * **Don't include other required software if there's a package of it.** If a package requires another software of which there is already a package, the already existing package should be used as dependency instead of including all needed software into one package.
 * **Split dependencies into multiple packages.** Try to split up packages as much as possible. If for example a program comes with additional modules/installers that are optional, make different packages for them instead of including all the things into one package. This idea is already widely applied for Linux packages, because it leads to a more lightweight system and reduces potential issues and conflicts.
 * **Use a simple intuitive lowercase name for the package**. See the [package naming guidelines](http://github.com/chocolatey/chocolatey/wiki/CreatePackages#naming-your-package) for details.
+* **Packaging commercial or trial software?** Clearly state this in the package description.
 
 Is your package unqualified for the Chocolatey feed, but you like to be able to install it through Chocolatey? Don't worry, you can always host your package for free on MyGet. See [Hosting Chocolatey Packages on MyGet](https://github.com/chocolatey/chocolatey/wiki/Hosting-Chocolatey-Packages-on-MyGet).
 
