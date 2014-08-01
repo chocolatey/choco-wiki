@@ -34,9 +34,14 @@ If you want chocolatey to go through a proxy, set the environment variables `htt
 
 ## Powershell - environment variable set-up
 
- ``[Environment]::SetEnvironmentVariable ("http_proxy", "PROXYSERVER:PROXYPORT","Machine")``
+ ``[Environment]::SetEnvironmentVariable("http_proxy", "PROXYSERVER:PROXYPORT","Machine")``
  ``[Environment]::SetEnvironmentVariable("https_proxy", "PROXYSERVER:PROXYPORT","Machine")``
 
+
+For a proxy that requires authentication use the following:
+
+ ``[Environment]::SetEnvironmentVariable("http_proxy", "USERNAME:PASSWORD@PROXYSERVER:PROXYPORT","Machine")``
+ ``[Environment]::SetEnvironmentVariable("https_proxy", "USERNAME:PASSWORD@PROXYSERVER:PROXYPORT","Machine")``
 
 ## Windows - setting an environment variable set-up
 
