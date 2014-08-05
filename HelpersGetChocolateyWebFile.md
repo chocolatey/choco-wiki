@@ -1,5 +1,5 @@
 #Get-ChocolateyWebFile
-`Get-ChocolateyWebFile $packageName $fileFullPath $url $url64bit`  
+`Get-ChocolateyWebFile $packageName $fileFullPath $url $url64bit -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64`  
   
 ##Description
 Downloads a file from the internets.  
@@ -21,6 +21,26 @@ Example: `'http://nodejs.org/dist/v0.5.2/node.exe'`
 If there is a 64 bit file available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly.  
 Example: `'http://nodejs.org/dist/v0.5.2/nodex64.exe'`  
 Defaults to the 32bit url.  
+
+###$checksum (optional but will be required later) - v0.9.8.24+  
+This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+Example: `-checksum 'C67962F064924F3C7B95D69F88E745C0'`  
+Defaults to ``.  
+
+###$checksumType (optional) - v0.9.8.24+  
+This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+Example: `-checksumType 'sha1'`  
+Defaults to `md5`.  
+
+###$checksum64 (optional) - v0.9.8.24+  
+This allows the x64 file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+Example: `-checksum64 'C67962F064924F3C7B95D69F88E745C0'`  
+Defaults to ``.  
+
+###$checksumType64 (optional) - v0.9.8.24+  
+This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+Example: `-checksumType64 'sha1'`  
+Defaults to checksumType's value.  
   
 ##Examples
 ```powershell
