@@ -1,7 +1,7 @@
 #Install-ChocolateyPackage
 ###NOTE: This command will assert UAC/Admin privileges on the machine.  
   
-`Install-ChocolateyPackage $packageName $fileType $silentArgs $url $url64bit`  
+`Install-ChocolateyPackage $packageName $installerType $silentArgs $url $url64bit -validExitCodes $validExitCodes -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64`  
   
 ##Description
 This will download a native installer from a url and install it on your machine. Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].  
@@ -11,7 +11,7 @@ This will download a native installer from a url and install it on your machine.
 This is an arbitrary name.  
 Example: `'7zip'`  
   
-###$fileType (important)
+###$installerType (important)
 Pick only  one to leave here.  
 Example: `'exe'` or `'msi'`  
   
@@ -33,6 +33,26 @@ Defaults to the 32bit url.
 If there are other valid exit codes besides zero signifying a successful install, please pass `-validExitCodes` with the value, including 0 as long as it is still valid.  
 Example: `-validExitCodes @(0,44)`  
 Defaults to `@(0)`.  
+    
+###$checksum (optional but will be required later) - v0.9.8.24+  
+This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+Example: `-checksum 'C67962F064924F3C7B95D69F88E745C0'`  
+Defaults to ``.  
+
+###$checksumType (optional) - v0.9.8.24+  
+This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+Example: `-checksumType 'sha1'`  
+Defaults to `md5`.  
+
+###$checksum64 (optional) - v0.9.8.24+  
+This allows the x64 file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+Example: `-checksum64 'C67962F064924F3C7B95D69F88E745C0'`  
+Defaults to ``.  
+
+###$checksumType64 (optional) - v0.9.8.24+  
+This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+Example: `-checksumType64 'sha1'`  
+Defaults to checksumType's value.  
   
 ##Examples
 `Install-ChocolateyPackage 'StExBar' 'msi' '/quiet' 'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi' 'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'`  
@@ -40,6 +60,8 @@ Defaults to `@(0)`.
 `Install-ChocolateyPackage 'mono' 'exe' '/SILENT' 'http://ftp.novell.com/pub/mono/archive/2.10.2/windows-installer/5/mono-2.10.2-gtksharp-2.12.10-win32-5.exe'`  
   
 `Install-ChocolateyPackage 'mono' 'exe' '/SILENT' 'http://somehwere/something.exe' -validExitCodes @(0,21)`  
+
+`Install-ChocolateyPackage 'ruby.devkit' 'exe' '/SILENT' 'http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe' 'http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe' -checksum '9383f12958aafc425923e322460a84de' -checksumType = 'md5' -checksum64 'ce99d873c1acc8bffc639bd4e764b849'`
   
 ##See Also
 
