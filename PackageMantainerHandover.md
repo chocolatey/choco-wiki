@@ -14,6 +14,8 @@ Once that is done you have several steps:
  * Put that in your GitHub repository for packages. 
  * Ensure you have a link to that repository in your chocolatey profile.
  * Check in the package as is prior to any changes. If you are moving it over from another repository, just copy the current files/folders related to that package into your repository. 
- * Now make your changes/fixes/updates.
+ * Now make your changes/fixes/updates. Commit those changes as necessary.
  * One thing to update is any links to the old repository such as images and/or maintainers.
+ * Build the package and test locally. 
+ * Push the package with the updates/fixes. :+1: 
  * If brought in from another repository, be sure to send a Pull Request to that repository to have the package removed from there (or at the very least file an issue). Link the new location in that request for others who might be searching.
