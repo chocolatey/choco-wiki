@@ -1,5 +1,5 @@
 #Install-ChocolateyZipPackage
-`Install-ChocolateyZipPackage $packageName $url $unzipLocation`  
+`Install-ChocolateyZipPackage $packageName $url $unzipLocation -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64`  
   
 ##Description
 This will download a file from a url and unzip it on your machine. Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].  
@@ -21,6 +21,26 @@ Example: `"$(Split-Path -parent $MyInvocation.MyCommand.Definition)"` - will ins
 If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly.  
 Example: `'http://stexbar.googlecode.com/files/StExBar64-1.8.3.zip'`  
 Defaults to the 32bit url.  
+
+###$checksum (optional but will be required later) - v0.9.8.24+  
+This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+Example: `-checksum 'C67962F064924F3C7B95D69F88E745C0'`  
+Defaults to ``.  
+
+###$checksumType (optional) - v0.9.8.24+  
+This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+Example: `-checksumType 'sha1'`  
+Defaults to `md5`.  
+
+###$checksum64 (optional) - v0.9.8.24+  
+This allows the x64 file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+Example: `-checksum64 'C67962F064924F3C7B95D69F88E745C0'`  
+Defaults to ``.  
+
+###$checksumType64 (optional) - v0.9.8.24+  
+This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+Example: `-checksumType64 'sha1'`  
+Defaults to checksumType's value.  
   
 ##Examples
 `Install-ChocolateyZipPackage 'gittfs' 'https://github.com/downloads/spraints/git-tfs/GitTfs-0.11.0.zip' $gittfsPath`  
