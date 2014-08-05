@@ -4,7 +4,7 @@ When a package maintainer is deemed no longer maintaining a package, a new maint
 
 This is done through the [Package Triage Process](PackageTriageProcess).
 
-An admin will make you a maintainer, you will need to click on the link in your email to confirm.
+Once an admin makes you a maintainer you will need to click on the link in your email to confirm.
 
 Once that is done you have several steps:
 
