@@ -10,10 +10,12 @@ The new path and name of the ChocolateyInstall variable may be different for you
 
 Here's how to move Chocolatey.
 
-First, move the directory.
+First, move the directory.  Open a [Command Prompt as Administrator](http://www.howtogeek.com/howto/windows-vista/run-a-command-as-administrator-from-the-windows-vista-run-box/) and run the following:
 ```
 cd c:\
-move chocolatey ProgramData\chocolatey
+md ProgramData\chocolatey
+xcopy /s /e c:\chocolatey\*.* ProgramData\chocolatey\.
+rd chocolatey /s /q
 ```
 
 Next, check your environment variables. Note that some software that lives in `c:\chocolatey` may have added itself to your path.
