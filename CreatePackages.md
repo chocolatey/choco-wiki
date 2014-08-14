@@ -1,4 +1,4 @@
-##Creating Chocolatey Packages
+#Creating Chocolatey Packages
 
 ## Rules to be observed before publishing packages 
 
@@ -229,3 +229,6 @@ as in
   
 ##Automatic package repositories? 
 Yes - [[AutomaticPackages]]
+
+##Becoming a primary maintainer of an existing package
+See [[PackageMantainerHandover]]
