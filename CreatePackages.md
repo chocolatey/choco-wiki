@@ -145,7 +145,7 @@ For chocolatey, internationalization and localization of packages is very import
 
 ##Package icon guidelines
 If there is an icon which is suitable for your package, you can specify it in the `<iconUrl>` tag in the nuspec. But there are a few things you should consider:
-* For the icon URLs it is recommended to use https://cdn.rawgit.com/. But keep in mind that cdn.rawgit.com caches files permanently. Therefore it’s best to use a specific tag or commit URL, not a branch URL.
+* For the icon URLs it is recommended to use https://cdn.rawgit.com/ (production links). But keep in mind that cdn.rawgit.com caches files permanently. Therefore it’s best to use a specific tag or commit URL, not a branch URL.
 * Avoid using GitHub raw links (https://raw.githubusercontent.com/…). They are not intended to be used as CDN.
 * Package icons in the chocolatey gallery are displayed with a maximum of 128 pixels in width or height. Therefore it’s a good idea to use package icons which have at that resolution or a higher one. However, avoid very high resolutions, because this would only unnecessarily extend the page load time. If there are only icons with less than 128 pixels available, choose the icon with the highest resolution you can find.
 * The package list in the gallery shows the icons with a maximum of 48 pixels in width/height. Application logos with very detailed graphics or text logos that are barely visible at these dimension are not suitable as package icons. This is also the reason why a Windows ICO file often contains icons in multiple resolutions, so that each resolution can have the appropriate level of detail.
