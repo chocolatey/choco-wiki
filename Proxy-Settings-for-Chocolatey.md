@@ -6,7 +6,7 @@ When trying to install chocolatey behind a proxy server, you may be faced with e
 
 Steps to help address this.
 
-1. Copy the Install.ps1 file locally.
+1. Copy the [install.ps1](https://chocolatey.org/install.ps1) file locally.
 2. Edit the file and add proxy details (see code change). Replace the following entries with your specific proxy servers details: **PROXYSERVER:PROXYPORT; USERPASSWORD; USERNAME**
 3. Ensure you have the approapriate domain prefix for the user name. Try: 'AD\UserName' or just 'UserName'.
 4. Run the script to install Chocolatey.
