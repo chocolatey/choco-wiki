@@ -18,14 +18,14 @@ param (
   [string]$file
  )
   Write-Host "Downloading $url to $file"
-    #$proxy = [System.Net.WebRequest]::GetSystemWebProxy() 
-    $proxy = New-Object System.Net.WebProxy("PROXYSERVER:PROXYPORT",$true)
-    $passwd = ConvertTo-SecureString "USERPASSWORD" -AsPlainText -Force; ## Website credentials     
-    $proxy.Credentials = New-Object System.Management.Automation.PSCredential ("USERNAME", $passwd); 
-    $request = New-Object System.Net.WebCLient 
-    $request.UseDefaultCredentials = $true     
-    $request.Proxy = $Proxy
-    $request.DownloadFile($url, $file)
+    #$proxy = [System.Net.WebRequest]::GetSystemWebProxy()
+    $proxy = New-Object System.Net.WebProxy("PROXYSERVER:PROXYPORT", $true)
+    $passwd = ConvertTo-SecureString "USERPASSWORD" -AsPlainText -Force; ## Website credentials
+    $proxy.Credentials = New-Object System.Management.Automation.PSCredential ("USERNAME", $passwd);
+    $downloader = New-Object System.Net.WebCLient
+    $downloader.UseDefaultCredentials = $true
+    $downloader.Proxy = $proxy
+    $downloader.DownloadFile($url, $file)
 }
 ```
 
