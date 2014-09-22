@@ -13,7 +13,7 @@ Example: `'7zip'`
   
 ###$installerType (important)
 Pick only  one to leave here.  
-Example: `'exe'` or `'msi'`  
+Example: `'exe'` or `'msi'` or `'msu'`
   
 ###$silentArgs
 Silent and other arguments to pass to the native installer.  
