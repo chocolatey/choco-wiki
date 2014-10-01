@@ -22,6 +22,11 @@ Whether to include prerelease packages in results. This is optional if you expli
 
 Defaults to false.
 
+###Verbose flag (optional)
+Show more information about each package. You pass this as `-verbose`.
+
+Defaults to false.
+
 ###Source (optional)
 Source (directory, share or remote url feed) the package comes from.
 
