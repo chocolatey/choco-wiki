@@ -19,6 +19,11 @@ Great question - [[why chocolatey installs where it does|DefaultChocolateyInstal
   * Copy/Move over the items from the old lib/bin directory.
   * Delete your old install directory.
   
+## Non-Administrative Install
+
+1. You must choose a different location than the default. The default is a more secure location that only administrators can write to.
+1. Follow that with the command line / powershell methods of installation.
+
 ## Command Line
 This really is the easiest method because it requires no configuration of powershell prior to executing it. Open a command line, paste the following and press &lt;Enter&gt;:  
   
