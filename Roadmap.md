@@ -18,7 +18,7 @@
 ### Chocolatey.org
   
 * Chocolatey Gallery - **Done**
-* Package inspector
+* Package inspector - **Done**
 * Feed Moderation - **Done**
 * RSS/Atom Feed - **Done**
 
