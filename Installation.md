@@ -32,7 +32,7 @@ This really is the easiest method because it requires no configuration of powers
 ```  
   
 ## PowerShell
-This is the second easiest method. Open a powershell command line and paste in the following and press &lt;Enter&gt;:  
+This is the second-most easy method. Open a powershell command line and paste in the following and press &lt;Enter&gt;:  
   
 ```powershell
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
