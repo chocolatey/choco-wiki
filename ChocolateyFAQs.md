@@ -102,3 +102,10 @@ Want more information? See http://devlicio.us/blogs/rob_reynolds/archive/2012/02
 
 ###I just took over as the primary maintainer of a package. What do I need to do?
 See [[PackageMantainerHandover]]
+
+###I'm seeing chocolatey / *application* / *tool* using 32 bit to run instead of x64. What is going on?
+The shims are generated as "Any CPU" programs, which depend on the `Enable64Bit` registry value to be set to `1`, which it is by default. A way to fix it is to issue the following command at the location where the prompt shows below:
+
+    C:\Windows\Microsoft.NET\Framework64\v2.0.50727> Ldr64 set64
+
+[Any CPU 32-bit mode on 64 bit machine](http://stackoverflow.com/a/14857294)
