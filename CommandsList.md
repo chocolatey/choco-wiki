@@ -56,7 +56,7 @@ This retrieves a lising from what's available and installed for windows features
 
 `choco search -lo` `choco search -localonly`
 
-`choco list -localonly`
+`choco list -localonly` # lists all packages chocolatey has installed on your local system
 
 ![clist in action](images/clistExample.png "clist in action")
 
