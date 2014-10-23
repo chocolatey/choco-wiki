@@ -56,6 +56,8 @@ This retrieves a lising from what's available and installed for windows features
 
 `choco search -lo` `choco search -localonly`
 
+`choco list -localonly`
+
 ![clist in action](images/clistExample.png "clist in action")
 
 [[Command Reference|CommandsReference]]
