@@ -17,4 +17,6 @@ Name of package to install.
 
 `choco install bash -source cygwin`
 
+`choco install git ssh -source cygwin`
+
 [[Command Reference|CommandsReference]]
