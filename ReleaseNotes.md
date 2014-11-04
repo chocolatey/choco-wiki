@@ -2,6 +2,27 @@
 
 #### <font color="red">Notice: Some command shortcuts have been deprecated as of 0.9.8.21 (**This is JUST the SHORTCUT, not the command itself**) - Several shortcut files that were created have been deprecated for the ubiquitous `choco command` and will not be created in newer installs. If you are upgrading an existing install, those will continue to work at the current time. These shortcuts are `ccygwin`, `cpython`, `cwebpi`,`cgem`,`cwindowsfeatures`, and `csources`.</font>
 
+
+##[0.9.8.28](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.28&page=1&state=closed) (November 4, 2014)
+
+BREAKING CHANGES:
+
+ * You may need to update your saved API key for chocolatey, due to [#599](https://github.com/chocolatey/chocolatey/issues/599) we have switched push to ensure https.
+
+BUG FIXES:
+
+ * Fix - Shim argument parsing needs fixed for quoting - [ShimGen #1](https://github.com/chocolatey/shimgen/issues/1)
+ * Fix - Forcing x86 does not use 32bit checksum - [#535](https://github.com/chocolatey/chocolatey/issues/535)
+ * Fix - Powershell v2 fails to download SSLv3 files - [#531](https://github.com/chocolatey/chocolatey/issues/531)
+ * Fix - Get-ChocolateyUnzip fails due to Wait-Process exception - [#571](https://github.com/chocolatey/chocolatey/issues/571)
+
+IMPROVEMENTS:
+
+ * Use default credentials for internet if available - [#577](https://github.com/chocolatey/chocolatey/issues/577)
+ * Add moderation message on push - [#600](https://github.com/chocolatey/chocolatey/issues/600)
+ * Restrict all calls to chocolatey.org to HTTPS - [#599](https://github.com/chocolatey/chocolatey/issues/599)
+ * Batch fallback should quote path for spaces - [#558](https://github.com/chocolatey/chocolatey/issues/558)
+
 ##[0.9.8.27](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.27&page=1&state=closed) (July 13, 2014)
 
 BUG FIXES:
