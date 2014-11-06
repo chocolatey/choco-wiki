@@ -28,14 +28,14 @@ Great question - [[why chocolatey installs where it does|DefaultChocolateyInstal
 This really is the easiest method because it requires no configuration of powershell prior to executing it. Open a command line, paste the following and press &lt;Enter&gt;:  
   
 ```cmd
-@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 ```  
   
 ## PowerShell
 This is the second-most easy method. Open a powershell command line and paste in the following and press &lt;Enter&gt;:  
   
 ```powershell
-iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')))>$null 2>&1
 ```  
   
 **<font color="red">Note: You must have your execution policy set to unrestricted (or at least in bypass) for this to work (`Set-ExecutionPolicy Unrestricted`). There have been [reports](https://github.com/chocolatey/chocolatey/issues/70) that RemoteSigned is enough for the install to work.</font>**  
