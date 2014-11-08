@@ -26,7 +26,7 @@ Is your package unqualified for the Chocolatey feed, but you like to be able to 
     * [Geany](http://chocolatey.org/packages/geany)
 * **You have to specify the `UTF-8` encoding** in the first line of your `*.nuspec` files like so: `<?xml version="1.0" encoding="utf-8"?>`.
 
-**Note:** There is a lot of confusion in the world of character encodings: For example, `ANSI` is an incorrect term for the internal Windows character encodings, e.&nbsp;g. `Windows-1252`. But you should not use this encoding family anyway. In addition, Notepad++ incorrectly uses the term *ANSI as UTF-8* for `UTF-8` encoded files without a `BOM`. If you select `UTF-8` in Notepad++, it means `UTF-8 with BOM`.
+**Note:** There is a lot of confusion in the world of character encodings: For example, `ANSI` is an incorrect term for the internal Windows character encodings, e.&nbsp;g. `Windows-1252`. But you should not use this encoding family anyway.
 
 ## What version of the software should I package?
 The main release of a product versions are usually sufficient. If there are also beta versions available and you would rather have that, then please create both the official release and the beta (and set the beta as a prerelease when pushing the item to chocolatey.org). Regular users of packages may want to use official releases only and not betas.
