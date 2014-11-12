@@ -120,6 +120,28 @@ Note that a lot of packages in the Chocolatey Gallery don’t follow these guide
 
 If you are going to offer a package that has both an installer and an archive (zip or executable only) version of the application, create three packages&nbsp;– see Rob’s guidance on this: http://devlicio.us/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx
 
+##Package description and release notes
+
+The `<description>` of the package should contain a short text or at least a few words about the software for which the package is made. Here are a few things that should be respected:
+
+* The description should not just contain a repetition of the package name.
+* It should not just consist of a link where more information can be found. For that purpose there’s already `<projectUrl>`.
+* The contents of `<description>` and also `<releaseNotes>` are parsed as Markdown, which means that it should not be indented, otherwise it would be interpreted as code by the Markdown parser, which results in monospaced, non-wrapping text on the package page. Also remember to separate paragraphs with an empty line. The same applies to `<releaseNotes>`. It should look like this:
+
+``` XML
+  …
+  <package>
+  …
+    <description>
+Paragraph 1
+
+Paragraph 2
+
+Paragraph 3
+    </description>
+    …
+```
+
 ##Versioning Recommendations
 Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the installable/portable application uses. With chocolatey you get four version segments. If the application only uses 1, 2 or 3 version segments, follow suit.  
   
