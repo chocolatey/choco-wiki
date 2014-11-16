@@ -1,7 +1,8 @@
-When installing a Chocolatey Package, it is possible to use a number of arguments to control how the package is installed.  Each one of these arguments is detailed [here](https://github.com/chocolatey/chocolatey/wiki/CommandsInstall).  This _How-To_ focuses on how a package creator can make use of the PackageParameters argument within their package, and how they can parse the string which is passed through into their package from the installation command.
+When installing a Chocolatey Package, it is possible to use a number of arguments to control how the package is installed.  Each one of these arguments is detailed [here](https://github.com/chocolatey/chocolatey/wiki/CommandsInstall).  
 
-Let's use the following code snippet as the basis of this _How-To_
-A complete example of how you **could** do this is shown here:
+This _How-To_ focuses on how a package creator can make use of the PackageParameters argument within their package, and how they can parse the string which is passed through into their package from the installation command.
+
+## Code Sample
 
 ```powershell
 
@@ -50,6 +51,15 @@ $silentArgs = "/S /Port=" + $port + " /Edition=" + $edition;
 Write-Host "This would be the Chocolatey Silent Arguments: $silentArgs"
 ```
 
+## What does this mean?
+
+The Code Sample assumes that there will be no PackageParameters passed into it, as a result, we need to define a number of default values for each of the variables contained within the script.  In this case, the ```port``` and the ```edition```.
+
+Once that is done, assuming that the PackageParameters contains "something", use a Regular Expression to parse each of the values into a dictionary.  Here, we are assuming that the package parameters will come through in a pre-defined format, such as ```/Port:81 /Edition:LicenseKey```.  Now, this format can be anything you want it to be.  What is shown here is just **one** way of doing it.
+
+Having collected all the arguments into the dictionary, we can then inspect the values of each parameter that we are interested in.  If it exists in the dictionary, replace the corresponding default value, otherwise, continue to use the default value.
+
+## Installing the Package
 Now, in this example, if we were to call:
 
 ```choco install <packageName>```
