@@ -198,7 +198,7 @@ Open a command line in the directory where the nuspec is and type [[cpack|Comman
 To test the package you just built, with the command line still open (and in the current working directory in the same folder as the newly created `*.nupkg` file) type:  
 
 ```cmd
- cinst packageName -source %cd%
+ choco install packageName -source %cd%
 ```
 
 This will install the package right out of your source. As you find things you may need to fix, you will want to delete the particular package folder out of the %ChocolateyInstall%\lib folder. 
@@ -228,7 +228,7 @@ I'm so glad you asked. Take a look at this repository - https://github.com/choco
 Now open a command line, navigate to your source code top level folder and type the following:
   
 ```cmd
- cinst warmup
+ choco install warmup
  warmup addTextReplacement __CHOCO_PKG_OWNER_NAME__ "Your Name"
  warmup addTextReplacement __CHOCO_PKG_OWNER_REPO__ "Your Repository"
  warmup addTextReplacement __CHOCO_AUTO_PKG_OWNER_REPO__ "Your Choco Automatic Packages Repository (could be same as other)"
@@ -244,7 +244,7 @@ Now open a command line, navigate to your source code top level folder and type 
  * Your packages repository (__CHOCO_PKG_OWNER_REPO__) is part of a github repo just **ferventcoder/nugetpackages** if your repository is https://github.com/ferventcoder/nugetpackages. This is only used for image urls.
  * Your chocolatey automatic packages repository (__CHOCO_AUTO_PKG_OWNER_REPO__) could be the same as your regular packages repository. This is also the same as package maintainer (owner) repo. This is only used for image urls.  
 
-Now whenever you want to create a new package you just open a command line and navigate to your packages repository source code folder (or install stexbar `cinst stexbar` and just hit Ctrl+M from explorer).  
+Now whenever you want to create a new package you just open a command line and navigate to your packages repository source code folder (or install stexbar `choco install stexbar` and just hit Ctrl+M from explorer).  
   
 ```cmd
  warmup templateName packageName
