@@ -104,6 +104,8 @@ $validExitCodes = @(0,3010)
 Install-ChocolateyPackage "$packageName" "$installerType" "$silentArgs" "$url" "$url64"  -validExitCodes $validExitCodes
 ```
 
+###Parsing Package Parameters
+For a complete example of how you can use the PackageParameters argument of the ```choco install``` command, see this [[How-To|How-To-Parse-PackageParameters-Argument]].
 ## Tips
 
 * If you cannot find the installer silent mode, you can try an old tool called [[Universal Silent Switch Finder 1.5.0.0|http://www.softpedia.com/progDownload/Universal-Silent-Switch-Finder-Download-180984.html]]
