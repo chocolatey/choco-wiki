@@ -16,9 +16,9 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
 
 
 * **Generate package template** using [[WarmuP|http://chocolatey.org/packages/warmup]]:
-   * `cinst warmup`
+   * `choco install warmup`
    * Get templates:
-      * `cinst git`
+      * `choco install git`
       * close and reopen cmd prompt so git is in the PATH
       * `cd %ChocolateyInstall%`
       * `git clone https://github.com/chocolatey/chocolateytemplates.git`
@@ -41,14 +41,14 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
 * **Test the package**
    * **Testing should probably be done on a Virtual Machine**
    * In your package directory, use: 
-      * `cinst PackageName -source '%cd%'`
+      * `choco install PackageName -source '%cd%'`
    * Otherwise, use the full path:
-      * `cinst PackageName -source 'c:\path\to\Package\'`
+      * `choco install PackageName -source 'c:\path\to\Package\'`
 * **Push the package** to the Chocolatey repository:
    * Get a Chocolatey account:
       * [[http://chocolatey.org/account/Register]]
    * Copy the API key [[from your Chocolatey account|http://chocolatey.org/account]].
-   * `cinst nuget.commandline`
+   * `choco install nuget.commandline`
    * `nuget SetApiKey [API_KEY_HERE] -source `http://chocolatey.org/`
    * `cpush PackageName.1.1.0.nupkg`
 
