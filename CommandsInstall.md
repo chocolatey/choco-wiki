@@ -69,16 +69,89 @@ This specifies the source is Python and that we are installing a python package,
 ### PackageParameters - v0.9.8.22+
 Parameters that you want to pass to the package (if the package accepts these). You can pass this as `-params` `-parameters` or `-packageparameters`.
 
-Note: You should pass this as `'value1=somevalue;value2=''value with spaces'''`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'value1=''some value'' '` using two single quotation marks instead of a `"`. Chocolatey will convert this back to double quotes (e.g. `value1="some value"` for the above).
+**NOTE:** There are some subtle things to watch out for here when trying to pass a delimited string of variables into the Chocolatey Package.  For example, Powershell strips off double quotes, so if you need to pass double quotes for values, you should `'value1=''some value'' '` using two single quotation marks instead of a `"`. Chocolatey will convert this back to double quotes (e.g. `value1="some value"` for the above).
 
 For package creators: You would pick this up as `$env:chocolateyPackageParameters` and expect it to be a string that you need to parse.
 
-Defaults to ''.
+A complete example of how you **could** do this is shown here:
+
+```powershell
+
+$arguments = @{};
+
+# Let's assume that the input string is something like this, and we will use a Regular Expression to parse the values
+# /Port:81 /Edition:LicenseKey
+
+# Now, we can use the $env:chocolateyPackageParameters inside the Chocolatey package
+$packageParameters = $env:chocolateyPackageParameters;
+
+# Default the values
+$port = "81";
+$edition = "LicenseKey";
+
+# Now, let’s parse the packageParameters using good old regular expression
+if($packageParameters) {
+    $MATCH_PATTERN = "/([a-zA-Z]+):([`"'])?([a-zA-Z0-9- _]+)([`"'])?"
+    $PARAMATER_NAME_INDEX = 1
+    $VALUE_INDEX = 3
+    
+    if($packageParameters -match $MATCH_PATTERN ){
+        $results = $packageParameters | Select-String $MATCH_PATTERN -AllMatches 
+        $results.matches | % { 
+          $arguments.Add(
+              $_.Groups[$PARAMATER_NAME_INDEX].Value.Trim(),
+              $_.Groups[$VALUE_INDEX].Value.Trim()) 
+      }
+    }     
+    
+    if($arguments.ContainsKey("Port")) {
+        Write-Host "Port Argument Found";
+        $port = $arguments["Port"];
+    }  
+    
+    if($arguments.ContainsKey("Edition")) {
+        Write-Host "Edition Argument Found";
+        $edition = $arguments["Edition"];
+    }
+} else {
+    Write-Host "No Package Parameters Passed in";
+}
+
+$silentArgs = "/S /Port=" + $port + " /Edition=" + $edition;
+
+Write-Host "This would be the Chocolatey Silent Arguments: $silentArgs"
+```
+
+Now, in this example, if we were to call:
+
+```choco install <packageName>```
+
+The output would be:
+
+```
+This would be the Chocolatey Silent Arguments: /S /Port=81 /Edition=LicenseKey
+```
+
+i.e. it is using the default values which we made at the top of the file
+
+However, if we instead used:
+
+```
+choco install <packageName> -packageParameters "/Port:82 /Edition=LicenseKey1"
+```
+
+The output would be:
+
+```
+This would be the Chocolatey Silent Arguments: /S /Port=82 /Edition=LicenseKey1
+```
+
+This parameters defaults to ''.
 
 ###InstallArguments (optional) - v0.9.8.13+
 Install arguments that you want to pass to the native installer (if you have some custom ones that you know). By default this appends to the items already passed, unless you also pass `-overrideArguments`. You can pass this as `-ia` `-installArgs` or `-installArguments`.
 
-Note: You should pass this as `'/value1 /value2'`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'/value1=''some value'' '` using two single quotation marks instead of a `"`. Chocolatey will convert this back to double quotes (e.g. `/value1="some value"` for the above).
+**NOTE:** You should pass this as `'/value1 /value2'`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'/value1=''some value'' '` using two single quotation marks instead of a `"`. Chocolatey will convert this back to double quotes (e.g. `/value1="some value"` for the above).
 
 For example, one may want to override the default installation directory of a piece of software. See https://github.com/chocolatey/chocolatey/wiki/GettingStarted#overriding-default-install-directory-or-other-advanced-install-concepts.
 
