@@ -87,11 +87,11 @@ $url  = 'http://path/to/download/installer.exe'
 Install-ChocolateyPackage $name 'EXE' '/VERYSILENT' $url
 ```
 
-**Note** that you have to figure out the command line switch to make the installer silent, e.g. **/VERYSILENT**. This changes from installer to installer.
+**NOTE:** You have to figure out the command line switch to make the installer silent, e.g. **/VERYSILENT**. This changes from installer to installer.
 
 ### chocolateyInstall.ps1 for .msi installer
 
-**Note:** Please maintain compatibility with Posh v2. Not every OS we support is on Posh v2 (nor comes OOB with Posh v3+). It's best to work with the widest compatibility of systems out there.
+**NOTE:** Please maintain compatibility with Posh v2. Not every OS we support is on Posh v2 (nor comes OOB with Posh v3+). It's best to work with the widest compatibility of systems out there.
 
 ```cmd
 $packageName = 'Package Name'
