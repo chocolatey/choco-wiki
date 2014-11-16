@@ -91,7 +91,7 @@ Install-ChocolateyPackage $name 'EXE' '/VERYSILENT' $url
 
 ### chocolateyInstall.ps1 for .msi installer
 
-**Note:** Please maintain compatibility with Posh v2. Not every OS we support is on Posh v2 (nor comes OOB with Posh v3). It's best to work with the widest compatibility of systems out there.
+**Note:** Please maintain compatibility with Posh v2. Not every OS we support is on Posh v2 (nor comes OOB with Posh v3+). It's best to work with the widest compatibility of systems out there.
 
 ```cmd
 $packageName = 'Package Name'
