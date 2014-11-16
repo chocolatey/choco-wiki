@@ -42,7 +42,7 @@ Keep in Mind [Distribution Rights](https://github.com/chocolatey/chocolatey/wiki
 [[Helper Reference|HelpersReference]]  
 [[Outdated packages? Triage process|PackageTriageProcess]]
 
-##How To's
+##How-To's
 [[How-To - Parse PackageParameters Argument|How-To-Parse-PackageParameters-Argument]]
 
 ##RoadMap
