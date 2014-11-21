@@ -28,7 +28,7 @@ There is! This is a long video due to slow internet connections, but watch the f
 NOTE: This video shows dependency chaining, so you are seeing it install 11 applications/tools.  
   
 ###What is the feed URL?
-http://chocolatey.org/api/v2/  
+https://chocolatey.org/api/v2/  
   
 ###What can I install?
 Check out http://chocolatey.org/packages 
