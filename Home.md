@@ -1,15 +1,15 @@
 # Support making Chocolatey better! [Kickstarter - The Chocolatey Experience](https://www.kickstarter.com/projects/ferventcoder/chocolatey-the-alternative-windows-store-like-yum)
 
 
-##Chocolatey NuGet - kind of like apt-get, but for Windows [![](http://img.shields.io/gittip/Chocolatey.svg)](https://www.gittip.com/Chocolatey/) [![](http://img.shields.io/chocolatey/dt/chocolatey.svg)](http://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/chocolatey/v/chocolatey.svg)](http://chocolatey.org/packages/chocolatey)  [![Build status](https://ci.appveyor.com/api/projects/status/jj9h1tobakhpbiwx/branch/master)](https://ci.appveyor.com/project/ferventcoder/chocolatey/branch/master)  [![](http://img.shields.io/teamcity/codebetter/bt802.svg)](http://teamcity.codebetter.com/viewType.html?buildTypeId=bt802)
+##Chocolatey NuGet - kind of like apt-get, but for Windows [![](http://img.shields.io/gittip/Chocolatey.svg)](https://www.gittip.com/Chocolatey/) [![](http://img.shields.io/chocolatey/dt/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/chocolatey/v/chocolatey.svg)](https://chocolatey.org/packages/chocolatey)  [![Build status](https://ci.appveyor.com/api/projects/status/jj9h1tobakhpbiwx/branch/master)](https://ci.appveyor.com/project/ferventcoder/chocolatey/branch/master)  [![](http://img.shields.io/teamcity/codebetter/bt802.svg)](http://teamcity.codebetter.com/viewType.html?buildTypeId=bt802)
 ###You can just call me Chocolatey.  
 ![Chocolatey Logo](https://github.com/chocolatey/chocolatey/wiki/images/chocolateyicon.gif "Chocolatey")  
 ###Let's get Chocolatey!
 "I'm a tools enabler, I'm a global silent application installer. I configure stuff. Some people want to call me apt-get for Windows, I just want to get #chocolatey!"  
   
-Home: http://chocolatey.org (if this is down, try the backup at http://chocolatey.apphb.com )  
+Home: https://chocolatey.org (if this is down, try the backup at http://chocolatey.apphb.com )  
 Forum: http://groups.google.com/group/chocolatey  
-Twitter: http://twitter.com/chocolateynuget  
+Twitter: https://twitter.com/chocolateynuget  
   
 ##Chocolatey?
 Chocolatey is a global PowerShell execution engine using the NuGet packaging infrastructure. Think of it as the ultimate automation tool for Windows.  
