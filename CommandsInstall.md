@@ -52,7 +52,7 @@ Source (directory, share or remote url feed) the package comes from. You can spe
 
 Example `-source 'https://chocolatey.org/api/v2/;http://someother/feed/'`
 
-When testing against your local package with dependencies on the official feed, try `''%cd%;https://chocolatey.org/api/v2/''` (cmd.exe) or ` ``"$pwd;https://chocolatey.org/api/v2/``" ` (PowerShell)
+When testing against your local package with dependencies on the official feed, try `''%cd%;https://chocolatey.org/api/v2/''` (cmd.exe) or `` `"$pwd;https://chocolatey.org/api/v2/`" `` (PowerShell)
 
 Defaults to official chocolatey feed.
 
