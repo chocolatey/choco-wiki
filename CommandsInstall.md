@@ -52,7 +52,7 @@ Source (directory, share or remote url feed) the package comes from. You can spe
 
 Example `-source 'https://chocolatey.org/api/v2/;http://someother/feed/'`
 
-When testing against your local package with dependencies on the official feed, try `''%cd%;https://chocolatey.org/api/v2/''` (cmd.exe) or `` `"$pwd;https://chocolatey.org/api/v2/`" `` (PowerShell)
+When testing against your local package with dependencies on the official feed, try `'"%cd%;https://chocolatey.org/api/v2/"'` (for both cmd.exe and PowerShell)
 
 Defaults to official chocolatey feed.
 
@@ -71,7 +71,7 @@ This specifies the source is Python and that we are installing a python package,
 ### PackageParameters - v0.9.8.22+
 Parameters that you want to pass to the package (if the package accepts these). You can pass this as `-params` `-parameters` or `-packageparameters`.
 
-**NOTE:** You should pass this as `'value1=somevalue;value2=''value with spaces'''`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'value1=''some value'' '` using two single quotation marks instead of a `"`. Chocolatey will convert this back to double quotes (e.g. `value1="some value"` for the above).
+**NOTE:** You should pass this as `'"value1=somevalue;value2=''value with spaces''"'`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'"value1=''some value'' "'` using two single quotation marks instead of a `"`. Chocolatey will convert this back to double quotes (e.g. `value1="some value"` for the above).
 
 **How-To:** A complete example of how you can use the PackageParameters argument when creating a Chocolatey Package can be seen [[here|How-To-Parse-PackageParameters-Argument]].
 
@@ -82,7 +82,7 @@ Defaults to ''.
 ###InstallArguments (optional) - v0.9.8.13+
 Install arguments that you want to pass to the native installer (if you have some custom ones that you know). By default this appends to the items already passed, unless you also pass `-overrideArguments`. You can pass this as `-ia` `-installArgs` or `-installArguments`.
 
-**NOTE:** You should pass this as `'/value1 /value2'`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'/value1=''some value'' '` using two single quotation marks instead of a `"`. Chocolatey will convert this back to double quotes (e.g. `/value1="some value"` for the above).
+**NOTE:** You should pass this as `'"/value1 /value2"'`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'"/value1=''some value'' "'` using two single quotation marks instead of a `"`. Chocolatey will convert this back to double quotes (e.g. `/value1="some value"` for the above).
 
 For example, one may want to override the default installation directory of a piece of software. See https://github.com/chocolatey/chocolatey/wiki/GettingStarted#overriding-default-install-directory-or-other-advanced-install-concepts.
 
@@ -126,7 +126,7 @@ Defaults to false.
 
 `cinst nodejs.install -installArgs '/qb'`
 
-`cinst nodejs.install -installArgs '/qb /bob=''a value''' -override` -note that the `/bob=''a value''` will be converted to `/bob="a value"`.
+`cinst nodejs.install -installArgs '"/qb /bob=''a value''"' -override` -note that the `/bob=''a value''` will be converted to `/bob="a value"`.
 
 `cinst nodejs.install -notSilent`
 
