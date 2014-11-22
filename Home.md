@@ -1,6 +1,3 @@
-# Support making Chocolatey better! [Kickstarter - The Chocolatey Experience](https://www.kickstarter.com/projects/ferventcoder/chocolatey-the-alternative-windows-store-like-yum)
-
-
 ##Chocolatey NuGet - kind of like apt-get, but for Windows [![](http://img.shields.io/gittip/Chocolatey.svg)](https://www.gittip.com/Chocolatey/) [![](http://img.shields.io/chocolatey/dt/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/chocolatey/v/chocolatey.svg)](https://chocolatey.org/packages/chocolatey)  [![Build status](https://ci.appveyor.com/api/projects/status/jj9h1tobakhpbiwx/branch/master)](https://ci.appveyor.com/project/ferventcoder/chocolatey/branch/master)  [![](http://img.shields.io/teamcity/codebetter/bt802.svg)](http://teamcity.codebetter.com/viewType.html?buildTypeId=bt802)
 ###You can just call me Chocolatey.  
 ![Chocolatey Logo](https://github.com/chocolatey/chocolatey/wiki/images/chocolateyicon.gif "Chocolatey")  
