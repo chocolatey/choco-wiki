@@ -48,9 +48,9 @@ The version of the package to install. Do not use this when installing multiple 
 Defaults to the latest version available.
 
 ###Source (optional)
-Source (directory, share or remote url feed) the package comes from. You can specify multiple sources by separating with a comma and single quotes surrounding source. If you use source for multiple packages, watch out for interesting results.
+Source (directory, share or remote url feed) the package comes from. You can specify multiple sources by separating with a semi-colon and single quotes + double quotes surrounding source. If you use source for multiple packages, watch out for interesting results.
 
-Example `-source 'https://chocolatey.org/api/v2/;http://someother/feed/'`
+Example `-source '"https://chocolatey.org/api/v2/;http://someother/feed/"'`
 
 When testing against your local package with dependencies on the official feed, try `'"%cd%;https://chocolatey.org/api/v2/"'` (for both cmd.exe and PowerShell)
 
