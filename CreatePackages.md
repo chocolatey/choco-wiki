@@ -214,7 +214,7 @@ When your `nuspec` specifies dependencies that are not in your source, you shoul
 		</dependencies>
 ```
 You'll need to append the API path like so:
-`-source ""%cd%;http://chocolatey.org/api/v2/""` (note the double double quotes here).
+`-source '"%cd%;http://chocolatey.org/api/v2/"'` (note the apostrophe then the double quotes here).
   
 ##Push Your Package
 
