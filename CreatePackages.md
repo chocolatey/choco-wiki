@@ -126,6 +126,7 @@ If you are going to offer a package that has both an installer and an archive (z
 
 The `<description>` of the package should contain a short text or at least a few words about the software for which the package is made. Here are a few things that should be respected:
 
+* The description should always be written in English, even if the packaged software does not provide an UI in English. You can also include the software’s description in its original language, but insert it after the English description.
 * The description should not just contain a repetition of the package name.
 * It should not just consist of a link where more information can be found. For that purpose there’s already `<projectUrl>`.
 * The contents of `<description>` and also `<releaseNotes>` are parsed as Markdown, which means that it should not be indented, otherwise it would be interpreted as code by the Markdown parser, which results in monospaced, non-wrapping text on the package page. Also remember to separate paragraphs with an empty line. The same applies to `<releaseNotes>`. It should look like this:
