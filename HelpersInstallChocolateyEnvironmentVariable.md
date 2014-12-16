@@ -31,7 +31,7 @@ Defaults to `'User'`
 
 Creates a User environment variable "JAVA_HOME" pointing to "d:\oracle\jdk\bin".
   
-`Install-ChocolateyEnvironmentVariable "_NT_SYMBOL_PATH" "symsrv*symsrv.dll*f:\localsymbols*http://msdl.microsoft.com/download/symbols" Machine`  
+`Install-ChocolateyEnvironmentVariable "_NT_SYMBOL_PATH" "symsrv*symsrv.dll*f:\localsymbols*http://msdl.microsoft.com/download/symbols" "Machine"`
 
 Creates a User environment variable "_NT_SYMBOL_PATH" pointing to "symsrv*symsrv.dll*f:\localsymbols*http://msdl.microsoft.com/download/symbols". 
 The command will be elevated to admin privileges.
