@@ -41,6 +41,8 @@ Keep in Mind [Distribution Rights](https://github.com/chocolatey/chocolatey/wiki
 
 ##How-To's
 [[How-To - Parse PackageParameters Argument|How-To-Parse-PackageParameters-Argument]]
+[[How-To - Mount an Iso in Chocolatey Package|How-To-Mount-An-Iso-In-Chocolatey-Package]]
+[[How-To - Deprecate a Chocolatey Package|How-To-Deprecate-A-Chocolatey-Package]]
 
 ##RoadMap
 Where are [[we|RoadMap]]? Where are we [[going|RoadMap]]?
