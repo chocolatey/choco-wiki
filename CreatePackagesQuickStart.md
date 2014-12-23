@@ -20,7 +20,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
    * Get templates:
       * `choco install git`
       * close and reopen cmd prompt so git is in the PATH
-      * `cd %ChocolateyInstall%`
+      * `cd %ChocolateyInstall%` (use `cd $env:ChocolateyInstall` for PowerShell)
       * `git clone https://github.com/chocolatey/chocolateytemplates.git`
       * `cd chocolateytemplates\_templates`
       * `warmup  addTemplateFolder chocolatey "%CD%\chocolatey"`
