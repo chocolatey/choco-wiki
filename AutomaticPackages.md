@@ -47,7 +47,7 @@ REM /disablepush
 1. Check the bottom of this section to be sure it set to **Command**.  
 ![Ketarin Settings Command](images/chocopkgup/KetarinCustomCommand.png "Ketarin Settings Command")
 1. Click Okay. 
-1. Note the commented out `/disablepush`. This is so you can create a few packages and test that everything is working well before actually pushing those packages up to chocolatey. You may want to add that switch to the main command above it. 
+1. Note the commented out `/disablepush`. This is so you can create a few packages and test that everything is working well before actually pushing those packages up to chocolatey. You may want to add that switch to the main command above it. Add it as the first parameter after `chocopkgup` so that none of the other commands conflict. 
 
 This gets Ketarin all set up with a global command for all packages we create. If you want to use this outside of chocolatey, all you need to do is remove the global setting for Before updating an application and instead apply it to every job that pertains to chocolatey update.
 
