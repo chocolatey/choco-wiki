@@ -12,8 +12,8 @@ When a package needs to be deprecated, it needs to be handled in such a way that
 ## The Solution
 When deprecating a Chocolatey Package, the following steps should be followed:
 
-* Begin creating a new version of the Chocolatey Package (using the [Package Fix Version Notation](https://github.com/chocolatey/chocolatey/wiki/CreatePackages#package-fix-version-notation) if required
-* Update the Title of the package to include [Deprecated] at the start of the ID
+* Begin creating a new version of the deprecated Chocolatey Package (using the [Package Fix Version Notation](https://github.com/chocolatey/chocolatey/wiki/CreatePackages#package-fix-version-notation) if required
+* Update the Title of the package to include [Deprecated] at the end of the title.
 * Update the package description with an explanation as to why the package is being deprecated
 * Remove all files from the Chocolatey Package
 * In the case where the package is being replaced by another package, add a dependency on the new package id
