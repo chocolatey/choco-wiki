@@ -24,7 +24,7 @@ Is your package unqualified for the Chocolatey feed, but you like to be able to 
 * Don’t use the default Windows Editor. In addition to its lack of features, it can’t even save `UTF-8` files without `BOM`. Alternatives:
     * [Notepad++](http://chocolatey.org/packages/notepadplusplus)
     * [Geany](http://chocolatey.org/packages/geany)
-* **You have to specify the `UTF-8` encoding** in the first line of your `*.nuspec` files like so: `<?xml version="1.0" encoding="utf-8"?>`.
+* Use this **XML declaration**: `<?xml version="1.0" encoding="utf-8"?>`.
 
 **Note:** There is a lot of confusion in the world of character encodings: For example, `ANSI` is an incorrect term for the internal Windows character encodings, e.&nbsp;g. `Windows-1252`. But you should not use this encoding family anyway.
 
