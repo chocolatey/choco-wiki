@@ -26,6 +26,9 @@ More of this will become automated over time.
 #{{PackageFilePath}} - Downloaded file if including it in package | /pp
 #{{PackageGuid}} - This will be used later | /pg
 #{{DownloadUrlx64}} - The 64bit url for the native file | /u64
+## included with 0.6.4
+#{{Checksum}} - The checksum for the file downloaded from DownloadUrl | /c
+#{{Checksumx64}} - The checksum for the 64bit file downloaded from DownloadUrlx64  | /c64
 ```
 1. These are the tokens that chocopkgup will replace when it generates an instance of a package. 
 1. Install chocopkgup (which will install ketarin and nuget.commandline). `cinst chocolateypackageupdater`. 
