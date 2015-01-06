@@ -2,6 +2,16 @@
 
 #### <font color="red">Notice: Some command shortcuts have been deprecated as of 0.9.8.21 (**This is JUST the SHORTCUT, not the command itself**) - Several shortcut files that were created have been deprecated for the ubiquitous `choco command` and will not be created in newer installs. If you are upgrading an existing install, those will continue to work at the current time. These shortcuts are `ccygwin`, `cpython`, `cwebpi`,`cgem`,`cwindowsfeatures`, and `csources`.</font>
 
+##[0.9.8.30](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.30&page=1&state=closed) (January 6, 2015)
+
+FEATURES:
+
+ * Use icon of the executable with generated shim - [#579](https://github.com/chocolatey/chocolatey/issues/579) & [ShimGen #2](https://github.com/chocolatey/shimgen/issues/2)
+
+BUG FIXES:
+
+ * Fix - Shims don't correctly handle spaces in path to shim - [#654](https://github.com/chocolatey/chocolatey/issues/654) & [ShimGen #5](https://github.com/chocolatey/shimgen/issues/5)
+
 ##[0.9.8.29](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.29&page=1&state=closed) (January 2, 2015)
 
 FEATURES:
