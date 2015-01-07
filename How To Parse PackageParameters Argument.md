@@ -20,7 +20,7 @@ $edition = "LicenseKey";
 
 # Now, let’s parse the packageParameters using good old regular expression
 if($packageParameters) {
-    $MATCH_PATTERN = "/([a-zA-Z]+):([`"'])?([a-zA-Z0-9- _]+)([`"'])?"
+    $MATCH_PATTERN = "\/([a-zA-Z]+):([`"'])?([a-zA-Z0-9- _\\:\.]+)([`"'])?"
     $PARAMATER_NAME_INDEX = 1
     $VALUE_INDEX = 3
     
@@ -31,7 +31,12 @@ if($packageParameters) {
               $_.Groups[$PARAMATER_NAME_INDEX].Value.Trim(),
               $_.Groups[$VALUE_INDEX].Value.Trim()) 
       }
-    }     
+    }
+    else
+    {
+        Throw "Package Parameters were found but were invalid (REGEX Failure)";
+    }
+
     
     if($arguments.ContainsKey("Port")) {
         Write-Host "Port Argument Found";
@@ -46,7 +51,7 @@ if($packageParameters) {
     Write-Host "No Package Parameters Passed in";
 }
 
-$silentArgs = "/S /Port=" + $port + " /Edition=" + $edition;
+$silentArgs = "/S /Port:" + $port + " /Edition:" + $edition;
 
 Write-Host "This would be the Chocolatey Silent Arguments: $silentArgs"
 ```
@@ -67,7 +72,7 @@ Now, in this example, if we were to call:
 The output would be:
 
 ```
-This would be the Chocolatey Silent Arguments: /S /Port=81 /Edition=LicenseKey
+This would be the Chocolatey Silent Arguments: /S /Port=81 /Edition:LicenseKey
 ```
 
 i.e. it is using the default values which we made at the top of the file
@@ -75,11 +80,11 @@ i.e. it is using the default values which we made at the top of the file
 However, if we instead used:
 
 ```
-choco install <packageName> -packageParameters "/Port:82 /Edition=LicenseKey1"
+choco install <packageName> -packageParameters "/Port:82 /Edition:LicenseKey1"
 ```
 
 The output would be:
 
 ```
-This would be the Chocolatey Silent Arguments: /S /Port=82 /Edition=LicenseKey1
+This would be the Chocolatey Silent Arguments: /S /Port:82 /Edition:LicenseKey1
 ```
