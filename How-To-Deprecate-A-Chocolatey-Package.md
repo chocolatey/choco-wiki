@@ -13,7 +13,7 @@ When a package needs to be deprecated, it needs to be handled in such a way that
 ## The Solution
 When deprecating a Chocolatey Package, the following steps should be followed:
 
-* Create a **new version** of the deprecated Chocolatey Package (using the [Package Fix Version Notation](https://github.com/chocolatey/chocolatey/wiki/CreatePackages#package-fix-version-notation) if required).
+* Create a **[new version](https://github.com/chocolatey/chocolatey/wiki/CreatePackages#package-fix-version-notation)** of the deprecated Chocolatey Package.
 * Prepend **[Deprecated]** to the **title** of the package.
 * Update the package **description**: Why is the package being deprecated?
 * Add a **[dependency](http://docs.nuget.org/docs/reference/nuspec-reference#Specifying_Dependencies) on the other package** (if the package is being superseded).
