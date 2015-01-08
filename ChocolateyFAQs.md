@@ -68,7 +68,9 @@ Chocolatey has finished installing 'windirstat' - check log for errors.
 Is this an error? It's not. It will be removed from future versions.
 
 ###Where does chocolatey install by default?
-As of version 0.9.8.24, binaries, libraries and chocolatey components install in C:\ProgramData\chocolatey (environment variable %ProgramData%) by default. This reduces the attack surface on a local installation of chocolatey and limits who can make changes to the directory.
+As of version 0.9.8.24, binaries, libraries and Chocolatey components install in ```C:\ProgramData\chocolatey``` (environment variable %ProgramData%) by default. This reduces the attack surface on a local installation of Chocolatey and limits who can make changes to the directory.
+
+**NOTE:** Historically, Chocolatey installed to ```C:\Chocolatey``` and currently, performing an update of Chocolatey doesn't change the installation location.  For more information about why Chocolatey used ```C:\Chocolatey``` as the default location, look here - [[Default Install Reasoning|DefaultChocolateyInstallReasoning]]
 
 ###What kind of package types does chocolatey support?
 * Binary Packages – Installable/portable applications – This is 98 % of the chocolatey packages – most are pointers to the real deal installers/zips.  
