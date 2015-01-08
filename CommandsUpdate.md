@@ -26,9 +26,9 @@ Defaults to false.
 
 `chocolatey update nunit` — _Updates the `nunit` package to its latest version._
 
-`chocolatey update nunit -source http://somelocalfeed.com/nuget`  
+`chocolatey update nunit -source http://somelocalfeed.com/nuget` — _Updates the `nunit` package to its latest version from the specified nuget feed, rather than from Chocolatey.org._
 
-`cup nunit -source http://somelocalfeed.com/nuget`  
+`cup nunit -source http://somelocalfeed.com/nuget` — _Shorthand version of the above command._
 
 ![cup in action](images/cup.png "cup in action")  
 
