@@ -20,14 +20,16 @@ You can pass this as `-pre` or `-prerelease`.
 Defaults to false.  
   
 ##Examples
-`chocolatey update` - updates chocolatey to the latest version  
-  
-`chocolatey update nunit`  
-  
+`chocolatey update` — _Updates chocolatey to the latest version._
+
+`chocolatey update all` — _Updates all installed packages to their latest versions._
+
+`chocolatey update nunit` — _Updates the `nunit` package to its latest version._
+
 `chocolatey update nunit -source http://somelocalfeed.com/nuget`  
-  
+
 `cup nunit -source http://somelocalfeed.com/nuget`  
-  
+
 ![cup in action](images/cup.png "cup in action")  
-  
+
 [[Command Reference|CommandsReference]]
