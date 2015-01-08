@@ -1,9 +1,10 @@
 ## The Problem
 From time to time, a previously approved Chocolatey Package needs to be deprecated.  This could be for a number of reasons:
 
-* It was created in error
-* It has been superseded by another package
-* It's package id has been changed to something that better fits with the [package naming guidelines](https://github.com/chocolatey/chocolatey/wiki/CreatePackages#naming-your-package)
+* It was created in error.
+* It has been superseded by another package.
+* It is an older package that no longer follows the [Package Guidelines](http://github.com/chocolatey/chocolatey/wiki/CreatePackages).
+* It's package id has been changed to something that better fits with the [package naming guidelines](https://github.com/chocolatey/chocolatey/wiki/CreatePackages#naming-your-package).
 
 All versions of this package could simply be unlisted from chocolatey.org, meaning that they could no longer be installed, however, this solution is not ideal.  Any user who previously installed this package, and added it as part of an installation script, would get an error the next time that they tried to install it, and this is far from ideal.
 
@@ -12,10 +13,11 @@ When a package needs to be deprecated, it needs to be handled in such a way that
 ## The Solution
 When deprecating a Chocolatey Package, the following steps should be followed:
 
-* Begin creating a new version of the deprecated Chocolatey Package (using the [Package Fix Version Notation](https://github.com/chocolatey/chocolatey/wiki/CreatePackages#package-fix-version-notation) if required
-* Update the Title of the package to include [Deprecated] at the end of the title.
-* Update the package description with an explanation as to why the package is being deprecated
-* Remove all files from the Chocolatey Package
-* In the case where the package is being replaced by another package, add a dependency on the new package id
+* Create a **new version** of the deprecated Chocolatey Package (using the [Package Fix Version Notation](https://github.com/chocolatey/chocolatey/wiki/CreatePackages#package-fix-version-notation) if required).
+* Prepend **[Deprecated]** to the **title** of the package.
+* Update the package **description** with an explanation as to why the package is being deprecated.
+* Add a **[dependency](http://docs.nuget.org/docs/reference/nuspec-reference#Specifying_Dependencies) on the other package** (if the package is being superseded).
+* **Remove all files** except the `.nuspec` from the Chocolatey Package.
+* **Unlist all versions** from the package gallery.
 
-By following this process, any existing users who try to install the old package id, will automatically get the new package, as it will be installed as a dependency
+By following this process, any existing users who try to update the old package will automatically get the new package, as it will be installed as a dependency
