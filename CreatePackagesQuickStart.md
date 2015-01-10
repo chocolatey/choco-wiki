@@ -15,7 +15,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
 ## Quick start guide
 
 
-* **Generate package template** using [[WarmuP|http://chocolatey.org/packages/warmup]]:
+* **Generate package template** using [[WarmuP|https://chocolatey.org/packages/warmup]]:
    * `choco install warmup`
    * Get templates:
       * `choco install git`
@@ -46,10 +46,10 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
       * `choco install PackageName -source 'c:\path\to\Package\'`
 * **Push the package** to the Chocolatey repository:
    * Get a Chocolatey account:
-      * [[http://chocolatey.org/account/Register]]
-   * Copy the API key [[from your Chocolatey account|http://chocolatey.org/account]].
+      * [[https://chocolatey.org/account/Register]]
+   * Copy the API key [[from your Chocolatey account|https://chocolatey.org/account]].
    * `choco install nuget.commandline`
-   * `nuget SetApiKey [API_KEY_HERE] -source http://chocolatey.org/`
+   * `nuget SetApiKey [API_KEY_HERE] -source https://chocolatey.org/`
    * `cpush PackageName.1.1.0.nupkg`
 
 ## Common Mistakes
@@ -63,7 +63,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
       * ""PackageName""
 * **Using NuGet tools**
    * **Specify the source** if you accidentally use NuGet commands when following some guide instead of Chocolatey commands. E.g.:
-      * `nuget push package.nupkg -source http://chocolatey.org/` instead of:
+      * `nuget push package.nupkg -source https://chocolatey.org/` instead of:
       * `cpush package.nupkg`
 
 ## Environmental Variables
