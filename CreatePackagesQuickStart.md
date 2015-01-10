@@ -49,7 +49,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
       * [[http://chocolatey.org/account/Register]]
    * Copy the API key [[from your Chocolatey account|http://chocolatey.org/account]].
    * `choco install nuget.commandline`
-   * `nuget SetApiKey [API_KEY_HERE] -source `http://chocolatey.org/`
+   * `nuget SetApiKey [API_KEY_HERE] -source http://chocolatey.org/`
    * `cpush PackageName.1.1.0.nupkg`
 
 ## Common Mistakes
