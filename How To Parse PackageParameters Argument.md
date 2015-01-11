@@ -53,7 +53,7 @@ if($packageParameters) {
 
 $silentArgs = "/S /Port:" + $port + " /Edition:" + $edition;
 
-Write-Host "This would be the Chocolatey Silent Arguments: $silentArgs"
+Write-Debug "This would be the Chocolatey Silent Arguments: $silentArgs"
 ```
 
 ## What does this mean?
