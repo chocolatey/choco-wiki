@@ -6,53 +6,53 @@ This _How-To_ focuses on how a package creator can make use of the PackageParame
 
 ```powershell
 
-$arguments = @{};
+  $arguments = @{};
 
-# Let's assume that the input string is something like this, and we will use a Regular Expression to parse the values
-# /Port:81 /Edition:LicenseKey
+  # Let's assume that the input string is something like this, and we will use a Regular Expression to parse the values
+  # /Port:81 /Edition:LicenseKey
 
-# Now, we can use the $env:chocolateyPackageParameters inside the Chocolatey package
-$packageParameters = $env:chocolateyPackageParameters;
+  # Now, we can use the $env:chocolateyPackageParameters inside the Chocolatey package
+  $packageParameters = $env:chocolateyPackageParameters;
 
-# Default the values
-$port = "81";
-$edition = "LicenseKey";
+  # Default the values
+  $port = "81";
+  $edition = "LicenseKey";
 
-# Now, let’s parse the packageParameters using good old regular expression
-if($packageParameters) {
-    $MATCH_PATTERN = "\/([a-zA-Z]+):([`"'])?([a-zA-Z0-9- _\\:\.]+)([`"'])?"
-    $PARAMATER_NAME_INDEX = 1
-    $VALUE_INDEX = 3
-    
-    if($packageParameters -match $MATCH_PATTERN ){
-        $results = $packageParameters | Select-String $MATCH_PATTERN -AllMatches 
-        $results.matches | % { 
-          $arguments.Add(
-              $_.Groups[$PARAMATER_NAME_INDEX].Value.Trim(),
-              $_.Groups[$VALUE_INDEX].Value.Trim()) 
+  # Now, let’s parse the packageParameters using good old regular expression
+  if($packageParameters) {
+      $match_pattern = "\/(?<option>([a-zA-Z]+)):(?<value>([`"'])?([a-zA-Z0-9- _\\:\.]+)([`"'])?)|\/(?<option>([a-zA-Z]+))"
+      $option_name = 'option'
+      $value_name = 'value'
+
+      if($packageParameters -match $match_pattern ){
+          $results = $packageParameters | Select-String $match_pattern -AllMatches
+          $results.matches | % {
+            $arguments.Add(
+                $_.Groups[$option_name].Value.Trim(),
+                $_.Groups[$value_name].Value.Trim())
+        }
       }
-    }
-    else
-    {
-        Throw "Package Parameters were found but were invalid (REGEX Failure)";
-    }
+      else
+      {
+          Throw "Package Parameters were found but were invalid (REGEX Failure)";
+      }
 
-    if($arguments.ContainsKey("Port")) {
-        Write-Host "Port Argument Found";
-        $port = $arguments["Port"];
-    }  
-    
-    if($arguments.ContainsKey("Edition")) {
-        Write-Host "Edition Argument Found";
-        $edition = $arguments["Edition"];
-    }
-} else {
-    Write-Debug "No Package Parameters Passed in"
-}
+      if($arguments.ContainsKey("Port")) {
+          Write-Host "Port Argument Found";
+          $port = $arguments["Port"];
+      }
 
-$silentArgs = "/S /Port:" + $port + " /Edition:" + $edition
+      if($arguments.ContainsKey("Edition")) {
+          Write-Host "Edition Argument Found";
+          $edition = $arguments["Edition"];
+      }
+  } else {
+      Write-Debug "No Package Parameters Passed in";
+  }
 
-Write-Debug "This would be the Chocolatey Silent Arguments: $silentArgs"
+  $silentArgs = "/S /Port:" + $port + " /Edition:" + $edition
+
+  Write-Debug "This would be the Chocolatey Silent Arguments: $silentArgs"
 ```
 
 ## What does this mean?
