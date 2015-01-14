@@ -20,7 +20,7 @@ This _How-To_ focuses on how a package creator can make use of the PackageParame
   $additionalTools = $false
 
   # Now, let’s parse the packageParameters using good old regular expression
-  if($packageParameters) {
+  if ($packageParameters) {
       $match_pattern = "\/(?<option>([a-zA-Z]+)):(?<value>([`"'])?([a-zA-Z0-9- _\\:\.]+)([`"'])?)|\/(?<option>([a-zA-Z]+))"
       $option_name = 'option'
       $value_name = 'value'
