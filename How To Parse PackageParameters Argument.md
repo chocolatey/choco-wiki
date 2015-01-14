@@ -37,7 +37,6 @@ if($packageParameters) {
         Throw "Package Parameters were found but were invalid (REGEX Failure)";
     }
 
-    
     if($arguments.ContainsKey("Port")) {
         Write-Host "Port Argument Found";
         $port = $arguments["Port"];
@@ -48,10 +47,10 @@ if($packageParameters) {
         $edition = $arguments["Edition"];
     }
 } else {
-    Write-Debug "No Package Parameters Passed in";
+    Write-Debug "No Package Parameters Passed in"
 }
 
-$silentArgs = "/S /Port:" + $port + " /Edition:" + $edition;
+$silentArgs = "/S /Port:" + $port + " /Edition:" + $edition
 
 Write-Debug "This would be the Chocolatey Silent Arguments: $silentArgs"
 ```
