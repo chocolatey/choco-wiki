@@ -11,7 +11,7 @@ This _How-To_ focuses on how a package creator can make use of the PackageParame
   # Let's assume that the input string is something like this, and we will use a Regular Expression to parse the values
   # /Port:81 /Edition:LicenseKey /AdditionalTools
 
-  # Now, we can use the $env:chocolateyPackageParameters inside the Chocolatey package
+  # Now we can use the $env:chocolateyPackageParameters inside the Chocolatey package
   $packageParameters = $env:chocolateyPackageParameters;
 
   # Default the values
@@ -19,7 +19,7 @@ This _How-To_ focuses on how a package creator can make use of the PackageParame
   $edition = "LicenseKey";
   $additionalTools = $false
 
-  # Now, let’s parse the packageParameters using good old regular expression
+  # Now parse the packageParameters using good old regular expression
   if ($packageParameters) {
       $match_pattern = "\/(?<option>([a-zA-Z]+)):(?<value>([`"'])?([a-zA-Z0-9- _\\:\.]+)([`"'])?)|\/(?<option>([a-zA-Z]+))"
       $option_name = 'option'
