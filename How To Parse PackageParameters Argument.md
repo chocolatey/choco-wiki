@@ -47,11 +47,17 @@ This _How-To_ focuses on how a package creator can make use of the PackageParame
           Write-Host "Edition Argument Found";
           $edition = $arguments["Edition"];
       }
+
+      if($arguments.ContainsKey("AdditionalTools")) {
+          Write-Host "You want Additional Tools installs"
+          $additionalTools = $true
+      }
   } else {
       Write-Debug "No Package Parameters Passed in";
   }
 
   $silentArgs = "/S /Port:" + $port + " /Edition:" + $edition
+  if ($additionalTools) { $silentArgs += " /additionaltools" }
 
   Write-Debug "This would be the Chocolatey Silent Arguments: $silentArgs"
 ```
