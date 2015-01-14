@@ -48,7 +48,7 @@ if($packageParameters) {
         $edition = $arguments["Edition"];
     }
 } else {
-    Write-Host "No Package Parameters Passed in";
+    Write-Debug "No Package Parameters Passed in";
 }
 
 $silentArgs = "/S /Port:" + $port + " /Edition:" + $edition;
