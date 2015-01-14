@@ -49,7 +49,7 @@ This _How-To_ focuses on how a package creator can make use of the PackageParame
       }
 
       if($arguments.ContainsKey("AdditionalTools")) {
-          Write-Host "You want Additional Tools installs"
+          Write-Host "You want Additional Tools installed"
           $additionalTools = $true
       }
   } else {
