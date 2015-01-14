@@ -70,6 +70,32 @@ Once that is done, assuming that the PackageParameters contains "something", use
 
 Having collected all the arguments into the dictionary, we can then inspect the values of each parameter that we are interested in.  If it exists in the dictionary, replace the corresponding default value, otherwise, continue to use the default value.
 
+## Add Package Parameter Information to the Description
+Be sure to let folks know about the package parameters (this will be a holding review item by moderators).
+
+Here's an example:
+
+```xml
+    <description>
+Git (for Windows) - Git is a powerful distributed Source Code Management tool. If you just want to use Git to do your version control in Windows, you will need to download Git for Windows, run the installer, and you are ready to start. 
+
+Note: Git for Windows is a project run by volunteers, so if you want it to improve, volunteer!
+
+### Package Specifics
+The package uses default install options minus cheetah integration and desktop icons. Cheetah prevents a good upgrade scenario, so it has been removed.
+
+#### Package Parameters
+The following package parameters can be set:
+
+ * `/GitOnlyOnPath` - this puts gitinstall\cmd on path. This is also done by default if no package parameters are set.
+ * `/GitAndUnixToolsOnPath` - this puts gitinstall\bin on path. This setting will override `/GitOnlyOnPath`.
+ * `/NoAutoCrlf` - this setting only affects new installs, it will not override an existing `.gitconfig`. This will ensure 'Checkout as is, commit as is'
+
+These parameters can be passed to the installer with the use of `-params`.
+For example: `-params '"/GitAndUnixToolsOnPath /NoAutoCrlf"'`.
+    </description>
+```
+
 ## Installing the Package
 Now, in this example, if we were to call:
 
