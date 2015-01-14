@@ -9,7 +9,7 @@ This _How-To_ focuses on how a package creator can make use of the PackageParame
   $arguments = @{};
 
   # Let's assume that the input string is something like this, and we will use a Regular Expression to parse the values
-  # /Port:81 /Edition:LicenseKey /NoAutoCrlf
+  # /Port:81 /Edition:LicenseKey /AdditionalTools
 
   # Now, we can use the $env:chocolateyPackageParameters inside the Chocolatey package
   $packageParameters = $env:chocolateyPackageParameters;
@@ -17,6 +17,7 @@ This _How-To_ focuses on how a package creator can make use of the PackageParame
   # Default the values
   $port = "81";
   $edition = "LicenseKey";
+  $additionalTools = $false
 
   # Now, let’s parse the packageParameters using good old regular expression
   if($packageParameters) {
