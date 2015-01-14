@@ -25,7 +25,7 @@ This _How-To_ focuses on how a package creator can make use of the PackageParame
       $option_name = 'option'
       $value_name = 'value'
 
-      if($packageParameters -match $match_pattern ){
+      if ($packageParameters -match $match_pattern ){
           $results = $packageParameters | Select-String $match_pattern -AllMatches
           $results.matches | % {
             $arguments.Add(
@@ -38,17 +38,17 @@ This _How-To_ focuses on how a package creator can make use of the PackageParame
           Throw "Package Parameters were found but were invalid (REGEX Failure)";
       }
 
-      if($arguments.ContainsKey("Port")) {
+      if ($arguments.ContainsKey("Port")) {
           Write-Host "Port Argument Found";
           $port = $arguments["Port"];
       }
 
-      if($arguments.ContainsKey("Edition")) {
+      if ($arguments.ContainsKey("Edition")) {
           Write-Host "Edition Argument Found";
           $edition = $arguments["Edition"];
       }
 
-      if($arguments.ContainsKey("AdditionalTools")) {
+      if ($arguments.ContainsKey("AdditionalTools")) {
           Write-Host "You want Additional Tools installed"
           $additionalTools = $true
       }
