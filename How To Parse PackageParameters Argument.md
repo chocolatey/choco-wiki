@@ -71,7 +71,7 @@ Once that is done, assuming that the PackageParameters contains "something", use
 Having collected all the arguments into the dictionary, we can then inspect the values of each parameter that we are interested in.  If it exists in the dictionary, replace the corresponding default value, otherwise, continue to use the default value.
 
 ## Add Package Parameter Information to the Description
-Be sure to let folks know about the package parameters (this will be a holding review item by moderators).
+Be sure to let folks know about the package parameters (**Note:** this will be a holding review item by moderators).
 
 Here's an example:
 
