@@ -89,7 +89,7 @@ A portable application is something that doesn’t require a native installer to
 
 Portable applications end up in the %ChocolateyInstall%/lib (i.&nbsp;e. C:\Nuget\lib) folder yes, but they get a batch redirect to put them on the path of the machine. This behavior is very much to how chocolatey works and is not configurable (the directory). Where the portable apps end up is still going to be %ChocolateyInstall%/lib no matter where you move the directory, unless a package itself unpacks the portable app elsewhere (as in the case of [git-tfs](http://chocolatey.org/packages/gittfs)). 
 
-###What is the difference between packages named *.install (i.&nbsp;e. git.install), *.portable (i.&nbsp;e. git.portable) and * (i.&nbsp;e. git)?
+###What is the difference between packages named *.install (i.&nbsp;e. [autohotkey.install](https://chocolatey.org/packages/autohotkey.install)), *.portable (i.&nbsp;e. [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable)) and * (i.&nbsp;e. [autohotkey](https://chocolatey.org/packages/autohotkey))?
 
 Hey, good question! You are paying attention! Chocolatey has the concept of virtual packages (coming) and meta packages. Virtual packages are packages that represent other packages when used as a dependency. Metapackages are packages that only exist to provide a grouping of dependencies.
 
