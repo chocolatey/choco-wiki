@@ -6,6 +6,13 @@
 [Release Notes](https://github.com/chocolatey/chocolatey/wiki/ReleaseNotes)  
 [Package Triage Process](https://github.com/chocolatey/chocolatey/wiki/PackageTriageProcess)  
 
+[Getting Started](https://github.com/chocolatey/chocolatey/wiki/GettingStarted)
+ - [Quick Start](https://github.com/chocolatey/chocolatey/wiki/CreatePackagesQuickStart)
+ - [Create Packages](https://github.com/chocolatey/chocolatey/wiki/CreatePackages)
+ - [Host on MyGet](https://github.com/chocolatey/chocolatey/wiki/Hosting-Chocolatey-Packages-on-MyGet)
+ - []()
+ - []()
+
 [Commands](https://github.com/chocolatey/chocolatey/wiki/CommandsReference)
  - [List](https://github.com/chocolatey/chocolatey/wiki/CommandsList)
  - [Install](https://github.com/chocolatey/chocolatey/wiki/CommandsInstall)
