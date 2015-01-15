@@ -6,7 +6,7 @@ This _How-To_ focuses on how a package creator can make use of the PackageParame
 
 ```powershell
 
-$arguments = @{}
+  $arguments = @{}
 
   # Let's assume that the input string is something like this, and we will use a Regular Expression to parse the values
   # /Port:81 /Edition:LicenseKey /AdditionalTools
@@ -63,7 +63,7 @@ $arguments = @{}
   }
 
   $silentArgs = "/S /Port:" + $port + " /Edition:" + $edition + " /InstallationPath:" + $installationPath
-  if ($additionalTools) { $silentArgs += " /additionaltools" }
+  if ($additionalTools) { $silentArgs += " /Additionaltools" }
 
   Write-Debug "This would be the Chocolatey Silent Arguments: $silentArgs"
 ```
@@ -124,5 +124,5 @@ choco install <packageName> -packageParameters "/Port:82 /Edition:LicenseKey1 /I
 The output would be:
 
 ```
-This would be the Chocolatey Silent Arguments: /S /Port:82 /Edition:LicenseKey1 /InstallationPath:"C:\temp\folder with space" /additionaltools
+This would be the Chocolatey Silent Arguments: /S /Port:82 /Edition:LicenseKey1 /InstallationPath:"C:\temp\folder with space" /Additionaltools
 ```
