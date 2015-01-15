@@ -2,7 +2,9 @@
 
 [How to install](https://github.com/chocolatey/chocolatey/wiki/installation)  
 [How to uninstall](https://github.com/chocolatey/chocolatey/wiki/Uninstallation)  
-[Legal](https://github.com/chocolatey/chocolatey/wiki/Legal)
+[Legal](https://github.com/chocolatey/chocolatey/wiki/Legal)  
+[Release Notes](https://github.com/chocolatey/chocolatey/wiki/ReleaseNotes)  
+[Package Triage Process](https://github.com/chocolatey/chocolatey/wiki/PackageTriageProcess)  
 
 [Commands](https://github.com/chocolatey/chocolatey/wiki/CommandsReference)
  - [List](https://github.com/chocolatey/chocolatey/wiki/CommandsList)
@@ -20,6 +22,8 @@
  - [WindowsFeatures](https://github.com/chocolatey/chocolatey/wiki/CommandsWindowsFeatures)
  - [Pack](https://github.com/chocolatey/chocolatey/wiki/CommandsPack)
  - [Push](https://github.com/chocolatey/chocolatey/wiki/CommandsPush)
+
+[Helpers Reference](https://github.com/chocolatey/chocolatey/wiki/HelpersReference)
 
 **How To's**
 - [Parse PackageParamters](https://github.com/chocolatey/chocolatey/wiki/How-To-Parse-PackageParameters-Argument)
