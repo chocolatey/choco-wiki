@@ -5,13 +5,14 @@
 [Legal](https://github.com/chocolatey/chocolatey/wiki/Legal)  
 [Release Notes](https://github.com/chocolatey/chocolatey/wiki/ReleaseNotes)  
 [Package Triage Process](https://github.com/chocolatey/chocolatey/wiki/PackageTriageProcess)  
+[History](https://github.com/chocolatey/chocolatey/wiki/History)  
 
 [Getting Started](https://github.com/chocolatey/chocolatey/wiki/GettingStarted)
  - [Quick Start](https://github.com/chocolatey/chocolatey/wiki/CreatePackagesQuickStart)
  - [Create Packages](https://github.com/chocolatey/chocolatey/wiki/CreatePackages)
  - [Host on MyGet](https://github.com/chocolatey/chocolatey/wiki/Hosting-Chocolatey-Packages-on-MyGet)
- - []()
- - []()
+ - [Automatic Packages](https://github.com/chocolatey/chocolatey/wiki/AutomaticPackages)
+ - [FAQs](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)
 
 [Commands](https://github.com/chocolatey/chocolatey/wiki/CommandsReference)
  - [List](https://github.com/chocolatey/chocolatey/wiki/CommandsList)
