@@ -2,6 +2,7 @@
 
 [How to install](https://github.com/chocolatey/chocolatey/wiki/installation)  
 [How to uninstall](https://github.com/chocolatey/chocolatey/wiki/Uninstallation)
+[Legal](https://github.com/chocolatey/chocolatey/wiki/Legal)
 
 [Commands](https://github.com/chocolatey/chocolatey/wiki/CommandsReference)
  - [List](https://github.com/chocolatey/chocolatey/wiki/CommandsList)
