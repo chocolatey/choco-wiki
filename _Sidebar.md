@@ -13,6 +13,7 @@
  - [Host on MyGet](https://github.com/chocolatey/chocolatey/wiki/Hosting-Chocolatey-Packages-on-MyGet)
  - [Automatic Packages](https://github.com/chocolatey/chocolatey/wiki/AutomaticPackages)
  - [FAQs](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)
+ - [Proxy Settings](https://github.com/chocolatey/chocolatey/wiki/Proxy-Settings-for-Chocolatey)
 
 [Commands](https://github.com/chocolatey/chocolatey/wiki/CommandsReference)
  - [List](https://github.com/chocolatey/chocolatey/wiki/CommandsList)
@@ -37,3 +38,7 @@
 - [Parse PackageParamters](https://github.com/chocolatey/chocolatey/wiki/How-To-Parse-PackageParameters-Argument)
 - [Mount Iso](https://github.com/chocolatey/chocolatey/wiki/How-To-Mount-An-Iso-In-Chocolatey-Package)
 - [Deprecate a Package](https://github.com/chocolatey/chocolatey/wiki/How-To-Deprecate-A-Chocolatey-Package)
+
+**Contributing**
+- [Process](https://github.com/chocolatey/chocolatey/blob/master/CONTRIBUTING.md)
+- [Development Environment](https://github.com/chocolatey/chocolatey/wiki/DevelopmentEnvironmentSetup)
