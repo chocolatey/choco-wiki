@@ -110,7 +110,7 @@ Now, in this example, if we were to call:
 The output would be:
 
 ```
-DEBUG: This would be the Chocolatey Silent Arguments: /S /Port:81 /Edition:LicenseKey /InstallationPath:c:\temp
+This would be the Chocolatey Silent Arguments: /S /Port:81 /Edition:LicenseKey /InstallationPath:c:\temp
 ```
 
 i.e. it is using the default values which we made at the top of the file
