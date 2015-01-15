@@ -7,15 +7,19 @@
 [Package Triage Process](https://github.com/chocolatey/chocolatey/wiki/PackageTriageProcess)  
 [History](https://github.com/chocolatey/chocolatey/wiki/History)  
 
-[Getting Started](https://github.com/chocolatey/chocolatey/wiki/GettingStarted)
+**How to use Chocolatey**
+ - [Getting Started](https://github.com/chocolatey/chocolatey/wiki/GettingStarted)  
+ - [Proxy Settings](https://github.com/chocolatey/chocolatey/wiki/Proxy-Settings-for-Chocolatey)
+ - [FAQs](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)
+
+**Creating Packages**
  - [Quick Start](https://github.com/chocolatey/chocolatey/wiki/CreatePackagesQuickStart)
  - [Create Packages](https://github.com/chocolatey/chocolatey/wiki/CreatePackages)
  - [Host on MyGet](https://github.com/chocolatey/chocolatey/wiki/Hosting-Chocolatey-Packages-on-MyGet)
  - [Automatic Packages](https://github.com/chocolatey/chocolatey/wiki/AutomaticPackages)
- - [FAQs](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)
- - [Proxy Settings](https://github.com/chocolatey/chocolatey/wiki/Proxy-Settings-for-Chocolatey)
 
-[Commands](https://github.com/chocolatey/chocolatey/wiki/CommandsReference)
+**Commands**
+ - [Complete Reference](https://github.com/chocolatey/chocolatey/wiki/CommandsReference)
  - [List](https://github.com/chocolatey/chocolatey/wiki/CommandsList)
  - [Install](https://github.com/chocolatey/chocolatey/wiki/CommandsInstall)
  - [Update](https://github.com/chocolatey/chocolatey/wiki/CommandsUpdate)
@@ -32,7 +36,8 @@
  - [Pack](https://github.com/chocolatey/chocolatey/wiki/CommandsPack)
  - [Push](https://github.com/chocolatey/chocolatey/wiki/CommandsPush)
 
-[Helpers Reference](https://github.com/chocolatey/chocolatey/wiki/HelpersReference)
+**Helper Functions**
+ - [Complete Reference](https://github.com/chocolatey/chocolatey/wiki/HelpersReference)
 
 **How To's**
 - [Parse PackageParamters](https://github.com/chocolatey/chocolatey/wiki/How-To-Parse-PackageParameters-Argument)
