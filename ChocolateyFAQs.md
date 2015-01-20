@@ -76,7 +76,7 @@ As of version 0.9.8.24, binaries, libraries and Chocolatey components install in
 * Binary Packages – Installable/portable applications – This is 98 % of the chocolatey packages – most are pointers to the real deal installers/zips.  
 * Powershell Command Packages – Packages that have the suffix **.powershell** will install powershell scripts as commands for you to call from anywhere.
 * Development Packages – Packages that have the suffix **.dev**. For instance [dropkick.dev](http://nuget.org/list/packages/dropkick.dev).
-* Coming soon – Virtual Packages – Packages that are like a category, and you just want one package from that category. [Read more …](https://github.com/ferventcoder/nugetpackages/issues/30)
+* Coming soon – Virtual Packages – Packages that are like a category, and you just want one package from that category. [Read more …](https://github.com/chocolatey/chocolatey/issues/7)
   
 <a name="AppVsTool" />
 ###What distinction does chocolatey make between an installable and a portable application?
