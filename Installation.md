@@ -65,4 +65,14 @@ You can also use nuget command line to download chocolatey:
   
 Once you download it, open powershell (remote unsigned), navigate to the tools folder and run:  
 
-`& 'chocolateyInstall.ps1'`
+`& .\chocolateyInstall.ps1`
+
+## Download + PowerShell Method
+
+You can also just download and unzip the chocolatey package (`.nupkg` is a fancy zip file):
+
+ 1. Download the [Chocolatey package](https://chocolatey.org/api/v2/package/chocolatey/).
+ 1. Unzip it using any application that supports `zip` format.
+ 1. Open a PowerShell command shell and navigate into the unzipped package's tools folder.
+ 1. **NOTE**: Ensure PowerShell execution policy is set to at least bypass or remote signed (if you have issues, you may need to set it to Unrestricted).
+ 1. Call `& .\chocolateyInstall.ps1` to allow Chocolatey to install.
