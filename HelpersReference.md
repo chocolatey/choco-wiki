@@ -21,7 +21,7 @@ try {
 
   Write-ChocolateySuccess '__NAME__'
 } catch {
-  Write-ChocolateyFailure '__NAME__' $($_.Exception.Message)
+  Write-ChocolateyFailure '__NAME__' $_.Exception.Message
   throw 
 }
 ```  
