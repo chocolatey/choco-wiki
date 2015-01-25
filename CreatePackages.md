@@ -134,21 +134,7 @@ The `<description>` of the package should contain a short text or at least a few
 * The description should always be written in English, even if the packaged software does not provide an UI in English. You can also include the software’s description in its original language, but insert it after the English description.
 * The description should not just contain a repetition of the package name.
 * It should not just consist of a link where more information can be found. For that purpose there’s already `<projectUrl>`.
-* The contents of `<description>` and also `<releaseNotes>` are parsed as Markdown, which means that it should not be indented, otherwise it would be interpreted as code by the Markdown parser, which results in monospaced, non-wrapping text on the package page. Also remember to separate paragraphs with an empty line. The same applies to `<releaseNotes>`. It should look like this:
-
-``` XML
-  …
-  <package>
-  …
-    <description>
-Paragraph 1
-
-Paragraph 2
-
-Paragraph 3
-    </description>
-    …
-```
+* The contents of `<description>` and also `<releaseNotes>` are parsed as Markdown, so don’t insert line breaks in the middle of sentences. Remember to add empty lines to separate paragraphs and add an empty line before a list.
 
 ##Versioning Recommendations
 Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the installable/portable application uses. With chocolatey you get four version segments. If the application only uses 1, 2 or 3 version segments, follow suit.  
