@@ -29,35 +29,41 @@ This is a listing of all of the different things you can pass to choco.
 ## Default Options and Switches
 
 ```
-  -?, --help, -h             Prints out the help menu.
-  -d, --debug                `Debug` - Run in Debug Mode.
-  -v, --verbose              `Verbose` - See verbose messaging.
-      --acceptlicense, --accept-license
-                             `AcceptLicense` - Accept license dialogs
-                               automatically.
-  -y, --yes, --confirm       `Confirm all prompts` - Chooses default answer
-                               instead of prompting. Implies --accept-license
-  -f, --force                `Force` - force the behavior
-      --noop, --whatif, --what-if
-                             `NoOp` - Don't actually do anything.
-  -r, --limitoutput, --limit-output
-                             `LimitOuptut` - Limit the output to essential
-                               information
-      --execution-timeout=VALUE
-                             `CommandExecutionTimeoutSeconds` - Override the
-                               default execution timeout in the configuration
-                               of 2700 seconds.
-  -c, --cache, --cachelocation, --cache-location=VALUE
-                             `CacheLocation` - Location for download cache,
-                               defaults to %TEMP% or value in chocolatey.config
-                               file.
-      --allowunofficial, --allow-unofficial, --allowunofficialbuild, --allow-unofficial-build
-                             `AllowUnofficialBuild` - When not using the
-                               official build you must set this flag for choco
-                               to continue.
+-?, --help, -h
+  Prints out the help menu.
+
+-d, --debug
+  Debug - Run in Debug Mode.
+
+-v, --verbose
+  Verbose - See verbose messaging.
+
+--acceptlicense, --accept-license
+  AcceptLicense - Accept license dialogs automatically.
+
+-y, --yes, --confirm
+  Confirm all prompts - Chooses default answer instead of prompting.
+  Implies --accept-license
+
+-f, --force
+  Force - force the behavior
+
+--noop, --whatif, --what-if
+  NoOp - Don't actually do anything.
+
+-r, --limitoutput, --limit-output
+  LimitOuptut - Limit the output to essential information
+
+--execution-timeout=VALUE
+  CommandExecutionTimeoutSeconds - Override the default execution
+  timeout in the configuration of 2700 seconds.
+
+-c, --cache, --cachelocation, --cache-location=VALUE
+  CacheLocation - Location for download cache, defaults to %TEMP% or
+  value in chocolatey.config file.
+
+--allowunofficial, --allow-unofficial, --allowunofficialbuild,
+--allow-unofficial-build
+  AllowUnofficialBuild - When not using the official build you must set
+  this flag for choco to continue.
 ```
-
-
-
-
-[[Home]]
