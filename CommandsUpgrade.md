@@ -14,11 +14,11 @@ NOTE: If you do not have a package installed, upgrade will error.
 
 Examples:
 
- `choco upgrade chocolatey`
- `choco upgrade notepadplusplus googlechrome atom 7zip`
- `choco upgrade notepadplusplus googlechrome atom 7zip -dvfy`
- `choco upgrade git --params="/GitAndUnixToolsOnPath /NoAutoCrlf" -y`
- `choco upgrade nodejs.install --version 0.10.35`
+    choco upgrade chocolatey
+    choco upgrade notepadplusplus googlechrome atom 7zip
+    choco upgrade notepadplusplus googlechrome atom 7zip -dvfy
+    choco upgrade git --params="/GitAndUnixToolsOnPath /NoAutoCrlf" -y
+    choco upgrade nodejs.install --version 0.10.35
 
 
 ## Options and Switches
