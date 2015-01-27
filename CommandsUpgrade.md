@@ -23,6 +23,7 @@ Examples:
 
 ## Options and Switches
 
+Includes [[default options/switches|CommandsReference#default-options-and-switches]]
 
   -s, --source=VALUE         Source - The source to find the package(s) to
                                install. Special sources include: ruby, webpi,
