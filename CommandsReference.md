@@ -27,6 +27,8 @@ This is a listing of all of the different things you can pass to choco.
 
 
 ## Default Options and Switches
+
+```
   -?, --help, -h             Prints out the help menu.
   -d, --debug                `Debug` - Run in Debug Mode.
   -v, --verbose              `Verbose` - See verbose messaging.
@@ -53,7 +55,7 @@ This is a listing of all of the different things you can pass to choco.
                              `AllowUnofficialBuild` - When not using the
                                official build you must set this flag for choco
                                to continue.
-
+```
 
 
 
