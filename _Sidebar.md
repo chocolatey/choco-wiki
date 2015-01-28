@@ -1,4 +1,5 @@
 [[Why Chocolatey?|Why]]
+
 [[Release Notes|ReleaseNotes]]
 
 **How to use Chocolatey**
