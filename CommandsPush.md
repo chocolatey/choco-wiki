@@ -35,14 +35,14 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
   before timing out. Defaults to 300 seconds (5 minutes).
 ```
 
-### NOTE: To use this command, you must have your API key saved for
+### Common Trouble shooting
+
+**NOTE** : To use this command, you must have your API key saved for
 chocolatey.org or the source you want to push to. Or you can pass the apikey to
 the command.
 In order to save your API key, copy the access key from your chocolatey.org account into the following command:
 `choco apikey <your key here> -source https://chocolatey.org/`
 
-
-## Common Errors
- `Failed to process request. 'The specified API key does not provide the authority to push packages.'
+`Failed to process request. 'The specified API key does not provide the authority to push packages.'
   The remote server returned an error: (403) Forbidden..`
 This means the package already exists with a different user (API key).  The package could be unlisted. Please contact one of the administrators of chocolatey.org if you see this and you don't see a good reason for it.
