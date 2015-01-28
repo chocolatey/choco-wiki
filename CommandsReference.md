@@ -12,7 +12,7 @@ This is a listing of all of the different things you can pass to choco.
  * installmissing - **REMOVED**
  * update - **REMOVED** - RESERVED for future use (You are looking for upgrade, these are not the droids you are looking for)
  * [[upgrade|CommandsUpgrade]] - upgrades packages from various sources
- * [[version|CommandsVersion]] - **REMOVED** - use `choco upgrade pkgname --noop` instead
+ * version - **REMOVED** - use `choco upgrade pkgname --noop` instead
  * [[uninstall|CommandsUninstall]] - uninstalls a package
  * help - **REMOVED** - use `-h` on any command.
 
