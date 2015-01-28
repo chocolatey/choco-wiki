@@ -18,11 +18,11 @@ This is a listing of all of the different things you can pass to choco.
 
 ## Commands (intermediate to advanced)
  * [[source|CommandsSources]] - view and configure default sources
- * [[apikey|CommandsApiKey]] TODO:CREATE - retrieves or saves an apikey for a particular source
- * [[pin|CommandsPin]]  TODO:CREATE - suppress upgrades to a package
+ * [[apikey|CommandsApiKey]] - retrieves or saves an apikey for a particular source
+ * [[pin|CommandsPin]] - suppress upgrades to a package
 
 ## Package Creation Commands
- * [[new|CommandsNew]] TODO:CREATE - generates files necessary for a chocolatey package
+ * [[new|CommandsNew]] - generates files necessary for a chocolatey package
  * [[pack|CommandsPack]] - packages up a nuspec to a compiled nupkg
  * [[push|CommandsPush]] - pushes a compiled nupkg
 
