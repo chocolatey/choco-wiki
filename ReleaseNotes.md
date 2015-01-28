@@ -17,6 +17,7 @@ BREAKING CHANGES:
  * `Write-ChocolateySuccess`, `Write-ChocolateyFailure` have been deprecated.
  * `update` is now `upgrade`. `update` has been removed for now but will be reincarnated later for a different purpose. **Hint**: It rhymes with smackage pindexes.
  * `sources` is now `source`.
+ * packages.config has a slightly different structure now. See [Packages.config](https://github.com/chocolatey/choco/wiki/CommandsInstall#packagesconfig) for details.
 
 FEATURES:
 
