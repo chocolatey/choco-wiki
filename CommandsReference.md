@@ -2,13 +2,14 @@
 
 This is a listing of all of the different things you can pass to choco.
 
-**NOTE:** When you need to quote things, such as when using spaces, please use single quote marks (`'`). In cmd.exe, you can also use double double quotes (i.e. `""yo""`). This is due to the hand off to PowerShell - seems to strip off the outer set of quotes.
+**NOTE:** When you need to quote things, such as when using spaces, please use single quote marks (`'`). In cmd.exe, you can also use double double quotes (i.e. `""yo""`). This is due to the hand off to PowerShell - seems to strip off the outer set of quotes. TODO: TEST THIS, MAY NOT BE RELEVANT NOW.
 
 ## Commands
 
  * [[list|CommandsList]] - lists remote or local packages
  * [[search|CommandsList]] - searches remote or local packages
  * [[install|CommandsInstall]] - installs packages from various sources
+ * installmissing - **REMOVED**
  * update - **REMOVED** - RESERVED for future use (You are looking for upgrade, these are not the droids you are looking for)
  * [[upgrade|CommandsUpgrade]] - upgrades packages from various sources
  * [[version|CommandsVersion]] - **REMOVED** - use `choco upgrade pkgname --noop` instead
@@ -24,7 +25,6 @@ This is a listing of all of the different things you can pass to choco.
  * [[new|CommandsNew]] TODO:CREATE - generates files necessary for a chocolatey package
  * [[pack|CommandsPack]] - packages up a nuspec to a compiled nupkg
  * [[push|CommandsPush]] - pushes a compiled nupkg
-
 
 ## Default Options and Switches
 

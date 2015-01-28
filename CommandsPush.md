@@ -1,33 +1,47 @@
 # Chocolatey Push (cpush)
-##New as of v0.9.8.13.  
-Pushes a package to chocolatey.org (or somewhere else if source is specified).  
-`choco push filename.nupkg` or shortcut with 
-`cpush filename.nupkg`.  
-  
-###NOTE: To use this command, you must have your API key saved for chocolatey.org or the source you want to push to.  
+Chocolatey will attempt to push a compiled nupkg to a package feed.
+ That feed can be a local folder, a file share, the community feed
+ 'https://chocolatey.org/' or a custom/private feed.
+
+## Usage
+
+    choco push [path to nupkg] [options/switches]
+
+**NOTE**: If there is more than one nupkg file in the folder, the command
+ will require specifying the path to the file.
+
+## Examples
+
+    choco push --source "https://chocolatey.org/"
+    choco push --source "https://chocolatey.org/" -t 500
+    choco push --source "https://chocolatey.org/" -k="123-123123-123"
+
+## Options and Switches
+
+Includes [[default options/switches|CommandsReference#default-options-and-switches]]
+
+```
+-s, --source=VALUE
+  Source - The source we are pushing the package to. Use https://chocolatey.org/
+  to push to community feed.
+
+-k, --key, --apikey, --api-key=VALUE
+  ApiKey - The api key for the source. If not specified (and not local
+  file source), does a lookup. If not specified and one is not found for
+  an https source, push will fail.
+
+-t, --timeout=VALUE
+  Timeout (in seconds) - The time to allow a package push to occur
+  before timing out. Defaults to 300 seconds (5 minutes).
+```
+
+
+### NOTE: To use this command, you must have your API key saved for chocolatey.org or the source you want to push to.
 In order to save your API key, copy the access key from your chocolatey.org account into the following command:
-`NuGet SetApiKey <your key here> -source https://chocolatey.org/`  
-  
-To get nuget.exe, you can install `nuget.commandline` with Chocolatey. 
-  
-##Parameters
-###PackageName
-File name of the .nupkg file to push.
-  
-###Source (optional)
-Source (directory, share or remote URL feed) to which we push the package.  
-Defaults to official Chocolatey feed. 
-  
-##Examples
-`choco push somefile.nupkg`  
-  
-`cpush somefile.nupkg`  
-  
-`cpush somefile.nuspec -source http://somewhere.com/`  
-  
-##Common Errors
+`choco apikey <your key here> -source https://chocolatey.org/`
+
+
+## Common Errors
  `Failed to process request. 'The specified API key does not provide the authority to push packages.'
-  The remote server returned an error: (403) Forbidden..`  
-This means the package already exists with a different user (API key).  The package could be unlisted. Please contact one of the administrators of chocolatey.org if you see this and you don't see a good reason for it.  
-  
-[[Command Reference|CommandsReference]]
+  The remote server returned an error: (403) Forbidden..`
+This means the package already exists with a different user (API key).  The package could be unlisted. Please contact one of the administrators of chocolatey.org if you see this and you don't see a good reason for it.

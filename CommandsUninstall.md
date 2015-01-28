@@ -1,28 +1,55 @@
 ## Chocolatey Uninstall (cuninst)
-##New as of v0.9.8.17.  
-**NOTE: This is early support for uninstall - it will continue to get better over time.** 
-Uninstalls a package.  
-`chocolatey uninstall packageName` or shortcut with 
-`cuninst packageName`  
-  
+
+Uninstalls a package or a list of packages.
+
+Usage: choco uninstall pkg [pkg2 pkgN] [options/switches]
+
+NOTE: `all` is a special package keyword that will allow you to
+ uninstall all packages.
+
+## Examples
+
+    choco uninstall git
+    choco uninstall notepadplusplus googlechrome atom 7zip
+    choco uninstall notepadplusplus googlechrome atom 7zip -dv
+    choco uninstall ruby --version 1.8.7.37402
+    choco uninstall nodejs.install --all-versions
+
+## Options and Switches
+
+Includes [[default options/switches|CommandsReference#default-options-and-switches]]
+
+```
+--version=VALUE
+  Version - A specific version to uninstall. Defaults to unspecified.
+
+-a, --allversions, --all-versions
+  AllVersions - Uninstall all versions? Defaults to false.
+
+--ua, --uninstallargs, --uninstallarguments, --uninstall-arguments=VALUE
+  UninstallArguments - Uninstall Arguments to pass to the native
+  installer in the package. Defaults to unspecified.
+
+-o, --override, --overrideargs, --overridearguments, --override-arguments
+  OverrideArguments - Should uninstall arguments be used exclusively
+  without appending to current package passed arguments? Defaults to
+  false.
+
+--notsilent, --not-silent
+  NotSilent - Do not uninstall this silently. Defaults to false.
+
+--params, --parameters, --pkgparameters, --packageparameters, --package-parameters=VALUE
+  PackageParameters - Parameters to pass to the package. Defaults to
+  unspecified.
+
+-x, --forcedependencies, --force-dependencies
+  ForceDependencies - Force dependencies to be uninstalled when
+  uninstalling package(s). Defaults to false.
+
+-n, --skippowershell, --skip-powershell
+  Skip Powershell - Do not run chocolateyUninstall.ps1. Defaults to false.
+```
+
 ## Known Limitations
-* There are no functions defined in the chocolatey powershell module that would help with uninstall
-* There is no automatic removal of MSIs
-* Uninstall only removes the most current version of a package in the machine repository (instead of giving you options to remove a certain one or all of them) 
-* Requires a chocolateyUninstall.ps1 in the package itself, of which many of the currently available packages do not have.  
-  
-##Parameters
-###PackageName
-Name of package to uninstall.  
-  
-###Version (optional)
-**NOTE: At this point in time, the version parameter is NOT implemented, but this will change in future versions of Chocolatey.** 
-The version of the package to uninstall.  
-Defaults to the latest version installed.  
-  
-##Examples
-`chocolatey uninstall nunit`  
-  
-`chocolatey uninstall nunit -version 2.5.7.10213`  
-  
-[[Command Reference|CommandsReference]]
+* There are no functions defined in the Chocolatey powershell module that would help with uninstall - yet
+* There is no automatic removal of MSIs (well there is, but auto uninstaller is not turned on by default).

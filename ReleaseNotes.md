@@ -14,6 +14,7 @@ BREAKING CHANGES:
  * TEMPORARY `install all` is missing - this is expected to be back in 0.9.10.
  * `Write-ChocolateySuccess`, `Write-ChocolateyFailure` have been deprecated.
  * `update` is now `upgrade`. `update` has been removed for now but will be reincarnated later for a different purpose. **Hint**: It rhymes with smackage pindexes.
+ * `sources` is now `source`.
 
 FEATURES:
 
@@ -27,9 +28,13 @@ FEATURES:
  * Did we mention there is a help menu that is actually helpful now? Shiny!
 
 
-
+... stuff here
 
  * Dat help menu tho. I mean srsly guise.
+
+BUG FIXES:
+
+IMPROVEMENTS:
 
 
 ##[0.9.8.32](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.32&page=1&state=closed) (January 22, 2015)

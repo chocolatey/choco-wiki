@@ -11,17 +11,17 @@
 
 **Commands**
  - [[Complete Reference|CommandsReference]]
- - [[list|CommandsList]]
- - [[search|CommandsList]]
- - [[install|CommandsInstall]]
- - [[upgrade|CommandsUpgrade]]
- - [[uninstall|CommandsUninstall]]
- - [[source|CommandsSources]]
- - [[apikey|CommandsApiKey]]
- - [[pin|CommandsPin]]
- - [[new|CommandsNew]]
- - [[pack|CommandsPack]]
- - [[push|CommandsPush]]
+ - [[List|CommandsList]]
+ - [[Search|CommandsList]]
+ - [[Install|CommandsInstall]]
+ - [[Upgrade|CommandsUpgrade]]
+ - [[Uninstall|CommandsUninstall]]
+ - [[Source|CommandsSources]]
+ - [[Apikey|CommandsApiKey]]
+ - [[Pin|CommandsPin]]
+ - [[New|CommandsNew]]
+ - [[Pack|CommandsPack]]
+ - [[Push|CommandsPush]]
 
 **Creating Packages**
  - [[Quick Start|CreatePackagesQuickStart]]

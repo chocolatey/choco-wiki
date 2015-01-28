@@ -1,158 +1,159 @@
-## Chocolatey Install (cinst / choco install)
-Installs a package or a list of packages in a packages.config.
+# Chocolatey Install (cinst / choco install)
+Installs a package or a list of packages (sometimes specified as a
+ packages.config).
 `choco install packageName` or shortcut with
 `cinst packageName` or `cinst packages.config`
 
-##Multiple installs  - v0.9.8.21+
-`choco install pkg1 pkg2 pkgN`
+## Usage
+
+    choco install pkg|packages.config [pkg2 pkgN] [options/switches]
+
+**NOTE**: `all` is a special package keyword that will allow you to install
+ all packages from a custom feed. Will not work with Chocolatey default
+ feed. **THIS IS NOT YET REIMPLEMENTED.**
+
+## Examples
+
+    choco install sysinternals
+    choco install notepadplusplus googlechrome atom 7zip
+    choco install notepadplusplus --force --force-dependencies
+    choco install notepadplusplus googlechrome atom 7zip -dvfy
+    choco install git --params="/GitAndUnixToolsOnPath /NoAutoCrlf" -y
+    choco install nodejs.install --version 0.10.35
+
+Choco can also install directly from a nuspec/nupkg file (this aids in
+ testing packages):
+
+    choco install path/to/nuspec
+    choco install path/to/nupkg
+
+Install multiple versions of a package using -m (AllowMultiple versions)
+
+    choco install ruby --version 1.8.7.37402 -my
+    choco install ruby --version 1.9.3.55100 -my
+    choco install ruby --version 2.0.0.59800 -my
+    choco install ruby --version 2.1.5 -my
+
+**NOTE**: All of these will add to PATH variable. We'll be adding a special
+ option to not allow PATH changes. Until then you will need to manually
+ go modify Path to just one Ruby and then use something like uru or pik
+ to switch between versions.
+
+**NOTE**: Ruby 1.8.7 reached EOL (end of life) on 7/31/2014 and 1.9.3 will
+ reach EOL on 2/23/2015. They are provided for example only and not
+ recommended to be installed as they could pose security threats once
+ they are past EOL.
 
 
-###Workaround for earlier versions of chocolatey:
+## Options and Switches
 
- * PowerShell - `'pkg1','pkg2','pkgN' | %{ cinst $_ }`
- * Cmd Shell - `FOR %%G IN (pkg1, pkg2, pkgN) DO (cinst %%G)`
+Includes [[default options/switches|CommandsReference#default-options-and-switches]]
 
+```
+-s, --source=VALUE
+  Source - The source to find the package(s) to install. Special sources
+  include: ruby, webpi, cygwin, windowsfeatures, and python. Defaults to
+  default feeds.
 
-##Parameters
-###PackageName
-Name of package to install. May be repeated.
+--version=VALUE
+  Version - A specific version to install. Defaults to unspecified.
 
-#### All (special PackageName keyword) - v0.9.8.15+
-This allows you to keep your packages in a feed somewhere and maintain that feed over maintaining a file.
+--pre, --prerelease
+  Prerelease - Include Prereleases? Defaults to false.
 
-When this is specified you must also pass in a source that is not MS official or Chocolatey official as the hit would likely be way too big.
+--x86, --forcex86
+  ForceX86 - Force x86 (32bit) installation on 64 bit systems. Defaults
+  to false.
 
-Example `choco install all -source http://myget.org/somefeed`
+--ia, --installargs, --installarguments, --install-arguments=VALUE
+  InstallArguments - Install Arguments to pass to the native installer
+  in the package. Defaults to unspecified.
 
-###Packages.config - v0.9.8.13+
+-o, --override, --overrideargs, --overridearguments,
+--override-arguments
+  OverrideArguments - Should install arguments be used exclusively
+  without appending to current package passed arguments? Defaults to
+  false.
+
+--notsilent, --not-silent
+  NotSilent - Do not install this silently. Defaults to false.
+
+--params, --parameters, --pkgparameters, --packageparameters,
+--package-parameters=VALUE
+  PackageParameters - Parameters to pass to the package. Defaults to
+  unspecified.
+
+-m, --sxs, --sidebyside, --side-by-side, --allowmultiple,
+--allow-multiple, --allowmultipleversions, --allow-multiple-versions
+  AllowMultipleVersions - Should multiple versions of a package be
+  installed? Defaults to false.
+
+-i, --ignoredependencies, --ignore-dependencies
+  IgnoreDependencies - Ignore dependencies when upgrading package(s).
+  Defaults to false.
+
+-x, --forcedependencies, --force-dependencies
+  ForceDependencies - Force dependencies to be reinstalled when force
+  installing package(s). Must be used in conjunction with --force.
+  Defaults to false.
+
+-n, --skippowershell, --skip-powershell
+  Skip Powershell - Do not run chocolateyInstall.ps1. Defaults to false.
+```
+
+## Packages.config
 Alternative to PackageName. This is a list of packages in an xml manifest for chocolatey to install.  This is like the packages.config that NuGet uses except it also adds the source element. This can also be the path to the `packages.config` file if it is not in the current working directory.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<packages>
-  <package id="apackage" />
-  <package id="anotherPackage" version="1.1" />
-  <package id="chocolateytestpackage" version="0.1" source="somelocation" />
-</packages>
+<chocolatey>
+  <packages>
+    <package id="apackage" />
+    <package id="anotherPackage" version="1.1" />
+    <package id="chocolateytestpackage" version="0.1" source="somelocation" />
+    <package id="alloptions" version="0.1.1"
+             source="https://somewhere/api/v2/" installArguments=""
+             packageParameters="" forceX86="false" allowMultipleVersions="false"
+             ignoreDependencies="false"
+             />
+  </packages>
+</chocolatey>
 ```
 
-###Prerelease flag (optional) - v0.9.8.15+
-Whether to include prerelease packages in results.
-This is optional if you explicitly ask for a specific version that is a pre-release package. You can pass this as `-pre` or `-prerelease`. If you use this when installing multiple packages, all specified packages will install a prerelease if there is one available.
+## Alternative Sources
 
-Defaults to false.
+### Ruby
+This specifies the source is Ruby Gems and that we are installing a gem.
+If you do not have ruby installed prior to running this command, the
+command will install that first.
+e.g. `choco install compass -source ruby`
 
-###Version (optional)
-The version of the package to install. Do not use this when installing multiple packages.
+### WebPI
+This specifies the source is Web PI (Web Platform Installer) and that we
+are installing a WebPI product, such as IISExpress. If you do not have
+the Web PI command line installed, it will install that first and then
+the product requested.
+e.g. `choco install IISExpress --source webpi`
 
-Defaults to the latest version available.
+### Cygwin
+This specifies the source is Cygwin and that we are installing a cygwin
+package, such as bash. If you do not have Cygwin installed, it will
+install that first and then the product requested.
+e.g. `choco install bash --source cygwin`
 
-###Source (optional)
-Source (directory, share or remote url feed) the package comes from. You can specify multiple sources by separating with a semi-colon and single quotes + double quotes surrounding source. If you use source for multiple packages, watch out for interesting results.
+### Python
+This specifies the source is Python and that we are installing a python
+package, such as Sphinx. If you do not have easy_install and Python
+installed, it will install that first and then the product requested.
+e.g. `choco install sphinx --source python`
 
-Example `-source '"https://chocolatey.org/api/v2/;http://someother/feed/"'`
+### Windows Features
+This specifies that the source is a Windows Feature and we should
+install via the Deployment Image Servicing and Management tool (DISM) on
+the local machine.
+e.g. `choco install IIS-WebServerRole --source windowsfeatures`
 
-When testing against your local package with dependencies on the official feed, try `'"%cd%;https://chocolatey.org/api/v2/"'` for both cmd.exe and PowerShell (use `$pwd` instead of `%cd%` though)
+## Resources
 
-Defaults to official chocolatey feed.
-
-#### -source ruby (v0.9.8.13+)
-This specifies the source is Ruby Gems and that we are installing a gem. If you do not have ruby installed prior to running this command, the command will install that first.
-
-#### -source webpi (v0.9.8.13+)
-This specifies the source is Web PI and that we are installing a WebPI product, such as IISExpress. If you do not have the Web PI command line installed, it will install that first and then the product requested.
-
-#### -source cygwin (v0.9.8.17+)
-This specifies the source is Cygwin and that we are installing a cygwin package, such as bash. If you do not have Cygwin installed, it will install that first and then the product requested.
-
-#### -source python (v0.9.8.17+)
-This specifies the source is Python and that we are installing a python package, such as Sphinx. If you do not have easy_install and Python installed, it will install that first and then the product requested.
-
-### PackageParameters - v0.9.8.22+
-Parameters that you want to pass to the package (if the package accepts these). You can pass this as `-params` `-parameters` or `-packageparameters`.
-
-**NOTE:** You should pass this as `'"value1=somevalue;value2=''value with spaces''"'`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'"value1=''some value'' "'` using two single quotation marks instead of a `"`. Chocolatey will convert this back to double quotes (e.g. `value1="some value"` for the above).
-
-**How-To:** A complete example of how you can use the PackageParameters argument when creating a Chocolatey Package can be seen [[here|How-To-Parse-PackageParameters-Argument]].
-
-For package creators: You would pick this up as `$env:chocolateyPackageParameters` and expect it to be a string that you need to parse.
-
-Defaults to ''.
-
-###InstallArguments (optional) - v0.9.8.13+
-Install arguments that you want to pass to the native installer (if you have some custom ones that you know). By default this appends to the items already passed, unless you also pass `-overrideArguments`. You can pass this as `-ia` `-installArgs` or `-installArguments`.
-
-**NOTE:** You should pass this as `'"/value1 /value2"'`. Powershell strips off double quotes so if you need to pass double quotes for values, you should `'"/value1=''some value'' "'` using two single quotation marks instead of a `"`. Chocolatey will convert this back to double quotes (e.g. `/value1="some value"` for the above).
-
-For example, one may want to override the default installation directory of a piece of software. See https://github.com/chocolatey/chocolatey/wiki/GettingStarted#overriding-default-install-directory-or-other-advanced-install-concepts.
-
-Defaults to ''.
-
-###OverrideArguments flag (optional) - v0.9.8.13+
-If you want to override the original install arguments (for the native installer) in the package and use your own. Use with InstallArguments.
-You can pass this as `-o` `-override` `-overrideArgs` or `-overrideArguments`.
-
-Defaults to false.
-
-###NotSilent flag (optional) - v0.9.8.13+
-If you want to use the native installer to step through the installer, use `-notSilent` to have chocolatey download the package and installer and bring it up for you.
-
-Defaults to false.
-
-###IgnoreDependencies flag (optional) - 0.9.8.21+
-If you want to install something but ignore all of the dependencies, use `-ignoreDependencies` to force chocolatey to only install the package and not any of its dependencies.
-
-Defaults to false.
-
-###Forcex86 flag (optional) - v0.9.8.22+
-If you want to install the 32 bit version of a package, you can pass `-x86` and chocolatey will ignore the 64 bit url and only use the 32 bit url. This only applies on an x64 system when you are installing packages that also have x64 versions. You can pass this as `-x86` or `-forcex86`.
-
-Defaults to false.
-
-##Examples
-`choco install nunit`
-
-`choco install nunit -version 2.5.7.10213`
-
-`choco install nunit -version 2.5.7.10213 -source http://somelocalfeed.com/nuget`
-
-`cinst nunit -version 2.5.7.10213 -source http://somelocalfeed.com/nuget`
-
-`cinst nunit -source \\someserver\someshare`
-
-`cinst nunit -source c:\somefolder`
-
-`cinst nunit -source 'http://chocolatey.org/api/v2/;c:\somefolder'`
-
-`cinst nodejs.install -installArgs '/qb'`
-
-`cinst nodejs.install -installArgs '"/qb /bob=''a value''"' -override` -note that the `/bob=''a value''` will be converted to `/bob="a value"`.
-
-`cinst nodejs.install -notSilent`
-
-`cinst packages.config`
-
-`choco install git ruby python`
-
-`choco install python -x86`
-
-##Screenshots
-Installing mSysGit silently:
-
-![msysgit](images/msysgit.png "msysgit")
-![msysgit install](images/msysgit2.png "msysgit install")
-
-NHProf:
-
-![nhprof](images/chocolateynhprofiler.png "nhprof")
-
-Statlight:
-
-![statlight](images/statlight.png "statlight")
-
-Git-Tfs:
-
-![git tfs](images/git-tfs.png "git tfs chocolatey")
-![git tfs helper run](images/git-tfs2.png "git tfs chocolatey helper")
-
-[[Command Reference|CommandsReference]]
+ - **How-To:** A complete example of how you can use the PackageParameters argument when creating a Chocolatey Package can be seen [[here|How-To-Parse-PackageParameters-Argument]].
+ - One may want to override the default installation directory of a piece of software. See https://github.com/chocolatey/chocolatey/wiki/GettingStarted#overriding-default-install-directory-or-other-advanced-install-concepts.

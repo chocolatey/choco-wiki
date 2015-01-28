@@ -1,63 +1,52 @@
 # Chocolatey List (choco list) / Search (choco search)
-Lists packages available from a remote source.
 
-`chocolatey list packageName` or shortcut with
-`choco list packageName` or `choco search something`.
+Chocolatey will perform a search for a package local or remote.
 
-Search is a new alias as of 0.9.8.21+.
+## Usage
 
-###NOTE: To see what git packages are available, type `choco search git`.
+    choco search filter [options/switches]
+    choco list filter [options/switches]
 
-##Parameters
-###Filter
-A way to filter down results. Searches against name/description/tag.
+## Examples
 
-###AllVersions flag (optional) - v0.9.8.13+
-Whether to display more than one version of given results or not. Specified by either `-allversions` or `-all`.
+    choco list --local-only
+    choco list -lp
+    choco list -lap
+    choco search git
+    choco search git -s "https://somewhere/out/there"
 
-Defaults to false.
+## Options and Switches
 
-###Prerelease flag (optional) - v0.9.8.15+
-Whether to include prerelease packages in results. This is optional if you explicitly ask for a specific version that is a pre-release package. You can pass this as `-pre` or `-prerelease`.
+Includes [[default options/switches|CommandsReference#default-options-and-switches]]
 
-Defaults to false.
+```
+-s, --source=VALUE
+  Source - Source location for install. Can include special 'webpi'.
+  Defaults to sources.
 
-###Verbose flag (optional)
-Show more information about each package. You pass this as `-verbose`.
+-l, --lo, --localonly, --local-only
+  LocalOnly - Only search against local machine items.
 
-Defaults to false.
+-p, --includeprograms, --include-programs
+  IncludePrograms - Used in conjuction with LocalOnly, filters out apps
+  chocolatey has listed as packages and includes those in the list.
+  Defaults to false.
 
-###Source (optional)
-Source (directory, share or remote url feed) the package comes from.
+-a, --all, --allversions, --all-versions
+  AllVersions - include results from all versions.
+```
 
-Defaults to official chocolatey feed.
+## Alternative Sources
 
-###LocalOnly flag (optional) - v0.9.8.21+
-This searches against the local installed packages. You just pass `-lo` or `-localonly` to the list/search command.
+### WebPI
+This specifies the source is Web PI (Web Platform Installer) and that we
+are searching for a WebPI product, such as IISExpress. If you do not
+have the Web PI command line installed, it will install that first and
+then perform the search requested.
+e.g. `choco list --source webpi`
 
-Defaults to false.
-
-#### -source webpi (v0.9.8.13+)
-This retrieves a lising from what's available and installed based on WebPI. See [[WebPI|CommandsWebPI]].
-
-#### -source windowsfeatures (v0.9.8.20+)
-This retrieves a lising from what's available and installed for windows features. See [[Windows Features|CommandsWindowsFeatures]].
-
-##Examples
-`chocolatey list nunit` `chocolatey list nunit -all`
-
-`chocolatey search nunit -source http://somelocalfeed.com/nuget`
-
-`chocolatey list nunit -source http://somelocalfeed.com/nuget -all`
-
-`choco list nunit -source http://somelocalfeed.com/nuget`
-
-`choco list -source webpi`
-
-`choco search -lo` `choco search -localonly`
-
-`choco list -localonly` # lists all packages chocolatey has installed on your local system
-
-![clist in action](images/clistExample.png "clist in action")
-
-[[Command Reference|CommandsReference]]
+### Windows Features
+This specifies that the source is a Windows Feature and we should
+install via the Deployment Image Servicing and Management tool (DISM) on
+the local machine.
+e.g. `choco list --source windowsfeatures`

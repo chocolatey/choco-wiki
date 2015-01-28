@@ -1,33 +1,36 @@
-# Chocolatey Sources (choco sources)
-##New as of v0.9.8.20.
-Allows you to manage sources with several subcommands.
+# Chocolatey Source (choco source)
+Chocolatey will allow you to interact with sources.
 
-####Deprecation Notice: The shortcut `csources` was deprecated in 0.9.8.21 for the ubiquitous `choco sources`.
+## Usage
 
-##Parameters
-### Operation to perform
+    choco source [list]|add|remove|disable|enable [options/switches]
 
-#### list
-#### add
-#### remove
-#### enable
-This is performed against a source. SourceName is required. Must be disabled to enable.
-#### disable
-This is performed on a source. SourceName is required.
+## Examples
 
-###SourceName (optional, depending on operation)
-Name of the source to work with.
+    choco source
+    choco source list
+    choco source add -n=bob -s"https://somewhere/out/there/api/v2/"
+    choco source add -n=bob -s"https://somewhere/out/there/api/v2/" -u=bob -p=12345
+    choco source disable -n=bob
+    choco source enable -n=bob
+    choco source remove -n=bob
 
-###SourceLocation (optional, depending on operation)
+## Options and Switches
 
+Includes [[default options/switches|CommandsReference#default-options-and-switches]]
 
-##Examples
-`choco sources list`
+```
+-n, --name=VALUE
+  Name - the name of the source. Required with some actions. Defaults to
+  empty.
 
-`choco sources add -name bob -source c:\localpackages`
+-s, --source=VALUE
+  Source - The source. Defaults to empty.
 
-`choco sources disable bob`
+-u, --user=VALUE
+  User - used with authenticated feeds. Defaults to empty.
 
-`choco sources remove bob`
-
-[[Command Reference|CommandsReference]]
+-p, --password=VALUE
+  Password - the user's password to the source. Encrypted in
+  chocolatey.config file.
+```
