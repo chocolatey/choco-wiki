@@ -9,6 +9,7 @@ We'll try to capture everything here that you should know about. Please call cho
 BREAKING CHANGES:
 
  * Perhaps the most breaking is that security settings have pushed us to stop for confirmation before changing the state of the system on most commands. You can override with `-y`.
+ * Choco now installs packages without version numbers. This means upgrade is treated better
  * `installmissing` has been removed. It was deprecated awhile ago, so this should not be a surprise.
  * `choco version` has been removed. Use `choco upgrade pkgName --noop` instead.
  * TEMPORARY `install all` is missing - this is expected to be back in 0.9.10.
@@ -26,7 +27,7 @@ FEATURES:
  * You have options on how to pass option names, but if you use blended short names (one character switches) you must use `--` to specify other args that are not a single character.  e.g. `-d` (debug), `-f` (force), `-v` (verbose), and `-y` (confirm yes) can be blended as -dfvy, but you must use `--version` instead of `-version`.
  * Noop mode for all commands (can also be specified as -what-if)
  * Did we mention there is a help menu that is actually helpful now? Shiny!
-
+ * Performs like a package manager, expect to see queries failing because of unmet dependency issues.
 
 ... stuff here
 
