@@ -1,49 +1,49 @@
-[Why Chocolatey?](https://github.com/chocolatey/chocolatey/wiki/Why)
-
-[How to install](https://github.com/chocolatey/chocolatey/wiki/installation)  
-[How to uninstall](https://github.com/chocolatey/chocolatey/wiki/Uninstallation)  
-[Legal](https://github.com/chocolatey/chocolatey/wiki/Legal)  
-[Release Notes](https://github.com/chocolatey/chocolatey/wiki/ReleaseNotes)  
-[Package Triage Process](https://github.com/chocolatey/chocolatey/wiki/PackageTriageProcess)  
-[History](https://github.com/chocolatey/chocolatey/wiki/History)  
+[[Why Chocolatey?|Why]]
+[[Release Notes|ReleaseNotes]]
 
 **How to use Chocolatey**
- - [Getting Started](https://github.com/chocolatey/chocolatey/wiki/GettingStarted)  
- - [Proxy Settings](https://github.com/chocolatey/chocolatey/wiki/Proxy-Settings-for-Chocolatey)
- - [FAQs](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)
-
-**Creating Packages**
- - [Quick Start](https://github.com/chocolatey/chocolatey/wiki/CreatePackagesQuickStart)
- - [Create Packages](https://github.com/chocolatey/chocolatey/wiki/CreatePackages)
- - [Host on MyGet](https://github.com/chocolatey/chocolatey/wiki/Hosting-Chocolatey-Packages-on-MyGet)
- - [Automatic Packages](https://github.com/chocolatey/chocolatey/wiki/AutomaticPackages)
+ - [[How to install|installation]]
+ - [[Getting Started|GettingStarted]]
+ - [[Proxy Settings|Proxy-Settings-for-Chocolatey]]
+ - [[How to uninstall|Uninstallation]]
+ - [[FAQs|ChocolateyFAQs]]
 
 **Commands**
- - [Complete Reference](https://github.com/chocolatey/chocolatey/wiki/CommandsReference)
- - [List](https://github.com/chocolatey/chocolatey/wiki/CommandsList)
- - [Install](https://github.com/chocolatey/chocolatey/wiki/CommandsInstall)
- - [Update](https://github.com/chocolatey/chocolatey/wiki/CommandsUpdate)
- - [Uninstall](https://github.com/chocolatey/chocolatey/wiki/CommandsUninstall)
- - [Help](https://github.com/chocolatey/chocolatey/wiki/CommandsHelp)
- - [Sources](https://github.com/chocolatey/chocolatey/wiki/CommandsSources)
- - [Install Missing](https://github.com/chocolatey/chocolatey/wiki/CommandsInstallMissing)
- - [Version](https://github.com/chocolatey/chocolatey/wiki/CommandsVersion)
- - [WebPI](https://github.com/chocolatey/chocolatey/wiki/CommandsWebPI)
- - [Gem](https://github.com/chocolatey/chocolatey/wiki/CommandsGem)
- - [Cygwin](https://github.com/chocolatey/chocolatey/wiki/CommandsCygwin)
- - [Python](https://github.com/chocolatey/chocolatey/wiki/CommandsPython)
- - [WindowsFeatures](https://github.com/chocolatey/chocolatey/wiki/CommandsWindowsFeatures)
- - [Pack](https://github.com/chocolatey/chocolatey/wiki/CommandsPack)
- - [Push](https://github.com/chocolatey/chocolatey/wiki/CommandsPush)
+ - [[Complete Reference|CommandsReference]]
+ - [[list|CommandsList]]
+ - [[search|CommandsList]]
+ - [[install|CommandsInstall]]
+ - [[upgrade|CommandsUpgrade]]
+ - [[uninstall|CommandsUninstall]]
+ - [[source|CommandsSources]]
+ - [[apikey|CommandsApiKey]]
+ - [[pin|CommandsPin]]
+ - [[new|CommandsNew]]
+ - [[pack|CommandsPack]]
+ - [[push|CommandsPush]]
+
+**Creating Packages**
+ - [[Quick Start|CreatePackagesQuickStart]]
+ - [[Create Packages|CreatePackages]]
+ - [[Host on MyGet|Hosting-Chocolatey-Packages-on-MyGet]]
+ - [[Automatic Packages|AutomaticPackages]]
 
 **Helper Functions**
- - [Complete Reference](https://github.com/chocolatey/chocolatey/wiki/HelpersReference)
+ - [[Complete Reference|HelpersReference]]
 
 **How To's**
-- [Parse PackageParamters](https://github.com/chocolatey/chocolatey/wiki/How-To-Parse-PackageParameters-Argument)
-- [Mount Iso](https://github.com/chocolatey/chocolatey/wiki/How-To-Mount-An-Iso-In-Chocolatey-Package)
-- [Deprecate a Package](https://github.com/chocolatey/chocolatey/wiki/How-To-Deprecate-A-Chocolatey-Package)
+
+ - [[Package Triage Process|PackageTriageProcess]]
+ - [[Take over package maintenance|PackageMantainerHandover]]
+ - [[Parse PackageParamters|How-To-Parse-PackageParameters-Argument]]
+ - [[Mount Iso|How-To-Mount-An-Iso-In-Chocolatey-Package]]
+ - [[Deprecate a Package|How-To-Deprecate-A-Chocolatey-Package]]
 
 **Contributing**
-- [Process](https://github.com/chocolatey/chocolatey/blob/master/CONTRIBUTING.md)
-- [Development Environment](https://github.com/chocolatey/chocolatey/wiki/DevelopmentEnvironmentSetup)
+ - [[Process|https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md]]
+ - ?? [[Development Environment|DevelopmentEnvironmentSetup]]
+
+**Other**
+ - [[Why Chocolatey?|Why]]
+ - [[Legal]]
+ - [[History]]
