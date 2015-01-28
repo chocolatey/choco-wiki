@@ -35,7 +35,7 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
   before timing out. Defaults to 300 seconds (5 minutes).
 ```
 
-### Common Trouble shooting
+### Common Troubleshooting
 
 **NOTE** : To use this command, you must have your API key saved for
 chocolatey.org or the source you want to push to. Or you can pass the apikey to
