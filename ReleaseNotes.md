@@ -1,6 +1,36 @@
 ##Release Notes
 
-#### <font color="red">Notice: Some command shortcuts have been deprecated as of 0.9.8.21 (**This is JUST the SHORTCUT, not the command itself**) - Several shortcut files that were created have been deprecated for the ubiquitous `choco command` and will not be created in newer installs. If you are upgrading an existing install, those will continue to work at the current time. These shortcuts are `ccygwin`, `cpython`, `cwebpi`,`cgem`,`cwindowsfeatures`, and `csources`.</font>
+##[choco 0.9.9](https://github.com/chocolatey/choco/issues?q=is%3Aissue+milestone%3A0.9.9+is%3Aclosed) and [chocolatey 0.9.9](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.9&page=1&state=closed) (unreleased)
+
+Those two links will not capture everything that has changed, since this is a complete rewrite. We broke everything. If this were a v1+, it would be a major release. But we are less than v1, so 0.9.9 it is! ;)
+
+We'll try to capture everything here that you should know about. Please call choco.exe -h to get started.
+
+BREAKING CHANGES:
+
+ * Perhaps the most breaking is that security settings have pushed us to stop for confirmation before changing the state of the system on most commands. You can override with `-y`.
+ * `installmissing` has been removed. It was deprecated awhile ago, so this should not be a surprise.
+ * `choco version` has been removed. Use `choco upgrade pkgName --noop` instead.
+ * TEMPORARY `install all` is missing - this is expected to be back in 0.9.10.
+ * `Write-ChocolateySuccess`, `Write-ChocolateyFailure` have been deprecated.
+ * `update` is now `upgrade`. `update` has been removed for now but will be reincarnated later for a different purpose. **Hint**: It rhymes with smackage pindexes.
+
+FEATURES:
+
+ * In app documentation! Use `choco -h` or `choco commandName -h` to learn about each command with examples!
+ * `pin`
+ * `apikey`
+ * `new`
+ * You can pass argument values with an equals sign in between them!
+ * You have options on how to pass option names, but if you use blended short names (one character switches) you must use `--` to specify other args that are not a single character.  e.g. `-d` (debug), `-f` (force), `-v` (verbose), and `-y` (confirm yes) can be blended as -dfvy, but you must use `--version` instead of `-version`.
+ * Noop mode for all commands (can also be specified as -what-if)
+ * Did we mention there is a help menu that is actually helpful now? Shiny!
+
+
+
+
+ * Dat help menu tho. I mean srsly guise.
+
 
 ##[0.9.8.32](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.32&page=1&state=closed) (January 22, 2015)
 
@@ -65,7 +95,7 @@ BUG FIXES:
 
 ##[0.9.8.26](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.26&page=1&state=closed) (July 12, 2014)
 
-Pulled due to major breakage with #516 
+Pulled due to major breakage with #516
 
 BUG FIXES:
 
