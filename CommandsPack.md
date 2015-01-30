@@ -1,4 +1,4 @@
-# Chocolatey Pack (cpack)
+# Chocolatey Pack (choco pack / cpack)
 
 Chocolatey will attempt to package a nuspec into a compiled nupkg.
 
