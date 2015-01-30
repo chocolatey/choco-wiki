@@ -120,6 +120,7 @@ Alternative to PackageName. This is a list of packages in an xml manifest for ch
 
 ## Alternative Sources
 **NOTE**: THIS IS NOT YET REIMPLEMENTED.
+**TODO**: Draw out what each of these is (links/documentation)
 
 ### Ruby
 This specifies the source is Ruby Gems and that we are installing a gem.
