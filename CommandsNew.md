@@ -6,6 +6,7 @@ Chocolatey will generate package specification files for a new package.
     choco new name [options/switches] [property=value]
 
 Possible properties to pass:
+```
     PackageVersion
     MaintainerName
     MaintainerRepo
@@ -13,6 +14,7 @@ Possible properties to pass:
     Url
     Url64
     SilentArgs
+```
 
 ## Examples
 
