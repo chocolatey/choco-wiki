@@ -99,7 +99,7 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 ```
 
 ## Packages.config
-Alternative to PackageName. This is a list of packages in an xml manifest for chocolatey to install.  This is like the packages.config that NuGet uses except it also adds the source element. This can also be the path to the `packages.config` file if it is not in the current working directory.
+Alternative to PackageName. This is a list of packages in an xml manifest for Chocolatey to install.  This is like the packages.config that NuGet uses except it also adds the source element. This can also be the path to the `packages.config` file if it is not in the current working directory.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
