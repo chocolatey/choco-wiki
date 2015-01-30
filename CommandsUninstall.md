@@ -20,7 +20,7 @@ Uninstalls a package or a list of packages.
 
 ## Options and Switches
 
-**NOTE**: Options and switches apply to all items passed, so if you are installing multiple packages, and you use `--version=1.0.0`, it is going to look for and try to install version 1.0.0 of every package passed. So please split out multiple package calls when wanting to pass specific options.
+**NOTE**: Options and switches apply to all items passed, so if you are uninstalling multiple packages, and you use `--version=1.0.0`, it is going to look for and try to uninstall version 1.0.0 of every package passed. So please split out multiple package calls when wanting to pass specific options.
 
 Includes [[default options/switches|CommandsReference#default-options-and-switches]]
 
@@ -52,9 +52,9 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
   uninstalling package(s). Defaults to false.
 
 -n, --skippowershell, --skip-powershell
-  Skip Powershell - Do not run chocolateyUninstall.ps1. Defaults to false.
+  Skip PowerShell - Do not run chocolateyUninstall.ps1. Defaults to false.
 ```
 
 ## Known Limitations
-* There are no functions defined in the Chocolatey powershell module that would help with uninstall - yet
+* There are no functions defined in the Chocolatey PowerShell module that would help with uninstall - yet
 * There is no automatic removal of MSIs (well there is, but auto uninstaller is not turned on by default).
