@@ -11,6 +11,7 @@ We'll try to capture everything here that you should know about. Please call cho
 #### KNOWN ISSUES
  * TEMPORARY `install all` is missing - this is expected to be back in 0.9.10 - see [#23](https://github.com/chocolatey/choco/issues/23)
  * Alternative sources (`webpi`,`ruby`,`python`,`cygwin`, `windowsfeature`) do not work yet. This is expected to be fixed in 0.9.10 - see [#14](https://github.com/chocolatey/choco/issues/14)
+ * See [Feature Parity](https://github.com/chocolatey/choco/labels/FeatureParity) for items not yet reimplemented from older PowerShell chocolatey client (v0.9.8.32 and below).
 
 #### BREAKING CHANGES
 
