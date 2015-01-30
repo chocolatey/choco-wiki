@@ -14,8 +14,6 @@ Upgrades a package or a list of packages.
 
 **NOTE**: If you do not have a package installed, upgrade will error.
 
-**NOTE**: Options and switches apply to all items passed, so if you are installing multiple packages, and you use `--version=1.0.0`, it is going to look for and try to install version 1.0.0 of every package passed. So please split out multiple package calls when wanting to pass specific options.
-
 ## Examples
 
     choco upgrade chocolatey
@@ -26,6 +24,8 @@ Upgrades a package or a list of packages.
 
 
 ## Options and Switches
+
+**NOTE**: Options and switches apply to all items passed, so if you are installing multiple packages, and you use `--version=1.0.0`, it is going to look for and try to install version 1.0.0 of every package passed. So please split out multiple package calls when wanting to pass specific options.
 
 Includes [[default options/switches|CommandsReference#default-options-and-switches]]
 
