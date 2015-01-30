@@ -20,7 +20,7 @@ Possible properties to pass:
 
     choco new bob
     choco new bob -a --version 1.2.0 maintainername="This guy"
-    choco new bob SilentArgs="/S" Url="https://somewhere/out/there.msi"
+    choco new bob silentargs="/S" url="https://somewhere/out/there.msi"
 
 ## Options and Switches
 
