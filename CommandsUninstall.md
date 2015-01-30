@@ -7,6 +7,8 @@ Usage: choco uninstall pkg [pkg2 pkgN] [options/switches]
 NOTE: `all` is a special package keyword that will allow you to
  uninstall all packages.
 
+**NOTE**: Options and switches apply to all items passed, so if you are installing multiple packages, and you use `--version=1.0.0`, it is going to look for and try to install version 1.0.0 of every package passed. So please split out multiple package calls when wanting to pass specific options.
+
 ## Examples
 
     choco uninstall git
