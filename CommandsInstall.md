@@ -36,7 +36,7 @@ What is `-my`? See [Option Blending](https://github.com/chocolatey/choco/wiki/Co
 
 **NOTE**: All of these will add to PATH variable. We'll be adding a special
  option to not allow PATH changes. Until then you will need to manually
- go modify Path to just one Ruby and then use something like uru or pik
+ go modify Path to just one Ruby and then use something like [uru](https://bitbucket.org/jonforums/uru) or [pik](https://chocolatey.org/packages/pik)
  to switch between versions.
 
 ## Options and Switches
