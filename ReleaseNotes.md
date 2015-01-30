@@ -1,6 +1,8 @@
 ##Release Notes
 
-##[choco 0.9.9](https://github.com/chocolatey/choco/issues?q=is%3Aissue+milestone%3A0.9.9+is%3Aclosed) and [chocolatey 0.9.9](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.9&page=1&state=closed) (unreleased)
+##[0.9.9](https://github.com/chocolatey/choco/issues?q=is%3Aissue+milestone%3A0.9.9+is%3Aclosed) (unreleased)
+
+This also includes [chocolatey 0.9.9](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.9&page=1&state=closed).
 
 Those two links will not capture everything that has changed, since this is a complete rewrite. We broke everything. If this were a v1+, it would be a major release. But we are less than v1, so 0.9.9 it is! ;)
 
@@ -8,30 +10,39 @@ We'll try to capture everything here that you should know about. Please call cho
 
 BREAKING CHANGES:
 
- * Perhaps the most breaking is that security settings have pushed us to stop for confirmation before changing the state of the system on most commands. You can override with `-y`.
- * Choco no longer interacts with NuGet's config file at all. You will need to reset all of your apiKeys (see features for `apikey`).
- * Choco now installs packages without version numbers on folders. This means quite a few things...
- * Upgrading packages doesn't install a new version next to an old version, it actually upgrades.
- * `installmissing` has been removed. It was deprecated awhile ago, so this should not be a surprise.
- * `choco version` has been removed. Use `choco upgrade pkgName --noop` instead.
+ * [Security] Perhaps the most breaking is that security settings have pushed us to stop for confirmation before changing the state of the system on most commands. You can override with `-y`.
+ * [Security] Move installation out of C:\Chocolatey, upate environment settings  - see [#7](https://github.com/chocolatey/choco/issues/7)
+ * Configuration Breaking Changes:
+  * You now have one config file to interact with in %ChocolateyInstall%\config - your user config is no longer valid and can be removed once you migrate settings to the config.
+  * The config will not be overwritten on upgrade
+  * Choco no longer interacts with NuGet's config file at all. You will need to reset all of your apiKeys (see features for `apikey`).
+  * This also means you can no longer use `useNugetForSources`.
+ * Packaging Changes:
+  * Choco now installs packages without version numbers on folders. This means quite a few things...
+  * Upgrading packages doesn't install a new version next to an old version, it actually upgrades.
+ * Deprecated/Removed Commands:
+  * `installmissing` has been removed. It was deprecated awhile ago, so this should not be a surprise.
+  * `choco version` has been removed. Use `choco upgrade pkgName --noop` instead.
+  * `Write-ChocolateySuccess`, `Write-ChocolateyFailure` have been deprecated.
+  * `update` is now `upgrade`. `update` has been removed for now but will be reincarnated later for a different purpose. **Hint**: It rhymes with smackage pindexes.
+  * `sources` is now `source`.
  * TEMPORARY `install all` is missing - this is expected to be back in 0.9.10.
- * `Write-ChocolateySuccess`, `Write-ChocolateyFailure` have been deprecated.
- * `update` is now `upgrade`. `update` has been removed for now but will be reincarnated later for a different purpose. **Hint**: It rhymes with smackage pindexes.
- * `sources` is now `source`.
  * packages.config has a slightly different structure now. See [Packages.config](https://github.com/chocolatey/choco/wiki/CommandsInstall#packagesconfig) for details.
  * Dependencies resolve at highest available version, not the minimum version as before. This means you can take a dependency on a minimum version of chocolatey (we didn't like that before).
 
 FEATURES:
 
  * In app documentation! Use `choco -h` or `choco commandName -h` to learn about each command with examples!
- * `pin` - TODO: write examples/why
- * `apikey` - TODO: write examples/why
- * `new` - TODO: write examples/why
+ * What-If/Noop mode for all commands (can also be specified as -what-if)
+ * New Commands:
+  * `pin` - Suppress upgrades. This allows you to 'pin' an install to a particular version - see [#1](https://github.com/chocolatey/choco/issues/1) and [chocolatey #5](https://github.com/chocolatey/chocolatey/issues/5)
+  * `apikey` - TODO: write examples/why
+  * `new` - TODO: write examples/why
  * You can pass argument values with an equals sign in between them!
  * You have options on how to pass option names, but if you use blended short names (one character switches) you must use `--` to specify other args that are not a single character.  e.g. `-d` (debug), `-f` (force), `-v` (verbose), and `-y` (confirm yes) can be blended as -dfvy, but you must use `--version` instead of `-version`.
- * Noop mode for all commands (can also be specified as -what-if)
  * Did we mention there is a help menu that is actually helpful now? Shiny!
  * Performs like a package manager, expect to see queries failing because of unmet dependency issues.
+ * AutoUninstaller!!!! But it is not enabled by default this version. See [#15](https://github.com/chocolatey/choco/issues/15) and [#9](https://github.com/chocolatey/choco/issues/9)
 
 ... stuff here
 
@@ -40,6 +51,10 @@ FEATURES:
 BUG FIXES:
 
 IMPROVEMENTS:
+
+ * [Security] Allow keeping `c:\chocolatey` install directory with environment variable - see [#17](https://github.com/chocolatey/choco/issues/17)
+ * [Security] Require switch on unofficial build - see [#36](https://github.com/chocolatey/choco/issues/36)
+ * Install script updates  - see [#7](https://github.com/chocolatey/choco/issues/7)
 
 
 ##[0.9.8.32](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.32&page=1&state=closed) (January 22, 2015)
