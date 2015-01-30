@@ -59,6 +59,12 @@ Where are [[we|RoadMap]]? Where are we [[going|RoadMap]]?
 Chocolatey has a [Google Groups group](http://groups.google.com/group/chocolatey). Please join and ask questions and send feedback.
   
 If you have issues with a package (or it is out of date), please use the contact maintainers link on the package page itself. If the maintainer doesn’t respond within a given time frame (say a day or two), feel free to bring it up with the group.  
+
+## Chat Room
+
+Come join in the conversation about Chocolatey in our Gitter Chat Room
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/chocolatey/choco?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
   
 ##Requirements
  * Windows XP/Vista/7/8/2003/2008  
