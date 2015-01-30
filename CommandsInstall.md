@@ -32,7 +32,7 @@ Install multiple versions of a package using -m (AllowMultiple versions)
     choco install ruby --version 2.0.0.59800 -my
     choco install ruby --version 2.1.5 -my
 
-What is `-my`? See [Option Name Blending](https://github.com/chocolatey/choco/wiki/CommandsReference#how-to-pass-options--switches)
+What is `-my`? See [Option Blending](https://github.com/chocolatey/choco/wiki/CommandsReference#how-to-pass-options--switches)
 
 **NOTE**: All of these will add to PATH variable. We'll be adding a special
  option to not allow PATH changes. Until then you will need to manually
