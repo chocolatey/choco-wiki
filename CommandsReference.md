@@ -68,5 +68,15 @@ This is a listing of all of the different things you can pass to choco.
   this flag for choco to continue.
 ```
 
+### How To Pass Options / Switches
 
-You have options on how to pass option names, but if you use blended short names (one character switches) you must use -- to specify other args that are not a single character. e.g. -d (debug), -f (force), -v (verbose), and -y (confirm yes) can be blended as -dfvy, but you must use --version instead of -version.
+You can pass options and switches in the following ways:
+
+ * `-` - except for normal switches (not 1 character) when using option name blending, see below.
+ * `--` - except for one character switches
+ * `+`
+ * `/`
+
+You can also include or not include an equals sign `=` between options and values. And quote the values.
+
+You have options on how to pass option names, but if you use blended short names (one character switches) you must use `--` to specify other args that are not a single character. e.g. -d (debug), -f (force), -v (verbose), and -y (confirm yes) can be blended as -dfvy, but you must use --version instead of -version.
