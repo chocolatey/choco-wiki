@@ -48,9 +48,6 @@ When you install portable apps that have executables in the package, Chocolatey 
 
 When you take an application with a native installer, say like WinDirStat, it is only on your path if the native installer has put it there or the instructions in the Chocolatey package itself has requested for it to be on the path. In this case, this is the “littering” the path concept.
 
-###What is with the "chocolatey gods" in the installs?
-We like humor. You should try some.
-
 ###Where does Chocolatey install by default?
 As of version 0.9.8.24, binaries, libraries and Chocolatey components install in ```C:\ProgramData\chocolatey``` (environment variable %ProgramData%) by default. This reduces the attack surface on a local installation of Chocolatey and limits who can make changes to the directory.
 
