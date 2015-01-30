@@ -67,3 +67,6 @@ This is a listing of all of the different things you can pass to choco.
   AllowUnofficialBuild - When not using the official build you must set
   this flag for choco to continue.
 ```
+
+
+You have options on how to pass option names, but if you use blended short names (one character switches) you must use -- to specify other args that are not a single character. e.g. -d (debug), -f (force), -v (verbose), and -y (confirm yes) can be blended as -dfvy, but you must use --version instead of -version.
