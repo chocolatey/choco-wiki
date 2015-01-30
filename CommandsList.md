@@ -39,6 +39,7 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 ```
 
 ## Alternative Sources
+**NOTE**: THIS IS NOT YET REIMPLEMENTED.
 
 ### WebPI
 This specifies the source is Web PI (Web Platform Installer) and that we
