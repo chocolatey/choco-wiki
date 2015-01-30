@@ -29,7 +29,6 @@ Choco can also install directly from a nuspec/nupkg file (this aids in
 
 Install multiple versions of a package using -m (AllowMultiple versions)
 
-    choco install ruby --version 1.8.7.37402 -my
     choco install ruby --version 1.9.3.55100 -my
     choco install ruby --version 2.0.0.59800 -my
     choco install ruby --version 2.1.5 -my
@@ -40,12 +39,6 @@ What is `-my`? See [Option Name Blending](https://github.com/chocolatey/choco/wi
  option to not allow PATH changes. Until then you will need to manually
  go modify Path to just one Ruby and then use something like uru or pik
  to switch between versions.
-
-**NOTE**: Ruby 1.8.7 reached EOL (end of life) on 7/31/2014 and 1.9.3 will
- reach EOL on 2/23/2015. They are provided for example only and not
- recommended to be installed as they could pose security threats once
- they are past EOL.
-
 
 ## Options and Switches
 
