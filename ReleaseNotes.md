@@ -2,21 +2,21 @@
 
 ##[0.9.9](https://github.com/chocolatey/choco/issues?q=is%3Aissue+milestone%3A0.9.9+is%3Aclosed) (unreleased)
 
-This also includes [chocolatey 0.9.9](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.9&page=1&state=closed).
+This also includes issues that were being tracked in the old version of Chocolatey: [chocolatey 0.9.9](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.9&page=1&state=closed).
 
-Those two links will not capture everything that has changed, since this is a complete rewrite. We broke everything. If this were a v1+, it would be a major release. But we are less than v1, so 0.9.9 it is! ;)
+The two links above will not capture everything that has changed, since this is a complete rewrite. We broke everything. If this were a v1+, it would be a major release. But we are less than v1, so 0.9.9 it is! ;)
 
-We'll try to capture everything here that you should know about. Please call choco.exe -h to get started.
+We'll try to capture everything here that you should know about. Please call `choco.exe -h` to get started.
 
 #### KNOWN ISSUES
  * TEMPORARY `install all` is missing - this is expected to be back in 0.9.10 - see [#23](https://github.com/chocolatey/choco/issues/23)
  * Alternative sources (`webpi`,`ruby`,`python`,`cygwin`, `windowsfeature`) do not work yet. This is expected to be fixed in 0.9.10 - see [#14](https://github.com/chocolatey/choco/issues/14)
- * See [Feature Parity](https://github.com/chocolatey/choco/labels/FeatureParity) for items not yet reimplemented from older PowerShell chocolatey client (v0.9.8.32 and below).
+ * See [Feature Parity](https://github.com/chocolatey/choco/labels/FeatureParity) for items not yet reimplemented from older PowerShell Chocolatey client (v0.9.8.32 and below).
 
 #### BREAKING CHANGES
 
- * [Security] Perhaps the most breaking is that security settings have pushed us to stop for confirmation before changing the state of the system on most commands. You can override with `-y`.
- * [Security] Move installation out of C:\Chocolatey, upate environment settings  - see [#7](https://github.com/chocolatey/choco/issues/7)
+ * [Security] Perhaps the most significant breaking change is that security settings have pushed us to stop for confirmation before changing the state of the system on most commands. You can override with `-y`.
+ * [Security] Moved default installation out of C:\Chocolatey, update environment settings  - see [#7](https://github.com/chocolatey/choco/issues/7)
  * **Configuration Breaking Changes:**
   * You now have one config file to interact with in %ChocolateyInstall%\config - your user config is no longer valid and can be removed once you migrate settings to the config.
   * The config will not be overwritten on upgrade
@@ -36,7 +36,7 @@ We'll try to capture everything here that you should know about. Please call cho
 
 #### FEATURES
 
- * In app documentation! Use `choco -h` or `choco commandName -h` to learn about each command with examples!
+ * In app documentation! Use `choco -h` or `choco commandName -h` to learn about each command, complete with examples!
  * What-If/Noop mode for all commands (`--noop` can also be specified as `-whatif`)
  * **New Commands:**
   * `pin` - Suppress upgrades. This allows you to 'pin' an install to a particular version - see [#1](https://github.com/chocolatey/choco/issues/1) and [chocolatey #5](https://github.com/chocolatey/chocolatey/issues/5)
@@ -59,7 +59,7 @@ We'll try to capture everything here that you should know about. Please call cho
  * [Security] Allow keeping `c:\chocolatey` install directory with environment variable - see [#17](https://github.com/chocolatey/choco/issues/17)
  * [Security] Require switch on unofficial build - see [#36](https://github.com/chocolatey/choco/issues/36)
  * Install script updates  - see [#7](https://github.com/chocolatey/choco/issues/7)
- * Ensure chocolatey pkg is installed properly in lib folder - This means you can take a dependency on a minimum version of chocolatey (we didn't like that before) - see [#19](https://github.com/chocolatey/choco/issues/19)
+ * Ensure Chocolatey pkg is installed properly in lib folder - This means you can take a dependency on a minimum version of Chocolatey (we didn't like that before) - see [#19](https://github.com/chocolatey/choco/issues/19)
 
 ##[0.9.8.32](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.32&page=1&state=closed) (January 22, 2015)
 
