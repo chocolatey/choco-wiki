@@ -76,5 +76,5 @@ You can pass options and switches in the following ways:
  * `--` - except for one character switches
  * `+`
  * `/`
- * One character switches can be blended. e.g. `-d` (debug), `-f` (force), `-v` (verbose), and `-y` (confirm yes) can be blended as -dfvy, but you must use `--` for all other normal options/switches e.g. `--version` instead of `-version`. If you don't do this, you may have unintended results.
- * You can also include or not include an equals sign `=` between options and values. And quote the values.
+ * **Option name blending**: One character switches can be blended. e.g. `-d` (debug), `-f` (force), `-v` (verbose), and `-y` (confirm yes) can be blended as -dfvy, but you must use `--` for all other normal options/switches e.g. `--version` instead of `-version`. If you don't do this, you may have unintended results.
+ * **Use equals**: You can also include or not include an equals sign `=` between options and values. And quote the values.
