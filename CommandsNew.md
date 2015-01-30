@@ -41,5 +41,5 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 
 --maintainer=VALUE
     Maintainer - the name of the maintainer. Can also be passed as the
-    property `MaintainerName=somevalue`.
+    property `maintainername=somevalue`.
 ```
