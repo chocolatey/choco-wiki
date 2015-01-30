@@ -4,8 +4,6 @@ Chocolatey will perform a search for a package local or remote. Some folks will 
 
 ## Usage
 
-
-
     choco search filter [options/switches]
     choco list filter [options/switches]
 
