@@ -1,8 +1,10 @@
-# Chocolatey List (choco list) / Search (choco search)
+# Chocolatey List (choco list / clist) / Search (choco search)
 
 Chocolatey will perform a search for a package local or remote.
 
-## Usage
+## Usage
+
+
 
     choco search filter [options/switches]
     choco list filter [options/switches]
