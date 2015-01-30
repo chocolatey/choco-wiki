@@ -37,7 +37,7 @@ We'll try to capture everything here that you should know about. Please call cho
 #### FEATURES
 
  * In app documentation! Use `choco -h` or `choco commandName -h` to learn about each command with examples!
- * What-If/Noop mode for all commands (can also be specified as -what-if)
+ * What-If/Noop mode for all commands (can also be specified as -whatif)
  * **New Commands:**
   * `pin` - Suppress upgrades. This allows you to 'pin' an install to a particular version - see [#1](https://github.com/chocolatey/choco/issues/1) and [chocolatey #5](https://github.com/chocolatey/chocolatey/issues/5)
   * `apikey` - TODO: write examples/why
