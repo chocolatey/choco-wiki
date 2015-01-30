@@ -9,7 +9,8 @@ We'll try to capture everything here that you should know about. Please call cho
 BREAKING CHANGES:
 
  * Perhaps the most breaking is that security settings have pushed us to stop for confirmation before changing the state of the system on most commands. You can override with `-y`.
- * Choco now installs packages without version numbers. This means upgrade is treated better
+ * Choco now installs packages without version numbers on folders. This means quite a few things...
+ * Upgrading packages doesn't install a new version next to an old version, it actually upgrades.
  * `installmissing` has been removed. It was deprecated awhile ago, so this should not be a surprise.
  * `choco version` has been removed. Use `choco upgrade pkgName --noop` instead.
  * TEMPORARY `install all` is missing - this is expected to be back in 0.9.10.
