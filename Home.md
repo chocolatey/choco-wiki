@@ -1,4 +1,12 @@
-##Chocolatey - kind of like apt-get, but for Windows [![](http://img.shields.io/gittip/Chocolatey.svg)](https://www.gittip.com/Chocolatey/) [![](http://img.shields.io/chocolatey/dt/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/chocolatey/v/chocolatey.svg)](https://chocolatey.org/packages/chocolatey)  [![Build status](https://ci.appveyor.com/api/projects/status/jj9h1tobakhpbiwx/branch/master)](https://ci.appveyor.com/project/ferventcoder/chocolatey/branch/master)  [![](http://img.shields.io/teamcity/codebetter/bt802.svg)](http://teamcity.codebetter.com/viewType.html?buildTypeId=bt802)
+##Chocolatey - kind of like apt-get, but for Windows 
+[![](http://img.shields.io/chocolatey/dt/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/chocolatey/v/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/gittip/Chocolatey.svg)](https://www.gittip.com/Chocolatey/) 
+
+## Build Status
+
+TeamCity  | AppVeyor | Travis
+------------- | ------------- | -------------
+[![TeamCity Build Status](http://img.shields.io/teamcity/codebetter/bt429.svg)](http://teamcity.codebetter.com/viewType.html?buildTypeId=bt429)  | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/jfxywa3xuwowt20w/branch/master?svg=true)](https://ci.appveyor.com/project/ferventcoder/choco/branch/master) | [![Travis Build Status](https://travis-ci.org/chocolatey/choco.svg?branch=master)](https://travis-ci.org/chocolatey/choco)
+
 ###You can just call me Chocolatey.  
 ![Chocolatey Logo](https://github.com/chocolatey/chocolatey/wiki/images/chocolateyicon.gif "Chocolatey")  
 ###Let's get Chocolatey!
