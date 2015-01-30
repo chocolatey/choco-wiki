@@ -3,7 +3,9 @@
 Uninstalls a package or a list of packages. 
 `choco uninstall packageName` - some folks will shortcut with `cuninst` as in `cuninst packageName`.
 
-Usage: choco uninstall pkg [pkg2 pkgN] [options/switches]
+## Usage
+
+    choco uninstall pkg [pkg2 pkgN] [options/switches]
 
 **NOTE**: `all` is a special package keyword that will allow you to
  uninstall all packages.
