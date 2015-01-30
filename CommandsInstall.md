@@ -1,8 +1,7 @@
-# Chocolatey Install (choco install / cinst)
+# Chocolatey Install (choco install)
 Installs a package or a list of packages (sometimes specified as a
  packages.config).
-`choco install packageName` or shortcut with
-`cinst packageName` or `cinst packages.config`
+`choco install packageName` - some folks will use the shortcut `cinst` as in `cinst packageName` or `cinst packages.config`
 
 ## Usage
 
