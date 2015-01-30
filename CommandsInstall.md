@@ -143,7 +143,7 @@ e.g. `choco install bash --source cygwin`
 ### Python
 This specifies the source is Python and that we are installing a python
 package, such as Sphinx. If you do not have easy_install and Python
-installed, it will install that first and then the product requested.
+installed, it will install those first and then the product requested.
 e.g. `choco install sphinx --source python`
 
 ### Windows Features
