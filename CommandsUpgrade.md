@@ -1,4 +1,4 @@
-# Chocolatey Upgrade (cup)
+# Chocolatey Upgrade (choco upgrade / cup)
 Upgrades an existing package to the latest version, if there is a newer
 version available.
 `choco upgrade packageName` or shortcut with `cup packageName`.
