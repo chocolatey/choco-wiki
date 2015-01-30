@@ -1,4 +1,4 @@
-## Chocolatey Uninstall (cuninst)
+## Chocolatey Uninstall (choco uninstall / cuninst)
 
 Uninstalls a package or a list of packages.
 
