@@ -20,7 +20,7 @@ We'll try to capture everything here that you should know about. Please call cho
  * **Configuration Breaking Changes:**
   * You now have one config file to interact with in %ChocolateyInstall%\config - your user config is no longer valid and can be removed once you migrate settings to the config.
   * The config will not be overwritten on upgrade
-  * Choco no longer interacts with NuGet's config file at all. You will need to reset all of your apiKeys (see features for `apikey`). But at least they will work for all users of the machine, unlike nuget set apiKeys.
+  * Choco no longer interacts with NuGet's config file at all. You will need to reset all of your apiKeys (see features for `apikey`). On the plus side, the keys will work for all users of the machine, unlike NuGet's apiKeys (only work for the user that sets them).
   * This also means you can no longer use `useNugetForSources`.
  * **Packaging Changes:**
   * Choco now installs packages without version numbers on folders. This means quite a few things...
