@@ -1,6 +1,7 @@
-## Chocolatey Uninstall (choco uninstall / cuninst)
+## Chocolatey Uninstall (choco uninstall)
 
-Uninstalls a package or a list of packages.
+Uninstalls a package or a list of packages. 
+`choco uninstall packageName` - some folks will shortcut with `cuninst` as in `cuninst packageName`.
 
 Usage: choco uninstall pkg [pkg2 pkgN] [options/switches]
 
