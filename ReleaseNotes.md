@@ -8,11 +8,11 @@ Those two links will not capture everything that has changed, since this is a co
 
 We'll try to capture everything here that you should know about. Please call choco.exe -h to get started.
 
-### KNOWN ISSUES
+#### KNOWN ISSUES
  * TEMPORARY `install all` is missing - this is expected to be back in 0.9.10 - see [#23](https://github.com/chocolatey/choco/issues/23)
  * Alternative sources (`webpi`,`ruby`,`python`,`cygwin`, `windowsfeature`) do not work yet. This is expected to be fixed in 0.9.10 - see [#14](https://github.com/chocolatey/choco/issues/14)
 
-### BREAKING CHANGES
+#### BREAKING CHANGES
 
  * [Security] Perhaps the most breaking is that security settings have pushed us to stop for confirmation before changing the state of the system on most commands. You can override with `-y`.
  * [Security] Move installation out of C:\Chocolatey, upate environment settings  - see [#7](https://github.com/chocolatey/choco/issues/7)
@@ -33,7 +33,7 @@ We'll try to capture everything here that you should know about. Please call cho
  * packages.config has a slightly different structure now. See [Packages.config](https://github.com/chocolatey/choco/wiki/CommandsInstall#packagesconfig) for details.
  * Dependencies resolve at highest available version, not the minimum version as before.
 
-### FEATURES
+#### FEATURES
 
  * In app documentation! Use `choco -h` or `choco commandName -h` to learn about each command with examples!
  * What-If/Noop mode for all commands (can also be specified as -what-if)
@@ -51,9 +51,9 @@ We'll try to capture everything here that you should know about. Please call cho
 
  * Dat help menu tho. I mean srsly guise.
 
-### BUG FIXES:
+#### BUG FIXES
 
-### IMPROVEMENTS
+#### IMPROVEMENTS
 
  * [Security] Allow keeping `c:\chocolatey` install directory with environment variable - see [#17](https://github.com/chocolatey/choco/issues/17)
  * [Security] Require switch on unofficial build - see [#36](https://github.com/chocolatey/choco/issues/36)
