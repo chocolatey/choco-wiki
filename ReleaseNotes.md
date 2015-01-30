@@ -9,6 +9,7 @@ We'll try to capture everything here that you should know about. Please call cho
 BREAKING CHANGES:
 
  * Perhaps the most breaking is that security settings have pushed us to stop for confirmation before changing the state of the system on most commands. You can override with `-y`.
+ * Choco no longer interacts with NuGet's config file at all. You will need to reset all of your apiKeys (see features for `apikey`).
  * Choco now installs packages without version numbers on folders. This means quite a few things...
  * Upgrading packages doesn't install a new version next to an old version, it actually upgrades.
  * `installmissing` has been removed. It was deprecated awhile ago, so this should not be a surprise.
@@ -18,13 +19,14 @@ BREAKING CHANGES:
  * `update` is now `upgrade`. `update` has been removed for now but will be reincarnated later for a different purpose. **Hint**: It rhymes with smackage pindexes.
  * `sources` is now `source`.
  * packages.config has a slightly different structure now. See [Packages.config](https://github.com/chocolatey/choco/wiki/CommandsInstall#packagesconfig) for details.
+ * Dependencies resolve at highest available version, not the minimum version as before. This means you can take a dependency on a minimum version of chocolatey (we didn't like that before).
 
 FEATURES:
 
  * In app documentation! Use `choco -h` or `choco commandName -h` to learn about each command with examples!
- * `pin`
- * `apikey`
- * `new`
+ * `pin` - TODO: write examples/why
+ * `apikey` - TODO: write examples/why
+ * `new` - TODO: write examples/why
  * You can pass argument values with an equals sign in between them!
  * You have options on how to pass option names, but if you use blended short names (one character switches) you must use `--` to specify other args that are not a single character.  e.g. `-d` (debug), `-f` (force), `-v` (verbose), and `-y` (confirm yes) can be blended as -dfvy, but you must use `--version` instead of `-version`.
  * Noop mode for all commands (can also be specified as -what-if)
