@@ -7,13 +7,13 @@ Chocolatey will generate package specification files for a new package.
 
 Possible properties to pass:
 ```
-    PackageVersion
-    MaintainerName
-    MaintainerRepo
-    InstallerType
-    Url
-    Url64
-    SilentArgs
+    packageversion
+    maintainername
+    maintainerrepo
+    installertype
+    url
+    url64
+    silentargs
 ```
 
 ## Examples
