@@ -37,7 +37,7 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 
 --version=VALUE
   Version - the version of the package. Can also be passed as the
-  property `PackageVersion=somevalue`.
+  property `packageversion=somevalue`.
 
 --maintainer=VALUE
     Maintainer - the name of the maintainer. Can also be passed as the
