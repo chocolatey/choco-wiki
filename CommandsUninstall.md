@@ -1,7 +1,7 @@
 ## Chocolatey Uninstall (choco uninstall)
 
-Uninstalls a package or a list of packages. 
-`choco uninstall packageName` - some folks will shortcut with `cuninst` as in `cuninst packageName`.
+Uninstalls a package or a list of packages.  Some 
+ may prefer to use `cuninst` as a shortcut for `choco uninstall`.
 
 ## Usage
 
