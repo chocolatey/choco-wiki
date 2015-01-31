@@ -26,7 +26,6 @@
 **Creating Packages**
  - [[Quick Start|CreatePackagesQuickStart]]
  - [[Create Packages|CreatePackages]]
- - [[Host on MyGet|Hosting-Chocolatey-Packages-on-MyGet]]
  - [[Automatic Packages|AutomaticPackages]]
 
 **Helper Functions**
@@ -45,6 +44,7 @@
 
 **Use Cases**
  - [[Development Environment|DevelopmentEnvironmentSetup]]
+ - [[Host on MyGet|Hosting-Chocolatey-Packages-on-MyGet]]
 
 **Other**
  - [[Why Chocolatey?|Why]]
