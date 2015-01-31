@@ -68,7 +68,10 @@ Come join in the conversation about Chocolatey in our Gitter Chat Room
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/chocolatey/choco?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Or, you can find us in IRC at #chocolatey.
-  
+
+##The Chocolatey Team
+You can find all of the members of the Chocolatey Team [here](https://github.com/orgs/chocolatey/people).
+
 ##Requirements
  * Windows XP/Vista/7/8/2003/2008  
  * .NET Framework 4.0  
