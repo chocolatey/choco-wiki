@@ -59,7 +59,7 @@ Where are [[we|RoadMap]]? Where are we [[going|RoadMap]]?
 ##Google Group
 Chocolatey has a [Google Groups group](http://groups.google.com/group/chocolatey). Please join and ask questions and send feedback.
   
-If you have issues with a package (or it is out of date), please use the contact maintainers link on the package page itself. If the maintainer doesn’t respond within a given time frame (say a day or two), feel free to bring it up with the group.  
+If you have issues with a package (or it is out of date), please use the contact maintainers link on the package page itself. If the maintainer doesn’t respond within a given time frame (say a day or two), please refer to the [Package Triage Process](https://github.com/chocolatey/choco/wiki/PackageTriageProcess).  
 
 ## Chat Room
 
