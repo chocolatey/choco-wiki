@@ -42,7 +42,9 @@
 
 **Contributing**
  - [[Process|https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md]]
- - ?? [[Development Environment|DevelopmentEnvironmentSetup]]
+
+**Use Cases**
+ - [[Development Environment|DevelopmentEnvironmentSetup]]
 
 **Other**
  - [[Why Chocolatey?|Why]]
