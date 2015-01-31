@@ -1,7 +1,7 @@
 # Chocolatey Upgrade (choco upgrade)
 Upgrades an existing package to the latest version, if there is a newer
-version available.
-`choco upgrade packageName` - some folks will shortcut with `cup` as in `cup packageName`.
+version available. Some 
+ may prefer to use `cup` as a shortcut for `choco upgrade`.
 
 Upgrades a package or a list of packages.
 
