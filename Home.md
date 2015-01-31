@@ -66,6 +66,8 @@ If you have issues with a package (or it is out of date), please use the contact
 Come join in the conversation about Chocolatey in our Gitter Chat Room
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/chocolatey/choco?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+Or, you can find us in IRC at #chocolatey.
   
 ##Requirements
  * Windows XP/Vista/7/8/2003/2008  
