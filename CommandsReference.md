@@ -68,7 +68,7 @@ This is a listing of all of the different things you can pass to choco.
   this flag for choco to continue.
 ```
 
-### How To Pass Options / Switches
+## How To Pass Options / Switches
 
 You can pass options and switches in the following ways:
 
