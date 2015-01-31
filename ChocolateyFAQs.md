@@ -12,18 +12,18 @@ How about updates? Wouldn't it be nice to update nearly everything on your machi
 First a [[story|ChocolateyStory]]
 [[Why Chocolatey?|Why]]
 
-###How is chocolatey different than Ninite?
+###How is Chocolatey different than Ninite?
 Great question, see [[Chocolatey vs Ninite|ChocolateyVsNinite]].
 
-###How is chocolatey different than NuGet and/or OpenWrap?
+###How is Chocolatey different than NuGet and/or OpenWrap?
 Chocolatey is a machine package manager. Where NuGet/OW are focused on developer library packages, Chocolatey is focused on applications and tools, and not necessarily developer focused.
 
-###How is/will chocolatey be different than apt?
+###How is/will Chocolatey be different than apt?
 
  * Chocolatey does not support the idea of source packages, which are packages that must be built to be used. For someone interested in that, check out https://github.com/coapp.
  * Library packages are not completely off the plate, but mostly. How would you link the library up to the application/tool?
 
-###Is there a video I can watch to show me chocolatey in action?
+###Is there a video I can watch to show me Chocolatey in action?
 There is! This is a long video due to slow internet connections, but watch the first 1:30ish minutes and the last 1:30ish minutes and that will give you a general idea. [http://www.youtube.com/watch?v=N-hWOUL8roU](http://www.youtube.com/watch?v=N-hWOUL8roU)
 NOTE: This video shows dependency chaining, so you are seeing it install 11 applications/tools.
 
@@ -40,7 +40,7 @@ With most packages when you already have something installed, the Chocolatey pro
 ###Can I override the installation directory?
 Yes you can, see [[Overriding install directory|GettingStarted#overriding-default-install-directory-or-other-advanced-install-concepts]].
 
-###What does chocolatey do? Are you redistributing software?
+###What does Chocolatey do? Are you redistributing software?
 Chocolatey does the same thing that you would do based on the package instructions. This usually means going out and downloading an installer from the official distribution point and then silently installing it on your machine. With most packages this means Chocolatey is not redistributing software because they are going to the same distribution point that you yourself would go get the software if you were performing this process manually.
 
 ###When I install a portable app like [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable), how is it on my path? Without littering my path?
@@ -53,28 +53,28 @@ As of version 0.9.8.24, binaries, libraries and Chocolatey components install in
 
 **NOTE:** Historically, Chocolatey installed to ```C:\Chocolatey``` and currently, performing an update of Chocolatey doesn't change the installation location, except for when the install path is `C:\chocolatey`. It will upgrade that path and all variables automatically.  For more information about why Chocolatey used ```C:\Chocolatey``` as the default location, look here - [[Default Install Reasoning|DefaultChocolateyInstallReasoning]]
 
-###What kind of package types does chocolatey support?
-* Binary Packages – Installable/portable applications – This is 98% of the chocolatey packages – most are pointers to the real deal installers/zips.
+###What kind of package types does Chocolatey support?
+* Binary Packages – Installable/portable applications – This is 98% of the Chocolatey packages – most are pointers to the real deal installers/zips.
 * Powershell Command Packages – Packages that have the suffix **.powershell** will install powershell scripts as commands for you to call from anywhere.
 * Development Packages – Packages that have the suffix **.dev**. For instance [dropkick.dev](http://nuget.org/list/packages/dropkick.dev).
 * Coming soon – Virtual Packages – Packages that are like a category, and you just want one package from that category. [Read more …](https://github.com/chocolatey/chocolatey/issues/7)
 
 <a name="AppVsTool" />
-###What distinction does chocolatey make between an installable and a portable application?
+###What distinction does Chocolatey make between an installable and a portable application?
 ####Installable application
 An installable application is something that comes with a native installer and ends up in the add/remove programs (in control panel of the system).
-Installable applications end up where the native installer wants them to end up (i.&nbsp;e. Program Files). If you want to override that, please feel free to with the proper commands using InstallArgs (-ia) at the command line and possibly override – Install Command. Yes this does mean you will need to have intimate knowledge of the installer. Having chocolatey itself make the override directory is likely at some point, but it is wwwwaaaaayyyy out on the radar (like after Rob is somehow paid to work on chocolatey full time ;) ).
+Installable applications end up where the native installer wants them to end up (i.&nbsp;e. Program Files). If you want to override that, please feel free to with the proper commands using InstallArgs (-ia) at the command line and possibly override – Install Command. Yes this does mean you will need to have intimate knowledge of the installer. Having Chocolatey itself make the override directory is likely at some point, but it is wwwwaaaaayyyy out on the radar (like after Rob is somehow paid to work on Chocolatey full time ;) ).
 
-#### Portable application – something that doesn’t require a system install to use
-A portable application is something that doesn’t require a native installer to use. In other words, it is not “installed” on your system (where you can go to uninstall in the control panel).
+#### Portable application – something that doesn't require a system install to use
+A portable application is something that doesn't require a native installer to use. In other words, it is not “installed” on your system (where you can go to uninstall in the control panel).
 
-Portable applications end up in the %ChocolateyInstall%/lib (i.&nbsp;e. C:\ProgramData\Chocolatey\lib) folder yes, but they get a "shim" to put them on the path of the machine. This behavior is very much to how chocolatey works and is not configurable (the directory). Where the portable apps end up is still going to be %ChocolateyInstall%/lib no matter where you move the directory, unless a package itself unpacks the portable app elsewhere (as in the case of [git-tfs](http://chocolatey.org/packages/gittfs)).
+Portable applications end up in the %ChocolateyInstall%/lib (i.&nbsp;e. C:\ProgramData\Chocolatey\lib) folder yes, but they get a "shim" to put them on the path of the machine. This behavior is very much to how Chocolatey works and is not configurable (the directory). Where the portable apps end up is still going to be %ChocolateyInstall%/lib no matter where you move the directory, unless a package itself unpacks the portable app elsewhere (as in the case of [git-tfs](http://chocolatey.org/packages/gittfs)).
 
 ###What is the difference between packages named *.install (i.&nbsp;e. [autohotkey.install](https://chocolatey.org/packages/autohotkey.install)), *.portable (i.&nbsp;e. [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable)) and * (i.&nbsp;e. [autohotkey](https://chocolatey.org/packages/autohotkey))?
 
 Hey, good question! You are paying attention! Chocolatey has the concept of virtual packages (coming) and meta packages. Virtual packages are packages that represent other packages when used as a dependency. Metapackages are packages that only exist to provide a grouping of dependencies.
 
-A package with no suffix that is surrounded by packages with suffixes is to provide a virtual package. So in the case of git, git.install, and git.commandline (deprecated for .portable) – git is that virtual package (currently it is really just a metapackage until the virtual packages feature is complete). That means that other packages could depend on it and you could have either git.install or git.portable installed and you would meet the dependency of having git installed. That keeps chocolatey from trying to install something that already meets the dependency requirement for a package.
+A package with no suffix that is surrounded by packages with suffixes is to provide a virtual package. So in the case of git, git.install, and git.commandline (deprecated for .portable) – git is that virtual package (currently it is really just a metapackage until the virtual packages feature is complete). That means that other packages could depend on it and you could have either git.install or git.portable installed and you would meet the dependency of having git installed. That keeps Chocolatey from trying to install something that already meets the dependency requirement for a package.
 
 Talking specifically about the *.install package suffix – those are for the packages that have a native installer that they have bundled or they download and run. Note that the suffix *.app has been used previously to mean the same as *.install. But the *.app suffix is now deprecated and should not be used for new packages.
 
@@ -85,7 +85,7 @@ Want more information? See http://devlicio.us/blogs/rob_reynolds/archive/2012/02
 ###I just took over as the primary maintainer of a package. What do I need to do?
 See [[PackageMantainerHandover]]
 
-###I'm seeing chocolatey / *application* / *tool* using 32 bit to run instead of x64. What is going on?
+###I'm seeing Chocolatey / *application* / *tool* using 32 bit to run instead of x64. What is going on?
 The shims are generated as "Any CPU" programs, which depend on the `Enable64Bit` registry value to be set to `1`, which it is by default. A way to fix it is to issue the following command at the location where the prompt shows below:
 
     C:\Windows\Microsoft.NET\Framework64\v2.0.50727> Ldr64 set64
