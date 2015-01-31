@@ -25,7 +25,8 @@ Chocolatey is a machine package manager. Where NuGet/OW are focused on developer
 
 ###Is there a video I can watch to show me Chocolatey in action?
 There is! This is a long video due to slow internet connections, but watch the first 1:30ish minutes and the last 1:30ish minutes and that will give you a general idea. [http://www.youtube.com/watch?v=N-hWOUL8roU](http://www.youtube.com/watch?v=N-hWOUL8roU)
-NOTE: This video shows dependency chaining, so you are seeing it install 11 applications/tools.
+
+**NOTE:** This video shows dependency chaining, so you are seeing it install 11 applications/tools.
 
 ###What is the default feed URL (community feed url)?
 https://chocolatey.org/api/v2/
@@ -76,9 +77,13 @@ Hey, good question! You are paying attention! Chocolatey has the concept of virt
 
 A package with no suffix that is surrounded by packages with suffixes is to provide a virtual package. So in the case of git, git.install, and git.commandline (deprecated for .portable) – git is that virtual package (currently it is really just a metapackage until the virtual packages feature is complete). That means that other packages could depend on it and you could have either git.install or git.portable installed and you would meet the dependency of having git installed. That keeps Chocolatey from trying to install something that already meets the dependency requirement for a package.
 
-Talking specifically about the *.install package suffix – those are for the packages that have a native installer that they have bundled or they download and run. Note that the suffix *.app has been used previously to mean the same as *.install. But the *.app suffix is now deprecated and should not be used for new packages.
+Talking specifically about the *.install package suffix – those are for the packages that have a native installer that they have bundled or they download and run. 
 
-The *.portable packages are the packages that will usually result in an executable on your path somewhere but do not get installed onto the system (Add/Remove Programs). Previously the suffixes *.tool and *.commandline have been used to refer to the same type of packages. Note that now *.tool and *.commandline are deprecated and should not be used for new packages.
+**NOTE:** the suffix *.app has been used previously to mean the same as *.install. But the *.app suffix is now deprecated and should not be used for new packages.
+
+The *.portable packages are the packages that will usually result in an executable on your path somewhere but do not get installed onto the system (Add/Remove Programs). Previously the suffixes *.tool and *.commandline have been used to refer to the same type of packages. 
+
+**NOTE:** now *.tool and *.commandline are deprecated and should not be used for new packages.
 
 Want more information? See http://devlicio.us/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx
 
