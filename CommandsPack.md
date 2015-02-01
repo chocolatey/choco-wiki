@@ -1,6 +1,7 @@
-# Chocolatey Pack (choco pack / cpack)
+# Chocolatey Pack (choco pack)
 
-Chocolatey will attempt to package a nuspec into a compiled nupkg.
+Chocolatey will attempt to package a nuspec into a compiled nupkg. Some
+ may prefer to use `cpack` as a shortcut for `choco pack`.
 
 ## Usage
 

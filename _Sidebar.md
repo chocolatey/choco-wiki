@@ -5,14 +5,14 @@
 - [[Release Notes|ReleaseNotes]]
 - [Submitting Issues](https://github.com/chocolatey/choco/blob/master/README.md#submitting-issues)
 - [Contributing](https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md)
+ - [[FAQs|ChocolateyFAQs]]
 
-**How to use Chocolatey**
+**Usage**
 
  - [[How to install|installation]]
+ - [[How to uninstall|Uninstallation]]
  - [[Getting Started|GettingStarted]]
  - [[Proxy Settings|Proxy-Settings-for-Chocolatey]]
- - [[How to uninstall|Uninstallation]]
- - [[FAQs|ChocolateyFAQs]]
  - **Commands:**
   - [[Complete Reference|CommandsReference]]
   - [[List|CommandsList]]

@@ -1,6 +1,8 @@
-# Chocolatey Push (choco push / cpush)
+# Chocolatey Push (choco push)
 Chocolatey will attempt to push a compiled nupkg to a package feed.
- That feed can be a local folder, a file share, the community feed
+ Some may prefer to use `cpush` as a shortcut for `choco push`.
+
+A feed can be a local folder, a file share, the community feed
  'https://chocolatey.org/' or a custom/private feed.
 
 ## Usage
