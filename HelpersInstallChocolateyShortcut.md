@@ -45,7 +45,7 @@ Install-ChocolateyShortcut -shortcutFilePath "C:\notepad.lnk" `
   This is optional
 
 -Arguments
-  Additonal arguments that should be passed along to the new shortcut.  
+  Additional arguments that should be passed along to the new shortcut.  
   This is optional.
 
 -IconLocation
