@@ -1,7 +1,7 @@
 #Install-ChocolateyDesktopLink
 `Install-ChocolateyDesktopLink $targetFilePath`  
   
-**NOTE:** This is deprecated in favour of `Install-ChocolateyShortcut`. (need docs on it though)
+**NOTE:** This is deprecated in favour of [[Install-ChocolateyShortcut|HelpersInstallChocolateyShortcut]].
 
 ##Description
 This adds a shortcut on the desktop to the specified file path.  
