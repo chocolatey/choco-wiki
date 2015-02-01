@@ -5,7 +5,7 @@ Arguments, Icon Location, and Description.
 
 ## Usage
 
-    Install-ChocolateyShortcut $targetFilePath
+    Install-ChocolateyShortcut -shortcutFilePath "<path>" -targetPath "<path>"
 
 Possible parameters to pass:
 ```
