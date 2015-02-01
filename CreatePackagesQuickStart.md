@@ -10,24 +10,13 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
 * You have Chocolatey installed.
 * You know how a package works
   * A package contains a `nuspec` file. This defines the package. ([Docs](http://docs.nuget.org/docs/reference/nuspec-reference)) ([Example](https://github.com/chocolatey/chocolateytemplates/blob/master/_templates/chocolatey/__NAME__.nuspec))
-  * A package contains an installation script. This can be [very simple](https://github.com/chocolatey/chocolatey/wiki/CreatePackagesQuickStart#examples).
+  * A package contains an installation script. This can be [[very simple|CreatePackagesQuickStart#examples]].
 
 ## Quick start guide
 
-
-* **Generate package template** using [[WarmuP|https://chocolatey.org/packages/warmup]]:
-   * `choco install warmup`
-   * Get templates:
-      * `choco install git`
-      * close and reopen cmd prompt so git is in the PATH
-      * `cd %ChocolateyInstall%` (use `cd $env:ChocolateyInstall` for PowerShell)
-      * `git clone https://github.com/chocolatey/chocolateytemplates.git`
-      * `cd chocolateytemplates\_templates`
-      * `warmup  addTemplateFolder chocolatey "%CD%\chocolatey"`
-   * **Optional:** Add replacements. You can get more creative once you start making more complicated packages.
-      * *warmup addTextReplacement \_\_CHOCO_PKG_OWNER_NAME\_\_ "Your Name"*
-(could be same as other)
-   * `warmup chocolatey PackageName`
+* **Generate new package**:
+   * `choco new -h` will get you started seeing options available to you.
+   * Once you figured out all of your options, you should move forward with generating your template.
 * **Edit template** using common sense
    * `cd PackageName`
    * Edit the `PackageName.nuspec` configuration file.
@@ -36,43 +25,36 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
    * You __must__ save your files with _UTF-8_ character encoding without BOM. ([Details](https://github.com/chocolatey/chocolatey/wiki/CreatePackages#character-encoding))
 * **Build the package**
    * Still in package directory
-   * `cpack`
-      * "successfully created PackageName.1.1.0.nupkg"
+   * `choco pack`
+      * "Successfully created PackageName.1.1.0.nupkg"
 * **Test the package**
    * **Testing should probably be done on a Virtual Machine**
-   * In your package directory, use: 
-      * `choco install PackageName -source '%cd%'`
+   * In your package directory, use:
+      * `choco install PackageName -s '$pwd' -f` - powershell
+      * `choco install PackageName -s '%cd%' -f` - everywhere else
    * Otherwise, use the full path:
-      * `choco install PackageName -source 'c:\path\to\Package\'`
-* **Push the package** to the Chocolatey repository:
+      * `choco install PackageName -source 'c:\path\to\Package\' -f`
+* **Push the package** to the Chocolatey community feed repository:
    * Get a Chocolatey account:
       * [[https://chocolatey.org/account/Register]]
    * Copy the API key [[from your Chocolatey account|https://chocolatey.org/account]].
-   * `choco install nuget.commandline`
-   * `nuget SetApiKey [API_KEY_HERE] -source https://chocolatey.org/`
-   * `cpush PackageName.1.1.0.nupkg`
+   * `choco SetApiKey [API_KEY_HERE] -source https://chocolatey.org/`
+   * `choco push PackageName.1.1.0.nupkg -s https://chocolatey.org/` - packagename can be omitted
 
 ## Common Mistakes
 
-
 * **NuSpec**
-   * **id** is the package name and should contain no spaces and weird characters.
-   * **version** is a dot-separated identifier containing a maximum of 4 numbers. e.g. _1.0_ or _2.4.0.16_
-   * **The path to your package** should contain no spaces, or enclose pathnames with single or double doublequotes, like so:
-      * 'PackageName'
-      * ""PackageName""
-* **Using NuGet tools**
-   * **Specify the source** if you accidentally use NuGet commands when following some guide instead of Chocolatey commands. E.g.:
-      * `nuget push package.nupkg -source https://chocolatey.org/` instead of:
-      * `cpush package.nupkg`
+   * **id** is the package name and should meet the following criteria:
+    * should contain no spaces and weird characters.
+    * should be lowercase.
+    * should separate spaces in the software name with `-` e.g. `classic-shell`. Yes, we realize there are a lot of older packages not following this convention.
+   * **version** is a dot-separated identifier containing a maximum of 4 numbers. e.g. _1.0_ or _2.4.0.16_ - except for prerelease packages
 
 ## Environmental Variables
 
-
 * `%ChocolateyInstall%` - Chocolatey installation directory
 * `%ChocolateyInstall%\lib\PackageName` - Package directory
-* `%chocolatey_bin_root%` - Path of Binaries
-* `%cd%` - current directory
+* `%cd%` or `$pwd` - current directory
 
 ## Examples
 
@@ -80,11 +62,13 @@ Here are some simple examples.
 
 ### chocolateyInstall.ps1 for .exe installer
 
-```cmd
+```powershell
 $name = 'Package Name'
+$installerType = 'exe'
 $url  = 'http://path/to/download/installer.exe'
+$silentArgs = '/VERYSILENT'
 
-Install-ChocolateyPackage $name 'EXE' '/VERYSILENT' $url
+Install-ChocolateyPackage $name $installerType $silentArgs $url
 ```
 
 **NOTE:** You have to figure out the command line switch to make the installer silent, e.g. **/VERYSILENT**. This changes from installer to installer.
@@ -93,19 +77,19 @@ Install-ChocolateyPackage $name 'EXE' '/VERYSILENT' $url
 
 **NOTE:** Please maintain compatibility with Posh v2. Not every OS we support is on Posh v2 (nor comes OOB with Posh v3+). It's best to work with the widest compatibility of systems out there.
 
-```cmd
+```powershell
 $packageName = 'Package Name'
-$installerType = 'msi' 
+$installerType = 'msi'
 $url = 'http://path/to/download/installer_x86.msi'
 $url64 = 'http://path/to/download/installer_x64.msi'
 $silentArgs = '/quiet'
 $validExitCodes = @(0,3010)
 
-Install-ChocolateyPackage "$packageName" "$installerType" "$silentArgs" "$url" "$url64"  -validExitCodes $validExitCodes
+Install-ChocolateyPackage $packageName $installerType $silentArgs $url $url64  -validExitCodes $validExitCodes
 ```
 
 ###Parsing Package Parameters
 For a complete example of how you can use the PackageParameters argument of the ```choco install``` command, see this [[How-To|How-To-Parse-PackageParameters-Argument]].
 ## Tips
 
-* If you cannot find the installer silent mode, you can try an old tool called [[Universal Silent Switch Finder 1.5.0.0|http://www.softpedia.com/progDownload/Universal-Silent-Switch-Finder-Download-180984.html]]
+* If you cannot find the installer silent mode, you can try an old tool called [Universal Silent Switch Finder 1.5.0.0](http://www.softpedia.com/progDownload/Universal-Silent-Switch-Finder-Download-180984.html) - `choco install ussf`.

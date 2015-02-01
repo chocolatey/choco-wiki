@@ -22,6 +22,9 @@ We'll try to capture everything here that you should know about. Please call `ch
   * The config will not be overwritten on upgrade
   * Choco no longer interacts with NuGet's config file at all. You will need to reset all of your apiKeys (see features for `apikey`). On the plus side, the keys will work for all users of the machine, unlike NuGet's apiKeys (only work for the user that sets them).
   * This also means you can no longer use `useNugetForSources`.
+ * **Package Maintenance Changes**:
+  * Read the above about apikey changes
+  * `choco push` requires a source now, so you must specify `-s https://chocolatey.org/` when pushing to the community feed.
  * **Packaging Changes:**
   * Choco now installs packages without version numbers on folders. This means quite a few things...
   * Upgrading packages doesn't install a new version next to an old version, it actually upgrades.

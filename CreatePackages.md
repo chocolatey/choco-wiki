@@ -1,6 +1,10 @@
 #Creating Chocolatey Packages
 
-## Rules to be observed before publishing packages 
+## Quick Start guide
+
+If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](https://github.com/chocolatey/chocolatey/wiki/CreatePackagesQuickStart) for you. **NOTE**: This doesn't exempt you from observing the rules, requirements and guidelines (noted below).
+
+## Rules to be observed before publishing packages
 
 There are a few rules that you have to follow before pushing packages to chocolatey.org:
 * **Don't package illegal software.** Packages of software that is illegal in most countries in the world are prohibited to publish on Chocolatey.org. This applies in particular to software that violates the copyright, pirated software and activation cracks. Remember that this also affects software that is especially designed to accomplish software piracy.
@@ -29,38 +33,34 @@ Is your package unqualified for the Chocolatey feed, but you like to be able to 
 **Note:** There is a lot of confusion in the world of character encodings: For example, `ANSI` is an incorrect term for the internal Windows character encodings, e.&nbsp;g. `Windows-1252`. But you should not use this encoding family anyway.
 
 ## What version of the software should I package?
-The main release of a product versions are usually sufficient. If there are also beta versions available and you would rather have that, then please create both the official release and the beta (and set the beta as a prerelease when pushing the item to chocolatey.org). Regular users of packages may want to use official releases only and not betas.
-  
-## Okay, how do I create the packages?
-There are three main elements to a chocolatey package. Only the nuspec is required (#1 below).  
-  
+The main release of a product versions are usually sufficient. If there are also beta versions available and you would rather have that, then please create both the official release and the beta (and set the beta as a prerelease when pushing the item to chocolatey.org). Regular users of packages may want to use official releases only and not betas. **NOTE**: Both of these have the SAME package id, just different versions.
+
+## Okay, how do I create packages?
+There are three main elements to a chocolatey package. Only the nuspec is required (#1 below).
+
 1. [Nuspec](https://github.com/chocolatey/chocolateytemplates/blob/master/_templates/chocolatey/__NAME__.nuspec) - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
 1. [[chocolateyInstall.ps1|ChocolateyInstallPS1]] - check out the [[helper reference|HelpersReference]]
 1. any application files to include (it is highly suggested that you are the author in this case or you have the right to [[distribute files|Legal]]). EXE files in the package/downloaded to package folder from chocolateyInstall.ps1 will get a link to the command line.
-  
+
 **Note:** Please maintain compatibility with Posh v2. Not every OS we support is on Posh v2 (nor comes OOB with Posh v3+). It's best to work with the widest compatibility of systems out there.
 
-There is a video showing the creation of a package: [http://www.youtube.com/watch?v=Wt_unjS_SUo](http://www.youtube.com/watch?v=Wt_unjS_SUo)  
+There is a video showing the creation of a package: [http://www.youtube.com/watch?v=Wt_unjS_SUo](http://www.youtube.com/watch?v=Wt_unjS_SUo)
 The video is a bit outdated in showing the contents of the chocolateyInstall.ps1. Have a look at what the [chocolateyInstall.ps1](https://github.com/ferventcoder/chocolatey-packages/blob/master/manual/windirstat/tools/chocolateyInstall.ps1) looks like now:
-  
+
 ```powershell
-﻿$packageName = 'windirstat'
+$packageName = 'windirstat'
 $fileType = 'exe'
 $url = 'http://prdownloads.sourceforge.net/windirstat/windirstat1_1_2_setup.exe'
 $silentArgs = '/S'
 
-Install-ChocolateyPackage $packageName $fileType "$silentArgs" "$url"
+Install-ChocolateyPackage $packageName $fileType $silentArgs $url
 ```
 
-## Quick start guide
-
-If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](https://github.com/chocolatey/chocolatey/wiki/CreatePackagesQuickStart) for you.
-
-##Nuspec?##
+## Nuspec?
 
 For reference - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
-  
-The `Chocolatey` Windows package manager uses the same infrastructure as [NuGet](http://nuget.org/) , the `Visual Studio` package manager by `Microsoft`. Therefore packages are based on the same principals. One of those is a package description (specification) in `xml` format, known as the `Nuspec`.
+
+The `Chocolatey` Windows package manager uses the same infrastructure as [NuGet](http://nuget.org/) , the Visual Studio package manager by Outercurve Foundation (sponsored by Microsoft). Therefore packages are based on the same principals. One of those is a package description (specification) in `xml` format, known as the `Nuspec`.
 
 The `Nuspec` contains basic information such as the version, license, maintainer, and package dependencies.
 
@@ -69,7 +69,7 @@ The `Nuspec` contains basic information such as the version, license, maintainer
 You can indicate the `Chocolatey` dependency like any other dependency. E.g.:
 ```xml
     <dependencies>
-        <dependency id="Chocolatey" version="0.9.8.21" />
+      <dependency id="chocolatey" version="0.9.8.21" />
     </dependencies>
 ```
 
@@ -77,21 +77,27 @@ Logically, the version is based on the lowest compatible version. But if you don
 
 **See also:** [[http://docs.nuget.org/docs/reference/versioning]]
 
+## But for real, how do I create a package?
+
+* **Generate new package**:
+   * `choco new -h` will get you started seeing options available to you.
+   * Once you figured out all of your options, you should move forward with generating your template.
+
 ## Installation paths
 
 As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
 
-### 1. Path provided by the `Get-BinRoot` helper
+### 1. (DEPRECATED) Path provided by the `Get-BinRoot` helper
 
-The path returned by the helper `Get-BinRoot` can be used as the parent directory for the installation. `Get-BinRoot` will return the value of the  environment variable `%ChocolateyBinRoot%`. If the value does not contain a drive reference, the system drive will be prepended. If the environment variable is not set, the default path (~~`C:\Tools`~~ `C:\Chocolatey\bin`) will be returned. 
+The path returned by the helper `Get-BinRoot` can be used as the parent directory for the installation. `Get-BinRoot` will return the value of the  environment variable `%ChocolateyBinRoot%`. If the value does not contain a drive reference, the system drive will be prepended. If the environment variable is not set, the default path (~~`C:\Tools`~~ `C:\Chocolatey\bin`) will be returned.
 
-As an example, [MinGW](https://github.com/ferventcoder/chocolatey-packages/blob/master/manual/mingw/tools/chocolateyInstall.ps1) uses `%ChocolateyBinRoot%`. If the environment variable is not set, MinGW installs to ~~`C:\Tools\MinGW`~~ `C:\Chocolatey\bin\MinGW` by default. If `%ChocolateyBinRoot%` is set to "C:\Common\bin", MinGW installs to `C:\Common\bin\MinGW`.
+As an example, [MinGW](https://github.com/ferventcoder/chocolatey-packages/blob/master/manual/mingw/tools/chocolateyInstall.ps1) uses `%ChocolateyBinRoot%`. If the environment variable is not set, it will be set to `c:\tools` and MinGW will install to `C:\Tools\MinGW` by default. If `%ChocolateyBinRoot%` is set to "C:\Common\bin", MinGW installs to `C:\Common\bin\MinGW`.
 
 `%ChocolateyBinRoot%` gives the chocolatey user a way of controlling where packages are installed. If you want to allow customizing the installation path, then this is currently the way to go.
 
 ### 2. The default installation path of your .msi/.exe setup file
 
-The original creator probably had a reason for choosing a specific default installation path.  
+The original creator probably had a reason for choosing a specific default installation path.
 If you think, the user should be able to customize this path and you, the package maintainer, know how to pass a custom path on to the installer, then you should use `%ChocolateyBinRoot%`.
 
 ### 3. The package directory in `%ChocolateyInstall%\lib\mypackage`
@@ -103,14 +109,14 @@ You can extract the application within the package directory itself (or even shi
 No matter how you decide, you are advised to state the default installation directory in your package description. This prevents confusion about where the application will end up being installed.
 
 If you allow customizing the installation path, then append instructions on how to do that, too.
-  
-##Dependency Chaining
+
+## Dependency Chaining
 You can make packages that depend on other packages just by adding those dependencies to the nuspec. Take a look at [ferventcoder.chocolatey.utilities nuspec](https://github.com/ferventcoder/chocolatey-packages/blob/master/manual/ferventcoder.chocolatey.utilities/ferventcoder.chocolatey.utilities.nuspec).
 
-##Avoid folders named “content”
-Do not use a folder named “content” in your package. NuGet attaches a special meaning to this folder and will not allow you to have dependencies on packages that have content folders without also having a content folder.
+## Avoid folders named “content”
+Do not use a folder named “content” in your package. NuGet attaches a special meaning to this folder and will not allow you to have dependencies on packages that have content folders without also having a content folder. It's turtles all the way down until we or NuGet removes this limitation.
 
-##Naming your package
+## Naming your package
 The __title__ of your package (`<title>` tag in the nuspec) should be the same as the name of the application. Follow the official spelling, use upper and lower case and don’t forget the spaces. Examples of correct package titles are: *Google&nbsp;Chrome*, *CCleaner*, *PuTTY* and *FileZilla*. The title will appear on the left side in the package list of the chocolatey gallery, followed by the version.
 
 There are some guidelines in terms of the package __id__ (`<id>` tag in the nuspec):
@@ -137,21 +143,21 @@ The `<description>` of the package should contain a short text or at least a few
 * The contents of `<description>` and also `<releaseNotes>` are parsed as Markdown, so don’t insert line breaks in the middle of sentences. Remember to add empty lines to separate paragraphs and add an empty line before a list.
 
 ##Versioning Recommendations
-Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the installable/portable application uses. With chocolatey you get four version segments. If the application only uses 1, 2 or 3 version segments, follow suit.  
-  
-If the 4th segment is used, some folks like to drop the segment altogether and use that as only the package fix notation using one of the notations in the next section. There is no recommendations at this time.  
-  
-###Package Fix Version Notation
-If you need to fix the package for some reason, you can use the fourth number for a package fix notation. There are two recommended methods of package fix version notation:  
-  
- * **Date (Year/Month/Day)** - Some folks use year month day package fix notation (yyyyMMdd as in 20120627 seen as 1.2.0.20120627) 
- * Sequential - Some folks use sequential numbering (0, then 1, etc as in 0 for no fix, 1 for first fix and so on seen as 1.2.0.0 and 1.2.0.1).  
-  
-Date Package Fix Version Notation is recommended because one can ascertain what it is immediately upon seeing it.   
-  
-Package fix version notation is only acceptable in the fourth segment. Do not use any of the other segments for package fix notation. If an application only uses 1 or 2 version segments, add zeros into the other segments until you get to the 4th segment (i.e. 1.0.0.20120627).  
+Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the installable/portable application uses. With chocolatey you get four version segments. If the application only uses 1, 2 or 3 version segments, follow suit.
 
-When the fourth segment is used, it is recommended to add two zeroes (00) to the end of the version. Then when you need to fix, you just increment that number. So if the package was ruby and the version was 2.0.0-p353, the package is 2.0.0.35300 (adding the two zeroes at the end). Then a fix would be 2.0.0.35301 and so on. 
+If the 4th segment is used, some folks like to drop the segment altogether and use that as only the package fix notation using one of the notations in the next section. There is no recommendations at this time.
+
+###Package Fix Version Notation
+If you need to fix the package for some reason, you can use the fourth number for a package fix notation. There are two recommended methods of package fix version notation:
+
+ * **Date (Year/Month/Day)** - Some folks use year month day package fix notation (yyyyMMdd as in 20120627 seen as 1.2.0.20120627)
+ * Sequential - Some folks use sequential numbering (0, then 1, etc as in 0 for no fix, 1 for first fix and so on seen as 1.2.0.0 and 1.2.0.1).
+
+Date Package Fix Version Notation is recommended because one can ascertain what it is immediately upon seeing it.
+
+Package fix version notation is only acceptable in the fourth segment. Do not use any of the other segments for package fix notation. If an application only uses 1 or 2 version segments, add zeros into the other segments until you get to the 4th segment (i.e. 1.0.0.20120627).
+
+When the fourth segment is used, it is recommended to add two zeroes (00) to the end of the version. Then when you need to fix, you just increment that number. So if the package was ruby and the version was 2.0.0-p353, the package is 2.0.0.35300 (adding the two zeroes at the end). Then a fix would be 2.0.0.35301 and so on.
 
 ##Internationalization and localization of packages
 For chocolatey, internationalization and localization of packages is very important, because it has users from all over the world. Many applications support multiple languages, but they use several different methods to achieve that. Therefore, there is no standard how internationalization/localization has to be integrated into packages. However, here are a few examples of packages that use various techniques. You can use them as inspiration for new packages:
@@ -174,53 +180,59 @@ If there is an icon which is suitable for your package, you can specify it in th
 * Good sources for package icons are the official desktop icons of the corresponding application you want to make a package of. The icons can be extracted from the app executables using tools like [BeCyIconGrabber](https://chocolatey.org/packages/becyicongrabber). Remember to take the icon with 128&nbsp;px or more and save it as PNG file.
 
 ## How do I exclude [executables from getting batch redirects](https://github.com/chocolatey/chocolatey/issues/106)?
-If you have executables in the package or brought into the package folder during powershell run and you want to exclude them you need to create an empty file named exactly like (**case sensitive**) the executable with `.ignore` suffixed on the end in the same directory where the executable is or will be.  
-  
-Example: In the case of `Bob.exe` you would create a file named `Bob.exe.ignore` and that file would not get a redirect batch link. The chocolatey package has an example of that. To further expand, `bob.exe.ignore` would not work because it doesn't have the correct casing. 
-  
+If you have executables in the package or brought into the package folder during powershell run and you want to exclude them you need to create an empty file named exactly like (**case sensitive**) the executable with `.ignore` suffixed on the end in the same directory where the executable is or will be.
+
+Example: In the case of `Bob.exe` you would create a file named `Bob.exe.ignore` and that file would not get a redirect batch link. The chocolatey package has an example of that. To further expand, `bob.exe.ignore` would not work because it doesn't have the correct casing.
+
 ## How do I set up batch redirects for [applications that have a GUI](https://github.com/chocolatey/chocolatey/issues/76)?
-If you don't want to see a hanging window when you open an application from the command line that was set up with chocolatey, you want to create a file next to the executable that is named exactly the same (**case sensitive**) with `.gui` suffixed on the end.  
-  
-Example: In the case of `Bob.exe` you would create a file named `Bob.exe.gui` and that file would be set up as a GUI application so the window will call it and then move on without waiting for it to finish.  Again, `bob.exe.gui` would not work because it doesn't have the correct casing. 
-  
+If you don't want to see a hanging window when you open an application from the command line that was set up with chocolatey, you want to create a file next to the executable that is named exactly the same (**case sensitive**) with `.gui` suffixed on the end.
+
+Example: In the case of `Bob.exe` you would create a file named `Bob.exe.gui` and that file would be set up as a GUI application so the window will call it and then move on without waiting for it to finish.  Again, `bob.exe.gui` would not work because it doesn't have the correct casing.
+
 ##Build Your Package
 
 Open a command line in the directory where the nuspec is and type [[cpack|CommandsPack]]. That's it.
 
 ##Testing Your Package
 
-To test the package you just built, with the command line still open (and in the current working directory in the same folder as the newly created `*.nupkg` file) type:  
+**NOTE**: We strongly suggest the following should be performed in a VM and not on your machine.
 
-```cmd
- choco install packageName -source %cd%
+To test the package you just built, open a command line shell and navigate to the directory where the `*.nupkg` file is located. Then type:
+
+PowerShell:
+```powershell
+ choco install packageName -fdv -s '$pwd'
 ```
 
-This will install the package right out of your source. As you find things you may need to fix, you will want to delete the particular package folder out of the %ChocolateyInstall%\lib folder. 
+Other shells, including cmd.exe:
+```cmd
+ choco install packageName -fdv -s '%cd%'
+```
 
-If your changes to an existing package are not being loaded, check for a cached version of the package in %LocalAppData%\NuGet\Cache.
+This will install the package right out of your source. As you find things you may need to fix, using `--force` (`-f`) will remove and reinstall the package from the updated `*.nupkg`.
 
 `%cd%` points to the current directory. You can specify multiple directories separated by a semicolon;
 
 When your `nuspec` specifies dependencies that are not in your source, you should add their paths to the source directory. E.g. in the case of Chocolatey itself:
 ```xml
-        <dependencies>
-            <dependency id="Chocolatey" version="0.9.8.20" />
-        </dependencies>
+    <dependencies>
+      <dependency id="chocolatey" version="0.9.8.20" />
+    </dependencies>
 ```
 You'll need to append the API path like so:
 `-source '"%cd%;http://chocolatey.org/api/v2/"'` (note the apostrophe then the double quotes here).
-  
-##Push Your Package
 
-To push your package after you have built and tested it, you type `cpush packageName.nupkg` where *packageName.nupkg* is the name of the nupkg that was built with a version number as part of the package name.  You must have an api key for http://chocolatey.org/ set. You can do that with nuget.exe. You can install nuget.commandline so you can set this (notice it is on nuget.org and not on chocolatey.org - chocolatey installs packages from both sources!). 
-Take a look at [[cpush|CommandsPush]]  
-  
-You can also log into chocolatey.org and upload your package from there.  
 
-##Is there a SIMPLER way of creating packages?
-I'm so glad you asked. Take a look at this repository and follow the instructions: https://github.com/chocolatey/chocolateytemplates
-  
-##Automatic package repositories? 
+### Alternative testing strategy
+You can also type `choco install -fdv path/to/nuspec` and choco will build the nupkg and attempt to install it.
+
+## Push Your Package
+
+To push your package after you have built and tested it, you type `choco push packageName.nupkg -s sourceLocation` where *packageName.nupkg* is the name of the nupkg that was built with a version number as part of the package name and *sourceLocation* is the location of the source you want to push to (e.g. `-s https://chocolatey.org/` for chocolatey's community feed).  You must have an api key for https://chocolatey.org/ set. Take a look at [[choco push|CommandsPush]]
+
+You can also log into chocolatey.org and upload your package from there (not recommended for packages over 2MB).
+
+##Automatic package repositories?
 Yes - [[AutomaticPackages]]
 
 ##Becoming a primary maintainer of an existing package
