@@ -9,8 +9,8 @@ Arguments, Icon Location, and Description.
 Install-ChocolateyShortcut -shortcutFilePath "<path>" -targetPath "<path>"
 ```
 
-# THIS SECTION FEELS REDUNDANT TO THE DETAILED SECTION BELOW. THOUGHTS?
 ## Parameters
+***THIS SECTION FEELS REDUNDANT TO THE DETAILED SECTION BELOW. THOUGHTS?***
 ```
     ShortcutFilePath
     TargetPath
