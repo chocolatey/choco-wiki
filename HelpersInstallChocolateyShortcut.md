@@ -34,25 +34,20 @@ Install-ChocolateyShortcut -shortcutFilePath "C:\notepad.lnk" `
 ```
 -ShortcutFilePath
   The full absolute path to where the shortcut should be created.  
-  This is mandatory.
 
 -TargetPath
   The full absolute path to the target for new shortcut.  
-  This is mandatory.
 
--WorkingDirectory
+-WorkingDirectory (Optional)
   The full absolute path of the Working Directory that will be used by the new shortcut.  
   This is optional
 
--Arguments
+-Arguments (Optional)
   Additional arguments that should be passed along to the new shortcut.  
-  This is optional.
 
--IconLocation
+-IconLocation (Optional)
   The full absolute path to an icon file to be used for the new shortcut.  
-  This is optional.
 
--Description
+-Description (Optional)
   A text description to be associated with the new description.  
-  This is optional.
 ```
