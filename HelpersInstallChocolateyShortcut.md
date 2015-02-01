@@ -7,7 +7,7 @@ Arguments, Icon Location, and Description.
 
     Install-ChocolateyShortcut $targetFilePath
 
-Possible properties to pass:
+Possible parameters to pass:
 ```
     ShortcutFilePath
     TargetPath
