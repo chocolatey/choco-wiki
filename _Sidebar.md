@@ -18,11 +18,10 @@
   - [[List|CommandsList]]
   - [[Search|CommandsList]]
   - [[Install|CommandsInstall]]
+  - [[Pin|CommandsPin]]
   - [[Upgrade|CommandsUpgrade]]
   - [[Uninstall|CommandsUninstall]]
   - [[Source|CommandsSources]]
-  - [[Apikey|CommandsApiKey]]
-  - [[Pin|CommandsPin]]
 
 **Creating Packages**
 
