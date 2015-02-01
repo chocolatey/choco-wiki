@@ -33,6 +33,7 @@
  - **Commands:**
   - [[New|CommandsNew]]
   - [[Pack|CommandsPack]]
+  - [[Apikey|CommandsApiKey]]
   - [[Push|CommandsPush]]
 
 **How To's**
