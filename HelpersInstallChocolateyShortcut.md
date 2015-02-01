@@ -23,7 +23,10 @@ Install-ChocolateyShortcut -shortcutFilePath "<path>" -targetPath "<path>"
 
 ```powershell
 Install-ChocolateyShortcut -shortcutFilePath "C:\test.lnk" -targetPath "C:\test.exe"
-Install-ChocolateyShortcut -shortcutFilePath "C:\notepad.lnk" -targetPath "C:\Windows\System32\notepad.exe" -workDirectory "C:\" -arguments "C:\test.txt" -iconLocation "C:\test.ico" -description "This is the description"
+Install-ChocolateyShortcut -shortcutFilePath "C:\notepad.lnk" `
+ -targetPath "C:\Windows\System32\notepad.exe" -workDirectory `
+ "C:\" -arguments "C:\test.txt" -iconLocation "C:\test.ico" `
+ -description "This is the description"
 ```
 
 ## Detailed Parameter Information
