@@ -33,7 +33,7 @@ A common error is `Failed to process request. 'The specified API key
  does not provide the authority to push packages.' The remote server
  returned an error: (403) Forbidden..` This means the package already
  exists with a different user (API key). The package could be unlisted.
- You can verify by going to https://chocolatey.org/packages/name.
+ You can verify by going to https://chocolatey.org/packages/packageName.
  Please contact the administrators of https://chocolatey.org/ if you see this
  and you don't see a good reason for it.
 
