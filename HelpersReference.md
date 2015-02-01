@@ -54,8 +54,9 @@ These are the helpers from above as one list.
 * [[Get-ChocolateyUnzip|HelpersGetChocolateyUnzip]]  
 * [[Install-ChocolateyPath|HelpersInstallChocolateyPath]] - when specifying user path
 * [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]] - when specifying user path v0.9.8.20+
-* [[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]]  
+* [[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]] - deprecated, see [[Install-ChocolateyShortcut|HelpersInstallChocolateyShortcut]]
 * [[Install-ChocolateyPinnedTaskBarItem|HelpersInstallChocolateyPinnedTaskBarItem]] - v0.9.8.20+
+* [[Install-ChocolateyShortcut|HelpersInstallChocolateyShortcut]] - v0.9.9+
   
 ##Overview
 
