@@ -29,7 +29,7 @@ Install-ChocolateyShortcut -shortcutFilePath "C:\notepad.lnk" `
  -description "This is the description"
 ```
 
-## Detailed Parameter Information
+## Parameters
 
 ```
 -ShortcutFilePath
