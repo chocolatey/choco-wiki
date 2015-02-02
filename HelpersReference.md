@@ -190,7 +190,7 @@ Uninstall-ChocolateyZipPackage '__NAME__' 'filename.zip'
 ```
 
 * __Update-SessionEnvironment__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Update-SessionEnvironment.ps1)\]
-Updates the environment variables of the current powershell session with
+Updates the environment variables of the current PowerShell session with
 any environment variable changes that may have occured during a Chocolatey
 package install.
 

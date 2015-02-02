@@ -22,17 +22,17 @@ Great question - [[Why does Chocolatey install where it does|DefaultChocolateyIn
 ## Non-Administrative Install
 
 1. You must choose a different location than the default. The default is a more secure location that only administrators can write to.
-1. Follow that with the command line / powershell methods of installation.
+1. Follow that with the command line / PowerShell methods of installation.
 
 ## Command Line
-This really is the easiest method because it requires no configuration of powershell prior to executing it. Open a command line, paste the following and press &lt;Enter&gt;:
+This really is the easiest method because it requires no configuration of PowerShell prior to executing it. Open a command line, paste the following and press &lt;Enter&gt;:
 
 ```cmd
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 ```
 
 ## PowerShell
-This is the second-most easy method. Open a powershell command line and paste in the following and press &lt;Enter&gt;:
+This is the second-most easy method. Open a PowerShell command line and paste in the following and press &lt;Enter&gt;:
 
 ```powershell
 (iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')))>$null 2>&1
@@ -43,7 +43,7 @@ It downloads and runs (https://chocolatey.org/install.ps1).
 
 ## PowerShell Through Batch Method
 `NOTE: This method will give you a deprecated warning.`
-This is the best method if you want to repeat it or include it in source control. It requires no change to your existing powershell to allow for remote unsigned scripts.
+This is the best method if you want to repeat it or include it in source control. It requires no change to your existing PowerShell to allow for remote unsigned scripts.
 
 Download the two items from [chocolateyInstall](https://github.com/chocolatey/chocolatey/tree/master/chocolateyInstall).
 
@@ -63,7 +63,7 @@ You can also use nuget command line to download Chocolatey:
 
  `nuget install chocolatey` or `nuget install chocolatey -pre`
 
-Once you download it, open powershell (remote unsigned), navigate to the tools folder and run:
+Once you download it, open PowerShell (remote unsigned), navigate to the tools folder and run:
 
 `& .\chocolateyInstall.ps1`
 

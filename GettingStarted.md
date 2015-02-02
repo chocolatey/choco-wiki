@@ -20,8 +20,8 @@ Let's install [Notepad++](http://notepad-plus-plus.org/).
 
 ## How does Chocolatey work?
 When a package has an exe file, Chocolatey will create a link "shortcut" to the file so that you can run that tool anywhere on the machine.
-When a package has a chocolateyInstall.ps1, it will run the script. The instructions in the file can be anything. This is limited only by the .NET framework and powershell.
-Most of the Chocolatey packages that take advantage of the powershell download an application installer and execute it silently.
+When a package has a chocolateyInstall.ps1, it will run the script. The instructions in the file can be anything. This is limited only by the .NET framework and PowerShell.
+Most of the Chocolatey packages that take advantage of the PowerShell download an application installer and execute it silently.
 
 
 ## Where are Chocolatey packages installed to?

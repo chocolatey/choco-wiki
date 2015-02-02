@@ -3,7 +3,7 @@ Chocolatey is like apt-get, but for Windows (with windows comes limitations). It
 
 Chocolatey started out as a joke because everyone loves Chocolatey nougat (nuget).
 
-Chocolatey's original intentions were to get the rest of the executable/tool gems off of ruby gems. From there it grew when we realized we could execute a known powershell script. I'd already had quite a bit of experience with unattended installations and silent switches for the different installers at two different companies.  Taking that concept of the silent installs and making them global really started something.
+Chocolatey's original intentions were to get the rest of the executable/tool gems off of ruby gems. From there it grew when we realized we could execute a known PowerShell script. I'd already had quite a bit of experience with unattended installations and silent switches for the different installers at two different companies.  Taking that concept of the silent installs and making them global really started something.
 
 At that time it became a tool that could install, upgrade and configure software See [package management system](http://en.wikipedia.org/wiki/Package_management_system).
 

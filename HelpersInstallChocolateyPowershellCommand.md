@@ -2,7 +2,7 @@
 `Install-ChocolateyPowershellCommand $packageName $psFileFullPath $url $url64 -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64`
 
 ## Description
-This will install a powershell script as a command on your system. Like an executable can be run from a batch redirect, this will do the same, calling powershell with this command and passing your arguments to it. If you include a url, it will first download the powershell file. Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].
+This will install a PowerShell script as a command on your system. Like an executable can be run from a batch redirect, this will do the same, calling PowerShell with this command and passing your arguments to it. If you include a url, it will first download the PowerShell file. Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].
 
 ## Parameters
 ### $packageName

@@ -1,8 +1,8 @@
 # Installing Chocolatey behind a proxy server
 
-When trying to install chocolatey behind a proxy server, you may be faced with errors like
+When trying to install Chocolatey behind a proxy server, you may be faced with errors like
 
-> Boo to the chocolatey gods! Get Response returned: (407) Proxy Authentication Required
+> Boo to the Chocolatey gods! Get Response returned: (407) Proxy Authentication Required
 
 Steps to help address this.
 
@@ -30,7 +30,7 @@ param (
 ```
 
 # Using Chocolatey behind a proxy server
-If you want chocolatey to go through a proxy, set the environment variables `http_proxy` and `https_proxy` to point to the proxy address. The format would be `address:port`.
+If you want Chocolatey to go through a proxy, set the environment variables `http_proxy` and `https_proxy` to point to the proxy address. The format would be `address:port`.
 
 ## Powershell - environment variable set-up
 
@@ -49,4 +49,4 @@ For a proxy that requires authentication use the following
 
 # What to do if My proxy is socks?
 
-One way to go around this is to wrap the socks proxy with an http proxy. `polipo` is one such software. 
+One way to go around this is to wrap the socks proxy with an http proxy. `polipo` is one such software.S

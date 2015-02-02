@@ -7,7 +7,7 @@
 ## Description
 Install-ChocolateyEnvironmentVariable creates an environment variable
 with the specified name and value. The variable is persistent and
-will remain after reboots and across multiple powershell and command
+will remain after reboots and across multiple PowerShell and command
 line sessions. The variable can be scoped either to the user or to
 the machine. If machine level scoping is specified, the command is
 elevated to an administrative session.

@@ -4,7 +4,7 @@
 `Start-ChocolateyProcessAsAdmin $statements $exeToRun`
 
 ## Description
-Runs a process as an administrator. If $exeToRun is not specified, it is run with powershell.
+Runs a process as an administrator. If $exeToRun is not specified, it is run with PowerShell.
 
 ## Parameters
 ### $statements (important)

@@ -247,7 +247,7 @@ BUG FIXES:
 
 BREAKING CHANGES:
 
- * To use spaces and quotes, one should now use single quotation marks. It works best in both powershell and cmd.
+ * To use spaces and quotes, one should now use single quotation marks. It works best in both PowerShell and cmd.
 
 FEATURES:
 
@@ -454,8 +454,8 @@ IMPROVEMENTS:
 
 BUG FIXES:
 
- * Fixed an issue with write-host and write-error overrides that happens in the next version of powershell - [#24](https://github.com/chocolatey/chocolatey/pull/24)
- * Fixing an issue that happens when powershell is not on the path - [#23](https://github.com/chocolatey/chocolatey/issues/23)
+ * Fixed an issue with write-host and write-error overrides that happens in the next version of PowerShell - [#24](https://github.com/chocolatey/chocolatey/pull/24)
+ * Fixing an issue that happens when PowerShell is not on the path - [#23](https://github.com/chocolatey/chocolatey/issues/23)
  * Fixing the replacement of capital ".EXE" in addition to lowercase ".exe" when creating batch redirects - [#26](https://github.com/chocolatey/chocolatey/issues/26)
 
 ## 0.9.8.11 (October 4, 2011)
@@ -469,7 +469,7 @@ BUG FIXES:
 
 FEATURES:
 
- * New Helper! Install-ChocolateyPowershellCommand - install a powershell script as a command - [#11](https://github.com/chocolatey/chocolatey/issues/11)
+ * New Helper! Install-ChocolateyPowershellCommand - install a PowerShell script as a command - [#11](https://github.com/chocolatey/chocolatey/issues/11)
 
 ## 0.9.8.9 (September 10, 2011)
 
@@ -518,7 +518,7 @@ BUG FIXES:
 
 **BREAKING CHANGES:**
 
- * Chocolatey no longer runs the entire powershell script as an administrator. With the addition of the Start-ChocolateyProcessAsAdmin, this is how you will get to administrative tasks outside of the helpers.
+ * Chocolatey no longer runs the entire PowerShell script as an administrator. With the addition of the Start-ChocolateyProcessAsAdmin, this is how you will get to administrative tasks outside of the helpers.
 
 FEATURES:
 
@@ -585,7 +585,7 @@ FEATURES:
 
 IMPROVEMENTS:
 
- * The powershell module is automatically loaded, so packages no longer need to import the module. This means one line chocolateyInstall.ps1 files!
+ * The PowerShell module is automatically loaded, so packages no longer need to import the module. This means one line chocolateyInstall.ps1 files!
  * Error handling is improved.
  * Silent installer override for msi has been removed to allow for additional arguments that need to be passed.
 
@@ -593,7 +593,7 @@ IMPROVEMENTS:
 
 IMPROVEMENTS:
 
- * Remove powershell execution timeout.
+ * Remove PowerShell execution timeout.
 
 ## 0.9.6.3 (April 25, 2011)
 
@@ -617,7 +617,7 @@ IMPROVEMENTS:
 
 IMPROVEMENTS:
 
- * Can execute powershell and chocolatey without having to change execution rights to powershell system wide.
+ * Can execute PowerShell and chocolatey without having to change execution rights to PowerShell system wide.
 
 FEATURES:
 
@@ -628,7 +628,7 @@ FEATURES:
 
 FEATURES:
 
- * Helper for native installer added (Install-ChocolateyPackage). Reduces the amount of powershell necessary to download and install a native package to two lines from over 25.
+ * Helper for native installer added (Install-ChocolateyPackage). Reduces the amount of PowerShell necessary to download and install a native package to two lines from over 25.
 
 IMPROVEMENTS:
 

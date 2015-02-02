@@ -56,7 +56,7 @@ As of version 0.9.8.24, binaries, libraries and Chocolatey components install in
 
 ### What kind of package types does Chocolatey support?
 * Binary Packages – Installable/portable applications – This is 98% of the Chocolatey packages – most are pointers to the real deal installers/zips.
-* Powershell Command Packages – Packages that have the suffix **.powershell** will install powershell scripts as commands for you to call from anywhere.
+* PowerShell Command Packages – Packages that have the suffix **.powershell** will install PowerShell scripts as commands for you to call from anywhere.
 * Development Packages – Packages that have the suffix **.dev**. For instance [dropkick.dev](http://nuget.org/list/packages/dropkick.dev).
 * Coming soon – Virtual Packages – Packages that are like a category, and you just want one package from that category. [Read more …](https://github.com/chocolatey/chocolatey/issues/7)
 
