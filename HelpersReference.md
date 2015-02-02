@@ -113,7 +113,7 @@ Install-ChocolateyEnvironmentVariable "JAVA_HOME" "d:\oracle\jdk\bin"
 ```
 
 * __Install-ChocolateyExplorerMenuItem__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Install-ChocolateyExplorerMenuItem.ps1)\]
-Creates a windows explorer context menu item that can be associated with a command
+Creates a Windows Explorer context menu item that can be associated with a command
 ```powershell
 C:\PS>$sublimeDir = (Get-ChildItem $env:systemdrive\chocolatey\lib\sublimetext* | select $_.last)
 C:\PS>$sublimeExe = "$sublimeDir\tools\sublime_text.exe"

@@ -7,7 +7,7 @@
 ## Description
 Install-ChocolateyExplorerMenuItem can add an entry in the context menu of
 Windows Explorer. The menu item is given a text label and a command. The command
-can be any command accepted on the windows command line. The menu item can be
+can be any command accepted on the Windows command line. The menu item can be
 applied to either folder items or file items.
 
 ## Parameters
