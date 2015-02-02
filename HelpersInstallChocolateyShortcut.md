@@ -9,6 +9,15 @@ Arguments, Icon Location, and Description.
 Install-ChocolateyShortcut -shortcutFilePath "<path>" -targetPath "<path>"
 ```
 
+## Examples
+
+```powershell
+Install-ChocolateyShortcut -shortcutFilePath "C:\test.lnk" -targetPath "C:\test.exe"
+Install-ChocolateyShortcut -shortcutFilePath "C:\notepad.lnk" `
+ -targetPath "C:\Windows\System32\notepad.exe" -workDirectory `
+ "C:\" -arguments "C:\test.txt" -iconLocation "C:\test.ico" `
+ -description "This is the description"
+```
 ## Parameters
 * `-ShortcutFilePath`
 
@@ -33,13 +42,3 @@ Install-ChocolateyShortcut -shortcutFilePath "<path>" -targetPath "<path>"
 * `-Description` _(optional)_
 
     A text description to be associated with the new description.
-
-## Examples
-
-```powershell
-Install-ChocolateyShortcut -shortcutFilePath "C:\test.lnk" -targetPath "C:\test.exe"
-Install-ChocolateyShortcut -shortcutFilePath "C:\notepad.lnk" `
- -targetPath "C:\Windows\System32\notepad.exe" -workDirectory `
- "C:\" -arguments "C:\test.txt" -iconLocation "C:\test.ico" `
- -description "This is the description"
-```
