@@ -101,7 +101,7 @@ REM /disablepush
 1. Open a command line and type `ketarin`.
 1. Once Ketarin opens, open [global options](#setup) (steps 10 and 11) and set `/disablepush` so that it only goes as far as creating packages.
  * **NOTE**: Do not append it the end, place it first, right after `chocopkgup` e.g. `chocopkgup /disablepush /p ...`. This is done to alleviate issues with messed up parameters coming back from other items.
-1. Find your job, and right click -> Update.  If everything is set good, in moments you will have a chocolatey package in the chocopkgup folder.
+1. Find your job, and right click -> Update.  If everything is set good, in moments you will have a Chocolatey package in the folder you set under `{PackagesFolder}\_output`, where `{PackagesFolder}` is the path you set in the course of the [*Setup*](#setup) section of this article.
 1. Inspect the resulting chocolatey package(s) for any issues.
 1. You should also test the scheduled task works appropriately.
 
