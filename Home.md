@@ -7,7 +7,8 @@ TeamCity  | AppVeyor | Travis
 ------------- | ------------- | -------------
 [![TeamCity Build Status](http://img.shields.io/teamcity/codebetter/bt429.svg)](http://teamcity.codebetter.com/viewType.html?buildTypeId=bt429) | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/jfxywa3xuwowt20w/branch/master?svg=true)](https://ci.appveyor.com/project/ferventcoder/choco/branch/master) | [![Travis Build Status](https://travis-ci.org/chocolatey/choco.svg?branch=master)](https://travis-ci.org/chocolatey/choco)
 
-###You can just call me Chocolatey.
+###You can just call me Chocolatey.
+
 ![Chocolatey Logo](https://github.com/chocolatey/chocolatey/wiki/images/chocolateyicon.gif "Chocolatey")
 ###Let's get Chocolatey!
 "I'm a tools enabler, I'm a global silent application installer. I configure stuff. Some people want to call me apt-get for Windows, I just want to get #chocolatey!"
@@ -44,7 +45,7 @@ What distinction does Chocolatey make between an [[installable and a portable ap
 ##Packages
 [[Creating packages|CreatePackages]]
 Keep in Mind [Distribution Rights](https://github.com/chocolatey/chocolatey/wiki/Legal#wiki-distributions-aka-chocolatey-packages)
-[[Helper Reference|HelpersReference]]
+[[Package Function Reference|HelpersReference]]
 [[Outdated packages? Triage process|PackageTriageProcess]]
 
 ##How-To's
