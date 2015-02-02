@@ -34,10 +34,10 @@ When creating packages that need to run one of the following commands below, one
 * [[Start-ChocolateyProcessAsAdmin|HelpersStartChocolateyProcessAsAdmin]]
 * [[Install-ChocolateyInstallPackage|HelpersInstallChocolateyInstallPackage]]
 * [[Install-ChocolateyPath|HelpersInstallChocolateyPath]] - when specifying machine path
-* [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]] - when specifying machine path v0.9.8.20+
-* [[Install-ChocolateyExplorerMenuItem|HelpersInstallChocolateyExplorerMenuItem]] - v0.9.8.20+
-* [[Install-ChocolateyFileAssociation|HelpersInstallChocolateyFileAssociation]] - v0.9.8.20+
-* [[Update-SessionEnvironment|HelpersUpdateSessionEnvironment]] - v0.9.8.20+
+* [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]] - when specifying machine path
+* [[Install-ChocolateyExplorerMenuItem|HelpersInstallChocolateyExplorerMenuItem]]
+* [[Install-ChocolateyFileAssociation|HelpersInstallChocolateyFileAssociation]]
+* [[Update-SessionEnvironment|HelpersUpdateSessionEnvironment]]
 
 ### Non-Administrator Safe Functions
 Some folks expressed a desire to have Chocolatey not run as administrator to reach continuous integration and developers that are not administrators on their machines.

@@ -20,12 +20,12 @@ Example: `http://visualstudiogallery.msdn.microsoft.com/ea3a37c9-1c76-4628-803e-
 ### $vsVersion
 The Major version number of Visual Studio where the package should be installed. This is optional. If not specified, the most recent Visual Studio installation will be targeted.
 
-### $checksum (optional but will be required later) - v0.9.8.24+
+### $checksum (optional but will be required later)
 This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
 Example: `-checksum 'C67962F064924F3C7B95D69F88E745C0'`
 Defaults to ``.
 
-### $checksumType (optional) - v0.9.8.24+
+### $checksumType (optional)
 This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
 Example: `-checksumType 'sha1'`
 Defaults to `md5`.

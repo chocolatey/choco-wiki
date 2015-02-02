@@ -17,27 +17,27 @@ Example: `'https://github.com/downloads/spraints/git-tfs/GitTfs-0.11.0.zip'`
 Where to unzip contents of the downloaded zip file.
 Example: `"$(Split-Path -parent $MyInvocation.MyCommand.Definition)"` - will install it to the tools folder of your package.
 
-### $url64bit (optional) - v0.9.8.14+
+### $url64bit (optional)
 If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly.
 Example: `'http://stexbar.googlecode.com/files/StExBar64-1.8.3.zip'`
 Defaults to the 32bit url.
 
-### $checksum (optional but will be required later) - v0.9.8.24+
+### $checksum (optional but will be required later)
 This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
 Example: `-checksum 'C67962F064924F3C7B95D69F88E745C0'`
 Defaults to ``.
 
-### $checksumType (optional) - v0.9.8.24+
+### $checksumType (optional)
 This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
 Example: `-checksumType 'sha1'`
 Defaults to `md5`.
 
-### $checksum64 (optional) - v0.9.8.24+
+### $checksum64 (optional)
 This allows the x64 file being downloaded to be validated. Can be an MD5 or SHA1 hash.
 Example: `-checksum64 'C67962F064924F3C7B95D69F88E745C0'`
 Defaults to ``.
 
-### $checksumType64 (optional) - v0.9.8.24+
+### $checksumType64 (optional)
 This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
 Example: `-checksumType64 'sha1'`
 Defaults to checksumType's value.

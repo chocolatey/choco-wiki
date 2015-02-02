@@ -24,7 +24,7 @@ If there are no silent arguments, pass this as `''`
 This is the file to install. This is a full path to the file.
 Example: `'c:\somepath\someinstaller.msi'`
 
-### $validExitCodes (optional) - v0.9.8.14+
+### $validExitCodes (optional)
 If there are other valid exit codes besides zero signifying a successful install, please pass `-validExitCodes` with the value, including 0 as long as it is still valid.
 Example: `-validExitCodes @(0,44)`
 Defaults to `@(0)`.
