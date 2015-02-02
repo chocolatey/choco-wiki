@@ -1,4 +1,4 @@
-#Command Reference
+# Command Reference
 
 This is a listing of all of the different things you can pass to choco.
 

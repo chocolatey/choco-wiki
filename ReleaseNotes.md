@@ -97,20 +97,20 @@ Probably a lot of bug fixes that may not make it here, but here are the ones we 
  * Remove references to the chocolatey gods - see [chocolatey #669](https://github.com/chocolatey/chocolatey/issues/669)
  * Dat help menu tho. I mean srsly guise - see [chocolatey #641](https://github.com/chocolatey/chocolatey/issues/641)
 
-##[0.9.8.32](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.32&page=1&state=closed) (January 22, 2015)
+## [0.9.8.32](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.32&page=1&state=closed) (January 22, 2015)
 
 BUG FIXES:
 
  * Fix - Chocolatey-Install should return non-zero exit code if chocolateyInstall.ps1 fails - [#568](https://github.com/chocolatey/chocolatey/issues/568) & [#658](https://github.com/chocolatey/chocolatey/pull/658)
 
-##[0.9.8.31](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.31&page=1&state=closed) (January 7, 2015)
+## [0.9.8.31](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.31&page=1&state=closed) (January 7, 2015)
 
 BUG FIXES:
 
  * Fix - Shim doesn't always shift off the first argument - [#655](https://github.com/chocolatey/chocolatey/issues/655) & [ShimGen #7](https://github.com/chocolatey/shimgen/issues/7)
  * Fix - If executable isn't available, fallback to default icon - [#579](https://github.com/chocolatey/chocolatey/issues/579)
 
-##[0.9.8.30](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.30&page=1&state=closed) (January 6, 2015)
+## [0.9.8.30](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.30&page=1&state=closed) (January 6, 2015)
 
 FEATURES:
 
@@ -120,7 +120,7 @@ BUG FIXES:
 
  * Fix - Shims don't correctly handle spaces in path to shim - [#654](https://github.com/chocolatey/chocolatey/issues/654) & [ShimGen #5](https://github.com/chocolatey/shimgen/issues/5)
 
-##[0.9.8.29](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.29&page=1&state=closed) (January 2, 2015)
+## [0.9.8.29](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.29&page=1&state=closed) (January 2, 2015)
 
 FEATURES:
 
@@ -132,7 +132,7 @@ IMPROVEMENTS:
  * Don't assume $env:TEMP or $env:UserProfile are set - [#647](https://github.com/chocolatey/chocolatey/issues/647)
  * Remove Kickstarter message.
 
-##[0.9.8.28](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.28&page=1&state=closed) (November 4, 2014)
+## [0.9.8.28](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.28&page=1&state=closed) (November 4, 2014)
 
 BREAKING CHANGES:
 
@@ -152,13 +152,13 @@ IMPROVEMENTS:
  * Restrict all calls to chocolatey.org to HTTPS - [#599](https://github.com/chocolatey/chocolatey/issues/599)
  * Batch fallback should quote path for spaces - [#558](https://github.com/chocolatey/chocolatey/issues/558)
 
-##[0.9.8.27](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.27&page=1&state=closed) (July 13, 2014)
+## [0.9.8.27](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.27&page=1&state=closed) (July 13, 2014)
 
 BUG FIXES:
 
  * Fix - Posh v3+ Ignores -Wait when run from cmd.exe - [#516](https://github.com/chocolatey/chocolatey/pull/516)
 
-##[0.9.8.26](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.26&page=1&state=closed) (July 12, 2014)
+## [0.9.8.26](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.26&page=1&state=closed) (July 12, 2014)
 
 Pulled due to major breakage with #516
 
@@ -176,14 +176,14 @@ IMPROVEMENTS:
  * Allow to pass shimgen specific parameters - [#509](https://github.com/chocolatey/chocolatey/issues/509)
  * Issue warning if user is not running an elevated shell - [#519](https://github.com/chocolatey/chocolatey/issues/519)
 
-##[0.9.8.25](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.25&page=1&state=closed) (July 7, 2014)
+## [0.9.8.25](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.25&page=1&state=closed) (July 7, 2014)
 
 BUG FIXES:
 
  * Fix - Shims that require admin may fail on UAC enforced machines (System.ComponentModel.Win32Exception: The requested operation requires elevation) - [#505](https://github.com/chocolatey/chocolatey/issues/505)
  * Fix - Do not check content-length if there isn't a content-length returned from Get-WebHeaders - [#504](https://github.com/chocolatey/chocolatey/issues/504)
 
-##[0.9.8.24](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.24&page=1&state=closed) (July 3, 2014)
+## [0.9.8.24](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.24&page=1&state=closed) (July 3, 2014)
 
 BREAKING CHANGES:
 
@@ -236,14 +236,14 @@ IMPROVEMENTS:
  * Simplify Chocolatey-Update - [#493](https://github.com/chocolatey/chocolatey/issues/493)
  * Update to Nuget.exe 2.8.2 - [#379](https://github.com/chocolatey/chocolatey/issues/379)
 
-##[0.9.8.23](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.23&page=1&state=closed) (November 11, 2013)
+## [0.9.8.23](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.23&page=1&state=closed) (November 11, 2013)
 
 BUG FIXES:
 
  * Fix - Chocolatey 0.9.8.22 incorrectly reports version as alpha1 [#368](https://github.com/chocolatey/chocolatey/issues/368)
  * Fix - Some chocolatey commands with no arguments error [#369](https://github.com/chocolatey/chocolatey/issues/369)
 
-##[0.9.8.22](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.22&page=1&state=closed) (November 10, 2013)
+## [0.9.8.22](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.22&page=1&state=closed) (November 10, 2013)
 
 BREAKING CHANGES:
 
@@ -258,7 +258,7 @@ BUG FIXES:
 
  * Fix - Chocolatey 0.9.8.21 errors when using spaces or quotes with chocolatey or with batch redirect files [#367](https://github.com/chocolatey/chocolatey/issues/367)
 
-##[0.9.8.21](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.21&page=1&state=closed) (November 7, 2013)
+## [0.9.8.21](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.21&page=1&state=closed) (November 7, 2013)
 
 BREAKING CHANGES:
 
@@ -299,7 +299,7 @@ BUG FIXES:
  * Fix - Minor typo "succesfully" - [#241](https://github.com/chocolatey/chocolatey/issues/241)
 
 
-##[0.9.8.20](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.20&page=1&state=closed) (December 11, 2012)
+## [0.9.8.20](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.20&page=1&state=closed) (December 11, 2012)
 
 FEATURES:
 
@@ -333,7 +333,7 @@ BUG FIXES:
  * Fix - `chocolatey version all` prints only the last package's information - [#183](https://github.com/chocolatey/chocolatey/pull/183)
  * Fix - Issue with $processor.addresswidth var - [#121](https://github.com/chocolatey/chocolatey/pull/121)
 
-##[0.9.8.19](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.19&page=1&state=closed) (July 2, 2012)
+## [0.9.8.19](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.19&page=1&state=closed) (July 2, 2012)
 
 FEATURES:
 
@@ -344,13 +344,13 @@ BUG FIXES:
  * Fix - PowerShell v3 doesn't like foreach loop (prefers ForEach-Object) - [#116](https://github.com/chocolatey/chocolatey/pull/116)
  * Fix - Cannot install Python packages on Windows 8 - [#117](https://github.com/chocolatey/chocolatey/issues/117)
 
-##[0.9.8.18](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.18&sort=created&direction=desc&state=closed&page=1) (June 16, 2012)
+## [0.9.8.18](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.18&sort=created&direction=desc&state=closed&page=1) (June 16, 2012)
 
 BUG FIXES:
 
  * Fix - 0.9.8.17 installer doesn't create chocolatey folder if it doesn't exist - [#112](https://github.com/chocolatey/chocolatey/issues/112)
 
-##[0.9.8.17](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.17&sort=created&direction=desc&state=closed&page=1) (June 15, 2012)
+## [0.9.8.17](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.17&sort=created&direction=desc&state=closed&page=1) (June 15, 2012)
 
 FEATURES:
 
@@ -378,13 +378,13 @@ BUG FIXES:
  * Fix - During install PowerShell session gets bad $env:ChocolateyInstall variable - [#80](https://github.com/chocolatey/chocolatey/issues/80)
  * Fix - Build path with spaces now works - [#102](https://github.com/chocolatey/chocolatey/pull/102)
 
-##0.9.8.16 (February 27, 2012)
+## 0.9.8.16 (February 27, 2012)
 
 BUG FIXES:
 
  * Small fix to installer for upgrade issues from 0.9.8.15
 
-##[0.9.8.15](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.15&sort=created&direction=desc&state=closed&page=1) (February 27, 2012)
+## [0.9.8.15](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.15&sort=created&direction=desc&state=closed&page=1) (February 27, 2012)
 
 **BREAKING CHANGES:**
 
@@ -405,7 +405,7 @@ BUG FIXES:
 
  * Fix - Parsing the wrong version when trying to update - [#73](https://github.com/chocolatey/chocolatey/issues/73)
 
-##[0.9.8.14](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.14&sort=created&direction=desc&state=closed&page=1) (February 6, 2012)
+## [0.9.8.14](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.14&sort=created&direction=desc&state=closed&page=1) (February 6, 2012)
 
 IMPROVEMENTS:
 
@@ -421,7 +421,7 @@ BUG FIXES:
  * Fix - CList includes all versions without adding the switch - [#60](https://github.com/chocolatey/chocolatey/issues/60)
  * Fix - When NuGet.exe failes to run due to .NET Framework 4.0 not installed, chocolatey should report that. - [#65](https://github.com/chocolatey/chocolatey/issues/65)
 
-##[0.9.8.13](https://github.com/chocolatey/chocolatey/issues?labels=0.9.8.13&sort=created&direction=desc&state=closed&page=1) (January 8, 2012)
+## [0.9.8.13](https://github.com/chocolatey/chocolatey/issues?labels=0.9.8.13&sort=created&direction=desc&state=closed&page=1) (January 8, 2012)
 
 FEATURES:
 
@@ -446,7 +446,7 @@ BUG FIXES:
  * Fixing the source path to allow for spaces (where chocolatey is installed) - [#33](https://github.com/chocolatey/chocolatey/issues/33)
  * Fixing the culture to InvariantCulture to eliminate the turkish "I" issue - [#22](https://github.com/chocolatey/chocolatey/issues/22)
 
-##0.9.8.12 (November 20, 2011)
+## 0.9.8.12 (November 20, 2011)
 
 IMPROVEMENTS:
 
@@ -458,46 +458,46 @@ BUG FIXES:
  * Fixing an issue that happens when powershell is not on the path - [#23](https://github.com/chocolatey/chocolatey/issues/23)
  * Fixing the replacement of capital ".EXE" in addition to lowercase ".exe" when creating batch redirects - [#26](https://github.com/chocolatey/chocolatey/issues/26)
 
-##0.9.8.11 (October 4, 2011)
+## 0.9.8.11 (October 4, 2011)
 
 BUG FIXES:
 
  * Fixing an update issue if the package only exists on chocolatey.org - [#16](https://github.com/chocolatey/chocolatey/issues/16)
  * Fixing an issue with install missing if the package never existed - [#13](https://github.com/chocolatey/chocolatey/issues/13)
 
-##0.9.8.10 (September 17, 2011)
+## 0.9.8.10 (September 17, 2011)
 
 FEATURES:
 
  * New Helper! Install-ChocolateyPowershellCommand - install a powershell script as a command - [#11](https://github.com/chocolatey/chocolatey/issues/11)
 
-##0.9.8.9 (September 10, 2011)
+## 0.9.8.9 (September 10, 2011)
 
 BUG FIXES:
 
  * Reinstalls an existing package if -version is passed (first surfaced in 0.9.8.7 w/NuGet 1.5) - [#9](https://github.com/chocolatey/chocolatey/issues/9)
 
-##0.9.8.8 (September 10, 2011)
+## 0.9.8.8 (September 10, 2011)
 
 BUG FIXES:
 
  * Fixing version comparison - [#4](https://github.com/chocolatey/chocolatey/issues/4)
  * Fixed package selector to not select like named packages (i.e. ruby.devkit when getting information about ruby) - [#3](https://github.com/chocolatey/chocolatey/issues/3)
 
-##0.9.8.7 (September 2, 2011)
+## 0.9.8.7 (September 2, 2011)
 
 IMPROVEMENTS:
 
  * Added proxy support based on [#1](https://github.com/chocolatey/chocolatey/issues/1)
  * Updated to work with NuGet 1.5 - [#2](https://github.com/chocolatey/chocolatey/issues/2)
 
-##0.9.8.6 (July 27, 2011)
+## 0.9.8.6 (July 27, 2011)
 
 BUG FIXES:
 
  * Fixed a bug introduced in 0.9.8.5 - Start-ChocolateyProcessAsAdmin erroring out when setting machine path as a result of trying to log the message.
 
-##0.9.8.5 (July 27, 2011)
+## 0.9.8.5 (July 27, 2011)
 
 IMPROVEMENTS:
 
@@ -508,13 +508,13 @@ BUG FIXES:
 
  * Fixed bug in installer when User Environment Path is null.
 
-##0.9.8.4 (July 27, 2011)
+## 0.9.8.4 (July 27, 2011)
 
 BUG FIXES:
 
  * Fixed a small issue with the Install-ChocolateyDesktopLink
 
-##0.9.8.3 (July 7, 2011)
+## 0.9.8.3 (July 7, 2011)
 
 **BREAKING CHANGES:**
 
@@ -533,19 +533,19 @@ IMPROVEMENTS:
  * Much of the error handling is improved. There are two new Helpers to call (ChocolateySuccess and Write-ChocolateyFailure).
  * Chocolatey no longer needs administrative rights to install itself.
 
-##0.9.8.2 (May 21, 2011)
+## 0.9.8.2 (May 21, 2011)
 
 FEATURES:
 
  * You now have the option of a custom installation folder. Thanks Jason Jarrett!
 
-##0.9.8.1 (May 18, 2011)
+## 0.9.8.1 (May 18, 2011)
 
 BUG FIXES:
 
  * General fix to bad character in file. Fixed selection for update as well.
 
-##0.9.8 (May 4, 2011)
+## 0.9.8 (May 4, 2011)
 
 **BREAKING CHANGES:**
 
@@ -558,25 +558,25 @@ IMPROVEMENTS:
  * Calling update with no arguments will update chocolatey.
  * Calling update with all will update your entire chocolatey repository.
 
-##0.9.7.3 (April 30, 2011)
+## 0.9.7.3 (April 30, 2011)
 
 BUG FIXES:
 
  * Fixing Install-ChocolateyZipPackage so that it works again.
 
-##0.9.7.2 (April 29, 2011)
+## 0.9.7.2 (April 29, 2011)
 
 BUG FIXES:
 
  * Fixing an underlying issue with not having silent arguments for exe files.
 
-##0.9.7.1 (April 29, 2011)
+## 0.9.7.1 (April 29, 2011)
 
 BUG FIXES:
 
  * Fixing an introduced bug where the downloader didn't get the file name passed to it.
 
-##0.9.7 (April 29, 2011)
+## 0.9.7 (April 29, 2011)
 
 FEATURES:
 
@@ -589,31 +589,31 @@ IMPROVEMENTS:
  * Error handling is improved.
  * Silent installer override for msi has been removed to allow for additional arguments that need to be passed.
 
-##0.9.6.4 (April 26, 2011)
+## 0.9.6.4 (April 26, 2011)
 
 IMPROVEMENTS:
 
  * Remove powershell execution timeout.
 
-##0.9.6.3 (April 25, 2011)
+## 0.9.6.3 (April 25, 2011)
 
 FEATURES:
 
  * New Helper added Install-ChocolateyZipPackage - this wraps the two upper commands into one smaller command and addresses the file name bug.
 
-##0.9.6.2 (April 25, 2011)
+## 0.9.6.2 (April 25, 2011)
 
 BUG FIXES:
 
  * Addressed a small bug in getting back the file name from the helper.
 
-##0.9.6.1 (April 23, 2011)
+## 0.9.6.1 (April 23, 2011)
 
 IMPROVEMENTS:
 
  * Adding in ability to find a dependency when the version doesn't exist.
 
-##0.9.6 (April 23, 2011)
+## 0.9.6 (April 23, 2011)
 
 IMPROVEMENTS:
 
@@ -624,7 +624,7 @@ FEATURES:
  * New Helper added - Get-ChocolateyWebFile - downloads a file from a url and gives you back the location of the file once complete.
  * New Helper added - Get-ChocolateyZipContents - unzips a file to a directory of your choosing.
 
-##0.9.5 (April 21, 2011)
+## 0.9.5 (April 21, 2011)
 
 FEATURES:
 
@@ -635,26 +635,26 @@ IMPROVEMENTS:
  * Helper outputs progress during download.
  * Dependency runner is complete.
 
-##0.9.4 (April 10, 2011)
+## 0.9.4 (April 10, 2011)
 
 IMPROVEMENTS:
 
  * List command has a filter.
  * Package license acceptance terms notated.
 
-##0.9.3 (April 4, 2011)
+## 0.9.3 (April 4, 2011)
 
 IMPROVEMENTS:
 
  * You can now pass -source and -version to install command.
 
-##0.9.2 (April 4, 2011)
+## 0.9.2 (April 4, 2011)
 
 FEATURES:
 
  * List command added.
 
-##0.9.1 (March 30, 2011)
+## 0.9.1 (March 30, 2011)
 
 IMPROVEMENTS:
 

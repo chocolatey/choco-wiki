@@ -88,7 +88,7 @@ $validExitCodes = @(0,3010)
 Install-ChocolateyPackage $packageName $installerType $silentArgs $url $url64  -validExitCodes $validExitCodes
 ```
 
-###Parsing Package Parameters
+### Parsing Package Parameters
 For a complete example of how you can use the PackageParameters argument of the ```choco install``` command, see this [[How-To|How-To-Parse-PackageParameters-Argument]].
 ## Tips
 

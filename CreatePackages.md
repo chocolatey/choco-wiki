@@ -1,4 +1,4 @@
-#Creating Chocolatey Packages
+# Creating Chocolatey Packages
 
 ## Quick Start guide
 
@@ -133,7 +133,7 @@ Note that a lot of packages in the Chocolatey Gallery don’t follow these guide
 
 If you are going to offer a package that has both an installer and an archive (zip or executable only) version of the application, create three packages&nbsp;– see Rob’s guidance on this: http://devlicio.us/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx
 
-##Package description and release notes
+## Package description and release notes
 
 The `<description>` of the package should contain a short text or at least a few words about the software for which the package is made. Here are a few things that should be respected:
 
@@ -142,12 +142,12 @@ The `<description>` of the package should contain a short text or at least a few
 * It should not just consist of a link where more information can be found. For that purpose there’s already `<projectUrl>`.
 * The contents of `<description>` and also `<releaseNotes>` are parsed as Markdown, so don’t insert line breaks in the middle of sentences. Remember to add empty lines to separate paragraphs and add an empty line before a list.
 
-##Versioning Recommendations
+## Versioning Recommendations
 Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the installable/portable application uses. With chocolatey you get four version segments. If the application only uses 1, 2 or 3 version segments, follow suit.
 
 If the 4th segment is used, some folks like to drop the segment altogether and use that as only the package fix notation using one of the notations in the next section. There is no recommendations at this time.
 
-###Package Fix Version Notation
+### Package Fix Version Notation
 If you need to fix the package for some reason, you can use the fourth number for a package fix notation. There are two recommended methods of package fix version notation:
 
  * **Date (Year/Month/Day)** - Some folks use year month day package fix notation (yyyyMMdd as in 20120627 seen as 1.2.0.20120627)
@@ -159,14 +159,14 @@ Package fix version notation is only acceptable in the fourth segment. Do not us
 
 When the fourth segment is used, it is recommended to add two zeroes (00) to the end of the version. Then when you need to fix, you just increment that number. So if the package was ruby and the version was 2.0.0-p353, the package is 2.0.0.35300 (adding the two zeroes at the end). Then a fix would be 2.0.0.35301 and so on.
 
-##Internationalization and localization of packages
+## Internationalization and localization of packages
 For chocolatey, internationalization and localization of packages is very important, because it has users from all over the world. Many applications support multiple languages, but they use several different methods to achieve that. Therefore, there is no standard how internationalization/localization has to be integrated into packages. However, here are a few examples of packages that use various techniques. You can use them as inspiration for new packages:
 * The ideal situation is when an application determines the user’s system language and automatically installs with that language. Then you don’t have to take any action relating to localization, because the application already handles that. Examples of such applications are [VLC Media Player](https://chocolatey.org/packages/vlc) and [LibreOffice](https://chocolatey.org/packages/libreoffice).
 * When an application provides different installers for different languages, you should determine the system language and download the appropriate installer. The package for [Mozilla Firefox](https://chocolatey.org/packages/Firefox) ([source code](https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/automatic/Firefox)) uses this method.
 * Sometimes an application installer or executable has already integrated all supported languages, but doesn’t automatically select the system language during a silent install. Often you can pass an additional install parameter to select the desired language. This is used for example in the [CCleaner](https://chocolatey.org/packages/ccleaner) package ([source code](https://github.com/tonigellida/chocolateyautomaticpackages/tree/master/ccleaner)).
 * Some application use separate language files which must be downloaded separately and put somewhere in the application directory. It is best when you create a separate package for the language files. If your package id is `packageid`, then call it `packageid-langfiles`. The [language files package for KeePass](https://chocolatey.org/packages/keepass-langfiles) is an example how this can be achieved.
 
-##Package icon guidelines
+## Package icon guidelines
 If there is an icon which is suitable for your package, you can specify it in the `<iconUrl>` tag in the nuspec. But there are a few things you should consider:
 * **Avoid hotlinking icons from sites where you don’t have control over the file.** If you have a packages repository (recommended), use your own copy of the icon and put it there.
 * For the **icon URLs it is recommended to use https://cdn.rawgit.com/ (production links).** Rawgit is a CDN service that permits you to serve files hosted in a repository on GitHub. Keep in mind that cdn.rawgit.com caches files permanently. Therefore it’s best to use a specific tag or commit URL, not a branch URL.
@@ -189,11 +189,11 @@ If you don't want to see a hanging window when you open an application from the 
 
 Example: In the case of `Bob.exe` you would create a file named `Bob.exe.gui` and that file would be set up as a GUI application so the window will call it and then move on without waiting for it to finish.  Again, `bob.exe.gui` would not work because it doesn't have the correct casing.
 
-##Build Your Package
+## Build Your Package
 
 Open a command line in the directory where the nuspec is and type [[cpack|CommandsPack]]. That's it.
 
-##Testing Your Package
+## Testing Your Package
 
 **NOTE**: We strongly suggest the following should be performed in a VM and not on your machine.
 
@@ -235,8 +235,8 @@ To push your package after you have built and tested it, you type `choco push pa
 
 You can also log into chocolatey.org and upload your package from there (not recommended for packages over 2MB).
 
-##Automatic package repositories?
+## Automatic package repositories?
 Yes - [[AutomaticPackages]]
 
-##Becoming a primary maintainer of an existing package
+## Becoming a primary maintainer of an existing package
 See [[PackageMantainerHandover]]
