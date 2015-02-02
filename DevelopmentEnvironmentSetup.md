@@ -5,7 +5,7 @@ How many of you out there are rake fans? Getting developers to look at your sour
 ## Set up From the Source
 This does the following:
 
-* downloads and installs chocolatey
+* downloads and installs Chocolatey
 * installs nuget.commandline if it is not installed
 * installs ruby.devkit if it is not installed
 * installs ruby if it is not installed
@@ -50,7 +50,7 @@ param(
 }
 
 
-# install chocolatey
+# Install Chocolatey
 if (Install-NeededFor 'chocolatey') {
   iex ((new-object net.webclient).DownloadString('http://chocolatey.org/install.ps1'))
 }
@@ -154,7 +154,7 @@ param(
   return $false
 }
 
-# install chocolatey
+# Install Chocolatey
 if (Install-NeededFor 'chocolatey') {
   iex ((new-object net.webclient).DownloadString("http://chocolatey.org/install.ps1")) 
 }

@@ -8,7 +8,7 @@ If you think you got what it takes and just want to know the basic steps to get 
 
 There are a few rules that you have to follow before pushing packages to chocolatey.org:
 * **Don't package illegal software.** Packages of software that is illegal in most countries in the world are prohibited to publish on Chocolatey.org. This applies in particular to software that violates the copyright, pirated software and activation cracks. Remember that this also affects software that is especially designed to accomplish software piracy.
-* **Do not package software** into chocolatey packages **that you don't have the right to distribute.** Please see [Distribution Rights](https://github.com/chocolatey/chocolatey/wiki/Legal#wiki-distributions-aka-chocolatey-packages) for more information. Any package found not in compliance with this will be removed immediately.
+* **Do not package software** into Chocolatey packages **that you don't have the right to distribute.** Please see [Distribution Rights](https://github.com/chocolatey/chocolatey/wiki/Legal#wiki-distributions-aka-chocolatey-packages) for more information. Any package found not in compliance with this will be removed immediately.
 * **Do not publish junk or malware** packages.
 * **Only post publicly relevant packages.** A package creator should consider whether his package is also useful for others. If that is not the case, it shouldn’t be published on Chocolatey.org. Reasons for that can be if the package would require a very special configuration that is unacceptable for other users or that would lead to serious vulnerabilities.
 * **Don't package software containing adware or spyware.** Packages of software that comes with bundled adware, spyware or any other unrelated software that installs even in silent mode are not allowed. But if you can figure out how to install the desired package without any adware or unrelated software, it is allowed to publish the package. That can be reached for example with additional command line switches or by adding specific values to the registry. Examples of packages which make use of this are [PDFCreator](https://github.com/stack72/MyChocolateyPackages/tree/master/PDFCreator) and [CCleaner](https://github.com/tonigellida/chocolateyautomaticpackages/tree/master/ccleaner).
@@ -36,7 +36,7 @@ Is your package unqualified for the Chocolatey feed, but you like to be able to 
 The main release of a product versions are usually sufficient. If there are also beta versions available and you would rather have that, then please create both the official release and the beta (and set the beta as a prerelease when pushing the item to chocolatey.org). Regular users of packages may want to use official releases only and not betas. **NOTE**: Both of these have the SAME package id, just different versions.
 
 ## Okay, how do I create packages?
-There are three main elements to a chocolatey package. Only the nuspec is required (#1 below).
+There are three main elements to a Chocolatey package. Only the nuspec is required (#1 below).
 
 1. [Nuspec](https://github.com/chocolatey/chocolateytemplates/blob/master/_templates/chocolatey/__NAME__.nuspec) - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
 1. [[chocolateyInstall.ps1|ChocolateyInstallPS1]] - check out the [[helper reference|HelpersReference]]
@@ -85,7 +85,7 @@ Logically, the version is based on the lowest compatible version. But if you don
 
 ## Installation paths
 
-As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
+As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does Chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
 
 ### 1. (DEPRECATED) Path provided by the `Get-BinRoot` helper
 
@@ -93,7 +93,7 @@ The path returned by the helper `Get-BinRoot` can be used as the parent director
 
 As an example, [MinGW](https://github.com/ferventcoder/chocolatey-packages/blob/master/manual/mingw/tools/chocolateyInstall.ps1) uses `%ChocolateyBinRoot%`. If the environment variable is not set, it will be set to `c:\tools` and MinGW will install to `C:\Tools\MinGW` by default. If `%ChocolateyBinRoot%` is set to "C:\Common\bin", MinGW installs to `C:\Common\bin\MinGW`.
 
-`%ChocolateyBinRoot%` gives the chocolatey user a way of controlling where packages are installed. If you want to allow customizing the installation path, then this is currently the way to go.
+`%ChocolateyBinRoot%` gives the Chocolatey user a way of controlling where packages are installed. If you want to allow customizing the installation path, then this is currently the way to go.
 
 ### 2. The default installation path of your .msi/.exe setup file
 
@@ -102,7 +102,7 @@ If you think, the user should be able to customize this path and you, the packag
 
 ### 3. The package directory in `%ChocolateyInstall%\lib\mypackage`
 
-You can extract the application within the package directory itself (or even ship an extracted version with the package). This allows chocolatey to automatically find executables and put those on `%path%`.
+You can extract the application within the package directory itself (or even ship an extracted version with the package). This allows Chocolatey to automatically find executables and put those on `%path%`.
 
 ### Make it clear in the package description
 
@@ -117,7 +117,7 @@ You can make packages that depend on other packages just by adding those depende
 Do not use a folder named “content” in your package. NuGet attaches a special meaning to this folder and will not allow you to have dependencies on packages that have content folders without also having a content folder. It's turtles all the way down until we or NuGet removes this limitation.
 
 ## Naming your package
-The __title__ of your package (`<title>` tag in the nuspec) should be the same as the name of the application. Follow the official spelling, use upper and lower case and don’t forget the spaces. Examples of correct package titles are: *Google&nbsp;Chrome*, *CCleaner*, *PuTTY* and *FileZilla*. The title will appear on the left side in the package list of the chocolatey gallery, followed by the version.
+The __title__ of your package (`<title>` tag in the nuspec) should be the same as the name of the application. Follow the official spelling, use upper and lower case and don’t forget the spaces. Examples of correct package titles are: *Google&nbsp;Chrome*, *CCleaner*, *PuTTY* and *FileZilla*. The title will appear on the left side in the package list of the Chocolatey gallery, followed by the version.
 
 There are some guidelines in terms of the package __id__ (`<id>` tag in the nuspec):
 * __Use only lowercase letters__, even if you used uppercase letters in the package title.
@@ -143,7 +143,7 @@ The `<description>` of the package should contain a short text or at least a few
 * The contents of `<description>` and also `<releaseNotes>` are parsed as Markdown, so don’t insert line breaks in the middle of sentences. Remember to add empty lines to separate paragraphs and add an empty line before a list.
 
 ## Versioning Recommendations
-Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the installable/portable application uses. With chocolatey you get four version segments. If the application only uses 1, 2 or 3 version segments, follow suit.
+Versioning can be both simple and complicated. The best recommendation is to use the same versioning that the installable/portable application uses. With Chocolatey you get four version segments. If the application only uses 1, 2 or 3 version segments, follow suit.
 
 If the 4th segment is used, some folks like to drop the segment altogether and use that as only the package fix notation using one of the notations in the next section. There is no recommendations at this time.
 
@@ -160,7 +160,7 @@ Package fix version notation is only acceptable in the fourth segment. Do not us
 When the fourth segment is used, it is recommended to add two zeroes (00) to the end of the version. Then when you need to fix, you just increment that number. So if the package was ruby and the version was 2.0.0-p353, the package is 2.0.0.35300 (adding the two zeroes at the end). Then a fix would be 2.0.0.35301 and so on.
 
 ## Internationalization and localization of packages
-For chocolatey, internationalization and localization of packages is very important, because it has users from all over the world. Many applications support multiple languages, but they use several different methods to achieve that. Therefore, there is no standard how internationalization/localization has to be integrated into packages. However, here are a few examples of packages that use various techniques. You can use them as inspiration for new packages:
+For Chocolatey, internationalization and localization of packages is very important, because it has users from all over the world. Many applications support multiple languages, but they use several different methods to achieve that. Therefore, there is no standard how internationalization/localization has to be integrated into packages. However, here are a few examples of packages that use various techniques. You can use them as inspiration for new packages:
 * The ideal situation is when an application determines the user’s system language and automatically installs with that language. Then you don’t have to take any action relating to localization, because the application already handles that. Examples of such applications are [VLC Media Player](https://chocolatey.org/packages/vlc) and [LibreOffice](https://chocolatey.org/packages/libreoffice).
 * When an application provides different installers for different languages, you should determine the system language and download the appropriate installer. The package for [Mozilla Firefox](https://chocolatey.org/packages/Firefox) ([source code](https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/automatic/Firefox)) uses this method.
 * Sometimes an application installer or executable has already integrated all supported languages, but doesn’t automatically select the system language during a silent install. Often you can pass an additional install parameter to select the desired language. This is used for example in the [CCleaner](https://chocolatey.org/packages/ccleaner) package ([source code](https://github.com/tonigellida/chocolateyautomaticpackages/tree/master/ccleaner)).
@@ -182,10 +182,10 @@ If there is an icon which is suitable for your package, you can specify it in th
 ## How do I exclude [executables from getting batch redirects](https://github.com/chocolatey/chocolatey/issues/106)?
 If you have executables in the package or brought into the package folder during powershell run and you want to exclude them you need to create an empty file named exactly like (**case sensitive**) the executable with `.ignore` suffixed on the end in the same directory where the executable is or will be.
 
-Example: In the case of `Bob.exe` you would create a file named `Bob.exe.ignore` and that file would not get a redirect batch link. The chocolatey package has an example of that. To further expand, `bob.exe.ignore` would not work because it doesn't have the correct casing.
+Example: In the case of `Bob.exe` you would create a file named `Bob.exe.ignore` and that file would not get a redirect batch link. The Chocolatey package has an example of that. To further expand, `bob.exe.ignore` would not work because it doesn't have the correct casing.
 
 ## How do I set up batch redirects for [applications that have a GUI](https://github.com/chocolatey/chocolatey/issues/76)?
-If you don't want to see a hanging window when you open an application from the command line that was set up with chocolatey, you want to create a file next to the executable that is named exactly the same (**case sensitive**) with `.gui` suffixed on the end.
+If you don't want to see a hanging window when you open an application from the command line that was set up with Chocolatey, you want to create a file next to the executable that is named exactly the same (**case sensitive**) with `.gui` suffixed on the end.
 
 Example: In the case of `Bob.exe` you would create a file named `Bob.exe.gui` and that file would be set up as a GUI application so the window will call it and then move on without waiting for it to finish.  Again, `bob.exe.gui` would not work because it doesn't have the correct casing.
 

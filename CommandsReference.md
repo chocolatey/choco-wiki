@@ -20,7 +20,7 @@ This is a listing of all of the different things you can pass to choco.
  * [[pin|CommandsPin]] - suppress upgrades to a package
 
 ## Package Creation Commands
- * [[new|CommandsNew]] - generates files necessary for a chocolatey package
+ * [[new|CommandsNew]] - generates files necessary for a Chocolatey package
  * [[pack|CommandsPack]] - packages up a nuspec to a compiled nupkg
  * [[push|CommandsPush]] - pushes a compiled nupkg
 

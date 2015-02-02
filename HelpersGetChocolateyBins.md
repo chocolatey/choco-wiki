@@ -2,7 +2,7 @@
 `Get-ChocolateyBins $packageFolder`
 
 ## Description
-Creates batch files for all executables in `$packageFolder` in the chocolatey bin folder (usually c:\chocolatey\bin)
+Creates batch files for all executables in `$packageFolder` in the Chocolatey bin folder (usually c:\chocolatey\bin)
 
 ## Parameters
 ### $packageFolder
