@@ -10,28 +10,6 @@ Install-ChocolateyShortcut -shortcutFilePath "<path>" -targetPath "<path>"
 ```
 
 ## Parameters
-***THIS SECTION FEELS REDUNDANT TO THE DETAILED SECTION BELOW. THOUGHTS?***
-```
-    ShortcutFilePath
-    TargetPath
-    WorkingDirectory
-    Arguments
-    IconLocation
-    Description
-```
-
-## Examples
-
-```powershell
-Install-ChocolateyShortcut -shortcutFilePath "C:\test.lnk" -targetPath "C:\test.exe"
-Install-ChocolateyShortcut -shortcutFilePath "C:\notepad.lnk" `
- -targetPath "C:\Windows\System32\notepad.exe" -workDirectory `
- "C:\" -arguments "C:\test.txt" -iconLocation "C:\test.ico" `
- -description "This is the description"
-```
-
-## Parameters
-
 ```
 -ShortcutFilePath
   The full absolute path to where the shortcut should be created.  
@@ -51,4 +29,14 @@ Install-ChocolateyShortcut -shortcutFilePath "C:\notepad.lnk" `
 
 -Description (Optional)
   A text description to be associated with the new description.  
+```
+
+## Examples
+
+```powershell
+Install-ChocolateyShortcut -shortcutFilePath "C:\test.lnk" -targetPath "C:\test.exe"
+Install-ChocolateyShortcut -shortcutFilePath "C:\notepad.lnk" `
+ -targetPath "C:\Windows\System32\notepad.exe" -workDirectory `
+ "C:\" -arguments "C:\test.txt" -iconLocation "C:\test.ico" `
+ -description "This is the description"
 ```
