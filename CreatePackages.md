@@ -211,6 +211,8 @@ Other shells, including cmd.exe:
 
 This will install the package right out of your source. As you find things you may need to fix, using `--force` (`-f`) will remove and reinstall the package from the updated `*.nupkg`.
 
+**NOTE:** If you are using a Semver dash in your package version (such as 1.0.0-beta), you will need to use the `-pre` switch or else you will get *Unable to find package* errors from `choco install`.
+
 `%cd%` points to the current directory. You can specify multiple directories separated by a semicolon;
 
 When your `nuspec` specifies dependencies that are not in your source, you should add their paths to the source directory. E.g. in the case of Chocolatey itself:
@@ -222,6 +224,7 @@ When your `nuspec` specifies dependencies that are not in your source, you shoul
 You'll need to append the API path like so:
 `-source '"%cd%;http://chocolatey.org/api/v2/"'` (note the apostrophe then the double quotes here).
 
+You can also use the `-debug` switch on `choco install` to provide more information.
 
 ### Alternative testing strategy
 You can also type `choco install -fdv path/to/nuspec` and choco will build the nupkg and attempt to install it.
