@@ -83,7 +83,7 @@ Here's an example:
 
 ```xml
     <description>
-Git (for Windows) - Git is a powerful distributed Source Code Management tool. If you just want to use Git to do your version control in Windows, you will need to download Git for Windows, run the installer, and you are ready to start. 
+Git (for Windows) - Git is a powerful distributed Source Code Management tool. If you just want to use Git to do your version control in Windows, you will need to download Git for Windows, run the installer, and you are ready to start.
 
 Note: Git for Windows is a project run by volunteers, so if you want it to improve, volunteer!
 

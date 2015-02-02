@@ -1,29 +1,29 @@
 # Install-ChocolateyPackage
-### NOTE: This command will assert UAC/Admin privileges on the machine.  
-  
-`Install-ChocolateyPackage $packageName $installerType $silentArgs $url $url64bit -validExitCodes $validExitCodes -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64`  
-  
+### NOTE: This command will assert UAC/Admin privileges on the machine.
+
+`Install-ChocolateyPackage $packageName $installerType $silentArgs $url $url64bit -validExitCodes $validExitCodes -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64`
+
 ## Description
-This will download a native installer from a url and install it on your machine. Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].  
-  
+This will download a native installer from a url and install it on your machine. Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].
+
 ## Parameters
 ### $packageName
-This is an arbitrary name.  
-Example: `'7zip'`  
-  
+This is an arbitrary name.
+Example: `'7zip'`
+
 ### $installerType (important)
-Pick only  one to leave here.  
+Pick only  one to leave here.
 Example: `'exe'` or `'msi'` or `'msu'`
-  
+
 ### $silentArgs
-Silent and other arguments to pass to the native installer.  
-Example: `'/S'`  
-If there are no silent arguments, pass this as `''`  
-  
+Silent and other arguments to pass to the native installer.
+Example: `'/S'`
+If there are no silent arguments, pass this as `''`
+
 ### $url (important)
-The Url to the native installer.  
-Example: `'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi'`  
-  
+The Url to the native installer.
+Example: `'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi'`
+
 ### $url64bit (optional)
 If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly.
 Example: `'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'`

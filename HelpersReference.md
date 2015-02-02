@@ -40,7 +40,7 @@ When creating packages that need to run one of the following commands below, one
 * [[Update-SessionEnvironment|HelpersUpdateSessionEnvironment]] - v0.9.8.20+
 
 ### Non-Administrator Safe Functions
-Some folks expressed a desire to have chocolatey not run as administrator to reach continuous integration and developers that are not administrators on their machines.
+Some folks expressed a desire to have Chocolatey not run as administrator to reach continuous integration and developers that are not administrators on their machines.
 
 These are the functions from above as one list.
 
@@ -191,7 +191,7 @@ Uninstall-ChocolateyZipPackage '__NAME__' 'filename.zip'
 
 * __Update-SessionEnvironment__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Update-SessionEnvironment.ps1)\]
 Updates the environment variables of the current powershell session with
-any environment variable changes that may have occured during a chocolatey
+any environment variable changes that may have occured during a Chocolatey
 package install.
 
 * __Write-ChocolateyFailure__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Write-ChocolateyFailure.ps1)\]

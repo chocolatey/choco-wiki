@@ -5,7 +5,7 @@
 `Write-ChocolateySuccess $packageName`
 
 ## Description
-Notes a successful chocolatey install.
+Notes a successful Chocolatey install.
 
 ## Parameters
 ### $packageName

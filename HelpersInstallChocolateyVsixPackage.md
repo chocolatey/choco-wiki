@@ -37,6 +37,6 @@ This downloads the AutoWrockTestable VSIX from the Visual Studio Gallery and ins
 
     Install-ChocolateyVsixPackage "MyPackage" http://visualstudiogallery.msdn.microsoft.com/ea3a37c9-1c76-4628-803e-b10a109e7943/file/73131/1/AutoWrockTestable.vsix 11
 
-This downloads the AutoWrockTestable VSIX from the Visual Studio Gallery and installs it to Visual Studio 2012 (v11.0). 
+This downloads the AutoWrockTestable VSIX from the Visual Studio Gallery and installs it to Visual Studio 2012 (v11.0).
 
 [[Helper Reference|HelpersReference]]

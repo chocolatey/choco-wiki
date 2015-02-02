@@ -30,7 +30,7 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 
 -p, --includeprograms, --include-programs
   IncludePrograms - Used in conjuction with LocalOnly, filters out apps
-  chocolatey has listed as packages and includes those in the list.
+  Chocolatey has listed as packages and includes those in the list.
   Defaults to false.
 
 -a, --all, --allversions, --all-versions

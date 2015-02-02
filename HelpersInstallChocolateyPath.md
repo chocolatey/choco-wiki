@@ -4,7 +4,7 @@
 `Install-ChocolateyPath $pathToInstall $pathType`
 
 ## Description
-This puts a directory on the PATH environment variable. This is used when the application/tool is not being linked by chocolatey (not in the lib folder).
+This puts a directory on the PATH environment variable. This is used when the application/tool is not being linked by Chocolatey (not in the lib folder).
 
 ## Parameters
 ### $pathToInstall (important)

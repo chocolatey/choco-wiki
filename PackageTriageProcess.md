@@ -4,7 +4,7 @@ If you have a question about a package itself, use the contact form on the packa
 
 If you don't hear anything within a few days back from them, it's possible they just haven't gotten to your message yet, but it's also possible that something went wrong and they didn't get the email. Use the contact site admins link. That goes to the site curators and they will try to triage the situation.
 
-If you don't hear anything back from the curators within 2 days (usually same day response), then you send a message to the chocolatey google group (http://groups.google.com/group/chocolatey) and we work to contact the maintainers.
+If you don't hear anything back from the curators within 2 days (usually same day response), then you send a message to the Chocolatey google group (http://groups.google.com/group/chocolatey) and we work to contact the maintainers.
 
 If we don't hear anything back from the package maintainer within a reasonable timeframe, a TOS is started and new folks can be added to the package in question as maintainers. We don't have non-maintainer uploads in the choco/nuget infrastructure and we haven't needed them yet.
 

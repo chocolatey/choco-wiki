@@ -2,7 +2,7 @@
 
 ## [0.9.9](https://github.com/chocolatey/choco/issues?q=is%3Aissue+milestone%3A0.9.9+is%3Aclosed) (unreleased)
 
-This also includes issues that were being tracked in the old Chocolatey repository: [chocolatey 0.9.9](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.9&page=1&state=closed).
+This also includes issues that were being tracked in the old Chocolatey repository: [Chocolatey 0.9.9](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.9&page=1&state=closed).
 
 The two links above will not capture everything that has changed, since this is a complete rewrite. We broke everything. If this were a v1+, it would be a major release. But we are less than v1, so 0.9.9 it is! ;)
 
@@ -28,7 +28,7 @@ We'll try to capture everything here that you should know about. Please call `ch
  * **Packaging Changes:**
    1. Choco now installs packages without version numbers on folders. This means quite a few things...
    2. Upgrading packages doesn't install a new version next to an old version, it actually upgrades.
-   3. Dependencies resolve at highest available version, not the minimum version as before - see [chocolatey #415](https://github.com/chocolatey/chocolatey/issues/415)
+   3. Dependencies resolve at highest available version, not the minimum version as before - see [Chocolatey #415](https://github.com/chocolatey/chocolatey/issues/415)
  * **Package Maintenance Changes**:
    1. Read the above about apikey changes
    2. Read above about dependency resolution changes.
@@ -45,36 +45,36 @@ We'll try to capture everything here that you should know about. Please call `ch
 ### FEATURES
 
  * In app documentation! Use `choco -h` or `choco commandName -h` to learn about each command, complete with examples!
- * WhatIf/Noop mode for all commands (`--noop` can also be specified as `-whatif`) - see [chocolatey #263](https://github.com/chocolatey/chocolatey/issues/263) and [Default Options and Switches](https://github.com/chocolatey/choco/wiki/CommandsReference#default-options-and-switches)
+ * WhatIf/Noop mode for all commands (`--noop` can also be specified as `-whatif`) - see [Chocolatey #263](https://github.com/chocolatey/chocolatey/issues/263) and [Default Options and Switches](https://github.com/chocolatey/choco/wiki/CommandsReference#default-options-and-switches)
  * Performs like a package manager, expect to see queries failing because of unmet dependency issues.
  * **New Commands:**
-   1. `pin` - Suppress upgrades. This allows you to 'pin' an install to a particular version - see [#1](https://github.com/chocolatey/choco/issues/1), [chocolatey #5](https://github.com/chocolatey/chocolatey/issues/5) and [Pin Command](https://github.com/chocolatey/choco/wiki/CommandsPin)
+   1. `pin` - Suppress upgrades. This allows you to 'pin' an install to a particular version - see [#1](https://github.com/chocolatey/choco/issues/1), [Chocolatey #5](https://github.com/chocolatey/chocolatey/issues/5) and [Pin Command](https://github.com/chocolatey/choco/wiki/CommandsPin)
    2. `apikey` - see [ApiKey Command](https://github.com/chocolatey/choco/wiki/CommandsApiKey)
-   3. `new` - see [New Command](https://github.com/chocolatey/choco/wiki/CommandsNew) and [chocolatey #157](https://github.com/chocolatey/chocolatey/issues/157)
+   3. `new` - see [New Command](https://github.com/chocolatey/choco/wiki/CommandsNew) and [Chocolatey #157](https://github.com/chocolatey/chocolatey/issues/157)
  * New ways to pass arguments! See [How to Pass Options/Switches](https://github.com/chocolatey/choco/wiki/CommandsReference#how-to-pass-options--switches)
  * Did we mention there is a help menu that is actually helpful now? Shiny!
- * AutoUninstaller!!!! But it is not enabled by default this version. See [#15](https://github.com/chocolatey/choco/issues/15), [#9](https://github.com/chocolatey/choco/issues/9) and [chocolatey #6](https://github.com/chocolatey/chocolatey/issues/6)
+ * AutoUninstaller!!!! But it is not enabled by default this version. See [#15](https://github.com/chocolatey/choco/issues/15), [#9](https://github.com/chocolatey/choco/issues/9) and [Chocolatey #6](https://github.com/chocolatey/chocolatey/issues/6)
  * **New Helpers:**
-   1. `Install-ChocolateyShortcut` - see [chocolatey #238](https://github.com/chocolatey/chocolatey/pull/238), [chocolatey #235](https://github.com/chocolatey/chocolatey/issues/235) and [chocolatey #218](https://github.com/chocolatey/chocolatey/issues/218)
+   1. `Install-ChocolateyShortcut` - see [Chocolatey #238](https://github.com/chocolatey/chocolatey/pull/238), [Chocolatey #235](https://github.com/chocolatey/chocolatey/issues/235) and [Chocolatey #218](https://github.com/chocolatey/chocolatey/issues/218)
 
 ### BUG FIXES
 
 Probably a lot of bug fixes that may not make it here, but here are the ones we know about.
 
- * Fix - Cannot upgrade from prerelease to same version released - see [chocolatey #122](https://github.com/chocolatey/chocolatey/issues/122)
- * Fix - install `--force` should not use cache - see [chocolatey #199](https://github.com/chocolatey/chocolatey/issues/199)
- * Fix - force dependencies as well - see [--force-dependencies](https://github.com/chocolatey/choco/wiki/CommandsInstall) and [chocolatey #199](https://github.com/chocolatey/chocolatey/issues/199)
- * Fix - Chocolatey should not stop on error - see [chocolatey #192](https://github.com/chocolatey/chocolatey/issues/192)
- * Fix - Upgrading does not remove previous version - see [chocolatey #259](https://github.com/chocolatey/chocolatey/issues/259)
- * Fix - Non-elevated shell message spills errors - see [chocolatey #540](https://github.com/chocolatey/chocolatey/issues/540)
- * Fix - Package names are case sensitive for some sources - see [chocolatey #589](https://github.com/chocolatey/chocolatey/issues/589)
- * Fix - Install-ChocolateyVsixPackage doesn't check for correct VS 2012 path - see [chocolatey #601](https://github.com/chocolatey/chocolatey/issues/601)
- * Fix - Chocolatey behaves strangely after ctrl+c - see [chocolatey #608](https://github.com/chocolatey/chocolatey/issues/608)
- * Fix - Uninstall doesn't respect version setting - see [chocolatey #612](https://github.com/chocolatey/chocolatey/issues/612)
- * Fix - No update after download error - see [chocolatey #637](https://github.com/chocolatey/chocolatey/issues/637)
- * Fix - cup ends silently on error - see [chocolatey #312](https://github.com/chocolatey/chocolatey/issues/312)
- * Fix - cpack silently fails when dependency .NET 4.0+ is not met - see [chocolatey #270](https://github.com/chocolatey/chocolatey/issues/270)
- * Fix - Regression in cver all in 0.9.8.27 - see [chocolatey #530](https://github.com/chocolatey/chocolatey/issues/530)
+ * Fix - Cannot upgrade from prerelease to same version released - see [Chocolatey #122](https://github.com/chocolatey/chocolatey/issues/122)
+ * Fix - install `--force` should not use cache - see [Chocolatey #199](https://github.com/chocolatey/chocolatey/issues/199)
+ * Fix - force dependencies as well - see [--force-dependencies](https://github.com/chocolatey/choco/wiki/CommandsInstall) and [Chocolatey #199](https://github.com/chocolatey/chocolatey/issues/199)
+ * Fix - Chocolatey should not stop on error - see [Chocolatey #192](https://github.com/chocolatey/chocolatey/issues/192)
+ * Fix - Upgrading does not remove previous version - see [Chocolatey #259](https://github.com/chocolatey/chocolatey/issues/259)
+ * Fix - Non-elevated shell message spills errors - see [Chocolatey #540](https://github.com/chocolatey/chocolatey/issues/540)
+ * Fix - Package names are case sensitive for some sources - see [Chocolatey #589](https://github.com/chocolatey/chocolatey/issues/589)
+ * Fix - Install-ChocolateyVsixPackage doesn't check for correct VS 2012 path - see [Chocolatey #601](https://github.com/chocolatey/chocolatey/issues/601)
+ * Fix - Chocolatey behaves strangely after ctrl+c - see [Chocolatey #608](https://github.com/chocolatey/chocolatey/issues/608)
+ * Fix - Uninstall doesn't respect version setting - see [Chocolatey #612](https://github.com/chocolatey/chocolatey/issues/612)
+ * Fix - No update after download error - see [Chocolatey #637](https://github.com/chocolatey/chocolatey/issues/637)
+ * Fix - cup ends silently on error - see [Chocolatey #312](https://github.com/chocolatey/chocolatey/issues/312)
+ * Fix - cpack silently fails when dependency .NET 4.0+ is not met - see [Chocolatey #270](https://github.com/chocolatey/chocolatey/issues/270)
+ * Fix - Regression in cver all in 0.9.8.27 - see [Chocolatey #530](https://github.com/chocolatey/chocolatey/issues/530)
 
 ### IMPROVEMENTS
 
@@ -83,19 +83,19 @@ Probably a lot of bug fixes that may not make it here, but here are the ones we 
  * Install script updates  - see [#7](https://github.com/chocolatey/choco/issues/7)
  * Ensure Chocolatey pkg is installed properly in lib folder - This means you can take a dependency on a minimum version of Chocolatey (we didn't like that before) - see [#19](https://github.com/chocolatey/choco/issues/19)
  * Uninstall - allow abort - see [#43](https://github.com/chocolatey/choco/issues/43)
- * Support for HTTPS basic authorization - see [chocolatey #128](https://github.com/chocolatey/chocolatey/issues/128)
- * Smooth out success/failure logging - see [chocolatey #154](https://github.com/chocolatey/chocolatey/issues/154)
- * Add $env:CHOCOLATEY_VERSION - see [chocolatey #251](https://github.com/chocolatey/chocolatey/issues/251)
- * Replace ascii cue with visual cues - see [chocolatey #376](https://github.com/chocolatey/chocolatey/pull/376)
- * Uninstall all versions of an app - see [chocolatey #389](https://github.com/chocolatey/chocolatey/issues/389)
- * Add parameters in packages.config files - see [chocolatey #472](https://github.com/chocolatey/chocolatey/issues/472), [Packages.config](https://github.com/chocolatey/choco/wiki/CommandsInstall#packagesconfig) and [#10](https://github.com/chocolatey/choco/issues/10)
- * Choco pack should support `-version` - see [chocolatey #526](https://github.com/chocolatey/chocolatey/issues/526)
- * Enhancements to Start-ChocolateyProcessAsAdmin - see [chocolatey #564](https://github.com/chocolatey/chocolatey/pull/564)
- * Install-ChocolateyFileAssociation - add label to new file types - see [chocolatey #564](https://github.com/chocolatey/chocolatey/pull/564)
- * Clean up the verobsity of Chocolatey - see [chocolatey #374](https://github.com/chocolatey/chocolatey/issues/374)
- * Compact choco upgrade --noop option - see [chocolatey #414](https://github.com/chocolatey/chocolatey/issues/414)
- * Remove references to the chocolatey gods - see [chocolatey #669](https://github.com/chocolatey/chocolatey/issues/669)
- * Dat help menu tho. I mean srsly guise - see [chocolatey #641](https://github.com/chocolatey/chocolatey/issues/641)
+ * Support for HTTPS basic authorization - see [Chocolatey #128](https://github.com/chocolatey/chocolatey/issues/128)
+ * Smooth out success/failure logging - see [Chocolatey #154](https://github.com/chocolatey/chocolatey/issues/154)
+ * Add $env:CHOCOLATEY_VERSION - see [Chocolatey #251](https://github.com/chocolatey/chocolatey/issues/251)
+ * Replace ascii cue with visual cues - see [Chocolatey #376](https://github.com/chocolatey/chocolatey/pull/376)
+ * Uninstall all versions of an app - see [Chocolatey #389](https://github.com/chocolatey/chocolatey/issues/389)
+ * Add parameters in packages.config files - see [Chocolatey #472](https://github.com/chocolatey/chocolatey/issues/472), [Packages.config](https://github.com/chocolatey/choco/wiki/CommandsInstall#packagesconfig) and [#10](https://github.com/chocolatey/choco/issues/10)
+ * Choco pack should support `-version` - see [Chocolatey #526](https://github.com/chocolatey/chocolatey/issues/526)
+ * Enhancements to Start-ChocolateyProcessAsAdmin - see [Chocolatey #564](https://github.com/chocolatey/chocolatey/pull/564)
+ * Install-ChocolateyFileAssociation - add label to new file types - see [Chocolatey #564](https://github.com/chocolatey/chocolatey/pull/564)
+ * Clean up the verobsity of Chocolatey - see [Chocolatey #374](https://github.com/chocolatey/chocolatey/issues/374)
+ * Compact choco upgrade --noop option - see [Chocolatey #414](https://github.com/chocolatey/chocolatey/issues/414)
+ * Remove references to the Chocolatey gods - see [Chocolatey #669](https://github.com/chocolatey/chocolatey/issues/669)
+ * Dat help menu tho. I mean srsly guise - see [Chocolatey #641](https://github.com/chocolatey/chocolatey/issues/641)
 
 ## [0.9.8.32](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.8.32&page=1&state=closed) (January 22, 2015)
 

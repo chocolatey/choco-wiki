@@ -18,13 +18,13 @@ Let's install [Notepad++](http://notepad-plus-plus.org/).
 1. If it was an MSI, then usually you could pass `-ia 'INSTALLDIR=''D:\Program Files'''` (note the double `'` - those get translated to double quotes `"`, posh seems to want to rip them out.
 1. For example, Notepad++ uses the [NSIS](http://nsis.sourceforge.net/Main_Page) (NullSoft Scriptable Install System) installer. If we look at the silent options, we see that [/D](http://nsis.sourceforge.net/Docs/Chapter3.html#installerusagecommon) is how we influence the install directory. So we would pass `cinst notepadplusplus.install -ia '/D=E:\SomeDirectory\somebody\npp'` -note that we are looking at the specific package over the virtual (this will be corrected in future releases).
 
-## How does chocolatey work?
-When a package has an exe file, chocolatey will create a link "shortcut" to the file so that you can run that tool anywhere on the machine.
+## How does Chocolatey work?
+When a package has an exe file, Chocolatey will create a link "shortcut" to the file so that you can run that tool anywhere on the machine.
 When a package has a chocolateyInstall.ps1, it will run the script. The instructions in the file can be anything. This is limited only by the .NET framework and powershell.
-Most of the chocolatey packages that take advantage of the powershell download an application installer and execute it silently.
+Most of the Chocolatey packages that take advantage of the powershell download an application installer and execute it silently.
 
 
-## Where are chocolatey packages installed to?
+## Where are Chocolatey packages installed to?
 
 Chocolatey packages are installed to `ChocolateyInstall\lib`, but the software could go to various locations, depending on how the package maintainer created the package.
 
@@ -32,5 +32,5 @@ Some packages are installed under `ChocolateyInstall\lib`, others - especially p
 
 There are also packages for which you can set a custom installation path. These packages (like ruby) use the `$env:ChocolateyBinRoot` environment variable. If this variable does not exist, it will be created as `c:\tools` e.g. `C:\tools\ruby193`. To change this behaviour, you can set `$env:ChocolateyBinRoot` to an existing folder, e. g. `C:\somestuff`. Packages that use the environment variable, will then be installed in the given subfolder, f. ex. `C:\somestuff\ruby193`.
 
-## Where does chocolatey install packages from?
+## Where does Chocolatey install packages from?
 By default it installs packages from chocolatey.org (the community feed). But you can change this by adding default sources and/or using the  `--source` switch when running a command.
