@@ -2,15 +2,15 @@
 ## Main Functions
 These functions call other functions and have error handling built in. When using just them, you don't need to put error handling in your [[chocolateyInstall.ps1 file|ChocolateyInstallPS1]]. These functions call down to the other functions and encapsulate everything nicely so that it is possible to have one line chocolateyInstall.ps1 files.  
 
-[[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]  
-[[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]  
-[[Install-ChocolateyPowershellCommand|HelpersInstallChocolateyPowershellCommand]]  
-[[Install-ChocolateyVsixPackage|HelpersInstallChocolateyVsixPackage]]
+- [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]  
+- [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]  
+- [[Install-ChocolateyPowershellCommand|HelpersInstallChocolateyPowershellCommand]]  
+- [[Install-ChocolateyVsixPackage|HelpersInstallChocolateyVsixPackage]]
   
 ## Error / Success Functions
   
-[[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]  - DEPRECATED
-[[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  - DEPRECATED
+- [[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]  - DEPRECATED
+- [[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  - DEPRECATED
   
 If do anything besides use the main helpers, it is strongly suggested you format your chocolateyInstall.ps1 as follows:  
   
