@@ -1,62 +1,62 @@
-#Install-ChocolateyPowershellCommand
+# Install-ChocolateyPowershellCommand
 `Install-ChocolateyPowershellCommand $packageName $psFileFullPath $url $url64 -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64`  
   
-##Description
+## Description
 This will install a powershell script as a command on your system. Like an executable can be run from a batch redirect, this will do the same, calling powershell with this command and passing your arguments to it. If you include a url, it will first download the powershell file. Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].  
 
-##Parameters
-###$packageName
+## Parameters
+### $packageName
 This is an arbitrary name.  
 Example: `'installwindowsimage.powershell'`  
   
-###$psFileFullPath (important)
+### $psFileFullPath (important)
 The full path and name of the file to save or an existing file if $url is not included. This should include the name of the file and extension.  
 Example: `Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) 'Install-WindowsImage.ps1'`  
   
-###$url (optional)
+### $url (optional)
 The Url to the file.  
 Example: `http://somewhere.com/downloads/Install-WindowsImage.ps1`  
    
-###$url64bit (optional) - v0.9.8.14+
-If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly.  
-Example: `'http://somewhere.com/downloads/Install-WindowsImagex64.ps1'`  
-Defaults to the 32bit url.  
+### $url64bit (optional) - v0.9.8.14+
+If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly.
+Example: `'http://somewhere.com/downloads/Install-WindowsImagex64.ps1'`
+Defaults to the 32bit url.
 
-###$checksum (optional but will be required later) - v0.9.8.24+  
+### $checksum (optional but will be required later) - v0.9.8.24+
 This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
-Example: `-checksum 'C67962F064924F3C7B95D69F88E745C0'`  
-Defaults to ``.  
+Example: `-checksum 'C67962F064924F3C7B95D69F88E745C0'`
+Defaults to ``.
 
-###$checksumType (optional) - v0.9.8.24+  
+### $checksumType (optional) - v0.9.8.24+
 This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
-Example: `-checksumType 'sha1'`  
-Defaults to `md5`.  
+Example: `-checksumType 'sha1'`
+Defaults to `md5`.
 
-###$checksum64 (optional) - v0.9.8.24+  
+### $checksum64 (optional) - v0.9.8.24+
 This allows the x64 file being downloaded to be validated. Can be an MD5 or SHA1 hash.
-Example: `-checksum64 'C67962F064924F3C7B95D69F88E745C0'`  
-Defaults to ``.  
+Example: `-checksum64 'C67962F064924F3C7B95D69F88E745C0'`
+Defaults to ``.
 
-###$checksumType64 (optional) - v0.9.8.24+  
+### $checksumType64 (optional) - v0.9.8.24+
 This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
-Example: `-checksumType64 'sha1'`  
-Defaults to checksumType's value.  
-  
-##Examples  
-  
+Example: `-checksumType64 'sha1'`
+Defaults to checksumType's value.
+
+## Examples
+
 ```powershell
 $psFile = Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) "Install-WindowsImage.ps1"
 Install-ChocolateyPowershellCommand 'installwindowsimage.powershell' $psFile 'http://somewhere.com/downloads/Install-WindowsImage.ps1'
-```  
-  
+```
+
 ```powershell
 $psFile = Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) "Install-WindowsImage.ps1"
 Install-ChocolateyPowershellCommand 'installwindowsimage.powershell' $psFile 'http://somewhere.com/downloads/Install-WindowsImage.ps1' 'http://somewhere.com/downloads/Install-WindowsImagex64.ps1'
-```  
-  
+```
+
 ```powershell
 $psFile = Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) "Install-WindowsImage.ps1"
-Install-ChocolateyPowershellCommand 'installwindowsimage.powershell' $psFile  
-```  
-  
+Install-ChocolateyPowershellCommand 'installwindowsimage.powershell' $psFile
+```
+
 [[Helper Reference|HelpersReference]]

@@ -1,6 +1,6 @@
 # Chocolatey List (choco list) / Search (choco search)
 
-Chocolatey will perform a search for a package local or remote.  Some 
+Chocolatey will perform a search for a package local or remote.  Some
  may prefer to use `clist` as a shortcut for `choco list`.
 
 ## Usage

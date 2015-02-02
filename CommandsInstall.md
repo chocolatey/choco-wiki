@@ -1,6 +1,6 @@
 # Chocolatey Install (choco install)
 Installs a package or a list of packages (sometimes specified as a
- packages.config). Some may prefer to use `cinst` as a shortcut for 
+ packages.config). Some may prefer to use `cinst` as a shortcut for
  `choco install`.
 
 ## Usage
@@ -118,7 +118,7 @@ Alternative to PackageName. This is a list of packages in an xml manifest for Ch
 ```
 
 ## Alternative Sources
-**NOTE**: THIS IS NOT YET REIMPLEMENTED.  
+**NOTE**: THIS IS NOT YET REIMPLEMENTED.
 **TODO**: Draw out what each of these is (links/documentation)
 
 ### Ruby

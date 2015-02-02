@@ -1,7 +1,7 @@
 ## The Problem
 Almost all Chocolatey Packages download a file from the internet, and then directly work with this file.  This can be an EXE or an MSI, whose location is passed directly into the ```Install-ChocolateyPackage``` Helper method, or a zip file passed into the ```Install-ChocolateyZipPackage``` Helper method.
 
-However, there are times when using a file directly is not an option.  From time to time, it is necessary to use an ISO file within your Chocolatey Package.  In later versions of the Windows Operating System, PowerShell provides the ability to mount this ISO file directly using the ```Mount-DiskImage``` cmdlet.  However, in earlier versions of Windows, this is not possible.  
+However, there are times when using a file directly is not an option.  From time to time, it is necessary to use an ISO file within your Chocolatey Package.  In later versions of the Windows Operating System, PowerShell provides the ability to mount this ISO file directly using the ```Mount-DiskImage``` cmdlet.  However, in earlier versions of Windows, this is not possible.
 
 In order to maintain backwards compatibility with older Operating Systems, when using an ISO file, you should use a single method that works everywhere.
 

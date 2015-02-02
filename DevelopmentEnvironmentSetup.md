@@ -1,22 +1,20 @@
 ##Set Up A Development Environment Using Chocolatey
 
-How many of you out there are rake fans? Getting developers to look at your source code can sometimes be an issue. Wouldn't it be nice if it was simple for them to get all set up? What about Ruby DevKit? It would be nice, right?  
+How many of you out there are rake fans? Getting developers to look at your source code can sometimes be an issue. Wouldn't it be nice if it was simple for them to get all set up? What about Ruby DevKit? It would be nice, right?
 
-
-  
 ## Set up From the Source
-This does the following:  
-  
-* downloads and installs chocolatey  
+This does the following:
+
+* downloads and installs chocolatey
 * installs nuget.commandline if it is not installed
 * installs ruby.devkit if it is not installed
 * installs ruby if it is not installed
 * updates gems and installs some required gems for rake
 * restores nuget packages from the configs
-* builds the source with rake 
-  
-### setup.ps1:  
-  
+* builds the source with rake
+
+### setup.ps1:
+
 ```powershell
 function Install-NeededFor {
 param(
@@ -24,14 +22,14 @@ param(
   ,[bool] $defaultAnswer = $true
 )
   if ($packageName -eq '') {return $false}
-  
+
   $yes = '6'
   $no = '7'
   $msgBoxTimeout='-1'
   $defaultAnswerDisplay = 'Yes'
   $buttonType = 0x4;
   if (!$defaultAnswer) { $defaultAnswerDisplay = 'No'; $buttonType= 0x104;}
-  
+
   $answer = $msgBoxTimeout
   try {
     $timeout = 10
@@ -41,18 +39,18 @@ param(
   }
   catch {
   }
-  
+
   if ($answer -eq $yes -or ($answer -eq $msgBoxTimeout -and $defaultAnswer -eq $true)) {
     write-host "Installing $packageName"
     return $true
   }
-  
+
   write-host "Not installing $packageName"
   return $false
 }
 
 
-#install chocolatey
+# install chocolatey
 if (Install-NeededFor 'chocolatey') {
   iex ((new-object net.webclient).DownloadString('http://chocolatey.org/install.ps1'))
 }
@@ -65,12 +63,12 @@ if (Install-NeededFor 'ruby / ruby devkit') {
   cinst ruby -version 1.9.3.54500
 }
 
-#perform ruby updates and get gems
+# perform ruby updates and get gems
 gem update --system
 gem install rake
 gem install bundler
 
-#restore the nuget packages
+# restore the nuget packages
 $nugetConfigs = Get-ChildItem '.\\' -Recurse | ?{$_.name -match "packages\\.config"} | select
 foreach ($nugetConfig in $nugetConfigs) {
   Write-Host "restoring packages from $($nugetConfig.FullName)"
@@ -80,47 +78,46 @@ foreach ($nugetConfig in $nugetConfigs) {
 rake
 
 ```
-  
-### setup.cmd:  
-  
-```  
+### setup.cmd:
+
+```
 @echo off
 SET DIR=%~dp0%
 @PowerShell -NoProfile -ExecutionPolicy unrestricted -Command "& '%DIR%setup.ps1' %*"
 pause
 
 ```
-  
-The original is [on github](https://gist.github.com/1107920).   
+
+The original is [on github](https://gist.github.com/1107920).
 
 ## Getting the Source
-Create a package for your project and call it projectname*.dev*.  It should take a nuspec dependency on whatever source control you use. So in the case of git, a dependency on msysgit.  
-Now, in [[chocolateyInstall.ps1|ChocolateyInstallPS1]], you just need something like the following: 
+Create a package for your project and call it projectname*.dev*.  It should take a nuspec dependency on whatever source control you use. So in the case of git, a dependency on msysgit.
+Now, in [[chocolateyInstall.ps1|ChocolateyInstallPS1]], you just need something like the following:
 
 ```powershell
 try {
 
   $dirSelected = Read-Host "Please tell me the directory where you want to clone dropkick. Press enter to use .\\dropkick"
-  
+
   if ($dirSelected -eq '') {$dirSelected = '.\\dropkick'}
-  
+
   git clone git://github.com/chucknorris/dropkick.git $dirSelected
-  
+
   Start-Sleep 6
 } catch {
 @"
 Error Occurred: $($_.Exception.Message)
 "@ | Write-Host -ForegroundColor White -BackgroundColor DarkRed
 	Start-Sleep 8
-	throw 
+	throw
 }
 ```
-  
+
 The above is from [DropkicK.Dev](https://github.com/ferventcoder/nugetpackages/blob/master/dropkick.dev/tools/chocolateyInstall.ps1)  
-  
+
 ## Setup A Full Environment Including Visual Studio Express, IIS Express and SQL Server Express (with Management Studio)
-The original [gist](https://gist.github.com/3825023)  
-  
+The original [gist](https://gist.github.com/3825023)
+
 ```powershell
 $scriptDir = $(Split-Path -parent $MyInvocation.MyCommand.Definition)
 
@@ -130,14 +127,14 @@ param(
   ,[bool] $defaultAnswer = $true
 )
   if ($packageName -eq '') {return $false}
-  
+
   $yes = '6'
   $no = '7'
   $msgBoxTimeout='-1'
   $defaultAnswerDisplay = 'Yes'
   $buttonType = 0x4;
   if (!$defaultAnswer) { $defaultAnswerDisplay = 'No'; $buttonType= 0x104;}
-  
+
   $answer = $msgBoxTimeout
   try {
     $timeout = 10
@@ -147,17 +144,17 @@ param(
   }
   catch {
   }
-  
+
   if ($answer -eq $yes -or ($answer -eq $msgBoxTimeout -and $defaultAnswer -eq $true)) {
     write-host "Installing $packageName"
     return $true
   }
-  
+
   write-host "Not installing $packageName"
   return $false
 }
 
-#install chocolatey
+# install chocolatey
 if (Install-NeededFor 'chocolatey') {
   iex ((new-object net.webclient).DownloadString("http://chocolatey.org/install.ps1")) 
 }
@@ -169,7 +166,7 @@ if (Install-NeededFor 'autosave') {
   if ($is64bit) {$nodePath = Join-Path ${env:ProgramFiles(x86)} 'nodejs'}
   $env:Path = "$($env:Path);$nodePath"
   npm install -g autosave
-  
+
   Write-Host 'You still need to enable experimental packages in Chrome and install the Chrome Extension'
   Write-Host 'Details at https://github.com/NV/chrome-devtools-autosave#readme'
 }
@@ -252,21 +249,20 @@ if (Install-NeededFor 'website' $false) {
   $pool = Get-Item $appPoolPath
   if ($pool -eq $null) {
     Write-Host "Creating the app pool `'$appPoolPath`'"
-    $pool = New-Item $appPoolPath 
+    $pool = New-Item $appPoolPath
   }
-  
-  $pool.processModel.identityType = "NetworkService" 
+
+  $pool.processModel.identityType = "NetworkService"
   $pool | Set-Item
   Set-itemproperty $appPoolPath -Name "managedRuntimeVersion" -Value "v4.0"
   #Set-itemproperty $appPoolPath -Name "managedPipelineMode" -Value "Integrated"
   Start-WebAppPool "$projectName"
   Write-Host "Creating the site `'$projectName`' with appPool `'$projectName`'"
   New-WebApplication "$projectName" -Site "Default Web Site" -PhysicalPath $srcDir -ApplicationPool "$projectName" -Force
-  
+
   Write-Host 'You still need to open Visual Studio and build the application one time prior to going to the site in a browser.'
 }
 
 Write-Host "If you have made it here without errors, you should be setup and ready to hack on the apps."
 Write-Warning "If you see any failures happen, you may want to reboot and continue to let installers catch up. This script is idempotent and will only apply changes that have not yet been applied."
 ```
-  

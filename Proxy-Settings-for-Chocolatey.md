@@ -30,7 +30,7 @@ param (
 ```
 
 # Using Chocolatey behind a proxy server
-If you want chocolatey to go through a proxy, set the environment variables `http_proxy` and `https_proxy` to point to the proxy address. The format would be `address:port`. 
+If you want chocolatey to go through a proxy, set the environment variables `http_proxy` and `https_proxy` to point to the proxy address. The format would be `address:port`.
 
 ## Powershell - environment variable set-up
 

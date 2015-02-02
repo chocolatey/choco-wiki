@@ -1,19 +1,19 @@
-##Automatic Packages
+## Automatic Packages
 Automatic packages are what set chocolatey apart from other package managers.
 http://chocolatey.org/packages/ChocolateyPackageUpdater
 
-##Chocolatey Package Updater aka chocopkgup
+## Chocolatey Package Updater aka chocopkgup
 The tool that accomplishes this process is known as [chocopkgup](http://chocolatey.org/packages/ChocolateyPackageUpdater) (Chocolatey Package Updater). It is a free tool (unless you want to use it for uploads to somewhere other than chocolatey.org).
 
-###Licensing
+### Licensing
 Check the license at http://realdimensions.net/licenses/chocolateypackageupdater/license.txt to be sure that it applies to you.
 
 Basically it boils down to this: if you want to use chocopkgup privately, you will need to pay for it. As long as you are publishing to chocolatey.org, the tool is completely free! The license does expire every once in awhile, but if you are keeping up on your chocolatey updates locally, you won't even notice (`cup all`, remember?).
 
-###Credits
+### Credits
 This tool makes use of [Ketarin](http://chocolatey.org/packages/ketarin) and [Nuget.exe](http://chocolatey.org/packages/NuGet.CommandLine). Both are awesome tools that help chocopkgup accomplish its tasks.
 
-###Setup
+### Setup
 More of this will become automated over time.
 
 1. **Optional** (strongly recommended) - Ensure you are using a source control repository and file system for keeping packages. A good example is [chocolatey-coreteampackages](https://github.com/chocolatey/chocolatey-coreteampackages) repo.
@@ -54,7 +54,7 @@ REM /disablepush
 
 This gets Ketarin all set up with a global command for all packages we create. If you want to use this outside of chocolatey, all you need to do is remove the global setting for Before updating an application and instead apply it to every job that pertains to chocolatey update.
 
-###Create an Automatic Package
+### Create an Automatic Package
 Preferably you are taking an existing package that you have tested and converting it to an automatic package.
 
 1. Open Ketarin. Choose `File` –> `Import…`
@@ -95,7 +95,7 @@ REM /disablepush
 1. Check the bottom of this section to be sure it set to **Command**.
 ![Ketarin Settings Command](images/chocopkgup/KetarinCustomCommand.png "Ketarin Settings Command")
 
-###Testing Ketarin/ChocoPkgUp:
+### Testing Ketarin/ChocoPkgUp:
 
 1. We need to get a good idea of whether this will work or not.
 1. Open a command line and type `ketarin`.
@@ -105,7 +105,7 @@ REM /disablepush
 1. Inspect the resulting chocolatey package(s) for any issues.
 1. You should also test the scheduled task works appropriately.
 
-###Troubleshooting/Notes
+### Troubleshooting/Notes
 
 * Ketarin comes with a logging facility so you can see what it is doing. It’s under View –> Show Log.
 * In the top level folder for chocopkgup (in program data), we log what we receive from Ketarin as well and the process of putting together a package.
@@ -113,7 +113,7 @@ REM /disablepush
 * Every once in awhile you want to look in Ketarin to see what jobs might be failing. Then figure out why.
 * Every once in awhile you will want to inspect the chocopkgupfolder to see if there are any packages that did not make it up for some reason or another and then upload them.
 
-###Important notes for files hosted on SourceForge
+### Important notes for files hosted on SourceForge
 If you want to make an automatic package that downloads files hosted on SourceForge, it gets a bit tricky. Ketarin does not directly support download links from SourceForge in the format `http://sourceforge.net/projects/…/download`, because these download links automatically redirect to a mirror (e.&nbsp;g. `http://heanet.dl.sourceforge.net/project/…`). Ketarin does not support these kind of automatic redirections, but Chocolatey does.
 
 It isn’t uncommon that certain SorceForge mirrors go offline or are extremely slow because of overload. Thus it is not recommended to use direct mirror links (e.&nbsp;g. `http://heanet.dl.sourceforge.net/project/…`) in your `chocolateyInstall.ps1` file, because this will frequently break your package and makes it unreliable.
