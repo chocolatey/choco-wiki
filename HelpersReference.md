@@ -1,16 +1,16 @@
-# Chocolatey Utility Functions aka Helpers Reference
-##Main Helpers
-These helpers call other helpers and have error handling built in. When using just them, you don't need to put error handling in your [[chocolateyInstall.ps1 file|ChocolateyInstallPS1]]. These helpers call down to the other helpers and encapsulate everything nicely so that it is possible to have one line chocolateyInstall.ps1 files.  
+# Chocolatey Package Functions aka Helpers Reference
+## Main Functions
+These functions call other functions and have error handling built in. When using just them, you don't need to put error handling in your [[chocolateyInstall.ps1 file|ChocolateyInstallPS1]]. These functions call down to the other functions and encapsulate everything nicely so that it is possible to have one line chocolateyInstall.ps1 files.  
 
 [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]  
 [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]  
 [[Install-ChocolateyPowershellCommand|HelpersInstallChocolateyPowershellCommand]]  
-[[Install-ChocolateyVsixPackage|HelpersInstallChocolateyVsixPackage]] - v0.9.8.20+
+[[Install-ChocolateyVsixPackage|HelpersInstallChocolateyVsixPackage]]
   
-##Error/SuccessHelpers
+## Error / Success Functions
   
-[[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]  
-[[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  
+[[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]  - DEPRECATED
+[[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  - DEPRECATED
   
 If do anything besides use the main helpers, it is strongly suggested you format your chocolateyInstall.ps1 as follows:  
   
@@ -19,17 +19,15 @@ try {
   
   #Your code here...
 
-  Write-ChocolateySuccess '__NAME__'
 } catch {
-  Write-ChocolateyFailure '__NAME__' $_.Exception.Message
-  throw 
+  throw $_
 }
 ```  
   
-##More Helpers
+## More Functions
 These helpers require you to wrap a try catch around your chocolateyInstall.ps1 file. See the example script above.  
 
-###Administrative Access Packages
+### Administrative Access Functions 
 When creating packages that need to run one of the following commands below, one should add the tag `admin` to the nuspec.  
 
 * [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]  
@@ -41,10 +39,10 @@ When creating packages that need to run one of the following commands below, one
 * [[Install-ChocolateyFileAssociation|HelpersInstallChocolateyFileAssociation]] - v0.9.8.20+
 * [[Update-SessionEnvironment|HelpersUpdateSessionEnvironment]] - v0.9.8.20+
 
-###Non-Administrator Safe Helpers
-Some folks expressed a desire to have chocolatey not run as administrator to reach continuous integration and developers that are not administrators on their machines. Starting with chocolatey [[v0.9.8.3|ReleaseNotes]], this has been possible.  
+### Non-Administrator Safe Functions
+Some folks expressed a desire to have chocolatey not run as administrator to reach continuous integration and developers that are not administrators on their machines. 
 
-These are the helpers from above as one list.    
+These are the functions from above as one list.    
 
 * [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]  
 * [[Install-ChocolateyPowershellCommand|HelpersInstallChocolateyPowershellCommand]]  
@@ -53,18 +51,18 @@ These are the helpers from above as one list.
 * [[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]  
 * [[Get-ChocolateyUnzip|HelpersGetChocolateyUnzip]]  
 * [[Install-ChocolateyPath|HelpersInstallChocolateyPath]] - when specifying user path
-* [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]] - when specifying user path v0.9.8.20+
+* [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]] - when specifying user path 
 * [[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]] - deprecated, see [[Install-ChocolateyShortcut|HelpersInstallChocolateyShortcut]]
-* [[Install-ChocolateyPinnedTaskBarItem|HelpersInstallChocolateyPinnedTaskBarItem]] - v0.9.8.20+
+* [[Install-ChocolateyPinnedTaskBarItem|HelpersInstallChocolateyPinnedTaskBarItem]]
 * [[Install-ChocolateyShortcut|HelpersInstallChocolateyShortcut]] - v0.9.9+
   
-##Overview
+## Overview
 
-###Helpers in alphabetical order
+### Functions in alphabetical order
 _(needs updating)_
 
 * __Get-BinRoot__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-BinRoot.ps1)\]  
-Gets the path to where binaries should be installed. Either by environmental variable `ChocolateyBinRoot` or by default. E.g. `C:\Tools`  
+Gets the path to where binaries should be installed. Either by environmental variable `ChocolateyBinRoot` or by default. E.g. `c:\tools`  
 
 * __Get-CheckSumValid__ \[[src](https://github.com/chocolatey/chocolatey/blob/master/src/helpers/functions/Get-CheckSumValid.ps1)\]  
 
