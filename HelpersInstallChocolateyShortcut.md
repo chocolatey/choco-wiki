@@ -10,26 +10,29 @@ Install-ChocolateyShortcut -shortcutFilePath "<path>" -targetPath "<path>"
 ```
 
 ## Parameters
-```
--ShortcutFilePath
-  The full absolute path to where the shortcut should be created.  
+* `-ShortcutFilePath`
 
--TargetPath
-  The full absolute path to the target for new shortcut.  
+    The full absolute path to where the shortcut should be created.  
 
--WorkingDirectory (Optional)
-  The full absolute path of the Working Directory that will be 
-  used by the new shortcut.  
+* `-TargetPath`
 
--Arguments (Optional)
-  Additional arguments that should be passed along to the new shortcut.  
+    The full absolute path to the target for new shortcut.  
 
--IconLocation (Optional)
-  The full absolute path to an icon file to be used for the new shortcut.  
+* `-WorkingDirectory` _(optional)_
 
--Description (Optional)
-  A text description to be associated with the new description.  
-```
+    The full absolute path of the Working Directory that will be used by the new shortcut.  
+
+* `-Arguments` _(optional)_
+
+    Additional arguments that should be passed along to the new shortcut.  
+
+* `-IconLocation` _(optional)_
+
+    The full absolute path to an icon file to be used for the new shortcut.  
+
+* `-Description` _(optional)_
+
+    A text description to be associated with the new description.
 
 ## Examples
 
