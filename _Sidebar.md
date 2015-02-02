@@ -48,6 +48,11 @@
  - [[Development Environment|DevelopmentEnvironmentSetup]]
  - [[Host on MyGet|Hosting-Chocolatey-Packages-on-MyGet]]
 
+** Learning Resources
+
+ - [Videos|Videos]
+ - [Presentations|Presentations]
+
 **Other**
 
  - [[Why Chocolatey?|Why]]
