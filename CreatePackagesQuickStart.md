@@ -22,7 +22,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
    * Edit the `PackageName.nuspec` configuration file.
    * Edit the `./tools/chocolateyInstall.ps1` install script.
      * Make sure you figure out the installer's silent mode. Use [Universal Silent Switch Finder](http://unattended.sourceforge.net/installers.php), which is available as a Choco package: `choco install ussf`
-   * You __must__ save your files with _UTF-8_ character encoding without BOM. ([Details](https://github.com/chocolatey/chocolatey/wiki/CreatePackages#character-encoding))
+   * You __must__ save your files with _UTF-8_ character encoding without BOM. ([Details](https://github.com/chocolatey/choco/wiki/CreatePackages#character-encoding))
 * **Build the package**
    * Still in package directory
    * `choco pack`

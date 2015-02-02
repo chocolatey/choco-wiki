@@ -155,4 +155,4 @@ e.g. `choco install IIS-WebServerRole --source windowsfeatures`
 ## Resources
 
  - **How-To:** A complete example of how you can use the PackageParameters argument when creating a Chocolatey Package can be seen [[here|How-To-Parse-PackageParameters-Argument]].
- - One may want to override the default installation directory of a piece of software. See https://github.com/chocolatey/chocolatey/wiki/GettingStarted#overriding-default-install-directory-or-other-advanced-install-concepts.
+ - One may want to override the default installation directory of a piece of software. See https://github.com/chocolatey/choco/wiki/GettingStarted#overriding-default-install-directory-or-other-advanced-install-concepts.

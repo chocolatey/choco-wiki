@@ -2,13 +2,13 @@
 
 ## Quick Start guide
 
-If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](https://github.com/chocolatey/chocolatey/wiki/CreatePackagesQuickStart) for you. **NOTE**: This doesn't exempt you from observing the rules, requirements and guidelines (noted below).
+If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](https://github.com/chocolatey/choco/wiki/CreatePackagesQuickStart) for you. **NOTE**: This doesn't exempt you from observing the rules, requirements and guidelines (noted below).
 
 ## Rules to be observed before publishing packages
 
 There are a few rules that you have to follow before pushing packages to chocolatey.org:
 * **Don't package illegal software.** Packages of software that is illegal in most countries in the world are prohibited to publish on Chocolatey.org. This applies in particular to software that violates the copyright, pirated software and activation cracks. Remember that this also affects software that is especially designed to accomplish software piracy.
-* **Do not package software** into Chocolatey packages **that you don't have the right to distribute.** Please see [Distribution Rights](https://github.com/chocolatey/chocolatey/wiki/Legal#wiki-distributions-aka-chocolatey-packages) for more information. Any package found not in compliance with this will be removed immediately.
+* **Do not package software** into Chocolatey packages **that you don't have the right to distribute.** Please see [Distribution Rights](https://github.com/chocolatey/choco/wiki/Legal#wiki-distributions-aka-chocolatey-packages) for more information. Any package found not in compliance with this will be removed immediately.
 * **Do not publish junk or malware** packages.
 * **Only post publicly relevant packages.** A package creator should consider whether his package is also useful for others. If that is not the case, it shouldn’t be published on Chocolatey.org. Reasons for that can be if the package would require a very special configuration that is unacceptable for other users or that would lead to serious vulnerabilities.
 * **Don't package software containing adware or spyware.** Packages of software that comes with bundled adware, spyware or any other unrelated software that installs even in silent mode are not allowed. But if you can figure out how to install the desired package without any adware or unrelated software, it is allowed to publish the package. That can be reached for example with additional command line switches or by adding specific values to the registry. Examples of packages which make use of this are [PDFCreator](https://github.com/stack72/MyChocolateyPackages/tree/master/PDFCreator) and [CCleaner](https://github.com/tonigellida/chocolateyautomaticpackages/tree/master/ccleaner).
@@ -18,7 +18,7 @@ There are a few rules that you have to follow before pushing packages to chocola
 * **Use a simple intuitive lowercase name for the package**. See the [package naming guidelines](http://github.com/chocolatey/chocolatey/wiki/CreatePackages#naming-your-package) for details.
 * **Packaging commercial or trial software?** Clearly state this in the package description.
 
-Is your package unqualified for the Chocolatey feed, but you like to be able to install it through Chocolatey? Don't worry, you can always host your package for free on MyGet. See [Hosting Chocolatey Packages on MyGet](https://github.com/chocolatey/chocolatey/wiki/Hosting-Chocolatey-Packages-on-MyGet).
+Is your package unqualified for the Chocolatey feed, but you like to be able to install it through Chocolatey? Don't worry, you can always host your package for free on MyGet. See [Hosting Chocolatey Packages on MyGet](https://github.com/chocolatey/choco/wiki/Hosting-Chocolatey-Packages-on-MyGet).
 
 ## Character encoding
 
@@ -85,7 +85,7 @@ Logically, the version is based on the lowest compatible version. But if you don
 
 ## Installation paths
 
-As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does Chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
+As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does Chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/choco/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
 
 ### 1. (DEPRECATED) Path provided by the `Get-BinRoot` helper
 

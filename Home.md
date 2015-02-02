@@ -9,7 +9,7 @@ TeamCity  | AppVeyor | Travis
 
 ### You can just call me Chocolatey.
 
-![Chocolatey Logo](https://github.com/chocolatey/chocolatey/wiki/images/chocolateyicon.gif "Chocolatey")
+![Chocolatey Logo](https://github.com/chocolatey/choco/wiki/images/chocolateyicon.gif "Chocolatey")
 ### Let's get Chocolatey!
 "I'm a tools enabler, I'm a global silent application installer. I configure stuff. Some people want to call me apt-get for Windows, I just want to get #chocolatey!"
 
@@ -40,11 +40,11 @@ Want to [[learn more?|ChocolateyFAQs]]
 [[Getting Started|GettingStarted]]
 [[Command Reference|CommandsReference]]
 Use Chocolatey to set up [[source code development environments|DevelopmentEnvironmentSetup]]!
-What distinction does Chocolatey make between an [[installable and a portable application|https://github.com/chocolatey/chocolatey/wiki/ChocolateyFAQs#what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application]]?
+What distinction does Chocolatey make between an [[installable and a portable application|https://github.com/chocolatey/choco/wiki/ChocolateyFAQs#what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application]]?
 
 ## Packages
 [[Creating packages|CreatePackages]]
-Keep in Mind [Distribution Rights](https://github.com/chocolatey/chocolatey/wiki/Legal#wiki-distributions-aka-chocolatey-packages)
+Keep in Mind [Distribution Rights](https://github.com/chocolatey/choco/wiki/Legal#wiki-distributions-aka-chocolatey-packages)
 [[Package Function Reference|HelpersReference]]
 [[Outdated packages? Triage process|PackageTriageProcess]]
 
