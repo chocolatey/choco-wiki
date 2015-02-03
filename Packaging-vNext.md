@@ -1,1 +1,1 @@
-`-+[]{},.=-_!~`#` - all valid for folder names
+`-+[]{},.=-_!~``#` - all valid for folder names
