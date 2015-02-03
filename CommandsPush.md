@@ -1,5 +1,5 @@
 # Chocolatey Push (choco push)
-***NOTE***: 100% compatible with older chocolatey client (0.9.8.32 and below) with options and switches. Default push location is deprecated and will be removed by v1.
+***NOTE***: 100% compatible with older chocolatey client (0.9.8.32 and below) with options and switches. Default push location is deprecated and will be removed by v1. In most cases you can still pass options and switches with one dash (`-`). See [[how to pass arguments|CommandsReference#how-to-pass-options--switches]] for more details.
 
 Chocolatey will attempt to push a compiled nupkg to a package feed.
  Some may prefer to use `cpush` as a shortcut for `choco push`.
