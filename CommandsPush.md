@@ -1,9 +1,11 @@
 # Chocolatey Push (choco push)
+***NOTE***: 100% compatible with older chocolatey client (0.9.8.32 and below) with options and switches.
+
 Chocolatey will attempt to push a compiled nupkg to a package feed.
  Some may prefer to use `cpush` as a shortcut for `choco push`.
 
 A feed can be a local folder, a file share, the community feed
- 'https://chocolatey.org/' or a custom/private feed.
+ `https://chocolatey.org/` or a custom/private feed.
 
 ## Usage
 
@@ -14,7 +16,7 @@ A feed can be a local folder, a file share, the community feed
 
 ## Examples
 
-    choco push --source "https://chocolatey.org/"
+    choco push --source https://chocolatey.org/
     choco push --source "https://chocolatey.org/" -t 500
     choco push --source "https://chocolatey.org/" -k="123-123123-123"
 
