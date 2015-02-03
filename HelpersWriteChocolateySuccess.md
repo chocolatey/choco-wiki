@@ -2,17 +2,26 @@
 
 **NOTE**: This has been deprecated and is no longer useful as of 0.9.9.
 
-`Write-ChocolateySuccess $packageName`
-
-## Description
 Notes a successful Chocolatey install.
 
-## Parameters
-### $packageName
-This is an arbitrary name.
-Example: `'7zip'`
+## Usage
+
+```powershell
+Write-ChocolateySuccess $packageName
+```
 
 ## Examples
-`Write-ChocolateySuccess 'StExBar'`
+
+```powershell
+Write-ChocolateySuccess 'StExBar'
+```
+
+## Parameters
+
+* `-packageName`
+
+   This is an arbitrary name.
+
+   Example: `'7zip'`
 
 [[Function Reference|HelpersReference]]
