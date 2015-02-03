@@ -1,4 +1,6 @@
 # Chocolatey Install (choco install)
+***NOTE***: 100% compatible with previous version with options and switches. Add `-y` for previous behavior with no prompt.
+
 Installs a package or a list of packages (sometimes specified as a
  packages.config). Some may prefer to use `cinst` as a shortcut for
  `choco install`.
