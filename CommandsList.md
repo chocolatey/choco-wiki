@@ -1,5 +1,5 @@
 # Chocolatey List (choco list) / Search (choco search)
-***NOTE***: 100% compatible with older chocolatey client (0.9.8.32 and below) with options and switches. In most cases you can still pass options and switches with one dash (`-`). See [[how to pass arguments|]]
+***NOTE***: 100% compatible with older chocolatey client (0.9.8.32 and below) with options and switches. In most cases you can still pass options and switches with one dash (`-`). See [[how to pass arguments|CommandsReference#how-to-pass-options--switches]]
 
 Chocolatey will perform a search for a package local or remote.  Some
  may prefer to use `clist` as a shortcut for `choco list`.
