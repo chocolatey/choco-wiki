@@ -16,13 +16,15 @@ Install-ChocolateyVsixPackage $packageName $vsixUrl `
 ## Examples
 
 ```powershell
-Install-ChocolateyVsixPackage "MyPackage" http://visualstudiogallery.msdn.microsoft.com/ea3a37c9-1c76-4628-803e-b10a109e7943/file/73131/1/AutoWrockTestable.vsix
+Install-ChocolateyVsixPackage "MyPackage" `
+ http://visualstudiogallery.msdn.microsoft.com/ea3a37c9-1c76-4628-803e-b10a109e7943/file/73131/1/AutoWrockTestable.vsix
 ```
 
 This downloads the AutoWrockTestable VSIX from the Visual Studio Gallery and installs it to the latest version of VS.
 
 ```powershell
-Install-ChocolateyVsixPackage "MyPackage" http://visualstudiogallery.msdn.microsoft.com/ea3a37c9-1c76-4628-803e-b10a109e7943/file/73131/1/AutoWrockTestable.vsix 11
+Install-ChocolateyVsixPackage "MyPackage" `
+ http://visualstudiogallery.msdn.microsoft.com/ea3a37c9-1c76-4628-803e-b10a109e7943/file/73131/1/AutoWrockTestable.vsix 11
 ```
 
 This downloads the AutoWrockTestable VSIX from the Visual Studio Gallery and installs it to Visual Studio 2012 (v11.0).
