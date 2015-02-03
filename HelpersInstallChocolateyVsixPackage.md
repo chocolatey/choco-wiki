@@ -31,11 +31,13 @@ This downloads the AutoWrockTestable VSIX from the Visual Studio Gallery and ins
 * `-packageName`
 
     This is an arbitrary name.
+
     Example: `'7zip'`
 
 * `-vsixUrl`
 
     The URL of the package to be installed.
+
     Example: `http://visualstudiogallery.msdn.microsoft.com/ea3a37c9-1c76-4628-803e-b10a109e7943/file/73131/1/AutoWrockTestable.vsix`
 
 * `-vsVersion` _(optional)_
@@ -45,13 +47,17 @@ This downloads the AutoWrockTestable VSIX from the Visual Studio Gallery and ins
 * `-checksum` _(optional)_
 
     This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+
     Example: `-checksum 'C67962F064924F3C7B95D69F88E745C0'`
+
     Defaults to ``.
 
 * `-checksumType` _(optional)_
 
     This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+
     Example: `-checksumType 'sha1'`
+    
     Defaults to `md5`.
 
 [[Helper Reference|HelpersReference]]
