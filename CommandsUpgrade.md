@@ -1,5 +1,5 @@
 # Chocolatey Upgrade (choco upgrade)
-***NOTE***: 100% compatible with previous version with options and switches. Add `-y` for previous behavior with no prompt.
+***NOTE***: 100% compatible with older chocolatey client (0.9.8.32 and below) with options and switches. Add `-y` for previous behavior with no prompt.
 
 Upgrades an existing package to the latest version, if there is a newer
 version available. Some
