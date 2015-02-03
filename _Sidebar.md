@@ -20,7 +20,8 @@
   - [[Pin|CommandsPin]]
   - [[Upgrade|CommandsUpgrade]]
   - [[Uninstall|CommandsUninstall]]
-  - [[Source|CommandsSources]]
+  - [[Source / Sources|CommandsSources]]
+  - [[Feature|CommandsFeatures]]
 
 **Creating Packages**
 
