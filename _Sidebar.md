@@ -21,7 +21,7 @@
   - [[Upgrade|CommandsUpgrade]]
   - [[Uninstall|CommandsUninstall]]
   - [[Source / Sources|CommandsSources]]
-  - [[Feature|CommandsFeatures]]
+  - [[Feature|CommandsFeature]]
 
 **Creating Packages**
 
