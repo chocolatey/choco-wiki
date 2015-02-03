@@ -15,4 +15,4 @@ The path to the application that should be launched when clicking on the task ba
 
 This will create a Visual Studio task bar icon.
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

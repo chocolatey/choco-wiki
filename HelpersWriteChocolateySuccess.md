@@ -15,4 +15,4 @@ Example: `'7zip'`
 ## Examples
 `Write-ChocolateySuccess 'StExBar'`
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

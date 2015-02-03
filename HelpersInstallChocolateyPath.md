@@ -21,4 +21,4 @@ Defaults to `'User'`
 
 `Install-ChocolateyPath "$env:SystemDrive\Program Files\MySQL\MySQL Server 5.5\bin" 'Machine'`
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

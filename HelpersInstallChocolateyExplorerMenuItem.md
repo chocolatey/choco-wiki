@@ -33,4 +33,4 @@ This will create a context menu item in Windows Explorer when any file is right 
 
 This will create a context menu item in Windows Explorer when any folder is right clicked. The menu item will appear with the text "Open with Sublime Text 2" and will invoke sublime text 2 when seleted.
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

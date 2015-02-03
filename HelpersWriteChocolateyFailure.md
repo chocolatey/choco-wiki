@@ -18,4 +18,4 @@ Example: `"$($_.Exception.Message)"`
 ## Examples
 `Write-ChocolateyFailure 'StExBar' "$($_.Exception.Message)"`
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

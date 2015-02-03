@@ -24,4 +24,4 @@ The path to the application's executable to be associated.
 
 This will create an association between Sublime Text 2 and all .txt files. Any .txt file opened will by default open with Sublime Text 2.
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

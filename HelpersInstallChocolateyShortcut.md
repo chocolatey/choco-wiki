@@ -46,4 +46,4 @@ Install-ChocolateyShortcut -shortcutFilePath "C:\notepad.lnk" `
 
     A text description to be associated with the new description.
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

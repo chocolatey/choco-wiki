@@ -59,4 +59,4 @@ $psFile = Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) "In
 Install-ChocolateyPowershellCommand 'installwindowsimage.powershell' $psFile
 ```
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

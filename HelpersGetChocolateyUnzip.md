@@ -16,4 +16,4 @@ Example: `'C:\tools\poshgit'`
 ## Examples
 `Get-ChocolateyUnzip 'c:\tools\poshgit.zip' 'C:\tools\poshgit'`
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

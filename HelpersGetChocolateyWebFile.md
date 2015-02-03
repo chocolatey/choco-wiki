@@ -49,4 +49,4 @@ $nodePath = Join-Path $scriptPath 'node.exe'
 Get-ChocolateyWebFile 'nodejs' "$nodePath" 'http://nodejs.org/dist/v0.5.2/node.exe'
 ```
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

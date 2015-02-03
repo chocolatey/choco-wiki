@@ -34,4 +34,4 @@ Defaults to `@(0)`.
 
 `Install-ChocolateyInstallPackage '7zip' 'exe' '/S' 'c:\somepath\7zipInstaller.msi' -validExitCodes @(0,21,33)`
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

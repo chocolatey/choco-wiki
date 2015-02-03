@@ -68,4 +68,4 @@ Defaults to checksumType's value.
 * [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]] for installing a zip package.
 * To add executables to the path see [[Get-ChocolateyBins|HelpersGetChocolateyBins]]
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

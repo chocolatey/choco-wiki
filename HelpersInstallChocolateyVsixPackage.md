@@ -60,4 +60,4 @@ This downloads the AutoWrockTestable VSIX from the Visual Studio Gallery and ins
     
     Defaults to `md5`.
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

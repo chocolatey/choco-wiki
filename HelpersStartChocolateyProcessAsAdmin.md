@@ -33,4 +33,4 @@ $psFile = Join-Path "$(Split-Path -parent $MyInvocation.MyCommand.Definition)" '
 Start-ChocolateyProcessAsAdmin "& `'$psFile`'"
 ```
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

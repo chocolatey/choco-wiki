@@ -22,4 +22,4 @@ Get-ChocolateyBins $installDir
 Remove-Item $diffExeIgnore,$uninstallExeIgnore,$gvimExeGui
 ```
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

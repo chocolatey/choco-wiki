@@ -16,4 +16,4 @@ Use the Update-SessionEnvironment command to refresh the current
 PowerShell session with all environment settings possibly performed by
 Chocolatey package installs.
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]

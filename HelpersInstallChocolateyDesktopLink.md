@@ -14,4 +14,4 @@ Example: `'C:\tools\NHibernateProfiler\nhprof.exe'`
 ## Examples
 `Install-ChocolateyDesktopLink 'C:\tools\NHibernateProfiler\nhprof.exe'`
 
-[[Helper Reference|HelpersReference]]
+[[Function Reference|HelpersReference]]
