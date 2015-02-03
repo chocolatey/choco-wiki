@@ -9,7 +9,8 @@ You can locate a VSIX Url by finding the download link of Visual Studio extensio
 ## Usage
 
 ```powershell
-Install-ChocolateyVsixPackage $packageName $vsixUrl $vsVersion -checksum $checksum -checksumType $checksumType
+Install-ChocolateyVsixPackage $packageName $vsixUrl `
+ $vsVersion -checksum $checksum -checksumType $checksumType
 ```
 
 ## Examples
