@@ -38,7 +38,7 @@ We'll try to capture everything here that you should know about. Please call `ch
    2. `choco version` has been removed. Use `choco upgrade pkgName --noop` instead.
    3. `Write-ChocolateySuccess`, `Write-ChocolateyFailure` have been deprecated.
    4. `update` is now `upgrade`. `update` has been removed for now but will be reincarnated later for a different purpose. **Hint**: It rhymes with smackage pindexes.
-   5. `sources` is now `source`.
+   5. `sources` Is deprecated for `source`.
  * packages.config has a slightly different structure now. See [Packages.config](https://github.com/chocolatey/choco/wiki/CommandsInstall#packagesconfig) and [#10](https://github.com/chocolatey/choco/issues/10)
  * PowerShell - Ensure all errors are terminating errors - see [#48](https://github.com/chocolatey/choco/issues/48)
 
