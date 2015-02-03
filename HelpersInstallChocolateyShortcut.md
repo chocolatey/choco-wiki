@@ -1,4 +1,5 @@
 # Install-ChocolateyShortcut
+
 This adds a shortcut, at the specified location, with the option to specify
 a number of additional properties for the shortcut, such as Working Directory,
 Arguments, Icon Location, and Description.
@@ -18,7 +19,9 @@ Install-ChocolateyShortcut -shortcutFilePath "C:\notepad.lnk" `
  "C:\" -arguments "C:\test.txt" -iconLocation "C:\test.ico" `
  -description "This is the description"
 ```
+
 ## Parameters
+
 * `-ShortcutFilePath`
 
     The full absolute path to where the shortcut should be created.
@@ -42,3 +45,5 @@ Install-ChocolateyShortcut -shortcutFilePath "C:\notepad.lnk" `
 * `-Description` _(optional)_
 
     A text description to be associated with the new description.
+
+[[Helper Reference|HelpersReference]]
