@@ -35,10 +35,10 @@ We'll try to capture everything here that you should know about. Please call `ch
    3. `choco push` requires a source now, so you must specify `-s https://chocolatey.org/` when pushing to the community feed - see [Push Command](https://github.com/chocolatey/choco/wiki/CommandsPush)
  * **Deprecated/Removed Commands:**
    1. `installmissing` has been removed. It was deprecated awhile ago, so this should not be a surprise.
-   2. `choco version` has been removed. `cver` is still available until v1. Use `choco upgrade pkgName --noop` instead.
+   2. `choco version` has been deprecated and will be removed in v1. Use `choco upgrade pkgName --noop` instead.
    3. `Write-ChocolateySuccess`, `Write-ChocolateyFailure` have been deprecated.
-   4. `update` is now `upgrade`. `update` has been removed for now but will be reincarnated later for a different purpose. **Hint**: It rhymes with smackage pindexes.
-   5. `sources` Is deprecated for `source`.
+   4. `update` is now `upgrade`. `update` has been deprecated and will be removed/replaced in v1. Update will be reincarnated later for a different purpose. **Hint**: It rhymes with smackage pindexes.
+   5. `sources` is deprecated for `source` and may be removed in v1.
  * packages.config has a slightly different structure now. See [Packages.config](https://github.com/chocolatey/choco/wiki/CommandsInstall#packagesconfig) and [#10](https://github.com/chocolatey/choco/issues/10)
  * PowerShell - Ensure all errors are terminating errors - see [#48](https://github.com/chocolatey/choco/issues/48)
 
