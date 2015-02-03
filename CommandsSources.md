@@ -1,9 +1,12 @@
 # Chocolatey Source (choco source)
+***NOTE***: Mostly compatible with older chocolatey client (0.9.8.32 and below) with options and switches. When enabling, disabling or removing a source, use `-name` in front of the option now.
+
 Chocolatey will allow you to interact with sources.
 
 ## Usage
 
     choco source [list]|add|remove|disable|enable [options/switches]
+    choco sources [list]|add|remove|disable|enable [options/switches]
 
 ## Examples
 
