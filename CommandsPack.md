@@ -1,4 +1,5 @@
 # Chocolatey Pack (choco pack)
+***NOTE***: 100% compatible with older chocolatey client (0.9.8.32 and below) with options and switches.
 
 Chocolatey will attempt to package a nuspec into a compiled nupkg. Some
  may prefer to use `cpack` as a shortcut for `choco pack`.
