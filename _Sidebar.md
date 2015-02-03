@@ -15,8 +15,7 @@
  - [[Proxy Settings|Proxy-Settings-for-Chocolatey]]
  - **Commands:**
   - [[Complete Reference|CommandsReference]]
-  - [[List|CommandsList]]
-  - [[Search|CommandsList]]
+  - [[List / Search |CommandsList]]
   - [[Install|CommandsInstall]]
   - [[Pin|CommandsPin]]
   - [[Upgrade|CommandsUpgrade]]
