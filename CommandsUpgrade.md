@@ -1,4 +1,6 @@
 # Chocolatey Upgrade (choco upgrade)
+***NOTE***: 100% compatible with previous version with options and switches. Add `-y` for previous behavior with no prompt.
+
 Upgrades an existing package to the latest version, if there is a newer
 version available. Some
  may prefer to use `cup` as a shortcut for `choco upgrade`.
