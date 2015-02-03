@@ -1,5 +1,5 @@
 # Chocolatey Source (choco source)
-***NOTE***: Mostly compatible with older chocolatey client (0.9.8.32 and below) with options and switches. When enabling, disabling or removing a source, use `-name` in front of the option now.
+***NOTE***: Mostly compatible with older chocolatey client (0.9.8.32 and below) with options and switches. When enabling, disabling or removing a source, use `-name` in front of the option now. In most cases you can still pass options and switches with one dash (`-`). See [[how to pass arguments|CommandsReference#how-to-pass-options--switches]] for more details.
 
 Chocolatey will allow you to interact with sources.
 
