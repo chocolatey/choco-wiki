@@ -4,8 +4,7 @@ This is a listing of all of the different things you can pass to choco.
 
 ## Commands
 
- * [[list|CommandsList]] - lists remote or local packages
- * [[search|CommandsList]] - searches remote or local packages
+ * [[list / search |CommandsList]] - searches and lists remote or local packages
  * [[install|CommandsInstall]] - installs packages from various sources
  * installmissing - **REMOVED**
  * update - **REMOVED** - RESERVED for future use (You are looking for upgrade, these are not the droids you are looking for)
@@ -15,7 +14,7 @@ This is a listing of all of the different things you can pass to choco.
  * help - **REMOVED** - use `-h` on any command.
 
 ## Commands (intermediate to advanced)
- * [[source|CommandsSources]] - view and configure default sources
+ * [[source / sources|CommandsSources]] - view and configure default sources
  * [[apikey|CommandsApiKey]] - retrieves or saves an apikey for a particular source
  * [[pin|CommandsPin]] - suppress upgrades to a package
 
