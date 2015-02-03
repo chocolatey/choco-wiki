@@ -13,6 +13,7 @@
  - [[How to uninstall|Uninstallation]]
  - [[Getting Started|GettingStarted]]
  - [[Proxy Settings|Proxy-Settings-for-Chocolatey]]
+
  - **Commands:**
   - [[Complete Reference|CommandsReference]]
   - [[List / Search |CommandsList]]
