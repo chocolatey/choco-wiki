@@ -1,1 +1,1 @@
-``-+[]{},.=-_!~`#`` - all valid for folder names
+``-+[]{},.=-_!~`#$%^&()@`` - all valid for folder names - will need to determine what makes sense, what works on Linux as well and then propose a packaging format
