@@ -69,8 +69,7 @@ This is a listing of all of the different things you can pass to choco.
 
 You can pass options and switches in the following ways:
 
- * `-` - except for normal switches (not 1 character) when using option 
-   bundling, see below.
+ * `-`
  * `--` - except for one character switches
  * `+`
  * `/`
