@@ -7,7 +7,8 @@ Installs a package or a list of packages (sometimes specified as a
 
 ## Usage
 
-    choco install pkg|packages.config [pkg2 pkgN] [options/switches]
+    choco install <pkg|packages.config> [<pkg2> <pkgN>] [<options/switches>]
+    cinst <pkg|packages.config> [<pkg2> <pkgN>] [<options/switches>]
 
 **NOTE**: `all` is a special package keyword that will allow you to install
  all packages from a custom feed. Will not work with Chocolatey default
@@ -25,8 +26,8 @@ Installs a package or a list of packages (sometimes specified as a
 Choco can also install directly from a nuspec/nupkg file (this aids in
  testing packages):
 
-    choco install path/to/nuspec
-    choco install path/to/nupkg
+    choco install <path/to/nuspec>
+    choco install <path/to/nupkg>
 
 Install multiple versions of a package using -m (AllowMultiple versions)
 
