@@ -6,7 +6,8 @@ Chocolatey will attempt to package a nuspec into a compiled nupkg. Some
 
 ## Usage
 
-    choco pack [path to nuspec] [options/switches]
+    choco pack [<path to nuspec>] [<options/switches>]
+    cpack [<path to nuspec>] [<options/switches>]
 
 Examples:
 
