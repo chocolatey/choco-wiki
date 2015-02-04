@@ -5,17 +5,25 @@ This will download a file from a url and unzip it on your machine. Has error han
 ## Usage
 
 ```powershell
-Install-ChocolateyZipPackage $packageName $url $unzipLocation $url64 -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64
+Install-ChocolateyZipPackage $packageName $url $unzipLocation $url64 -checksum `
+ $checksum -checksumType $checksumType -checksum64 $checksum64 ` 
+ -checksumType64 $checksumType64
 ```
 
 ## Examples
 
 ```powershell
-Install-ChocolateyZipPackage 'gittfs' 'https://github.com/downloads/spraints/git-tfs/GitTfs-0.11.0.zip' $gittfsPath
+Install-ChocolateyZipPackage 'gittfs' `
+ 'https://github.com/downloads/spraints/git-tfs/GitTfs-0.11.0.zip' $gittfsPath
 
-Install-ChocolateyZipPackage 'sysinternals' 'http://download.sysinternals.com/Files/SysinternalsSuite.zip' "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+Install-ChocolateyZipPackage 'sysinternals' `
+ 'http://download.sysinternals.com/Files/SysinternalsSuite.zip' `
+ "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
-Install-ChocolateyZipPackage 'sysinternals' 'http://download.sysinternals.com/Files/SysinternalsSuite.zip' "$(Split-Path -parent $MyInvocation.MyCommand.Definition)" 'http://download.sysinternals.com/Files/SysinternalsSuitex64.zip'
+Install-ChocolateyZipPackage 'sysinternals' `
+ 'http://download.sysinternals.com/Files/SysinternalsSuite.zip' `
+ "$(Split-Path -parent $MyInvocation.MyCommand.Definition)" `
+ 'http://download.sysinternals.com/Files/SysinternalsSuitex64.zip'
 ```
 
 ## Parameters
