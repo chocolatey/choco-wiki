@@ -11,13 +11,13 @@ Get-ChocolateyBins $packageFolder
 ## Examples
 
 ```powershell
-$installDir = Split-Path -Parent (Get-ItemProperty HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Vim UninstallString).UninstallString
+$installDir = Split-Path -Parent (Get-ItemProperty ` HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Vim UninstallString).UninstallString
 # special batch files we want to create
 $diffExeIgnore = Join-Path $installDir "diff.exe.ignore"
 $uninstallExeIgnore = Join-Path $installDir "uninstall.exe.ignore"
 $gvimExeGui = Join-Path $installDir "gvim.exe.gui"
 
-New-Item $diffExeIgnore,$uninstallExeIgnore,$gvimExeGui -Type File -Force | Out-Null
+New-Item $diffExeIgnore,$uninstallExeIgnore,$gvimExeGui ` -Type File -Force | Out-Null
 Get-ChocolateyBins $installDir
 Remove-Item $diffExeIgnore,$uninstallExeIgnore,$gvimExeGui
 ```
