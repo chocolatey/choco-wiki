@@ -86,7 +86,7 @@ You can pass options and switches in the following ways:
    wanting to pass specific options.
  * When you need to quote things, such as when using spaces, please use
    single quote marks (`'`). In cmd.exe, you can also use double double
-   quotes (i.e. `""""yo""""`). This is due to the hand off to PowerShell - 
+   quotes (i.e. `""yo""`). This is due to the hand off to PowerShell - 
    it seems to strip off the outer set of quotes. TODO: TEST THIS, MAY 
    NOT BE RELEVANT NOW.
 
