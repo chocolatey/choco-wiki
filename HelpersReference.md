@@ -11,8 +11,8 @@ These functions call other functions and have error handling built in. When usin
 
 ## Error / Success Functions
 
-* [[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]  - DEPRECATED
-* [[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  - DEPRECATED
+* [[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]  - **DEPRECATED**
+* [[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  - **DEPRECATED**
 
 If do anything besides use the main helpers, it is strongly suggested you format your chocolateyInstall.ps1 as follows:
 
