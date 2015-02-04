@@ -1,8 +1,8 @@
 # [DEPRECATED] Write-ChocolateySuccess
 
-**NOTE**: This has been deprecated and is no longer useful as of 0.9.9.
-
 Notes a successful Chocolatey install.
+
+**NOTE:** This has been deprecated and is no longer useful as of 0.9.9.
 
 ## Usage
 
