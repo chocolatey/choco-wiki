@@ -5,7 +5,9 @@ Downloads a file from the internets.
 ## Usage
 
 ```powershell
-Get-ChocolateyWebFile $packageName $fileFullPath $url $url64bit -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64
+Get-ChocolateyWebFile $packageName $fileFullPath $url $url64bit `
+ -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 `
+ -checksumType64 $checksumType64
 ```
 
 ## Examples
