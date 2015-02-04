@@ -9,7 +9,8 @@ Upgrades a package or a list of packages.
 
 ## Usage
 
-    choco upgrade pkg [pkg2 pkgN] [options/switches]
+    choco upgrade <pkg|all> [<pkg2> <pkgN>] [<options/switches>]
+    cup <pkg|all> [<pkg2> <pkgN>] [<options/switches>]
 
 **NOTE**: `all` is a special package keyword that will allow you to upgrade
  all currently installed packages.
