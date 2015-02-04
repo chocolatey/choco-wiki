@@ -6,9 +6,11 @@ This also includes issues that were being tracked in the old Chocolatey reposito
 
 The two links above will not capture everything that has changed, since this is a complete rewrite. We broke everything. If this were a v1+, it would be a major release. But we are less than v1, so 0.9.9 it is! ;)
 
-Of course we also fixed and improved a bunch of things, so we feel the trade off is well worth the changes.
+Okay, we didn't break everything. We have maintained nearly full compatibility with how you pass options into choco, although the output may be a bit different (better! We hope) and in at least one case, additional switches (or a feature setting) is/are required - we limited this to security settings only.
 
-We'll try to capture everything here that you should know about. Please call `choco.exe -h` to get started.
+We also fixed and improved a bunch of things, so we feel the trade off is well worth the changes.
+
+We'll try to capture everything here that you should know about. Please call `choco -?` or `choco.exe -h` to get started.
 
 ### KNOWN ISSUES
 
@@ -19,7 +21,7 @@ We'll try to capture everything here that you should know about. Please call `ch
 
 ### BREAKING CHANGES
 
- * [Security] **Prompt for confirmation**: For security reasons, we now stop for confirmation before changing the state of the system on most commands. You can pass `-y` to confirm any prompts or set a value in the config that will globally confirm - see [#52](https://github.com/chocolatey/choco/issues/52)
+ * [Security] **Prompt for confirmation**: For security reasons, we now stop for confirmation before changing the state of the system on most commands. You can pass `-y` to confirm any prompts or set a value in the config that will globally confirm - see [#52](https://github.com/chocolatey/choco/issues/52) (**NOTE**: This is one of those additional switches we were talking about)
  * [Security] If your default installation is still at `c:\Chocolatey`, this version will force a move to ProgramData and update the environment settings - see [#7](https://github.com/chocolatey/choco/issues/7)
  * **Configuration Breaking Changes:**
    1. You now have one config file to interact with in %ChocolateyInstall%\config - your user config is no longer valid and can be removed once you migrate settings to the config.
