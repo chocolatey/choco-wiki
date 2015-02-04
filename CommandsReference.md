@@ -74,16 +74,17 @@ You can pass options and switches in the following ways:
    bundled. e.g. `-d` (debug), `-f` (force), `-v` (verbose), and `-y` 
    (confirm yes) can be bundled as `-dfvy`.
  * **Use Equals**: You can also include or not include an equals sign 
-   `=` between options and values. And quote the values.
+   `=` between options and values.
+ * **Quote Values**: When you need to quote things, such as when using 
+   spaces, please use single quote marks (`'`). In cmd.exe, you can 
+   also use double double quotes (i.e. `""yo""`). This is due to 
+   the hand off to PowerShell - it seems to strip off the outer set of 
+   quotes. TODO: TEST THIS, MAY NOT BE RELEVANT NOW.
  * Options and switches apply to all items passed, so if you are 
    installing multiple packages, and you use `--version=1.0.0`, choco 
    is going to look for and try to install version 1.0.0 of every 
    package passed. So please split out multiple package calls when 
    wanting to pass specific options.
- * When you need to quote things, such as when using spaces, please use
-   single quote marks (`'`). In cmd.exe, you can also use double double
-   quotes (i.e. `""yo""`). This is due to the hand off to PowerShell - 
-   it seems to strip off the outer set of quotes. TODO: TEST THIS, MAY 
-   NOT BE RELEVANT NOW.
+
 
 
