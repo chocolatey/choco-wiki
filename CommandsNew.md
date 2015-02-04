@@ -3,7 +3,7 @@ Chocolatey will generate package specification files for a new package.
 
 ## Usage
 
-    choco new name [options/switches] [property=value]
+     choco new <name> [<options/switches>] [<property=value> <propertyN=valueN>]
 
 Possible properties to pass:
 ```
