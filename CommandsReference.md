@@ -15,7 +15,7 @@ This is a listing of all of the different things you can pass to choco.
 
 ## Commands (intermediate to advanced)
  * [[source / sources|CommandsSources]] - view and configure default sources
- * [[apikey|CommandsApiKey]] - retrieves or saves an apikey for a particular source
+ * [[apikey / setapikey|CommandsApiKey]] - retrieves or saves an apikey for a particular source
  * [[pin|CommandsPin]] - suppress upgrades to a package
 
 ## Package Creation Commands
