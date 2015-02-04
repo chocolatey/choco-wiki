@@ -5,23 +5,31 @@ This will install a PowerShell script as a command on your system. Like an execu
 ## Usage
 
 ```powershell
-Install-ChocolateyPowershellCommand $packageName $psFileFullPath $url $url64 -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64
+Install-ChocolateyPowershellCommand $packageName $psFileFullPath $url $url64 `
+ -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 `
+ -checksumType64 $checksumType64
 ```
 
 ## Examples
 
 ```powershell
-$psFile = Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) "Install-WindowsImage.ps1"
-Install-ChocolateyPowershellCommand 'installwindowsimage.powershell' $psFile 'http://somewhere.com/downloads/Install-WindowsImage.ps1'
+$psFile = Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) `
+ "Install-WindowsImage.ps1"
+Install-ChocolateyPowershellCommand 'installwindowsimage.powershell' $psFile `
+ 'http://somewhere.com/downloads/Install-WindowsImage.ps1'
 ```
 
 ```powershell
-$psFile = Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) "Install-WindowsImage.ps1"
-Install-ChocolateyPowershellCommand 'installwindowsimage.powershell' $psFile 'http://somewhere.com/downloads/Install-WindowsImage.ps1' 'http://somewhere.com/downloads/Install-WindowsImagex64.ps1'
+$psFile = Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) `
+ "Install-WindowsImage.ps1" 
+Install-ChocolateyPowershellCommand 'installwindowsimage.powershell' $psFile ` 
+ 'http://somewhere.com/downloads/Install-WindowsImage.ps1' `
+ 'http://somewhere.com/downloads/Install-WindowsImagex64.ps1'
 ```
 
 ```powershell
-$psFile = Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) "Install-WindowsImage.ps1"
+$psFile = Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) `
+ "Install-WindowsImage.ps1" 
 Install-ChocolateyPowershellCommand 'installwindowsimage.powershell' $psFile
 ```
 
