@@ -7,6 +7,7 @@ Anything that doesn't contain source and key will list api keys.
 ## Usage
 
     choco apikey [options/switches]
+    choco setapikey [options/switches]
 
 ## Examples
 
