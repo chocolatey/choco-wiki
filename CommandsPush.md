@@ -11,8 +11,8 @@ A feed can be a local folder, a file share, the community feed
 
 ## Usage
 
-    choco push [path to nupkg] [options/switches]
-    cpush [path to nupkg] [options/switches]
+    choco push [<path to nupkg>] [<options/switches>]
+    cpush [<path to nupkg>] [<options/switches>]
 
 **NOTE**: If there is more than one nupkg file in the folder, the command
  will require specifying the path to the file.
