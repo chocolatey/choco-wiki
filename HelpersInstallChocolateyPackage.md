@@ -7,19 +7,29 @@ This will download a native installer from a url and install it on your machine.
 ## Usage
 
 ```powershell
-Install-ChocolateyPackage $packageName $installerType $silentArgs $url $url64bit -validExitCodes $validExitCodes -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64
+Install-ChocolateyPackage $packageName $installerType $silentArgs $url $url64bit `
+ -validExitCodes $validExitCodes -checksum $checksum -checksumType $checksumType `
+ -checksum64 $checksum64 -checksumType64 $checksumType64
 ```
 
 ## Examples
 
 ```powershell
-Install-ChocolateyPackage 'StExBar' 'msi' '/quiet' 'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi' 'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'
+Install-ChocolateyPackage 'StExBar' 'msi' '/quiet' ` 
+ 'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi' `
+ 'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'
 
-Install-ChocolateyPackage 'mono' 'exe' '/SILENT' 'http://ftp.novell.com/pub/mono/archive/2.10.2/windows-installer/5/mono-2.10.2-gtksharp-2.12.10-win32-5.exe'
+Install-ChocolateyPackage 'mono' 'exe' '/SILENT' `
+ 'http://ftp.novell.com/pub/mono/archive/2.10.2/windows-installer/5/mono-2.10.2-gtksharp-2.12.10-win32-5.exe'
 
-Install-ChocolateyPackage 'mono' 'exe' '/SILENT' 'http://somehwere/something.exe' -validExitCodes @(0,21)
+Install-ChocolateyPackage 'mono' 'exe' '/SILENT' ` 
+ 'http://somehwere/something.exe' -validExitCodes @(0,21)
 
-Install-ChocolateyPackage 'ruby.devkit' 'exe' '/SILENT' 'http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe' 'http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe' -checksum '9383f12958aafc425923e322460a84de' -checksumType = 'md5' -checksum64 'ce99d873c1acc8bffc639bd4e764b849'
+Install-ChocolateyPackage 'ruby.devkit' 'exe' '/SILENT' `
+ 'http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe' `
+ 'http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe' `
+ -checksum '9383f12958aafc425923e322460a84de' -checksumType = 'md5' `
+ -checksum64 'ce99d873c1acc8bffc639bd4e764b849'
 ```
 
 ## Parameters
