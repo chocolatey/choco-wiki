@@ -6,8 +6,9 @@ Chocolatey will perform a search for a package local or remote.  Some
 
 ## Usage
 
-    choco search filter [options/switches]
-    choco list filter [options/switches]
+    choco search <filter> [<options/switches>]
+    choco list <filter> [<options/switches>]
+    clist <filter> [<options/switches>]
 
 ## Examples
 
