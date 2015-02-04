@@ -5,8 +5,8 @@ Chocolatey will allow you to interact with sources.
 
 ## Usage
 
-    choco source [list]|add|remove|disable|enable [options/switches]
-    choco sources [list]|add|remove|disable|enable [options/switches]
+    choco source [list]|add|remove|disable|enable [<options/switches>]
+    choco sources [list]|add|remove|disable|enable [<options/switches>]
 
 ## Examples
 
