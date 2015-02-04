@@ -1,5 +1,7 @@
 # Chocolatey Package Functions aka Helpers Reference
+
 ## Main Functions
+
 These functions call other functions and have error handling built in. When using just them, you don't need to put error handling in your [[chocolateyInstall.ps1 file|ChocolateyInstallPS1]]. These functions call down to the other functions and encapsulate everything nicely so that it is possible to have one line chocolateyInstall.ps1 files.
 
 * [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]
@@ -25,9 +27,11 @@ try {
 ```
 
 ## More Functions
+
 These helpers require you to wrap a try catch around your chocolateyInstall.ps1 file. See the example script above.
 
 ### Administrative Access Functions
+
 When creating packages that need to run one of the following commands below, one should add the tag `admin` to the nuspec.
 
 * [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]
@@ -40,6 +44,7 @@ When creating packages that need to run one of the following commands below, one
 * [[Update-SessionEnvironment|HelpersUpdateSessionEnvironment]]
 
 ### Non-Administrator Safe Functions
+
 Some folks expressed a desire to have Chocolatey not run as administrator to reach continuous integration and developers that are not administrators on their machines.
 
 These are the functions from above as one list.
@@ -59,6 +64,7 @@ These are the functions from above as one list.
 ## Overview
 
 ### Functions in alphabetical order
+
 _(needs updating)_
 
 * __Get-BinRoot__ \[[src](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/functions/Get-BinRoot.ps1)\]
@@ -195,8 +201,6 @@ any environment variable changes that may have occured during a Chocolatey
 package install.
 
 * __Write-ChocolateyFailure__ \[[src](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/functions/Write-ChocolateyFailure.ps1)\]
-
-
 
 * __Write-FileUpdateLog__ \[[src](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/functions/Write-FileUpdateLog.ps1)\]
 

@@ -17,7 +17,7 @@ Get-ChocolateyUnzip 'c:\tools\poshgit.zip' 'C:\tools\poshgit'
 ## Parameters
 
 * `-fileFullPath`
-    
+
     This is the full path to the .zip file
 
     Example: `'c:\tools\poshgit.zip'`
