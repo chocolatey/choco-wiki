@@ -16,17 +16,20 @@ Install-ChocolateyExplorerMenuItem "sublime" "Open with Sublime Text 2" $sublime
 ## Examples
 
 ```powershell
-$sublimeDir = (Get-ChildItem $env:systemdrive\chocolatey\lib\sublimetext* | select $_.last)
+$sublimeDir = (Get-ChildItem $env:systemdrive\chocolatey\lib\sublimetext* `
+ | select $_.last)
 $sublimeExe = "$sublimeDir\tools\sublime_text.exe"
-Install-ChocolateyExplorerMenuItem "sublime" "Open with Sublime Text 2" $sublimeExe
+Install-ChocolateyExplorerMenuItem "sublime" "Open with Sublime Text" $sublimeExe
 ```
 
 This will create a context menu item in Windows Explorer when any file is right clicked. The menu item will appear with the text "Open with Sublime Text 2" and will invoke sublime text 2 when selected.
 
 ```powershell
-$sublimeDir = (Get-ChildItem $env:systemdrive\chocolatey\lib\sublimetext* | select $_.last)
+$sublimeDir = (Get-ChildItem $env:systemdrive\chocolatey\lib\sublimetext* `
+ | select $_.last)
 $sublimeExe = "$sublimeDir\tools\sublime_text.exe"
-Install-ChocolateyExplorerMenuItem "sublime" "Open with Sublime Text 2" $sublimeExe "directory"
+Install-ChocolateyExplorerMenuItem "sublime" "Open with Sublime Text 2" `
+ $sublimeExe "directory"
 ```
 
 This will create a context menu item in Windows Explorer when any folder is right clicked. The menu item will appear with the text "Open with Sublime Text 2" and will invoke sublime text 2 when seleted.
