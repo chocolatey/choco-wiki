@@ -2,7 +2,7 @@
 
 ## [0.9.9](https://github.com/chocolatey/choco/issues?q=is%3Aissue+milestone%3A0.9.9+is%3Aclosed) (unreleased)
 
-This also includes issues that were being tracked in the old Chocolatey repository: [Chocolatey 0.9.9](https://github.com/chocolatey/chocolatey/issues?labels=v0.9.9&page=1&state=closed).
+This also includes issues that were being tracked in the old Chocolatey repository: [Chocolatey 0.9.9](https://github.com/chocolatey/chocolatey/issues?q=is%3Aclosed+label%3Av0.9.9).
 
 The two links above will not capture everything that has changed, since this is a complete rewrite. We broke everything. If this were a v1+, it would be a major release. But we are less than v1, so 0.9.9 it is! ;)
 
