@@ -69,10 +69,7 @@ This is a listing of all of the different things you can pass to choco.
 
 You can pass options and switches in the following ways:
 
- * `-`
- * `--` - except for one character switches
- * `+`
- * `/`
+ * `-`, `/`, or `--` (one character switches should not use `--`)
  * **Option Bundling / Bundled Options**: One character switches can be
    bundled. e.g. `-d` (debug), `-f` (force), `-v` (verbose), and `-y` 
    (confirm yes) can be bundled as `-dfvy`.
