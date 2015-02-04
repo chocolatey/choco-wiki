@@ -3,7 +3,7 @@ Pin a package to suppress upgrades.
 
 ## Usage
 
-    choco pin [list]|add|remove [options/switches]
+    choco pin [list]|add|remove [<options/switches>]
 
 ## Examples
 
