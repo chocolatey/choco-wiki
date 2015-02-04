@@ -27,12 +27,10 @@ A feed can be a local folder, a file share, the community feed
 
 To use this command, you must have your API key saved for the community
  feed (chocolatey.org) or the source you want to push to. Or you can
- explicitly pass the apikey to the command. In order to save your API
- key for https://chocolatey.org/, log into (or register, confirm and
- then log in) https://chocolatey.org/, go to https://chocolatey.org/account,
- copy the API Key and use it in the following command:
+ explicitly pass the apikey to the command. See [[`apikey`|CommandsApiKey]] help for 
+ instructions on saving your key:
 
-    choco apikey -k <your key here> -s https://chocolatey.org/
+    choco apikey -?
 
 A common error is `Failed to process request. 'The specified API key
  does not provide the authority to push packages.' The remote server
