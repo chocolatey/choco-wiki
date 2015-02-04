@@ -6,7 +6,8 @@ Uninstalls a package or a list of packages.  Some
 
 ## Usage
 
-    choco uninstall pkg [pkg2 pkgN] [options/switches]
+    choco uninstall <pkg|all> [pkg2 pkgN] [options/switches]
+    cuninst <pkg|all> [pkg2 pkgN] [options/switches]
 
 **NOTE**: `all` is a special package keyword that will allow you to
  uninstall all packages.
