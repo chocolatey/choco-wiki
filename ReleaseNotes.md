@@ -90,7 +90,7 @@ Probably a lot of bug fixes that may not make it here, but here are the ones we 
  * Add $env:CHOCOLATEY_VERSION - see [Chocolatey #251](https://github.com/chocolatey/chocolatey/issues/251)
  * Replace ascii cue with visual cues - see [Chocolatey #376](https://github.com/chocolatey/chocolatey/pull/376)
  * Uninstall all versions of an app - see [Chocolatey #389](https://github.com/chocolatey/chocolatey/issues/389)
- * Add parameters in packages.config files - see [Chocolatey #472](https://github.com/chocolatey/chocolatey/issues/472), [Packages.config](https://github.com/chocolatey/choco/wiki/CommandsInstall#packagesconfig) and [#10](https://github.com/chocolatey/choco/issues/10)
+ * Add parameters in packages.config files - see [Packages.config](https://github.com/chocolatey/choco/wiki/CommandsInstall#packagesconfig), [Chocolatey #472](https://github.com/chocolatey/chocolatey/issues/472), and [#10](https://github.com/chocolatey/choco/issues/10)
  * Choco pack should support `-version` - see [Chocolatey #526](https://github.com/chocolatey/chocolatey/issues/526)
  * Enhancements to Start-ChocolateyProcessAsAdmin - see [Chocolatey #564](https://github.com/chocolatey/chocolatey/pull/564)
  * Install-ChocolateyFileAssociation - add label to new file types - see [Chocolatey #564](https://github.com/chocolatey/chocolatey/pull/564)
