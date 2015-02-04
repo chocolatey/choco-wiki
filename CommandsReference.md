@@ -9,7 +9,7 @@ This is a listing of all of the different things you can pass to choco.
  * installmissing - **REMOVED**
  * update - **DEPRECATED** - RESERVED for future use (You are looking for upgrade, these are not the droids you are looking for)
  * [[upgrade|CommandsUpgrade]] - upgrades packages from various sources
- * version - **DEPRECATED** - will be removed in v1 - use `choco upgrade <pkgName|All> -whatif` instead
+ * version - **DEPRECATED** - will be removed in v1 - use `choco upgrade <pkgName|all> -whatif` instead
  * [[uninstall|CommandsUninstall]] - uninstalls a package
  * help - **REMOVED** - use `-h` on any command.
 
