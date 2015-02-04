@@ -73,7 +73,7 @@ You can pass options and switches in the following ways:
  * `--` - except for one character switches
  * `+`
  * `/`
- * **Option Bundling / Bundled Options**: One character switches can be bundled. e.g. `-d` (debug), `-f` (force), `-v` (verbose), and `-y` (confirm yes) can be blended as -dfvy, but you must use `--` for all other normal options/switches e.g. `--version` instead of `-version`. If you don't do this, you may have unintended results.
+ * **Option Bundling / Bundled Options**: One character switches can be bundled. e.g. `-d` (debug), `-f` (force), `-v` (verbose), and `-y` (confirm yes) can be blended as `-dfvy`.
  * **Use Equals**: You can also include or not include an equals sign `=` between options and values. And quote the values.
  * Options and switches apply to all items passed, so if you are installing multiple packages, and you use `--version=1.0.0`, it is going to look for and try to install version 1.0.0 of every package passed. So please split out multiple package calls when wanting to pass specific options.
  * When you need to quote things, such as when using spaces, please use single quote marks (`'`). In cmd.exe, you can also use double double quotes (i.e. `""yo""`). This is due to the hand off to PowerShell - seems to strip off the outer set of quotes. TODO: TEST THIS, MAY NOT BE RELEVANT NOW.
