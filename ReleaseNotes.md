@@ -6,7 +6,7 @@ This also includes issues that were being tracked in the old Chocolatey reposito
 
 The two links above will not capture everything that has changed, since this is a complete rewrite. We broke everything. If this were a v1+, it would be a major release. But we are less than v1, so 0.9.9 it is! ;)
 
-Okay, so we didn't really break everything. We have maintained nearly full compatibility with how you pass options into choco, although the output may be a bit different (better! We hope) and in at least one case, additional switches (or a feature setting) is/are required - we limited this to security settings only.
+Okay, so we didn't really break everything. We have maintained nearly full compatibility with how you pass options into choco, although the output may be a bit different (but better, we hope) and in at least one case, additional switches (or a feature setting) is/are required - we limited this to security settings only.
 
 We also fixed and improved a bunch of things, so we feel the trade off is well worth the changes.
 
