@@ -16,8 +16,10 @@ Install-ChocolateyEnvironmentVariable "JAVA_HOME" "d:\oracle\jdk\bin"
 ```
 
 ## Parameters
-### $variableName(important)
-The name or key of the environment variable
+
+* `-variableName`
+
+    The name or key of the environment variable
 
 ## Examples
 
