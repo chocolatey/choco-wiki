@@ -4,7 +4,7 @@ Chocolatey will allow you to interact with features.
 
 ## Usage
 
-    choco feature [list]|disable|enable [options/switches]
+    choco feature [list]|disable|enable [<options/switches>]
 
 ## Examples
 
