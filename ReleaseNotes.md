@@ -35,19 +35,18 @@ We'll try to capture everything here that you should know about. Please call `ch
  * **Package Maintenance Changes**:
    1. Read the above about apikey changes
    2. Read above about dependency resolution changes.
-   3. `choco push` requires a source now, so you must specify `-s https://chocolatey.org/` when pushing to the community feed - see [Push Command](https://github.com/chocolatey/choco/wiki/CommandsPush)
+   3. `choco push` is deprecating pushing without specifying a source, so you may want to start getting used to using `-s https://chocolatey.org/` when pushing to the community feed - see [Push Command](https://github.com/chocolatey/choco/wiki/CommandsPush)
  * **Deprecated/Removed Commands:**
    1. `installmissing` has been removed. It was deprecated awhile ago, so this should not be a surprise.
    2. `choco version` has been deprecated and will be removed in v1. Use `choco upgrade pkgName --noop` or `choco upgrade pkgName -whatif` instead.
    3. `Write-ChocolateySuccess`, `Write-ChocolateyFailure` have been deprecated.
    4. `update` is now `upgrade`. `update` has been deprecated and will be removed/replaced in v1. Update will be reincarnated later for a different purpose. **Hint**: It rhymes with smackage pindexes.
-   5. `sources` is deprecated for `source` and may be removed in v1.
- * packages.config has a slightly different structure now. See [Packages.config](https://github.com/chocolatey/choco/wiki/CommandsInstall#packagesconfig) and [#10](https://github.com/chocolatey/choco/issues/10)
+   5. `sources` is deprecated for `source` and may be removed in v1. Maybe not. Who knows? ;)
  * PowerShell - Ensure all errors are terminating errors - see [#48](https://github.com/chocolatey/choco/issues/48)
 
 ### FEATURES
 
- * In app documentation! Use `choco -h` or `choco commandName -h` to learn about each command, complete with examples!
+ * In app documentation! Use `choco -?`, `choco -h` or `choco commandName -?` to learn about each command, complete with examples!
  * WhatIf/Noop mode for all commands (`--noop` can also be specified as `-whatif`) - see [Chocolatey #263](https://github.com/chocolatey/chocolatey/issues/263) and [Default Options and Switches](https://github.com/chocolatey/choco/wiki/CommandsReference#default-options-and-switches)
  * Performs like a package manager, expect to see queries failing because of unmet dependency issues.
  * **New Commands:**
