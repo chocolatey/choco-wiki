@@ -73,7 +73,7 @@ These are the functions from above as one list.
 
 * __Get-EnvironmentVariable__ \[[src](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/functions/Get-EnvironmentVariable.ps1)\]
 
-* __Get-EnvironmentVariableNames\[[src](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/functions/Get-EnvironmentVariableNames.ps1)\]
+* __Get-EnvironmentVariableNames__ \[[src](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/functions/Get-EnvironmentVariableNames.ps1)\]
 * __Get-FtpFile__ \[[src](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/functions/Get-FtpFile.ps1)\]
 
 * __Get-ProcessorBits__ \[[src](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/functions/Get-ProcessorBits.ps1)\]
