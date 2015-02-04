@@ -5,13 +5,15 @@ Creates an item in the task bar linking to the provided path.
 ## Usage
 
 ```powershell
-Install-ChocolateyPinnedTaskBarItem "${env:ProgramFiles(x86)}\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
+Install-ChocolateyPinnedTaskBarItem `
+ "${env:ProgramFiles(x86)}\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
 ```
 
 ## Examples
 
 ```powershell
-Install-ChocolateyPinnedTaskBarItem "${env:ProgramFiles(x86)}\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
+Install-ChocolateyPinnedTaskBarItem `
+ "${env:ProgramFiles(x86)}\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
 ```
 
 This will create a Visual Studio task bar icon.
