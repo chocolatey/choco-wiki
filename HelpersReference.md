@@ -61,11 +61,7 @@ These are the functions from above as one list.
 * [[Install-ChocolateyPinnedTaskBarItem|HelpersInstallChocolateyPinnedTaskBarItem]]
 * [[Install-ChocolateyShortcut|HelpersInstallChocolateyShortcut]] - v0.9.9+
 
-## Overview
-
-### Functions in alphabetical order
-
-_(needs updating)_
+## Complete List (alphabetical order)
 
 * __Get-BinRoot__ \[[src](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/functions/Get-BinRoot.ps1)\]
 
