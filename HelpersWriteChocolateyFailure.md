@@ -2,7 +2,7 @@
 
 Notes an unsuccessful Chocolatey install.
 
-**NOTE:** This has been deprecated and is no longer useful as of 0.9.9. Instead please just use `throw $_` when catching errors.
+**NOTE:** This has been deprecated and is no longer useful as of 0.9.9. Instead please just use `throw $_.Exception` when catching errors.
 
 ## Usage
 
