@@ -22,7 +22,7 @@ try {
   #Your code here...
 
 } catch {
-  throw $_
+  throw $_.Exception
 }
 ```
 
