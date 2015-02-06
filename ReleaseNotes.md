@@ -36,7 +36,6 @@ We'll try to capture everything here that you should know about. Please call `ch
  * **Package Maintenance Changes**:
    1. Read the above about apikey changes
    2. Read above about dependency resolution changes.
-   3. `choco push` is deprecating pushing without specifying a source, so you may want to start getting used to using `-s https://chocolatey.org/` when pushing to the community feed - see [Push Command](https://github.com/chocolatey/choco/wiki/CommandsPush)
  * **Deprecated/Removed Commands:**
    1. `installmissing` has been removed. It was deprecated awhile ago, so this should not be a surprise.
    2. `choco version` has been deprecated and will be removed in v1. Use `choco upgrade pkgName --noop` or `choco upgrade pkgName -whatif` instead.
