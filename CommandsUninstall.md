@@ -6,6 +6,7 @@ Uninstalls a package or a list of packages.  Some
 
 **NOTE**: Automatic Uninstaller (AutoUninstall) is turned off by default. 
  To turn it on, run the following command:
+
     feature enable -n autoUninstaller
 
 ## Usage
