@@ -33,7 +33,7 @@ We'll try to capture everything here that you should know about. Please call `ch
    1. Choco now installs packages without version numbers on folders. This means quite a few things...
    2. Upgrading packages doesn't install a new version next to an old version, it actually upgrades.
    3. Dependencies resolve at highest available version, not the minimum version as before - see [Chocolatey #415](https://github.com/chocolatey/chocolatey/issues/415)
-   4. `install` versus `upgrade` - Use upgrade on existing packages instead of install. A -force reinstall will reinstall the SAME version you already have installed.
+   4. `install` versus `upgrade` - Use `upgrade` on existing packages instead of install. A `-force` reinstall will reinstall the **SAME** version you already have installed.
  * **Package Maintenance Changes**:
    1. Read the above about apikey changes
    2. Read above about dependency resolution changes.
