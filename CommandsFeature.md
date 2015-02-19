@@ -8,10 +8,9 @@ Chocolatey will allow you to interact with features.
 
 ## Examples
 
-  choco feature list
-  choco feature disable -n=bob
-  choco feature enable -n=bob
-
+   choco feature list
+   choco feature disable -n=bob
+   choco feature enable -n=bob
 
 ## Options and Switches
 
