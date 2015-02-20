@@ -29,8 +29,8 @@ No really, it's that easy. Just set your permissions appropriately and put packa
 ## Simple Server
 
 **Advantages:**
-* Setup is still really simple - just a website and IIS.
-* There are at least two pure Java versions (one of which is [part of Team City](http://blog.jetbrains.com/teamcity/2011/12/setting-up-teamcity-as-a-native-nuget-server/)) - Windows not required.
+* Setup can be really simple - just a website and IIS for some simple servers
+* Windows is not required - there are at least two pure Java versions (see [Non-Windows Hosting](#non-windows-hosting)).
 * Push over HTTP/HTTPS.
 * One API key for pushes.
 * No direct access to packages so security can be locked down to just modify through push.
