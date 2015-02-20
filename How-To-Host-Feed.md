@@ -24,16 +24,17 @@ No really, it's that easy. Just set your permissions appropriately and put packa
 
 **Advantages:**
 * Setup is still really simple - just a website and IIS.
-* Push over HTTP/HTTPS
-* One API key for pushes
+* There are at least two pure Java versions - Windows not required.
+* Push over HTTP/HTTPS.
+* One API key for pushes.
 * Package store is file system.
 
 **Disadvantages:**
-* Only one API key, so no multi user scenarios
+* Only one API key, so no multi user scenarios.
 * Starts to affect choco performance once the source has over 500 packages (maybe?).
-* No moderation
-* No website to view packages
-
+* No moderation.
+* No website to view packages.
+* No package statistics.
 
 ### Simple Server Setup
 
@@ -49,8 +50,16 @@ Chocolatey Server is a simple Nuget.Server that is ready to rock and roll. It ha
 
 ## Package Gallery
 This is like what Chocolatey.org (the community feed runs on). It is the most advanced, having both a file store for packages and a database for tracking all sorts of information.
-It supports:
 
- * Database for information
- * Package stores (like S3 and Azure blobs)
- *
+**Advantages:**
+* Can deal with thousands of packages with no performance issues.
+* More package stores (like S3 and Azure blobs)
+* Permissions are by users
+* Can have administrators.
+* Can take advantage of moderation.
+* Package statistics (download counts, etc)
+* A website to view package information.
+
+**Disadvantages:**
+* Speed of setup (can take longer than the rest). There are many moving parts to configure.
+* Requires Windows/IIS/SQL Server (hopefully with the proper licenses on each of those).
