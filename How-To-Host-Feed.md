@@ -29,7 +29,7 @@ No really, it's that easy. Just set your permissions appropriately and put packa
 ## Simple Server
 
 **Advantages:**
-* Setup can be really simple - just a website and IIS for some simple servers
+* Setup can be really simple - just a website and IIS for some simple servers.
 * Windows is not required - there are at least two pure Java versions (see [Non-Windows Hosting](#non-windows-hosting)).
 * Push over HTTP/HTTPS.
 * One API key for pushes.
@@ -72,14 +72,14 @@ This is like what Chocolatey.org (the community feed runs on). It is the most ad
 * Interaction and collaboration based. 
 * Can have administrators.
 * Can take advantage of moderation (**Chocolatey Package Gallery only**).
-* Package statistics (download counts, etc)
+* Package statistics (download counts, etc).
 * A website to view package information.
 * Can be configured to send email.
 
 **Disadvantages:**
 * Speed of setup (can take longer than the rest). There are many moving parts to configure.
 * Requires Windows/IIS/SQL Server/SMTP (hopefully with the proper licenses on each of those).
-* Not well-documented and could require some diligence to get working.
+* Not well-documented, could require some diligence to get working.
 
 #### Package Gallery Setup
 Only approach this if you are a Windows Admin with significant experience in setting up SQL Server databases and IIS for ASP.NET MVC sites. We don't have resources to help support the setup, but we can point you to [NuGet Gallery Setup](https://github.com/NuGet/NuGetGallery/wiki/Hosting-the-NuGet-Gallery-Locally-in-IIS).
