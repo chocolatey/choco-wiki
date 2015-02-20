@@ -47,6 +47,10 @@ Some notable references:
 Chocolatey Server is a simple Nuget.Server that is ready to rock and roll. It has already completed Steps 1-3 of NuGet's [host your own remote feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds).
 
  1. Install the Chocolatey.Server package - `choco install chocolatey.server -y`
+ 1. Configure IIS appropriately for the package.
+ 1. Be sure to give the app pool modify permissions to the `App_Data` folder.
+
+Alternative means of installation? If you have Puppet, you can take a look at the [chocolatey server module](https://github.com/ferventcoder/puppet-chocolatey-presentation/blob/master/demo/puppet/modules/chocolateyserver/manifests/init.pp) - has not been fully fledged out into a module on the forge yet, so its [dependencies are listed in a ReadMe](https://github.com/ferventcoder/puppet-chocolatey-presentation/blob/master/demo/puppet/modules/ReadMe.md). 
 
 ## Package Gallery
 This is like what Chocolatey.org (the community feed runs on). It is the most advanced, having both a file store for packages and a database for tracking all sorts of information.
