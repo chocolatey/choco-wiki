@@ -43,7 +43,6 @@ We'll try to capture everything here that you should know about. Please call `ch
    3. `Write-ChocolateySuccess`, `Write-ChocolateyFailure` have been deprecated.
    4. `update` is now `upgrade`. `update` has been deprecated and will be removed/replaced in v1. Update will be reincarnated later for a different purpose. **Hint**: It rhymes with smackage pindexes.
 
-
 ### FEATURES
 
  * In app documentation! Use `choco -?`, `choco -h` or `choco commandName -?` to learn about each command, complete with examples!
@@ -77,6 +76,7 @@ Probably a lot of bug fixes that may not make it here, but here are the ones we 
  * Fix - cup ends silently on error - see [Chocolatey #312](https://github.com/chocolatey/chocolatey/issues/312)
  * Fix - cpack silently fails when dependency .NET 4.0+ is not met - see [Chocolatey #270](https://github.com/chocolatey/chocolatey/issues/270)
  * Fix - Regression in cver all in 0.9.8.27 - see [Chocolatey #530](https://github.com/chocolatey/chocolatey/issues/530)
+ * Fix - Certain installs and updates fail with a "process with an Id of xxxx is not running" error - see [Chocolatey #603](https://github.com/chocolatey/chocolatey/issues/603)
 
 ### IMPROVEMENTS
 
