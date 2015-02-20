@@ -72,5 +72,5 @@ This is like what Chocolatey.org (the community feed runs on). It is the most ad
 * Speed of setup (can take longer than the rest). There are many moving parts to configure.
 * Requires Windows/IIS/SQL Server (hopefully with the proper licenses on each of those).
 
-
+#### Package Gallery Setup
 At this time we don't have setup instructions and won't answer questions specifically surrounding the setup of a gallery. Watch for this to change as Chocolatey for Business becomes a thing.
