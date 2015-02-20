@@ -69,7 +69,7 @@ This is like what Chocolatey.org (the community feed runs on). It is the most ad
 * Can take advantage of moderation (**Chocolatey Package Gallery only**).
 * Package statistics (download counts, etc)
 * A website to view package information.
-* Can be configured to sends email.
+* Can be configured to send email.
 
 **Disadvantages:**
 * Speed of setup (can take longer than the rest). There are many moving parts to configure.
