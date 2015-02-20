@@ -32,7 +32,7 @@ No really, it's that easy. Just set your permissions appropriately and put packa
 * Setup can be really simple - just a website and IIS for some simple servers.
 * Windows is not required - there are at least two pure Java versions (see [Non-Windows Hosting](#non-windows-hosting)).
 * Push over HTTP/HTTPS.
-* One API key for pushes.
+* API key for pushing packages.
 * No direct access to packages so security can be locked down to just modify through push.
 * Package store is file system.
 
