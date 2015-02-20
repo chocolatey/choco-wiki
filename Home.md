@@ -50,9 +50,10 @@ Want to [[learn more?|ChocolateyFAQs]]
 * [[Outdated packages? Triage process|PackageTriageProcess]]
 
 ## How-To's
-* [[How-To - Parse PackageParameters Argument|How-To-Parse-PackageParameters-Argument]]
-* [[How-To - Mount an Iso in Chocolatey Package|How-To-Mount-An-Iso-In-Chocolatey-Package]]
-* [[How-To - Deprecate a Chocolatey Package|How-To-Deprecate-A-Chocolatey-Package]]
+* [[Parse PackageParameters Argument|How-To-Parse-PackageParameters-Argument]]
+* [[Mount an Iso in Chocolatey Package|How-To-Mount-An-Iso-In-Chocolatey-Package]]
+* [[Deprecate a Chocolatey Package|How-To-Deprecate-A-Chocolatey-Package]]
+* [[Host Your Own Feed|How-To-Host-Feed]]
 
 ## RoadMap
 Where are [[we|RoadMap]]? Where are we [[going|RoadMap]]?
