@@ -19,12 +19,29 @@ Perhaps the easiest to set up and recommended for testing quick and dirty scenar
 ## Simple Server
 
 **Advantages:**
+* Setup is still really simple - just a website and IIS.
 * Push over HTTP/HTTPS
 * One API key for pushes
 * Package store is file system.
 
 **Disadvantages:**
+* Only one API key, so no multi user scenarios
+* Starts to affect choco performance once the source has over 500 packages (maybe?).
+* No moderation
+* No website to view packages
 
+
+### Simple Server Setup
+
+Many google searches will throw out good ways to set up your own feed (hint: search for host your own nuget server feed)
+
+Some notable references:
+ * Nuget Docs [Host Your Own Remote Feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds)
+
+#### Chocolatey Server Setup
+Chocolatey Server is a simple Nuget.Server that is ready to rock and roll. It has already completed Steps 1-3 of NuGet's [host your own remote feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds).
+
+ 1. Install the Chocolatey.Server package - `choco install chocolatey.server -y`
 
 ## Package Gallery
 This is like what Chocolatey.org (the community feed runs on). It is the most advanced, having both a file store for packages and a database for tracking all sorts of information.
