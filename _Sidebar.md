@@ -42,6 +42,7 @@
  - [[Parse Package Parameters|How-To-Parse-PackageParameters-Argument]]
  - [[Mount Iso|How-To-Mount-An-Iso-In-Chocolatey-Package]]
  - [[Deprecate a Package|How-To-Deprecate-A-Chocolatey-Package]]
+ - [[Host Your Own Feed (Private)|How-To-Host-Feed]]
 
 **Use Cases**
 
