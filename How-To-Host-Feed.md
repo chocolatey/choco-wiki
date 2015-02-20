@@ -48,9 +48,9 @@ Some notable references:
  * Nuget Docs [Host Your Own Remote Feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds)
 
 ##### Chocolatey Server Setup
-Chocolatey Server is a simple Nuget.Server that is ready to rock and roll. It has already completed Steps 1-3 of NuGet's [host your own remote feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds).
+[Chocolatey Server](https://chocolatey.org/packages/chocolatey.server) is a simple Nuget.Server that is ready to rock and roll. It has already completed Steps 1-3 of NuGet's [host your own remote feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds).
 
- 1. Install the Chocolatey.Server package - `choco install chocolatey.server -y`
+ 1. Install the [Chocolatey Server](https://chocolatey.org/packages/chocolatey.server) package - `choco install chocolatey.server -y`
  1. Configure IIS appropriately for the package.
  1. Be sure to give the app pool modify permissions to the `App_Data` folder.
 
