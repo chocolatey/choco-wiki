@@ -10,7 +10,7 @@ There are three types of feeds, [folder/unc share](#local-folder--unc-share), [s
 
 If you don't want to host on Windows you have only these options (from least advanced to most advanced):
 * CIFS share (commonly known as an UNC share)
-* [Java Simple Server from Team City](http://blog.jetbrains.com/teamcity/2011/12/setting-up-teamcity-as-a-native-nuget-server/) 
+* [NuGet.Java.Server](http://blog.jonnyzzz.name/2012/03/nuget-server-in-pure-java.html) - [NuGet Package](https://www.nuget.org/packages/NuGet.Java.Server) - same tool used in TeamCity
 * [JNuGet](https://bitbucket.org/aristar/jnuget/wiki/Home) - also a simple server
 * TeamCity
 * Artifactory
