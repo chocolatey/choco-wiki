@@ -91,9 +91,9 @@ At this time we don't have setup instructions and won't answer questions specifi
 ## Non-Windows Hosting
 If you don't want to host on Windows you have only the following options (from least advanced to most advanced):
 * CIFS share
-* [JNuGet](https://bitbucket.org/aristar/jnuget/wiki/Home) - a simple server (written in Russian)
-* [NuGet.Java.Server](http://blog.jonnyzzz.name/2012/03/nuget-server-in-pure-java.html) ([NuGet Package](https://www.nuget.org/packages/NuGet.Java.Server)) - same tool used in TeamCity
-* [TeamCity](https://www.jetbrains.com/teamcity/) 
+* [JNuGet](https://bitbucket.org/aristar/jnuget/wiki/Home) - a simple server
+* [NuGet.Java.Server](http://blog.jonnyzzz.name/2012/03/nuget-server-in-pure-java.html) ([NuGet Package](https://www.nuget.org/packages/NuGet.Java.Server)) - simple server (same tool used in TeamCity)
+* [TeamCity](https://www.jetbrains.com/teamcity/) - contains built-in simple server
 * [Artifactory](http://www.jfrog.com/open-source/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories)
 
 
