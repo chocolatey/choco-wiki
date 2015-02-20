@@ -28,25 +28,26 @@ Want to [[learn more?|ChocolateyFAQs]]
 
 ## Information
 
-[[Frequently Asked Questions|ChocolateyFAQs]]
-[[Why Chocolatey|Why]]
-[[License Acceptance Terms|Legal]]
-[[Waiver of Responsibility|Legal]]
-[[Release Notes|ReleaseNotes]]
+* [[Frequently Asked Questions|ChocolateyFAQs]]
+* [[Why Chocolatey|Why]]
+* [[License Acceptance Terms|Legal]]
+* [[Waiver of Responsibility|Legal]]
+* [[Release Notes|ReleaseNotes]]
 
 ## Using Chocolatey
-[[Installing Chocolatey|Installation]]
-[[Uninstalling Chocolatey|Uninstallation]]
-[[Getting Started|GettingStarted]]
-[[Command Reference|CommandsReference]]
-Use Chocolatey to set up [[source code development environments|DevelopmentEnvironmentSetup]]!
-What distinction does Chocolatey make between an [[installable and a portable application|https://github.com/chocolatey/choco/wiki/ChocolateyFAQs#what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application]]?
+
+* [[Installing Chocolatey|Installation]]
+* [[Uninstalling Chocolatey|Uninstallation]]
+* [[Getting Started|GettingStarted]]
+* [[Command Reference|CommandsReference]]
+* Use Chocolatey to set up [[source code development environments|DevelopmentEnvironmentSetup]]!
+* What distinction does Chocolatey make between an [[installable and a portable application|https://github.com/chocolatey/choco/wiki/ChocolateyFAQs#what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application]]?
 
 ## Packages
-[[Creating packages|CreatePackages]]
-Keep in Mind [Distribution Rights](https://github.com/chocolatey/choco/wiki/Legal#wiki-distributions-aka-chocolatey-packages)
-[[Package Function Reference|HelpersReference]]
-[[Outdated packages? Triage process|PackageTriageProcess]]
+* [[Creating packages|CreatePackages]]
+* Keep in Mind [Distribution Rights](https://github.com/chocolatey/choco/wiki/Legal#wiki-distributions-aka-chocolatey-packages)
+* [[Package Function Reference|HelpersReference]]
+* [[Outdated packages? Triage process|PackageTriageProcess]]
 
 ## How-To's
 * [[How-To - Parse PackageParameters Argument|How-To-Parse-PackageParameters-Argument]]
