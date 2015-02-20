@@ -16,6 +16,10 @@ Perhaps the easiest to set up and recommended for testing quick and dirty scenar
 * No HTTP/HTTPS pushing. Must be able to access the folder/share to push to it. 
 * Starts to affect choco performance once the source has over 500 packages (maybe?).
 
+### Local Folder Share Setup
+
+No really, it's that easy. Just set your permissions appropriately and put packages in the folder. You are already done.
+
 ## Simple Server
 
 **Advantages:**
