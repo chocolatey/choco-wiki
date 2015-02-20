@@ -73,4 +73,8 @@ This is like what Chocolatey.org (the community feed runs on). It is the most ad
 * Requires Windows/IIS/SQL Server (hopefully with the proper licenses on each of those).
 
 #### Package Gallery Setup
+Only approach this if you are a Windows Admin with significant experience in setting up SQL Server databases and IIS for ASP.NET MVC sites. We don't have resources to help support the setup, but we can point you to [NuGet Gallery Setup](https://github.com/NuGet/NuGetGallery/wiki/Hosting-the-NuGet-Gallery-Locally-in-IIS).
+
+##### Chocolatey Package Gallery Setup
+
 At this time we don't have setup instructions and won't answer questions specifically surrounding the setup of a gallery. Watch for this to change as Chocolatey for Business becomes a thing.
