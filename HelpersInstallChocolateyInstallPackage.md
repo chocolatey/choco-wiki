@@ -27,7 +27,7 @@ Install-ChocolateyInstallPackage '7zip' 'exe' '/S' 'c:\somepath\7zipInstaller.ms
 
     Example: `'7zip'`
 
-* `-fileType`
+* `-fileType` (in process of renaming to `installType`)
 
     Pick only one : 'exe' or 'msi'
 
