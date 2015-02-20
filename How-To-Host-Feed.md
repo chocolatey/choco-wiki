@@ -95,4 +95,4 @@ If you don't want to host on Windows you have only the following options (from l
 * TeamCity
 * Artifactory
 
-Note: NuGet.Java.Server, TeamCity and JNuGet are about the same in terms of sophistication. They are ordered in alphabetical order.
+**Note:** NuGet.Java.Server, TeamCity and JNuGet are about the same in terms of sophistication. They are ordered in alphabetical order.
