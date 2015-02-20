@@ -61,10 +61,10 @@ This is like what Chocolatey.org (the community feed runs on). It is the most ad
 
 **Advantages:**
 * Can deal with thousands of packages with no performance issues.
-* More package stores (like S3 and Azure blobs)
-* Permissions are by users
+* Package store can be File system, Azure blobs, or AWS S3 (**Chocolatey Package Gallery only**).
+* Multiple users each having their own API keys.
 * Can have administrators.
-* Can take advantage of moderation.
+* Can take advantage of moderation (**Chocolatey Package Gallery only**).
 * Package statistics (download counts, etc)
 * A website to view package information.
 
@@ -77,4 +77,4 @@ Only approach this if you are a Windows Admin with significant experience in set
 
 ##### Chocolatey Package Gallery Setup
 
-At this time we don't have setup instructions and won't answer questions specifically surrounding the setup of a gallery. Watch for this to change as Chocolatey for Business becomes a thing.
+At this time we don't have setup instructions and won't answer questions specifically surrounding the setup of a Chocolatey specific gallery. Watch for this to change as Chocolatey for Business becomes a thing.
