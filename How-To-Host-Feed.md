@@ -36,14 +36,14 @@ No really, it's that easy. Just set your permissions appropriately and put packa
 * No website to view packages.
 * No package statistics.
 
-### Simple Server Setup
+#### Simple Server Setup
 
 Many google searches will throw out good ways to set up your own feed (hint: search for host your own nuget server feed)
 
 Some notable references:
  * Nuget Docs [Host Your Own Remote Feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds)
 
-#### Chocolatey Server Setup
+##### Chocolatey Server Setup
 Chocolatey Server is a simple Nuget.Server that is ready to rock and roll. It has already completed Steps 1-3 of NuGet's [host your own remote feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds).
 
  1. Install the Chocolatey.Server package - `choco install chocolatey.server -y`
