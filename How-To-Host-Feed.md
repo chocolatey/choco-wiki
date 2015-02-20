@@ -1,6 +1,6 @@
 # How To Host Your Own (Private) Feed
 
-There are three types of feeds, [[folder/unc share|#local-folder--unc-share]], simple server, and advanced package gallery.
+There are three types of feeds, [folder/unc share|#local-folder--unc-share], simple server, and advanced package gallery.
 
 ## Local Folder / UNC Share
 Perhaps the easiest to set up and recommended for testing quick and dirty scenarios, local folder is easily a strong point when you need a quick source for packages.
