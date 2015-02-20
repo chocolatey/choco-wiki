@@ -7,7 +7,7 @@ This will run a native installer to perform an install/upgrade on your machine.
 ## Usage
 
 ```powershell
-Install-ChocolateyInstallPackage $packageName $fileType $silentArgs $file
+Install-ChocolateyInstallPackage $packageName $installType $silentArgs $file
 ```
 
 ## Examples
