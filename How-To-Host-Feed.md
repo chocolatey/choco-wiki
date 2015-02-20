@@ -29,7 +29,7 @@ No really, it's that easy. Just set your permissions appropriately and put packa
 
 **Advantages:**
 * Setup is still really simple - just a website and IIS.
-* There are at least two pure Java versions, one of which is [part of Team City](http://blog.jetbrains.com/teamcity/2011/12/setting-up-teamcity-as-a-native-nuget-server/) - Windows not required.
+* There are at least two pure Java versions (one of which is [part of Team City](http://blog.jetbrains.com/teamcity/2011/12/setting-up-teamcity-as-a-native-nuget-server/)) - Windows not required.
 * Push over HTTP/HTTPS.
 * One API key for pushes.
 * Package store is file system.
