@@ -93,7 +93,8 @@ If you don't want to host on Windows you have only the following options (from l
 * CIFS share
 * [JNuGet](https://bitbucket.org/aristar/jnuget/wiki/Home) - also a simple server
 * [NuGet.Java.Server](http://blog.jonnyzzz.name/2012/03/nuget-server-in-pure-java.html) ([NuGet Package](https://www.nuget.org/packages/NuGet.Java.Server)) - same tool used in TeamCity
-* TeamCity
-* Artifactory
+* [TeamCity](https://www.jetbrains.com/teamcity/) 
+* [Artifactory](http://www.jfrog.com/open-source/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories)
+
 
 **Note:** NuGet.Java.Server, TeamCity and JNuGet are about the same in terms of sophistication (they are ordered alphabetically).
