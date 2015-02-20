@@ -33,6 +33,7 @@ No really, it's that easy. Just set your permissions appropriately and put packa
 * There are at least two pure Java versions (one of which is [part of Team City](http://blog.jetbrains.com/teamcity/2011/12/setting-up-teamcity-as-a-native-nuget-server/)) - Windows not required.
 * Push over HTTP/HTTPS.
 * One API key for pushes.
+* No direct access to packages so security can be locked down to just modify through push.
 * Package store is file system.
 
 **Disadvantages:**
