@@ -6,7 +6,7 @@ There are three types of feeds, [folder/unc share](#local-folder--unc-share), [s
 * [MyGet](https://www.myget.org/) - MyGet has free public and paid for public/private cloud-hosting options if you don't want to handle all of the pain of setup and administration. MyGet offers some stellar options like multi-feed aggregation, mirroring, and source package build services!
 * [ProGet](http://inedo.com/proget/overview) - ProGet gives you a ready to go On-Premise option ([installable with Chocolatey!](https://chocolatey.org/packages/proget)).
 * [Artifactory](http://www.jfrog.com/open-source/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories)
-* [TeamCity](https://www.jetbrains.com/teamcity/) has a built in Simple Nuget Server
+* [TeamCity](https://www.jetbrains.com/teamcity/) has built-in Simple Server
 
 ## Local Folder / UNC Share
 Perhaps the easiest to set up and recommended for testing quick and dirty scenarios, local folder is easily a strong point when you need a quick source for packages.
