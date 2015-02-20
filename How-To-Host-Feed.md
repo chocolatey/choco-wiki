@@ -2,8 +2,9 @@
 
 There are three types of feeds, [folder/unc share](#local-folder--unc-share), [simple server](#simple-server), and the sophisticated [package gallery](#package-gallery). 
 
-**Alternatives to Hosting your Own?**
-You can also use [MyGet]() (they have free and paid for private cloud-hosting options) if you don't want to handle all of the pain, or [ProGet](http://inedo.com/proget/overview) if you want a ready to go On-Premise option ([installable with Chocolatey!](https://chocolatey.org/packages/proget)).
+**Alternative Hosting Options That require less work/maintenance:**
+* [MyGet](https://www.myget.org/) - MyGet has free and paid for private cloud-hosting options if you don't want to handle all of the pain of setup and administration with some stellar options
+* [ProGet](http://inedo.com/proget/overview) - ProGet gives you a ready to go On-Premise option ([installable with Chocolatey!](https://chocolatey.org/packages/proget)).
 
 ## Local Folder / UNC Share
 Perhaps the easiest to set up and recommended for testing quick and dirty scenarios, local folder is easily a strong point when you need a quick source for packages.
