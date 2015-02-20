@@ -98,6 +98,7 @@ Probably a lot of bug fixes that may not make it here, but here are the ones we 
  * Compact choco upgrade --noop option - see [Chocolatey #414](https://github.com/chocolatey/chocolatey/issues/414)
  * Remove references to the Chocolatey gods - see [Chocolatey #669](https://github.com/chocolatey/chocolatey/issues/669)
  * Shims now have noop (`--shimgen-noop`) and help (`--shimgen-help`) switches - see [ShimGen #8](https://github.com/chocolatey/shimgen/issues/8) and [ShimGen #10](https://github.com/chocolatey/shimgen/issues/10)
+ * Shims will terminate underlying process on termination signal - see [ShimGen #11](https://github.com/chocolatey/shimgen/issues/11)
  * Dat help menu tho. I mean srsly guise - see [Chocolatey #641](https://github.com/chocolatey/chocolatey/issues/641)
 
 ##[0.9.8.33](https://github.com/chocolatey/chocolatey/issues?q=label%3Av0.9.8.33+is%3Aclosed) (Feb 11, 2015)
