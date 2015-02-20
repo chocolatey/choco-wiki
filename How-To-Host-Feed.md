@@ -8,13 +8,6 @@ There are three types of feeds, [folder/unc share](#local-folder--unc-share), [s
 * [Artifactory](http://www.jfrog.com/open-source/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories)
 * [TeamCity](https://www.jetbrains.com/teamcity/) has a built in Simple Nuget Server
 
-If you don't want to host on Windows you have only these options (from least advanced to most advanced):
-* CIFS share (commonly known as an UNC share)
-* [NuGet.Java.Server](http://blog.jonnyzzz.name/2012/03/nuget-server-in-pure-java.html) - [NuGet Package](https://www.nuget.org/packages/NuGet.Java.Server) - same tool used in TeamCity
-* [JNuGet](https://bitbucket.org/aristar/jnuget/wiki/Home) - also a simple server
-* TeamCity
-* Artifactory
-
 ## Local Folder / UNC Share
 Perhaps the easiest to set up and recommended for testing quick and dirty scenarios, local folder is easily a strong point when you need a quick source for packages.
 
@@ -93,3 +86,11 @@ Only approach this if you are a Windows Admin with significant experience in set
 ##### Chocolatey Package Gallery Setup
 
 At this time we don't have setup instructions and won't answer questions specifically surrounding the setup of a Chocolatey specific gallery. Watch for this to change as Chocolatey for Business becomes a thing.
+
+## Non-Windows Hosting
+If you don't want to host on Windows you have only the following options (from least advanced to most advanced):
+* CIFS share (commonly known as an UNC share)
+* [NuGet.Java.Server](http://blog.jonnyzzz.name/2012/03/nuget-server-in-pure-java.html) - [NuGet Package](https://www.nuget.org/packages/NuGet.Java.Server) - same tool used in TeamCity
+* [JNuGet](https://bitbucket.org/aristar/jnuget/wiki/Home) - also a simple server
+* TeamCity
+* Artifactory
