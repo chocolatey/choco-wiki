@@ -34,7 +34,7 @@ More of this will become automated over time.
 1. Install chocopkgup (which will install ketarin and nuget.commandline). `cinst chocolateypackageupdater`.
 1. Check the config in `C:\tools\ChocolateyPackageUpdater\chocopkgup.exe.config` (or `ChocolateyBinRoot/ChocolateyPackageUpdater`). The `PackagesFolder` key should point to where your repository is located.
 1. Create a scheduled task (in Windows). This is the command (edit the path to `cmd.exe` accordingly): `C:\Windows\System32\cmd.exe /c c:\tools\chocolateypackageupdater\ketarinupdate.cmd` 
-1. Alternatively to stop the command window from opening on Windows, you can create a VBS script as well and put the path to the `.vbs` file instead of `ketarinupdate.cmd`. The file should have the following:
+1. Alternatively to stop the command window from opening on Windows, you can create a VBS script as well and put the path to the `.vbs` file instead of `ketarinupdate.cmd` as the command to run. The file should have the following:
 ```
 Set objShell = WScript.CreateObject("WScript.Shell")
 objShell.Run("C:\ProgramData\chocolatey\lib\ChocolateyPackageUpdater\tools\chocopkgup\ketarinupdate.cmd"), 0, True
