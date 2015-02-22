@@ -39,7 +39,7 @@ More of this will become automated over time.
 Set objShell = WScript.CreateObject("WScript.Shell")
 objShell.Run("C:\ProgramData\chocolatey\lib\ChocolateyPackageUpdater\tools\chocopkgup\ketarinupdate.cmd"), 0, True
 ```
-1. Choose a schedule for the task. I run mine once a day but you can set it to run more often. Choose a time when the computer is not that busy.
+4. Choose a schedule for the task. I run mine once a day but you can set it to run more often. Choose a time when the computer is not that busy.
 1. Save the following Ketarin template somewhere: https://raw.github.com/chocolatey/chocolateytemplates/master/_templates/KetarinChocolateyTemplate.xml
 1. Open Ketarin. Choose `File` –> `Settings`.
 1. On the **General Tab** we are going to add the Version Column for all jobs. Click `Add…`, then put `Version` in Column name and `{version}` in Column value.
