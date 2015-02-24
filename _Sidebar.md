@@ -1,3 +1,5 @@
+[[Home]]
+
 [[Why Chocolatey?|Why]]
 
 **General**
