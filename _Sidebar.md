@@ -53,6 +53,7 @@
 
 **Learning Resources**
 
+ - [[Resources|Resources]]
  - [[Videos|Videos]]
  - [[Presentations|Presentations]]
 
