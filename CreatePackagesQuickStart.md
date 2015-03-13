@@ -38,7 +38,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
    * Get a Chocolatey account:
       * [[https://chocolatey.org/account/Register]]
    * Copy the API key [[from your Chocolatey account|https://chocolatey.org/account]].
-   * `choco SetApiKey [API_KEY_HERE] -source https://chocolatey.org/`
+   * `choco apikey -k [API_KEY_HERE] -source https://chocolatey.org/`
    * `choco push PackageName.1.1.0.nupkg -s https://chocolatey.org/` - packagename can be omitted
 
 ## Common Mistakes
