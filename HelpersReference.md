@@ -2,7 +2,7 @@
 
 ## Main Functions
 
-These functions call other functions and have error handling built in. When using just them, you don't need to put error handling in your [[chocolateyInstall.ps1 file|ChocolateyInstallPS1]]. These functions call down to the other functions and encapsulate everything nicely so that it is possible to have one line chocolateyInstall.ps1 files.
+These functions call other functions and many times may be the only thing you need in your [[chocolateyInstall.ps1 file|ChocolateyInstallPS1]].
 
 * [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]
 * [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]
@@ -14,21 +14,9 @@ These functions call other functions and have error handling built in. When usin
 * [[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]  - **DEPRECATED**
 * [[Write-ChocolateyFailure|HelpersWriteChocolateyFailure]]  - **DEPRECATED**
 
-If do anything besides use the main helpers, it is strongly suggested you format your chocolateyInstall.ps1 as follows:
-
-```powershell
-try {
-
-  #Your code here...
-
-} catch {
-  throw $_.Exception
-}
-```
+You really don't need a try catch with chocolatey powershell files anymore.
 
 ## More Functions
-
-These helpers require you to wrap a try catch around your chocolateyInstall.ps1 file. See the example script above.
 
 ### Administrative Access Functions
 
