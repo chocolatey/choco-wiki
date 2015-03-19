@@ -18,28 +18,28 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
    * `choco new -h` will get you started seeing options available to you.
    * Once you figured out all of your options, you should move forward with generating your template.
 * **Edit template** using common sense
-   * `cd PackageName`
-   * Edit the `PackageName.nuspec` configuration file.
+   * `cd package-name`
+   * Edit the `package-name.nuspec` configuration file.
    * Edit the `./tools/chocolateyInstall.ps1` install script.
      * Make sure you figure out the installer's silent mode. Use [Universal Silent Switch Finder](http://unattended.sourceforge.net/installers.php), which is available as a Choco package: `choco install ussf`
    * You __must__ save your files with _UTF-8_ character encoding without BOM. ([Details](https://github.com/chocolatey/choco/wiki/CreatePackages#character-encoding))
 * **Build the package**
    * Still in package directory
    * `choco pack`
-      * "Successfully created PackageName.1.1.0.nupkg"
+      * "Successfully created package-name.1.1.0.nupkg"
 * **Test the package**
    * **Testing should probably be done on a Virtual Machine**
    * In your package directory, use:
-      * `choco install PackageName -s '$pwd' -f` - powershell
-      * `choco install PackageName -s '%cd%' -f` - everywhere else
+      * `choco install package-name -s '$pwd' -f` - powershell
+      * `choco install package-name -s '%cd%' -f` - everywhere else
    * Otherwise, use the full path:
-      * `choco install PackageName -source 'c:\path\to\Package\' -f`
+      * `choco install package-name -source 'c:\path\to\Package\' -f`
 * **Push the package** to the Chocolatey community feed repository:
    * Get a Chocolatey account:
       * [[https://chocolatey.org/account/Register]]
    * Copy the API key [[from your Chocolatey account|https://chocolatey.org/account]].
    * `choco apikey -k [API_KEY_HERE] -source https://chocolatey.org/`
-   * `choco push PackageName.1.1.0.nupkg -s https://chocolatey.org/` - packagename can be omitted
+   * `choco push package-name.1.1.0.nupkg -s https://chocolatey.org/` - packagename can be omitted
 
 ## Common Mistakes
 
@@ -53,7 +53,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
 ## Environmental Variables
 
 * `%ChocolateyInstall%` - Chocolatey installation directory
-* `%ChocolateyInstall%\lib\PackageName` - Package directory
+* `%ChocolateyInstall%\lib\package-name` - Package directory
 * `%cd%` or `$pwd` - current directory
 
 ## Examples
