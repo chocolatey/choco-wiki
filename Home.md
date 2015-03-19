@@ -1,6 +1,8 @@
 ## Chocolatey - kind of like apt-get, but for Windows
 [![](http://img.shields.io/chocolatey/dt/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/chocolatey/v/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/gittip/Chocolatey.svg)](https://www.gittip.com/Chocolatey/)
 
+Edit me at https://github.com/chocolatey/choco-wiki
+
 ## Build Status
 
 TeamCity  | AppVeyor | Travis
