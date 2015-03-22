@@ -48,7 +48,7 @@ Want to [[learn more?|ChocolateyFAQs]]
 ## Packages
 * [[Creating packages|CreatePackages]]
 * Keep in Mind [Distribution Rights](https://github.com/chocolatey/choco/wiki/Legal#wiki-distributions-aka-chocolatey-packages)
-* [[Package Function Reference|HelpersReference]]
+* [[Package Function and Variable Reference|HelpersReference]]
 * [[Outdated packages? Triage process|PackageTriageProcess]]
 
 ## How-To's
