@@ -117,4 +117,27 @@ These are the functions from above as one list.
 
 * __Write-FileUpdateLog__ \[[src](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/functions/Write-FileUpdateLog.ps1)\]
 
+## Variables
+
+There are also a number of environment variables providing access to some values from the nuspec and other information that may be useful. They are accessed via `$env:variableName`.
+
+* __chocolateyPackageFolder__ = the folder where Chocolatey has downloaded and extracted the NuGet gallery.
+* __chocolateyPackageName__ (since 0.9.9) = The package name, which is equivalent to the `<id>` tag in the nuspec 
+* __chocolateyPackageVersion__ (since 0.9.9) = The package version, which is equivalent to the `<version>` tag in the nuspec
+ 
+`chocolateyPackageVersion` may be particularly useful, since that would allow you in some cases to create packages for new releases of the updated software by only changing the `<version>` in the nuspec and not having to touch the `chocolateyInstall.ps1` at all. An example of this:
+```
+$url = "http://www.thesoftware.com/downloads/thesoftware-$env:chocolateyPackageVersion.zip"
+
+Install-ChocolateyZipPackage '$chocolateyPackageName' $url $binRoot
+```
+
+Remember, if you want to use `chocolateyPackageName` or `chocolateyPackageVersion` you should declare a dependency on Chocolatey 0.9.9 in the nuspec
+```xml
+<dependencies>
+  <!-- Chocolatey 0.9.9 required in order to access the chocolateyPackageName and chocolateyPackageVersion environment variables -->
+  <dependency id="chocolatey" version="0.9.9" />
+</dependencies>
+```
+
 [[Home]]
