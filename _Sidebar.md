@@ -28,7 +28,7 @@
 **Creating Packages**
 
  - [[Quick Start|CreatePackagesQuickStart]]
- - [[Function Reference|HelpersReference]]
+ - [[Function and Variable Reference|HelpersReference]]
  - [[Create Packages|CreatePackages]]
  - [[Automatic Packages|AutomaticPackages]]
  - **Commands:**
