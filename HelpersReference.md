@@ -129,7 +129,7 @@ There are also a number of environment variables providing access to some values
 ```
 $url = "http://www.thesoftware.com/downloads/thesoftware-$env:chocolateyPackageVersion.zip"
 
-Install-ChocolateyZipPackage '$chocolateyPackageName' $url $binRoot
+Install-ChocolateyZipPackage '$env:chocolateyPackageName' $url $binRoot
 ```
 
 Remember, if you want to use `chocolateyPackageName` or `chocolateyPackageVersion` you should declare a dependency on Chocolatey 0.9.9 in the nuspec
