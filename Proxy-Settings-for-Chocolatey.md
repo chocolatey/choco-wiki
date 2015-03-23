@@ -1,5 +1,6 @@
 # Installing Chocolatey behind a proxy server
 
+# THIS MAY BE OUTDATED and not relevant for new choco - https://botbot.me/freenode/chocolatey/msg/33393135/
 When trying to install Chocolatey behind a proxy server, you may be faced with errors like
 
 > Boo to the Chocolatey gods! Get Response returned: (407) Proxy Authentication Required
