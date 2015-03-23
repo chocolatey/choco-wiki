@@ -139,5 +139,3 @@ Remember, if you want to use `chocolateyPackageName` or `chocolateyPackageVersio
   <dependency id="chocolatey" version="0.9.9" />
 </dependencies>
 ```
-
-[[Home]]
