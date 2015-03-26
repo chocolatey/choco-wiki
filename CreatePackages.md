@@ -86,24 +86,24 @@ Logically, the version is based on the lowest compatible version. But if you don
 
 ## Installation paths
 
-As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does Chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/choco/wiki/ChocolateyFAQs)) there are a couple of suitable locations:
+As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does Chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/choco/wiki/ChocolateyFAQs)) there are a couple of suitable locations (not listed in any particular order):
 
-### 1. (DEPRECATED) Path provided by the `Get-BinRoot` helper
+### 1. The default installation path of your .msi/.exe setup file
+
+The original creator probably had a reason for choosing a specific default installation path.
+If you think, the user should be able to customize this path and you, the package maintainer, know how to pass a custom path on to the installer, then you should use `%ChocolateyBinRoot%`.
+
+### 2. The package directory in `%ChocolateyInstall%\lib\mypackage`
+
+You can extract the application within the package directory itself (or even ship an extracted version with the package). This allows Chocolatey to automatically find executables and put those on `%path%`.
+
+### 3. Path provided by the `Get-BinRoot` helper - will be deprecated later (closer to v1) but okay to use for now
 
 The path returned by the helper `Get-BinRoot` can be used as the parent directory for the installation. `Get-BinRoot` will return the value of the  environment variable `%ChocolateyBinRoot%`. If the value does not contain a drive reference, the system drive will be prepended. If the environment variable is not set, the default path (~~`C:\Tools`~~ `C:\Chocolatey\bin`) will be returned.
 
 As an example, [MinGW](https://github.com/ferventcoder/chocolatey-packages/blob/master/manual/mingw/tools/chocolateyInstall.ps1) uses `%ChocolateyBinRoot%`. If the environment variable is not set, it will be set to `c:\tools` and MinGW will install to `C:\Tools\MinGW` by default. If `%ChocolateyBinRoot%` is set to "C:\Common\bin", MinGW installs to `C:\Common\bin\MinGW`.
 
 `%ChocolateyBinRoot%` gives the Chocolatey user a way of controlling where packages are installed. If you want to allow customizing the installation path, then this is currently the way to go.
-
-### 2. The default installation path of your .msi/.exe setup file
-
-The original creator probably had a reason for choosing a specific default installation path.
-If you think, the user should be able to customize this path and you, the package maintainer, know how to pass a custom path on to the installer, then you should use `%ChocolateyBinRoot%`.
-
-### 3. The package directory in `%ChocolateyInstall%\lib\mypackage`
-
-You can extract the application within the package directory itself (or even ship an extracted version with the package). This allows Chocolatey to automatically find executables and put those on `%path%`.
 
 ### Make it clear in the package description
 
