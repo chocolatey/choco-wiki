@@ -21,7 +21,7 @@ Installs a package or a list of packages (sometimes specified as a
     choco install notepadplusplus --force --force-dependencies
     choco install notepadplusplus googlechrome atom 7zip -dvfy
     choco install git --params="/GitAndUnixToolsOnPath /NoAutoCrlf" -y
-    choco install nodejs.install --version 0.10.35
+    choco install nodejs.install -version 0.10.35
 
 Choco can also install directly from a nuspec/nupkg file (this aids in
  testing packages):
@@ -31,9 +31,9 @@ Choco can also install directly from a nuspec/nupkg file (this aids in
 
 Install multiple versions of a package using -m (AllowMultiple versions)
 
-    choco install ruby --version 1.9.3.55100 -my
-    choco install ruby --version 2.0.0.59800 -my
-    choco install ruby --version 2.1.5 -my
+    choco install ruby -version 1.9.3.55100 -my
+    choco install ruby -version 2.0.0.59800 -my
+    choco install ruby -version 2.1.5 -my
 
 What is `-my`? See [Option Bundling](https://github.com/chocolatey/choco/wiki/CommandsReference#how-to-pass-options--switches)
 
@@ -44,7 +44,7 @@ What is `-my`? See [Option Bundling](https://github.com/chocolatey/choco/wiki/Co
 
 ## Options and Switches
 
-**NOTE**: Options and switches apply to all items passed, so if you are installing multiple packages, and you use `--version=1.0.0`, it is going to look for and try to install version 1.0.0 of every package passed. So please split out multiple package calls when wanting to pass specific options.
+**NOTE**: Options and switches apply to all items passed, so if you are installing multiple packages, and you use `-version=1.0.0`, it is going to look for and try to install version 1.0.0 of every package passed. So please split out multiple package calls when wanting to pass specific options.
 
 
 Includes [[default options/switches|CommandsReference#default-options-and-switches]]
@@ -55,7 +55,7 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
   include: ruby, webpi, cygwin, windowsfeatures, and python. Defaults to
   default feeds.
 
---version=VALUE
+-version=VALUE
   Version - A specific version to install. Defaults to unspecified.
 
 --pre, --prerelease
