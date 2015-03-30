@@ -121,7 +121,7 @@ These are the functions from above as one list.
 
 There are also a number of environment variables providing access to some values from the nuspec and other information that may be useful. They are accessed via `$env:variableName`.
 
-* __chocolateyPackageFolder__ = the folder where Chocolatey has downloaded and extracted the NuGet gallery.
+* __chocolateyPackageFolder__ = the folder where Chocolatey has downloaded and extracted the NuGet package, typically `C:\ProgramData\chocolatey\lib\packageName`.
 * __chocolateyPackageName__ (since 0.9.9) = The package name, which is equivalent to the `<id>` tag in the nuspec 
 * __chocolateyPackageVersion__ (since 0.9.9) = The package version, which is equivalent to the `<version>` tag in the nuspec
  
