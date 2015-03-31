@@ -26,6 +26,7 @@ This may not seem very powerful at first, but imagine when you want to **upgrade
 1. Now do it again for ***EVERY*** piece of software on your system.
 
 ![chrisfarley-disbelief](https://cloud.githubusercontent.com/assets/63502/6924749/4e4e23d2-d7a0-11e4-9f4e-a44a02b227f6.gif)
+
 Now contrast that with how you do the same with **Chocolatey**:
 
 1. Open command line.
