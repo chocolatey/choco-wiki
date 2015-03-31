@@ -9,6 +9,22 @@ Because Chocolatey is built on top of the NuGet infrastructure, that means you c
 
 [[Tell me a story|ChocolateyStory]]
 
+### What is Chocolatey?
+
+Chocolatey helps good developers and system administrators become outstanding developers/sysadmins. Chocolatey goes to *eleven*.
+
+Chocolatey is something **you need if you've ever installed, upgraded, or removed software on Windows**. It is an **existing, proven**, project that was started [over 4 years ago](https://github.com/ferventcoder/nugetpackages/commit/d16ed7ac675395b3bb8ecee90fb13efb03d4b619). For those familiar with *nix package managers, it is a binary package manager, sort of like yum or apt-get, but for Windows. The words "binary package manager" can be confusing for those who don't know what that means, but bear with me for a few minutes. Chocolatey is a tool that automates all the mundane getting and installing software work for you. You just select what you want installed and within a few minutes, Chocolatey has downloaded and installed (or upgraded) that software without need for further input from you. So while Chocolatey does the hard work, you can go get some coffee. Or sleep. Or do other more important things.
+
+This may not seem very powerful at first, but imagine when you want to upgrade all of the software on your system to the latest, most secure versions, how do you do that now? Right. Manually:
+
+Search for most recent version
+Pick (hopefully) the right download
+Wait for it to download
+Unblock it
+Install it manually (next, next, next anyone?)
+Hope it didn't install any malware
+Now do it again for EVERY piece of software on your system.
+
 ### Why not use an existing Windows package manager?
 Believe me, I wanted there to be something existing on Windows that would fit the bill. Package management is not a glorious job. Especially on Windows. It's taking all of the different native installers, archives, and straight executable downloads and making a simple interface for consumers to issue the same install command for all of them. Here are/were my needs:
 
