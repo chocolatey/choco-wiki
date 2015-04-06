@@ -202,7 +202,7 @@ To test the package you just built, open a command line shell and navigate to th
 
 PowerShell:
 ```powershell
- choco install packageName -fdv -s "$pwd"
+ choco install packageName -fdv -s $pwd
 ```
 
 Other shells, including cmd.exe:
