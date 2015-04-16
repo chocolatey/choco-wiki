@@ -79,9 +79,9 @@ You can pass options and switches in the following ways:
  * **Use Equals**: You can also include or not include an equals sign 
    `=` between options and values.
  * **Quote Values**: When you need to quote things, such as when using 
-   spaces, please use apostrophes (`'`). In cmd.exe you may be able to 
-   use just double quotes (`"`) but in powershell.exe you may need to 
-   either escape the quotes with backticks (```"``) or use a 
+   spaces, please use apostrophes (`'value'`). In cmd.exe you may be able to 
+   use just double quotes (`"value"`) but in powershell.exe you may need to 
+   either escape the quotes with backticks (`` `"value`" ``) or use a 
    combination of double quotes and apostrophes (`"'value'"`). This 
    is due to the hand off to PowerShell - it seems to strip off the 
    outer set of quotes. TODO: TEST THIS, MAY NOT BE RELEVANT NOW.
