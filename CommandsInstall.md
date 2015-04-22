@@ -23,7 +23,7 @@ Installs a package or a list of packages (sometimes specified as a
     choco install git --params="/GitAndUnixToolsOnPath /NoAutoCrlf" -y
     choco install nodejs.install --version 0.10.35
     choco install git -s "https://somewhere/out/there"
-    choco install bob -s "https://somewhere/protected" -u user -p pass
+    choco install git -s "https://somewhere/protected" -u user -p pass
 
 Choco can also install directly from a nuspec/nupkg file (this aids in
  testing packages):
