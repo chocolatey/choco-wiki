@@ -24,6 +24,8 @@ Upgrades a package or a list of packages.
     choco upgrade notepadplusplus googlechrome atom 7zip -dvfy
     choco upgrade git --params="/GitAndUnixToolsOnPath /NoAutoCrlf" -y
     choco upgrade nodejs.install --version 0.10.35
+    choco upgrade git -s "https://somewhere/out/there"
+    choco upgrade git -s "https://somewhere/protected" -u user -p pass
 
 
 ## Options and Switches
