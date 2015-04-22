@@ -77,4 +77,10 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 
 -n, --skippowershell, --skip-powershell
   Skip Powershell - Do not run chocolateyInstall.ps1. Defaults to false.
+
+ -u, --user=VALUE
+     User - used with authenticated feeds. Defaults to empty.
+
+ -p, --password=VALUE
+     Password - the user's password to the source. Defaults to empty.
 ```
