@@ -79,12 +79,15 @@ You can pass options and switches in the following ways:
  * **Use Equals**: You can also include or not include an equals sign 
    `=` between options and values.
  * **Quote Values**: When you need to quote things, such as when using 
-   spaces, please use apostrophes (`'value'`). In cmd.exe you may be able to 
-   use just double quotes (`"value"`) but in powershell.exe you may need to 
-   either escape the quotes with backticks (`` `"value`" ``) or use a 
-   combination of double quotes and apostrophes (`"'value'"`). This 
-   is due to the hand off to PowerShell - it seems to strip off the 
-   outer set of quotes. TODO: TEST THIS, MAY NOT BE RELEVANT NOW.
+   spaces, please use a combination of double quotes and apostrophes 
+   (`"'value'"`). In cmd.exe you can just use double quotes (`"value"`) 
+   but in powershell.exe you should use backticks (`` `"value`" ``) or 
+   apostrophes (`'value'`).
+ * **Pass quotes in arguments**: When you need to pass quoted values to
+   to something like a native installer, you are in for a world of fun. In
+   cmd.exe you must pass it like this: `-ia "/yo=""Spaces spaces"""`. In 
+   PowerShell, you must pass it like this: `-ia '/yo=""Spaces spaces""'`.
+   No other combination will work.
  * Options and switches apply to all items passed, so if you are 
    installing multiple packages, and you use `--version=1.0.0`, choco 
    is going to look for and try to install version 1.0.0 of every 
