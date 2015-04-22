@@ -78,11 +78,13 @@ You can pass options and switches in the following ways:
    the local options are parsed.
  * **Use Equals**: You can also include or not include an equals sign 
    `=` between options and values.
- * **Quote Values**: When you need to quote things, such as when using 
-   spaces, please use a combination of double quotes and apostrophes 
-   (`"'value'"`). In cmd.exe you can just use double quotes (`"value"`) 
-   but in powershell.exe you should use backticks (`` `"value`" ``) or 
-   apostrophes (`'value'`).
+ * **Quote Values**: When you need to quote an entire argument, such as 
+   when using spaces, please use a combination of double quotes and 
+   apostrophes (`"'value'"`). In cmd.exe you can just use double quotes 
+   (`"value"`) but in powershell.exe you should use backticks 
+   (`` `"value`" ``) or apostrophes (`'value'`). Using the combination 
+   allows for both shells to work without issue, except for when the next 
+   section applies.
  * **Pass quotes in arguments**: When you need to pass quoted values to
    to something like a native installer, you are in for a world of fun. In
    cmd.exe you must pass it like this: `-ia "/yo=""Spaces spaces"""`. In 
