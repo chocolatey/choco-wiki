@@ -112,3 +112,7 @@ The one that is the most important right now is the `x.y.z` release (in this cas
 The [relevant bits of the release notes](https://github.com/chocolatey/choco/wiki/ReleaseNotes#099-march-3-2015) for the FAQ:
 
  - [Security] Prompt for confirmation: For security reasons, we now stop for confirmation before changing the state of the system on most commands. You can pass `-y` to confirm any prompts or set a value in the config that will globally confirm and behave like older versions of Chocolatey (`allowGlobalConfirmation`, see `choco feature -h` for how to enable).
+
+Some folks may find the change quite annoying. The perspective of some folks isn't the perspective of everyone and we have some very security-conscious folks that want a verification of what they requested is what they end up with. So this prompt is extremely important for them. We are moving to a more secure by default approach so this change was important to get us there. Security related changes are some of the only things you will see that affect Chocolatey in such a way. 
+
+We spent many months stressing over this change because of the breaking part and decided it wasn't going to get easier to change later. We've added the ability for you to set Chocolatey back to the way it was before with `allowGlobalConfirmation` and if the prompts annoy you, you should probably look at making this change.
