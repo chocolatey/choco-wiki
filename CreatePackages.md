@@ -99,9 +99,9 @@ You can extract the application within the package directory itself (or even shi
 
 ### 3. Path provided by the `Get-BinRoot` helper - will be deprecated later (closer to v1) but okay to use for now
 
-The path returned by the helper `Get-BinRoot` can be used as the parent directory for the installation. `Get-BinRoot` will return the value of the environment variable `%ChocolateyBinRoot%`. If the value does not contain a drive reference, the system drive will be prepended. If the environment variable is not set, the default path (~~`C:\Tools`~~ `C:\Chocolatey\bin`) will be returned.
+The path returned by the helper `Get-BinRoot` can be used as the parent directory for the installation. `Get-BinRoot` will return the value of the  environment variable `%ChocolateyBinRoot%`. If the value does not contain a drive reference, the system drive will be prepended. If the environment variable is not set, the default path (~~`C:\Tools`~~ `C:\Chocolatey\bin`) will be returned.
 
-As an example, [MinGW](https://github.com/ferventcoder/chocolatey-packages/blob/master/manual/mingw/tools/chocolateyInstall.ps1) uses `%ChocolateyBinRoot%`. If the environment variable is not set, it will be set to `C:\Chocolatey\bin` and MinGW will install to `C:\Chocolatey\bin\MinGW` by default. If `%ChocolateyBinRoot%` is set to `C:\Common\bin`, MinGW installs to `C:\Common\bin\MinGW`.
+As an example, [MinGW](https://github.com/ferventcoder/chocolatey-packages/blob/master/manual/mingw/tools/chocolateyInstall.ps1) uses `%ChocolateyBinRoot%`. If the environment variable is not set, it will be set to `c:\tools` and MinGW will install to `C:\Tools\MinGW` by default. If `%ChocolateyBinRoot%` is set to "C:\Common\bin", MinGW installs to `C:\Common\bin\MinGW`.
 
 `%ChocolateyBinRoot%` gives the Chocolatey user a way of controlling where packages are installed. If you want to allow customizing the installation path, then this is currently the way to go.
 
