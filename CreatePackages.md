@@ -61,7 +61,7 @@ Install-ChocolateyPackage $packageName $fileType $silentArgs $url
 
 For reference - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
 
-The `Chocolatey` Windows package manager uses the same infrastructure as [NuGet](http://nuget.org/) , the Visual Studio package manager by Outercurve Foundation (sponsored by Microsoft). Therefore packages are based on the same principals. One of those is a package description (specification) in `xml` format, known as the `Nuspec`.
+The `Chocolatey` Windows package manager uses the same infrastructure as [NuGet](http://nuget.org/) , the Visual Studio package manager by Outercurve Foundation (sponsored by Microsoft). Therefore packages are based on the same principles. One of those is a package description (specification) in `xml` format, known as the `Nuspec`.
 
 The `Nuspec` contains basic information such as the version, license, maintainer, and package dependencies.
 
@@ -205,9 +205,9 @@ PowerShell:
  choco install packageName -fdv -s $pwd
 ```
 
-Other shells, including cmd.exe:
+Other shells, including `cmd.exe`:
 ```cmd
- choco install packageName -fdv -s '%cd%'
+ choco install packageName -fdv -s "%cd%"
 ```
 
 This will install the package right out of your source. As you find things you may need to fix, using `--force` (`-f`) will remove and reinstall the package from the updated `*.nupkg`.
