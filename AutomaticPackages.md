@@ -129,3 +129,4 @@ and
 `$url64 = 'http://sourceforge.net/projects/nomacs/files/nomacs-{{PackageVersion}}/nomacs-setup-{{PackageVersion}}-x64.exe/download'`
 For other applications obviously you have to use the actual application/file names. Important is that you use `{{PackageVersion}}` and don’t use any direct links which include SourceForge mirrors.
 * In Ketarin there’s no other possibility than using the direct link to a file with an included mirror (e.&nbsp;g. `http://garr.dl.sourceforge.net/project/nomacs/nomacs-{version}/nomacs-setup-{version}-x86.exe`). Unfortunately then Ketarin will occasionally fail to download this file and you will have to manually replace the mirror with a working one to get your automatic package updated. Any clue to fix this issue will be appreciated.
+* In advanced settings, change the user agent to `chocolatey command line`. This will allow ketarin to behave similarly to how Chocolatey does.
