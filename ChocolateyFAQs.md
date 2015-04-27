@@ -99,7 +99,7 @@ The shims are generated as "Any CPU" programs, which depend on the `Enable64Bit`
 
 
 ### Why do I have to confirm packages now? Is there a way to remove this?
-tl;dr - Yes, completely possible. Use `cup all -y` 
+tl;dr - Yes, completely possible. Use `-y` or turn on `allowGlobalConfirmation`.
 
 Also check out the help menus now - `choco -h`, `choco install -h` 
 
