@@ -207,7 +207,7 @@ PowerShell:
 
 Other shells, including `cmd.exe`:
 ```cmd
- choco install packageName -fdv -s %cd%
+ choco install packageName -fdv -s "%cd%"
 ```
 
 This will install the package right out of your source. As you find things you may need to fix, using `--force` (`-f`) will remove and reinstall the package from the updated `*.nupkg`.
