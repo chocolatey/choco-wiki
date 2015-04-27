@@ -109,6 +109,6 @@ The one that is the most important right now is the `x.y.z` release (in this cas
 
 0.9.9 introduced a new compiled client that was/is a total rewrite. 0.9.10 will have complete feature parity with the older client - see [FeatureParity](https://github.com/chocolatey/choco/labels/FeatureParity). Why the rewrite? For a more maintainable, faster client that can run on mono now, so you are not completely tied to Windows. We've started adding support for other install providers (like [Scriptcs](https://github.com/chocolatey/choco/issues/247)).
 
-The [relevant bits of the release notes](https://github.com/chocolatey/choco/wiki/ReleaseNotes#099-march-3-2015) for your question:
+The [relevant bits of the release notes](https://github.com/chocolatey/choco/wiki/ReleaseNotes#099-march-3-2015) for the FAQ:
 
  - [Security] Prompt for confirmation: For security reasons, we now stop for confirmation before changing the state of the system on most commands. You can pass `-y` to confirm any prompts or set a value in the config that will globally confirm and behave like older versions of Chocolatey (`allowGlobalConfirmation`, see `choco feature -h` for how to enable).
