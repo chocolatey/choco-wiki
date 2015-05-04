@@ -97,6 +97,14 @@ The shims are generated as "Any CPU" programs, which depend on the `Enable64Bit`
 
 [Any CPU 32-bit mode on 64 bit machine](http://stackoverflow.com/a/14857294)
 
+### Is there a PowerShell Module for Chocolatey?
+Not yet, but when there is it will be provided as a binary DLL.
+
+Chocolatey itself is now a binary with 0.9.9+. This provides the ability to run it on Linux/OSX, which is why it is not by default a PowerShell module (\*nix still doesn't really have PowerShell support). The intention is to have something that has a larger portability - this is why it is not something you can ***only*** use in PowerShell, but rather something you can ***also*** use in PowerShell.
+
+**It was NEVER a PowerShell module, it just used PowerShell as a programming language and was meant to be a CLI app.** I bolded this so it might get read twice. ;)
+
+Chocolatey up until 0.9.9 was provided completely written in PowerShell, with the approach above. I don't know of any other app that has ever tried that approach, which made the original chocolatey client a rarity indeed. 
 
 ### Why do I have to confirm packages now? Is there a way to remove this?
 tl;dr - Yes, completely possible. Use `-y` or turn on `allowGlobalConfirmation`.
