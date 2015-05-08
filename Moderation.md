@@ -20,3 +20,17 @@ New packages must meet the requirements above and the following additional requi
 
 
 ### Guidelines
+
+
+
+## Roles
+- Reviewer
+- Moderator
+- Admin
+
+## Becoming a Reviewer
+
+## Becoming a Moderator
+
+## Becoming an Admin
+This is not an achievable status
