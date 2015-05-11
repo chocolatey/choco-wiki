@@ -102,4 +102,4 @@ Typically a package goes into the moderation queue when submitted.You can get to
 ### New Reviewers / Moderators
 - Become familiar with the package guidelines and all of the different Chocolatey functions available.
 - Join the chocolatey-moderators at google groups dot com mailing list. This is required for communication with maintainers.
-- Join Gitter, and hang out in the [Choco Gitter Room](https://gitter.im/chocolatey/choco) from time to time.
+- Join Gitter and hang out in the [Choco Gitter Room](https://gitter.im/chocolatey/choco) from time to time.
