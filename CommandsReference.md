@@ -88,8 +88,10 @@ You can pass options and switches in the following ways:
  * **Pass quotes in arguments**: When you need to pass quoted values to
    to something like a native installer, you are in for a world of fun. In
    cmd.exe you must pass it like this: `-ia "/yo=""Spaces spaces"""`. In 
-   PowerShell, you must pass it like this: `-ia '/yo=""Spaces spaces""'`.
-   No other combination will work.
+   PowerShell.exe, you must pass it like this: `-ia '/yo=""Spaces spaces""'`.
+   No other combination will work. In PowerShell.exe if you are on version 
+   v3+, you can try `--%` before `-ia` to just pass the args through as is,
+   which means it should not require any special workarounds.
  * Options and switches apply to all items passed, so if you are 
    installing multiple packages, and you use `--version=1.0.0`, choco 
    is going to look for and try to install version 1.0.0 of every 
