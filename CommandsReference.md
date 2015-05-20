@@ -69,6 +69,8 @@ This is a listing of all of the different things you can pass to choco.
 
 You can pass options and switches in the following ways:
 
+ * Unless stated otherwise, an option/switch should only be passed one
+   time. Otherwise you may find weird/non-supported behavior.   
  * `-`, `/`, or `--` (one character switches should not use `--`)
  * **Option Bundling / Bundled Options**: One character switches can be
    bundled. e.g. `-d` (debug), `-f` (force), `-v` (verbose), and `-y` 
