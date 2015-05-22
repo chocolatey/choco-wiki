@@ -63,5 +63,5 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 ```
 
 ## Known Limitations
-* There are no functions defined in the Chocolatey PowerShell module that would help with uninstall - yet
-* There is no automatic removal of MSIs (well there is, but auto uninstaller is not turned on by default).
+* There are no functions defined in the Chocolatey PowerShell module that would help with uninstall - yet (this means that compared to the awesome library of helper functions to get things installed, you are left more on your own to work on uninstalling those things currently).
+* There is no automatic removal from Programs and Features aka Add/Remove Programs (well there is, but auto uninstaller is not turned on by default).
