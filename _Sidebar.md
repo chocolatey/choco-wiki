@@ -16,6 +16,7 @@
  - [[Getting Started|GettingStarted]]
  - [[Proxy Settings|Proxy-Settings-for-Chocolatey]]
  - **Commands:**
+  - [[Passing args to choco|CommandsReference#how-to-pass-options--switches]]
   - [[Complete Reference|CommandsReference]]
   - [[List / Search |CommandsList]]
   - [[Install|CommandsInstall]]
