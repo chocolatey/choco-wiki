@@ -3,6 +3,9 @@
 ## Summary
 First you should determine if you are making a self-contained package or (also) using automation scripts. You should also consider creating [[automatic packages|AutomaticPackages]] for the best maintainability over time.
 
+1. Run `choco new -h` to get a feel for what you can pass e.g `choco new bob` (to create a package named `bob`)
+1. Note all the rules below. This will help you, especially in publishing to the community feed (https://chocolatey.org)
+
 ## Quick Start guide
 
 If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](https://github.com/chocolatey/choco/wiki/CreatePackagesQuickStart) for you. **NOTE**: This doesn't exempt you from observing the rules, requirements and guidelines (noted below).
