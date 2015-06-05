@@ -11,7 +11,7 @@
 
 **Usage**  
 
-[[How does choco work?|GettingStarted#how-choco-works]]
+[[How does choco work?|GettingStarted#how-does-chocolatey-work]]
 
  - [[How to install|installation]]
  - [[How to uninstall|Uninstallation]]
