@@ -24,7 +24,7 @@ How the heck does this all work?
 ### Installation
 
 1. Chocolatey uses Nuget.Core to retrieve the package from the source.
-2. Choco determines if it self-contained or has automation scripts - PowerShell scripts (*.ps1 files), and soon to be open to Scriptcs files in the 0.9.10.x timeframe (I know, right?!).
+2. Choco determines if it self-contained or has automation scripts - PowerShell scripts (*.ps1 files), and soon to be open to Scriptcs files in the `0.9.10.x` timeframe (I know, right?!).
 3. Choco takes a registry snapshot for later comparison.
 4. If there are automation scripts, choco will run those. They can contain whatever you need to do, if they are PowerShell you have the full power of Posh (PowerShell), but you should try to ensure they are compatible with Posh v2+.
 5. Choco compares the snapshot and determines uninstaller information and saves that to a .registry file.
