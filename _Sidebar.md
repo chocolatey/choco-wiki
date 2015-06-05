@@ -30,9 +30,9 @@
 
 **Creating Packages**
 
+ - [[Create Packages|CreatePackages]]
  - [[Quick Start|CreatePackagesQuickStart]]
  - [[Function and Variable Reference|HelpersReference]]
- - [[Create Packages|CreatePackages]]
  - [[Automatic Packages|AutomaticPackages]]
  - **Commands:**
   - [[New|CommandsNew]]
