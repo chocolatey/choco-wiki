@@ -51,7 +51,7 @@ These are the functions from above as one list.
 
 ## Complete List (alphabetical order)
 
-* __Get-BinRoot__ \[[src](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/functions/Get-BinRoot.ps1)\]
+* __Get-BinRoot__ \[[src](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/functions/Get-BinRoot.ps1)\]  - this is a horribly named function that doesn't do what new folks think it does. It gets you the `tools` root folder, which by default is set to `c:\tools`, not the `$env:ChocolateyInstall\bin` folder. 
 
 * __Get-CheckSumValid__ \[[src](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/functions/Get-CheckSumValid.ps1)\]
 
