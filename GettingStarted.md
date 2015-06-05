@@ -24,43 +24,25 @@ How the heck does this all work?
 ### Installation
 
 1. Chocolatey uses Nuget.Core to retrieve the package from the source.
-2. Choco determines if it self-contained or has automation scripts 
-   - PowerShell scripts (*.ps1 files), and soon to be open to Scriptcs 
-   files in the 0.9.10.x timeframe (I know, right?!).
+2. Choco determines if it self-contained or has automation scripts - PowerShell scripts (*.ps1 files), and soon to be open to Scriptcs files in the 0.9.10.x timeframe (I know, right?!).
 3. Choco takes a registry snapshot for later comparison.
-4. If there are automation scripts, choco will run those. They can contain
-   whatever you need to do, if they are PowerShell you have the full power
-   of Posh (PowerShell), but you should try to ensure they are compatible 
-   with Posh v2+.
-5. Choco compares the snapshot and determines uninstaller information and
-   saves that to a .registry file.
-6. Choco snapshots the folder based on all files that are currently in
-   the package directory.
-7. Choco looks for shim files and generates shims into the 
-   `$env:ChocolateyInstall\bin` folder so those items are available on 
-   the path.
+4. If there are automation scripts, choco will run those. They can contain whatever you need to do, if they are PowerShell you have the full power of Posh (PowerShell), but you should try to ensure they are compatible with Posh v2+.
+5. Choco compares the snapshot and determines uninstaller information and saves that to a .registry file.
+6. Choco snapshots the folder based on all files that are currently in the package directory.
+7. Choco looks for shim files and generates shims into the `$env:ChocolateyInstall\bin` folder so those items are available on the path.
 
 ### Upgrade
 
-1. Similar to install, except choco will make a backup of the folder prior 
-   to attempting upgrade.
-2. The files snapshot is used to determine what files can be removed from 
-   the package folder. If those files have not changed, they will be removed.
+1. Similar to install, except choco will make a backup of the folder prior to attempting upgrade.
+2. The files snapshot is used to determine what files can be removed from the package folder. If those files have not changed, they will be removed.
 
 ### Uninstall
 
 1. Choco makes the determination that the package is actually installed.
 2. Choco will make a backup of the folder.
-3. The files snapshot is used to determine what files can be removed from 
-   the package folder. If those files have not changed, they will be removed.
-4. The automation script is run if found. This should be used to clean up 
-   anything that is put there with the install script.
-5. If auto uninstaller is turned on, choco will attempt to run the auto
-   uninstaller if a silent uninstall can be determined. Otherwise it will
-   prompt the user (unless -y) to ask if they want the uninstaller to 
-   continue. The auto uninstaller can automatically detect about 80% of
-   the different uninstallers and determine or use the silent uninstall
-   arguments.
+3. The files snapshot is used to determine what files can be removed from the package folder. If those files have not changed, they will be removed.
+4. The automation script is run if found. This should be used to clean up anything that is put there with the install script.
+5. If auto uninstaller is turned on, choco will attempt to run the auto uninstaller if a silent uninstall can be determined. Otherwise it will prompt the user (unless -y) to ask if they want the uninstaller to continue. The auto uninstaller can automatically detect about 80% of the different native uninstallers and determine or use the silent uninstall arguments.
 
 
 When a package has an exe file, Chocolatey will create a link "shortcut" to the file so that you can run that tool anywhere on the machine.
