@@ -14,6 +14,12 @@ the application though. You should read up on the Shim Generation section
 below though to familiarize yourself on what to do with GUI applications 
 and/or ignoring shims (also known as batch redirects).
 
+#### Automation Scripts
+You have a powerful use of Chocolatey, as you are using PowerShell. So you
+can do just about anything you need. Choco has some very handy [[built-in 
+functions|HelpersReference]] that you can use, these are sometimes called 
+[[helpers|HelpersReference]].
+
 ## Quick Start guide
 
 If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](https://github.com/chocolatey/choco/wiki/CreatePackagesQuickStart) for you. **NOTE**: This doesn't exempt you from observing the rules, requirements and guidelines (noted below).
