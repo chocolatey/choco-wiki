@@ -6,6 +6,14 @@ First you should determine if you are making a self-contained package or (also) 
 1. Run `choco new -h` to get a feel for what you can pass e.g `choco new bob` (to create a package named `bob`)
 1. Note all the rules below. This will help you, especially in publishing to the community feed (https://chocolatey.org)
 
+### Self-Contained? 
+If you have a self-contained package, you can remove the automation scripts 
+entirely and just include the executables, they will automatically get shimmed, 
+which puts them on the path. Ensure you have the legal right to distribute 
+the application though. You should read up on the Shim Generation section 
+below though to familiarize yourself on what to do with GUI applications 
+and/or ignoring shims (also known as batch redirects).
+
 ## Quick Start guide
 
 If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](https://github.com/chocolatey/choco/wiki/CreatePackagesQuickStart) for you. **NOTE**: This doesn't exempt you from observing the rules, requirements and guidelines (noted below).
