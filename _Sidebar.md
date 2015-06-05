@@ -9,7 +9,7 @@
 - [Contributing](https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md)
 - [[FAQs|ChocolateyFAQs]]
 
-**Usage**
+**Usage**  
 [[How does choco work?|GettingStarted#how-choco-works]]
 
  - [[How to install|installation]]
