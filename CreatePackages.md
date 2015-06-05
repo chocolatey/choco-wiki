@@ -9,7 +9,7 @@ First you should determine if you are making a self-contained package or (also) 
 #### Self-Contained? 
 If you have a self-contained package, you can remove the automation scripts 
 entirely and just include the executables, they will automatically get shimmed, 
-which puts them on the path. Ensure you have the legal right to distribute 
+which puts them on the path. Ensure you have the [[legal right to distribute|Legal]] 
 the application though. You should read up on the Shim Generation section 
 below though to familiarize yourself on what to do with GUI applications 
 and/or ignoring shims (also known as batch redirects).
