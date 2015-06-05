@@ -16,8 +16,7 @@ and/or ignoring shims (also known as batch redirects).
 
 #### Automation Scripts
 You have a powerful use of Chocolatey, as you are using PowerShell. So you
-can do just about anything you need. Choco has some very handy [[built-in 
-functions|HelpersReference]] that you can use, these are sometimes called 
+can do just about anything you need. Choco has some very handy [[built-in functions|HelpersReference]] that you can use, these are sometimes called 
 [[helpers|HelpersReference]].
 
 ## Quick Start guide
