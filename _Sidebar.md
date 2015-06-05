@@ -10,6 +10,7 @@
 - [[FAQs|ChocolateyFAQs]]
 
 **Usage**  
+
 [[How does choco work?|GettingStarted#how-choco-works]]
 
  - [[How to install|installation]]
