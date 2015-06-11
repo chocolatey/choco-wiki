@@ -15,6 +15,7 @@ For any that deal with the community feed or downloading packages over the inter
 
 
 ### More security-related items
+1. The community feed (https://chocolatey.org) is now moderated before packages become live.
 1. Choco v0.9.9 is signed with a key that only Rob has. Choco will warn if it is not signed with that key and require a user to pass --allow-unofficial-build. Over time we are going to increase this so that more places will restrict this (those a user can't just go change source of choco on and build). https://github.com/chocolatey/choco/issues/36
 1. We have added -whatif (aka --noop) to 0.9.9 so you can get a feel for what a package would do to your system.
 
