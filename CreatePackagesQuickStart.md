@@ -30,7 +30,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
 * **Test the package**
    * **Testing should probably be done on a Virtual Machine**
    * In your package directory, use:
-      * `choco install package-name -s '$pwd' -f` - powershell
+      * `choco install package-name -s "$pwd" -f` - powershell
       * `choco install package-name -s '%cd%' -f` - everywhere else
    * Otherwise, use the full path:
       * `choco install package-name -source 'c:\path\to\Package\' -f`
