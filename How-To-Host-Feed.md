@@ -60,7 +60,7 @@ Some notable references:
  1. Configure IIS appropriately for the package.
  1. Be sure to give the app pool modify permissions to the `App_Data` folder.
 
-Alternative means of installation? If you have [Puppet](https://docs.puppetlabs.com/puppet/), you can take a look at the [chocolatey server module](https://github.com/ferventcoder/puppet-chocolatey-presentation/blob/master/demo/puppet/modules/chocolateyserver/manifests/init.pp) - has not been fully fledged out into a module on the forge yet, so its [dependencies are listed in a ReadMe](https://github.com/ferventcoder/puppet-chocolatey-presentation/blob/master/demo/puppet/modules/ReadMe.md). 
+Alternative means of installation? If you have [Puppet](https://docs.puppetlabs.com/puppet/), you can take a look at the [chocolatey server module](https://forge.puppetlabs.com/chocolatey/chocolatey_server). 
 
 ## Package Gallery
 This is like what https://chocolatey.org (the community feed runs on). It is the most advanced, having both a file store for packages and a database for tracking all sorts of information.
