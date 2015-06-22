@@ -1,6 +1,6 @@
 # Release Notes
 
-## [0.9.9.7](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.9.7+is%3Aclosed) (unreleased)
+## [0.9.9.7](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.9.7+is%3Aclosed) (June 20, 2015)
 
 "Fix Everything. Fix All The Things" - There have been some things bugging us for a long time related to limitations with NuGet, so we decided to fix that. Like [nuspec enhancements](https://github.com/chocolatey/choco/issues/205), that crazy [content folder restriction](https://github.com/chocolatey/choco/issues/290) has been removed (I know, right?!), and we're working around [badly](https://github.com/chocolatey/choco/issues/316) [behaved](https://github.com/chocolatey/choco/issues/326) packages quite a bit more to bring you more feature parity.
 
