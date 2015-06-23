@@ -1,8 +1,6 @@
-[[Home]]
-
-[[Why Chocolatey?|Why]]  
-
-[Choco 0.9.8.x & below](https://github.com/chocolatey/chocolatey/wiki)
+- [[Home]]
+- [[Why Chocolatey?|Why]]  
+- [Choco 0.9.8.x & below](https://github.com/chocolatey/chocolatey/wiki)
 
 **General**
 
