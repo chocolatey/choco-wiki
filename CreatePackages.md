@@ -61,6 +61,7 @@ There are three main elements to a Chocolatey package. Only the nuspec is requir
 1. [Nuspec](https://github.com/chocolatey/chocolateytemplates/blob/master/_templates/chocolatey/__NAME__.nuspec) - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
 1. [[chocolateyInstall.ps1|ChocolateyInstallPS1]] - check out the [[helper reference|HelpersReference]]
 1. any application files to include (it is highly suggested that you are the author in this case or you have the right to [[distribute files|Legal]]). EXE files in the package/downloaded to package folder from chocolateyInstall.ps1 will get a link to the command line.
+1. chocolateyUninstall.ps1, for uninstalling your package. See [[helper reference|HelpersReference]] for functions available in your script.
 
 **Note:** Please maintain compatibility with Posh v2. Not every OS we support is on Posh v2 (nor comes OOB with Posh v3+). It's best to work with the widest compatibility of systems out there.
 
@@ -129,6 +130,15 @@ As an example, [MinGW](https://github.com/ferventcoder/chocolatey-packages/blob/
 No matter how you decide, you are advised to state the default installation directory in your package description. This prevents confusion about where the application will end up being installed.
 
 If you allow customizing the installation path, then append instructions on how to do that, too.
+
+## Uninstalling
+
+Uninstalling is handled by a `chocolateyUninstall.ps1` script, which should be in your package's `tools` directory, next to [[chocolateyInstall.ps1|ChocolateyInstallPS1]]. All the usual [[helper reference|HelpersReference]] are available. If your package doesn't uninstall cleanly, people will get grumpy because they'll have to manually clean up after you. Be a good human being and write an uninstaller.
+
+## How do I handle upgrading?
+
+There is no concept of upgrading in Chocolatey. Instead, your [[chocolateyInstall.ps1|ChocolateyInstallPS1]] script should support installing on top of any previous versions of your package.
+
 
 ## Dependency Chaining
 You can make packages that depend on other packages just by adding those dependencies to the nuspec. Take a look at [ferventcoder.chocolatey.utilities nuspec](https://github.com/ferventcoder/chocolatey-packages/blob/master/manual/ferventcoder.chocolatey.utilities/ferventcoder.chocolatey.utilities.nuspec).
