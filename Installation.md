@@ -45,7 +45,17 @@ It downloads and runs (https://chocolatey.org/install.ps1).
 `NOTE: This method will give you a deprecated warning.`
 This is the best method if you want to repeat it or include it in source control. It requires no change to your existing PowerShell to allow for remote unsigned scripts.
 
-Download the two items from [chocolateyInstall](https://github.com/chocolatey/chocolatey/tree/master/chocolateyInstall).
+Download the [`install.ps1`](https://chocolatey.org/install.ps1) from [chocolatey.org](https://chocolatey.org/install.ps1) and save it as `install.ps1.
+
+Create a file named `installChocolatey.cmd` next to that file with the following:
+
+```
+@echo off
+
+SET DIR=%~dp0%
+
+%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%DIR%install.ps1' %*"
+```
 
 Run `installChocolatey.cmd` and it will install and update to the latest version of Chocolatey.
 
