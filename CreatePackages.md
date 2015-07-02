@@ -131,13 +131,13 @@ No matter how you decide, you are advised to state the default installation dire
 
 If you allow customizing the installation path, then append instructions on how to do that, too.
 
+## Upgrading
+
+There is no concept of upgrading in Chocolatey. Instead, your [[chocolateyInstall.ps1|ChocolateyInstallPS1]] script should support installing on top of any previous versions of your package.
+
 ## Uninstalling
 
 Uninstalling is handled by a `chocolateyUninstall.ps1` script, which should be in your package's `tools` directory, next to [[chocolateyInstall.ps1|ChocolateyInstallPS1]]. All the usual [[helper reference|HelpersReference]] are available. If your package doesn't uninstall cleanly, people will get grumpy because they'll have to manually clean up after you. Be a good human being and write an uninstaller.
-
-## How do I handle upgrading?
-
-There is no concept of upgrading in Chocolatey. Instead, your [[chocolateyInstall.ps1|ChocolateyInstallPS1]] script should support installing on top of any previous versions of your package.
 
 
 ## Dependency Chaining
