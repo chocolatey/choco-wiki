@@ -42,7 +42,6 @@ This is the second-most easy method. Open a PowerShell command line and paste in
 It downloads and runs (https://chocolatey.org/install.ps1).
 
 ## PowerShell Through Batch Method
-`NOTE: This method will give you a deprecated warning.`
 This is the best method if you want to repeat it or include it in source control. It requires no change to your existing PowerShell to allow for remote unsigned scripts.
 
 Download the [`install.ps1`](https://chocolatey.org/install.ps1) from [chocolatey.org](https://chocolatey.org/install.ps1) and save it as `install.ps1.
