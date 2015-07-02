@@ -44,17 +44,19 @@ It downloads and runs (https://chocolatey.org/install.ps1).
 ## PowerShell Through Batch Method
 This is the best method if you want to repeat it or include it in source control. It requires no change to your existing PowerShell to allow for remote unsigned scripts.
 
-Download the [`install.ps1`](https://chocolatey.org/install.ps1) from [chocolatey.org](https://chocolatey.org/install.ps1) and save it as `install.ps1.
-
-Create a file named `installChocolatey.cmd` next to that file with the following:
+Create a file named `installChocolatey.cmd` with the following:
 
 ```
 @echo off
 
 SET DIR=%~dp0%
 
+%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "((new-object net.webclient).DownloadFile('https://chocolatey.org/install.ps1','install.ps1'))"
 %systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%DIR%install.ps1' %*"
 ```
+
+If you prefer to have the install.ps1 file already, comment out the download line in the batch file and download the [`install.ps1`](https://chocolatey.org/install.ps1) from [chocolatey.org](https://chocolatey.org/install.ps1) and save it as `install.ps1.
+
 
 Run `installChocolatey.cmd` and it will install and update to the latest version of Chocolatey.
 
