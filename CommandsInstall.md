@@ -14,6 +14,8 @@ Installs a package or a list of packages (sometimes specified as a
  all packages from a custom feed. Will not work with Chocolatey default
  feed. **THIS IS NOT YET REIMPLEMENTED.**
 
+**NOTE**: Any package name ending with `.config` is considered a packages.config file.
+
 ## Examples
 
     choco install sysinternals
