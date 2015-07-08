@@ -95,6 +95,7 @@ If you don't want to host on Windows you have only the following options (from l
 * [JNuGet](https://bitbucket.org/aristar/jnuget/wiki/Home) - a simple server
 * [NuGet.Java.Server](http://blog.jonnyzzz.name/2012/03/nuget-server-in-pure-java.html) ([NuGet Package](https://www.nuget.org/packages/NuGet.Java.Server)) - simple server (same tool used in TeamCity)
 * [TeamCity](https://www.jetbrains.com/teamcity/) - contains built-in simple server
+* [Jenkins Nuget Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Nuget+Plugin) - hooks into existing Jenkins systems - [How-to article](http://automatetheplanet.com/integrate-jenkins-msbuild-nuget/)
 * [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_proxy_repositories.html)
 * [Artifactory](http://www.jfrog.com/open-source/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories)
 
