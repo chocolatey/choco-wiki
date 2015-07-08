@@ -40,9 +40,10 @@ How the heck does this all work?
 
 1. Choco makes the determination that the package is actually installed.
 2. Choco will make a backup of the folder.
-3. The files snapshot is used to determine what files can be removed from the package folder. If those files have not changed, they will be removed.
-4. The automation script is run if found. This should be used to clean up anything that is put there with the install script.
-5. If auto uninstaller is turned on, choco will attempt to run the auto uninstaller if a silent uninstall can be determined. Otherwise it will prompt the user (unless -y) to ask if they want the uninstaller to continue. The auto uninstaller can automatically detect about 80% of the different native uninstallers and determine or use the silent uninstall arguments.
+3. The automation script is run if found. This should be used to clean up anything that is put there with the install script.
+4. If auto uninstaller is turned on, choco will attempt to run the auto uninstaller if a silent uninstall can be determined. Otherwise it will prompt the user (unless -y) to ask if they want the uninstaller to continue. The auto uninstaller can automatically detect about 80% of the different native uninstallers and determine or use the silent uninstall arguments.
+5. If everything is successful so far, the files snapshot is used to determine what files can be removed from the package folder. If those files have not changed, they will be removed. 
+6. If everything is deleted from the package folder, the folder is also removed.
 
 
 When a package has an exe file, Chocolatey will create a link "shortcut" to the file so that you can run that tool anywhere on the machine.
