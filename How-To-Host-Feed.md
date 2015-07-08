@@ -7,6 +7,8 @@ There are three types of feeds, [folder/unc share](#local-folder--unc-share), [s
 * [ProGet](http://inedo.com/proget/overview) - ProGet gives you a ready to go On-Premise option ([installable with Chocolatey!](https://chocolatey.org/packages/proget)).
 * [Artifactory](http://www.jfrog.com/open-source/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories)
 * [TeamCity](https://www.jetbrains.com/teamcity/) has built-in Simple Server
+* [Jenkins Nuget Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Nuget+Plugin) - A simple server plugin for your existing Jenkins CI system
+* [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_proxy_repositories.html) - Sonatype Nexus has a built-in simple server
 
 ## Local Folder / UNC Share
 Perhaps the easiest to set up and recommended for testing quick and dirty scenarios, local folder is easily a strong point when you need a quick source for packages.
