@@ -1,5 +1,4 @@
-# Moderation of the Community Feed
-
+# Community Feed Moderation
 ## Definitions
 
 - package - the nuget package
