@@ -2,7 +2,7 @@
 ## Definitions
 
 - package - the nuget package
-- sofware - the underlying software that the package assists in installing
+- software - the underlying software that the package assists in installing
 - installer - the native installer, usually packaged as MSI, NSIS, InstallShield, Wise, Squirrel, or some other flavor.
 
 ### Roles
