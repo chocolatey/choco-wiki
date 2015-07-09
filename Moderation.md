@@ -15,6 +15,7 @@
 TBD
 
 #### Becoming a Moderator
+
 There is no set process for becoming a moderator yet. Usually it is having many approved packages and understanding the process of creating choco packages. Eventually it will be something you earn through your reputation on the site.
 - Make awesome packages
 - Work on the disqus threads and mailing list.
@@ -27,45 +28,51 @@ This is not an achievable status.
 
 ## Package Review Process
 
-When reviewing new and existing packages, you should go based on the following requirements and guidelines.
+When reviewing new and existing packages, you should review based on the following requirements and guidelines. For NEW packages, review both existing and new packages (comes after existing).
 
 ### Existing Packages
-#### Requirements
 
+This section provides the requirements for packages that have had at least one released version approved or exempted. This includes any packages that existed prior to moderation being turned on (possibly an Unknown status). After this section, there are additional requirements for new packages, like the package id.
+
+#### Requirements
 Anything that falls under requirements will hold up package approval until they are corrected. Always be explicit that you are waiting on the maintainer to fix and resubmit the same version of the package so you can move the review process along.
 
-- ProjectUrl - It's almost absolutely required for the community feed
-- Is the title appropriate?
-- At least something written in the description. It should be sufficient to explain the software.
-- The authors field (software author) is not being used for the maintainers field (exception: when the maintainer is also the author)
-- Tags are appropriate and do not include "chocolatey" (with the exception of the chocolatey packages) - note this doesn't mean they have what you believe are missing tags they could have, that's a guideline.
-- Look over the package files
-  - If binaries are included in the package, does the maintainer have distribution rights? If they have explicit permission, a copy of that in PDF should be in the package contents.
-  - Install/Uninstall scripts
-    - Do the scripts try to do anything malicious? This is almost always immediate grounds for banning the maintainer and deleting their packages.
-    - Do the scripts set good defaults for silent args?
-    - Is there anything there that would not work with POSH v2?
-    - If it is a download, is it getting it from the proper location? Use the project site (projectUrl) to determine where the download for the file is coming from and it should match the one in the package files. If not there needs to be a really, really good reason for not doing so.
-    - Does the download version match the package version?
-    - Are the original commented lines in there? Those must be cleaned up.
-    - Flag the use of any of the following: `$nugetChocolateyPath`, `$nugetPath`, `$nugetExePath`, `$nugetLibPath`, `$chocInstallVariableName`, `$nugetExe`
-    - Does the script try to use `choco install/upgrade/uninstall`?
-    - Does the package try to do anything that an existing Chocolatey function already covers? The maintainers would need a really good reason for diverging from that.
-- Does the package install correctly?
-- Does the package uninstall correctly?
+* ProjectUrl - It's almost absolutely required for the community feed
+* Is the title appropriate?
+* At least something written in the description. It should be sufficient to explain the software. 
+* The description should explicitly mention if this package installs trial software or software that needs a license present, or both.
+* The authors field (software author) is not being used for the maintainers field (exception: when the maintainer is also the author)
+* Tags are appropriate and do not include "chocolatey" (with the exception of the chocolatey packages) - note this doesn't mean they have what you believe are missing tags they could have, that's a guideline.
+  * Trial software should include the #trial tag.
+  * Software that requires a license should include a tag #license.
+* Look over the package files
+  * If binaries are included in the package, does the maintainer have distribution rights? If they have explicit permission, a copy of that in PDF should be in the package contents.
+  * **Install/Uninstall scripts:**
+    * Do the scripts try to do anything malicious? This is almost always immediate grounds for banning the maintainer and deleting their packages.
+    * Do the scripts set good defaults for silent args?
+    * Is there anything there that would not work with POSH v2?
+    * If it is a download, is it getting it from the proper location? Use the project site (projectUrl) to determine where the download for the file is coming from and it should match the one in the package files. If not there needs to be a really, really good reason for not doing so.
+    * Does the download version match the package version?
+    * Does the download include both x86 and x64 urls if available?
+    * Are the commented lines from the template in there? Those must be cleaned up. It is not required to remove all comments, some comments are helpful. It’s a bit subjective on what is helpful and what is noise. Please don’t let your preference get in the way of the requirement.
+    * Flag the use of any of the following: $nugetChocolateyPath, $nugetPath,$nugetExePath, $nugetLibPath, $chocInstallVariableName, $nugetExe
+    * Does the PowerShell script try to use any choco commands? e.g. choco install/upgrade/uninstall?
+    * Does the package try to do anything that an existing Chocolatey function already covers? The maintainers would need a really good reason for diverging from that.
+* Does the package install correctly?
+* Does the package uninstall correctly? (this means the package, not the underlying software. We'd like to have that as well but it's more a guideline at the moment than a requirement. Patience, we will get there).
 
 #### Guidelines
-For guidelines, a package can be approved with comments. Be sure when you have a combination of guidelines versus requirements that you let the maintainer(s) know what exactly is required for approval and what falls into the "nice to have category".
+For guidelines, a package can be approved with comments. Be sure when you have a combination of guidelines and requirements that you let the maintainer(s) know what exactly is required for approval and what falls into the "nice to have category".
 
-- LicenseUrl is nearly a requirement. The only reason it sits in guidelines is that not all software has a page out there containing it's license information. We request that in those cases they point to the url for the FOSS license of the software.
-- We really want to see the IconUrl being used, and some moderators want to see it being used properly, using the rawgit CDN. However it is a guideline, and something to note for a maintainer to fix up next time, not currently. Some software doesn't have
-- Suggest description get really filled out and they take full advantage of the use of markdown.
-- Summary is important, but it doesn't show up on the package page.
-- Tags could always use suggestions to add.
-- Look over the package files
-  - Install / Uninstall Scripts
-    - Be familiar with things that have been deprecated and add a gentle reminder about those things for them to clean up.
-- Something in the releaseNotes section would be great.
+* LicenseUrl is nearly a requirement. The only reason it sits in guidelines is that not all software has a url out there containing its license information. We request that in those cases they point to the url for the FOSS license of the software, if they have an open license.
+* We really want to see the IconUrl being used, and some moderators want to see it being used properly, using the rawgit CDN. However it is a guideline, and something to note for a maintainer to fix up next time, not currently. Some software doesn't have a proper icon.
+* Suggest description get really filled out and they take full advantage of the use of markdown.
+* Summary is important, but it doesn't show up on the package page.
+* Tags could always use suggestions to add.
+* Look over the package files
+  * **Install / Uninstall Scripts:**
+    * Be familiar with things that have been deprecated and add a gentle reminder about those things for them to clean up.
+* Something in the releaseNotes section would be great.
 
 ### New Packages
 New packages are packages that have all versions in unapproved status. There are packages out there that were pre-existing before moderation was turned on. Those will have some versions (not prereleases) that are exempted. Prereleases are always exempted.
@@ -73,10 +80,10 @@ New packages are packages that have all versions in unapproved status. There are
 #### Requirements
 New packages must meet the existing package requirements and the following additional requirements.
 
-- Package naming - if the naming doesn't follow our conventions, it is grounds for rejecting immediately with the suggestion they resubmit with *suggested name*. Note that they may have had prereleases already, and it's still okay to move forward with the rejected status as long as the name of the name of package hasn't been previously approved.
-  - suggest the name split if over 25 chars with no -
-  - flag on "."" in name (unless .portable/.install)
-- not a package duplicating another existing package
+* Package Id naming - if the naming doesn't follow our conventions, it is grounds for rejecting immediately with the suggestion they resubmit with suggested name. Note that they may have had prereleases already, and it's still okay to move forward with the rejected status as long as the name of the name of package hasn't been previously approved. See https://github.com/chocolatey/choco/wiki/CreatePackages#naming-your-package 
+  * suggest the id split if over 25 chars with no "-" in the id
+  * flag on "."" in name (unless .portable/.install)
+* Not a package duplicating another existing package
 
 #### Guidelines
 TDB
@@ -100,6 +107,7 @@ Typically a package goes into the moderation queue when submitted.You can get to
 
 
 ### New Reviewers / Moderators
-- Become familiar with the package guidelines and all of the different Chocolatey functions available.
-- Join the chocolatey-moderators at google groups dot com mailing list. This is required for communication with maintainers.
+- Understand the package creation process and the current recommendations, written at https://github.com/chocolatey/choco/wiki/CreatePackages 
+- Become familiar with the package guidelines and all of the different Chocolatey functions available. https://github.com/chocolatey/choco/wiki/HelpersReference
+- Join the [chocolatey-moderators at google groups dot com](https://groups.google.com/forum/#!forum/chocolatey-moderators) mailing list. This is required for communication with maintainers.
 - Join Gitter and hang out in the [Choco Gitter Room](https://gitter.im/chocolatey/choco) from time to time.
