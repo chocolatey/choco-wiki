@@ -118,8 +118,10 @@ i.e. it is using the default values which we made at the top of the file
 However, if we instead used:
 
 ```
-choco install <packageName> -packageParameters "/Port:82 /Edition:LicenseKey1 /InstallationPath:'C:\temp\folder with space' /AdditionalTools"
+choco install <packageName> -packageParameters '"/Port:82 /Edition:LicenseKey1 /InstallationPath:""C:\temp\folder with space"" /AdditionalTools"'
 ```
+Keep in mind how to pass pkg args: https://github.com/chocolatey/choco/wiki/CommandsReference#how-to-pass-options--switches
+
 
 The output would be:
 
