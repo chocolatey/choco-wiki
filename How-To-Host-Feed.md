@@ -9,7 +9,7 @@ There are three types of feeds, [folder/unc share](#local-folder--unc-share), [s
 * [TeamCity](https://www.jetbrains.com/teamcity/) has built-in Simple Server
 * [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_proxy_repositories.html) - Sonatype Nexus has a built-in simple server
 
-## Local Folder / UNC Share
+## Local Folder / UNC Share (CIFS)
 Perhaps the easiest to set up and recommended for testing quick and dirty scenarios, local folder is easily a strong point when you need a quick source for packages.
 
 **Advantages:**
