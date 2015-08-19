@@ -8,6 +8,7 @@ This is a listing of all of the different things you can pass to choco.
  * [[install|CommandsInstall]] - installs packages from various sources
  * installmissing - **REMOVED**
  * update - **DEPRECATED** - RESERVED for future use (You are looking for upgrade, these are not the droids you are looking for)
+ * [[outdated|CommandsOutdated]] - show a list of packages that have updates (similar to `choco upgrade --noop`, but only outputs out of date packages, current version and available update version).
  * [[upgrade|CommandsUpgrade]] - upgrades packages from various sources
  * version - **DEPRECATED** - will be removed in v1 - use `choco upgrade <pkg|all> -whatif` instead
  * [[uninstall|CommandsUninstall]] - uninstalls a package
@@ -99,6 +100,5 @@ You can pass options and switches in the following ways:
    is going to look for and try to install version 1.0.0 of every 
    package passed. So please split out multiple package calls when 
    wanting to pass specific options.
-
 
 
