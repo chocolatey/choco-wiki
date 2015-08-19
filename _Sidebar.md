@@ -24,6 +24,7 @@
   - [[List / Search |CommandsList]]
   - [[Install|CommandsInstall]]
   - [[Pin|CommandsPin]]
+  - [[Outdated|CommandsOutdated]]
   - [[Upgrade|CommandsUpgrade]]
   - [[Uninstall|CommandsUninstall]]
   - [[Source / Sources|CommandsSources]]
