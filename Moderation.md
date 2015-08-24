@@ -57,6 +57,7 @@ Anything that falls under requirements will hold up package approval until they 
     * Flag the use of any of the following: $nugetChocolateyPath, $nugetPath,$nugetExePath, $nugetLibPath, $chocInstallVariableName, $nugetExe
     * Does the PowerShell script try to use any choco commands? e.g. choco install/upgrade/uninstall?
     * Does the package try to do anything that an existing Chocolatey function already covers? The maintainers would need a really good reason for diverging from that.
+    * If the package is a portable package (downloads a zip file or non-install archive, many times carries the .portable name), does it try to put that in Program Files? This is a no no because Program Files requires admin permissions to write to and is typically the place for natively installed software.
 * Does the package install correctly?
 * Does the package uninstall correctly? (this means the package, not the underlying software. We'd like to have that as well but it's more a guideline at the moment than a requirement. Patience, we will get there).
 
