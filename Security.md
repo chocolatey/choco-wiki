@@ -15,12 +15,14 @@ Chocolatey has grown up quite a bit with the release of 0.9.9 series and has bee
 
 ### Chocolatey.org (the community feed)
 
-**NOTE: For Organizational Use of Chocolatey** - First of all, it goes without stating that if you are a business and you are using Chocolatey, you should think long and hard before trusting an external source you have no control over (chocolatey.org). It is too easy to set up your [[own private feed|How-To-Host-Feed]] where you can vet packages and have complete control over the binaries and what gets installed. This is what we recommend for businesses that use Chocolatey in production scenarios (and what many of them do).
+**NOTE: For Organizational Use of Chocolatey** - First of all, it goes without stating that if you are a business and you are using Chocolatey, you should think long and hard before trusting an external source you have no control over (chocolatey.org, in addition to all of the binaries that download from official distribution channels). It is too easy to set up your [[own private feed|How-To-Host-Feed]] where you can vet packages and have complete control over the binaries and what gets installed. This is what we recommend for businesses that use Chocolatey in production scenarios (and what many of them do).
 
 1. Users can report malicious packages/software directly to the site administrators using a form found on every package page.
 1. Everything is enforced as HTTPS where it should be. This reduces DNS poisoning attacks.
 1. As of October 2014, packages submitted to the community feed (https://chocolatey.org) are moderated and approved before they become live. 
 1. Some packages move into a trusted status. This is usually when the package maintainer is also the software maintainer, but can also occur when the maintainer(s) are trusted and the package is submitted without issues.
+1. Packages that download binaries (installers, zip archives) are checked to ensure that the binary is coming from the official distribution source. 
+1. If the package has a checksum, it provides a further integrity check that the downloadable the maintainer/moderator checked is the same binary that the user gets.
 
 ### Future Chocolatey enhancements
 
