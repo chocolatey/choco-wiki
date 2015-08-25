@@ -68,7 +68,7 @@ A non-administrative user should choose to install Chocolatey in a directory som
 
 ### Security Scenarios to Keep in Mind / Avoid
 
-1. Administrative user choose to install Chocolatey to an insecure location (like the root of the system drive, e.g. `C:\Chocolatey`). Now anyone that has access to that computer has an attack vector. This is very bad, **DO NOT DO THIS.** It still requires an administrative execution context to exploit, but it has a high possibility and .
-1. Non-admin user choose to install Chocolatey to an insecure location (like the root of the system drive, e.g. `C:\Chocolatey`). Now anyone that has access to that computer has an attack vector for that user alone.
-1. Installing user is admin during install, but then the admin privileges are removed. That user can still install portable packages that will end up on PATH. This can lead to escalation of privilege attacks. This is an unlikely scenario but one to consider if you reduce privileges for users in your organization.
+1. Administrative user choose to install Chocolatey to an insecure location (like the root of the system drive, e.g. `C:\Chocolatey`). Now anyone that has access to that computer has an attack vector. This is very bad, **DO NOT DO THIS.** It still requires an administrative execution context to exploit, but it has a high possibility and high impact.
+1. Non-admin user choose to install Chocolatey to an insecure location (like the root of the system drive, e.g. `C:\Chocolatey`). Now anyone that has access to that computer has an attack vector for that user alone. This has a medium possibility and low impact.
+1. Installing user is admin during install, but then the admin privileges are removed. That user can still install portable packages that will end up on PATH. This can lead to escalation of privilege attacks. This is an unlikely scenario but one to consider if you reduce privileges for users in your organization. This has a low possibility but also a high impact.
 
