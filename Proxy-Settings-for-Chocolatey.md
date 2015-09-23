@@ -10,16 +10,22 @@ Chocolatey has proxy support starting with 0.9.9.9.
 
 You can simply configure 1 or 3 settings and Chocolatey will use a proxy server.
 
-`choco config set proxy <locationandport>`
-`choco config set proxyUser <username>`
-`choco config set proxyPassword <passwordThatGetsEncryptedInFile>`
+~~~sh
+choco config set proxy <locationandport>
+choco config set proxyUser <username>
+choco config set proxyPassword <passwordThatGetsEncryptedInFile>
+~~~~
 
 ### Example
 
-`choco config set proxy http://localhost:8888`
-`choco config set proxyUser bob`
-`choco config set proxyPassword 123Sup#rSecur3`
+Running the following commands in 0.9.9.9:
+~~~sh
+choco config set proxy http://localhost:8888
+choco config set proxyUser bob
+choco config set proxyPassword 123Sup#rSecur3
+~~~
 
+Results in the following items being added to the config file:
 ![image](https://cloud.githubusercontent.com/assets/63502/10038348/4205507c-618a-11e5-911b-122eb960bc53.png)
 
 ### What to do if My proxy is socks?
