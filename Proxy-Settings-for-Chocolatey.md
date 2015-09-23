@@ -8,7 +8,7 @@ Chocolatey by default already supports system set proxy servers
 ## Explicit Proxy Settings
 Chocolatey has proxy support starting with 0.9.9.9.
 
-You can simply configure 1 or 3 settings and Chocolatey will use a proxy server.
+You can simply configure 1 or 3 settings and Chocolatey will use a proxy server. `proxy` is required and is the location and port of the proxy server. `proxyUser` and `proxyPassword` are optional. The values for user/password are only used for credentials when both are present.
 
 ~~~sh
 choco config set proxy <locationandport>
