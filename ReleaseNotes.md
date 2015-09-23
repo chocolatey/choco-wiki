@@ -33,6 +33,7 @@
  * Modify source when attempting to add a source with same name but different URL - see [#88](https://github.com/chocolatey/choco/issues/88)
  * Features should contain description - see [#416](https://github.com/chocolatey/choco/issues/416)
  * Unpack the powershell files just before packaging up the nupkg (Installing chocolatey meta) - see [#347](https://github.com/chocolatey/choco/issues/347)
+
 ## [0.9.9.8](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.9.8+is%3Aclosed) (June 26, 2015)
 
 ### BUG FIXES
