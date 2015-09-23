@@ -44,6 +44,7 @@
 
 **How To's**
 
+ - [[Use Chocolatey w/Proxy Server|Proxy-Settings-for-Chocolatey]]
  - [[Package Triage Process|PackageTriageProcess]]
  - [[Take Over Package Maintenance|PackageMantainerHandover]]
  - [[Parse Package Parameters|How-To-Parse-PackageParameters-Argument]]
