@@ -21,7 +21,7 @@ Great question - [[Why does Chocolatey install where it does|DefaultChocolateyIn
 
 ## Non-Administrative Install
 
-1. You must choose a different location than the default. The default is a more secure location that only administrators can write to.
+1. You must choose a different location than the default. The default is a more secure location that only administrators can update.
 1. Follow that with the command line / PowerShell methods of installation.
 
 ## Command Line
