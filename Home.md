@@ -17,8 +17,8 @@ TeamCity  | AppVeyor | Travis
 ### Let's get Chocolatey!
 "I'm a tools enabler, I'm a global silent application installer. I configure stuff. Some people want to call me apt-get for Windows, I just want to get #chocolatey!"
 
-Home: https://chocolatey.org (if this is down, try the backup at http://chocolatey.apphb.com )
-Forum: http://groups.google.com/group/chocolatey
+Home: https://chocolatey.org (Backup: http://chocolatey.apphb.com)  
+Forum: http://groups.google.com/group/chocolatey  
 Twitter: https://twitter.com/chocolateynuget
 
 ## Chocolatey?
@@ -34,8 +34,8 @@ Want to [[learn more?|ChocolateyFAQs]]
 
 * [[Frequently Asked Questions|ChocolateyFAQs]]
 * [[Why Chocolatey|Why]]
-* [[License Acceptance Terms|Legal]]
-* [[Waiver of Responsibility|Legal]]
+* [[License Acceptance Terms|Legal#package-license-acceptance-terms]]
+* [[Waiver of Responsibility|Legal#waiver-of-responsibility]]
 * [[Release Notes|ReleaseNotes]]
 
 ## Using Chocolatey
@@ -45,11 +45,11 @@ Want to [[learn more?|ChocolateyFAQs]]
 * [[Getting Started|GettingStarted]]
 * [[Command Reference|CommandsReference]]
 * Use Chocolatey to set up [[source code development environments|DevelopmentEnvironmentSetup]]!
-* What distinction does Chocolatey make between an [[installable and a portable application|https://github.com/chocolatey/choco/wiki/ChocolateyFAQs#what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application]]?
+* What distinction does Chocolatey make between an [[installable and a portable application|ChocolateyFAQs#what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application]]?
 
 ## Packages
 * [[Creating packages|CreatePackages]]
-* Keep in Mind [Distribution Rights](https://github.com/chocolatey/choco/wiki/Legal#wiki-distributions-aka-chocolatey-packages)
+* Keep in Mind [[Distribution Rights|Legal#distributions-aka-chocolatey-packages]]
 * [[Package Function and Variable Reference|HelpersReference]]
 * [[Outdated packages? Triage process|PackageTriageProcess]]
 
@@ -65,7 +65,7 @@ Where are [[we|RoadMap]]? Where are we [[going|RoadMap]]?
 ## Google Group
 Chocolatey has a [Google Groups group](http://groups.google.com/group/chocolatey). Please join and ask questions and send feedback.
 
-If you have issues with a package (or it is out of date), please use the contact maintainers link on the package page itself. If the maintainer doesn’t respond within a given time frame (say a day or two), please refer to the [Package Triage Process](https://github.com/chocolatey/choco/wiki/PackageTriageProcess).
+If you have issues with a package (or it is out of date), please use the contact maintainers link on the package page itself. If the maintainer doesn’t respond within a given time frame (say a day or two), please refer to the [[Package Triage Process|PackageTriageProcess]].
 
 ## Chat Room
 
