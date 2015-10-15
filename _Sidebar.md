@@ -46,7 +46,7 @@
 **How To's**
 
  - [[Use Chocolatey w/Proxy Server|Proxy-Settings-for-Chocolatey]]
- - [[Change Download Cache Location|How-To-Change-Cache.md]]
+ - [[Change Download Cache Location|How-To-Change-Cache]]
  - [[Package Triage Process|PackageTriageProcess]]
  - [[Take Over Package Maintenance|PackageMantainerHandover]]
  - [[Parse Package Parameters|How-To-Parse-PackageParameters-Argument]]
