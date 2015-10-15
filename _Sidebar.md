@@ -1,5 +1,5 @@
 - [[Home]]
-- [[Why Chocolatey?|Why]]  
+- [[Why Chocolatey?|Why]]
 - [Choco 0.9.8.x & below](https://github.com/chocolatey/chocolatey/wiki)
 
 **General**
@@ -10,7 +10,7 @@
 - [[FAQs|ChocolateyFAQs]]
 - [[Security]]
 
-**Usage**  
+**Usage**
 
 [[How does choco work?|GettingStarted#how-does-chocolatey-work]]
 
