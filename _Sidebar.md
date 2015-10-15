@@ -27,6 +27,7 @@
   - [[Outdated|CommandsOutdated]]
   - [[Upgrade|CommandsUpgrade]]
   - [[Uninstall|CommandsUninstall]]
+  - [[Config|CommandsConfig]]
   - [[Source / Sources|CommandsSources]]
   - [[Feature|CommandsFeature]]
 

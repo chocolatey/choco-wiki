@@ -15,6 +15,7 @@ This is a listing of all of the different things you can pass to choco.
  * help - **REMOVED** - use `-h` on any command.
 
 ## Commands (intermediate to advanced)
+ * [[config|CommandsConfig]] - Retrieve and configure config file settings
  * [[source / sources|CommandsSources]] - view and configure default sources
  * [[apikey / setapikey|CommandsApiKey]] - retrieves or saves an apikey for a particular source
  * [[pin|CommandsPin]] - suppress upgrades to a package
