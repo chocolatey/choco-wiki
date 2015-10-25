@@ -1,5 +1,5 @@
 - [[Home]]
-- [[Why Chocolatey?|Why]]  
+- [[Why Chocolatey?|Why]]
 - [Choco 0.9.8.x & below](https://github.com/chocolatey/chocolatey/wiki)
 
 **General**
@@ -10,7 +10,7 @@
 - [[FAQs|ChocolateyFAQs]]
 - [[Security]]
 
-**Usage**  
+**Usage**
 
 [[How does choco work?|GettingStarted#how-does-chocolatey-work]]
 
@@ -24,8 +24,10 @@
   - [[List / Search |CommandsList]]
   - [[Install|CommandsInstall]]
   - [[Pin|CommandsPin]]
+  - [[Outdated|CommandsOutdated]]
   - [[Upgrade|CommandsUpgrade]]
   - [[Uninstall|CommandsUninstall]]
+  - [[Config|CommandsConfig]]
   - [[Source / Sources|CommandsSources]]
   - [[Feature|CommandsFeature]]
 
@@ -43,6 +45,8 @@
 
 **How To's**
 
+ - [[Use Chocolatey w/Proxy Server|Proxy-Settings-for-Chocolatey]]
+ - [[Change Download Cache Location|How-To-Change-Cache]]
  - [[Package Triage Process|PackageTriageProcess]]
  - [[Take Over Package Maintenance|PackageMantainerHandover]]
  - [[Parse Package Parameters|How-To-Parse-PackageParameters-Argument]]

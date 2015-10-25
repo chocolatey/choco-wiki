@@ -15,8 +15,8 @@ Let's install [Notepad++](http://notepad-plus-plus.org/).
 
 1. Yes we support that through the use of installargs - see [[CommandsInstall#installarguments]]
 1. If you wanted to pass native argument to the installer, like the install directory, you would need to know the silent argument passed to that particular installer and then you would specify it on the command line or in the packages.config (upcoming for packages.config).
-1. If it was an MSI, then usually you could pass `-ia 'INSTALLDIR=''D:\Program Files'''` (note the double `'` - those get translated to double quotes `"`, posh seems to want to rip them out.
-1. For example, Notepad++ uses the [NSIS](http://nsis.sourceforge.net/Main_Page) (NullSoft Scriptable Install System) installer. If we look at the silent options, we see that [/D](http://nsis.sourceforge.net/Docs/Chapter3.html#installerusagecommon) is how we influence the install directory. So we would pass `cinst notepadplusplus.install -ia '/D=E:\SomeDirectory\somebody\npp'` -note that we are looking at the specific package over the virtual (this will be corrected in future releases).
+1. If it was an MSI, then usually you could pass `-ia "INSTALLDIR=""D:\Program Files"""` (for cmd.exe, it's different for powershell). See [[CommandsReference#how-to-pass-options--switches]] for specifics on passing quoted values through.
+1. For example, Notepad++ uses the [NSIS](http://nsis.sourceforge.net/Main_Page) (NullSoft Scriptable Install System) installer. If we look at the silent options, we see that [/D](http://nsis.sourceforge.net/Docs/Chapter3.html#installerusagecommon) is how we influence the install directory. So we would pass `cinst notepadplusplus.install -ia "'/D=E:\SomeDirectory\somebody\npp'"` -note that we are looking at the specific package over the virtual (this will be corrected in future releases).
 
 ## How does Chocolatey work?
 How the heck does this all work?
@@ -58,6 +58,10 @@ Chocolatey packages are installed to `ChocolateyInstall\lib`, but the software c
 Some packages are installed under `ChocolateyInstall\lib`, others - especially packages that are based on Windows installers (.msi files) - install to the default path of the original installer (which is most likely within `Program Files`).
 
 There are also packages for which you can set a custom installation path. These packages (like ruby) use the `$env:ChocolateyBinRoot` environment variable. If this variable does not exist, it will be created as `c:\tools` e.g. `C:\tools\ruby193`. To change this behaviour, you can set `$env:ChocolateyBinRoot` to an existing folder, e. g. `C:\somestuff`. Packages that use the environment variable, will then be installed in the given subfolder, f. ex. `C:\somestuff\ruby193`.
+
+## How does Chocolatey work with Programs and Features? Existing installs?
+
+Many packages use native software installers, so Chocolatey allows the installer itself to handle install/upgrade/uninstall scenarios. This means it can work directly with already installed software just by using `choco install` to make Chocolatey aware of existing software. You can also use a specially crafted install command (skip powershell) to allow choco to install a package without installing the already installed native software.
 
 ## Where does Chocolatey install packages from?
 By default it installs packages from chocolatey.org (the community feed). But you can change this by adding default sources and/or using the  `--source` switch when running a command.
