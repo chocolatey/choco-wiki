@@ -4,8 +4,7 @@
 Uninstalls a package or a list of packages.  Some
  may prefer to use `cuninst` as a shortcut for `choco uninstall`.
 
-**NOTE**: Automatic Uninstaller (AutoUninstall) is turned off by default. 
- To turn it on, run the following command:
+To uninstall the package from your system (equivalent to uninstalling a program in "Programs and Features") via `choco uninstall`, you will most likely have to use the "Automatic Uninstaller" feature which is turned off by default (see [Note](#note) below for more information). To turn the feature on, run the following command:
 
     choco feature enable -n autoUninstaller
 
@@ -64,4 +63,8 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 
 ## Known Limitations
 * There are no functions defined in the Chocolatey PowerShell module that would help with uninstall - yet (this means that compared to the awesome library of helper functions to get things installed, you are left more on your own to work on uninstalling those things currently).
-* There is no automatic removal from Programs and Features aka Add/Remove Programs (well there is, but auto uninstaller is not turned on by default).
+
+## Note
+The default behavior with the "Automatic Uninstaller" feature turned off is that `choco uninstall` removes the package from your system only if the script `chocolateyUninstall.ps1` is provided by the package maintainer. In the absence of `chocolateyUninstall.ps1`, `choco uninstall` only removes the package from Chocolatey but does not remove the package from your system.
+
+Turning on "Automatic Uninstaller" guarantees that the package is removed from your system when you run `choco uninstall`.
