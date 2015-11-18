@@ -9,6 +9,9 @@
 * devGeeK - [MongoDb Tutorial (Shoutout)](https://www.youtube.com/watch?v=W-WihPoEbR4&feature=youtu.be&t=48m45s) - June 17, 2015
 * GEEKBLOGTV - [Chocolatey](https://www.youtube.com/watch?v=nH6jRB5kigc) - May 18, 2015
 
+### 2014
+* FOSDEM 2014 - [Is Distribution-Level Package Management Obsolete?](https://www.youtube.com/watch?v=FENKd8NT9cY&t=28m19s) - If you go back to 24m 56s, Donnie talks about how painful packaging is for folks across different platforms - Feb 11, 2014
+
 ## Conferences
 ### 2015
 
