@@ -10,7 +10,7 @@
 * GEEKBLOGTV - [Chocolatey](https://www.youtube.com/watch?v=nH6jRB5kigc) - May 18, 2015
 
 ### 2014
-* FOSDEM 2014 - [Is Distribution-Level Package Management Obsolete?](https://www.youtube.com/watch?v=FENKd8NT9cY&t=28m19s) - If you go back to 24m 56s, Donnie talks about how painful packaging is for folks across different platforms - Feb 11, 2014
+* FOSDEM 2014 - [Is Distribution-Level Package Management Obsolete?](https://www.youtube.com/watch?v=FENKd8NT9cY&t=28m19s) / [Slides](http://www.slideshare.net/dberkholz/is-distributionlevel-package-management-obsolete/18) - If you go back to 24m 56s, Donnie talks about how painful packaging is for folks across different platforms - Feb 11, 2014
 
 ## Conferences
 ### 2015
