@@ -99,11 +99,10 @@ Typically a package goes into the moderation queue when submitted.You can get to
  4. Review the previous comments if there are any. ![image](https://cloud.githubusercontent.com/assets/63502/7543258/c2c0abbc-f588-11e4-8cac-4c57b03671f8.png)
  5. Look through the package files ![image](https://cloud.githubusercontent.com/assets/63502/7543284/ddaa41e0-f588-11e4-817a-9d7bd1130a84.png)
  6. Leave comments in the review box if you have any. Note that you can use markdown here.
- 7. If you are approving the package, change Package Status to Approved, and Rejected otherwise.
+ 7. If you are approving the package, change Package Status to Approved, and Rejected or leave Submitted otherwise.
  8. Click Save. You should get a message that the message was sent successfully.
- 9. The maintainers receive an email noting the comments. They may follow up by email, which is chocolatey-moderators at google groups dot com.
+ 9. The maintainers receive an email noting the comments. They will follow up on the package page with their comments.
  10. If the package is updated, it will show up in the top of the queue. At that time, please review it and make sure the maintainers made all changes requested.
- 11. In the package review box, leave the original review, but add this heading over it `#### ORIGINAL YYYYMMDD:` e.g. `#### ORIGINAL 20150501:`. The date of the original review is to the left under Published Date. Then add additional comments above it with a heading of `#### UPDATE YYYYMMDD:`.
 
 
 ### New Reviewers / Moderators
