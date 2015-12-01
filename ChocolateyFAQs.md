@@ -12,9 +12,25 @@ How about updates? Wouldn't it be nice to update nearly everything on your machi
 
 Great question! See [[The purpose of Chocolatey|Why#what-is-the-purpose-of-chocolatey]]
 
+### How does Chocolatey work? 
+
+See [[What is Chocolatey?|Why#what-is-chocolatey]]
+
 ### Why Chocolatey?
 First a [[story|ChocolateyStory]]
 [[Why Chocolatey?|Why]]
+
+### Can I use Chocolatey with existing installs?
+
+Fantastic question, see [[Can I use Chocolatey with existing software?|Why#can-i-use-chocolatey-with-existing-software]]
+
+### I would like to use Chocolatey in my organization, is the licensing friendly?
+
+Yes, it is. Chocolatey carries a FOSS Apache 2.0 license, which is extremely business friendly. You can use Chocolatey and most of it's infrastructure completely free.
+
+### Should my organization depend on (use) the community feed (https://chocolatey.org/packages)? 
+
+I couldn't justify giving up that level of control and trust to the internet in an organization. It's recommended that you copy and modify existing packages and/or create your own internal packages and host them internally. That way you can completely guarantee that an install/upgrade/uninstall will always work every time.
 
 ### How is Chocolatey different than Ninite?
 Great question, see [[Chocolatey vs Ninite|ChocolateyVsNinite]].
