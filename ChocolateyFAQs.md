@@ -17,8 +17,7 @@ Great question! See [[The purpose of Chocolatey|Why#what-is-the-purpose-of-choco
 See [[What is Chocolatey?|Why#what-is-chocolatey]]
 
 ### Why Chocolatey?
-First a [[story|ChocolateyStory]]
-[[Why Chocolatey?|Why]]
+First a [[story|ChocolateyStory]]. Then [[Why Chocolatey?|Why]]
 
 ### Can I use Chocolatey with existing installs?
 
@@ -26,11 +25,14 @@ Fantastic question, see [[Can I use Chocolatey with existing software?|Why#can-i
 
 ### I would like to use Chocolatey in my organization, is the licensing friendly?
 
-Yes, it is. Chocolatey carries a FOSS Apache 2.0 license, which is extremely business friendly. You can use Chocolatey and most of it's infrastructure completely free.
+Yes, it is. Chocolatey carries a FOSS Apache 2.0 license, which is extremely business friendly. You can use Chocolatey and most of it's infrastructure completely free. Chocolatey will have a business offering with features specifically targeted to businesses in the first half of 2016. See the [Kickstarter](https://www.kickstarter.com/projects/ferventcoder/chocolatey-the-alternative-windows-store-like-yum/description) for details.
 
 ### Should my organization depend on (use) the community feed (https://chocolatey.org/packages)? 
 
 I couldn't justify giving up that level of control and trust to the internet in an organization. It's recommended that you copy and modify existing packages and/or create your own internal packages and host them internally. That way you can completely guarantee that an install/upgrade/uninstall will always work every time.
+
+### How is Chocolatey different than OneGet/PowerShell Package Management?
+OneGet is a package manager ***aggregator***, which means it is not a package manager at all. Chocolatey will have a provider that plugs right into OneGet. At the current time there is a CTP available, but it is based on 2 year old Chocolatey technology (we've had security fixes since then, plus a world of features), so we can't really recommend it. But if you must use it, make sure your PowerShell execution policy is set right and you are in an administrative console. See http://www.hanselman.com/blog/AptGetForWindowsOneGetAndChocolateyOnWindows10.aspx for more details
 
 ### How is Chocolatey different than Ninite?
 Great question, see [[Chocolatey vs Ninite|ChocolateyVsNinite]].
