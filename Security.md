@@ -53,7 +53,7 @@ An acquaintance of mine was asked to do a security audit for Chocolatey (he does
 
 In a word, it depends on where you install Chocolatey.
 
-Keep in mind by default that Chocolatey requires administrative rights. 
+Keep in mind by default that Chocolatey requires elevated rights. 
 
 1. The default install location (`C:\ProgramData\chocolatey`) requires elevated rights to install to. 
 2. It (`C:\ProgramData\chocolatey`) also requires elevated rights to install packages. To ease this a bit, we add the installing user's ACE with modify access (the user still needs to be elevated/admin at the time of installing/upgrading Chocolatey).
