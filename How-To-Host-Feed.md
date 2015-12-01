@@ -17,7 +17,7 @@ Perhaps the easiest to set up and recommended for testing quick and dirty scenar
 * Package store is filesystem.
 * Can be easily upgrade to Simple Server.
 * Permissions are based on file system/share permissions.
-* There is no limitation on package sizes.
+* There is no limitation on package sizes (or rather, it can likely handle 100MB+ file sizes, maybe even GB sized packages). Don't create multiple GB sized packages, what is wrong with you?! ;)
 
 **Disadvantages:**
 * Anyone with permission can push and overwrite packages.
