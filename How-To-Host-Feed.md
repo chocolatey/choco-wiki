@@ -17,6 +17,7 @@ Perhaps the easiest to set up and recommended for testing quick and dirty scenar
 * Package store is filesystem.
 * Can be easily upgrade to Simple Server.
 * Permissions are based on file system/share permissions.
+* There is no limitation on package sizes.
 
 **Disadvantages:**
 * Anyone with permission can push and overwrite packages.
@@ -43,6 +44,7 @@ No really, it's that easy. Just set your permissions appropriately and put packa
 * No moderation.
 * No website to view packages.
 * No package statistics.
+* A package should not be bigger than 50MB. You can host the installer internally somewhere and access it through packaging though.
 
 #### Simple Server Setup
 
@@ -82,6 +84,7 @@ This is like what https://chocolatey.org (the community feed runs on). It is the
 * Speed of setup (can take longer than the rest). There are many moving parts to configure.
 * Requires Windows/IIS/SQL Server/SMTP (hopefully with the proper licenses on each of those).
 * Not well-documented, could require some diligence to get working.
+* A package should not be bigger than 50MB. You can host the installer internally somewhere and access it through packaging though.
 
 #### Package Gallery Setup
 Only approach this if you are a Windows Admin with significant experience in setting up SQL Server databases and IIS for ASP.NET MVC sites. We don't have resources to help support the setup, but we can point you to [NuGet Gallery Setup](https://github.com/NuGet/NuGetGallery/wiki/Hosting-the-NuGet-Gallery-Locally-in-IIS).
