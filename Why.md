@@ -42,7 +42,7 @@ Now, Chocolatey ***can*** take over existing installs and be able to handle unin
 
 Let me start by saying that testing how a single package won't give you a warm and fuzzy about how it will work with all packages. Software installers in the wild world of Windows have many completely different ways of going about things, all of which are dependent on those creating the installers, none of which have a consistent standard (except maybe MSI). Welcome to Windows.
 
-![image](https://cloud.githubusercontent.com/assets/63502/11505199/d8e2edbe-980e-11e5-8f80-27ebafb73067.png)
+![Yes, yes](http://replygif.net/i/208.gif)
 
 Now that we have baselined that - each piece of software out there is a special snowflake, so  each package has to be able to account for differences in the installers.
 
