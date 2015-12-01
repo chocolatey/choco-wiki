@@ -1,5 +1,8 @@
 # Frequently Asked Questions
 
+### Can't find your answer here?
+Feel free to reach out to us on [Gitter](https://gitter.im/chocolatey/choco) or by the [email distribution list / forum](https://groups.google.com/group/chocolatey).
+
 ### What is Chocolatey?
 Chocolatey is kind of like apt-get, but for Windows (with Windows comes limitations). It is a machine level package manager that is built on top of nuget command line and the nuget infrastructure.
 [[More behind the name|History]]
