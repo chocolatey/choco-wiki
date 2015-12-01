@@ -38,11 +38,11 @@ Now contrast that with how you do the same with **Chocolatey**:
 ### Can I use Chocolatey with existing software?
 Yes you can. Chocolatey does similar to how you would do things if you downloaded and installed things yourself. It's design and infrastructure is built that way on purpose.
 
+![Yes, yes](http://replygif.net/i/208.gif)
+
 Now, Chocolatey ***can*** take over existing installs and be able to handle uninstalls in most cases. ***Can*** is very dependent on packaging and the underlying software installer that is used for the install (installer packages only is the context here).
 
 Let me start by saying that testing how a single package won't give you a warm and fuzzy about how it will work with all packages. Software installers in the wild world of Windows have many completely different ways of going about things, all of which are dependent on those creating the installers, none of which have a consistent standard (except maybe MSI). Welcome to Windows.
-
-![Yes, yes](http://replygif.net/i/208.gif)
 
 Now that we have baselined that - each piece of software out there is a special snowflake, so  each package has to be able to account for differences in the installers.
 
