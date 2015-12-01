@@ -36,7 +36,7 @@ Now contrast that with how you do the same with **Chocolatey**:
 ![shia-labeouf-magic-gif](https://cloud.githubusercontent.com/assets/63502/6924713/14521f12-d7a0-11e4-819d-88c46e1a7bfa.gif)
 
 ### Can I use Chocolatey with existing software?
-Yes, yes you can. Chocolatey does similar to how you would do things if you downloaded and installed things yourself. Its design and infrastructure is built that way on purpose.
+Yes, yes you can. Chocolatey works in a similar manner to how you would do things if you downloaded and installed things yourself. Its design and infrastructure is built that way on purpose.
 
 ![Yes, yes](http://replygif.net/i/208.gif)
 
