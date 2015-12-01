@@ -64,3 +64,6 @@ Believe me, I wanted there to be something existing on Windows that would fit th
 * Installation of multiple packages with one command.
 
 To date, Chocolatey does all of this (virtual packages is coming).
+
+### Other questions?
+See the [[FAQs|ChocolateyFAQs]].
