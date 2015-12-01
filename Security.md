@@ -47,7 +47,7 @@ An acquaintance of mine was asked to do a security audit for Chocolatey (he does
 1. Downloads packages from S3 over HTTP (subject to DNS poisoning) - this was corrected in March 2014 (https://github.com/chocolatey/chocolatey.org/issues/70)
 1. Site doesn't require HTTPS (could be subject to DNS poisoning) - https://github.com/chocolatey/chocolatey.org/issues/126 (closed completely in November 2014)
 1. Downloads from internet files with no integrity check - we've added checksumming, but we haven't yet enforced it for package maintainers. At some point we will flip a switch and users won't be able to install a package without a checksum by default. They will need to specify a switch
-1. Poor permissions with c:\Chocolatey at root (allows attacker to gain Admin perms through specially crafted exes dropped in bin folder, among other things) - we don't install here by default anymore. We install to C:\programdata\chocolatey by default for more secure permissions. 
+1. Poor permissions with `c:\Chocolatey` at root (allows attacker to gain Admin perms through specially crafted exes dropped in bin folder, among other things) - we don't install here by default anymore. We install to `C:\ProgramData\chocolatey` by default for more secure permissions. 
 
 ### What about a non-administrative installation of Chocolatey? Is it secure?
 
@@ -55,8 +55,8 @@ In a word, it depends on where you install Chocolatey.
 
 Keep in mind by default that Chocolatey requires administrative rights. 
 
-1. The default install location (`C:\ProgramData\chocolatey`) requires administrative rights to install to. 
-2. It (`C:\ProgramData\chocolatey`) also requires administrative rights to install packages. To ease this a bit, we add the installing user's ACE with modify access (the user still has to be an admin at the time of installing/upgrading Chocolatey).
+1. The default install location (`C:\ProgramData\chocolatey`) requires elevated rights to install to. 
+2. It (`C:\ProgramData\chocolatey`) also requires elevated rights to install packages. To ease this a bit, we add the installing user's ACE with modify access (the user still needs to be elevated/admin at the time of installing/upgrading Chocolatey).
 3. Adding system-wide environment variables (e.g. Chocolatey's bin directory to System PATH) requires administrative rights to set.
 
 Now with that in mind, let's talk about a non-administrative install of Chocolatey.
