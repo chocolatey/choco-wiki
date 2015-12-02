@@ -1,6 +1,6 @@
 # How To Host Your Own [Private/Internal/Public] Package Repository Server (aka Package Feed)
 
-There are three types of feeds, [folder/unc share](#local-folder--unc-share), [simple server](#simple-server), and the sophisticated [package gallery](#package-gallery). 
+There are three types of package repositories, [folder/unc share](#local-folder--unc-share), [simple server](#simple-server), and the sophisticated [package gallery](#package-gallery). 
 
 **Alternative Hosting Options (that require less work/maintenance):**
 * [MyGet](https://www.myget.org/) - MyGet has free public and paid for public/private cloud-hosting options if you don't want to handle all of the pain of setup and administration. MyGet offers some stellar options like multi-feed aggregation, mirroring, and source package build services!
