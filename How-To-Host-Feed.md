@@ -1,4 +1,4 @@
-# How To Host Your Own (Private) Package Server (aka Package Feed)
+# How To Host Your Own [Private/Internal/Public] Package Repository Server (aka Package Feed)
 
 There are three types of feeds, [folder/unc share](#local-folder--unc-share), [simple server](#simple-server), and the sophisticated [package gallery](#package-gallery). 
 
