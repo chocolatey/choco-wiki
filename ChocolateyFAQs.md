@@ -77,10 +77,10 @@ Things to note:
 * You can see if a package has been verified by the green circle next to it's name on the package page. If it is green or red, it will also be a clickable link. To see all packages verified, see https://gist.github.com/choco-bot
 
 
-### How do I install a package under moderation?
+### How do I install a package version under moderation?
 Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages).
 
-You can install a package/package version that's still in moderation - however know that if the maintainer needs to fix the package version during the review process, you will never get those fixes locally since they are updating the ***SAME*** version. Package versions are not immutable until they are approved. The caveat for "never" is that if you know it changed (likely you won't and there is no notification, *what you have installed technically never existed*), you could force the reinstall of that same version of the package.
+You can install a version of a package version that's still under moderation - however know that if the maintainer needs to fix the package version during the review process, you will never get those fixes locally since they are updating the ***SAME*** version. Package versions are not immutable until they are approved. The caveat for "never" is that if you know it changed (likely you won't and there is no notification, *what you have installed technically never existed*), you could force the reinstall of that same version of the package.
 
 Another thing to consider: if the package version or the package as a whole is rejected (usually for renaming the package to something better to better meet naming standards), you are likely to get weird warnings later and won't see updates at all. Remember, you have installed something that technically never existed, so any thing you see related to choco not knowing about it is to be expected and not a bug.
 
