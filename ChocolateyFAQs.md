@@ -67,6 +67,8 @@ With most packages when you already have something installed, the Chocolatey pro
 Yes you can, see [[Overriding install directory|GettingStarted#overriding-default-install-directory-or-other-advanced-install-concepts]].
 
 ### What is moderation?
+Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages), we have a concept called moderation, where submitted packages are held until they are considered safe and of minimal quality for regular consumption.
+
 Moderation involves checking a package version for quality and correctness (valid) and whether it actually installs and uninstalls correctly (verified). We have two automated services that validate and verify packages. The validator checks the quality and correctness of a package. If no requirements are flagged as failing review, it will be passed on to the verifier, which checks that the package actually works as intended (it may help to think of the validator as unit testing and the verifier as integration testing). If both of these automated reviews pass the package version is submitted to a moderator for final review and approval.
 
 Things to note:
@@ -76,13 +78,17 @@ Things to note:
 
 
 ### How do I install a package under moderation?
+Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages).
 
 You can install a "package" that's still in moderation - however know that if the maintainer needs to fix the package version during the review process, you will never get those fixes locally since they are updating the ***SAME*** version. Package versions are not immutable until they are approved. The caveat for never is that if you know it changed (likely you won't and there is no notification, *what you have installed technically never existed*), you could force the reinstall of that same version of the package.
 
 To actually install, see the next question.
 
-### How do I install an unlisted package? 
-You need to specify name AND version to any package to install the unlisted/unapproved version.
+### How do I install an unlisted package / package version? 
+You need to specify name AND version to any package to install the unlisted/unapproved version. This goes for any NuGet compatible feed that understands unlisted packages.
+
+### How do I install a rejected package? 
+Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages), we have a concept of packages that have been rejected. You cannot install a rejected package. It could do bad things to your system so we make it as hard as possible to install.
 
 ### What does Chocolatey do? Are you redistributing software?
 Chocolatey does the same thing that you would do based on the package instructions. This usually means going out and downloading an installer from the official distribution point and then silently installing it on your machine. With most packages this means Chocolatey is not redistributing software because they are going to the same distribution point that you yourself would go get the software if you were performing this process manually.
