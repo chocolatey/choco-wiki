@@ -75,8 +75,9 @@ Things to note:
 * We have trusted packages, and those packages skip human review/moderation. 
 * A maintainer can not moderate his/her own pkgs.
 * You can see if a package has been verified by the green circle next to it's name on the package page. If it is green or red, it will also be a clickable link. To see all packages verified, see https://gist.github.com/choco-bot
+* Besides trusted packages, a package version is never approved without a moderator clicking approve.
 
-### Trusted packages?
+### What is a trusted package?
 Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages).
 
 A package that is considered trusted comes from the original software creator or is maintained by someone in the community who has a track record for high quality and safe packages. 
@@ -84,6 +85,8 @@ A package that is considered trusted comes from the original software creator or
 Two ways your packages can become trusted:
 * You write the underlying software that the package installs. For instance the ReSharper package that comes directly from JetBrains.
 * You put in a lot of good packages and your packages will eventually become trusted.
+
+For a package to switch to trusted, a moderator must manually make the change. It is not an automated process.
 
 **Note:** Once everything is ready, all packages will go under automated verification and validation and be held for fixes if they don't pass, even trusted packages. 
 
@@ -102,7 +105,7 @@ To actually install, see the next question.
 You need to specify name AND version to any package to install the unlisted/unapproved version. This goes for any NuGet compatible feed that understands unlisted packages.
 
 ### How do I install a rejected package? 
-Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages), we have a concept of packages that have been rejected. You cannot install a rejected package. It could do bad things to your system so we make it as hard as possible to install.
+Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages), we have a concept of packages that have been rejected. You cannot install a rejected package. It could do bad things to your system so we don't allow install from the community repository.
 
 ### What does Chocolatey do? Are you redistributing software?
 Chocolatey does the same thing that you would do based on the package instructions. This usually means going out and downloading an installer from the official distribution point and then silently installing it on your machine. With most packages this means Chocolatey is not redistributing software because they are going to the same distribution point that you yourself would go get the software if you were performing this process manually.
