@@ -76,6 +76,18 @@ Things to note:
 * A maintainer can not moderate his/her own pkgs.
 * You can see if a package has been verified by the green circle next to it's name on the package page. If it is green or red, it will also be a clickable link. To see all packages verified, see https://gist.github.com/choco-bot
 
+### Trusted packages?
+Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages).
+
+A package that is considered trusted comes from the original software creator or is maintained by someone in the community who has a track record for high quality and safe packages. 
+
+Two ways your packages can become trusted:
+* You write the underlying software that the package installs. For instance the ReSharper package that comes directly from JetBrains.
+* You put in a lot of good packages and your packages will eventually become trusted.
+
+**Note:** Once everything is ready, all packages will go under automated verification and validation and be held for fixes if they don't pass, even trusted packages. 
+
+**Note:** Another note, we've been setting trust per package. That is planned to change as the trust level has always been about the maintainer and not the package itself.
 
 ### How do I install a package version under moderation?
 Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages).
