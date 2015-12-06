@@ -7,8 +7,6 @@ PowerShell session. This means the user needs to open a new PowerShell
 session before these settings take effect which can render the installed
 application nonfunctional until that time.
 
-**NOTE:** This command will assert UAC/Admin privileges on the machine.
-
 ## Usage
 
 ```powershell
