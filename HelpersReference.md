@@ -29,7 +29,6 @@ When creating packages that need to run one of the following commands below, one
 * [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]] - when specifying machine path
 * [[Install-ChocolateyExplorerMenuItem|HelpersInstallChocolateyExplorerMenuItem]]
 * [[Install-ChocolateyFileAssociation|HelpersInstallChocolateyFileAssociation]]
-* [[Update-SessionEnvironment|HelpersUpdateSessionEnvironment]]
 
 ### Non-Administrator Safe Functions
 
@@ -48,6 +47,7 @@ These are the functions from above as one list.
 * [[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]] - **DEPRECATED** - see [[Install-ChocolateyShortcut|HelpersInstallChocolateyShortcut]]
 * [[Install-ChocolateyPinnedTaskBarItem|HelpersInstallChocolateyPinnedTaskBarItem]]
 * [[Install-ChocolateyShortcut|HelpersInstallChocolateyShortcut]] - v0.9.9+
+* [[Update-SessionEnvironment|HelpersUpdateSessionEnvironment]]
 
 ## Complete List (alphabetical order)
 
