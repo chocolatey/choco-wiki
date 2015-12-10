@@ -3,7 +3,7 @@
 
 ##### Notes:
  * Edit me at https://github.com/chocolatey/choco-wiki
- * If you are on Chocolatey 0.9.8.x and below, you want to go to https://github.com/chocolatey/chocolatey/wiki
+ * If you are on Chocolatey 0.9.8.x or below, you want to go to https://github.com/chocolatey/chocolatey/wiki
 
 ## Build Status
 
@@ -24,7 +24,7 @@ Twitter: https://twitter.com/chocolateynuget
 ## Chocolatey?
 Chocolatey is a global PowerShell execution engine using the NuGet packaging infrastructure. Think of it as the ultimate automation tool for Windows.
 
-Chocolatey is like apt-get, but built with Windows in mind (there are differences and limitations). For those unfamiliar with APT/Debian, think about Chocolatey as a global silent installer for applications and tools. It can also do configuration tasks and anything that you can do with PowerShell. The power you hold with a tool like Chocolatey is only limited by your imagination!
+Chocolatey is Windows's apt-get, but there are differences and limitations. For those unfamiliar with APT/Debian, Chocolatey is a global silent installer for applications and tools. It can also do configuration tasks and anything that you can do with PowerShell. The power you hold with this tool is only limited by your imagination!
 
 You can develop your tools and applications with NuGet, and release them with Chocolatey! But Chocolatey is not just for .NET tools. It's for nearly any Windows application/tool!
 
@@ -79,6 +79,6 @@ Or, you can find us in IRC on Freenode at #chocolatey.
 You can find all of the members of the Chocolatey Team [here](https://github.com/orgs/chocolatey/people).
 
 ##Requirements
- * Windows XP/Vista/7/8/2003/2008
+ * Windows XP/Vista/7/8/10/2003/2008
  * .NET Framework 4.0
  * PowerShell 2.0
