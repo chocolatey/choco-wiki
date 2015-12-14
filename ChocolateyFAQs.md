@@ -151,7 +151,7 @@ The *.portable packages are the packages that will usually result in an executab
 
 **NOTE:** now *.tool and *.commandline are deprecated and should not be used for new packages.
 
-Want more information? See http://devlicio.us/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx
+Want more information? See http://ferventcoder.com/archive/2012/02/25/chocolatey---guidance-on-packaging-apps-with-both-an-install.aspx
 
 ### I just took over as the primary maintainer of a package. What do I need to do?
 See [[PackageMantainerHandover]]
