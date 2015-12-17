@@ -1,4 +1,7 @@
 # Community Feed Moderation
+
+The community feed, which is found at https://chocolatey.org/packages, is a moderated feed. That means all new versions of packages are human reviewed prior to approval to check for safety, quality, and correctness, or they are trusted packages.
+
 ## Definitions
 
 - package - the nuget package
