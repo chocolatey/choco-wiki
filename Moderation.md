@@ -1,10 +1,10 @@
 # Community Feed Moderation
 
-The community feed, which is found at https://chocolatey.org/packages, is a moderated feed. That means all new versions of packages are human reviewed prior to approval to check for safety, quality, and correctness, or they are trusted packages.
+The community feed, which is found at https://chocolatey.org/packages, is a moderated feed. That means all new versions of packages are human reviewed prior to approval to check for safety, quality, and correctness. See [[What is moderation|ChocolateyFAQs#what-is-moderation]] for more details. There are also [[trusted packages|ChocolateyFAQs#what-is-a-trusted-package]].
 
 ## Definitions
 
-- package - the nuget package
+- package - the Chocolatey/NuGet package
 - software - the underlying software that the package assists in installing
 - installer - the native installer, usually packaged as MSI, NSIS, InstallShield, Wise, Squirrel, or some other flavor.
 
@@ -18,22 +18,20 @@ TBD
 
 #### Becoming a Moderator
 
-There is no set process for becoming a moderator yet. Usually it is having many approved packages and understanding the process of creating choco packages. Eventually it will be something you earn through your reputation on the site.
+There is no set process for becoming a moderator yet. Usually it is having many approved packages and understanding the process of creating Chocolatey packages. Eventually it will be something you earn through your reputation on the site.
 - Make awesome packages
-- Work on the disqus threads and mailing list.
+- Work on the Disqus threads and mailing list.
 - Have a desire to better the quality of Chocolatey
-- Know a little PowerShell. More is better but yeah
+- Know a little PowerShell. More is better but yeah.
 - Be friendly and customer service-oriented
 
 #### Becoming an Admin
 This is not an achievable status.
 
 ## Package Review Process
-
 When reviewing new and existing packages, you should review based on the following requirements and guidelines. For NEW packages, review both existing and new packages (comes after existing).
 
 ### Existing Packages
-
 This section provides the requirements for packages that have had at least one released version approved or exempted. This includes any packages that existed prior to moderation being turned on (possibly an Unknown status). After this section, there are additional requirements for new packages, like the package id.
 
 #### Requirements
@@ -88,8 +86,6 @@ New packages must meet the existing package requirements and the following addit
   * flag on "."" in name (unless .portable/.install)
 * Not a package duplicating another existing package
 
-#### Guidelines
-TDB
 
 ### Process
 Typically a package goes into the moderation queue when submitted.You can get to that by signing in and going to the packages page like you normally would.
