@@ -4,14 +4,20 @@ The community feed, which is found at https://chocolatey.org/packages, is a mode
 
 ## Definitions
 
-* package - the Chocolatey/NuGet package
-* software - the underlying software that the package assists in installing
-* installer - the native installer, usually packaged as MSI, NSIS, InstallShield, Wise, Squirrel, or some other flavor.
+* package - The Chocolatey/NuGet package
+* software - The underlying software that the package assists in installing
+* installer - The native installer, usually packaged as MSI, NSIS, InstallShield, Wise, Squirrel, or some other flavor.
+* the validator - The [package validation service](https://github.com/chocolatey/package-validator) checks the quality of a package based on requirements, guidelines and suggestions for creating packages for Chocolatey’s community feed. We like to think of the validator as unit testing. It is validating that everything is as it should be and meets the minimum requirements for a package on the community feed.
+* the verifier - The [package verifier service](https://github.com/chocolatey/package-verifier) checks the correctness (that the package actually works), that it installs and uninstalls correctly, has the right dependencies to ensure it is installed properly and can be installed silently. The verifier runs against both submitted packages and existing packages (checking every two weeks that a package can still install and sending notice when it fails). We like to think of the verifier as integration testing. It’s testing all the parts and ensuring everything is good.
 
 ### Roles
+* Maintainer - A person that maintains packages. Maintainers are usually subject to the review process.
 * Reviewer - Able to review packages but not approve/reject them
 * Moderator - Able to set/remove package maintainers, review packages, approve/reject them, able to unlist packages.
 * Administrator - Has access to administrative sections of the site. Can perform all functions that a moderator can perform.
+
+#### Becoming a Maintainer
+To become a package maintainer, you must have an account on https://chocolatey.org and have at least one package on the site.
 
 #### Becoming a Reviewer
 TBD
@@ -31,6 +37,17 @@ This is not an achievable status.
 
 ## Package Review Process
 When reviewing new and existing packages, a reviewer/moderator will have a few things left for review after the verifier and validator have verified a package.
+
+### Maintainer Process
+As a maintainer you submit packages and they are reviewed to be sure they meet a minimum quality and are correct for being published on Chocolatey.org. It's an important distinction that while almost all valid packages are approved, a package can be rejected for a variety of reasons.
+
+Packages go through two automated checks: validation and verification. There is about a 30 minute lag time from submission until any automatic verification kicks off - this allows the CDN to recheck and pull a newer version of the package up (in the case of resubmission), so that the package version being verified is the one you submitted and not a stale copy.
+
+When you receive emails that require you to take action, you should review what is requested and make the changes. If a package is flagged and needs changes based on requirements, the process is for you to make the required changes and resubmit the ***exact*** same version. The faster you respond to the review process, the faster your package can get approved.
+
+Please note that the process of moderation is an interactive process. If you don't respond to the review process within a reasonable timeframe (right now about 3 months), your package could be rejected on non-response. Moderators give you the benefit of the doubt and will work with you to help you get a package to an approved status. (This also includes the older review process based on email before the site allowed you to comment).
+
+Ensure that you can receive emails from Chocolatey.org so that you will receive email notifications when a package review is updated.
 
 ### Reviewer / Moderator Process
 Typically a package goes into the moderation queue when submitted.You can get to that by signing in and going to the packages page like you normally would.
@@ -62,6 +79,8 @@ Typically a package goes into the moderation queue when submitted.You can get to
 You can only ever require a maintainer to make changes if there are findings from the requirements section. Guidelines are strong suggestions that will improve the quality of the package, but consider that a quality over time. A maintainer is NOT required to make changes based on guidelines/suggestions. This deserves to be said twice: **"A moderator cannot hold up a package based on guidelines/suggestions *alone*"**.
 
 The validator checks quite a few items (https://github.com/chocolatey/package-validator/wiki) and leaves a few for you to check. Ensure you have looked over the notes that it has left.
+
+With the exception of included binaries, a review that doesn't flag should take under a minute. If you are holding a package, you can refer the maintainer to this link to save time: https://github.com/chocolatey/choco/wiki/Moderation
 
 ##### Requirements
 Always be explicit that you are waiting on the maintainer to fix and resubmit the same version of the package so you can move the review process along.
