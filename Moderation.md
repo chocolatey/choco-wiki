@@ -29,7 +29,7 @@ There is no set process for becoming a moderator yet. Usually it is having many 
 This is not an achievable status.
 
 ## Package Review Process
-When reviewing new and existing packages, you should review based on the following requirements and guidelines. For NEW packages, review both existing and new packages (comes after existing).
+When reviewing new and existing packages, you should review based on the following requirements and guidelines. For NEW packages, review using ***both*** existing and new packages (comes after existing).
 
 ### Existing Packages
 This section provides the requirements for packages that have had at least one released version approved or exempted. This includes any packages that existed prior to moderation being turned on (possibly an Unknown status). After this section, there are additional requirements for new packages, like the package id.
