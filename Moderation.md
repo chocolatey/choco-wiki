@@ -12,7 +12,9 @@ The community feed, which is found at https://chocolatey.org/packages, is a mode
 
 
 ## Requirements and Guidelines
-While probably the most comprehensive, this list may not be fully up-to-date. This should serve as a most general understanding, knowing that the [validator](https://github.com/chocolatey/package-validator/wiki) may be checking for newer things than are written here and that reviewers/moderators may find newer things to check from time to time.
+While probably the most comprehensive, this list may not be fully up-to-date. This should serve as a most general understanding, knowing that the [validator](https://github.com/chocolatey/package-validator/wiki) may be checking for newer things than are written here and that reviewers/moderators may find newer things to check from time to time. 
+
+**Note**: This is still written based on a reviewer reading it, this will get cleaned up more over time to better explain it from a non-reviewer perspective.
 
 ### Existing Packages
 This section provides the requirements for packages that have had at least one released version approved or exempted. This includes any packages that existed prior to moderation being turned on (possibly an Unknown status).
