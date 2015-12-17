@@ -78,7 +78,7 @@ Things to note:
 * Besides trusted packages, a package version is never approved without a moderator clicking approve.
 
 ### How does the moderation review process work?
-See [[Moderation]].
+See [[Review Process|Moderation#package-review-process]].
 
 ### What is a trusted package?
 Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages).
