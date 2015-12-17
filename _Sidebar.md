@@ -9,6 +9,7 @@
 - [Contributing](https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md)
 - [[FAQs|ChocolateyFAQs]]
 - [[Security]]
+- [[Chocolatey.org Moderation|Moderation]]
 
 **Usage**
 
