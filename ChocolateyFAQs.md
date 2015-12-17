@@ -69,13 +69,16 @@ Yes you can, see [[Overriding install directory|GettingStarted#overriding-defaul
 ### What is moderation?
 Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages), we have a concept called moderation, where submitted packages are held until they are considered safe and of minimal quality for regular consumption.
 
-Moderation involves checking a package version for quality and correctness (valid) and whether it actually installs and uninstalls correctly (verified). We have two automated services that validate and verify packages. The validator checks the quality and correctness of a package. If no requirements are flagged as failing review, it will be passed on to the verifier, which checks that the package actually works as intended (it may help to think of the validator as unit testing and the verifier as integration testing). If both of these automated reviews pass the package version is submitted to a moderator for final review and approval.
+Moderation involves checking a package version for quality (validation) and correctness, whether it installs and uninstalls correctly (verification). We have two automated services that validate and verify packages. The validator checks the quality of a package. If no requirements are flagged as failing review, it will be passed on to the verifier, which checks that the package actually works as intended (it may help to think of the validator as unit testing and the verifier as integration testing). If both of these automated reviews pass the package version is submitted to a moderator for final review and approval.
 
 Things to note:
 * We have trusted packages, and those packages skip human review/moderation. 
 * A maintainer can not moderate his/her own pkgs.
 * You can see if a package has been verified by the green circle next to it's name on the package page. If it is green or red, it will also be a clickable link. To see all packages verified, see https://gist.github.com/choco-bot
 * Besides trusted packages, a package version is never approved without a moderator clicking approve.
+
+### How does the moderation review process work?
+See [[Moderation]].
 
 ### What is a trusted package?
 Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages).
