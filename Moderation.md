@@ -84,7 +84,11 @@ Typically a package goes into the moderation queue when submitted.You can get to
  1. You should see a new drop down near the top that allows you to change your view. This is the moderation queue. ![Moderation Queue Dropdown](https://cloud.githubusercontent.com/assets/63502/7542991/b5032a38-f586-11e4-991a-7c7602d508aa.png)
  2. You will see items arranged in order based on reviewed and resubmitted at the top, items ready for review in order based on when they were submitted, and at the end of the queue, you will see items that are waiting for maintainer response. ![Moderation Queue](https://cloud.githubusercontent.com/assets/63502/7543076/58d5530c-f587-11e4-8d73-1325074d6e58.png)
  3. You grab a package and head in and review it based on the following items in the requirements and guidelines.
- 4. Ensure the verifier has run. It should be green for review. Pending is an orange color (has not yet run). Red means the maintainer needs to fix or respond. If you see a grey colored ball, it means that the package skips verification for some reason (which will be listed by the admin that flagged the package to skip verifiation). If possible, you will need to run the install/uninstall yourself.
+ 4. Ensure the verifier has run. It will have both comments in the review and a colored ball up next to the title of the package  (see image below). The ball should be:
+    - **Green** if it is ready for review and approval.
+    - **Orange** if still pending verification (has not yet run). 
+    - **Red** if it failed verification. The maintainer needs to fix or respond. If you find a package needs to skip verification, please contact an admin to do so. If you see a network issue from the log, you can rerun verification (see how in the next step).
+    - **Grey** if a package skips verification for some reason (which will be listed by the admin that flagged the package to skip verification). If possible, you will need to run the install/uninstall yourself.
  ![Passed Verifier](https://cloud.githubusercontent.com/assets/63502/11872220/bf58f590-a499-11e5-84bb-6fcf6d320227.png)
  5. Check over the verifier logs to be sure everything looks good (follow the link from the button). If necessary, you can rerun the verifier.
  ![Rerun](https://cloud.githubusercontent.com/assets/63502/11872329/4b8427ec-a49a-11e5-87ea-46e5e43e8140.png)
@@ -173,4 +177,3 @@ This is not an achievable status.
 * Become familiar with the package guidelines and all of the different Chocolatey functions available. https://github.com/chocolatey/choco/wiki/HelpersReference
 * Join the [chocolatey-moderators at google groups dot com](https://groups.google.com/forum/#!forum/chocolatey-moderators) mailing list. This is necessary for communication with other moderators and receiving messages regarding changes in moderation.
 * Join Gitter and hang out in the [Chocolatey.org Gitter](https://gitter.im/chocolatey/chocolatey.org) and [Choco Gitter](https://gitter.im/chocolatey/choco) rooms from time to time.
-
