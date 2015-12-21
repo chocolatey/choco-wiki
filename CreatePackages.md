@@ -24,6 +24,7 @@ can do just about anything you need. Choco has some very handy [[built-in functi
 1. [[Encoding|CreatePackages#character-encoding]]
 1. Learning about NuGet (and Chocolatey) Packages in general - [[Information|CreatePackages#okay-how-do-i-create-packages]] and [[Nuspec|CreatePackages#nuspec]]
 1. [[Description/Release Notes Recommendations|CreatePackages#package-description-and-release-notes]]
+1. [[Limit Windows Versions|CreatePackages#install-only-on-some-versions-of-windows]]
 1. [[Install paths|CreatePackages#installation-paths]]
 1. [[Upgrading|CreatePackages#upgrading]] and [[Uninstalling|CreatePackages#uninstalling]]
 1. [[Naming your package|CreatePackages#naming-your-package]]
