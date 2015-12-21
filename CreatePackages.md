@@ -23,6 +23,14 @@ can do just about anything you need. Choco has some very handy [[built-in functi
 1. [[Rules|CreatePackages#rules-to-be-observed-before-publishing-packages]]
 1. [[Encoding|CreatePackages#character-encoding]]
 1. Learning about NuGet (and Chocolatey) Packages in general - [[Information|CreatePackages#okay-how-do-i-create-packages]] and [[Nuspec|CreatePackages#nuspec]]
+1. [[Install paths|CreatePackages#installation-paths]]
+1. [[Upgrading|CreatePackages#upgrading]] and [[Uninstalling|CreatePackages#uninstalling]]
+1. [[Naming your package|CreatePackages#naming-your-package]]
+1. [[Versioning|CreatePackages#versioning-recommendations]] (and [[package fix version notation|]]
+1. [[Icons|CreatePackages#package-icon-guidelines]]
+1. [[Localization|CreatePackages#internationalization-and-localization-of-packages]]
+1. [[Building|CreatePackages#build-your-package]] / [[Testing|CreatePackages#testing-your-package]] / [[Pushing|CreatePackages#push-your-package]]
+1. [[Automatically updating packages|AutomaticPackages]]
 
 ## Quick Start guide
 
