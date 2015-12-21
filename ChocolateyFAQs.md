@@ -110,6 +110,9 @@ You need to specify name AND version to any package to install the unlisted/unap
 ### How do I install a rejected package? 
 Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages), we have a concept of packages that have been rejected. You cannot install a rejected package. It could do bad things to your system so we don't allow install from the community repository.
 
+### How do I self-reject a package?
+If you are a maintainer of a package and you would like to self-reject an older version of a package that is failing verification or validation, we support that. If however you just want to reject a working package because it is older, we don't support that. Rejected != Obsolete. It's really about when the underlying software has the same download url for every release so the older versions do not apply. If you are using checksums to verify the download (and you should be), then your older versions should start failing.
+
 ### What does Chocolatey do? Are you redistributing software?
 Chocolatey does the same thing that you would do based on the package instructions. This usually means going out and downloading an installer from the official distribution point and then silently installing it on your machine. With most packages this means Chocolatey is not redistributing software because they are going to the same distribution point that you yourself would go get the software if you were performing this process manually.
 
