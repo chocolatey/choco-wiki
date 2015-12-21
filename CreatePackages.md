@@ -121,7 +121,12 @@ Logically, the version is based on the lowest compatible version. But if you don
    * `choco new -h` will get you started seeing options available to you.
    * Once you figured out all of your options, you should move forward with generating your template.
 
-## Installation paths
+## Install Only On Some Versions of Windows
+Right now if the software the package installs is only supported on particular versions of Windows, you should absolutely fail the package. An installed package indicates success. If you pass a warning message but don't also throw an error, that means the package installed successfully. Folks using the package are going to be confused because they will then expect that the underlying software is also installed. The software itself may throw a cryptic error, which will lead to questions from the community about why it is broken (when it is just unsupported). Do yourself a favor and check the version of Windows and throw an error if it is not a supported version. Under no circumstances should you bypass with a warning, because a warning is still a success.
+
+**NOTE**: We will ultimately enhance the nuspec and take care of this for you automatically. Until we get there, follow the above avenue.
+
+## Installation Paths
 
 As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does Chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/choco/wiki/ChocolateyFAQs)) there are a couple of suitable locations (not listed in any particular order):
 
@@ -147,11 +152,6 @@ As an example, [MinGW](https://github.com/ferventcoder/chocolatey-packages/blob/
 No matter how you decide, you are advised to state the default installation directory in your package description. This prevents confusion about where the application will end up being installed.
 
 If you allow customizing the installation path, then append instructions on how to do that, too.
-
-## Non-supported versions of Windows
-Right now if the package is only supported on particular versions of Windows, you should absolutely fail the package. An installed package indicates success. If you pass a warning message but don't also throw an error, that means the package installed successfully. Folks using the package are going to be confused because they will then expect that the underlying software is also installed. Do yourself a favor and check the version of Windows and throw an error if it is not a supported version. Under no circumstances should you bypass with a warning, because a warning is still a success.
-
-**NOTE**: We will ultimately enhance the nuspec and take care of this for you automatically. Until we get there, follow the above avenue.
 
 ## Upgrading
 
