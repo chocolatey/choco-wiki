@@ -148,6 +148,11 @@ No matter how you decide, you are advised to state the default installation dire
 
 If you allow customizing the installation path, then append instructions on how to do that, too.
 
+## Non-supported versions of Windows
+Right now if the package is only supported on particular versions of Windows, you should absolutely fail the package. An installed package indicates success. If you pass a warning message but don't also throw an error, that means the package installed successfully. Folks using the package are going to be confused because they will then expect that the underlying software is also installed. Do yourself a favor and check the version of Windows and throw an error if it is not a supported version. Under no circumstances should you bypass with a warning, because a warning is still a success.
+
+**NOTE**: We will ultimately enhance the nuspec and take care of this for you automatically. Until we get there, follow the above avenue.
+
 ## Upgrading
 
 There is no concept of upgrading in Chocolatey. Instead, your [[chocolateyInstall.ps1|ChocolateyInstallPS1]] script should support installing on top of any previous versions of your package.
