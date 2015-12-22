@@ -79,6 +79,6 @@ Or, you can find us in IRC on Freenode at #chocolatey.
 You can find all of the members of the Chocolatey Team [here](https://github.com/orgs/chocolatey/people).
 
 ##Requirements
- * Windows XP/Vista/7/8/2003/2008
+ * Windows 7+/Windows 2003+
  * .NET Framework 4.0
  * PowerShell 2.0
