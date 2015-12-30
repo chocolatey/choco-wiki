@@ -249,7 +249,8 @@ foreach ($file in $files) {
 }
 ~~~
 
-## How do I set up batch redirects for [applications that have a GUI](https://github.com/chocolatey/chocolatey/issues/76)?
+<a name="how-do-i-set-up-batch-redirects-for-applications-that-have-a-gui"></a>
+## How do I set up shims for applications that have a GUI?
 If you don't want to see a hanging window when you open an application from the command line that was set up with Chocolatey, you want to create a file next to the executable that is named exactly the same (**case sensitive**) with `.gui` suffixed on the end.
 
 Example: In the case of `Bob.exe` you would create a file named `Bob.exe.gui` and that file would be set up as a GUI application so the window will call it and then move on without waiting for it to finish.  Again, `bob.exe.gui` would not work because it doesn't have the correct casing.
