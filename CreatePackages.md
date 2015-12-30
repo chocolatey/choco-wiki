@@ -232,8 +232,8 @@ If there is an icon which is suitable for your package, you can specify it in th
 * **PNG is the preferred format** for raster package icons. Avoid ICO, GIF and JPEG graphics.
 * Good sources for package icons are the official desktop icons of the corresponding application you want to make a package of. The icons can be extracted from the app executables using tools like [BeCyIconGrabber](https://chocolatey.org/packages/becyicongrabber). Remember to take the icon with 128&nbsp;px or more and save it as PNG file.
 
-<a name=""></a>
-## How do I exclude executables from getting batch redirects?
+<a name="how-do-i-exclude-executables-from-getting-batch-redirects"></a>
+## How do I exclude executables from getting shims?
 If you have executables in the package or brought into the package folder during PowerShell run and you want to exclude them you need to create an empty file named exactly like (**case sensitive**) the executable with `.ignore` suffixed on the end in the same directory where the executable is or will be.
 
 Example: In the case of `Bob.exe` you would create a file named `Bob.exe.ignore` and that file would not get a redirect batch link. The Chocolatey package has an example of that. To further expand, `bob.exe.ignore` would not work because it doesn't have the correct casing.
