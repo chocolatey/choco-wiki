@@ -161,7 +161,7 @@ Portable applications end up in the %ChocolateyInstall%/lib (i.&nbsp;e. C:\Progr
 ### Why doesn't a package install software to Program Files?
 Most packages that use native installers (MSI, InnoSetup, etc) will install to Program Files, but there are packages that do not. There are two really important reasons why:
 
-* Program Files is synonymous with software that has uninstall registry keys - or put another way, applications that have native installers that you can find in the Control Panel under Programs and Features. 
+* Program Files is synonymous with software that has uninstall registry keys - or put another way, applications that have native installers that you can find for uninstall in the Control Panel under Programs and Features. 
 * Writing to Program Files requires administrative permissions and the package you are installing is likely a portable package (even if not explicitly named so, it may have a zip that it extracts). There is also a way for non-administrators to use Chocolatey and these types of packages need to work for them as well.
 
 It really depends on the underlying software the package "installs". If the underlying software is a native installer, then it has a machine install (meaning it gets an uninstall registry key and shows up in Programs and Features) and Program Files is the appropriate place for it.
