@@ -201,7 +201,7 @@ If the 4th segment is used, some folks like to drop the segment altogether and u
 
 ### Package Fix Version Notation
 
-***NOTE: This doesn't apply to packages on the community feed (aka https://chocolatey.org/packages) that are still under review. Please read the instructions given in email for resubmitting the same version.***
+***NOTE: This doesn't apply to packages on the community feed (aka https://chocolatey.org/packages) that are still under review (not yet approved). Please read the instructions given in email for resubmitting the same version.***
 
 If you need to fix an approved package for some reason, you can use the fourth version element (aka segment) for a package fix notation. There are two recommended methods of package fix version notation:
 
