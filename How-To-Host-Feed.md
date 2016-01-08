@@ -75,6 +75,7 @@ This is like what https://chocolatey.org (the community feed runs on). It is the
 
 **Advantages:**
 * Can deal with thousands of packages with no performance issues.
+* Package versions are immutable - in other words you can guarantee the version installed is the same as the version in the source.
 * Package store can be File system, Azure blobs, or AWS S3 (**Chocolatey Package Gallery only**).
 * Multiple users each having their own API keys.
 * User registration with email confirmation.
