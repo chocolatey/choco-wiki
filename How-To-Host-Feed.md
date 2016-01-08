@@ -27,6 +27,7 @@ Perhaps the easiest to set up and recommended for testing quick and dirty scenar
 * Anyone with permission can push and overwrite packages.
 * No HTTP/HTTPS pushing. Must be able to access the folder/share to push to it. 
 * Starts to affect choco performance once the source has over 500 packages (maybe?).
+* Does not do anything to keep from packages being overwritten. This is actually a very large disadvantage.
 
 ### Local Folder Share Setup
 
