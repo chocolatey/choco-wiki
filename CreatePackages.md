@@ -265,6 +265,8 @@ Open a command line in the directory where the nuspec is and type [[cpack|Comman
 
 **NOTE**: We strongly suggest the following should be performed in a VM and not on your machine.
 
+**NOTE**: Testing your package can be done in the same way as the verifier - take a look at [Chocolatey Verifier Testing](https://github.com/chocolatey/package-verifier-vagrant).
+
 To test the package you just built, open a command line shell and navigate to the directory where the `*.nupkg` file is located. Then type:
 
 PowerShell:
