@@ -1,7 +1,6 @@
 # Legalities and Distributions
 ### What you need to know
 
-When you run Chocolatey without any arguments or the [[help command|CommandsHelp]], it will display both the package license acceptance terms and the waiver of responsibility. These are displayed here as well for reference.
 
 ## Package License Acceptance Terms
 The act of running Chocolatey to install a package constitutes acceptance of the license for the application, executable(s), or other artifacts that are brought to your machine as a result of a Chocolatey install. This acceptance occurs whether you know the license terms or not. It is suggested that you read and understand the license terms of any package you plan to install prior to installation through Chocolatey. If you do not accept the license of a package you are installing, please uninstall it and any artifacts that end up on your machine as a result of the install.
