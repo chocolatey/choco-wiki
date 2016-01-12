@@ -31,6 +31,7 @@
   - [[Config|CommandsConfig]]
   - [[Source / Sources|CommandsSources]]
   - [[Feature|CommandsFeature]]
+  - See other commands related to creating packages below
 
 **Creating Packages**
 
