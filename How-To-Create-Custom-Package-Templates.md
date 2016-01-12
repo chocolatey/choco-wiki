@@ -3,7 +3,7 @@
 As of [choco 0.9.9.9](https://github.com/chocolatey/choco/issues/76), Chocolatey has allowed you to create your own custom templates when the built-in template is not enough.
 
 ### Overview
-A template is used for creating packages. Chocolatey (choco) has a built-in template that it uses when generating a new package from the command [[`choco new`|Commands-New]]
+A template is used for creating packages. Chocolatey (choco) has a built-in template that it uses when generating a new package from the command [[`choco new`|CommandsNew]]
 
 
 If you drop a template into `$env:ChocolateyInstall\templates` folder, you can use `-t name_of_template` to generate a choco template based on that. So for:
