@@ -37,7 +37,7 @@ However `PackageName` and `PackageNameLower` also show up as they are based on t
 
 Then you surround those templated values with `[[]]` to make them templated for choco to use.
 
-
+## Example
 
 A file with the extension `.nuspec`
 ~~~xml
