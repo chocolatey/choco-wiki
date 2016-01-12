@@ -48,7 +48,7 @@
 **How To's**
 
  - [[Use Chocolatey w/Proxy Server|Proxy-Settings-for-Chocolatey]]
- - [[Change Download Cache Location / Not Use TEMP|How-To-Change-Cache]]
+ - [[Change Download Cache Location aka Don't use TEMP for downloads|How-To-Change-Cache]]
  - [[Create Custom Package Templates|How-To-Create-Custom-Package-Templates]]
  - [[Package Triage Process|PackageTriageProcess]]
  - [[Take Over Package Maintenance|PackageMantainerHandover]]
