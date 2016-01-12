@@ -292,7 +292,7 @@ When your `nuspec` specifies dependencies that are not in your source, you shoul
     </dependencies>
 ```
 You'll need to append the API path like so:
-`-source '"%cd%;http://chocolatey.org/api/v2/"'` (note the apostrophe then the double quotes here).
+`-source "'%cd%;https://chocolatey.org/api/v2/'"` (note the double quotes bookending the apostrophes here). See [[passing options with quotes|CommandsReference#how-to-pass-options--switches]]. Also, use `$pwd` if you are in PowerShell.exe.
 
 You can also use the `-debug` switch on `choco install` to provide more information.
 
