@@ -1,4 +1,19 @@
-Fill this out
+You can get the names by running `choco new -h`:
+
+~~~
+Possible properties to pass:
+    packageversion
+    maintainername
+    maintainerrepo
+    installertype
+    url
+    url64
+    silentargs
+~~~
+
+However `PackageName` and `PackageNameLower` also show up as they are based on the name of the package that you pass e.g. "bob" in `choco new bob`
+
+Then you surround those templated values with `[[]]` to make them templated for choco to use.
 
 If you drop a template into `$env:ChocolateyInstall\templates` folder, you can use `-t name_of_template` to generate a choco template based on that. So for:
 
@@ -7,3 +22,55 @@ If you drop a template into `$env:ChocolateyInstall\templates` folder, you can u
 You would call `choco new pkgname -t organization` and choco will use the template folder instead of the built-in template.
 
 To replace the built-in template, you should put a folder in the template with the name of "default". Then choco will use that instead of the built-in template with no need to specify a template name.
+
+A file with the extension `.nuspec`
+~~~xml
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if ԏԠdoesnӴ appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>[[PackageNameLower]]</id>
+    <title>[[PackageName]] (Install)</title>
+    <version>[[PackageVersion]]</version>
+    <authors>Original authors</authors>
+    <owners>[[MaintainerName]]</owners>
+    <description>__REPLACE__MarkDown_Okay [[AutomaticPackageNotesNuspec]]
+    </description>
+    <tags>[[PackageNameLower]] admin</tags>
+    <!--<dependencies>
+      <dependency id="" version="__VERSION__" />
+      <dependency id="" />
+    </dependencies>-->
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
+~~~
+
+`tools\chocolateyInstall.ps1`:
+
+~~~powershell
+$ErrorActionPreference = 'Stop'; # stop on all errors
+
+[[AutomaticPackageNotesInstaller]]
+$packageName  = '[[PackageName]]'
+$toolsDir     = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+$fileLocation = Join-Path $toolsDir 'NAME_OF_EMBEDDED_INSTALLER_FILE'
+
+$packageArgs = @{
+  packageName   = $packageName
+  file          = $fileLocation
+  fileType      = '[[InstallerType]]' #only one of these: exe, msi, msu
+
+  #MSI
+  silentArgs    = "/qn /norestart /l*v `"$env:TEMP\chocolatey\$($packageName)\$($packageName).MsiInstall.log`""
+  validExitCodes= @(0, 3010, 1641)
+  #OTHERS
+  #silentArgs   ='[[SilentArgs]]' # /s /S /q /Q /quiet /silent /SILENT /VERYSILENT -s - try any of these to get the silent installer
+  #validExitCodes= @(0) #please insert other valid exit codes here
+}
+
+Install-ChocolateyInstallPackage @packageArgs
+
+~~~
