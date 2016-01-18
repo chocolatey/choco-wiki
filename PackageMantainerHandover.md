@@ -1,5 +1,8 @@
 # Package Maintainer Handover
 
+**NOTE**: This process comes after the [Package Triage Process](PackageTriageProcess). If you are a vendor wanting to maintain your own software's packages, please use the contact site admins link from the package page on the website.
+
+
 When a package maintainer is deemed no longer maintaining a package, a new maintainer or maintainers can assist and/or takeover. This is done through the [Package Triage Process](PackageTriageProcess).
 
 Once an admin makes you a maintainer you will need to click on the link in your email to confirm.
