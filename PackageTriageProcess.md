@@ -1,5 +1,8 @@
 # Package Questions/Updates/Fixes - Triage Process
 
+**NOTE**: This process comes after the [Package Triage Process](PackageTriageProcess). If you are a **software vendor** wanting to maintain your own software's packages, please use the contact site admins link from the package page on the website.
+
+
 If you have a question about a package itself, use the contact form on the package page on chocolatey.org to contact the maintainers. From there you usually get a response and you can ask where they keep the packages repository so you can send a pull request.
 
 If you don't hear anything within a few days back from them, it's possible they just haven't gotten to your message yet, but it's also possible that something went wrong and they didn't get the email. Use the contact site admins link. That goes to the site curators and they will try to triage the situation.
