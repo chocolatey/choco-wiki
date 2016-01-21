@@ -17,6 +17,7 @@
 ## Conferences
 ### 2015
 
+* USENIX LISA15 - [Windows Just Got Chocolatey (Package Management)](http://usenix.org/conference/lisa15/conference-program/presentation/reynolds) - Rob Reynolds, November 12, 2015
 * PuppetConf 2015 - [Chocolatey and Puppet - Managing your Windows Software Since 2011](https://www.youtube.com/watch?v=NNM2H4GsWYA) - Rob Reynolds, October 8, 2015
 * NDC Oslo - [DevOps Yourself: Fast-Track Your Windows Development Environment Setup with Chocolatey and Vagrant](https://vimeo.com/131640721) - Justin James
 
