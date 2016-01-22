@@ -98,7 +98,7 @@ Consider the following scenario:
 
 See [Community Feed has a version older than your version](#community-feed-has-a-package-older-than-your-version) - substitute `upgrade` for `install` if you must. Follow the recommendation.
 
-**Additional Recommendation**: You may also want to bump it to 1.8.0 and then promptly [[pin|CommandsPin]]
+**Additional Recommendation**: You may also want to bump it to 1.8.0 and then promptly [[pin|CommandsPin]] the package until a newer version is available.
 
 ~~~
 choco upgrade firefox -n -y --version 1.8.0
