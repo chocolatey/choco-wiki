@@ -49,7 +49,7 @@
 
  - [[Use Chocolatey w/Proxy Server|Proxy-Settings-for-Chocolatey]]
  - [[Change Download Cache Location aka Don't use TEMP for downloads|How-To-Change-Cache]]
- - [[Install/Upgrade a Package w/out running install scripts|How-To-Update-Package-Without-Scripts]]
+ - [[Install/Upgrade a Package w/out running install scripts|How-To-Install-Upgrade-Package-Without-Scripts]]
  - [[Create Custom Package Templates|How-To-Create-Custom-Package-Templates]]
  - [[Request Package Fixes/Updates|PackageTriageProcess]]
  - [[Become a Maintainer|PackageTriageProcess]]
