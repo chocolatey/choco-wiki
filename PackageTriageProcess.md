@@ -40,25 +40,15 @@ So a package needs fixed or updated. You have reached out to the maintainer or d
 1. If you are able to provide a fix, that's even better. Look for the maintainer's package source. Please look for package source url information on the package page.  
 ![Package source link](https://cloud.githubusercontent.com/assets/63502/12520704/c124c60e-c10b-11e5-9de9-1127ce0c602e.png)
 1. If you are still looking for a way to provide a fix, but don't find a package source link on the package itself, you can try to find it in one of the maintainer's profiles (this is an older method of finding your way to a maintainer's packages source).
-![maintainers are links](https://cloud.githubusercontent.com/assets/63502/12520460/58b746e2-c10a-11e5-879b-db22e5bb5355.png)
-![maintainer profile with github repository link](https://cloud.githubusercontent.com/assets/63502/12520472/77a135b8-c10a-11e5-964c-189a8b2a5e67.png)
-1. If the maintainer(s) do[es] not respond within a few days, it's possible they haven't received your message or don't watch the repository. It's also possible they are on holiday. Use the contact site admins link to contact the site curators, who will attempt to triage the situation. 
+![maintainers are links](https://cloud.githubusercontent.com/assets/63502/12520819/537dbaa6-c10c-11e5-8907-4b822d6f6161.png)
+![maintainer profile with github repository link](https://cloud.githubusercontent.com/assets/63502/12520758/f755bf4e-c10b-11e5-831e-4da3a91c42c9.png)
+1. If the maintainer(s) do[es] not respond within a few days, it's possible they haven't received your message or don't watch the repository. It's also possible they are on holiday. Use the contact site admins link to contact the site curators, who will attempt to triage the situation.   
 ![Contact admins link](https://cloud.githubusercontent.com/assets/63502/12520681/a8949c9a-c10b-11e5-84f5-ce4063249cab.png)
 1. If you don't hear anything back from the curators within 2 days (usually same day response), then you send a message to the Chocolatey google group (http://groups.google.com/group/chocolatey) and we work to contact the maintainers.
-1. If the maintainer(s) are unresponsive after a period of time (determined by the admins), the package is considered abandoned. The moderators will ask if you would like to become a maintainer of the package. 
-
-If we don't hear anything back from the package maintainer within a reasonable timeframe, a TOS is started and new folks can be added to the package in question as maintainers. 
+1. If the maintainer(s) are unresponsive after a period of time (determined by the admins), the package is considered abandoned. The curators will TOS the package and new folks can be added as maintainers. The moderators will ask if you would like to become a maintainer of the package. If you choose to become a new maintainer, see the next section.
 
 **NOTE**: We don't have non-maintainer uploads in the community feed and we haven't needed them yet.
 
-## Package Outdated
-If you have a question about a package itself, use the contact form on the package page on chocolatey.org to contact the maintainers. 
-From there you usually get a response and you can ask where they keep the packages repository so you can send a pull request.
-
-If you don't hear anything within a few days back from them, it's possible they just haven't gotten to your message yet, but it's also possible that something went wrong and they didn't get the email. Use the contact site admins link. That goes to the site curators and they will try to triage the situation.
-
-If you don't hear anything back from the curators within 2 days (usually same day response), then you send a message to the Chocolatey google group (http://groups.google.com/group/chocolatey) and we work to contact the maintainers.
-
-If we don't hear anything back from the package maintainer within a reasonable timeframe, a TOS is started and new folks can be added to the package in question as maintainers. We don't have non-maintainer uploads in the choco/nuget infrastructure and we haven't needed them yet.
+### New Maintainers
 
 Sometimes this results in new maintainers. The next steps for these maintainers is known as the [Package Maintainer Handover/Switch](PackageMantainerHandover).
