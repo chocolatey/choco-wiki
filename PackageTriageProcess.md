@@ -8,9 +8,11 @@ The Community Feed (https://chocolatey.org/packages) has a collection of package
 
 Use the contact form on the package page of the community feed or the Disqus comment thread (at the bottom of the package page) to reach out to the maintainers. Neither require an account on Chocolatey.org. 
 
+![contact maintainers link](https://cloud.githubusercontent.com/assets/63502/12519569/406aa70a-c105-11e5-9db2-6191ce5bc100.png)
+
 ## Package is Broken
 
-![image](https://cloud.githubusercontent.com/assets/63502/12519534/1728a086-c105-11e5-9af7-96b188114ae7.png)
+![red ball failing testing verification](https://cloud.githubusercontent.com/assets/63502/12519534/1728a086-c105-11e5-9af7-96b188114ae7.png)
 
 If the ball is red, the maintainer has already been informed. You may have helpful information for fixes, so please look for package source url information and file an issue if you find it (or a pull request). Otherwise use the contact maintainers link or the disqus thread from the questions process.
 
