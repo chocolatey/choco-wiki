@@ -34,9 +34,22 @@ Be sure of four things:
 ![versions awaiting moderation](https://cloud.githubusercontent.com/assets/63502/12520149/7bb85aac-c108-11e5-983c-eef01448b00a.png)
 
 ## The Triage Process
-You may have helpful information for fixes, so please look for package source url information and file an issue if you find it (or a pull request). Otherwise use the contact maintainers link or the disqus thread from the questions process.
+So a package needs fixed or updated. You have reached out to the maintainer or disqus already and are curious what the next steps are. We will elaborate on all of the steps here, including contacting the maintainers.
 
-![Package Source link](https://cloud.githubusercontent.com/assets/63502/12519624/7bd4b358-c105-11e5-9265-971ff5708f4a.png)
+1. The first step is to contact the maintainers. 
+1. If you are able to provide a fix, that's even better. Look for the maintainer's package source. Please look for package source url information on the package page.  
+![Package source link](https://cloud.githubusercontent.com/assets/63502/12520704/c124c60e-c10b-11e5-9de9-1127ce0c602e.png)
+1. If you are still looking for a way to provide a fix, but don't find a package source link on the package itself, you can try to find it in one of the maintainer's profiles (this is an older method of finding your way to a maintainer's packages source).
+![maintainers are links](https://cloud.githubusercontent.com/assets/63502/12520460/58b746e2-c10a-11e5-879b-db22e5bb5355.png)
+![maintainer profile with github repository link](https://cloud.githubusercontent.com/assets/63502/12520472/77a135b8-c10a-11e5-964c-189a8b2a5e67.png)
+1. If the maintainer(s) do[es] not respond within a few days, it's possible they haven't received your message or don't watch the repository. It's also possible they are on holiday. Use the contact site admins link to contact the site curators, who will attempt to triage the situation. 
+![Contact admins link](https://cloud.githubusercontent.com/assets/63502/12520681/a8949c9a-c10b-11e5-84f5-ce4063249cab.png)
+1. If you don't hear anything back from the curators within 2 days (usually same day response), then you send a message to the Chocolatey google group (http://groups.google.com/group/chocolatey) and we work to contact the maintainers.
+1. If the maintainer(s) are unresponsive after a period of time (determined by the admins), the package is considered abandoned. The moderators will ask if you would like to become a maintainer of the package. 
+
+If we don't hear anything back from the package maintainer within a reasonable timeframe, a TOS is started and new folks can be added to the package in question as maintainers. 
+
+**NOTE**: We don't have non-maintainer uploads in the community feed and we haven't needed them yet.
 
 ## Package Outdated
 If you have a question about a package itself, use the contact form on the package page on chocolatey.org to contact the maintainers. 
