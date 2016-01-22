@@ -57,6 +57,8 @@ Your command could be:
 
 **Recommendation**: Ask the maintainer to update the package. Don't allow choco to know about an older version of a package. If the maintainer provides an update of 1.9.0 without also providing an update at or above your currently installed version, running upgrade later may put your installed software down to the version that is installed by the package. This is definitely not a situation you want to be in.
 
+Additional thoughts: You could install the older version and promptly [[pin|CommandsPin]] that version until the newer version is available. If you don't already have the package installed though, it's better to wait for the newer version to become available.
+
 ## Upgrade a Package Without Running Scripts
 
 ### Application is self-updating (like Google Chrome)
