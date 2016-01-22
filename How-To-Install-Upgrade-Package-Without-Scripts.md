@@ -41,7 +41,7 @@ Consider the following scenario:
 * You do not have a package installed for Firefox.
 * You see Chocolatey.org (the community feed) has a newer version of Firefox 2.0.0 (package id is firefox) as the latest version.
 
-**Recommendation**: You should run the regular install for Firefox and allow Chocolatey to upgrade the installed version. Check the package files first to be sure it is the same type of install (native installer versus zip archives). You can download the package and review the install script. You can also use `--noop` as part of your install arguments to see the script.
+**Recommendation**: You should run the regular choco install (without the skip powershell argument) for Firefox and allow Chocolatey to upgrade the installed version. Check the package files first to be sure it is the same type of install (native installer versus zip archives). You can download the package and review the install script. You can also use `--noop` as part of your install arguments to see the script.
 
 ### Community Feed has a package older than your version
 Consider the following scenario:
@@ -57,7 +57,7 @@ Your command could be:
 
 **Recommendation**: Ask the maintainer to update the package. Don't allow choco to know about an older version of a package. If the maintainer provides an update of 1.9.0 without also providing an update at or above your currently installed version, running upgrade later may put your installed software down to the version that is installed by the package. This is definitely not a situation you want to be in.
 
-Additional thoughts: You could install the older version and promptly [[pin|CommandsPin]] that version until the newer version is available. If you don't already have the package installed though, it's better to wait for the newer version to become available.
+Additional thoughts: You could install the older version of the package (with the `-n` argument) and promptly [[pin|CommandsPin]] that version until the newer version is available. If you don't already have the package installed though, it's better to wait for the newer version to become available.
 
 ## Upgrade a Package Without Running Scripts
 
@@ -102,7 +102,7 @@ Consider the following scenario:
 
 See [Community Feed has a version older than your version](#community-feed-has-a-package-older-than-your-version) - substitute `upgrade` for `install` if you must. Follow the recommendation.
 
-**Additional Recommendation**: You may also want to bump it to 1.8.0 and then promptly [[pin|CommandsPin]] the package until a newer version is available.
+**Additional Recommendation**: You may also want to bump it to 1.8.0 using the skip argument (`-n`) and then promptly [[pin|CommandsPin]] the package until a newer version is available.
 
 ~~~
 choco upgrade firefox -n -y --version 1.8.0
