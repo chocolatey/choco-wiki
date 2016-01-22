@@ -73,3 +73,34 @@ You should run
 `choco pin googlechrome`
 
 For more information see [[Pin Command|CommandsPin]].
+
+### The software was upgraded but not the package
+
+Similar to the above scenario, but perhaps you upgraded the software manually outside of Chocolatey.
+
+Consider the following scenario:
+
+* You have installed Firefox 1.0.0 from Chocolatey.org
+* You upgraded Firefox manually to 2.0.0 (ignore for a second that real-world Firefox auto-upgrades, this is an example for pete's sake ;) )
+* Chocolatey.org also has 2.0.0.
+
+See [[Install when community feed has a package with your version|#community-feed-has-a-package-with-your-version]] - substitute `upgrade` for `install` if you must. Follow the recommendation.
+
+### The software was upgraded but not the package and Community Feed is outdated
+
+Similar to the above scenario, but perhaps you upgraded the software manually outside of Chocolatey.
+
+Consider the following scenario:
+
+* You have installed Firefox 1.0.0 from Chocolatey.org
+* You upgraded Firefox manually to 2.0.0 (ignore for a second that real-world Firefox auto-upgrades, this is an example for pete's sake ;) )
+* Chocolatey.org only has up to 1.8.0.
+
+See [[Community Feed has a version older than your version|#community-feed-has-a-package-older-than-your-version]] - substitute `upgrade` for `install` if you must. Follow the recommendation.
+
+**Additional Recommendation**: You may also want to bump it to 1.8.0 and then promptly [[pin|CommandsPin]]
+
+~~~
+choco upgrade firefox -n -y --version 1.8.0
+choco pin firefox
+~~~
