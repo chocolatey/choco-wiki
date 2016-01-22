@@ -6,7 +6,7 @@ The Community Feed (https://chocolatey.org/packages) has a collection of package
 
 ## Questions about a package
 
-Use the contact form on the package page of the community feed or the Disqus comment thread (at the bottom of the package page) to reach out to the maintainers. Neither require an account on Chocolatey.org. 
+Use the Contact Maintainers link on the package page of the community feed or the Disqus comment thread (at the bottom of the package page) to reach out to the maintainers. Neither require an account on Chocolatey.org. 
 
 ![contact maintainers link](https://cloud.githubusercontent.com/assets/63502/12519569/406aa70a-c105-11e5-9db2-6191ce5bc100.png)
 
