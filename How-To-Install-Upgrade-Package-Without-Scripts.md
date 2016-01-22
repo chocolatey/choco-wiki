@@ -84,7 +84,7 @@ Consider the following scenario:
 * You upgraded Firefox manually to 2.0.0 (ignore for a second that real-world Firefox auto-upgrades, this is an example for pete's sake ;) )
 * Chocolatey.org also has 2.0.0.
 
-See [[Install when community feed has a package with your version|#community-feed-has-a-package-with-your-version]] - substitute `upgrade` for `install` if you must. Follow the recommendation.
+See [Install when community feed has a package with your version](#community-feed-has-a-package-with-your-version) - substitute `upgrade` for `install` if you must. Follow the recommendation.
 
 ### The software was upgraded but not the package and Community Feed is outdated
 
@@ -96,7 +96,7 @@ Consider the following scenario:
 * You upgraded Firefox manually to 2.0.0 (ignore for a second that real-world Firefox auto-upgrades, this is an example for pete's sake ;) )
 * Chocolatey.org only has up to 1.8.0.
 
-See [[Community Feed has a version older than your version|#community-feed-has-a-package-older-than-your-version]] - substitute `upgrade` for `install` if you must. Follow the recommendation.
+See [Community Feed has a version older than your version](#community-feed-has-a-package-older-than-your-version) - substitute `upgrade` for `install` if you must. Follow the recommendation.
 
 **Additional Recommendation**: You may also want to bump it to 1.8.0 and then promptly [[pin|CommandsPin]]
 
