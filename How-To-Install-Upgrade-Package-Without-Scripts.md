@@ -25,7 +25,7 @@ This switch is going to be very important for you. Now we will go through some s
 Consider the following scenario:
 
 * You have Firefox version 1.0.0 installed
-* Your local Chocolatey doesn't have a package installed
+* You do not have a package installed for Firefox.
 * You see Chocolatey.org (the community feed) has a version of Firefox 1.0.0 (package id is firefox). It may or may not be the latest version.
 
 Your command could be
@@ -38,7 +38,7 @@ Your command could be
 Consider the following scenario:
 
 * You have Firefox version 1.0.0 installed.
-* Your local Chocolatey doesn't have a package installed.
+* You do not have a package installed for Firefox.
 * You see Chocolatey.org (the community feed) has a newer version of Firefox 2.0.0 (package id is firefox) as the latest version.
 
 **Recommendation**: You should run the regular install for Firefox and allow Chocolatey to upgrade the installed version. Check the package files first to be sure it is the same type of install (native installer versus zip archives). You can download the package and review the install script. You can also use `--noop` as part of your install arguments to see the script.
@@ -47,7 +47,7 @@ Consider the following scenario:
 Consider the following scenario:
 
 * You have Firefox version 2.0.0 installed.
-* Your local Chocolatey doesn't have a package installed.
+* You do not have a package installed for Firefox.
 * You see Chocolatey.org (the community feed) has a latest version of Firefox 1.8.0 (package id is firefox). 
 * There is no newer version than this available.
 
@@ -80,7 +80,8 @@ Similar to the above scenario, but perhaps you upgraded the software manually ou
 
 Consider the following scenario:
 
-* You have installed Firefox 1.0.0 from Chocolatey.org
+* You have Firefox version 1.0.0 installed.
+* The install came from installing the firefox 1.0.0 package.
 * You upgraded Firefox manually to 2.0.0 (ignore for a second that real-world Firefox auto-upgrades, this is an example for pete's sake ;) )
 * Chocolatey.org also has 2.0.0.
 
@@ -92,7 +93,8 @@ Similar to the above scenario, but perhaps you upgraded the software manually ou
 
 Consider the following scenario:
 
-* You have installed Firefox 1.0.0 from Chocolatey.org
+* You have Firefox version 1.0.0 installed.
+* The install came from installing the firefox 1.0.0 package.
 * You upgraded Firefox manually to 2.0.0 (ignore for a second that real-world Firefox auto-upgrades, this is an example for pete's sake ;) )
 * Chocolatey.org only has up to 1.8.0.
 
