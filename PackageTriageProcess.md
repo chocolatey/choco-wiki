@@ -51,4 +51,4 @@ So a package needs fixed or updated. You have reached out to the maintainer or d
 
 ### New Maintainers
 
-Sometimes this results in new maintainers. You can be a maintainer updating the project at a central location. If the package was deemed abandoned, you will want to follow the instructions for a [Package Maintainer Handover/Switch](PackageMantainerHandover).
+Sometimes this results in new maintainers. You can be a maintainer updating the project at a central location that multiple maintainers share. However, if you became maintainer because the package was deemed abandoned, you will want to follow the instructions for a [Package Maintainer Handover/Switch](PackageMantainerHandover).
