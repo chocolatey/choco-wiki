@@ -14,10 +14,26 @@ Use the Contact Maintainers link on the package page of the community feed or th
 
 ![red ball failing testing verification](https://cloud.githubusercontent.com/assets/63502/12519534/1728a086-c105-11e5-9af7-96b188114ae7.png)
 
-If the ball is red, the maintainer has already been informed. You may have helpful information for fixes, so please look for package source url information and file an issue if you find it (or a pull request). Otherwise use the contact maintainers link or the disqus thread from the questions process.
+If the ball is red, the maintainer has already been informed. See the next section on how you can ask for updates
+
+## Package is Outdated
+
+Be sure of four things:
+
+1. The newer version is a stable release - not an alpha or 
+1. The newer version that is cross platform is available for Windows. Sometimes the release of the Windows version may lag behind availability on other platforms.
+1. It has been at least a day since the new release. Sometimes the package automatically updates - check to see if the package is an automatically updating package in the description of the package. Typically if it has been more than 48 hours since the updated version is available, it's a good time to let the maintainers know they should update the package.
+1. The package doesn't already have a newer version in moderation. The maintainer(s) may already be actively working towards getting a newer version up on the community feed.
+![versions awaiting moderation](https://cloud.githubusercontent.com/assets/63502/12520149/7bb85aac-c108-11e5-983c-eef01448b00a.png)
+
+### Requesting Fixes - The Triage Process
+You may have helpful information for fixes, so please look for package source url information and file an issue if you find it (or a pull request). Otherwise use the contact maintainers link or the disqus thread from the questions process.
+
+![Package Source link](https://cloud.githubusercontent.com/assets/63502/12519624/7bd4b358-c105-11e5-9265-971ff5708f4a.png)
 
 ## Package Outdated
-If you have a question about a package itself, use the contact form on the package page on chocolatey.org to contact the maintainers. From there you usually get a response and you can ask where they keep the packages repository so you can send a pull request.
+If you have a question about a package itself, use the contact form on the package page on chocolatey.org to contact the maintainers. 
+From there you usually get a response and you can ask where they keep the packages repository so you can send a pull request.
 
 If you don't hear anything within a few days back from them, it's possible they just haven't gotten to your message yet, but it's also possible that something went wrong and they didn't get the email. Use the contact site admins link. That goes to the site curators and they will try to triage the situation.
 
