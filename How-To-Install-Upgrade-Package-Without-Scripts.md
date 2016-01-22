@@ -57,5 +57,19 @@ Your command could be:
 
 **Recommendation**: Ask the maintainer to update the package. Don't allow choco to know about an older version of a package. If the maintainer provides an update of 1.9.0 without also providing an update at or above your currently installed version, running upgrade later may put your installed software down to the version that is installed by the package. This is definitely not a situation you want to be in.
 
-
 ## Upgrade a Package Without Running Scripts
+
+### Application is self-updating (like Google Chrome)
+Consider the following scenario:
+
+* You have installed Google Chrome from Chocolatey.org (package id is googlechrome)
+* Google Chrome self-updates
+* Choco version is out of sync with installed version
+
+**Recommendation**: You should [[pin|CommandsPin]] the package to suppress upgrades. The self-updating scenario is keeping you on the latest version and you want to stay up to date with the latest version that may have security fixes in addition to other things.
+
+You should run
+
+`choco pin googlechrome`
+
+For more information see [[Pin Command|CommandsPin]].
