@@ -4,19 +4,26 @@ The Community Feed (https://chocolatey.org/packages) has a collection of package
 
 **NOTE**: If you are a **software vendor** wanting to maintain your own software's packages, please use the contact site admins link from the package page on the website.
 
-## Questions about a package
+## Table of Contents
+
+* [Questions about the package or software](#questions-about-a-package-or-software)
+* [The package is broken](#package-is-broken)
+* [The package is outdated](#package-is-outdated)
+* [The Package Triage Process](#the-triage-process) - requesting updates/fixes to packages
+
+### Questions About a Package or Software
 
 Use the Contact Maintainers link on the package page of the community feed or the Disqus comment thread (at the bottom of the package page) to reach out to the maintainers. Neither require an account on Chocolatey.org. 
 
 ![contact maintainers link](https://cloud.githubusercontent.com/assets/63502/12519569/406aa70a-c105-11e5-9db2-6191ce5bc100.png)
 
-## Package is Broken
+### Package is Broken
 
 ![red ball failing testing verification](https://cloud.githubusercontent.com/assets/63502/12519534/1728a086-c105-11e5-9af7-96b188114ae7.png)
 
 If the ball is red, the maintainer has already been informed. See the next section on how you can ask for updates
 
-## Package is Outdated
+### Package is Outdated
 
 Be sure of four things:
 
@@ -26,7 +33,7 @@ Be sure of four things:
 1. The package doesn't already have a newer version in moderation. The maintainer(s) may already be actively working towards getting a newer version up on the community feed.
 ![versions awaiting moderation](https://cloud.githubusercontent.com/assets/63502/12520149/7bb85aac-c108-11e5-983c-eef01448b00a.png)
 
-### Requesting Fixes - The Triage Process
+## The Triage Process
 You may have helpful information for fixes, so please look for package source url information and file an issue if you find it (or a pull request). Otherwise use the contact maintainers link or the disqus thread from the questions process.
 
 ![Package Source link](https://cloud.githubusercontent.com/assets/63502/12519624/7bd4b358-c105-11e5-9265-971ff5708f4a.png)
