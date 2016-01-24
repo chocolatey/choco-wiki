@@ -8,8 +8,8 @@ The Community Feed (https://chocolatey.org/packages) has a collection of package
 
 * [Questions about the package or software](#questions-about-a-package-or-software)
 * [Package requests or package is missing?](#package-request-package-missing)
-* [The package is broken](#package-is-broken)
-* [The package is outdated](#package-is-outdated)
+* [The package is broken?](#package-is-broken)
+* [The package is outdated?](#package-is-outdated)
 * [The Package Triage Process](#the-triage-process) - requesting updates/fixes to packages
 
 ### Questions About a Package or Software
@@ -21,13 +21,13 @@ Use the Contact Maintainers link on the package page of the community feed or th
 ### Package Request? Package Missing?
 If you are looking for packages to be added to the community feed (aka https://chocolatey.org/packages) - you are part of the community and we welcome your packages. It's super simple to create and maintain packages, see [[Creating packages|CreatePackages]].
 
-### Package is Broken
+### Package is Broken?
 
 ![red ball failing testing verification](https://cloud.githubusercontent.com/assets/63502/12519534/1728a086-c105-11e5-9af7-96b188114ae7.png)
 
 If the ball is red, the maintainer has already been informed. See the next section on how you can ask for updates
 
-### Package is Outdated
+### Package is Outdated?
 
 Be sure of four things:
 
