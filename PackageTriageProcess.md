@@ -1,4 +1,4 @@
-# Package Questions/Updates/Fixes For Community Feed - Triage Process
+# Package Questions, Requests, Updates, and/or Fixes For Community Feed - Triage Process
 
 The Community Feed (https://chocolatey.org/packages) has a collection of packages provided and maintained by the community. You may have come across a package and found you have questions about it or you have found it outdated or broken.
 
