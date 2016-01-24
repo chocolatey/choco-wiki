@@ -44,7 +44,7 @@ So a package needs fixed or updated. You have reached out to the maintainer or d
 1. If you are able to provide a fix, that's even better. Look for the maintainer's package source. Please look for package source url information on the package page.  
 ![Package source link](https://cloud.githubusercontent.com/assets/63502/12520704/c124c60e-c10b-11e5-9de9-1127ce0c602e.png)
 1. If you are still looking for a way to provide a fix, but don't find a package source link on the package itself, you can try to find it in one of the maintainer's profiles (this is an older method of finding your way to a maintainer's packages source).
-![maintainers are links](https://cloud.githubusercontent.com/assets/63502/12520819/537dbaa6-c10c-11e5-8907-4b822d6f6161.png)
+![maintainers are links](https://cloud.githubusercontent.com/assets/63502/12534627/a5b0ea56-c228-11e5-8ea4-a162652831ac.png)
 ![maintainer profile with github repository link](https://cloud.githubusercontent.com/assets/63502/12520758/f755bf4e-c10b-11e5-831e-4da3a91c42c9.png)
 1. If the maintainer(s) do[es] not respond within a few days, it's possible they haven't received your message or don't watch the repository. It's also possible they are on holiday. Use the contact site admins link to contact the site curators, who will attempt to triage the situation.   
 ![Contact admins link](https://cloud.githubusercontent.com/assets/63502/12520681/a8949c9a-c10b-11e5-84f5-ce4063249cab.png)
