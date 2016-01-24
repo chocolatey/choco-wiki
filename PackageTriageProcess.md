@@ -21,6 +21,8 @@ Use the Contact Maintainers link on the package page of the community feed or th
 ### Package Request? Package Missing?
 If you are looking for packages to be added to the community feed (aka https://chocolatey.org/packages) - you are part of the community and we welcome your packages. It's super simple to create and maintain packages, see [[Creating packages|CreatePackages]].
 
+When it comes to community packages, we really want folks who are using the software to be package maintainers versus folks who may not be using the software. So when you are asking for other folks to add packages, please consider that it may be better for you to keep the package up to date than someone else who may not be invested in ensuring it stays updated.
+
 ### Package is Broken?
 
 ![red ball failing testing verification](https://cloud.githubusercontent.com/assets/63502/12519534/1728a086-c105-11e5-9af7-96b188114ae7.png)
