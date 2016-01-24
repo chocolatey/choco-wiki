@@ -52,6 +52,7 @@
  - [[Install/Upgrade a Package w/out running install scripts|How-To-Install-Upgrade-Package-Without-Scripts]]
  - [[Create Custom Package Templates|How-To-Create-Custom-Package-Templates]]
  - [[Request Package Fixes/Updates|PackageTriageProcess]]
+ - [[Request Package|PackageTriageProcess]]
  - [[Become a Maintainer|PackageTriageProcess]]
  - [[Take Over Package Maintenance Exclusively|PackageMantainerHandover]]
  - [[Parse Package Parameters|How-To-Parse-PackageParameters-Argument]]
