@@ -13,8 +13,8 @@ One of the longstanding things we have always wanted in the community feed was t
 Software distribution and legal reasons - the short of it is that we can't have a public archive of software out there. So we require a user to be licensed with a pro/business version to be able to take advantage of this capability.
 
 ### I'm a software vendor, should I be concerned about you caching my files?
-In short, you do not need to be concerned. We are offering private files to private users.
+In short, you do not need to be concerned. We are offering private files to private users as a service. We are not modifying, selling, renting, leasing, lending, or sub-licensing these files. We are also not offering these files to the public in any way.
 
-What we are doing is no different than what most companies do when it comes to software. An organization would usually download all software that its constituents would use to an internal file share. We are doing the same thing for our licensed users, offering a private internal distribution just for them and not publicly. Fortunately that means we are not violating any distribution rights because those files are not available publicly, only to users that have obtained a license.
+What we are doing is no different than what most companies do when it comes to software. An organization would usually download all software that its constituents would use to an internal file share. We are doing the same thing for our licensed users, offering a private internal distribution just for them and not publicly. Fortunately that means we are not violating any distribution rights because those files are not available publicly, only to private users that have obtained a license.
 
 **NOTE**: If the software also requires a license, the users will still need to obtain that from the vendors.
