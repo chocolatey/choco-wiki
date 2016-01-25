@@ -16,3 +16,5 @@ Software distribution and legal reasons - the short of it is that we can't have 
 In short, you do not need to be concerned.
 
 What we are doing is no different than what most companies do when it comes to software. An organization would usually download all software that its constituents would use to an internal file share. We are doing the same thing for our licensed users, offering a private internal distribution just for them and not publicly. Fortunately that means we are not violating any distribution rights because those files are not available publicly, only to users that have obtained a license.
+
+**NOTE**: If the software also requires a license, the users will still need to obtain that from the vendors.
