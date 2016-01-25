@@ -6,7 +6,7 @@ This is a licensed only feature.
 
 You should also sign up for the [Chocolatey Newsletter](http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d) to be one of the first to hear about when the pro/business versions are available. http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d
 
-One of the longstanding things we have always wanted in the community feed was to remove the element of package breakages due to movement of files by software vendors and/or only offering the latest version of software at the same url. We are now able to offer that in a private distribution to our licensed users!
+One of the longstanding things we have always wanted in the community feed was to remove the element of package breakages due to movement of files by software vendors. We are now able to offer that in a private distribution to our licensed users!
 
 ## FAQs
 ### Why can't you offer it publicly? 
