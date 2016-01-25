@@ -10,8 +10,9 @@ One of the longstanding things we have always wanted in the community feed was t
 
 ## FAQs
 ### Why can't you offer it publicly? 
-Software distribution and legal reasons - the short of it is that we can't have a public archive of software out there.
+Software distribution and legal reasons - the short of it is that we can't have a public archive of software out there. So we require a user to be licensed with a pro/business version to be able to take advantage of this capability.
 
 ### I'm a vendor, should I be concerned about you distributing my files?
+In short, you do not need to be concerned.
 
-What we are doing is no different than what most companies do internally. They usually download and set up a UNC share of software that folks from the company will use to install that software instead of reaching out to the internet. We are doing the same thing for our licensed users, offering a private internal distribution just for them and not publicly. Fortunately that means we are not violating any distribution rights because those files are not available publicly, only to users that have obtained a license.
+What we are doing is no different than what most companies do when it comes to software. An organization would usually download all software that its constituents would use to an internal file share. We are doing the same thing for our licensed users, offering a private internal distribution just for them and not publicly. Fortunately that means we are not violating any distribution rights because those files are not available publicly, only to users that have obtained a license.
