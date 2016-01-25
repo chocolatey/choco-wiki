@@ -6,3 +6,12 @@ This is a licensed only feature.
 
 You should also sign up for the [Chocolatey Newsletter](http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d) to be one of the first to hear about when the pro/business versions are available. http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d
 
+One of the longstanding things we have always wanted in the community feed was to remove the element of package breakages due to movement of files by software vendors and/or only offering the latest version of software at the same url. We are now able to offer that in a private distribution to our licensed users!
+
+## FAQs
+### Why can't you offer it publicly? 
+Software distribution and legal reasons - the short of it is that we can't have a public archive of software out there.
+
+### I'm a vendor, should I be concerned about you distributing my files?
+
+What we are doing is no different than what most companies do internally. They usually download and set up a UNC share of software that folks from the company will use to install that software instead of reaching out to the internet. We are doing the same thing for our licensed users, offering a private internal distribution just for them and not publicly. Fortunately that means we are not violating any distribution rights because those files are not available publicly, only to users that have obtained a license.
