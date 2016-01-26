@@ -13,9 +13,7 @@ One of the longstanding things we have always wanted in the community feed was t
 
 > The biggest features here are more **safety, trust and predictability**.
 
-**NOTE: Please sign up for the newsletter below to be the first to know when this feature is available!**
-
-You can sign up for the [Chocolatey Newsletter](http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d) to be one of the first to hear about when the pro/business versions are available. http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d
+**NOTE:** Please sign up for the [Chocolatey Newsletter](http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d) to be one of the first to hear about when the pro/business versions are available. http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d
 
 ## FAQs
 ### Are you distributing these files publicly?
