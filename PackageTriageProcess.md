@@ -2,7 +2,7 @@
 
 The Community Feed (https://chocolatey.org/packages) has a collection of packages provided and maintained by the community. You may have come across a package and found you have questions about it or you have found it outdated or broken.
 
-**NOTE**: If you are a **software vendor** wanting to maintain your own software's packages, please see the relevant answer in the [Are you a software vendor?](#are-you-a-software-vendor) section.
+**NOTE**: If you are a **software vendor** wanting to maintain your own software's packages, please see the [vendors maintaining packages](#i-want-to-take-overhelp-with-package-maintenance-for-my-software) below.
 
 ## Table of Contents
 
