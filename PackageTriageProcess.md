@@ -16,7 +16,7 @@ The Community Feed (https://chocolatey.org/packages) has a collection of package
 ### Are you a Software Vendor?
 #### Does a Chocolatey package that installs my software violate distribution rights?
 
-In most cases no. Most packages you will find on the community feed, also known as https://chocolatey.org/packages use automation scripts to download the software from the official distribution point.
+In most cases no. Most packages you will find on the community feed, also known as https://chocolatey.org/packages use automation scripts to download the software from the [[official distribution point|Legal#distributions-aka-chocolatey-packages]].
 
 If you visit the package page and slide down to the Files heading, you can see what is included in the package. Many times you will see only a chocolateyInstall.ps1 and a chocolateyUninstall.ps1. You can also see the contents of those files right here so you can review what they are doing (the language is PowerShell, but with most packages it is typically easy to follow what they are doing).
 
