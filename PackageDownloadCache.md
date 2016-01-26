@@ -18,3 +18,5 @@ In short, you need not be concerned. We are offering private files to private us
 What we are doing is no different than what most companies do when it comes to software. An organization would usually download all software that its constituents would use to an internal file share. We are doing the same thing for our licensed users, offering a private internal distribution just for them and not publicly. Fortunately that means we are not violating any distribution rights because those files are not available publicly, only to private users that have obtained a license.
 
 **NOTE**: If the software also requires a license, the users will still need to obtain that from the vendors.
+
+If you have read and understood all of this and would still like to be opted out, please contact us <a href="mailto:chocolateywebadmin at googlegroups dot com?subject=SoftwareName - Caching Opt-Out&body=Please fill in details of your request (software name, package page url is helpful, specifically why you want this software opted out)">here</a>.
