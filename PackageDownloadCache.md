@@ -1,9 +1,9 @@
 # Package Download Cache
-This feature is available ***only*** for our licensed users who would use a private cache.
+This feature is available ***ONLY*** for our licensed users who would use a private cache.
 
-**NOTE**: Please check back later for updates.
+**NOTE: This page is a work in progress. Please check back later for updates and/or sign up for the newsletter below to know when this feature is available.**
 
-You should also sign up for the [Chocolatey Newsletter](http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d) to be one of the first to hear about when the pro/business versions are available. http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d
+You can sign up for the [Chocolatey Newsletter](http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d) to be one of the first to hear about when the pro/business versions are available. http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d
 
 One of the longstanding things we have always wanted in the community feed was to remove the element of package breakages due to movement of files by software vendors. We are now able to offer that in a private distribution to our licensed users!
 
