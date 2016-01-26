@@ -16,4 +16,4 @@ Most Chocolatey packages do not contain actual software distributions, only inst
 
 Because this is no different than what a human would do, and b/c a human kicks off this process, it's reasonable to determine that there is no violation of distribution rights.
 
-In the cases where you would package the actual software in the package, please ensure you have distribution rights. Any package that is found not to be compliant with this rule will be removed immediately.
+In the cases where you would package the actual software in the package, please ensure you have distribution rights. Any package that is found not to be compliant with this rule will be removed immediately. If you are a software vendor that needs to report a violation, please see [[a package is violating distribution rights|PackageTriageProcess#the-package-is-violating-distribution-rights]].
