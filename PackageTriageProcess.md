@@ -32,12 +32,17 @@ We take distribution rights very seriously - see [[legal|Legal#distributions-aka
 
 > The package is violating distribution rights as it bundles software without permission and license doesn't allow for it. 
 
-Please click the Report Abuse link on the left hand side of the package page, and fill out and submit the form. The site admins for the community feed will follow up with you shortly after.
+Please click the "Report Abuse" link on the left hand side of the package page, and fill out and submit the form. The site admins for the community feed will follow up with you shortly after.
 
 ![report abuse](https://cloud.githubusercontent.com/assets/63502/12586890/a7556468-c417-11e5-9ef2-73b1720baa43.png)
 
 > I want to take over/help with package maintenance.
 
+Please click the "Contact Site Admins" link on the left hand side of the package page, and fill out and submit the form. The site admins for the community feed will follow up with you shortly after. Please remember to mention that you are the software vendor interested in taking over the package.
+
+![contact site admins](https://cloud.githubusercontent.com/assets/63502/12587015/2f71a136-c418-11e5-9789-a4c5b5c57002.png)
+
+We ask that you contact the site admins directly and skip the triage process altogether because we want to get you maintaining the package as quickly as possible. There is a greater trust for packages when they are provided by the vendors.
 
 ### Questions About a Package or Software
 Use the Contact Maintainers link on the package page of the community feed or the Disqus comment thread (at the bottom of the package page) to reach out to the maintainers. Neither require an account on Chocolatey.org. 
