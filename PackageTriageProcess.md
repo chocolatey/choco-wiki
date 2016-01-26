@@ -37,10 +37,9 @@ It's not often that a moderator would approved a package that violates distribut
 
 ![report abuse](https://cloud.githubusercontent.com/assets/63502/12586890/a7556468-c417-11e5-9ef2-73b1720baa43.png)
 
-**NOTE**: The community feed has only been moderated since October 2014. There may be some packages that are older than this that possibly do violate distribution rights. These packages likely won't list the files as the community feed did not start capturing the package files until July 2014.
+**NOTE**: The community feed has only been moderated since October 2014. There may be some packages were created prior to this date that possibly do violate distribution rights. These packages also likely won't list the files as the community feed did not start capturing the package files until July 2014. The package page has instructions for viewing the package content (and so does the previous section).
 
 #### I want to take over/help with package maintenance for my software
-
 Please click the "Contact Site Admins" link on the left hand side of the package page, and fill out and submit the form. The site admins for the community feed will follow up with you shortly after. Please remember to mention that you are the software vendor interested in taking over the package.
 
 ![contact site admins](https://cloud.githubusercontent.com/assets/63502/12587015/2f71a136-c418-11e5-9789-a4c5b5c57002.png)
