@@ -53,6 +53,7 @@
  - [[Create Custom Package Templates|How-To-Create-Custom-Package-Templates]]
  - [[Request Package Fixes/Updates|PackageTriageProcess]]
  - [[Request Package|PackageTriageProcess]]
+ - [[Maintain Packages for My Software|PackageTriageProcess#i-want-to-take-overhelp-with-package-maintenance-for-my-software]]
  - [[Become a Maintainer|PackageTriageProcess]]
  - [[Take Over Package Maintenance Exclusively|PackageMantainerHandover]]
  - [[Parse Package Parameters|How-To-Parse-PackageParameters-Argument]]
