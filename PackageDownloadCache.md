@@ -22,7 +22,7 @@ One of the longstanding things we have always wanted in the community feed was t
 No, that could potentially have legal ramifications. See the next question.
 
 ### Why can't you offer it publicly?
-Software distribution and legal reasons - the short of it is that we can't have a public archive of software out there. So we require a user to be a licensed customer with a pro/business version to be able to take advantage of this capability. As a licensed user you will be a private customer using a private service.
+Software distribution and legal reasons - the short of it is that we can't have a public archive of software out there. So we require a user to be a licensed customer with a pro/business version to be able to take advantage of this capability. As a licensed user you will be a private customer using a privately available service.
 
 ### Are you modifying these files?
 No, these are the original files that are/were at the original distribution location.
