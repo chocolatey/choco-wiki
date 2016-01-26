@@ -19,8 +19,23 @@ One of the longstanding things we have always wanted in the community feed was t
 
 
 ## FAQs
-### Why can't you offer it publicly? 
+### Are you distributing these files publicly?
+No, that could potentially have legal ramifications. See the next question.
+
+### Why can't you offer it publicly?
 Software distribution and legal reasons - the short of it is that we can't have a public archive of software out there. So we require a user to be licensed with a pro/business version to be able to take advantage of this capability.
+
+### Are you modifying these files?
+No, these are the original files that are/were at the original distribution location.
+
+### Why must I be licensed? 
+Really it boils down to two reasons:
+
+* There are infrastructure support and bandwidth costs that your **two cups of coffee per month** license will help offset.
+* We are not allowed to offer this publicly due to reasons stated previously.
+
+### Does this grant me a license to the software?
+No, you still need to work with the software vendor to obtain a license, if required. 
 
 ### I'm a software vendor, should I be concerned about you caching my software files?
 In short, you need not be concerned. We are offering private files to private users as a service. We are not modifying, selling, renting, leasing, lending, or sub-licensing these files. We are also not offering these files to the public in any way, shape, or form.
