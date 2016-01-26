@@ -6,14 +6,20 @@ The Community Feed (https://chocolatey.org/packages) has a collection of package
 
 ## Table of Contents
 
+* [Are you a software vendor?](#are-you-a-software-vendor)
 * [Questions about the package or software](#questions-about-a-package-or-software)
 * [Package requests or package is missing?](#package-request-package-missing)
 * [The package is broken?](#package-is-broken)
 * [The package is outdated?](#package-is-outdated)
 * [The Package Triage Process](#the-triage-process) - requesting updates/fixes to packages
 
-### Questions About a Package or Software
+### Are you a Software Vendor?
+* Is Chocolatey violating distribution rights?
+* The package is violating distribution rights as it bundles software without permission and license doesn't allow for it. 
+* I want to take over package maintenance.
 
+
+### Questions About a Package or Software
 Use the Contact Maintainers link on the package page of the community feed or the Disqus comment thread (at the bottom of the package page) to reach out to the maintainers. Neither require an account on Chocolatey.org. 
 
 ![contact maintainers link](https://cloud.githubusercontent.com/assets/63502/12519569/406aa70a-c105-11e5-9db2-6191ce5bc100.png)
@@ -24,13 +30,11 @@ If you are looking for packages to be added to the community feed (aka https://c
 When it comes to community packages, we really want folks who are using the software to be package maintainers versus folks who may not be using the software. So when you are asking for other folks to add packages, please consider that it may be better for you to keep the package up to date than someone else who may not be invested in ensuring it stays updated.
 
 ### Package is Broken?
-
 ![red ball failing testing verification](https://cloud.githubusercontent.com/assets/63502/12519534/1728a086-c105-11e5-9af7-96b188114ae7.png)
 
 If the ball is red, the maintainer has already been informed. See the next section on how you can ask for updates
 
 ### Package is Outdated?
-
 Be sure of four things:
 
 1. The newer version is a stable release - not an alpha or 
@@ -56,5 +60,4 @@ So a package needs fixed or updated. You have reached out to the maintainer or d
 **NOTE**: We don't have non-maintainer uploads in the community feed and we haven't needed them yet.
 
 ### New Maintainers
-
 Sometimes this results in new maintainers. You can be a maintainer updating the project at a central location that multiple maintainers share. However, if you became maintainer because the package was deemed abandoned, you will want to follow the instructions for a [Package Maintainer Handover/Switch](PackageMantainerHandover).
