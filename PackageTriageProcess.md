@@ -30,7 +30,7 @@ Many of the packages may look like they include binaries because of the result a
 
 We take distribution rights very seriously - see [[legal|Legal#distributions-aka-chocolatey-packages]]. If you do happen to find that the package ***is*** violating your distribution rights, please see the next section.
 
-#### The package is violating distribution rights
+#### The package IS violating distribution rights
 The package is violating distribution rights as it bundles software without permission and license doesn't allow for it. You've checked that the above section does not apply and you see that your software binaries are being distributed through the community feed.
 
 Please click the "Report Abuse" link on the left hand side of the package page, and fill out and submit the form. The site admins for the community feed will follow up with you shortly after.
