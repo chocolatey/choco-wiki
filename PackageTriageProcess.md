@@ -14,7 +14,7 @@ The Community Feed (https://chocolatey.org/packages) has a collection of package
 * [The Package Triage Process](#the-triage-process) - requesting updates/fixes to packages
 
 ### Are you a Software Vendor?
-> **Does a Chocolatey package that installs my software violate distribution rights?**
+#### Does a Chocolatey package that installs my software violate distribution rights?
 
 In most cases no. Most packages you will find on the community feed, also known as https://chocolatey.org/packages use automation scripts to download the software from the official distribution point.
 
@@ -30,13 +30,14 @@ Many of the packages may look like they include binaries because of the result a
 
 We take distribution rights very seriously - see [[legal|Legal#distributions-aka-chocolatey-packages]]. If you do happen to find that the package ***is*** violating your distribution rights, please see the next section.
 
-> **The package is violating distribution rights as it bundles software without permission and license doesn't allow for it.**
+#### The package is violating distribution rights as it bundles software without permission and license doesn't allow for it.
+You've checked that the above section does not apply and you see that your software binaries are being distributed through the community feed.
 
 Please click the "Report Abuse" link on the left hand side of the package page, and fill out and submit the form. The site admins for the community feed will follow up with you shortly after.
 
 ![report abuse](https://cloud.githubusercontent.com/assets/63502/12586890/a7556468-c417-11e5-9ef2-73b1720baa43.png)
 
-> **I want to take over/help with package maintenance.**
+#### I want to take over/help with package maintenance.
 
 Please click the "Contact Site Admins" link on the left hand side of the package page, and fill out and submit the form. The site admins for the community feed will follow up with you shortly after. Please remember to mention that you are the software vendor interested in taking over the package.
 
