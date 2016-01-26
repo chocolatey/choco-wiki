@@ -95,7 +95,7 @@ For a package to switch to trusted, a moderator must manually make the change. I
 
 **Note:** Once everything is ready, all packages will go under automated verification and validation and be held for fixes if they don't pass, even trusted packages. 
 
-**Note:** Another note, we've been setting trust per package. That is planned to change as the trust level has always been about the maintainer and not the package itself.
+**Note:** Another note, we've been setting trust per package. That is planned to change at some point for the most part as the trust level has always been about the maintainer and not the package itself.
 
 ### How do I install a package version under moderation?
 Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages).
