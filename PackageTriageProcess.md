@@ -14,12 +14,23 @@ The Community Feed (https://chocolatey.org/packages) has a collection of package
 * [The Package Triage Process](#the-triage-process) - requesting updates/fixes to packages
 
 ### Are you a Software Vendor?
-> Does the Chocolatey package violate distribution rights?
+> Does a Chocolatey package that installs my software violate distribution rights?
 
-In most cases no. Most packages you will find on the community feed, also known as https://chocolatey.org/pacakges use automation scripts to download the software from the official distribution point.
+In most cases no. Most packages you will find on the community feed, also known as https://chocolatey.org/packages use automation scripts to download the software from the official distribution point.
 
-* The package is violating distribution rights as it bundles software without permission and license doesn't allow for it. 
-* I want to take over package maintenance.
+If you visit the package page and slide down to the Files heading, you can see what is included in the package. Many times you will see only a chocolateyInstall.ps1 and a chocolateyUninstall.ps1. You can also see the contents of those files right here so you can review what they are doing (the language is PowerShell, but with most packages it is typically easy to follow what they are doing).
+
+If you don't trust the package page, we invite you to download the actual package and inspect the contents (the .nupkg is just a .zip file after all). On the left menu there is a download link. You can download and rename the .nupkg to a .zip file and extract it to see the contents.
+
+![download link](https://cloud.githubusercontent.com/assets/63502/12586777/3f483486-c417-11e5-8a54-16d4f4006bcb.png)
+
+Many of the packages may look like they include binaries because of the result after an install, but that's just an effect of the chocolateyInstall PowerShell script working very smoothly and almost unnoticeably.
+
+We take distribution rights very seriously - see [[legal|Legal#distributions-aka-chocolatey-packages]]. If you do happen to find that the package ***is*** violating your distribution rights, please see the next section.
+
+> The package is violating distribution rights as it bundles software without permission and license doesn't allow for it. 
+
+> I want to take over package maintenance.
 
 
 ### Questions About a Package or Software
