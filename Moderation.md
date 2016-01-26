@@ -1,6 +1,7 @@
 # Community Feed Moderation
+The community feed, which is found at https://chocolatey.org/packages, is a moderated feed. That means all new versions of packages are human reviewed prior to approval to check for safety, quality, and correctness. See [[What is moderation|ChocolateyFAQs#what-is-moderation]] for more details. There are also [[trusted packages|ChocolateyFAQs#what-is-a-trusted-package]], which only go through automated moderation review and bypass human review as they are coming from trusted sources and/or the software vendors themselves. 
 
-The community feed, which is found at https://chocolatey.org/packages, is a moderated feed. That means all new versions of packages are human reviewed prior to approval to check for safety, quality, and correctness. See [[What is moderation|ChocolateyFAQs#what-is-moderation]] for more details. There are also [[trusted packages|ChocolateyFAQs#what-is-a-trusted-package]].
+By safety - we check that the package scripts do not do anything devious and that you get the software that the package indicates you are getting. Please note that the underlying software may contain crapware/malware (although it is usually not installed when allowing Chocolatey to install silently). This is not checked for currently, but we have plans for checking this in licensed versions of Chocolatey because a feature doing that is not free for us to provide.
 
 ## Definitions
 
@@ -24,11 +25,13 @@ This section provides the requirements for packages that have had at least one r
 #### Requirements
 Requirements represent the minimum quality of a package that is acceptable. When a package version has failed requirements, the package version requires fixing and/or response by the maintainer. Provided a Requirement has flagged correctly, it ***must*** be fixed before the package version can be approved. The exact same version should be uploaded during moderation review.
 
-* ProjectUrl - It's required for the community feed
+* ProjectUrl - it's required for the community feed
+* The authors field (software author/vendor) is not being used for the maintainers field (exception: when the maintainer is also the author)
+* The copyright is used appropriately. Look at anything you can find that states the copyright.
+* If there is a license available, it **must** be included in the licenseUrl.
 * Is the title appropriate?
 * At least something written in the description. It should be sufficient to explain the software.
 * The description should explicitly mention if this package installs trial software or software that needs a license present, or both.
-* The authors field (software author) is not being used for the maintainers field (exception: when the maintainer is also the author)
 * The tags field is not being abused - note this doesn't mean they are missing tags you believe they should have (that is a guideline).
 * Tags do not include "chocolatey" (with the exception of the chocolatey packages)
 * Look over the package files
