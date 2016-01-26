@@ -10,6 +10,7 @@
 - [[FAQs|ChocolateyFAQs]]
 - [[Security]]
 - [[Chocolatey.org Moderation|Moderation]]
+- [[Software Vendor?|PackageTriageProcess#are-you-a-software-vendor]]
 
 **Usage**
 
