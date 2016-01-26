@@ -14,7 +14,10 @@ The Community Feed (https://chocolatey.org/packages) has a collection of package
 * [The Package Triage Process](#the-triage-process) - requesting updates/fixes to packages
 
 ### Are you a Software Vendor?
-* Is Chocolatey violating distribution rights?
+> Does the Chocolatey package violate distribution rights?
+
+In most cases no. Most packages you will find on the community feed, also known as https://chocolatey.org/pacakges use automation scripts to download the software from the official distribution point.
+
 * The package is violating distribution rights as it bundles software without permission and license doesn't allow for it. 
 * I want to take over package maintenance.
 
