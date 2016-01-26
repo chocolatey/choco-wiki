@@ -22,7 +22,7 @@ If you visit the package page and slide down to the Files heading, you can see w
 
 ![files section with chocolateyInstall.ps1 expanded](https://cloud.githubusercontent.com/assets/63502/12586960/000e1c80-c418-11e5-9a27-edc8415f9b8b.png)
 
-If you don't trust the package page, we invite you to download the actual package and inspect the contents (the .nupkg is just a .zip file after all). On the left menu there is a download link. You can download and rename the .nupkg to a .zip file and extract it to see the contents.
+If you don't trust the package page (or if the package was published before July 2014), we invite you to download the actual package and inspect the contents (the .nupkg is just a .zip file after all). On the left menu there is a download link. You can download and rename the .nupkg to a .zip file and extract it to see the contents.
 
 ![download link](https://cloud.githubusercontent.com/assets/63502/12586777/3f483486-c417-11e5-8a54-16d4f4006bcb.png)
 
@@ -31,11 +31,13 @@ Many of the packages may look like they include binaries because of the result a
 We take distribution rights very seriously - see [[legal|Legal#distributions-aka-chocolatey-packages]]. If you do happen to find that the package ***is*** violating your distribution rights, please see the next section.
 
 #### The package IS violating distribution rights
-The package is violating distribution rights as it bundles software without permission and license doesn't allow for it. You've checked that the above section does not apply and you see that your software binaries are being distributed through the community feed.
+You've checked the previous section and it doesn't apply, and you've found that the package ***is*** violating distribution rights as it bundles software binaries without your permission and/or license doesn't allow for it. 
 
-Please click the "Report Abuse" link on the left hand side of the package page, and fill out and submit the form. The site admins for the community feed will follow up with you shortly after.
+It's not often that a moderator would approved a package that violates distribution rights, but if you find one, please click the "Report Abuse" link on the left hand side of the package page, and fill out and submit the form. The site admins for the community feed will follow up with you shortly after.
 
 ![report abuse](https://cloud.githubusercontent.com/assets/63502/12586890/a7556468-c417-11e5-9ef2-73b1720baa43.png)
+
+**NOTE**: The community feed has only been moderated since October 2014. There may be some packages that are older than this that possibly do violate distribution rights. These packages likely won't list the files as the community feed did not start capturing the package files until July 2014.
 
 #### I want to take over/help with package maintenance for my software
 
