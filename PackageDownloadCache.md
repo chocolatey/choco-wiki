@@ -5,7 +5,7 @@ This feature is available ***ONLY*** for our licensed customers who would use a 
 
 You can sign up for the [Chocolatey Newsletter](http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d) to be one of the first to hear about when the pro/business versions are available. http://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d
 
-One of the longstanding things we have always wanted in the community feed was to remove the element of package breakages due to change/movement of download locations at their distribution point. We are now able to offer that in a private distribution to our licensed customers! This is the "alternate **permanent** download location" feature we talked about in the [Kickstarter](https://www.kickstarter.com/projects/ferventcoder/chocolatey-the-alternative-windows-store-like-yum/description).
+One of the longstanding things we have always wanted in the community feed was to remove the element of package breakages due to change/movement of download locations at their original distribution point. We are now able to offer that in a private distribution to our licensed customers! This is the "alternate **permanent** download location" feature we talked about in the [Kickstarter](https://www.kickstarter.com/projects/ferventcoder/chocolatey-the-alternative-windows-store-like-yum/description).
 
 > ![pro features](https://cloud.githubusercontent.com/assets/63502/12588924/a2c8d49e-c420-11e5-93a0-f271b8b7c3e3.png)
 
