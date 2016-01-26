@@ -20,6 +20,8 @@ In most cases no. Most packages you will find on the community feed, also known 
 
 If you visit the package page and slide down to the Files heading, you can see what is included in the package. Many times you will see only a chocolateyInstall.ps1 and a chocolateyUninstall.ps1. You can also see the contents of those files right here so you can review what they are doing (the language is PowerShell, but with most packages it is typically easy to follow what they are doing).
 
+![files section with chocolateyInstall.ps1 expanded](https://cloud.githubusercontent.com/assets/63502/12586960/000e1c80-c418-11e5-9a27-edc8415f9b8b.png)
+
 If you don't trust the package page, we invite you to download the actual package and inspect the contents (the .nupkg is just a .zip file after all). On the left menu there is a download link. You can download and rename the .nupkg to a .zip file and extract it to see the contents.
 
 ![download link](https://cloud.githubusercontent.com/assets/63502/12586777/3f483486-c417-11e5-8a54-16d4f4006bcb.png)
@@ -30,7 +32,7 @@ We take distribution rights very seriously - see [[legal|Legal#distributions-aka
 
 > The package is violating distribution rights as it bundles software without permission and license doesn't allow for it. 
 
-Please click the Report Abuse link on the left hand side of the package page.
+Please click the Report Abuse link on the left hand side of the package page, and fill out and submit the form. The site admins for the community feed will follow up with you shortly after.
 
 ![report abuse](https://cloud.githubusercontent.com/assets/63502/12586890/a7556468-c417-11e5-9ef2-73b1720baa43.png)
 
