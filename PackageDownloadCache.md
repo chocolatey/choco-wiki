@@ -20,7 +20,11 @@ Also known from the [Kickstarter](https://www.kickstarter.com/projects/ferventco
 No, that could potentially have legal ramifications. See the next question.
 
 ### Why can't you offer this feature publicly?
-Software distribution and legal reasons - the short of it is that we can't have a public archive of software out there. So we require a user to be a licensed customer to be able to take advantage of this capability. As a licensed user you will be a private customer using a privately available service.
+Software redistribution legal reasons and costs - the short of it is that we can't have a public archive of software out there. So we require a user to be a licensed customer to be able to take advantage of this capability. 
+
+The long of it - in the United States (maybe elsewhere as well) there are software distribution laws that determine whether an external source can redistribute software. This is typically determined in the software license if it has a clause for redistribution (many FOSS licenses do). Sometimes you can find a redistribution clause in a EULA. When these don't exist, the external source must get express written permission from the software vendor to publicly redistribute their software. The community feed offers all kinds of software with all kinds of different licenses and redistribution technicalities. To try to determine with each package if the underlying software is publicly cacheable is a very difficult process and could potentially set us up for legal ramifications if the package provides the wrong license accidentally.
+
+As far as costs go - while folks use Chocolatey.org and its services completely free, that does not mean that there is no cost. There are infrastructure costs in general with running a high traffic site and infrastructure costs we need to support specifically in providing this feature. A **two cups of coffee per month** license helps us offset these costs and give us the ability to keep the community feed going for years to come in a self-sustaining way. So it makes sense to provide this feature as a premium add because we can't offer it for free.
 
 ### Are you modifying these files?
 No, these are the original files that are/were at the original distribution location.
