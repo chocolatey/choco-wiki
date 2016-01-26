@@ -37,7 +37,7 @@ Please click the "Report Abuse" link on the left hand side of the package page, 
 
 ![report abuse](https://cloud.githubusercontent.com/assets/63502/12586890/a7556468-c417-11e5-9ef2-73b1720baa43.png)
 
-#### I want to take over/help with package maintenance.
+#### I want to take over/help with package maintenance for my software
 
 Please click the "Contact Site Admins" link on the left hand side of the package page, and fill out and submit the form. The site admins for the community feed will follow up with you shortly after. Please remember to mention that you are the software vendor interested in taking over the package.
 
