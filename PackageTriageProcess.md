@@ -24,7 +24,7 @@ If you visit the package page and slide down to the Files heading, you can see w
 
 If you don't trust the package page (or if the package was published before July 2014), we invite you to download the actual package and inspect the contents (the .nupkg is just a .zip file after all). On the left menu there is a download link. You can download and rename the .nupkg to a .zip file and extract it to see the contents.
 
-![download link](https://cloud.githubusercontent.com/assets/63502/12586777/3f483486-c417-11e5-8a54-16d4f4006bcb.png)
+![download link](https://cloud.githubusercontent.com/assets/63502/12588103/b7ba6b46-c41c-11e5-87e4-46ea9b8f28e9.png)
 
 Many of the packages may look like they include binaries because of the result after an install, but that's just a fantastic effect of the automation scripts working smoothly and almost unnoticeably.
 
@@ -35,14 +35,14 @@ You've checked the previous section and it doesn't apply, and you've found that 
 
 It's not often that a moderator would approved a package that violates distribution rights, but if you find one, please click the "Report Abuse" link on the left hand side of the package page, and fill out and submit the form. The site admins for the community feed will follow up with you shortly after.
 
-![report abuse](https://cloud.githubusercontent.com/assets/63502/12586890/a7556468-c417-11e5-9ef2-73b1720baa43.png)
+![report abuse](https://cloud.githubusercontent.com/assets/63502/12588125/d6828dec-c41c-11e5-854d-909dc6a25afe.png)
 
 **NOTE**: The community feed has only been moderated since October 2014. There may be some packages were created prior to this date that possibly do violate distribution rights. These packages also likely won't list the files as the community feed did not start capturing the package files until July 2014. The package page has instructions for viewing the package content (and so does the previous section).
 
 #### I want to take over/help with package maintenance for my software
 Please click the "Contact Site Admins" link on the left hand side of the package page, and fill out and submit the form. The site admins for the community feed will follow up with you shortly after. Please remember to mention that you are the software vendor interested in taking over the package.
 
-![contact site admins](https://cloud.githubusercontent.com/assets/63502/12587015/2f71a136-c418-11e5-9789-a4c5b5c57002.png)
+![contact site admins](https://cloud.githubusercontent.com/assets/63502/12588147/ea575898-c41c-11e5-9995-1e2f6c781282.png)
 
 We ask that you contact the site admins directly and skip the triage process altogether because we want to get you maintaining the package as quickly as possible. There is a greater trust for packages when they are provided by the vendors.
 
