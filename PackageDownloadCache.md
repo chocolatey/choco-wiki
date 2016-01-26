@@ -1,5 +1,5 @@
-# Package Download Cache aka Alternate Permanent Download Location
-We lovingly call this the **"No more [404](https://en.wikipedia.org/wiki/HTTP_404)s feature"**. This feature will be available ***ONLY*** for our licensed customers. Reasons answered below.
+# Package Download Cache
+Also known from the [Kickstarter](https://www.kickstarter.com/projects/ferventcoder/chocolatey-the-alternative-windows-store-like-yum/description) as the "Alternate **permanent** download location", we lovingly call this the **"No more [404](https://en.wikipedia.org/wiki/HTTP_404)s feature"**. This feature will be available ***ONLY*** for our licensed customers. Reasons answered below.
 
 **No more 404s?**. One of the longstanding things we have always wanted in the community feed was to remove the element of package breakages due to change/movement of download locations at their original distribution point. We are now able to offer a private distribution to our licensed customers! This is the "alternate **permanent** download location" feature we talked about in the [Kickstarter](https://www.kickstarter.com/projects/ferventcoder/chocolatey-the-alternative-windows-store-like-yum/description).
 
