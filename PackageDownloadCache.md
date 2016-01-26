@@ -19,4 +19,4 @@ What we are doing is no different than what most companies do when it comes to s
 
 **NOTE**: If the software also requires a license, the users will still need to obtain that from the vendors.
 
-If you have read and understood all of this and would still like to be opted out, please contact us <a href="mailto:chocolateywebadmin at googlegroups dot com?subject=SoftwareName - Caching Opt-Out&body=Please fill in details of your request (software name, package page url is helpful, specifically why you want this software opted out)">here</a>.
+If you have read and understood all of this and would still like to be opted out, please contact us <a href="mailto:chocolateywebadmin at googlegroups dot com?subject=SoftwareName - Caching Opt-Out&body=Please fill in details of your request (software name, package page url is helpful, specifically why you want this software opted out)">here</a>. Only requests from vendors will be honored.
