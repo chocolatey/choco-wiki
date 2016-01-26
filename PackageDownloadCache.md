@@ -1,5 +1,5 @@
 # Package Download Cache aka Alternate Permanent Download Location
-This feature will be available ***ONLY*** for our licensed customers who would use a private cache.
+This feature will be available ***ONLY*** for our licensed customers. Reasons answered below.
 
 One of the longstanding things we have always wanted in the community feed was to remove the element of package breakages due to change/movement of download locations at their original distribution point. We are now able to offer that in a private distribution to our licensed customers! This is the "alternate **permanent** download location" feature we talked about in the [Kickstarter](https://www.kickstarter.com/projects/ferventcoder/chocolatey-the-alternative-windows-store-like-yum/description).
 
