@@ -24,13 +24,17 @@ If you don't trust the package page, we invite you to download the actual packag
 
 ![download link](https://cloud.githubusercontent.com/assets/63502/12586777/3f483486-c417-11e5-8a54-16d4f4006bcb.png)
 
-Many of the packages may look like they include binaries because of the result after an install, but that's just an effect of the chocolateyInstall PowerShell script working very smoothly and almost unnoticeably.
+Many of the packages may look like they include binaries because of the result after an install, but that's just a fantastic effect of the automation scripts working smoothly and almost unnoticeably.
 
 We take distribution rights very seriously - see [[legal|Legal#distributions-aka-chocolatey-packages]]. If you do happen to find that the package ***is*** violating your distribution rights, please see the next section.
 
 > The package is violating distribution rights as it bundles software without permission and license doesn't allow for it. 
 
-> I want to take over package maintenance.
+Please click the Report Abuse link on the left hand side of the package page.
+
+![report abuse](https://cloud.githubusercontent.com/assets/63502/12586890/a7556468-c417-11e5-9ef2-73b1720baa43.png)
+
+> I want to take over/help with package maintenance.
 
 
 ### Questions About a Package or Software
