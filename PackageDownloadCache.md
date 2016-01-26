@@ -1,6 +1,5 @@
 # Package Download Cache
-
-This is a licensed only feature.
+This feature is **only** available for our licensed users who would use a private cache.
 
 **NOTE**: Please check back later for updates.
 
