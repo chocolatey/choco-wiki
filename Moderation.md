@@ -75,15 +75,17 @@ Guidelines are strong suggestions that improve the quality of a package version.
 When reviewing new and existing packages, a reviewer/moderator will have a few things left for review after the verifier and validator have verified a package.
 
 ### Maintainer Process
-As a maintainer you submit packages and they are reviewed to be sure they meet a minimum quality and are correct for being published on Chocolatey.org. It's an important distinction that while almost all valid packages are approved, a package can be rejected for a variety of reasons.
+**FYI:** Ensure that you can receive emails from Chocolatey.org so that you will receive email notifications when a package review is updated.
 
-Packages go through two automated checks: validation and verification. There is about a 30 minute lag time from submission until any automatic verification kicks off - this allows the CDN to recheck and pull a newer version of the package up (in the case of resubmission), so that the package version being verified is the one you submitted and not a stale copy.
+The process of moderation review is an interactive process for both maintainers and moderators. As a maintainer you submit packages and they are reviewed to be sure they meet a minimum quality and correctness to be published on Chocolatey.org. It's an important distinction that while almost all valid packages are approved, a package can be rejected for a variety of reasons.
+
+Packages go through three automated checks: validation, verification, and cleanup. There is about a 30 minute lag time from submission until automatic review kicks off - this allows the CDN to recheck and pull a newer version of the package up (in the case of resubmission), so that the package version being verified is the one you submitted and not a stale copy. 
 
 When you receive emails that require you to take action, you should review what is requested and make the changes. If a package is flagged and needs changes based on requirements, the process is for you to make the required changes and resubmit the ***exact*** same version. The faster you respond to the review process, the faster your package can get approved.
 
-Please note that the process of moderation is an interactive process. If you don't respond to the review process within a reasonable timeframe (right now about 3 months), your package could be rejected on non-response. Moderators give you the benefit of the doubt and will work with you to help you get a package to an approved status. (This also includes the older review process based on email before the site allowed you to comment).
+The cleanup automated check, aka the cleaner, checks packages that have been in a 'waiting' (waiting for maintainer to take action) status with no action/response within 20 days and follows up with a final reminder. If after 15 more days nothing has been done, the package will automatically be rejected on non-response. We feel that 35 days prior to automatic close is ample time for a maintainer to move the ball forward (even one going on holiday). If a package gets rejected, it doesn't mean that we don't value your contributions, just that we can not continue to hold packages versions in a waiting status that have possibly been abandoned. The rejected status is also reversible in case a maintainer wants to pick it back up within a year.
 
-Ensure that you can receive emails from Chocolatey.org so that you will receive email notifications when a package review is updated.
+Moderators give you the benefit of the doubt and will work with you to help you get a package to an approved status. (This also includes the older review process based on email before the site allowed you to comment).
 
 ### Reviewer / Moderator Process
 Typically a package goes into the moderation queue when submitted.You can get to that by signing in and going to the packages page like you normally would.
