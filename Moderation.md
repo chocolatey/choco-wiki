@@ -75,7 +75,7 @@ Guidelines are strong suggestions that improve the quality of a package version.
 When reviewing new and existing packages, a reviewer/moderator will have a few things left for review after the verifier and validator have verified a package.
 
 ### Moderation Workflow
-#### Good Package First Time Go Workflow
+#### First Time Go Workflow
 When a good package is submitted, the normal flow of moderation works roughly like this:
 
 1. A maintainer submits a package. That puts the package in a "Pending" status (Pending automated review checks).
