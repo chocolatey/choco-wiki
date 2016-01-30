@@ -75,21 +75,30 @@ Guidelines are strong suggestions that improve the quality of a package version.
 When reviewing new and existing packages, a reviewer/moderator will have a few things left for review after the verifier and validator have verified a package.
 
 ### Moderation Workflow
-#### Normal Workflow
-The normal flow of moderation works roughly like this:
+#### Good Package First Time Go Workflow
+When a good package is submitted, the normal flow of moderation works roughly like this:
 
-1. A maintainer submits a package. That puts the package in a pending status (pending automated review checks).
-1. If automated reviews don't require changes, the package moves to a "Ready" status. 
+1. A maintainer submits a package. That puts the package in a "Pending" status (Pending automated review checks).
+1. If automated reviews don't require changes, the package moves to a "Ready" status. (Ready for Reviewer)
 1. If a moderator doesn't find any required changes, they move the package to an "Approved" status.
 
 #### Full Workflow
-1. A maintainer submits a package. That puts the package in a pending status (Pending automated review checks).
+1. A maintainer submits a package. That puts the package in a "Pending" status (Pending automated review checks).
 1. If automated reviews don't require changes, the package moves to a "Ready" status. (Ready for Reviewer)
 1. If any of the automated review checks flag a package, the package moves to a "Waiting" status. (Waiting for maintainer to take corrective action)
-1. The package will sit in the Waiting status until a maintainer resubmits the package (starts the process from step one) or responds ("Responds").
+1. The package will sit in the Waiting status until a maintainer resubmits the package (starts the process from step one) or responds ("Responded"). Responses are typically questions, comments or requests for exempting from the verifier. (Maintainer responded, waiting for review/Maintainer update)
+1. If the package is in "Responded", it moves up the queue and waits for a reviewer to look at the questions. It can also be waiting for 
+1. If a package is resubmitted, it doesn't go into a Ready status. It moves to an "Updated" status at the top of the queue. (Maintainer updated, waiting for reviewer)
+1. If a moderator asks for required changes, the package moves to a "Waiting" status. (step 4 is next)
 1. If a moderator doesn't find any required changes, they move the package to an "Approved" status.
 
+#### Trusted Package Workflow
+When a trusted package is submitted, the flow of moderation works like this:
 
+1. A maintainer submits a package. That puts the package in a "Pending" status (Pending automated review checks).
+1. Whether or not the automated reviews require changes, the package moves to an "Approved" status. 
+
+This is changing in the future. https://github.com/chocolatey/chocolatey.org/issues/308
 
 
 ### Maintainer Process
