@@ -74,6 +74,24 @@ Guidelines are strong suggestions that improve the quality of a package version.
 ## Package Review Process
 When reviewing new and existing packages, a reviewer/moderator will have a few things left for review after the verifier and validator have verified a package.
 
+### Moderation Workflow
+#### Normal Workflow
+The normal flow of moderation works roughly like this:
+
+1. A maintainer submits a package. That puts the package in a pending status (pending automated review checks).
+1. If automated reviews don't require changes, the package moves to a "Ready" status. 
+1. If a moderator doesn't find any required changes, they move the package to an "Approved" status.
+
+#### Full Workflow
+1. A maintainer submits a package. That puts the package in a pending status (Pending automated review checks).
+1. If automated reviews don't require changes, the package moves to a "Ready" status. (Ready for Reviewer)
+1. If any of the automated review checks flag a package, the package moves to a "Waiting" status. (Waiting for maintainer to take corrective action)
+1. The package will sit in the Waiting status until a maintainer resubmits the package (starts the process from step one) or responds ("Responds").
+1. If a moderator doesn't find any required changes, they move the package to an "Approved" status.
+
+
+
+
 ### Maintainer Process
 **FYI:** Ensure that you can receive emails from Chocolatey.org so that you will receive email notifications when a package review is updated.
 
