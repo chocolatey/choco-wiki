@@ -64,7 +64,7 @@ If the ball is red, the maintainer has already been informed. See the next secti
 ### Package is Outdated?
 Be sure of four things:
 
-1. The newer version is a stable release - not an alpha or 
+1. The newer version is a stable release - not an alpha or beta if the package is about stable releases.
 1. The newer version that is cross platform is available for Windows. Sometimes the release of the Windows version may lag behind availability on other platforms.
 1. It has been at least a day since the new release. Sometimes the package automatically updates - check to see if the package is an automatically updating package in the description of the package. Typically if it has been more than 48 hours since the updated version is available, it's a good time to let the maintainers know they should update the package.
 1. The package doesn't already have a newer version in moderation. The maintainer(s) may already be actively working towards getting a newer version up on the community feed.
