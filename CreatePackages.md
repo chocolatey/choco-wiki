@@ -156,7 +156,7 @@ If you allow customizing the installation path, then append instructions on how 
 
 ## Upgrading
 
-There is no concept of upgrading in Chocolatey. Instead, your [[chocolateyInstall.ps1|ChocolateyInstallPS1]] script should support installing on top of any previous versions of your package.
+There is no automation script for just upgrade. Instead, your [[chocolateyInstall.ps1|ChocolateyInstallPS1]] script should support installing/upgrading on top of any previous versions of your package.
 
 ## Uninstalling
 
