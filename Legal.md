@@ -8,8 +8,8 @@ The act of running Chocolatey to install a package constitutes acceptance of the
 ## Waiver of Responsibility
 The use of Chocolatey means that an individual using Chocolatey assumes the responsibility for any changes (including any damages of any sort) that occur to the system as a result of using Chocolatey. This does not supercede the verbage or enforcement of the license for Chocolatey (currently Apache 2.0), it is only noted here that you are waiving any rights to collect damages by your use of Chocolatey. It is recommended you read the license (http://www.apache.org/licenses/LICENSE-2.0) to gain a full understanding (especially section 8. Limitation of Liability) prior to using Chocolatey.
 
-## Distributions aka Chocolatey packages
-Most Chocolatey packages do not contain actual software distributions, only instructions for getting distributions (in PowerShell).  In a nutshell, the instructions are:
+## Distributions
+Most Chocolatey packages on the community feed do not contain actual software distributions, only instructions for getting distributions (in PowerShell).  In a nutshell, the instructions are:
 
  * Download a distribution from remote location, most likely the published download location
  * Run an installer (possibly in silent mode)
