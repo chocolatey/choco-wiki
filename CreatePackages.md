@@ -201,12 +201,14 @@ If the 4th segment is used, some folks like to drop the segment altogether and u
 
 ### Package Fix Version Notation
 
+Package fix version notation ONLY applies when you are making a fix to the package because the existing version of a package is incorrect in some way. So if the software is `1.1.0`, in a normal scenario the package version should be `1.1.0`. If you find that the `1.1.0` package has an issue and you need to fix the package but keep the same version of the software, that is where package fix version notation comes into play. You would end up with both a `1.1.0` package and a `1.1.0.YYYYMMDD` version of the package.
+
 ***NOTE: This doesn't apply to packages on the community feed (aka https://chocolatey.org/packages) that are still under review (not yet approved). Please read the instructions given in email for resubmitting the same version.***
 
 If you need to fix an approved package for some reason, you can use the fourth version element (aka segment) for a package fix notation. There are two recommended methods of package fix version notation:
 
  * **Date (Year/Month/Day)** - Some folks use year month day package fix notation (yyyyMMdd as in 20120627 seen as 1.2.0.20120627)
- * Sequential - Some folks use sequential numbering (0, then 1, etc as in 0 for no fix, 1 for first fix and so on seen as 1.2.0.0 and 1.2.0.1).
+ * Sequential - **Not recommended** - Some folks use sequential numbering (0, then 1, etc as in 0 for no fix, 1 for first fix and so on seen as 1.2.0.0 and 1.2.0.1).
 
 Date Package Fix Version Notation is recommended because one can ascertain what it is immediately upon seeing it.
 
