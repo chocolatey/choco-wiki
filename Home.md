@@ -17,8 +17,8 @@ TeamCity  | AppVeyor | Travis
 ### Let's get Chocolatey!
 "I'm a tools enabler, I'm a global silent application installer. I configure stuff. Some people want to call me apt-get for Windows, I just want to get #chocolatey!"
 
-Home: https://chocolatey.org (Backup: http://chocolatey.apphb.com)  
-Forum: http://groups.google.com/group/chocolatey  
+Home: https://chocolatey.org (Backup: http://chocolatey.apphb.com)
+Forum: http://groups.google.com/group/chocolatey
 Twitter: https://twitter.com/chocolateynuget
 
 ## Chocolatey?
@@ -26,7 +26,7 @@ Chocolatey is a global PowerShell execution engine using the NuGet packaging inf
 
 Chocolatey is like apt-get, but built with Windows in mind (there are differences and limitations). For those unfamiliar with APT/Debian, think about Chocolatey as a global silent installer for applications and tools. It can also do configuration tasks and anything that you can do with PowerShell. The power you hold with a tool like Chocolatey is only limited by your imagination!
 
-You can develop your tools and applications with NuGet, and release them with Chocolatey! But Chocolatey is not just for .NET tools. It's for nearly any Windows application/tool!
+What's the difference between NuGet and Chocolatey? Developers can use NuGet to get 3rd party libraries that they use to build the .NET tools and applications that they release with Chocolatey! But Chocolatey is not just for .NET tools. It's for nearly any Windows application/tool!
 
 Want to [[learn more?|ChocolateyFAQs]]
 

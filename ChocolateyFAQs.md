@@ -15,7 +15,7 @@ How about updates? Wouldn't it be nice to update nearly everything on your machi
 
 Great question! See [[The purpose of Chocolatey|Why#what-is-the-purpose-of-chocolatey]]
 
-### How does Chocolatey work? 
+### How does Chocolatey work?
 
 See [[What is Chocolatey?|Why#what-is-chocolatey]]
 
@@ -30,7 +30,7 @@ Fantastic question, see [[Can I use Chocolatey with existing software?|Why#can-i
 
 Yes, it is. Chocolatey carries a FOSS Apache 2.0 license, which is extremely business friendly. You can use Chocolatey and most of it's infrastructure completely free. Chocolatey will have a business offering with features specifically targeted to businesses in the first half of 2016. See the [Kickstarter](https://www.kickstarter.com/projects/ferventcoder/chocolatey-the-alternative-windows-store-like-yum/description) for details.
 
-### Should my organization depend on (use) the community feed (https://chocolatey.org/packages)? 
+### Should my organization depend on (use) the community feed (https://chocolatey.org/packages)?
 
 For production-level scenarios, I couldn't justify giving up that level of control and trust to the internet in an organization. It's recommended that you copy and modify existing packages and/or create your own internal packages and host them internally. That way you can completely guarantee that an install/upgrade/uninstall will always work every time. See [[Security|Security#chocolateyorg-the-community-feed]] for more details.
 
@@ -44,6 +44,8 @@ Great question, see [[Chocolatey vs Ninite|ChocolateyVsNinite]].
 
 ### How is Chocolatey different than NuGet and/or OpenWrap?
 Chocolatey is a machine package manager. Where NuGet/OW are focused on developer library packages, Chocolatey is focused on applications and tools, and not necessarily developer focused.
+
+A typical way of stating the difference is "Developers use NuGet to get 3rd party libraries that they use to build the .NET tools and applications that they release with Chocolatey!"
 
 ### How is/will Chocolatey be different than apt?
 
@@ -74,7 +76,7 @@ Related to the community package repository only (aka the default feed aka https
 Moderation involves checking a package version for quality (validation) and correctness, whether it installs and uninstalls correctly (verification). We have two automated services that validate and verify packages. The validator checks the quality of a package. If no requirements are flagged as failing review, it will be passed on to the verifier, which checks that the package actually works as intended (it may help to think of the validator as unit testing and the verifier as integration testing). If both of these automated reviews pass the package version is submitted to a moderator for final review and approval.
 
 Things to note:
-* We have trusted packages, and those packages skip human review/moderation. 
+* We have trusted packages, and those packages skip human review/moderation.
 * A maintainer can not moderate his/her own pkgs.
 * You can see if a package has been verified by the green circle next to it's name on the package page. If it is green or red, it will also be a clickable link. To see all packages verified, see https://gist.github.com/choco-bot
 * Besides trusted packages, a package version is never approved without a moderator clicking approve.
@@ -85,7 +87,7 @@ See [[Review Process|Moderation#package-review-process]].
 ### What is a trusted package?
 Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages).
 
-A package that is considered trusted comes from the original software creator or is maintained by someone in the community who has a track record for high quality and safe packages. 
+A package that is considered trusted comes from the original software creator or is maintained by someone in the community who has a track record for high quality and safe packages.
 
 Two ways your packages can become trusted:
 * You write the underlying software that the package installs. For instance the ReSharper package that comes directly from JetBrains.
@@ -93,7 +95,7 @@ Two ways your packages can become trusted:
 
 For a package to switch to trusted, a moderator must manually make the change. It is not an automated process.
 
-**Note:** Once everything is ready, all packages will go under automated verification and validation and be held for fixes if they don't pass, even trusted packages. 
+**Note:** Once everything is ready, all packages will go under automated verification and validation and be held for fixes if they don't pass, even trusted packages.
 
 **Note:** Another note, we've been setting trust per package. That is planned to change at some point for the most part as the trust level has always been about the maintainer and not always the package itself.
 
@@ -106,10 +108,10 @@ Another thing to consider: if the package version or the package as a whole is r
 
 To actually install, see the next question.
 
-### How do I install an unlisted package / package version? 
+### How do I install an unlisted package / package version?
 You need to specify name AND version to any package to install the unlisted/unapproved version. This goes for any NuGet compatible feed that understands unlisted packages.
 
-### How do I install a rejected package? 
+### How do I install a rejected package?
 Related to the community package repository only (aka the default feed aka https://chocolatey.org/packages), we have a concept of packages that have been rejected. You cannot install a rejected package. It could do bad things to your system so we don't allow install from the community repository.
 
 ### How do I self-reject a package?
@@ -118,7 +120,7 @@ If you are a maintainer of a package and you would like to self-reject an older 
 ![image](https://cloud.githubusercontent.com/assets/63502/12429736/8c67689c-beb1-11e5-83e9-02fe1db91272.png)
 
 
-* Failing verification - 
+* Failing verification -
 ![image](https://cloud.githubusercontent.com/assets/63502/12429697/509d2b94-beb1-11e5-9e1d-73a156117672.png)
 * Failing validation - a message from the validator telling you it failed validation.
 
@@ -170,7 +172,7 @@ Portable applications end up in the %ChocolateyInstall%/lib (i.&nbsp;e. C:\Progr
 ### Why doesn't a package install software to Program Files?
 Most packages that use native installers (MSI, InnoSetup, etc) will install to Program Files, but there are packages that do not. There are two really important reasons why:
 
-* Program Files is synonymous with software that has uninstall registry keys - or put another way, applications that have native installers that you can find for uninstall in the Control Panel under Programs and Features. 
+* Program Files is synonymous with software that has uninstall registry keys - or put another way, applications that have native installers that you can find for uninstall in the Control Panel under Programs and Features.
 * Writing to Program Files requires administrative permissions and the package you are installing is likely a portable package (even if not explicitly named so, it may have a zip that it extracts). There is also a way for non-administrators to use Chocolatey and these types of packages need to work for them as well.
 
 It really depends on the underlying software the package "installs". If the underlying software is a native installer, then it has a machine install (meaning it gets an uninstall registry key and shows up in Programs and Features) and Program Files is the appropriate place for it.
@@ -212,12 +214,12 @@ Chocolatey itself is now a binary with 0.9.9+. This provides the ability to run 
 
 **It was NEVER a PowerShell module, it just used PowerShell as a programming language and was meant to be a CLI app.** I bolded this so it might get read twice. ;)
 
-Chocolatey up until 0.9.9 was provided completely written in PowerShell, with the approach above. I don't know of any other app that has ever tried that approach, which made the original chocolatey client a rarity indeed. 
+Chocolatey up until 0.9.9 was provided completely written in PowerShell, with the approach above. I don't know of any other app that has ever tried that approach, which made the original chocolatey client a rarity indeed.
 
 ### Why do I have to confirm packages now? Is there a way to remove this?
 tl;dr - Yes, completely possible. Use `-y` or turn on `allowGlobalConfirmation`.
 
-Also check out the help menus now - `choco -h`, `choco install -h` 
+Also check out the help menus now - `choco -h`, `choco install -h`
 
 Longer answer, we've moved a little closer towards other package managers for security reasons, where by default we stop and confirm if you are okay with the state change. We always communicate changes in the [release notes][[ReleaseNotes]] / [Changelog](https://github.com/chocolatey/choco/blob/master/CHANGELOG.md), which also end up in the [nuspec file](https://chocolatey.org/packages/chocolatey#releasenotes), so we highly recommend folks scan at least one of those to see anything tagged breaking changes. Always scan from your current version up to the one you are upgrading to so that you catch all changes.
 
@@ -229,6 +231,6 @@ The [relevant bits of the release notes](https://github.com/chocolatey/choco/wik
 
  - [Security] Prompt for confirmation: For security reasons, we now stop for confirmation before changing the state of the system on most commands. You can pass `-y` to confirm any prompts or set a value in the config that will globally confirm and behave like older versions of Chocolatey (`allowGlobalConfirmation`, see `choco feature -h` for how to enable).
 
-Some folks may find the change quite annoying. The perspective of some folks isn't the perspective of everyone and we have some very security-conscious folks that want a verification of what they requested is what they end up with. So this prompt is extremely important for them. We are moving to a more secure by default approach so this change was important to get us there. Security related changes are some of the only things you will see that affect Chocolatey in such a way. 
+Some folks may find the change quite annoying. The perspective of some folks isn't the perspective of everyone and we have some very security-conscious folks that want a verification of what they requested is what they end up with. So this prompt is extremely important for them. We are moving to a more secure by default approach so this change was important to get us there. Security related changes are some of the only things you will see that affect Chocolatey in such a way.
 
 We spent many months stressing over this change because of the breaking part and decided it wasn't going to get easier to change later. We've added the ability for you to set Chocolatey back to the way it was before with `allowGlobalConfirmation` and if the prompts annoy you, you should probably look at making this change.
