@@ -75,7 +75,7 @@ For 590 - if you set a custom cache directory for downloads, it will no longer u
  * Suppress verbose output to verbose - like with 7-zip - see [#476](https://github.com/chocolatey/choco/issues/476)
  * Choco push moderation message only on push to dot org - see [#601](https://github.com/chocolatey/choco/issues/601)
  * Allow tools/bin root to be root of the drive again - see [#628](https://github.com/chocolatey/choco/issues/628)
- * [Pro] Also check for license in User Profile location - see [#606](https://github.com/chocolatey/choco/issues/606)
+ * Pro - Also check for license in User Profile location - see [#606](https://github.com/chocolatey/choco/issues/606)
  * Pro - Set download cache information if available - see [#562](https://github.com/chocolatey/choco/issues/562)
  * Pro - Allow commands to be added - see [#583](https://github.com/chocolatey/choco/issues/583)
  * Pro - Load/Provide hooks for licensed version - see [#584](https://github.com/chocolatey/choco/issues/584)
