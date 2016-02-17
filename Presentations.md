@@ -18,6 +18,10 @@
 
 * [Puppet Provisioning on Windows](http://haf.github.io/presentations/puppet-provisioning-on-windows.html#/) - Henrik Feldt, February 26, 2012
 
+## 2011
+
+* [FREE as in BEER!! Manage Your Packages w/NuGet](http://dl.dropbox.com/u/9391884/NuGet.ppsx) - Iowa Code Camp May 2011 - Rob Reynolds, May 2011 (this was the [first presentation that included a look at Chocolatey](http://ferventcoder.com/robz/archive/2011/05/06/iowa-code-camp-presentations.aspx))
+
 ## Podcasts
 
 ### 2016
