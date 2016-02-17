@@ -9,7 +9,8 @@
 * [Plugging Chocolatey into your Puppet Infrastructure](http://www.slideshare.net/ferventcoder/chocolatey-puppet-conf2014) - [PuppetConf2014](http://2014.puppetconf.com/) - Rob Reynolds, [September 23, 2014](http://sched.co/1kHU71L)
 
 ## 2013
+* [Using Chocolatey for Application Deployments](http://www.slideshare.net/perryofpeek/using-chocolatey-for-application-deployments) - Owain Perry, Sep 17, 2013
 * [Puppet on Windows: Now You're Getting Chocolatey](http://www.slideshare.net/ferventcoder/puppet-on-windows-now-youre-getting-chocolatey-puppetconf2013) - [PuppetConf2013](http://2013.puppetconf.com) - Rob Reynolds, [August 23, 2013](http://sched.co/11MpBOE)
-
+* [Mmmm, Chocolatey Goodness](http://www.slideshare.net/gep13/mmmm-chocolatey-goodness) - Gary Park, March 28, 2013
 
 
