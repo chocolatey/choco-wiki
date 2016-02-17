@@ -70,6 +70,8 @@
 
 * http://herdingcode.com/herding-code-92-dru-sellers-and-rob-reynolds-on-nu/ (the predecessor to NuGet and ideas that later started Chocolatey in 2011).
 
+
+
 ## Community
 
 ### 2016
@@ -133,6 +135,13 @@
 
 * http://codebetter.com/robreynolds/2014/09/27/chocolatey-newsletter/
 
+#### July
+
+* http://blog.ittoby.com/2014/07/setup-your-own-chocoloateynuget.html
+
+#### June
+
+* http://karaaie.blogspot.com/2014/06/continuous-delivery-with-teamcity.html
 #### April
 
 * http://tallmaris.com/using-vagrant-with-chocolatey-and-puppet-to-spin-up-virtual-machines/
