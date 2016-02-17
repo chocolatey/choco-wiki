@@ -1,6 +1,8 @@
 ## Chocolatey - kind of like apt-get, but for Windows
 [![](http://img.shields.io/chocolatey/dt/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/chocolatey/v/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/gittip/Chocolatey.svg)](https://www.gittip.com/Chocolatey/)
 
+<script type='text/javascript' src='https://www.openhub.net/p/chocolatey/widgets/project_partner_badge?format=js'></script>
+
 ##### Notes:
  * Edit me at https://github.com/chocolatey/choco-wiki
  * If you are on Chocolatey 0.9.8.x and below, you want to go to https://github.com/chocolatey/chocolatey/wiki
