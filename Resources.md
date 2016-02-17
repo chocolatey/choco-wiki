@@ -121,7 +121,9 @@
 #### November
 
 * http://codebetter.com/robreynolds/2014/11/14/how-passion-saved-windows/
+* http://www.developer.com/net/virtualize-your-windows-development-environments-with-vagrant-packer-and-chocolatey-part-2.html
 * http://codebetter.com/robreynolds/2014/11/08/herding-code-on-chocolatey/
+* http://www.developer.com/net/virtualize-your-windows-development-environments-with-vagrant-packer-and-chocolatey-part-1.html
 
 #### October
 
@@ -152,3 +154,16 @@
 * http://www.tzehon.com/2014/01/20/provisioning-a-windows-box-with-vagrant-chocolatey-and-puppet-part-1/
 * http://www.masterzen.fr/2014/01/11/bootstrapping-windows-servers-with-puppet/
 
+### 2013
+
+#### December
+
+* http://www.liamjbennett.me/post/2013-12-11-puppet-on-windows-part-2/
+
+#### October
+
+* http://www.liamjbennett.me/post/2013-10-06-puppet-on-windows-part-1/
+
+#### August
+
+* http://dave.thehorners.com/tech-talk/windows-os/478-nuget
