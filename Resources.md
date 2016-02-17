@@ -21,6 +21,11 @@
 #### August
 
 * http://crm.audio/episode-7-mmmmm-chocolatey-in-the-fall/
+* https://www.dotnetrocks.com/default.aspx?showNum=1179
+
+#### June
+
+* https://dotnetrocks.com/default.aspx?showNum=1158
 
 ### 2014
 
@@ -42,6 +47,10 @@
 #### July
 
 * http://herdingcode.com/herding-code-174-paul-stack-on-automating-windows-configuration-management-with-puppet-and-powershell/
+
+#### January
+
+* https://dotnetrocks.com/default.aspx?showNum=836
 
 ### 2012
 
