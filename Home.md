@@ -1,7 +1,5 @@
 ## Chocolatey - kind of like apt-get, but for Windows
-[![](http://img.shields.io/chocolatey/dt/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/chocolatey/v/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/gittip/Chocolatey.svg)](https://www.gittip.com/Chocolatey/)
-
-[![Project Stats](https://www.openhub.net/p/chocolatey/widgets/project_thin_badge.gif)](https://www.openhub.net/p/chocolatey)
+[![](http://img.shields.io/chocolatey/dt/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/chocolatey/v/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/gittip/Chocolatey.svg)](https://www.gittip.com/Chocolatey/) [![Project Stats](https://www.openhub.net/p/chocolatey/widgets/project_thin_badge.gif)](https://www.openhub.net/p/chocolatey)
 
 ##### Notes:
  * Edit me at https://github.com/chocolatey/choco-wiki
