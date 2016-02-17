@@ -94,6 +94,7 @@
 * http://codebetter.com/robreynolds/2015/12/18/chocolatey-community-state-of-union/
 
 #### November
+
 * https://blog.turbo.net/create-a-turbo-vm-image-with-chocolatey/
 * https://blog.turbo.net/deploying-turbo-with-chocolatey/
 
@@ -103,6 +104,7 @@
 
 #### August
 
+* http://blogsprajeesh.blogspot.com/2015/08/setup-your-chocolatey-repository-in_6.html
 * http://mattridpath.com/?p=43
 
 #### May
