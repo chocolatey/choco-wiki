@@ -10,68 +10,6 @@
 * https://github.com/chocolatey/chocolatey-test-environment
 * https://github.com/ferventcoder/vagrant-windows-puppet
 
-## Podcasts
-
-### 2016
-
-* https://www.arresteddevops.com/chocolatey/
-
-### 2015
-
-#### August
-
-* http://crm.audio/episode-7-mmmmm-chocolatey-in-the-fall/
-* https://www.dotnetrocks.com/default.aspx?showNum=1179
-
-#### June
-
-* https://dotnetrocks.com/default.aspx?showNum=1158
-
-### 2014
-
-#### November
-
-* http://msdevshow.com/2014/11/chocolatey-with-rob-reynolds/
-* http://herdingcode.com/herding-code-199-rob-reynolds-on-the-chocolatey-kickstarter-chocolatey-growth-and-oneget/
-
-#### September
-
-* http://hallwayconversations.com/podcast/episode-032-friction-free-app-installation-on-windows-using-chocolatey-nuget-with-rob-reynolds/
-
-### 2013
-
-#### October
-
-* http://powershell.org/wp/2013/10/01/episode-243-powerscripting-podcast-rob-reynolds-on-puppet-and-chocolatey/
-
-#### July
-
-* http://herdingcode.com/herding-code-174-paul-stack-on-automating-windows-configuration-management-with-puppet-and-powershell/
-
-#### January
-
-* https://dotnetrocks.com/default.aspx?showNum=836
-
-### 2012
-
-#### September
-
-* http://powershell.org/wp/2012/09/07/episode-199-rob-reynolds-talks-powershell-and-chocolatey/
-
-### 2011
-
-#### December 
-
-* http://herdingcode.com/herding-code-129-rob-reynolds-on-chocolatey-and-the-chuck-norris-frameworks/
-
-### 2010
-
-#### August
-
-* http://herdingcode.com/herding-code-92-dru-sellers-and-rob-reynolds-on-nu/ (the predecessor to NuGet and ideas that later started Chocolatey in 2011).
-
-
-
 ## Community
 
 ### 2016
