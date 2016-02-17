@@ -14,6 +14,9 @@
 * [Puppet on Windows: Now You're Getting Chocolatey](http://www.slideshare.net/ferventcoder/puppet-on-windows-now-youre-getting-chocolatey-puppetconf2013) - [PuppetConf2013](http://2013.puppetconf.com) - Rob Reynolds, [August 23, 2013](http://sched.co/11MpBOE)
 * [Mmmm, Chocolatey Goodness](http://www.slideshare.net/gep13/mmmm-chocolatey-goodness) - Gary Park, March 28, 2013
 
+## 2012
+
+* [Puppet Provisioning on Windows](http://haf.github.io/presentations/puppet-provisioning-on-windows.html#/) - Henrik Feldt, February 26, 2012
 
 ## Podcasts
 
