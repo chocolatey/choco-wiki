@@ -78,6 +78,7 @@
 
 #### February 
 
+* https://www.chef.io/blog/2016/02/12/chef-client-12-7-released/
 * https://puppetlabs.com/blog/chocolatey-using-chocolatey-puppet
 
 #### January
