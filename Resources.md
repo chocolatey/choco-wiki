@@ -22,6 +22,7 @@
 #### January
 
 * https://puppetlabs.com/blog/chocolatey-creating-your-own-chocolatey-packages
+* http://codebetter.com/robreynolds/2016/01/16/chocolatey-community-update/
 * https://puppetlabs.com/blog/chocolatey-hosting-your-own-server
 
 ### 2015
