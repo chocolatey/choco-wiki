@@ -142,6 +142,7 @@
 #### June
 
 * http://karaaie.blogspot.com/2014/06/continuous-delivery-with-teamcity.html
+
 #### April
 
 * http://tallmaris.com/using-vagrant-with-chocolatey-and-puppet-to-spin-up-virtual-machines/
