@@ -5,7 +5,6 @@
  - Spanish Introduction [Chocolatey: el gestor de paquetes de Windows](https://www.youtube.com/watch?t=82&v=TVBH847RntM)
  - Spanish - [Installing Chocolatey on Windows 8.1](https://www.youtube.com/watch?v=kirDeK6DRq8)
 
-
 ## Vagrant Boxes
 
 * https://github.com/chocolatey/chocolatey-test-environment
