@@ -6,7 +6,7 @@
 ## In the community
 ### 2016
 
-* Channel9 Demo of The Day - [It's Virtual Chocolate: A Custom VM Dipped in a Chocolatey Box Starter. Delicious](https://channel9.msdn.com/Shows/demooftheday/chocovm?WT.mc_id=dlvr_twitter_ch9) - BC3Tech and Jerry Nixon
+* Channel9 Demo of The Day - [It's Virtual Chocolate: A Custom VM Dipped in a Chocolatey Box Starter. Delicious](https://channel9.msdn.com/Shows/demooftheday/chocovm) - BC3Tech and Jerry Nixon
 
 ### 2015
 
