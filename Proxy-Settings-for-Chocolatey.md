@@ -69,6 +69,10 @@ param (
 
 ### Still having trust issues? 
 
+You've tried everything and Chocolatey still won't install - 
+
+> The underlying connection was closed: Could not establish trust relationship for the SSL / TLS secure channel.
+
 It could also be that your root trusted certificates are not up to date. You will need the following certificates in your chain:
 
 * Go Daddy Secure Certificate Authority - G2
