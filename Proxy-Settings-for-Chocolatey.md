@@ -36,7 +36,7 @@ It may just work. It hasn't been validated yet.
 
 When trying to install Chocolatey behind a proxy server, you may be faced with errors like
 
-> Boo to the Chocolatey gods! Get Response returned: (407) Proxy Authentication Required
+> Get Response returned: (407) Proxy Authentication Required
 
 Steps to help address this.
 
