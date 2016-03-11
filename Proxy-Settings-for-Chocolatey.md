@@ -38,6 +38,10 @@ When trying to install Chocolatey behind a proxy server, you may be faced with e
 
 > Get Response returned: (407) Proxy Authentication Required
 
+or 
+
+> The underlying connection was closed: Could not establish trust relationship for the SSL / TLS secure channel.
+
 Steps to help address this.
 
 1. Copy the [install.ps1](https://chocolatey.org/install.ps1) file locally.
