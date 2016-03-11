@@ -66,3 +66,13 @@ param (
     $downloader.DownloadFile($url, $file)
 }
 ```
+
+It could also be that your root trusted certificates are not up to date. You will need the following certificates in your chain:
+
+* Go Daddy Secure Certificate Authority - G2
+
+![Go Daddy Secure Certificate Authority - G2](https://cloud.githubusercontent.com/assets/63502/13706493/ea4d0aac-e76a-11e5-913e-590dfe775fc1.png)
+
+* COMODO ECC Domain Validation Secure Server CA 2
+
+![image](https://cloud.githubusercontent.com/assets/63502/13706546/1a1d237a-e76b-11e5-9263-e586cef5f744.png)
