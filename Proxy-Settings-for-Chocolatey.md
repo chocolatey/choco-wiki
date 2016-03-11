@@ -67,6 +67,8 @@ param (
 }
 ```
 
+### Still having trust issues? 
+
 It could also be that your root trusted certificates are not up to date. You will need the following certificates in your chain:
 
 * Go Daddy Secure Certificate Authority - G2
