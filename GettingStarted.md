@@ -29,7 +29,7 @@ How the heck does this all work?
 4. If there are automation scripts, choco will run those. They can contain whatever you need to do, if they are PowerShell you have the full power of Posh (PowerShell), but you should try to ensure they are compatible with Posh v2+.
 5. Choco compares the snapshot and determines uninstaller information and saves that to a .registry file.
 6. Choco snapshots the folder based on all files that are currently in the package directory.
-7. Choco looks for shim files and generates shims into the `$env:ChocolateyInstall\bin` folder so those items are available on the path.
+7. Choco looks for executable files in the package folder and generates shims into the `$env:ChocolateyInstall\bin` folder so those items are available on the path. Those could have been embedded into the package or brought down from somewhere (internet, ftp, file folder share) and placed there.
 
 ### Upgrade
 
