@@ -1,6 +1,8 @@
 # Creating Chocolatey Packages
 
 ## Summary
+See [[What are Chocolatey Packages?|GettingStarted#what-are-chocolatey-packages]] first.
+
 First you should determine if you are making a self-contained package or (also) using automation scripts. You should also consider creating [[automatic packages|AutomaticPackages]] for the best maintainability over time.
 
 1. Run `choco new -h` to get a feel for what you can pass e.g `choco new bob` (to create a package named `bob`)
