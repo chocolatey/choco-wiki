@@ -22,6 +22,9 @@ See [[What is Chocolatey?|Why#what-is-chocolatey]]
 ### Why Chocolatey?
 First a [[story|ChocolateyStory]]. Then [[Why Chocolatey?|Why]]
 
+### What can a Chocolatey Package consist of?
+See [[What are Chocolatey Packages?|GettingStarted#what-are-chocolatey-packages]]
+
 ### Can I use Chocolatey with existing installs?
 
 Fantastic question, see [[Can I use Chocolatey with existing software?|Why#can-i-use-chocolatey-with-existing-software]]
