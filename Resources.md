@@ -15,6 +15,10 @@
 
 ### 2016
 
+#### March
+
+* http://imallvirtual.com/azure-devtest-labs-chocolatey-artifacts-integration/
+
 #### February 
 
 * https://zimmergren.net/automating-software-installations-with-boxstarter-and-chocolatey/
