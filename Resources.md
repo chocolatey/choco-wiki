@@ -18,6 +18,7 @@
 #### March
 
 * http://imallvirtual.com/azure-devtest-labs-chocolatey-artifacts-integration/
+* https://channel9.msdn.com/Shows/demooftheday/chocovm
 
 #### February 
 
