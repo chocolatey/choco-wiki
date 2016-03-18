@@ -91,7 +91,6 @@
 * http://www.fixedbyvonnie.com/2014/11/5-minute-setup-using-oneget-chocolatey-windows-10/
 * http://www.developer.com/net/virtualize-your-windows-development-environments-with-vagrant-packer-and-chocolatey-part-1.html
 
-
 #### October
 
 * http://codebetter.com/robreynolds/2014/10/27/chocolatey-now-has-package-moderation/
@@ -120,6 +119,7 @@
 #### April
 
 * http://tallmaris.com/using-vagrant-with-chocolatey-and-puppet-to-spin-up-virtual-machines/
+* https://blogs.technet.microsoft.com/windowsserver/2014/04/03/windows-management-framework-v5-preview/
 
 #### January
 
