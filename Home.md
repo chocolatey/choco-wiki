@@ -34,13 +34,13 @@ Chocolatey is designed to work with all aspects of Windows software (wrapping in
 * You can define any additional functionality a native installer file may have missed setting up for you, such as putting some directory in the PATH variable.
 * You control how installs, upgrades and uninstalls are handled.
 * Package maintenance is quite simple.
-* It makes Windows software easily scriptable
+* It makes Windows software easily scriptable.
 * FOSS version is completely free with a business friendly license.
 * Able to use completely internally building your own packages.
-* Hosting your own internal packages is as simple as a file/folder share to as advanced as a custom package gallery - see [[Hosting your own server|How-To-Host-Feed]]
+* Hosting your own internal packages is as simple as a file/folder share to as advanced as a custom package gallery - see [[Hosting your own server|How-To-Host-Feed]].
 * Can integrate with SCCM to deliver packages and software out to distribution points.
 * Integrates with Puppet, Chef, Ansible, Saltstack and DSC.
-* Auditing what is installed (not just what's in Programs and Features).
+* Auditing what is installed (and not just what's in Programs and Features).
 * You can build your own internal packages that wrap native installers, but you can build more true package types that have the software in the package. See [[What are Chocolatey Packages?|GettingStarted#what-are-chocolatey-packages]]
 
 Chocolatey is like apt-get, but built with Windows in mind (there are differences and limitations). For those unfamiliar with APT/Debian, think about Chocolatey as a global silent installer for applications and tools. It can also do configuration tasks and anything that you can do with PowerShell. The power you hold with a tool like Chocolatey is only limited by your imagination!
