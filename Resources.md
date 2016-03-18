@@ -39,6 +39,7 @@
 
 * https://blogs.msdn.microsoft.com/golive/2015/12/22/shortest-path-to-azure-automation-dsc-chocolatey-vm/
 * http://codebetter.com/robreynolds/2015/12/18/chocolatey-community-state-of-union/
+* http://xenappblog.com/2015/automatically-update-citrix-xenserver-tools/
 
 #### November
 
@@ -52,6 +53,7 @@
 #### September
 
 * http://www.metafilter.com/152786/Chocolatey-a-package-manager-for-Windows
+* http://xenappblog.com/2015/how-to-install-chocolatey-packages-offline/
 
 #### August
 
@@ -59,6 +61,14 @@
 * http://blogsprajeesh.blogspot.com/2015/08/using-dsc-oneget-and-chef-to-install.html
 * http://blogsprajeesh.blogspot.com/2015/08/setup-your-chocolatey-repository-in_6.html
 * http://mattridpath.com/?p=43
+* http://xenappblog.com/2015/why-chocolatey-a-real-world-example/
+* http://xenappblog.com/2015/how-to-install-chocolatey-packages-offline/
+* http://xenappblog.com/2015/getting-started-with-chocolatey-and-boxstarter/
+
+#### June
+
+* http://xenappblog.com/2015/how-to-use-chocolatey-with-mdt-2013/
+* http://xenappblog.com/2015/automation-and-optimization/
 
 #### May
 
@@ -74,7 +84,6 @@
 
 #### February
 
-* http://xenappblog.com/2015/how-to-use-chocolatey-with-mdt-2013/
 * https://blogs.msdn.microsoft.com/garretts/2015/02/04/oneget-and-chocolatey-whats-the-connection/
 
 #### January 
