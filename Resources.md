@@ -88,7 +88,9 @@
 * http://codebetter.com/robreynolds/2014/11/14/how-passion-saved-windows/
 * http://www.developer.com/net/virtualize-your-windows-development-environments-with-vagrant-packer-and-chocolatey-part-2.html
 * http://codebetter.com/robreynolds/2014/11/08/herding-code-on-chocolatey/
+* http://www.fixedbyvonnie.com/2014/11/5-minute-setup-using-oneget-chocolatey-windows-10/
 * http://www.developer.com/net/virtualize-your-windows-development-environments-with-vagrant-packer-and-chocolatey-part-1.html
+
 
 #### October
 
