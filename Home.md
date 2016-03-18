@@ -26,8 +26,15 @@ Chocolatey is a global PowerShell execution engine using the NuGet packaging inf
 
 Chocolatey is designed to work with all aspects of Windows software (wrapping installers, zips, scripts and executables) with a single unified interface that allows managing all aspects of your software with a packaging framework that understands versioning, dependency requirements, upgrades, and uninstallation. This includes both internal and external software. Chocolatey is beneficial for some of the following reasons:
 
-* Scriptable
-* Silent installations, upgrades and uninstalls.
+* You have a single unified interface for installing, upgrading and uninstalling software on Windows.
+* You define dependencies between software so installation order is not a manual process.
+* Chocolatey has some really great smarts built-in to be able to handle things like uninstalling software automatically.
+* You can easily package your own internal software using technologies you are familiar with (PowerShell).
+* Chocolatey has great PowerShell helper functions for many software scenarios, so many times a one line function call is all you need to handle complex installation software.
+* You can define any additional functionality a native installer file may have missed setting up for you, such as putting some directory in the PATH variable.
+* You control how installs, upgrades and uninstalls are handled.
+* Package maintenance is quite simple.
+* It makes Windows software easily scriptable
 * FOSS version is completely free with a business friendly license.
 * Able to use completely internally building your own packages.
 * Hosting your own internal packages is as simple as a file/folder share to as advanced as a custom package gallery - see [[Hosting your own server|How-To-Host-Feed]]
