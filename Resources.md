@@ -19,6 +19,7 @@
 
 * http://imallvirtual.com/azure-devtest-labs-chocolatey-artifacts-integration/
 * https://channel9.msdn.com/Shows/demooftheday/chocovm
+* https://azure.microsoft.com/en-us/documentation/articles/automation-dsc-cd-chocolatey/
 
 #### February 
 
@@ -36,6 +37,7 @@
 
 #### December
 
+* https://blogs.msdn.microsoft.com/golive/2015/12/22/shortest-path-to-azure-automation-dsc-chocolatey-vm/
 * http://codebetter.com/robreynolds/2015/12/18/chocolatey-community-state-of-union/
 
 #### November
@@ -70,6 +72,15 @@
 
 * https://puppetlabs.com/blog/rewriting-chocolatey-ground-up
 
+#### February
+
+* http://xenappblog.com/2015/how-to-use-chocolatey-with-mdt-2013/
+* https://blogs.msdn.microsoft.com/garretts/2015/02/04/oneget-and-chocolatey-whats-the-connection/
+
+#### January 
+
+* https://blogs.msdn.microsoft.com/cesardelatorre/2015/01/13/automating-windows-environments-setup-with-boxstarter-and-chocolatey-packages/
+
 ### 2014
 
 #### November
@@ -91,6 +102,10 @@
 
 * http://codebetter.com/robreynolds/2014/09/27/chocolatey-newsletter/
 * http://blog.simlau.net/chocolatey-windows-lokale-repository.html
+
+#### August
+
+* https://blogs.technet.microsoft.com/heyscriptingguy/2014/08/23/weekend-scripter-powershell-and-chocolatey/
 
 #### July
 
