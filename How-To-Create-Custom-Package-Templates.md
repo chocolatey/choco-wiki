@@ -94,4 +94,5 @@ Install-ChocolateyInstallPackage @packageArgs
 ### Are There Planned Enhancements?
 
 * List Template names - https://github.com/chocolatey/choco/issues/449
-* Manage templates with Chocolatey - https://github.com/chocolatey/choco/issues/542
+* Manage templates with Chocolatey - https://github.com/chocolatey/choco/issues/542 - DONE in 0.9.10 (beta available)
+* Arbitrary key/value pairs - https://github.com/chocolatey/choco/issues/658 - DONE in 0.9.10 (beta available)
