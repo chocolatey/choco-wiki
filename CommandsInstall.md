@@ -110,6 +110,7 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
  -p, --password=VALUE
      Password - the user's password to the source. Defaults to empty.
 ```
+
 ## See It In Action
 
 Chocolatey FOSS install showing tab completion and `refreshenv` (a way to update environment variables without restarting the shell).
