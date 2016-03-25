@@ -51,7 +51,7 @@ Want to [[learn more?|ChocolateyFAQs]]
 
 ## See It In Action
 
-![Config shown in action](images/gifs/choco_install.gif)
+![Config shown in action](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/choco_install.gif)
 
 ## Information
 
