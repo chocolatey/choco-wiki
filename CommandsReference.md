@@ -25,6 +25,11 @@ This is a listing of all of the different things you can pass to choco.
  * [[pack|CommandsPack]] - packages up a nuspec to a compiled nupkg
  * [[push|CommandsPush]] - pushes a compiled nupkg
 
+## See It In Action
+
+![Config help in action](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/choco_help.gif)
+
+
 ## Default Options and Switches
 
 ```
