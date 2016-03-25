@@ -32,3 +32,7 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
        Defaults to empty.
 
 ```
+
+## Visual
+
+![Config shown in action](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/choco_config.gif)
