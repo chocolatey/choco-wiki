@@ -27,7 +27,7 @@ Chocolatey is a global PowerShell execution engine using the NuGet packaging inf
 Chocolatey is designed to work with all aspects of Windows software (wrapping installers, zips, scripts and executables) with a single unified interface that allows managing all aspects of your software with a packaging framework that understands versioning, dependency requirements, upgrades, and uninstallation. This includes both internal and external software. Chocolatey is beneficial for some of the following reasons:
 
 * You have a single unified interface for installing, upgrading and uninstalling software on Windows.
-* Packages are independent deployment artifacts that can easily be used across technologies like SCCM, Puppet, Chef, etc, but do not are not tied to those technologies. Developers could still use the same packages locally that are used with SCCM.
+* Packages are independent deployment artifacts that can easily be used across technologies like SCCM, Puppet, Chef, etc, but are not tied to those technologies. Developers could still use the same packages locally that are used with SCCM.
 * You define dependencies between software so installation order is not a manual process.
 * Chocolatey has some really great smarts built-in to be able to handle things like uninstalling software automatically.
 * You can easily package your own internal software using technologies you are familiar with (PowerShell).
