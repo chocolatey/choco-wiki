@@ -33,6 +33,6 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 
 ```
 
-## Visual
+## See It In Action
 
 ![Config shown in action](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/choco_config.gif)
