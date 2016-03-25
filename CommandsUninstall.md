@@ -61,10 +61,14 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
   Skip PowerShell - Do not run chocolateyUninstall.ps1. Defaults to false.
 ```
 
+## See It In Action
+
+![choco uninstall](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/choco_uninstall.gif)
+
 ## Known Limitations
 * There are no functions defined in the Chocolatey PowerShell module that would help with uninstall - yet (this means that compared to the awesome library of helper functions to get things installed, you are left more on your own to work on uninstalling those things currently).
 
 ## Note
-The default behavior with the "Automatic Uninstaller" feature turned off is that `choco uninstall` removes the package from your system only if the script `chocolateyUninstall.ps1` is provided by the package maintainer. In the absence of `chocolateyUninstall.ps1`, `choco uninstall` only removes the package from Chocolatey but does not remove the package from your system.
+The default behavior with the "Automatic Uninstaller" feature turned off (on by default as of 0.9.10.0) is that `choco uninstall` removes the package from your system only if the script `chocolateyUninstall.ps1` is provided by the package maintainer. In the absence of `chocolateyUninstall.ps1`, `choco uninstall` only removes the package from Chocolatey but does not remove the package from your system.
 
 Turning on "Automatic Uninstaller" guarantees that the package is removed from your system when you run `choco uninstall`.
