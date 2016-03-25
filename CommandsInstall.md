@@ -119,7 +119,7 @@ Chocolatey FOSS install showing tab completion and `refreshenv` (a way to update
 
 Chocolatey Professional showing private download cache and virus scan protection.
 
-![Pro install in action](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/chocopro_install_stopped.gif)
+![Pro install in action](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/chocopro_install_stopped.gif "Get ready! Chocolatey Professional availability is May 2nd, 2016")
 
 ## Packages.config
 Alternative to PackageName. This is a list of packages in an xml manifest for Chocolatey to install.  This is like the packages.config that NuGet uses except it also adds other options and switches. This can also be the path to the `packages.config` file if it is not in the current working directory. 
