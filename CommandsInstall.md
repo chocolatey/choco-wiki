@@ -112,7 +112,7 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 ```
 ## See It In Action
 
-Chocolatey FOSS install.
+Chocolatey FOSS install showing tab completion and `refreshenv` (a way to update environment variables without restarting the shell).
 
 ![FOSS install in action](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/choco_install.gif)
 
