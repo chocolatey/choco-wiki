@@ -32,3 +32,7 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
  -p, --password=VALUE
      Password - the user's password to the source. Defaults to empty.
 ```
+
+## See It In Action
+
+![choco outdated](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/choco_outdated.gif)
