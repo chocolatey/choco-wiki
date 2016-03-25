@@ -110,6 +110,15 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
  -p, --password=VALUE
      Password - the user's password to the source. Defaults to empty.
 ```
+## See It In Action
+
+Chocolatey FOSS install.
+
+![FOSS install in action](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/choco_install.gif)
+
+Chocolatey Professional showing private download cache and virus scan protection.
+
+![Pro install in action](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/chocopro_install_stopped.gif)
 
 ## Packages.config
 Alternative to PackageName. This is a list of packages in an xml manifest for Chocolatey to install.  This is like the packages.config that NuGet uses except it also adds other options and switches. This can also be the path to the `packages.config` file if it is not in the current working directory. 
