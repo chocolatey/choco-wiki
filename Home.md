@@ -49,6 +49,10 @@ What's the difference between NuGet and Chocolatey? Developers can use NuGet to 
 
 Want to [[learn more?|ChocolateyFAQs]]
 
+## See It In Action
+
+![Config shown in action](images/gifs/choco_install.gif)
+
 ## Information
 
 * [[Frequently Asked Questions|ChocolateyFAQs]]
