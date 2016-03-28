@@ -176,17 +176,24 @@
 
 #### October
 
-* http://ferventcoder.com/robz/archive/2011/10/07/letrsquos-get-chocolatey-kind-of-like-apt-get-for-windows.aspx
+* http://ferventcoder.com/archive/2011/10/07/letrsquos-get-chocolatey-kind-of-like-apt-get-for-windows.aspx
 * http://melkio.codiceplastico.com/technology/2011/10/06/chocolatey-un-package-manager-per-windows.html
 * http://elegantcode.com/2011/10/05/chocolatey-the-free-and-open-source-windows-app-store/
 
 #### September
 
 * http://www.xavierdecoster.com/post/2011/09/30/an-overview-of-the-nuget-ecosystem
+* https://web.archive.org/web/20111223082713/http://www.counity.at/blog/archives/253
+* https://web.archive.org/web/20110926200551/http://blogs.lessthandot.com/index.php/DesktopDev/MSTech/making-a-chocolatey-package
+* https://web.archive.org/web/20110926191629/http://blogs.lessthandot.com/index.php/DesktopDev/MSTech/chocolatey-gui
+
+#### July
+
+* https://web.archive.org/web/20111031004316/http://blogs.lessthandot.com/index.php/DesktopDev/MSTech/chocolatey-apt-get-for-windows
 
 #### May 
 
-* http://ferventcoder.com/robz/archive/2011/05/06/iowa-code-camp-presentations.aspx
+* http://ferventcoder.com/archive/2011/05/06/iowa-code-camp-presentations.aspx
 
 #### April
 
