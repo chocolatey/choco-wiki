@@ -44,6 +44,42 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 
  -p, --password=VALUE
      Password - the user's password to the source. Defaults to empty.
+
+### 0.9.10.0+
+
+     --page=VALUE
+     Page - the 'page' of results to return. Defaults to return all results.
+
+     --page-size=VALUE
+     Page Size - the amount of package results to return per page. Defaults
+       to 25.
+
+ -e, --exact
+     Exact - Only return packages with this exact name.
+
+     --by-id-only
+     ByIdOnly - Only return packages where the id contains the search filter.
+
+     --id-starts-with
+     IdStartsWith - Only return packages where the id starts with the search
+       filter.
+
+     --order-by-popularity
+     OrderByPopularity - Sort by package results by popularity.
+
+     --approved-only
+     ApprovedOnly - Only return approved packages - this option will filter
+       out results not from the community repository.
+
+     --download-cache, --download-cache-only
+     DownloadCacheAvailable - Only return packages that have a download cache
+       available - this option will filter out results not from the community
+       repository.
+
+     --not-broken
+     NotBroken - Only return packages that are not failing testing - this
+       option only filters out failing results from the community feed. It will
+       not filter against other sources.
 ```
 
 ## See It In Action
