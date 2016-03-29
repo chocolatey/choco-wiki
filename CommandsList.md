@@ -86,8 +86,8 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 
 ![choco search](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/choco_search.gif)
 
-## Alternative Sources
-**NOTE**: THIS IS REIMPLEMENTED IN 0.9.10.0.
+## Alternative Sources 
+0.9.10+
 
 ### WebPI
 This specifies the source is Web PI (Web Platform Installer) and that we
