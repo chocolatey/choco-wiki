@@ -1,5 +1,6 @@
 # Videos
 
+* https://www.pluralsight.com/courses/chocolatey-nuget-automation-pros
 
 ## Presentations
 
