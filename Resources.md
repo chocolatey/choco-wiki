@@ -117,6 +117,7 @@
 #### August
 
 * https://blogs.technet.microsoft.com/heyscriptingguy/2014/08/23/weekend-scripter-powershell-and-chocolatey/
+* http://www.pcworld.com/article/2459950/how-to-use-chocolatey-a-delicious-windows-package-manager.html
 
 #### July
 
@@ -161,6 +162,9 @@
 
 ### 2012
 
+#### November 
+
+* http://www.pcworld.com/article/2013432/review-chocolatey-offers-easy-software-installation-and-updating.html
 #### September
 
 * http://lifehacker.com/5942417/chocolatey-brings-lightning-quick-linux-style-package-management-to-windows
