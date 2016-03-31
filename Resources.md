@@ -24,6 +24,7 @@
 
 #### February 
 
+* http://csi-windows.com/blog/all/74-powershell/463-getting-chocolatey-package-management-provider-working-on-windows-10
 * https://zimmergren.net/automating-software-installations-with-boxstarter-and-chocolatey/
 * https://www.chef.io/blog/2016/02/12/chef-client-12-7-released/
 * https://puppetlabs.com/blog/chocolatey-using-chocolatey-puppet
