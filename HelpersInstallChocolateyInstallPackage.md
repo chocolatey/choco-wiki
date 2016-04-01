@@ -11,13 +11,14 @@ Install-ChocolateyInstallPackage $packageName $installType $silentArgs $file
 ```
 
 ## Examples
+~~~powershell
+$toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+$fileLocation = Join-Path $toolsDir 'someinstaller.msi'
+Install-ChocolateyInstallPackage '7zip' 'exe' '/S' "$fileLocation"
 
-```powershell
-Install-ChocolateyInstallPackage '7zip' 'exe' '/S' 'c:\somepath\7zipInstaller.msi'
-
-Install-ChocolateyInstallPackage '7zip' 'exe' '/S' 'c:\somepath\7zipInstaller.msi' `
+Install-ChocolateyInstallPackage '7zip' 'exe' '/S' '\\uncshare\somepath\7zipInstaller.msi' `
  -validExitCodes @(0,21,33)
-```
+~~~
 
 ## Parameters
 
@@ -45,7 +46,18 @@ Install-ChocolateyInstallPackage '7zip' 'exe' '/S' 'c:\somepath\7zipInstaller.ms
 
     This is the file to install. This is a full path to the file.
 
-    Example: `'c:\somepath\someinstaller.msi'`
+    Example:
+
+    Embedded in the tools directory of the package:
+~~~powershell
+$toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+$fileLocation = Join-Path $toolsDir 'someinstaller.msi'
+~~~
+
+    On an internal share:
+~~~powershell
+$fileLocation = '\\someunc\share\location\someinstaller.msi'
+~~~
 
 * `-validExitCodes` _(optional)_
 
