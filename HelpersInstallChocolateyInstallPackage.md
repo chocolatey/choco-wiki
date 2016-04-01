@@ -49,12 +49,14 @@ Install-ChocolateyInstallPackage '7zip' 'exe' '/S' '\\uncshare\somepath\7zipInst
     Example:
 
     Embedded in the tools directory of the package:
+
 ~~~powershell
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 $fileLocation = Join-Path $toolsDir 'someinstaller.msi'
 ~~~
 
-    On an internal share:
+   On an internal share:
+
 ~~~powershell
 $fileLocation = '\\someunc\share\location\someinstaller.msi'
 ~~~
