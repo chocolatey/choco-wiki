@@ -97,6 +97,19 @@ $silentArgs = '/S'
 Install-ChocolateyPackage $packageName $fileType $silentArgs $url
 ```
 
+## During which scenarios will my custom scripts be triggered?
+The table below shows which scripts are available, and which command(s) will cause them to be run.
+
+Script Name                                    | Install | Upgrade | Uninstall
+-----------------------------------------------|---------|---------|----------
+chocolateyBeforeModify.ps1                     |         | Yes     | Yes
+chocolateyInstall.ps1                          | Yes     | Yes     |
+chocolateyUninstall.ps1                        |         |         | Yes
+
+**Note:** In the upgrade scenario, the chocolateyInstall.ps1 script will be the one included in the new package. The chocolateyBeforeModify.ps1 script will be the one from the previously installed package.
+
+The chocolateyBeforeModify.ps1 script will only be executed if using choco version 0.9.10 or later.
+
 ## Nuspec?
 
 For reference - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
@@ -158,7 +171,11 @@ If you allow customizing the installation path, then append instructions on how 
 
 ## Upgrading
 
-There is no automation script for just upgrade. Instead, your [[chocolateyInstall.ps1|ChocolateyInstallPS1]] script should support installing/upgrading on top of any previous versions of your package.
+Prior to choco version 0.9.10, there is no dedicated automation script for upgrade scenarios. Instead, your [[chocolateyInstall.ps1|ChocolateyInstallPS1]] script should support installing/upgrading on top of any previous versions of your package.
+
+More recent versions of choco (0.9.10+) give you the option of supplying a `chocolateyBeforeModify.ps1` script.
+If applicable, the version of this script from the currently installed package will be run before subsequent
+chocolateyInstall or chocolateyUninstall scripts.
 
 ## Uninstalling
 
