@@ -5,137 +5,114 @@ Installs a package based on a remote file download. Use Install-ChocolateyInstal
 
 ### Syntax
 ~~~powershell
-Install-ChocolateyPackage [[-packageName] &lt;String&gt;] [[-fileType] &lt;String&gt;] [[-silentArgs] &lt;String&gt;] [[-url] &lt;String&gt;] 
-[[-url64bit] &lt;String&gt;] [[-validExitCodes] &lt;Object&gt;] [[-checksum] &lt;String&gt;] [[-checksumType] &lt;String&gt;] [[-checksum64] 
-&lt;String&gt;] [[-checksumType64] &lt;String&gt;] [[-options] &lt;Hashtable&gt;] [&lt;CommonParameters&gt;]
+Install-ChocolateyPackage [[-packageName] <String>] [[-fileType] <String>] [[-silentArgs] <String>] [[-url] <String>] 
+[[-url64bit] <String>] [[-validExitCodes] <Object>] [[-checksum] <String>] [[-checksumType] <String>] [[-checksum64] 
+<String>] [[-checksumType64] <String>] [[-options] <Hashtable>] [<CommonParameters>]
 ~~~
 
 ### Parameters
 
-<table class="table table-striped table-bordered table-condensed visible-on">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th class="visible-lg visible-md">Alias</th>
-			<th>Description</th>
-			<th class="visible-lg visible-md">Required?</th>
-			<th class="visible-lg">Pipeline Input</th>
-			<th class="visible-lg">Default Value</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><nobr>packageName</nobr></td>
-			<td class="visible-lg visible-md"></td>
-			<td>The name of the package we want to download - this is arbitrary, call it whatever you want.<br>It's recommended you call it the same as your nuget package id.</td>
-			<td class="visible-lg visible-md">false</td>
-			<td class="visible-lg">false</td>
-			<td class="visible-lg"></td>
-		</tr>
-		<tr>
-			<td><nobr>fileType</nobr></td>
-			<td class="visible-lg visible-md">installerType</td>
-			<td>This is the extension of the file. This should be 'exe', 'msi', or 'msu'.</td>
-			<td class="visible-lg visible-md">false</td>
-			<td class="visible-lg">false</td>
-			<td class="visible-lg">exe</td>
-		</tr>
-		<tr>
-			<td><nobr>silentArgs</nobr></td>
-			<td class="visible-lg visible-md"></td>
-			<td>OPTIONAL - These are the parameters to pass to the native installer.<br>Try any of these to get the silent installer - /s /S /q /Q /quiet /silent /SILENT /VERYSILENT<br>With msi it is always /quiet. Please pass it in still but it will be overridden by chocolatey to /quiet.<br>If you don't pass anything it will invoke the installer with out any arguments. That means a nonsilent installer.<br><br>Please include the notSilent tag in your chocolatey nuget package if you are not setting up a silent package.</td>
-			<td class="visible-lg visible-md">false</td>
-			<td class="visible-lg">false</td>
-			<td class="visible-lg"></td>
-		</tr>
-		<tr>
-			<td><nobr>url</nobr></td>
-			<td class="visible-lg visible-md"></td>
-			<td>This is the url to download the file from.</td>
-			<td class="visible-lg visible-md">false</td>
-			<td class="visible-lg">false</td>
-			<td class="visible-lg"></td>
-		</tr>
-		<tr>
-			<td><nobr>url64bit</nobr></td>
-			<td class="visible-lg visible-md">url64</td>
-			<td>OPTIONAL - If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically <br>determine if the user is running a 64bit machine or not and adjust accordingly. Please note that the 32 bit url will be used <br>in the absence of this. This link should only be used for 64 bit native software. If the original Url contains both (which is <br>quite rare), set this to '$url' Otherwise remove this parameter.</td>
-			<td class="visible-lg visible-md">false</td>
-			<td class="visible-lg">false</td>
-			<td class="visible-lg"></td>
-		</tr>
-		<tr>
-			<td><nobr>validExitCodes</nobr></td>
-			<td class="visible-lg visible-md"></td>
-			<td></td>
-			<td class="visible-lg visible-md">false</td>
-			<td class="visible-lg">false</td>
-			<td class="visible-lg">@(0)</td>
-		</tr>
-		<tr>
-			<td><nobr>checksum</nobr></td>
-			<td class="visible-lg visible-md"></td>
-			<td>OPTIONAL (Right now), highly recommended - This allows a checksum to be validated for files that are not local</td>
-			<td class="visible-lg visible-md">false</td>
-			<td class="visible-lg">false</td>
-			<td class="visible-lg"></td>
-		</tr>
-		<tr>
-			<td><nobr>checksumType</nobr></td>
-			<td class="visible-lg visible-md"></td>
-			<td>OPTIONAL (Right now) - 'md5', 'sha1', 'sha256' or 'sha512' - defaults to 'md5'</td>
-			<td class="visible-lg visible-md">false</td>
-			<td class="visible-lg">false</td>
-			<td class="visible-lg"></td>
-		</tr>
-		<tr>
-			<td><nobr>checksum64</nobr></td>
-			<td class="visible-lg visible-md"></td>
-			<td>OPTIONAL (Right now) - This allows a checksum to be validated for files that are not local</td>
-			<td class="visible-lg visible-md">false</td>
-			<td class="visible-lg">false</td>
-			<td class="visible-lg"></td>
-		</tr>
-		<tr>
-			<td><nobr>checksumType64</nobr></td>
-			<td class="visible-lg visible-md"></td>
-			<td>OPTIONAL (Right now) - 'md5', 'sha1', 'sha256' or 'sha512' - defaults to ChecksumType</td>
-			<td class="visible-lg visible-md">false</td>
-			<td class="visible-lg">false</td>
-			<td class="visible-lg"></td>
-		</tr>
-		<tr>
-			<td><nobr>options</nobr></td>
-			<td class="visible-lg visible-md"></td>
-			<td>OPTIONAL - Specify custom headers<br><br>Example:<br>~~~powershell<br>  $options =<br>  @{<br>    Headers = @{<br>      Accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8';<br>      'Accept-Charset' = 'ISO-8859-1,utf-8;q=0.7,*;q=0.3';<br>      'Accept-Language' = 'en-GB,en-US;q=0.8,en;q=0.6';<br>      Cookie = 'requiredinfo=info';<br>      Referer = 'https://somelocation.com/';<br>    }<br>  }<br><br>  Get-ChocolateyWebFile 'package' 'https://somelocation.com/thefile.exe' -options $options<br>~~~</td>
-			<td class="visible-lg visible-md">false</td>
-			<td class="visible-lg">false</td>
-			<td class="visible-lg">@{Headers=@{}}</td>
-		</tr>
-	</tbody>
-</table>
-			
+#### packageName
+
+ * **Required** - false
+ * Pipeline Input? false
+
+The name of the package we want to download - this is arbitrary, call it whatever you want.
+It's recommended you call it the same as your nuget package id.
+
+#### fileType
+
+ * **Required** - false
+ * Pipeline Input? false
+ * **Aliases** - installerType, installType
+ * **Default Value** - `exe`
+
+This is the extension of the file. This should be 'exe', 'msi', or 'msu'.
+
+#### silentArgs
+
+ * **Required** - false
+ * Pipeline Input? false
+
+OPTIONAL - These are the parameters to pass to the native installer.
+Try any of these to get the silent installer - /s /S /q /Q /quiet /silent /SILENT /VERYSILENT
+With msi it is always /quiet. Please pass it in still but it will be overridden by chocolatey to /quiet.
+If you don't pass anything it will invoke the installer with out any arguments. That means a nonsilent installer.
+
+Please include the notSilent tag in your chocolatey nuget package if you are not setting up a silent package.
+
+#### url
+
+ * **Required** - false
+ * Pipeline Input? false
+
+This is the url to download the file from.
+
+#### url64bit
+
+ * **Required** - false
+ * Pipeline Input? false
+ * **Aliases** - url64
+
+OPTIONAL - If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically 
+determine if the user is running a 64bit machine or not and adjust accordingly. Please note that the 32 bit url will be used 
+in the absence of this. This link should only be used for 64 bit native software. If the original Url contains both (which is 
+quite rare), set this to '$url' Otherwise remove this parameter.
+
+#### validExitCodes
+
+ * **Required** - false
+ * Pipeline Input? false
+ * **Default Value** - `@(0)`
+
+#### checksum
+
+ * **Required** - false
+ * Pipeline Input? false
+
+OPTIONAL (Right now), highly recommended - This allows a checksum to be validated for files that are not local
+
+#### checksumType
+
+ * **Required** - false
+ * Pipeline Input? false
+
+OPTIONAL (Right now) - 'md5', 'sha1', 'sha256' or 'sha512' - defaults to 'md5'
+
+#### checksum64
+
+ * **Required** - false
+ * Pipeline Input? false
+
+OPTIONAL (Right now) - This allows a checksum to be validated for files that are not local
+
+#### checksumType64
+
+ * **Required** - false
+ * Pipeline Input? false
+
+OPTIONAL (Right now) - 'md5', 'sha1', 'sha256' or 'sha512' - defaults to ChecksumType
+
+#### options
+
+ * **Required** - false
+ * Pipeline Input? false
+ * **Default Value** - `@{Headers=@{}}`
+
+OPTIONAL - Specify custom headers
+
 ### Outputs
  - None
 
 ### Note
 This method has error handling built into it.
-    
-This command will assert UAC/Admin privileges on the machine.
+    This command will assert UAC/Admin privileges on the machine.
 
 ### Examples
 **EXAMPLE 1**
 
-
 ~~~powershell
-Install-ChocolateyPackage '__NAME__' 'EXE_OR_MSI' 'SILENT_ARGS' 'URL' '64BIT_URL_DELETE_IF_NO_64BIT'
-~~~
-
-**EXAMPLE 2**
-
-~~~powershell
-packageName= 'bob'
-		
+$packageName= 'bob'
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 $url        = 'https://somewhere.com/file.msi'
 $url64      = 'https://somewhere.com/file-x64.msi'
@@ -157,10 +134,42 @@ $packageArgs = @{
 Install-ChocolateyPackage @packageArgs
 ~~~
 
+**EXAMPLE 2**
+
+~~~powershell
+Install-ChocolateyPackage 'bob' 'exe' '/S' 'https://somewhere/bob.exe'
+
+~~~
+
+**EXAMPLE 3**
+
+~~~powershell
+Install-ChocolateyPackage 'bob' 'exe' '/S' 'https://somewhere/bob.exe' 'https://somewhere/bob-x64.exe'
+
+~~~
+
+**EXAMPLE 4**
+
+~~~powershell
+$options =
+@{
+  Headers = @{
+    Accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8';
+    'Accept-Charset' = 'ISO-8859-1,utf-8;q=0.7,*;q=0.3';
+    'Accept-Language' = 'en-GB,en-US;q=0.8,en;q=0.6';
+    Cookie = 'requiredinfo=info';
+    Referer = 'https://somelocation.com/';
+  }
+}
+
+Install-ChocolateyPackage 'package' 'exe' '/S' 'https://somelocation.com/thefile.exe' -options $options
+~~~
+
 ### Links
 
- * [[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]
- * [[Install-ChocolateyInstallPackage|HelpersInstallChocolateyInstallPackage]]
+ - [[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]
+ - [[Install-ChocolateyInstallPackage|HelpersInstallChocolateyInstallPackage]]
+ - [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]
 
 ---
 
