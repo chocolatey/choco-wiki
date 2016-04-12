@@ -4,9 +4,11 @@
 Installs a package based on a remote file download. Use Install-ChocolateyInstallPackage when local or embedded file.
 
 ### Syntax
+~~~powershell
 Install-ChocolateyPackage [[-packageName] &lt;String&gt;] [[-fileType] &lt;String&gt;] [[-silentArgs] &lt;String&gt;] [[-url] &lt;String&gt;] 
 [[-url64bit] &lt;String&gt;] [[-validExitCodes] &lt;Object&gt;] [[-checksum] &lt;String&gt;] [[-checksumType] &lt;String&gt;] [[-checksum64] 
 &lt;String&gt;] [[-checksumType64] &lt;String&gt;] [[-options] &lt;Hashtable&gt;] [&lt;CommonParameters&gt;]
+~~~
 
 ### Parameters
 
