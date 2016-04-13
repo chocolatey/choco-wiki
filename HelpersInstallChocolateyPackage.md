@@ -1,39 +1,53 @@
-## Install-ChocolateyPackage
+# Install-ChocolateyPackage
 
-### Synopsis
+
 Installs a package based on a remote file download. Use Install-ChocolateyInstallPackage when local or embedded file.
 
-### Syntax
+## Syntax
+
 ~~~powershell
-Install-ChocolateyPackage [[-packageName] <String>] [[-fileType] <String>] [[-silentArgs] <String>] [[-url] <String>] 
-[[-url64bit] <String>] [[-validExitCodes] <Object>] [[-checksum] <String>] [[-checksumType] <String>] [[-checksum64] 
-<String>] [[-checksumType64] <String>] [[-options] <Hashtable>] [<CommonParameters>]
+Install-ChocolateyPackage -packageName <String> -fileType <String> [-silentArgs <String>] [-url <String>] [-url64bit <String>] [-validExitCodes <Object>] [-checksum <String>] [-checksumType <String>] [-checksum64 <String>] [-checksumType64 <String>] [-options <Hashtable>] [<CommonParameters>]
 ~~~
 
-### Parameters
+## Detailed Description
+This will download a native installer from a url and install it on your machine. Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].
 
-#### packageName
+## Notes
 
- * **Required** - false
- * Pipeline Input? false
+This method has error handling built into it.
 
+This command will assert UAC/Admin privileges on the machine.
+
+## Aliases
+
+None
+
+## Parameters
+
+###  -packageName \<String\>
 The name of the package we want to download - this is arbitrary, call it whatever you want.
 It's recommended you call it the same as your nuget package id.
 
-#### fileType
-
- * **Required** - false
- * Pipeline Input? false
- * **Aliases** - installerType, installType
- * **Default Value** - `exe`
-
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | true
+Position?              | 1
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -fileType \<String\>
 This is the extension of the file. This should be 'exe', 'msi', or 'msu'.
 
-#### silentArgs
-
- * **Required** - false
- * Pipeline Input? false
-
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | true
+Position?              | 2
+Default Value          | exe
+Accept Pipeline Input? | false
+ 
+###  -silentArgs [\<String\>]
 OPTIONAL - These are the parameters to pass to the native installer.
 Try any of these to get the silent installer - /s /S /q /Q /quiet /silent /SILENT /VERYSILENT
 With msi it is always /quiet. Please pass it in still but it will be overridden by chocolatey to /quiet.
@@ -41,77 +55,109 @@ If you don't pass anything it will invoke the installer with out any arguments. 
 
 Please include the notSilent tag in your chocolatey nuget package if you are not setting up a silent package.
 
-#### url
-
- * **Required** - false
- * Pipeline Input? false
-
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 3
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -url [\<String\>]
 This is the url to download the file from.
 
-#### url64bit
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 4
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -url64bit [\<String\>]
+OPTIONAL - If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly. Please note that the 32 bit url will be used in the absence of this. This link should only be used for 64 bit native software. If the original Url contains both (which is quite rare), set this to '$url' Otherwise remove this parameter.
 
- * **Required** - false
- * Pipeline Input? false
- * **Aliases** - url64
-
-OPTIONAL - If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically 
-determine if the user is running a 64bit machine or not and adjust accordingly. Please note that the 32 bit url will be used 
-in the absence of this. This link should only be used for 64 bit native software. If the original Url contains both (which is 
-quite rare), set this to '$url' Otherwise remove this parameter.
-
-#### validExitCodes
-
- * **Required** - false
- * Pipeline Input? false
- * **Default Value** - `@(0)`
-
-#### checksum
-
- * **Required** - false
- * Pipeline Input? false
-
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 5
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -validExitCodes [\<Object\>]
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | @(0)
+Accept Pipeline Input? | false
+ 
+###  -checksum [\<String\>]
 OPTIONAL (Right now), highly recommended - This allows a checksum to be validated for files that are not local
 
-#### checksumType
-
- * **Required** - false
- * Pipeline Input? false
-
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -checksumType [\<String\>]
 OPTIONAL (Right now) - 'md5', 'sha1', 'sha256' or 'sha512' - defaults to 'md5'
 
-#### checksum64
-
- * **Required** - false
- * Pipeline Input? false
-
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -checksum64 [\<String\>]
 OPTIONAL (Right now) - This allows a checksum to be validated for files that are not local
 
-#### checksumType64
-
- * **Required** - false
- * Pipeline Input? false
-
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -checksumType64 [\<String\>]
 OPTIONAL (Right now) - 'md5', 'sha1', 'sha256' or 'sha512' - defaults to ChecksumType
 
-#### options
-
- * **Required** - false
- * Pipeline Input? false
- * **Default Value** - `@{Headers=@{}}`
-
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -options [\<Hashtable\>]
 OPTIONAL - Specify custom headers
 
-### Outputs
- - None
+Property               | Value
+---------------------- | --------------
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | @{Headers=@{}}
+Accept Pipeline Input? | false
+ 
+### \<CommonParameters\>
 
-### Note
-This method has error handling built into it.
-    This command will assert UAC/Admin privileges on the machine.
+This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
-### Examples
+## Examples
 **EXAMPLE 1**
 
 ~~~powershell
+
 $packageName= 'bob'
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 $url        = 'https://somewhere.com/file.msi'
@@ -151,6 +197,7 @@ Install-ChocolateyPackage 'bob' 'exe' '/S' 'https://somewhere/bob.exe' 'https://
 **EXAMPLE 4**
 
 ~~~powershell
+
 $options =
 @{
   Headers = @{
@@ -165,11 +212,13 @@ $options =
 Install-ChocolateyPackage 'package' 'exe' '/S' 'https://somelocation.com/thefile.exe' -options $options
 ~~~
 
-### Links
+## Links
 
- - [[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]
- - [[Install-ChocolateyInstallPackage|HelpersInstallChocolateyInstallPackage]]
- - [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]
+ * [[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]
+ * [[Install-ChocolateyInstallPackage|HelpersInstallChocolateyInstallPackage]]
+ * [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]
+
+
 
 ---
 
