@@ -1,6 +1,5 @@
 # Install-ChocolateyPackage
 
-
 Installs a package based on a remote file download. Use Install-ChocolateyInstallPackage when local or embedded file.
 
 ## Syntax
@@ -40,8 +39,8 @@ Accept Pipeline Input? | false
 This is the extension of the file. This should be 'exe', 'msi', or 'msu'.
 
 Property               | Value
----------------------- | -----
-Aliases                | 
+---------------------- | --------------------------
+Aliases                | installerType, installType
 Required?              | true
 Position?              | 2
 Default Value          | exe
@@ -79,7 +78,7 @@ OPTIONAL - If there is a 64 bit installer available, put the link next to the ot
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                | url64
 Required?              | false
 Position?              | 5
 Default Value          | 
@@ -217,7 +216,6 @@ Install-ChocolateyPackage 'package' 'exe' '/S' 'https://somelocation.com/thefile
  * [[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]
  * [[Install-ChocolateyInstallPackage|HelpersInstallChocolateyInstallPackage]]
  * [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]
-
 
 
 ---
