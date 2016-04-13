@@ -24,6 +24,7 @@ Chocolatey has grown up quite a bit with the release of 0.9.9 series and has bee
 1. Some packages move into a trusted status. This is usually when the package maintainer is also the software maintainer, but can also occur when the maintainer(s) are trusted and the package is submitted without issues.
 1. Packages that download binaries (installers, zip archives) are checked to ensure that the binary is coming from the official distribution source. 
 1. If the package has a checksum, it provides a further integrity check that the downloadable the maintainer/moderator checked is the same binary that the user gets.
+1. Packages are run through Virus Total to produce a second opinion on the relative safety of the package and underlying software that is contained or downloaded by the package.
 
 ### Future Chocolatey enhancements
 
