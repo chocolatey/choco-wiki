@@ -3,6 +3,8 @@
 ## Summary
 See [[What are Chocolatey Packages?|GettingStarted#what-are-chocolatey-packages]] first.
 
+**Note:** When you host internal packages, those packages can embed software and/or point to internal shares. You are not subject to software distribution rights like the packages on the community feed, so you can create packages that are more reliable and secure.
+
 First you should determine if you are making a self-contained package or (also) using automation scripts. You should also consider creating [[automatic packages|AutomaticPackages]] for the best maintainability over time.
 
 1. Run `choco new -h` to get a feel for what you can pass e.g `choco new bob` (to create a package named `bob`)
