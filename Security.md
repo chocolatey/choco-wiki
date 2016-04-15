@@ -50,6 +50,7 @@ Public key token is 79d02ea9cad655eb
 ~~~
 
 * Choco will warn if it is not signed with the right key (the FOSS project has a default key so that it can build appropriately) and require a user to pass `--allow-unofficial-build`. Over time we are going to increase this so that more places will restrict this (those a user can't just go change source of choco on and build).
+* The code for Chocolatey is [open source](https://github.com/chocolatey/choco), so you can inspect to visually be sure it is not doing anything malicious to your machine - https://github.com/chocolatey/choco.
 
 For more information on the specifics, see [#36](https://github.com/chocolatey/choco/issues/36) and [#501](https://github.com/chocolatey/choco/issues/501).
 
