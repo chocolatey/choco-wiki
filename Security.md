@@ -10,9 +10,50 @@ Chocolatey has grown up quite a bit with the release of 0.9.9 series and has bee
 1. choco by default will stop and ask you to confirm before changing state of the system, showing you the script it wants to execute.
 1. choco.exe supports a `-whatif` scenario (aka `--noop`) to 0.9.9 so you can get a feel for what a package would do to your system.
 1. To reduce MITM (Man in the middle) attacks, package installs support [[checksums|HelpersInstallChocolateyPackage]], so that when downloading from a remote location, you can verify you are getting what you believe you should be getting before executing it on the system. We're making steps to allow for [users to supply the checksum as well](https://github.com/chocolatey/choco/issues/112).
-1. The binary `choco.exe` can be trusted (at least as far as you trust the Chocolatey maintainers). Choco is signed with a key that is known only to the lead maintainer of Chocolatey (Rob). Choco will warn if it is not signed with that key and require a user to pass `--allow-unofficial-build`. Over time we are going to increase this so that more places will restrict this (those a user can't just go change source of choco on and build). See [#36](https://github.com/chocolatey/choco/issues/36) and [#501](https://github.com/chocolatey/choco/issues/501) for details.
 1. Choco will not allow you to push to the community feed without using SSL/TLS (HTTPS). This reduces DNS poisoning issues.
 1. When you host internal packages, those packages can embed software and/or point to internal shares. You are not subject to software distribution rights like the packages on the community feed, so you can create packages that are more reliable and secure. See [[What are Chocolatey Packages|GettingStarted#what-are-chocolatey-packages]] for more details.
+
+### Chocolatey binaries and the Chocolatey package
+ 
+The binary `choco.exe` can be trusted (at least as far as you trust the Chocolatey maintainers). 
+
+1. Starting with 0.9.10, both the binaries and the PowerShell scripts are authenticode signed.
+1. Although not the best security method, one can also verify choco based on the strong name. choco.exe is strong named with a key that is known only to the lead maintainer of Chocolatey (Rob). Verify the strong name of the official choco binary with the `sn.exe` utility - the public key should be `79d02ea9cad655eb`.
+1. Choco will warn if it is not signed with the right key (the FOSS project has a default key so that it can build appropriately) and require a user to pass `--allow-unofficial-build`. Over time we are going to increase this so that more places will restrict this (those a user can't just go change source of choco on and build).
+
+For more information on the specifics, see [#36](https://github.com/chocolatey/choco/issues/36) and [#501](https://github.com/chocolatey/choco/issues/501).
+
+#### Examples
+
+##### Verify the Assembly's key
+~~~sh
+C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC>sn -T c:\ProgramData\chocolatey\choco.exe
+
+Microsoft (R) .NET Framework Strong Name Utility  Version 4.0.30319.1
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Public key token is 79d02ea9cad655eb
+~~~
+
+##### Verify the Authenticode Signature
+~~~sh
+ (Get-AuthenticodeSignature -FilePath C:\ProgramData\chocolatey\choco.exe).SignerCertificate | Format-List
+
+
+Subject      : CN="RealDimensions Software, LLC", O="RealDimensions Software,
+               LLC", L=Topeka, S=Kansas, C=US
+Issuer       : CN=DigiCert SHA2 Assured ID Code Signing CA, OU=www.digicert.com,
+               O=DigiCert Inc, C=US
+Thumbprint   : C9F7FD1A91F078DB6BFCFCCE28B9749F8F2A0C38
+FriendlyName :
+NotBefore    : 3/23/2016 7:00:00 PM
+NotAfter     : 3/28/2017 7:00:00 AM
+Extensions   : {System.Security.Cryptography.Oid,
+               System.Security.Cryptography.Oid,
+               System.Security.Cryptography.Oid,
+               System.Security.Cryptography.Oid...}
+~~~
+
 
 ### Chocolatey.org (the community feed)
 
