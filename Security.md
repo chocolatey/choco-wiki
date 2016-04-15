@@ -1,8 +1,9 @@
+# Security
 ## How we address security
 
 ### Overall
 
-Chocolatey has grown up quite a bit with the release of 0.9.9 series and has been moving to a more secure by default approach. What that means is that Chocolatey will set the more secure defaults and the user has to do something (e.g. set a switch, choose to install Chocolatey to a less secure location) to reduce the overall security of Chocolatey.
+Chocolatey has grown up quite a bit with the release of 0.9.9+ series and has been moving to a more secure by default approach. What that means is that Chocolatey will set the more secure defaults and the user has to do something (e.g. set a switch, choose to install Chocolatey to a less secure location) to reduce the overall security of Chocolatey.
 
 1. Requires elevated permissions to install to the default location (`C:\ProgramData\chocolatey`). This reduces escalation of privilege attacks.
 1. Requires elevated permissions to run `choco.exe` in the default installed location. This reduces escalation of privilege attacks.
@@ -15,27 +16,10 @@ Chocolatey has grown up quite a bit with the release of 0.9.9 series and has bee
 
 ### Chocolatey binaries and the Chocolatey package
  
-The binary `choco.exe` can be trusted (at least as far as you trust the Chocolatey maintainers). 
+The binary `choco.exe` can be trusted (at least as far as you trust the Chocolatey maintainers and RealDimensions Software, LLC). 
 
-1. Starting with 0.9.10, both the binaries and the PowerShell scripts are authenticode signed.
-1. Although not the best security method, one can also verify choco based on the strong name. choco.exe is strong named with a key that is known only to the lead maintainer of Chocolatey (Rob). Verify the strong name of the official choco binary with the `sn.exe` utility - the public key should be `79d02ea9cad655eb`.
-1. Choco will warn if it is not signed with the right key (the FOSS project has a default key so that it can build appropriately) and require a user to pass `--allow-unofficial-build`. Over time we are going to increase this so that more places will restrict this (those a user can't just go change source of choco on and build).
+*  Starting with 0.9.10, both the binaries and the PowerShell scripts are Authenticode signed. This certificate is only held by the lead Chocolatey maintainer (Rob). This provides quite a bit of trust that you are getting Chocolatey from the source and as intended.
 
-For more information on the specifics, see [#36](https://github.com/chocolatey/choco/issues/36) and [#501](https://github.com/chocolatey/choco/issues/501).
-
-#### Examples
-
-##### Verify the Assembly's key
-~~~sh
-C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC>sn -T c:\ProgramData\chocolatey\choco.exe
-
-Microsoft (R) .NET Framework Strong Name Utility  Version 4.0.30319.1
-Copyright (c) Microsoft Corporation.  All rights reserved.
-
-Public key token is 79d02ea9cad655eb
-~~~
-
-##### Verify the Authenticode Signature
 ~~~sh
  (Get-AuthenticodeSignature -FilePath C:\ProgramData\chocolatey\choco.exe).SignerCertificate | Format-List
 
@@ -54,6 +38,20 @@ Extensions   : {System.Security.Cryptography.Oid,
                System.Security.Cryptography.Oid...}
 ~~~
 
+* Although not the best security method, one can also verify choco based on the strong name. choco.exe is strong named with a key that is known only to the lead maintainer of Chocolatey (Rob). Verify the strong name of the official choco binary with the `sn.exe` utility - the public key should be `79d02ea9cad655eb`.
+
+~~~sh
+C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC>sn -T c:\ProgramData\chocolatey\choco.exe
+
+Microsoft (R) .NET Framework Strong Name Utility  Version 4.0.30319.1
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Public key token is 79d02ea9cad655eb
+~~~
+
+* Choco will warn if it is not signed with the right key (the FOSS project has a default key so that it can build appropriately) and require a user to pass `--allow-unofficial-build`. Over time we are going to increase this so that more places will restrict this (those a user can't just go change source of choco on and build).
+
+For more information on the specifics, see [#36](https://github.com/chocolatey/choco/issues/36) and [#501](https://github.com/chocolatey/choco/issues/501).
 
 ### Chocolatey.org (the community feed)
 
