@@ -80,7 +80,7 @@ For more information on the specifics, see [#36](https://github.com/chocolatey/c
 
 ## History
 
-Some folks may state that Chocolatey is insecure. There "were" all kinds of security concerns. However that was awhile back and almost all if not all has been corrected. 
+Some folks may state that Chocolatey *is* insecure. That is based on older information and is incorrect to be stated in that way. The correct way to state it is "There ***were*** security concerns". All known concerns have been corrected and/or have a plan to be resolved (e.g. package signing). Feel free to correct anyone who states it incorrectly and then point them to this page.
 
 An acquaintance of mine was asked to do a security audit for Chocolatey (he does penetration testing for a living, I'd tell you more but I'm not sure I have permission to name him) for a company and he found several things that have all been corrected. He went as far as filing CVEs but CERT decided not to release them publicly at the time (this was in March 2014).
 
