@@ -26,6 +26,8 @@ Chocolatey packages are not just something fancy on top of MSI/Exe installers. C
 
 Packages with everything embedded are much more deterministic and repeatable, things most businesses require. You just won't see that as often on the community feed due to the aforementioned [[distribution rights|Legal#distributions]].
 
+The closer the underlying software a package represents is to the package (as in executables and files included in the package), the more Chocolatey behaves like a package manager.
+
 ## How does Chocolatey work?
 How the heck does this all work?
 
