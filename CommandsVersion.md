@@ -6,7 +6,7 @@
  `choco list -lo`. 
 
  If you want to know what has available upgrades, use 
- `choco upgrade <pkg|all> -whatif` or [[choco outdated|Commandsoutdated]].
+ `choco upgrade <pkg|all> -whatif` or [[`choco outdated`|Commandsoutdated]].
 
 ## Options and Switches
 
@@ -18,7 +18,7 @@
 
 Includes [[default options/switches|CommandsReference#default-options-and-switches]] (included below for completeness).
 
-~~~sh
+~~~
 
  -?, --help, -h
      Prints out the help menu.
@@ -82,5 +82,5 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 [[Command Reference|CommandsReference]]
 
 
-****NOTE:**** This documentation has been automatically generated from `choco version -h`. 
+***NOTE:*** This documentation has been automatically generated from `choco version -h`. 
 

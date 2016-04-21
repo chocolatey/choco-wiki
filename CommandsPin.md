@@ -2,7 +2,7 @@
 
 Pin a package to suppress upgrades. 
 
-This is especially helpful when running [[choco upgrade|Commandsupgrade]] for all 
+This is especially helpful when running [[`choco upgrade`|Commandsupgrade]] for all 
  packages, as it will automatically skip those packages. Another 
  alternative is `choco upgrade --except="pkg1,pk2"`.
 
@@ -29,7 +29,7 @@ This is especially helpful when running [[choco upgrade|Commandsupgrade]] for al
 
 Includes [[default options/switches|CommandsReference#default-options-and-switches]] (included below for completeness).
 
-~~~sh
+~~~
 
  -?, --help, -h
      Prints out the help menu.
@@ -90,5 +90,5 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 [[Command Reference|CommandsReference]]
 
 
-****NOTE:**** This documentation has been automatically generated from `choco pin -h`. 
+***NOTE:*** This documentation has been automatically generated from `choco pin -h`. 
 

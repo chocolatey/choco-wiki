@@ -34,7 +34,7 @@ If you use `--source=https://somewhere/out/there`, it is
 
 Includes [[default options/switches|CommandsReference#default-options-and-switches]] (included below for completeness).
 
-~~~sh
+~~~
 
  -?, --help, -h
      Prints out the help menu.
@@ -98,5 +98,5 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 [[Command Reference|CommandsReference]]
 
 
-****NOTE:**** This documentation has been automatically generated from `choco outdated -h`. 
+***NOTE:*** This documentation has been automatically generated from `choco outdated -h`. 
 

@@ -1,7 +1,7 @@
 ﻿# Upgrade Command (choco upgrade)
 
 Upgrades a package or a list of packages. Some may prefer to use `cup` 
- as a shortcut for [[choco upgrade|Commandsupgrade]]. If you do not have a package
+ as a shortcut for [[`choco upgrade`|Commandsupgrade]]. If you do not have a package
  installed, upgrade will install it.
 
 **NOTE:** 100% compatible with older Chocolatey client (0.9.8.x and below) 
@@ -17,7 +17,7 @@ Upgrades a package or a list of packages. Some may prefer to use `cup`
 **NOTE:** `all` is a special package keyword that will allow you to upgrade
  all currently installed packages.
 
-Skip upgrading certain packages with [[choco pin|Commandspin]] or with the option 
+Skip upgrading certain packages with [[`choco pin`|Commandspin]] or with the option 
  `--except`.
 
 
@@ -48,7 +48,7 @@ Skip upgrading certain packages with [[choco pin|Commandspin]] or with the optio
 
 Includes [[default options/switches|CommandsReference#default-options-and-switches]] (included below for completeness).
 
-~~~sh
+~~~
 
 
 
@@ -193,5 +193,5 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 [[Command Reference|CommandsReference]]
 
 
-****NOTE:**** This documentation has been automatically generated from `choco upgrade -h`. 
+***NOTE:*** This documentation has been automatically generated from `choco upgrade -h`. 
 

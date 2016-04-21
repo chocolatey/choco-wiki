@@ -32,7 +32,7 @@ A feed can be a local folder, a file share, the community feed
 
 To use this command, you must have your API key saved for the community
  feed (chocolatey.org) or the source you want to push to. Or you can 
- explicitly pass the apikey to the command. See [[apikey|Commandsapikey]] command help 
+ explicitly pass the apikey to the command. See [[`apikey`|Commandsapikey]] command help 
  for instructions on saving your key:
 
     choco apikey -?
@@ -55,7 +55,7 @@ A common error is `Failed to process request. 'The specified API key
 
 Includes [[default options/switches|CommandsReference#default-options-and-switches]] (included below for completeness).
 
-~~~sh
+~~~
 
  -?, --help, -h
      Prints out the help menu.
@@ -121,5 +121,5 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 [[Command Reference|CommandsReference]]
 
 
-****NOTE:**** This documentation has been automatically generated from `choco push -h`. 
+***NOTE:*** This documentation has been automatically generated from `choco push -h`. 
 

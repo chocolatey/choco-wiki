@@ -2,7 +2,7 @@
 
 **NOTE:** Update has been deprecated and will be removed/replaced in version 
  1.0.0 with something that performs the functions of updating package
- indexes.  Please use [[choco upgrade|Commandsupgrade]] instead.
+ indexes.  Please use [[`choco upgrade`|Commandsupgrade]] instead.
 
 ## Options and Switches
 
@@ -14,7 +14,7 @@
 
 Includes [[default options/switches|CommandsReference#default-options-and-switches]] (included below for completeness).
 
-~~~sh
+~~~
 
  -?, --help, -h
      Prints out the help menu.
@@ -78,5 +78,5 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 [[Command Reference|CommandsReference]]
 
 
-****NOTE:**** This documentation has been automatically generated from `choco update -h`. 
+***NOTE:*** This documentation has been automatically generated from `choco update -h`. 
 

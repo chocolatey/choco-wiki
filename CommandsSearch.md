@@ -1,7 +1,7 @@
 ﻿# List/Search Command (choco search)
 
 Chocolatey will perform a search for a package local or remote. Some 
- may prefer to use `clist` as a shortcut for [[choco list|Commandslist]].
+ may prefer to use [[`clist`|Commandslist]] as a shortcut for [[`choco list`|Commandslist]].
 
 **NOTE:** 100% compatible with older Chocolatey client (0.9.8.x and below) 
  with options and switches. In most cases you can still pass options 
@@ -56,7 +56,7 @@ This specifies that the source is a Windows Feature and we should
 
 Includes [[default options/switches|CommandsReference#default-options-and-switches]] (included below for completeness).
 
-~~~sh
+~~~
 
  -?, --help, -h
      Prints out the help menu.
@@ -173,5 +173,5 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 [[Command Reference|CommandsReference]]
 
 
-****NOTE:**** This documentation has been automatically generated from `choco search -h`. 
+***NOTE:*** This documentation has been automatically generated from `choco search -h`. 
 

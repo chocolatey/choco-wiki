@@ -2,7 +2,7 @@
 
 Installs a package or a list of packages (sometimes specified as a
  packages.config). Some may prefer to use `cinst` as a shortcut for 
- [[choco install|Commandsinstall]].
+ [[`choco install`|Commandsinstall]].
 
 **NOTE:** 100% compatible with older chocolatey client (0.9.8.32 and below)
  with options and switches. Add `-y` for previous behavior with no 
@@ -142,7 +142,7 @@ This specifies that the source is a Windows Feature and we should
 
 Includes [[default options/switches|CommandsReference#default-options-and-switches]] (included below for completeness).
 
-~~~sh
+~~~
 
 
 
@@ -280,5 +280,5 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 [[Command Reference|CommandsReference]]
 
 
-****NOTE:**** This documentation has been automatically generated from `choco install -h`. 
+***NOTE:*** This documentation has been automatically generated from `choco install -h`. 
 
