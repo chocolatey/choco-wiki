@@ -9,8 +9,8 @@ Get-ChocolateyUnzip [-fileFullPath <String>] [-destination <String>] [-specificF
 ~~~
 
 ## Description
-This unzips files using the 7-zip standalone command line tool 7za.exe.
 
+This unzips files using the 7-zip standalone command line tool 7za.exe.
 Supported archive formats are: 7z, lzma, cab, zip, gzip, bzip2, and tar.
 
 ## Notes
@@ -31,7 +31,7 @@ None
 
 ## Parameters
 
-###  -fileFullPath [\<String\>]
+###  -FileFullPath [\<String\>]
 This is the full path to the zip file.
 
 Property               | Value
@@ -42,7 +42,7 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -destination [\<String\>]
+###  -Destination [\<String\>]
 This is a directory where you would like the unzipped files to end up.
 If it does not exist, it will be created.
 
@@ -54,7 +54,7 @@ Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -specificFolder [\<String\>]
+###  -SpecificFolder [\<String\>]
 OPTIONAL - This is a specific directory within zip file to extract.
 
 Property               | Value
@@ -65,7 +65,7 @@ Position?              | 3
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -packageName [\<String\>]
+###  -PackageName [\<String\>]
 OPTIONAL - This will faciliate logging unzip activity for subsequent uninstall
 
 Property               | Value
@@ -77,8 +77,10 @@ Default Value          |
 Accept Pipeline Input? | false
  
 
+
 ## Examples
-**EXAMPLE 1**
+
+ **EXAMPLE 1**
 
 ~~~powershell
 

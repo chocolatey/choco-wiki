@@ -9,6 +9,7 @@ Write-ChocolateyFailure [-packageName <String>] [-failureMessage <String>]
 ~~~
 
 ## Description
+
 Throws the error message as an error.
 
 ## Notes
@@ -29,7 +30,7 @@ None
 
 ## Parameters
 
-###  -packageName [\<String\>]
+###  -PackageName [\<String\>]
 The name of the package, used for messaging
 
 Property               | Value
@@ -40,7 +41,7 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -failureMessage [\<String\>]
+###  -FailureMessage [\<String\>]
 The message to throw an error with.
 
 Property               | Value
@@ -52,7 +53,6 @@ Default Value          |
 Accept Pipeline Input? | false
  
 
-## Examples
 
 
 ## Links

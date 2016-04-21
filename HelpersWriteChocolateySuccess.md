@@ -9,6 +9,7 @@ Write-ChocolateySuccess [-packageName <String>]
 ~~~
 
 ## Description
+
 Writes a success message for a package.
 
 ## Notes
@@ -30,7 +31,6 @@ None
 ## Parameters
  
 
-## Examples
 
 
 ## Links
