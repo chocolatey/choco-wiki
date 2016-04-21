@@ -18,7 +18,7 @@ Once that is done you have several steps:
  * Use unzip to unpack the package and remove the files that are only used in packaging.
  * Put that in your GitHub repository for packages.
  * Ensure you have a link to that repository in your Chocolatey profile.
- * Commit the the package as is prior to any changes. If you are moving it over from another repository, just copy the current files/folders related to that package into your repository.
+ * Commit the package as is prior to any changes. If you are moving it over from another repository, just copy the current files/folders related to that package into your repository.
  * Now make your changes/fixes/updates. Commit those changes as necessary.
  * One thing to update is any links to the old repository such as images and/or maintainers.
  * Also add/update `<packageSourceUrl />` to point to your repository.
