@@ -21,7 +21,7 @@ This is a listing of all of the different things you can pass to choco.
  * [[pin|CommandsPin]] - suppress upgrades to a package
 
 ## Package Creation Commands
- * [[new|CommandsNew]] - generates files necessary for a Chocolatey package
+ * [[new|CommandsNew]] -  generates files necessary for a Chocolatey package from a template
  * [[pack|CommandsPack]] - packages up a nuspec to a compiled nupkg
  * [[push|CommandsPush]] - pushes a compiled nupkg
 
@@ -32,45 +32,57 @@ This is a listing of all of the different things you can pass to choco.
 
 ## Default Options and Switches
 
-```
--?, --help, -h
-  Prints out the help menu.
 
--d, --debug
-  Debug - Run in Debug Mode.
 
--v, --verbose
-  Verbose - See verbose messaging.
+~~~sh
 
---acceptlicense, --accept-license
-  AcceptLicense - Accept license dialogs automatically.
+ -?, --help, -h
+     Prints out the help menu.
 
--y, --yes, --confirm
-  Confirm all prompts - Chooses default answer instead of prompting.
-  Implies --accept-license
+ -d, --debug
+     Debug - Run in Debug Mode.
 
--f, --force
-  Force - force the behavior
+ -v, --verbose
+     Verbose - See verbose messaging.
 
---noop, --whatif, --what-if
-  NoOp - Don't actually do anything.
+     --acceptlicense, --accept-license
+     AcceptLicense - Accept license dialogs automatically.
 
--r, --limitoutput, --limit-output
-  LimitOuptut - Limit the output to essential information
+ -y, --yes, --confirm
+     Confirm all prompts - Chooses affirmative answer instead of prompting. 
+       Implies --accept-license
 
---execution-timeout=VALUE
-  CommandExecutionTimeoutSeconds - Override the default execution
-  timeout in the configuration of 2700 seconds.
+ -f, --force
+     Force - force the behavior
 
--c, --cache, --cachelocation, --cache-location=VALUE
-  CacheLocation - Location for download cache, defaults to %TEMP% or
-  value in chocolatey.config file.
+     --noop, --whatif, --what-if
+     NoOp - Don't actually do anything.
 
---allowunofficial, --allow-unofficial, --allowunofficialbuild,
---allow-unofficial-build
-  AllowUnofficialBuild - When not using the official build you must set
-  this flag for choco to continue.
-```
+ -r, --limitoutput, --limit-output
+     LimitOutput - Limit the output to essential information
+
+     --execution-timeout=VALUE
+     CommandExecutionTimeoutSeconds - Override the default execution timeout 
+       in the configuration of 2700 seconds.
+
+ -c, --cache, --cachelocation, --cache-location=VALUE
+     CacheLocation - Location for download cache, defaults to %TEMP% or value 
+       in chocolatey.config file.
+
+     --allowunofficial, --allow-unofficial, --allowunofficialbuild, --allow-unofficial-build
+     AllowUnofficialBuild - When not using the official build you must set 
+       this flag for choco to continue.
+
+     --failstderr, --failonstderr, --fail-on-stderr, --fail-on-standard-error, --fail-on-error-output
+     FailOnStandardError - Fail on standard error output (stderr), typically 
+       received when running external commands during install providers. This 
+       overrides the feature failOnStandardError.
+
+     --use-system-powershell
+     UseSystemPowerShell - Execute PowerShell using an external process 
+       instead of the built-in PowerShell host. Available in 0.9.10+.
+
+~~~
 
 ## How To Pass Options / Switches
 
@@ -82,7 +94,7 @@ You can pass options and switches in the following ways:
  * **Option Bundling / Bundled Options**: One character switches can be
    bundled. e.g. `-d` (debug), `-f` (force), `-v` (verbose), and `-y`
    (confirm yes) can be bundled as `-dfvy`.
- * ***Note:*** If `debug` or `verbose` are bundled with local options
+ * **NOTE:** If `debug` or `verbose` are bundled with local options
    (not the global ones above), some logging may not show up until after
    the local options are parsed.
  * **Use Equals**: You can also include or not include an equals sign

@@ -1,28 +1,12 @@
-﻿# Pack Command (choco pack)
+﻿# [DEPRECATED] Version Command (choco version)
 
-Chocolatey will attempt to package a nuspec into a compiled nupkg. Some
- may prefer to use `cpack` as a shortcut for `choco pack`.
+**NOTE:** Version has been deprecated and will be removed in version 1.0.0. 
 
-**NOTE:** 100% compatible with older chocolatey client (0.9.8.32 and below)
- with options and switches. In most cases you can still pass options 
- and switches with one dash (`-`). For more details, see 
- [[how to pass arguments|CommandsReference#how-to-pass-options--switches]] (`choco -?`).
+ If you are attempting to get local installed items, use 
+ `choco list -lo`. 
 
-**NOTE:** `cpack` has been deprecated as it has a name collision with CMake. Please 
- use `choco pack` instead. The shortcut will be removed in v1.
-
-
-## Usage
-
-    choco pack [<path to nuspec>] [<options/switches>]
-    cpack [<path to nuspec>] [<options/switches>] (DEPRECATED)
-
-## Examples
-
-    choco pack
-    choco pack --version 1.2.3
-    choco pack path/to/nuspec
-
+ If you want to know what has available upgrades, use 
+ `choco upgrade <pkg|all> -whatif` or [[choco outdated|Commandsoutdated]].
 
 ## Options and Switches
 
@@ -82,13 +66,21 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
      UseSystemPowerShell - Execute PowerShell using an external process 
        instead of the built-in PowerShell host. Available in 0.9.10+.
 
-     --version=VALUE
-     Version - The version you would like to insert into the package.
+ -s, --source=VALUE
+     Source - The source to find the package(s) to install. Special sources 
+       include: ruby, webpi, cygwin, windowsfeatures, and python. Defaults to 
+       default feeds.
+
+     --lo, --localonly
+     LocalOnly - Only search against local machine items.
+
+     --pre, --prerelease
+     Prerelease - Include Prereleases? Defaults to false.
 
 ~~~
 
 [[Command Reference|CommandsReference]]
 
 
-****NOTE:**** This documentation has been automatically generated from `choco pack -h`. 
+****NOTE:**** This documentation has been automatically generated from `choco version -h`. 
 

@@ -1,81 +1,194 @@
-# Get-ChocolateyWebFile
+﻿# Get-ChocolateyWebFile
 
 Downloads a file from the internets.
 
-## Usage
+## Syntax
 
-```powershell
-Get-ChocolateyWebFile $packageName $fileFullPath $url $url64bit `
- -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 `
- -checksumType64 $checksumType64
-```
+~~~powershell
+Get-ChocolateyWebFile -packageName <String> -fileFullPath <String> -url <String> [-url64bit <String>] [-checksum <String>] [-checksumType <String>] [-checksum64 <String>] [-checksumType64 <String>] [-options <Hashtable>] [-getOriginalFileName] [<CommonParameters>]
+~~~
 
-## Examples
+## Description
+This will download a file from a url, tracking with a progress bar.
 
-```powershell
-$scriptPath = $(Split-Path -parent $MyInvocation.MyCommand.Definition)
-$nodePath = Join-Path $scriptPath 'node.exe'
-Get-ChocolateyWebFile 'nodejs' "$nodePath" 'http://nodejs.org/dist/v0.5.2/node.exe'
-```
+It returns the filepath to the downloaded file when it is complete.
+
+## Notes
+
+This helper reduces the number of lines one would have to write to download a file to 1 line.
+
+There is no error handling built into this method.
+
+## Aliases
+
+None
+
+## Inputs
+
+None
+
+## Outputs
+
+None
 
 ## Parameters
 
-* `-packageName`
+###  -packageName \<String\>
+The name of the package we want to download - this is arbitrary, call it whatever you want.
+It's recommended you call it the same as your nuget package id.
 
-    This is an arbitrary name.
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | true
+Position?              | 1
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -fileFullPath \<String\>
+This is the full path of the resulting file name.
 
-    Example: `'7zip'`
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | true
+Position?              | 2
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -url \<String\>
+This is the url to download the file from.
 
-* `-fileFullPath`
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | true
+Position?              | 3
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -url64bit [\<String\>]
+OPTIONAL - If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly. Please note that the 32 bit url will be used in the absence of this. This link should only be used for 64 bit native software. If the original Url contains both (which is quite rare), set this to '$url' Otherwise remove this parameter.
 
-    The full path and name of the file to save. This should include the name of the file and extension.
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 4
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -checksum [\<String\>]
+OPTIONAL (Right now) - This allows a checksum to be validated for files that are not local
 
-    Example: `'c:\tools\nodejs\node.exe'`
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -checksumType [\<String\>]
+OPTIONAL (Right now) - 'md5', 'sha1', 'sha256' or 'sha512' - defaults to 'md5'
 
-* `-url`
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -checksum64 [\<String\>]
+OPTIONAL (Right now) - This allows a checksum to be validated for files that are not local
 
-    The Url to the file.
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -checksumType64 [\<String\>]
+OPTIONAL (Right now) - 'md5', 'sha1', 'sha256' or 'sha512' - defaults to ChecksumType
 
-    Example: `'http://nodejs.org/dist/v0.5.2/node.exe'`
+Property               | Value
+---------------------- | -------------
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | $checksumType
+Accept Pipeline Input? | false
+ 
+###  -options [\<Hashtable\>]
+OPTIONAL - Specify custom headers. Available in 0.9.10+.
 
-* `-url64bit` _(optional)_
+Property               | Value
+---------------------- | --------------
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | @{Headers=@{}}
+Accept Pipeline Input? | false
+ 
+###  -getOriginalFileName
+OPTIONAL switch to allow Chocolatey to determine the original file name from the url
 
-    If there is a 64 bit file available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly.
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | False
+Accept Pipeline Input? | false
+ 
+### \<CommonParameters\>
 
-    Example: `'http://nodejs.org/dist/v0.5.2/nodex64.exe'`
+This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
-    Defaults to the 32bit url.
+## Examples
+**EXAMPLE 1**
 
-* `-checksum` _(optional)_
+~~~powershell
+Get-ChocolateyWebFile '__NAME__' 'C:\somepath\somename.exe' 'URL' '64BIT_URL_DELETE_IF_NO_64BIT'
 
-    This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+~~~
 
-    Example: `-checksum 'C67962F064924F3C7B95D69F88E745C0'`
+**EXAMPLE 2**
 
-    Defaults to ``.
+~~~powershell
 
-* `-checksumType` _(optional)_
+$toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+Get-ChocolateyWebFile -PackageName 'bob' -FileFullPath "$toolsDir\bob.exe" -Url 'https://somewhere/bob.exe'
+~~~
 
-    This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+**EXAMPLE 3**
 
-    Example: `-checksumType 'sha1'`
+~~~powershell
 
-    Defaults to `md5`.
+$options =
+@{
+  Headers = @{
+    Accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8';
+    'Accept-Charset' = 'ISO-8859-1,utf-8;q=0.7,*;q=0.3';
+    'Accept-Language' = 'en-GB,en-US;q=0.8,en;q=0.6';
+    Cookie = 'requiredinfo=info';
+    Referer = 'https://somelocation.com/';
+  }
+}
 
-* `-checksum64` _(optional)_
+Get-ChocolateyWebFile 'package' "$(Split-Path -parent $MyInvocation.MyCommand.Definition)\thefile.exe" 'https://somelocation.com/thefile.exe' -options $options
+~~~
 
-    This allows the x64 file being downloaded to be validated. Can be an MD5 or SHA1 hash.
+## Links
 
-    Example: `-checksum64 'C67962F064924F3C7B95D69F88E745C0'`
+ * [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]
+ * [[Get-WebFile|HelpersGetWebFile]]
+ * [[Get-FtpFile|HelpersGetFtpFile]]
 
-    Defaults to ``.
-
-* `-checksumType64` _(optional)_
-
-    This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
-
-    Example: `-checksumType64 'sha1'`
-
-    Defaults to checksumType's value.
 
 [[Function Reference|HelpersReference]]
+
+**NOTE:** This documentation has been automatically generated by inspecting the help from  `Get-ChocolateyWebFile`.

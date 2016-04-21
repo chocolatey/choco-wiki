@@ -1,28 +1,27 @@
-﻿# Pack Command (choco pack)
+﻿# Source Command (choco source)
 
-Chocolatey will attempt to package a nuspec into a compiled nupkg. Some
- may prefer to use `cpack` as a shortcut for `choco pack`.
+Chocolatey will allow you to interact with sources.
 
-**NOTE:** 100% compatible with older chocolatey client (0.9.8.32 and below)
- with options and switches. In most cases you can still pass options 
- and switches with one dash (`-`). For more details, see 
- [[how to pass arguments|CommandsReference#how-to-pass-options--switches]] (`choco -?`).
-
-**NOTE:** `cpack` has been deprecated as it has a name collision with CMake. Please 
- use `choco pack` instead. The shortcut will be removed in v1.
-
+**NOTE:** Mostly compatible with older chocolatey client (0.9.8.x and 
+ below) with options and switches. When enabling, disabling or removing 
+ a source, use `-name` in front of the option now. In most cases you 
+ can still pass options and switches with one dash (`-`). For more 
+ details, see [[how to pass arguments|CommandsReference#how-to-pass-options--switches]] (`choco -?`).
 
 ## Usage
 
-    choco pack [<path to nuspec>] [<options/switches>]
-    cpack [<path to nuspec>] [<options/switches>] (DEPRECATED)
+    choco source [list]|add|remove|disable|enable [<options/switches>]
+    choco sources [list]|add|remove|disable|enable [<options/switches>]
 
 ## Examples
 
-    choco pack
-    choco pack --version 1.2.3
-    choco pack path/to/nuspec
-
+    choco source
+    choco source list
+    choco source add -n=bob -s "'https://somewhere/out/there/api/v2/'"
+    choco source add -n=bob -s "'https://somewhere/out/there/api/v2/'" -u=bob -p=12345
+    choco source disable -n=bob
+    choco source enable -n=bob
+    choco source remove -n=bob
 
 ## Options and Switches
 
@@ -82,13 +81,30 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
      UseSystemPowerShell - Execute PowerShell using an external process 
        instead of the built-in PowerShell host. Available in 0.9.10+.
 
-     --version=VALUE
-     Version - The version you would like to insert into the package.
+ -n, --name=VALUE
+     Name - the name of the source. Required with some actions. Defaults to 
+       empty.
+
+ -s, --source=VALUE
+     Source - The source. Defaults to empty.
+
+ -u, --user=VALUE
+     User - used with authenticated feeds. Defaults to empty.
+
+ -p, --password=VALUE
+     Password - the user's password to the source. Encrypted in chocolate-
+       y.config file.
+
+     --priority=VALUE
+     Priority - The priority order of this source as compared to other 
+       sources, lower is better. Defaults to 0 (no priority). All priorities 
+       above 0 will be evaluated first, then zero-based values will be 
+       evaluated in config file order. Available in 0.9.9.9+.
 
 ~~~
 
 [[Command Reference|CommandsReference]]
 
 
-****NOTE:**** This documentation has been automatically generated from `choco pack -h`. 
+****NOTE:**** This documentation has been automatically generated from `choco source -h`. 
 

@@ -1,28 +1,17 @@
-﻿# Pack Command (choco pack)
+﻿# Feature Command (choco features)
 
-Chocolatey will attempt to package a nuspec into a compiled nupkg. Some
- may prefer to use `cpack` as a shortcut for `choco pack`.
-
-**NOTE:** 100% compatible with older chocolatey client (0.9.8.32 and below)
- with options and switches. In most cases you can still pass options 
- and switches with one dash (`-`). For more details, see 
- [[how to pass arguments|CommandsReference#how-to-pass-options--switches]] (`choco -?`).
-
-**NOTE:** `cpack` has been deprecated as it has a name collision with CMake. Please 
- use `choco pack` instead. The shortcut will be removed in v1.
-
+Chocolatey will allow you to interact with features.
 
 ## Usage
 
-    choco pack [<path to nuspec>] [<options/switches>]
-    cpack [<path to nuspec>] [<options/switches>] (DEPRECATED)
+    choco feature [list]|disable|enable [<options/switches>]
 
 ## Examples
 
-    choco pack
-    choco pack --version 1.2.3
-    choco pack path/to/nuspec
-
+    choco feature
+    choco feature list
+    choco feature disable -n=bob
+    choco feature enable -n=bob
 
 ## Options and Switches
 
@@ -82,13 +71,14 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
      UseSystemPowerShell - Execute PowerShell using an external process 
        instead of the built-in PowerShell host. Available in 0.9.10+.
 
-     --version=VALUE
-     Version - The version you would like to insert into the package.
+ -n, --name=VALUE
+     Name - the name of the source. Required with some actions. Defaults to 
+       empty.
 
 ~~~
 
 [[Command Reference|CommandsReference]]
 
 
-****NOTE:**** This documentation has been automatically generated from `choco pack -h`. 
+****NOTE:**** This documentation has been automatically generated from `choco features -h`. 
 

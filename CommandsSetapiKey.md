@@ -1,27 +1,30 @@
-﻿# Pack Command (choco pack)
+﻿# ApiKey Command (choco setapiKey)
 
-Chocolatey will attempt to package a nuspec into a compiled nupkg. Some
- may prefer to use `cpack` as a shortcut for `choco pack`.
+This lists api keys that are set or sets an api key for a particular   
+ source so it doesn't need to be specified every time.
 
-**NOTE:** 100% compatible with older chocolatey client (0.9.8.32 and below)
- with options and switches. In most cases you can still pass options 
- and switches with one dash (`-`). For more details, see 
- [[how to pass arguments|CommandsReference#how-to-pass-options--switches]] (`choco -?`).
-
-**NOTE:** `cpack` has been deprecated as it has a name collision with CMake. Please 
- use `choco pack` instead. The shortcut will be removed in v1.
-
+Anything that doesn't contain source and key will list api keys.
 
 ## Usage
 
-    choco pack [<path to nuspec>] [<options/switches>]
-    cpack [<path to nuspec>] [<options/switches>] (DEPRECATED)
+    choco apikey [<options/switches>]
+    choco setapikey [<options/switches>]
 
 ## Examples
 
-    choco pack
-    choco pack --version 1.2.3
-    choco pack path/to/nuspec
+    choco apikey
+    choco apikey -s"https://somewhere/out/there"
+    choco apikey -s"https://somewhere/out/there/" -k="value"
+    choco apikey -s"https://chocolatey.org/" -k="123-123123-123"
+
+## Connecting to Chocolatey.org
+
+In order to save your API key for https://chocolatey.org/, 
+ log in (or register, confirm and then log in) to
+ https://chocolatey.org/, go to https://chocolatey.org/account, 
+ copy the API Key, and then use it in the following command:
+
+    choco apikey -k <your key here> -s https://chocolatey.org/
 
 
 ## Options and Switches
@@ -82,13 +85,16 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
      UseSystemPowerShell - Execute PowerShell using an external process 
        instead of the built-in PowerShell host. Available in 0.9.10+.
 
-     --version=VALUE
-     Version - The version you would like to insert into the package.
+ -s, --source=VALUE
+     Source [REQUIRED] - The source location for the key
+
+ -k, --key, --apikey, --api-key=VALUE
+     ApiKey - The api key for the source.
 
 ~~~
 
 [[Command Reference|CommandsReference]]
 
 
-****NOTE:**** This documentation has been automatically generated from `choco pack -h`. 
+****NOTE:**** This documentation has been automatically generated from `choco setapiKey -h`. 
 
