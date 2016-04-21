@@ -12,8 +12,8 @@ Returns a list of outdated packages.
 ## Examples
 
     choco outdated
-    choco outdated -s "https://somewhere/out/there"
-    choco outdated -s "https://somewhere/protected" -u user -p pass
+    choco outdated -s https://somewhere/out/there
+    choco outdated -s "'https://somewhere/protected'" -u user -p pass
 
 If you use `--source=https://somewhere/out/there`, it is 
  going to look for outdated packages only based on that source.

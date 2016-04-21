@@ -26,12 +26,12 @@ Skip upgrading certain packages with [[`choco pin`|Commandspin]] or with the opt
     choco upgrade chocolatey
     choco upgrade notepadplusplus googlechrome atom 7zip 
     choco upgrade notepadplusplus googlechrome atom 7zip -dvfy
-    choco upgrade git --params="/GitAndUnixToolsOnPath /NoAutoCrlf" -y
+    choco upgrade git --params="'/GitAndUnixToolsOnPath /NoAutoCrlf'" -y
     choco upgrade nodejs.install --version 0.10.35
-    choco upgrade git -s "https://somewhere/out/there"
-    choco upgrade git -s "https://somewhere/protected" -u user -p pass
+    choco upgrade git -s "'https://somewhere/out/there'"
+    choco upgrade git -s "'https://somewhere/protected'" -u user -p pass
     choco upgrade all
-    choco upgrade all --except="skype,conemu"
+    choco upgrade all --except="'skype,conemu'"
 
 ## See It In Action
 

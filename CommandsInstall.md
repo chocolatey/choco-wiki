@@ -27,10 +27,10 @@ Installs a package or a list of packages (sometimes specified as a
     choco install notepadplusplus googlechrome atom 7zip 
     choco install notepadplusplus --force --force-dependencies
     choco install notepadplusplus googlechrome atom 7zip -dvfy
-    choco install git --params="/GitAndUnixToolsOnPath /NoAutoCrlf" -y
+    choco install git --params="'/GitAndUnixToolsOnPath /NoAutoCrlf'" -y
     choco install nodejs.install --version 0.10.35
-    choco install git -s "https://somewhere/out/there"
-    choco install git -s "https://somewhere/protected" -u user -p pass
+    choco install git -s "'https://somewhere/out/there'"
+    choco install git -s "'https://somewhere/protected'" -u user -p pass
 
 Choco can also install directly from a nuspec/nupkg file. This aids in 
  testing packages:

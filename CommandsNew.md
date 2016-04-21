@@ -25,8 +25,8 @@ Possible properties to pass:
 ## Examples
 
     choco new bob
-    choco new bob -a --version 1.2.0 maintainername="This guy"
-    choco new bob silentargs="/S" url="https://somewhere/out/there.msi"
+    choco new bob -a --version 1.2.0 maintainername="'This guy'"
+    choco new bob silentargs="'/S'" url="'https://somewhere/out/there.msi'"
     choco new bob --outputdirectory Packages
 
 

@@ -10,7 +10,7 @@ Chocolatey will attempt to push a compiled nupkg to a package feed.
  [[how to pass arguments|CommandsReference#how-to-pass-options--switches]] (`choco -?`).
 
 A feed can be a local folder, a file share, the community feed 
- ('https://chocolatey.org/'), or a custom/private feed. For web
+ (https://chocolatey.org/), or a custom/private feed. For web
  feeds, it has a requirement that it implements the proper OData
  endpoints required for NuGet packages.
 
@@ -24,9 +24,9 @@ A feed can be a local folder, a file share, the community feed
 
 ## Examples
 
-    choco push --source "https://chocolatey.org/"
-    choco push --source "https://chocolatey.org/" -t 500
-    choco push --source "https://chocolatey.org/" -k="123-123123-123"
+    choco push --source https://chocolatey.org/
+    choco push --source "'https://chocolatey.org/'" -t 500
+    choco push --source "'https://chocolatey.org/'" -k="'123-123123-123'"
 
 ## Troubleshooting
 

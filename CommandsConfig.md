@@ -8,7 +8,7 @@ Chocolatey will allow you to interact with the configuration file settings.
 
     choco config [list]|get|set|unset [<options/switches>]
 
-**NOTE:** "Unset" subcommand available in 0.9.10+.
+**NOTE:** `Unset` subcommand available in 0.9.10+.
 
 ## Examples
 
