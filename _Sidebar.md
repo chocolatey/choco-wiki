@@ -38,13 +38,13 @@
 
  - [[Create Packages|CreatePackages]]
  - [[Quick Start|CreatePackagesQuickStart]]
- - [[Function and Variable Reference|HelpersReference]]
- - [[Automatic Packages|AutomaticPackages]]
  - **Commands:**
   - [[New|CommandsNew]]
   - [[Pack|CommandsPack]]
   - [[Apikey|CommandsApiKey]]
   - [[Push|CommandsPush]]
+ - [[Function and Variable Reference|HelpersReference]]
+ - [[Automatic Packages|AutomaticPackages]]
 
 **How To's**
 
