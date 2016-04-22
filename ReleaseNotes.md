@@ -1,6 +1,6 @@
 # Release Notes
 
-## [0.9.10](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.10+is%3Aclosed) (unreleased)
+## [0.9.10](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.10+is%3Aclosed) (unreleased - betas available)
 
 The "I got 99 problems, but a package manager ain't one" release. With the release of 0.9.10 (or if you prefer 0.9.10.0), we're about to make everything 100% better in your Windows package management world. We've addressed over 100 features and bugs in this release. We looked at how we could improve PowerShell and we've come out with a [competely internal host](https://github.com/chocolatey/choco/issues/8) that can Prompt and Read-Host in a way that times out and selects default values after a period of time. Speaking of PowerShell, how about some tab completion `choco &lt;tab&gt;` to `choco install node&lt;tab&gt;`? How about never having to [close and reopen your shell again](https://github.com/chocolatey/choco/issues/664)?
 
@@ -10,7 +10,7 @@ Here's one you probably never knew existed - extensions. Chocolatey has had the 
 
 We redesigned our `choco new` default packaging template and we've made managing templates as easy as managing packages.
 
-`choco search`/`choco list` got so many enhancements, you may not need to visit dot org again. [See it in action](https://github.com/chocolatey/choco/wiki/CommandsList#see-it-in-action).
+`choco search`/`choco list` has so many enhancements, you may not need to visit dot org again. [See it in action](https://github.com/chocolatey/choco/wiki/CommandsList#see-it-in-action).
 * [search -v provides moderation related information and a world of nuspec information](https://github.com/chocolatey/choco/issues/493)
 * [search by id only](https://github.com/chocolatey/choco/issues/663)
 * [search by id exact](https://github.com/chocolatey/choco/issues/453)
@@ -56,6 +56,7 @@ For 590 - if you set a custom cache directory for downloads, it will no longer u
  * [Security] Fix - Only load the Chocolatey PowerShell module from a known location - see [#560](https://github.com/chocolatey/choco/issues/560)
  * [Security] Fix - Package source authentication at http://location/path doesn't also use http://location/ (base url) - see [#466](https://github.com/chocolatey/choco/issues/466)
  * [Security] Fix - When defining a proxy without credentials - proxy password is shown in plain text - see [#503](https://github.com/chocolatey/choco/issues/503)
+ * [Security] Fix - Fully qualify shutdown command - see [#702](https://github.com/chocolatey/choco/issues/702)
  * Fix - Force should set allow-downgrade to true - see [#585](https://github.com/chocolatey/choco/issues/585)
  * Fix - Do not use NuGet package cache - see [#479](https://github.com/chocolatey/choco/issues/479)
  * Fix - Pack doesn't include chocolatey-specific metadata - see [#607](https://github.com/chocolatey/choco/issues/607)
@@ -118,6 +119,7 @@ For 590 - if you set a custom cache directory for downloads, it will no longer u
  * Default package template should include LICENSE.txt and VERIFICATION.txt for packages with binaries - see [#675](https://github.com/chocolatey/choco/issues/675)
  * choco list/search aliases for -v - '-detail' and '-detailed' - see [#646](https://github.com/chocolatey/choco/issues/646)
  * Log normal output to a secondary log - see [#682](https://github.com/chocolatey/choco/issues/682)
+ * Display Package test status information on install/upgrade - see [#696](https://github.com/chocolatey/choco/issues/696)
  * Pro - Also check for license in User Profile location - see [#606](https://github.com/chocolatey/choco/issues/606)
  * Pro - Set download cache information if available - see [#562](https://github.com/chocolatey/choco/issues/562)
  * Pro - Allow commands to be added - see [#583](https://github.com/chocolatey/choco/issues/583)
