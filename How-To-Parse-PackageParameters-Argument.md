@@ -4,6 +4,8 @@ Package parameters provide a way for a package consumer to make choices about ho
 
 **NOTE:** Package parameters are not meant to be a substitute for sensible default values. A package installation should require no arguments and the default values should just happen. This is especially true of the packages on the community feed. If you are hosting your own internal feeds, it is recommended you follow this behavior, but not required.
 
+**NOTE:** See [#312](https://github.com/chocolatey/choco/issues/312) for Chocolatey v0.9.10 adding a helper to do the below with almost no boilerplate.
+
 This _How-To_ focuses on how a package creator can make use of the PackageParameters argument within their package, and how they can parse the string which is passed through into their package from the installation command.
 
 ## Code Sample
