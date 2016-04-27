@@ -17,10 +17,11 @@ Should you decide you don't like Chocolatey, you can uninstall it simply by remo
 
 ## Script
 
-No warranties on this script, but here is something you can try:
+There are no warranties on this script whatsoever, but here is something you can try:
 
-**NOTE:** Warning! This will remove Chocolatey from your machine. Only run this if you intend for that to happen.
+**NOTE:** Warning! This will remove Chocolatey and all packages and configurations in those packages from your machine. Only run this if you intend for that to happen.
 
+If you also intend to delete the Chocolatey directory, remove the `-WhatIf`:
 ~~~powershell
 Remove-Item -Recurse -Force "$env:ChocolateyInstall" -WhatIf
 [System.Text.RegularExpressions.Regex]::Replace( ` 
@@ -35,8 +36,12 @@ Remove-Item -Recurse -Force "$env:ChocolateyInstall" -WhatIf
 [System.Text.RegularExpressions.Regex]::Escape("$env:ChocolateyInstall\bin") + '(?>;)?', '', `
 [System.Text.RegularExpressions.RegexOptions]::IgnoreCase) | `
 %{[System.Environment]::SetEnvironmentVariable('PATH', $_, 'Machine')}
-[System.Environment]::SetEnvironmentVariable("ChocolateyInstall",$null, 'Machine')
-[System.Environment]::SetEnvironmentVariable("ChocolateyInstall",$null, 'User')
-[System.Environment]::SetEnvironmentVariable("ChocolateyBinRoot",$null, 'User')
+~~~
+
+If you also intend to delete the tools directory that was managed by Chocolatey, remove both of the `-WhatIf` switches:
+~~~powershell
+if ($env:ChocolateyBinRoot -ne '' -and $env:ChocolateyBinRoot -ne $null) { Remove-Item -Recurse -Force "$env:ChocolateyBinRoot" -WhatIf }
+if ($env:ChocolateyToolsRoot -ne '' -and $env:ChocolateyToolsRoot -ne $null) { Remove-Item -Recurse -Force "$env:ChocolateyToolsRoot" -WhatIf }
+[System.Environment]::SetEnvironmentVariable("ChocolateyBinRoot", $null, 'User')
 [System.Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", $null, 'User')
 ~~~
