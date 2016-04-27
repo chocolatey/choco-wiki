@@ -13,3 +13,11 @@ Should you decide you don't like Chocolatey, you can uninstall it simply by remo
 * PATH (will need updated to remove)
 
 
+## Script
+
+No warranties on this script, but here is something you can try:
+
+~~~powershell
+Remove-Item -Recurse -Force "$env:ChocolateyInstall"
+System.Environment]::SetEnvironmentVariable("ChocolateyInstall","")
+~~~
