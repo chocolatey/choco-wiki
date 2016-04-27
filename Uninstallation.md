@@ -10,6 +10,8 @@ Should you decide you don't like Chocolatey, you can uninstall it simply by remo
 
 ### Environment Variables
 * ChocolateyInstall
+* ChocolateyBinRoot
+* ChocolateyToolsLocation
 * PATH (will need updated to remove)
 
 
@@ -21,5 +23,8 @@ No warranties on this script, but here is something you can try:
 
 ~~~powershell
 Remove-Item -Recurse -Force "$env:ChocolateyInstall" -WhatIf
-[System.Environment]::SetEnvironmentVariable("ChocolateyInstall","")
+[System.Environment]::SetEnvironmentVariable("ChocolateyInstall",$null, 'Machine')
+[System.Environment]::SetEnvironmentVariable("ChocolateyInstall",$null, 'User')
+[System.Environment]::SetEnvironmentVariable("ChocolateyBinRoot",$null, 'User')
+[System.Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", $null, 'User')
 ~~~
