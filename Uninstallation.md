@@ -19,7 +19,9 @@ Should you decide you don't like Chocolatey, you can uninstall it simply by remo
 
 There are no warranties on this script whatsoever, but here is something you can try:
 
-**NOTE:** Warning! This will remove Chocolatey and all packages and configurations in those packages from your machine. Only run this if you intend for that to happen.
+**WARNING!!** This will remove Chocolatey and all packages, software, and configurations in the Chocolatey Installation folder from your machine. Everything will be GONE. This is very destructive. DO NOT RUN this script unless you completely understand what the intention of this script is and are good with it. If you mess something up, we cannot help you fix it. 
+
+***WARNING:*** Seriously, this script may destroy your machine and require a rebuild. Think twice before running this.
 
 If you also intend to delete the Chocolatey directory, remove the `-WhatIf`:
 ~~~powershell
