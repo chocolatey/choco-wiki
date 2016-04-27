@@ -16,6 +16,12 @@ Choco 0.9.9+ automatically tracks registry changes for "Programs and
  means that a package may not need an explicit chocolateyUninstall.ps1
  to reverse the installation done in the install script.
 
+Chocolatey tracks packages, which are the files in
+`$env:ChocolateyInstall\lib\packagename`. These packages may or may not
+contain the software (applications/tools the packages represent). The
+software may actually be installed in Program Files (most native
+installers will install the software there) or elsewhere on the machine.
+
 With auto uninstaller turned off, a chocolateyUninstall.ps1 is required
  to perform uninstall from the system. In the absence of 
  chocolateyUninstall.ps1, choco uninstall only removes the package from 
