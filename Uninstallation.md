@@ -19,5 +19,5 @@ No warranties on this script, but here is something you can try:
 
 ~~~powershell
 Remove-Item -Recurse -Force "$env:ChocolateyInstall"
-System.Environment]::SetEnvironmentVariable("ChocolateyInstall","")
+[System.Environment]::SetEnvironmentVariable("ChocolateyInstall","")
 ~~~
