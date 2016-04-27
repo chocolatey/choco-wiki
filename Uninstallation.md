@@ -17,7 +17,9 @@ Should you decide you don't like Chocolatey, you can uninstall it simply by remo
 
 No warranties on this script, but here is something you can try:
 
+**NOTE:** Warning! This will remove Chocolatey from your machine. Only run this if you intend for that to happen.
+
 ~~~powershell
-Remove-Item -Recurse -Force "$env:ChocolateyInstall"
+Remove-Item -Recurse -Force "$env:ChocolateyInstall" -WhatIf
 [System.Environment]::SetEnvironmentVariable("ChocolateyInstall","")
 ~~~
