@@ -8,5 +8,8 @@ Should you decide you don't like Chocolatey, you can uninstall it simply by remo
 
 **NOTE:** If you upgraded from ```0.9.8.26``` to ```0.9.8.27``` it is likely that ```Chocolatey``` is installed at C:\Chocolatey, which was the default prior to ```0.9.8.27```.  If you did a fresh install of Chocolatey at version ```0.9.8.27``` then the installation folder will be ```C:\ProgramData\Chocolatey```
 
-### User Environment Variables
+### Environment Variables
 * ChocolateyInstall
+* PATH (will need updated to remove)
+
+
