@@ -82,7 +82,7 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
      AcceptLicense - Accept license dialogs automatically.
 
  -y, --yes, --confirm
-     Confirm all prompts - Chooses affirmative answer instead of prompting.
+     Confirm all prompts - Chooses affirmative answer instead of prompting. 
        Implies --accept-license
 
  -f, --force
@@ -95,29 +95,29 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
      LimitOutput - Limit the output to essential information
 
      --execution-timeout=VALUE
-     CommandExecutionTimeoutSeconds - Override the default execution timeout
+     CommandExecutionTimeoutSeconds - Override the default execution timeout 
        in the configuration of 2700 seconds.
 
  -c, --cache, --cachelocation, --cache-location=VALUE
-     CacheLocation - Location for download cache, defaults to %TEMP% or value
+     CacheLocation - Location for download cache, defaults to %TEMP% or value 
        in chocolatey.config file.
 
      --allowunofficial, --allow-unofficial, --allowunofficialbuild, --allow-unofficial-build
-     AllowUnofficialBuild - When not using the official build you must set
+     AllowUnofficialBuild - When not using the official build you must set 
        this flag for choco to continue.
 
      --failstderr, --failonstderr, --fail-on-stderr, --fail-on-standard-error, --fail-on-error-output
-     FailOnStandardError - Fail on standard error output (stderr), typically
-       received when running external commands during install providers. This
+     FailOnStandardError - Fail on standard error output (stderr), typically 
+       received when running external commands during install providers. This 
        overrides the feature failOnStandardError.
 
      --use-system-powershell
-     UseSystemPowerShell - Execute PowerShell using an external process
+     UseSystemPowerShell - Execute PowerShell using an external process 
        instead of the built-in PowerShell host. Available in 0.9.10+.
 
  -s, --source=VALUE
-     Source - The source to find the package(s) to install. Special sources
-       include: ruby, webpi, cygwin, windowsfeatures, and python. Defaults to
+     Source - The source to find the package(s) to install. Special sources 
+       include: ruby, webpi, cygwin, windowsfeatures, and python. Defaults to 
        default feeds.
 
      --version=VALUE
@@ -127,18 +127,18 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
      AllVersions - Uninstall all versions? Defaults to false.
 
      --ua, --uninstallargs, --uninstallarguments, --uninstall-arguments=VALUE
-     UninstallArguments - Uninstall Arguments to pass to the native installer
+     UninstallArguments - Uninstall Arguments to pass to the native installer 
        in the package. Defaults to unspecified.
 
  -o, --override, --overrideargs, --overridearguments, --override-arguments
-     OverrideArguments - Should uninstall arguments be used exclusively
+     OverrideArguments - Should uninstall arguments be used exclusively 
        without appending to current package passed arguments? Defaults to false.
 
      --notsilent, --not-silent
      NotSilent - Do not uninstall this silently. Defaults to false.
 
      --params, --parameters, --pkgparameters, --packageparameters, --package-parameters=VALUE
-     PackageParameters - Parameters to pass to the package. Defaults to
+     PackageParameters - Parameters to pass to the package. Defaults to 
        unspecified.
 
  -x, --forcedependencies, --force-dependencies, --removedependencies, --remove-dependencies
@@ -150,20 +150,21 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 
      --ignorepackagecodes, --ignorepackageexitcodes, --ignore-package-codes, --ignore-package-exit-codes
      IgnorePackageExitCodes - Exit with a 0 for success and 1 for non-succes-
-       s, no matter what package scripts provide for exit codes. Overrides the
+       s, no matter what package scripts provide for exit codes. Overrides the 
        default feature 'usePackageExitCodes' set to 'True'. Available in 0.-
        9.10+.
 
      --usepackagecodes, --usepackageexitcodes, --use-package-codes, --use-package-exit-codes
-     UsePackageExitCodes - Package scripts can provide exit codes. Use those
-       for choco's exit code when non-zero (this value can come from a
-       dependency package). Chocolatey defines valid exit codes as 0, 1605,
-       1614, 1641, 3010. Overrides the default feature 'usePackageExitCodes'
+     UsePackageExitCodes - Package scripts can provide exit codes. Use those 
+       for choco's exit code when non-zero (this value can come from a 
+       dependency package). Chocolatey defines valid exit codes as 0, 1605, 
+       1614, 1641, 3010. Overrides the default feature 'usePackageExitCodes' 
        set to 'True'. Available in 0.9.10+.
+
 ~~~
 
 [[Command Reference|CommandsReference]]
 
 
-***NOTE:*** This documentation has been automatically generated from `choco uninstall -h`.
+***NOTE:*** This documentation has been automatically generated from `choco uninstall -h`. 
 

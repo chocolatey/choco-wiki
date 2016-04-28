@@ -1,6 +1,7 @@
 ﻿# Install-ChocolateyInstallPackage
 
-Installs a package
+Installs software into "Programs and Features". Use
+Install-ChocolateyPackage when software must be downloaded first.
 
 ## Syntax
 
@@ -26,7 +27,7 @@ publicly (like on the [community feed](https://chocolatey.org/packages)). Otherw
 Install-ChocolateyPackage to download those resources from their
 official distribution points.
 
-This is a native installer wrapper functions. A "true" package will
+This is a native installer wrapper function. A "true" package will
 contain all the run time files and not an installer. That could come
 pre-zipped and require unzipping in a PowerShell script. Chocolatey
 works best when the packages contain the software it is managing. Most

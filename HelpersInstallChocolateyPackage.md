@@ -34,7 +34,7 @@ to download a file first), use Install-ChocolateyInstallPackage instead.
 
 This command will assert UAC/Admin privileges on the machine.
 
-This is a native installer wrapper functions. A "true" package will
+This is a native installer wrapper function. A "true" package will
 contain all the run time files and not an installer. That could come
 pre-zipped and require unzipping in a PowerShell script. Chocolatey
 works best when the packages contain the software it is managing. Most
