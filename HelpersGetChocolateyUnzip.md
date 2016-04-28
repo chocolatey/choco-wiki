@@ -5,7 +5,11 @@ Unzips an archive file and returns the location for further processing.
 ## Syntax
 
 ~~~powershell
-Get-ChocolateyUnzip [-fileFullPath <String>] [-destination <String>] [-specificFolder <String>] [-packageName <String>]
+Get-ChocolateyUnzip `
+  [-FileFullPath <String>] `
+  [-Destination <String>] `
+  [-SpecificFolder <String>] `
+  [-PackageName <String>]
 ~~~
 
 ## Description
@@ -16,6 +20,12 @@ Supported archive formats are: 7z, lzma, cab, zip, gzip, bzip2, and tar.
 ## Notes
 
 If extraction fails, an exception is thrown.
+
+If you are embedding files into a package, ensure that you have the
+rights to redistribute those files if you are sharing this package
+publicly (like on the [community feed](https://chocolatey.org/packages)). Otherwise, please use
+Install-ChocolateyZipPackage to download those resources from their
+official distribution points.
 
 ## Aliases
 
@@ -32,7 +42,9 @@ None
 ## Parameters
 
 ###  -FileFullPath [\<String\>]
-This is the full path to the zip file.
+This is the full path to the zip file. If embedding it in the package
+next to the install script, the path will be like
+`"$(Split-Path -parent $MyInvocation.MyCommand.Definition)\\file.zip"`
 
 Property               | Value
 ---------------------- | -----
@@ -66,7 +78,8 @@ Default Value          |
 Accept Pipeline Input? | false
  
 ###  -PackageName [\<String\>]
-OPTIONAL - This will faciliate logging unzip activity for subsequent uninstall
+OPTIONAL - This will faciliate logging unzip activity for subsequent
+uninstalls
 
 Property               | Value
 ---------------------- | -----
@@ -86,7 +99,7 @@ Accept Pipeline Input? | false
 
 # Path to the folder where the script is executing
 $toolsDir = (Split-Path -parent $MyInvocation.MyCommand.Definition)
-Get-ChocolateyUnzip -fileFullPath "c:\someFile.zip" -destination $toolsDir
+Get-ChocolateyUnzip -FileFullPath "c:\someFile.zip" -Destination $toolsDir
 ~~~
 
 ## Links

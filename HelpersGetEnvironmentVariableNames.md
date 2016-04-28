@@ -5,16 +5,19 @@ Gets all environment variable names.
 ## Syntax
 
 ~~~powershell
-Get-EnvironmentVariableNames [-Scope {Process | User | Machine}]
+Get-EnvironmentVariableNames `
+  [-Scope {Process | User | Machine}]
 ~~~
 
 ## Description
 
-Provides a list of environment variable names based on the scope. This can be used to loop through the list and generate names.
+Provides a list of environment variable names based on the scope. This
+can be used to loop through the list and generate names.
 
 ## Notes
 
-Process dumps the current environment variable names in memory / session. The other scopes refer to the registry values.
+Process dumps the current environment variable names in memory /
+session. The other scopes refer to the registry values.
 
 ## Aliases
 
@@ -37,7 +40,7 @@ None
  **EXAMPLE 1**
 
 ~~~powershell
-Get-EnvironmentVariableNames Machine
+Get-EnvironmentVariableNames -Scope Machine
 
 ~~~
 

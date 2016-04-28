@@ -5,16 +5,23 @@ Gets an Environment Variable.
 ## Syntax
 
 ~~~powershell
-Get-EnvironmentVariable -Name <String> -Scope {Process | User | Machine} [-PreserveVariables] [<CommonParameters>]
+Get-EnvironmentVariable `
+  -Name <String> `
+  -Scope {Process | User | Machine} `
+  [-PreserveVariables] [<CommonParameters>]
 ~~~
 
 ## Description
 
-This will will get an environment variable based on the variable name and scope while accounting whether to expand the variable or not (e.g.: %TEMP% -> C:\User\Username\AppData\Local\Temp).
+This will will get an environment variable based on the variable name
+and scope while accounting whether to expand the variable or not
+(e.g.: `%TEMP%`-> `C:\User\Username\AppData\Local\Temp`).
 
 ## Notes
 
-This helper reduces the number of lines one would have to write to get environment variables, mainly when not expanding the variables is a must.
+This helper reduces the number of lines one would have to write to get
+environment variables, mainly when not expanding the variables is a
+must.
 
 ## Aliases
 
@@ -42,7 +49,8 @@ Default Value          |
 Accept Pipeline Input? | false
  
 ###  -Scope
-The environemnt variable target scope.
+The environemnt variable target scope. This is `Process`, `User`, or
+`Machine`.
 
 
 Valid options: Process, User, Machine
@@ -56,7 +64,8 @@ Default Value          |
 Accept Pipeline Input? | false
  
 ###  -PreserveVariables
-A switch parameter stating whether you want to expand the variables or not. Defaults to false. Available in 0.9.10+.
+A switch parameter stating whether you want to expand the variables or
+not. Defaults to false. Available in 0.9.10+.
 
 Property               | Value
 ---------------------- | -----
@@ -76,7 +85,14 @@ This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -Err
  **EXAMPLE 1**
 
 ~~~powershell
-Get-EnvironmentVariable 'TEMP' User -PreserveVariables
+Get-EnvironmentVariable -Name 'TEMP' -Scope User -PreserveVariables
+
+~~~
+
+**EXAMPLE 2**
+
+~~~powershell
+Get-EnvironmentVariable -Name 'PATH' -Scope Machine
 
 ~~~
 

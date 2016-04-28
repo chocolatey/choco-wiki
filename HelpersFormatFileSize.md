@@ -5,7 +5,8 @@ DO NOT USE. Not part of the public API.
 ## Syntax
 
 ~~~powershell
-Format-FileSize -size <Double> [<CommonParameters>]
+Format-FileSize `
+  -Size <Double> [<CommonParameters>]
 ~~~
 
 ## Description
@@ -41,7 +42,7 @@ This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -Err
  **EXAMPLE 1**
 
 ~~~powershell
-Format-FileSize -size $fileSizeBytes
+Format-FileSize -Size $fileSizeBytes
 
 ~~~
 

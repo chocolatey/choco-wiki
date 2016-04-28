@@ -161,6 +161,19 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
      IgnoreChecksums - Ignore checksums provided by the package. Available in 
        0.9.9.9+.
 
+     --ignorepackagecodes, --ignorepackageexitcodes, --ignore-package-codes, --ignore-package-exit-codes
+     IgnorePackageExitCodes - Exit with a 0 for success and 1 for non-succes-
+       s, no matter what package scripts provide for exit codes. Overrides the 
+       default feature 'usePackageExitCodes' set to 'True'. Available in 0.-
+       9.10+.
+
+     --usepackagecodes, --usepackageexitcodes, --use-package-codes, --use-package-exit-codes
+     UsePackageExitCodes - Package scripts can provide exit codes. Use those 
+       for choco's exit code when non-zero (this value can come from a 
+       dependency package). Chocolatey defines valid exit codes as 0, 1605, 
+       1614, 1641, 3010. Overrides the default feature 'usePackageExitCodes' 
+       set to 'True'. Available in 0.9.10+.
+
      --except=VALUE
      Except - a comma-separated list of package names that should not be 
        upgraded when upgrading 'all'. Defaults to empty. Available in 0.9.10+.

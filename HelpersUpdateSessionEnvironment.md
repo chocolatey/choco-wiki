@@ -1,8 +1,8 @@
 ﻿# Update-SessionEnvironment
 
 Updates the environment variables of the current powershell session with
-any environment variable changes that may have occured during a chocolatey
-package install.
+any environment variable changes that may have occured during a
+Chocolatey package install.
 
 ## Syntax
 
@@ -12,17 +12,24 @@ Update-SessionEnvironment
 
 ## Description
 
-When chocolatey installs a package, the package author may add or change
+When Chocolatey installs a package, the package author may add or change
 certain environment variables that will affect how the application runs
-or how it is accessed. Often, these changes are not visible to the current
-powershell session. This means the user needs to open a new powershell
-session before these settings take effect which can render the installed
-application nonfunctional until that time.
+or how it is accessed. Often, these changes are not visible to the
+current PowerShell session. This means the user needs to open a new
+PowerShell session before these settings take effect which can render
+the installed application nonfunctional until that time.
 
 Use the Update-SessionEnvironment command to refresh the current
-powershell session with all environment settings possibly performed by
-chocolatey package installs.
+PowerShell session with all environment settings possibly performed by
+Chocolatey package installs.
 
+## Notes
+
+This method is also added to the user's PowerShell profile as
+`refreshenv`. When called as `refreshenv`, the method will provide
+additional output.
+
+Preserves `PSModulePath` as set by the process starting in 0.9.10.
 
 ## Aliases
 

@@ -5,7 +5,9 @@ DEPRECATED - DO NOT USE.
 ## Syntax
 
 ~~~powershell
-Write-ChocolateyFailure [-packageName <String>] [-failureMessage <String>]
+Write-ChocolateyFailure `
+  [-PackageName <String>] `
+  [-FailureMessage <String>]
 ~~~
 
 ## Description
@@ -14,7 +16,10 @@ Throws the error message as an error.
 
 ## Notes
 
-This has been deprecated and is no longer useful as of 0.9.9. Instead please just use `throw $_.Exception` when catching errors. Although try/catch is no longer necessary unless you want to do some error handling.
+This has been deprecated and is no longer useful as of 0.9.9. Instead
+please just use `throw $_.Exception` when catching errors. Although
+try/catch is no longer necessary unless you want to do some error
+handling.
 
 ## Aliases
 
@@ -31,7 +36,8 @@ None
 ## Parameters
 
 ###  -PackageName [\<String\>]
-The name of the package, used for messaging
+The name of the package - while this is an arbitrary value, it's
+recommended that it matches the package id.
 
 Property               | Value
 ---------------------- | -----
