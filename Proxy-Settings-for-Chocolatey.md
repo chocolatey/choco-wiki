@@ -76,7 +76,7 @@ You've tried everything and Chocolatey still won't install -
 It could also be that your trusted root certificates are missing or not up to date (Windows 2012 does not install root certificates by default). You will need to download and install both these certificates into your LocalMachine's *Trusted Root Certification Authorities* certificate store.
 
 To access [chocolatey.org](https://chocolatey.org):
-* [Go Daddy Secure Certificate Authority - G2](https://certs.godaddy.com/repository) (Thumbprint: 47BEABC922EAE80E78783462A79F45C254FDE68B). (On the download page, this certificate is named *GoDaddy Class 2 Certification Authority Root Certificate - G2* and its listed thumbprint (`45140B3247EB9CC8C5B4F0D7B53091F73292089E6E5A63E2749DD3ACA9198EDA`) is wrong.
+* [Go Daddy Secure Certificate Authority - G2](https://certs.godaddy.com/repository) (Thumbprint: `47BEABC922EAE80E78783462A79F45C254FDE68B`). (On the download page, this certificate is named *GoDaddy Class 2 Certification Authority Root Certificate - G2* and its listed thumbprint (`45140B3247EB9CC8C5B4F0D7B53091F73292089E6E5A63E2749DD3ACA9198EDA`) is wrong.
 
 To access [packages.chocolatey.org](https://packages.chocolatey.org):
-* [AddTrust External CA Root](https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/917/91/) (Thumbprint: 02FAF3E291435468607857694DF5E45B68851868)
+* [AddTrust External CA Root](https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/917/91/) (Thumbprint: `02FAF3E291435468607857694DF5E45B68851868`)
