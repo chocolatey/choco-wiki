@@ -14,6 +14,8 @@ Installs a package or a list of packages (sometimes specified as a
  all packages from a custom feed. Will not work with Chocolatey default
  feed. **THIS IS NOT YET REIMPLEMENTED.**
 
+**NOTE**: Any package name ending with `.config` is considered a 'packages.config' file.
+
 ## Examples
 
     choco install sysinternals
@@ -110,7 +112,9 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
 ```
 
 ## Packages.config
-Alternative to PackageName. This is a list of packages in an xml manifest for Chocolatey to install.  This is like the packages.config that NuGet uses except it also adds other options and switches. This can also be the path to the `packages.config` file if it is not in the current working directory.
+Alternative to PackageName. This is a list of packages in an xml manifest for Chocolatey to install.  This is like the packages.config that NuGet uses except it also adds other options and switches. This can also be the path to the `packages.config` file if it is not in the current working directory. 
+
+**NOTE**: The filename is only required to end in `.config`, the name is not required to be `packages.config`.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
