@@ -73,12 +73,10 @@ You've tried everything and Chocolatey still won't install -
 
 > The underlying connection was closed: Could not establish trust relationship for the SSL / TLS secure channel.
 
-It could also be that your root trusted certificates are not up to date. You will need the following certificates in your chain:
+It could also be that your trusted root certificates are missing or not up to date (Windows 2012 does not install root certificates by default). You will need to download and install both these certificates into your LocalMachine's *Trusted Root Certification Authorities* certificate store.
 
-* Go Daddy Secure Certificate Authority - G2
+To access [chocolatey.org](https://chocolatey.org):
+* [Go Daddy Secure Certificate Authority - G2](https://certs.godaddy.com/repository) (Thumbprint: 47BEABC922EAE80E78783462A79F45C254FDE68B). (On the download page, this certificate is named *GoDaddy Class 2 Certification Authority Root Certificate - G2* and its listed thumbprint (`45140B3247EB9CC8C5B4F0D7B53091F73292089E6E5A63E2749DD3ACA9198EDA`) is wrong.
 
-![Go Daddy Secure Certificate Authority - G2](https://cloud.githubusercontent.com/assets/63502/13706493/ea4d0aac-e76a-11e5-913e-590dfe775fc1.png)
-
-* COMODO ECC Domain Validation Secure Server CA 2
-
-![image](https://cloud.githubusercontent.com/assets/63502/13706546/1a1d237a-e76b-11e5-9263-e586cef5f744.png)
+To access [packages.chocolatey.org](https://packages.chocolatey.org):
+* [AddTrust External CA Root](https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/917/91/) (Thumbprint: 02FAF3E291435468607857694DF5E45B68851868)
