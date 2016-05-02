@@ -19,9 +19,37 @@ Great question - [[Why does Chocolatey install where it does|DefaultChocolateyIn
   * Copy/Move over the items from the old lib/bin directory.
   * Delete your old install directory.
 
+**Can I install with a proxy?** Yes
+
+Chocolatey will detect and use a system set proxy. However some proxies will need to be set explicitly. To do so, you would do similar to [[Proxy-Settings-for-Chocolatey]]
+
+Set the following environment variable(s) prior to install:
+
+* `chocolateyProxyLocation` - explicit proxy location. This includes the port.
+* `chocolateyProxyUser` / `chocolateyProxyPassword` - optional credentials
+for explicit proxy
+
+**NOTE:** This will only work with the methods below that call https://chocolatey.org/install.ps1 as part of the install.
+
+**Can I install a particular version of Chocolatey?** Yes
+
+Set the following environment variable prior to install:
+
+* `chocolateyVersion` - controls what version of Chocolatey is installed
+
+**NOTE:** This will only work with the methods below that call https://chocolatey.org/install.ps1 as part of the install.
+
+**Can I use Windows built-in compression instead of downloading 7zip?** Yes
+
+Set the following environment variable prior to install:
+
+* `chocolateyUseWindowsCompression` - this will bypass the download and use of 7zip
+
+**NOTE:** This will only work with the methods below that call https://chocolatey.org/install.ps1 as part of the install.
+
 ## Non-Administrative Install
 
-1. You must choose a different location than the default. The default is a more secure location that only administrators can write to.
+1. You must choose a different location than the default. The default is a more secure location that only administrators can update.
 1. Follow that with the command line / PowerShell methods of installation.
 
 ## Command Line
@@ -40,6 +68,9 @@ This is the second-most easy method. Open a PowerShell command line and paste in
 
 **<font color="red">Note: You must have your execution policy set to unrestricted (or at least in bypass) for this to work (`Set-ExecutionPolicy Unrestricted`). There have been [reports](https://github.com/chocolatey/chocolatey/issues/70) that RemoteSigned is enough for the install to work.</font>**
 It downloads and runs (https://chocolatey.org/install.ps1).
+
+## Cmd/PowerShell w/Proxy Server
+See [[Installing Chocolatey Behind a Proxy Server|Proxy-Settings-for-Chocolatey#installing-chocolatey-behind-a-proxy-server]]
 
 ## PowerShell Through Batch Method
 This is the best method if you want to repeat it or include it in source control. It requires no change to your existing PowerShell to allow for remote unsigned scripts.

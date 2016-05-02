@@ -1,5 +1,11 @@
 When installing a Chocolatey Package, it is possible to use a number of arguments to control how the package is installed.  Each one of these arguments is detailed [here](https://github.com/chocolatey/choco/wiki/CommandsInstall).
 
+Package parameters provide a way for a package consumer to make choices about how they want things installed and configuration of the underlying software.
+
+**NOTE:** Package parameters are not meant to be a substitute for sensible default values. A package installation should require no arguments and the default values should just happen. This is especially true of the packages on the community feed. If you are hosting your own internal feeds, it is recommended you follow this behavior, but not required.
+
+**NOTE:** See [#312](https://github.com/chocolatey/choco/issues/312) for Chocolatey v0.9.10 adding a helper to do the below with almost no boilerplate.
+
 This _How-To_ focuses on how a package creator can make use of the PackageParameters argument within their package, and how they can parse the string which is passed through into their package from the installation command.
 
 ## Code Sample
@@ -118,8 +124,10 @@ i.e. it is using the default values which we made at the top of the file
 However, if we instead used:
 
 ```
-choco install <packageName> -packageParameters "/Port:82 /Edition:LicenseKey1 /InstallationPath:'C:\temp\folder with space' /AdditionalTools"
+choco install <packageName> -packageParameters '"/Port:82 /Edition:LicenseKey1 /InstallationPath:""C:\temp\folder with space"" /AdditionalTools"'
 ```
+Keep in mind how to pass pkg args: https://github.com/chocolatey/choco/wiki/CommandsReference#how-to-pass-options--switches
+
 
 The output would be:
 

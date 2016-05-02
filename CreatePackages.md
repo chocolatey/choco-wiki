@@ -1,6 +1,10 @@
 # Creating Chocolatey Packages
 
 ## Summary
+See [[What are Chocolatey Packages?|GettingStarted#what-are-chocolatey-packages]] first.
+
+**Note:** When you host internal packages, those packages can embed software and/or point to internal shares. You are not subject to software distribution rights like the packages on the community feed, so you can create packages that are more reliable and secure.
+
 First you should determine if you are making a self-contained package or (also) using automation scripts. You should also consider creating [[automatic packages|AutomaticPackages]] for the best maintainability over time.
 
 1. Run `choco new -h` to get a feel for what you can pass e.g `choco new bob` (to create a package named `bob`)
@@ -19,6 +23,24 @@ You have a powerful use of Chocolatey, as you are using PowerShell. So you
 can do just about anything you need. Choco has some very handy [[built-in functions|HelpersReference]] that you can use, these are sometimes called 
 [[helpers|HelpersReference]].
 
+## Table of Contents
+1. [[Rules|CreatePackages#rules-to-be-observed-before-publishing-packages]]
+1. [[Encoding|CreatePackages#character-encoding]]
+1. Learning about NuGet (and Chocolatey) Packages in general - [[Information|CreatePackages#okay-how-do-i-create-packages]] and [[Nuspec|CreatePackages#nuspec]]
+1. [[Description/Release Notes Recommendations|CreatePackages#package-description-and-release-notes]]
+1. [[Limit Windows Versions|CreatePackages#install-only-on-some-versions-of-windows]]
+1. [[Install paths|CreatePackages#installation-paths]]
+1. [[Upgrading|CreatePackages#upgrading]] and [[Uninstalling|CreatePackages#uninstalling]]
+1. [[Naming your package|CreatePackages#naming-your-package]]
+1. [[Versioning|CreatePackages#versioning-recommendations]] (and [[package fix version notation|CreatePackages#package-fix-version-notation]])
+1. [[Icons|CreatePackages#package-icon-guidelines]]
+1. [[Exclude executables from shims|CreatePackages#how-do-i-exclude-executables-from-getting-batch-redirects]]
+1. [[Make shim for GUI application|CreatePackages#how-do-i-set-up-batch-redirects-for-applications-that-have-a-gui]]
+1. [[Localization|CreatePackages#internationalization-and-localization-of-packages]]
+1. [[Building|CreatePackages#build-your-package]] / [[Testing|CreatePackages#testing-your-package]] / [[Pushing|CreatePackages#push-your-package]]
+1. [[Automatically updating packages|AutomaticPackages]]
+1. [[Taking over existing package|PackageMantainerHandover]]
+
 ## Quick Start guide
 
 If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](https://github.com/chocolatey/choco/wiki/CreatePackagesQuickStart) for you. **NOTE**: This doesn't exempt you from observing the rules, requirements and guidelines (noted below).
@@ -36,7 +58,7 @@ There are a few rules that you have to follow before pushing packages to chocola
 1. **Don't package software that is already packaged**. Use the search function in the [Chocolatey.org gallery](http://chocolatey.org/packages) and look if there is already a package for the desired software. If you would like to improve the already existing  package or if you have suggestions, just contact the package maintainer or open a pull request at the maintainer’s package repository.
 1. **Don't include other required software if there's a package of it.** If a package requires other software of which there is already a package, the already existing package should be used as [dependency](http://docs.nuget.org/create/nuspec-reference#specifying-dependencies) instead.
 1. **Split dependencies into multiple packages.** Try to split up packages as much as possible. If for example a program comes with additional modules/installers that are optional, make different packages for them instead of including all the things into one package. This idea is already widely applied for Linux packages, because it leads to a more lightweight system and reduces potential issues and conflicts.
-1. **Use a simple intuitive lowercase name for the package**. See the [package naming guidelines](http://github.com/chocolatey/chocolatey/wiki/CreatePackages#naming-your-package) for details.
+1. **Use a simple intuitive lowercase name for the package**. See the [package naming guidelines](http://github.com/chocolatey/chocolatey/wiki/CreatePackages#naming-your-package) for details. (If you are a reviewer/moderator, this is considered a guideline).
 
 Is your package unqualified for the Chocolatey feed, but you like to be able to install it through Chocolatey? Don't worry, you can always host your package for free on MyGet. See [Hosting Chocolatey Packages on MyGet](https://github.com/chocolatey/choco/wiki/Hosting-Chocolatey-Packages-on-MyGet).
 
@@ -77,6 +99,19 @@ $silentArgs = '/S'
 Install-ChocolateyPackage $packageName $fileType $silentArgs $url
 ```
 
+## During which scenarios will my custom scripts be triggered?
+The table below shows which scripts are available, and which command(s) will cause them to be run.
+
+Script Name                                    | Install | Upgrade | Uninstall
+-----------------------------------------------|---------|---------|----------
+chocolateyBeforeModify.ps1                     |         | Yes     | Yes
+chocolateyInstall.ps1                          | Yes     | Yes     |
+chocolateyUninstall.ps1                        |         |         | Yes
+
+**Note:** In the upgrade scenario, the chocolateyInstall.ps1 script will be the one included in the new package. The chocolateyBeforeModify.ps1 script will be the one from the previously installed package.
+
+The chocolateyBeforeModify.ps1 script will only be executed if using choco version 0.9.10 or later.
+
 ## Nuspec?
 
 For reference - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
@@ -104,7 +139,12 @@ Logically, the version is based on the lowest compatible version. But if you don
    * `choco new -h` will get you started seeing options available to you.
    * Once you figured out all of your options, you should move forward with generating your template.
 
-## Installation paths
+## Install Only On Some Versions of Windows
+Right now if the software the package installs is only supported on particular versions of Windows, you should absolutely fail the package. An installed package indicates success. If you pass a warning message but don't also throw an error, that means the package installed successfully. Folks using the package are going to be confused because they will then expect that the underlying software is also installed. The software itself may throw a cryptic error, which will lead to questions from the community about why it is broken (when it is just unsupported). Do yourself a favor and check the version of Windows and throw an error if it is not a supported version. Under no circumstances should you bypass with a warning, because a warning is still a success.
+
+**NOTE**: We will ultimately enhance the nuspec and take care of this for you automatically. Until we get there, follow the above avenue.
+
+## Installation Paths
 
 As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does Chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/choco/wiki/ChocolateyFAQs)) there are a couple of suitable locations (not listed in any particular order):
 
@@ -133,7 +173,11 @@ If you allow customizing the installation path, then append instructions on how 
 
 ## Upgrading
 
-There is no concept of upgrading in Chocolatey. Instead, your [[chocolateyInstall.ps1|ChocolateyInstallPS1]] script should support installing on top of any previous versions of your package.
+Prior to choco version 0.9.10, there is no dedicated automation script for upgrade scenarios. Instead, your [[chocolateyInstall.ps1|ChocolateyInstallPS1]] script should support installing/upgrading on top of any previous versions of your package.
+
+More recent versions of choco (0.9.10+) give you the option of supplying a `chocolateyBeforeModify.ps1` script.
+If applicable, the version of this script from the currently installed package will be run before subsequent
+chocolateyInstall or chocolateyUninstall scripts.
 
 ## Uninstalling
 
@@ -150,8 +194,7 @@ Do not use a folder named “content” in your package. NuGet attaches a specia
 The __title__ of your package (`<title>` tag in the nuspec) should be the same as the name of the application. Follow the official spelling, use upper and lower case and don’t forget the spaces. Examples of correct package titles are: *Google&nbsp;Chrome*, *CCleaner*, *PuTTY* and *FileZilla*. The title will appear on the left side in the package list of the Chocolatey gallery, followed by the version.
 
 There are some guidelines in terms of the package __id__ (`<id>` tag in the nuspec):
-* __Use only lowercase letters__, even if you used uppercase letters in the package title.
-* __Don’t change the casing of the id of packages which are already submitted.__ Once a package is submitted (even prior moderation), the Gallery will always show the id with the casing of the first package version. In addition, changing the casing of the package id can have negative side effects on dependencies.
+* __Use only lowercase letters__, even if you used uppercase letters in the package title. (This is considered a guideline because it is correctable in other ways). Once a package is submitted (even prior moderation), the Gallery will always show the id with the casing of the first package version. In addition, changing the casing of the package id may have negative side effects on dependencies (note: this last statement needs verified).
 * If the original application name consists of compound words without spaces (CamelCase), just as *MKVToolNix*, *TightVNC* and *VirtualBox*, the package id’s are simply the same (but __lowercase__ of course): `mkvtoolnix`, `tightvnc`, and `virtualbox`.
 * If the name of the application contains multiple words separated by spaces, such as *MusicBrainz&nbsp;Picard* or *Adobe Reader*, replace the spaces with the hyphen-minus character “-” (U+002D) or just omit them. __Don’t use dots.__ They should be used only if the original application name contains dots (e.&nbsp;g. *Paint.NET*). Hence the correct id’s of the previously mentioned applications can be `musicbrainz-picard` or `adobereader`. It is highly suggested to use the hyphen method when there are long package names, because that increases readability.
 * For sub-packages, use the hyphen-minus character “-” (U+002D) as separator, not a dot. Sub-packages are intended for separate packages that include extensions, modules or additional features/files for other applications. Therefore `keepass-langfiles` is a proper package id, because it adds the language files for the main application which in this case is _KeePass_. Another example is `libreoffice-help` for the help pack for _LibreOffice_, the open source office suite.
@@ -161,7 +204,7 @@ These guidelines are already commonly applied on packages for all major Linux di
 
 Note that a lot of packages in the Chocolatey Gallery don’t follow these guidelines. The simple reason is that the affected packages were created before the introduction of these guidelines.
 
-If you are going to offer a package that has both an installer and an archive (zip or executable only) version of the application, create three packages&nbsp;– see Rob’s guidance on this: http://devlicio.us/blogs/rob_reynolds/archive/2012/02/25/chocolatey-guidance-on-packaging-apps-with-both-an-install-and-executable-zip-option.aspx
+If you are going to offer a package that has both an installer and an archive (zip or executable only) version of the application, create three packages&nbsp; - see [[Portable vs Installable|ChocolateyFAQs#what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application]] and [[Install, Portable, and Meta/Virtual Packages|ChocolateyFAQs#what-is-the-difference-between-packages-named-install-ie-autohotkeyinstall-portable-ie-autohotkeyportable-and--ie-autohotkey]]
 
 ## Package description and release notes
 
@@ -178,16 +221,21 @@ Versioning can be both simple and complicated. The best recommendation is to use
 If the 4th segment is used, some folks like to drop the segment altogether and use that as only the package fix notation using one of the notations in the next section. There is no recommendations at this time.
 
 ### Package Fix Version Notation
-If you need to fix the package for some reason, you can use the fourth number for a package fix notation. There are two recommended methods of package fix version notation:
+
+Package fix version notation ONLY applies when you are making a fix to the package because the existing version of a package is incorrect in some way. So if the software is `1.1.0`, in a normal scenario the package version should be `1.1.0`. If you find that the `1.1.0` package has an issue and you need to fix the package but keep the same version of the software, that is where package fix version notation comes into play. You would end up with both a `1.1.0` package and a `1.1.0.YYYYMMDD` version of the package.
+
+***NOTE: This doesn't apply to packages on the community feed (aka https://chocolatey.org/packages) that are still under review (not yet approved). Please read the instructions given in email for resubmitting the same version.***
+
+If you need to fix an approved package for some reason, you can use the fourth version element (aka segment) for a package fix notation. There are two recommended methods of package fix version notation:
 
  * **Date (Year/Month/Day)** - Some folks use year month day package fix notation (yyyyMMdd as in 20120627 seen as 1.2.0.20120627)
- * Sequential - Some folks use sequential numbering (0, then 1, etc as in 0 for no fix, 1 for first fix and so on seen as 1.2.0.0 and 1.2.0.1).
+ * Sequential - **Not recommended** - Some folks use sequential numbering (0, then 1, etc as in 0 for no fix, 1 for first fix and so on seen as 1.2.0.0 and 1.2.0.1).
 
 Date Package Fix Version Notation is recommended because one can ascertain what it is immediately upon seeing it.
 
 Package fix version notation is only acceptable in the fourth segment. Do not use any of the other segments for package fix notation. If an application only uses 1 or 2 version segments, add zeros into the other segments until you get to the 4th segment (i.e. 1.0.0.20120627).
 
-When the fourth segment is used, it is recommended to add two zeroes (00) to the end of the version. Then when you need to fix, you just increment that number. So if the package was ruby and the version was 2.0.0-p353, the package is 2.0.0.35300 (adding the two zeroes at the end). Then a fix would be 2.0.0.35301 and so on.
+When the fourth segment is already used, it is recommended to add two zeroes (00) to the end of the version. Then when you need to fix, you just increment that number. So if the package was ruby and the version was 2.0.0-p353, the package is 2.0.0.35300 (adding the two zeroes at the end). Then a fix would be 2.0.0.35301 and so on. **WARNING**: If you decide to add a secondary set of numbers to the fourth segment, you MUST ALWAYS include that secondary set of numbers. The reason - if you fix `.1` to `.100`, then release `.2`, `.100` is greater than `.2` because versioning doesn't look at the ".", only the number in the element. So `100` is greater than `2`.
 
 ## Internationalization and localization of packages
 For Chocolatey, internationalization and localization of packages is very important, because it has users from all over the world. Many applications support multiple languages, but they use several different methods to achieve that. Therefore, there is no standard how internationalization/localization has to be integrated into packages. However, here are a few examples of packages that use various techniques. You can use them as inspiration for new packages:
@@ -209,12 +257,25 @@ If there is an icon which is suitable for your package, you can specify it in th
 * **PNG is the preferred format** for raster package icons. Avoid ICO, GIF and JPEG graphics.
 * Good sources for package icons are the official desktop icons of the corresponding application you want to make a package of. The icons can be extracted from the app executables using tools like [BeCyIconGrabber](https://chocolatey.org/packages/becyicongrabber). Remember to take the icon with 128&nbsp;px or more and save it as PNG file.
 
-## How do I exclude [executables from getting batch redirects](https://github.com/chocolatey/chocolatey/issues/106)?
+<a name="how-do-i-exclude-executables-from-getting-batch-redirects"></a>
+## How do I exclude executables from getting shims?
 If you have executables in the package or brought into the package folder during PowerShell run and you want to exclude them you need to create an empty file named exactly like (**case sensitive**) the executable with `.ignore` suffixed on the end in the same directory where the executable is or will be.
 
 Example: In the case of `Bob.exe` you would create a file named `Bob.exe.ignore` and that file would not get a redirect batch link. The Chocolatey package has an example of that. To further expand, `bob.exe.ignore` would not work because it doesn't have the correct casing.
 
-## How do I set up batch redirects for [applications that have a GUI](https://github.com/chocolatey/chocolatey/issues/76)?
+Here's a great [programmatic example](https://github.com/ferventcoder/chocolatey-packages/blob/6ea7c087bd999d428a564b5d7e236ae998ef72e9/automatic/git.commandline/tools/chocolateyInstall.ps1#L13-L20):
+
+~~~powershell
+$files = get-childitem $installDir -include *.exe -recurse
+
+foreach ($file in $files) {
+  #generate an ignore file
+  New-Item "$file.ignore" -type file -force | Out-Null
+}
+~~~
+
+<a name="how-do-i-set-up-batch-redirects-for-applications-that-have-a-gui"></a>
+## How do I set up shims for applications that have a GUI?
 If you don't want to see a hanging window when you open an application from the command line that was set up with Chocolatey, you want to create a file next to the executable that is named exactly the same (**case sensitive**) with `.gui` suffixed on the end.
 
 Example: In the case of `Bob.exe` you would create a file named `Bob.exe.gui` and that file would be set up as a GUI application so the window will call it and then move on without waiting for it to finish.  Again, `bob.exe.gui` would not work because it doesn't have the correct casing.
@@ -226,6 +287,8 @@ Open a command line in the directory where the nuspec is and type [[cpack|Comman
 ## Testing Your Package
 
 **NOTE**: We strongly suggest the following should be performed in a VM and not on your machine.
+
+**NOTE**: Testing your package can be done in the same way as the verifier - take a look at [Chocolatey Verifier Testing](https://github.com/chocolatey/package-verifier-vagrant).
 
 To test the package you just built, open a command line shell and navigate to the directory where the `*.nupkg` file is located. Then type:
 
@@ -252,7 +315,7 @@ When your `nuspec` specifies dependencies that are not in your source, you shoul
     </dependencies>
 ```
 You'll need to append the API path like so:
-`-source '"%cd%;http://chocolatey.org/api/v2/"'` (note the apostrophe then the double quotes here).
+`-source "'%cd%;https://chocolatey.org/api/v2/'"` (note the double quotes bookending the apostrophes here). See [[passing options with quotes|CommandsReference#how-to-pass-options--switches]]. Also, use `$pwd` if you are in PowerShell.exe.
 
 You can also use the `-debug` switch on `choco install` to provide more information.
 

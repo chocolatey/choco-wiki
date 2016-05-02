@@ -1,5 +1,5 @@
 - [[Home]]
-- [[Why Chocolatey?|Why]]  
+- [[Why Chocolatey?|Why]]
 - [Choco 0.9.8.x & below](https://github.com/chocolatey/chocolatey/wiki)
 
 **General**
@@ -9,8 +9,10 @@
 - [Contributing](https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md)
 - [[FAQs|ChocolateyFAQs]]
 - [[Security]]
+- [[Chocolatey.org Moderation|Moderation]]
+- [[Software Vendor?|PackageTriageProcess#are-you-a-software-vendor]]
 
-**Usage**  
+**Usage**
 
 [[How does choco work?|GettingStarted#how-does-chocolatey-work]]
 
@@ -24,27 +26,37 @@
   - [[List / Search |CommandsList]]
   - [[Install|CommandsInstall]]
   - [[Pin|CommandsPin]]
+  - [[Outdated|CommandsOutdated]]
   - [[Upgrade|CommandsUpgrade]]
   - [[Uninstall|CommandsUninstall]]
+  - [[Config|CommandsConfig]]
   - [[Source / Sources|CommandsSources]]
   - [[Feature|CommandsFeature]]
+  - See other commands related to creating packages below
 
 **Creating Packages**
 
  - [[Create Packages|CreatePackages]]
  - [[Quick Start|CreatePackagesQuickStart]]
- - [[Function and Variable Reference|HelpersReference]]
- - [[Automatic Packages|AutomaticPackages]]
  - **Commands:**
   - [[New|CommandsNew]]
   - [[Pack|CommandsPack]]
   - [[Apikey|CommandsApiKey]]
   - [[Push|CommandsPush]]
+ - [[Function and Variable Reference|HelpersReference]]
+ - [[Automatic Packages|AutomaticPackages]]
 
 **How To's**
 
- - [[Package Triage Process|PackageTriageProcess]]
- - [[Take Over Package Maintenance|PackageMantainerHandover]]
+ - [[Use Chocolatey w/Proxy Server|Proxy-Settings-for-Chocolatey]]
+ - [[Change Download Cache Location aka Don't use TEMP for downloads|How-To-Change-Cache]]
+ - [[Install/Upgrade a Package w/out running install scripts|How-To-Install-Upgrade-Package-Without-Scripts]]
+ - [[Create Custom Package Templates|How-To-Create-Custom-Package-Templates]]
+ - [[Request Package Fixes/Updates|PackageTriageProcess]]
+ - [[Request Package|PackageTriageProcess]]
+ - [[Maintain Packages for My Software|PackageTriageProcess#i-want-to-take-overhelp-with-package-maintenance-for-my-software]]
+ - [[Become a Maintainer|PackageTriageProcess]]
+ - [[Take Over Package Maintenance Exclusively|PackageMantainerHandover]]
  - [[Parse Package Parameters|How-To-Parse-PackageParameters-Argument]]
  - [[Mount Iso|How-To-Mount-An-Iso-In-Chocolatey-Package]]
  - [[Deprecate a Package|How-To-Deprecate-A-Chocolatey-Package]]
