@@ -26,7 +26,8 @@ Chocolatey tracks packages, which are the files in
 With auto uninstaller turned off, a chocolateyUninstall.ps1 is required
  to perform uninstall from the system. In the absence of
  chocolateyUninstall.ps1, choco uninstall only removes the package from
- Chocolatey but does not remove the sofware from your system.
+ Chocolatey but does not remove the software from your system 
+ (unless in the package directory).
 
 **NOTE:** Starting in 0.9.10+, the Automatic Uninstaller (AutoUninstaller)
  is turned on by default. To turn it off, run the following command:
