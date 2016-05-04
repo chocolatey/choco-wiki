@@ -13,7 +13,7 @@ TeamCity  | AppVeyor | Travis
 
 ### You can just call me Chocolatey.
 
-![Chocolatey Logo](https://github.com/chocolatey/choco/wiki/images/chocolateyicon.gif "Chocolatey")
+![Chocolatey Logo](https://cdn.rawgit.com/chocolatey/choco/14a627932c78c8baaba6bef5f749ebfa1957d28d/docs/logo/chocolateyicon.gif "Chocolatey")
 ### Let's get Chocolatey!
 "I'm a tools enabler, I'm a global silent application installer. I configure stuff. Some people want to call me apt-get for Windows, I just want to get #chocolatey!"
 
