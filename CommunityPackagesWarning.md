@@ -14,4 +14,4 @@ Transferring a package to another repository (even internal) with or without cha
 
 For folks in the community that are not using Chocolatey for production purposes, with an understanding of the disclaimers set forth here, it is fine to use the community repository. For organizations that have a low tolerance for breakages and require a higher level of reliability, security, trust, and control, a self-hosted Chocolatey server is the recommended option. This guarantees that your installs, upgrades, and uninstalls will always work every time. This gives you complete control over what software gets installed. Also because you are vetting newer versions, you control when those newer versions are available for upgrade. Please see [Host Your Own Server](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) for more information.
 
-Please see [Terms of Use] for any additional considerations.
+<!-- Please see [Terms of Use] for any additional considerations.-->
