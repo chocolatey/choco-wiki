@@ -1,6 +1,6 @@
 # Chocolatey.org Packages Disclaimer
 
-The packages contained at https://chocolatey.org/packages are collectively known as the Community Feed or Community Repository. Packages found on this site may not be supported by the original software vendor. If you have an issue with a package, contact the package maintainers through this site, Do not contact the software vendor directly. It bears repeating, DO NOT contact the software vendor directly.
+The packages contained at https://chocolatey.org/packages are collectively known as the Community Feed or Community Repository. Packages found on this site may not be supported by the original software vendor. If you have an issue with a package, contact the package maintainers through the site, Do not contact the software vendor directly. It bears repeating, DO NOT contact the software vendor directly.
 
 If your use of Chocolatey is for an organization/business, you likely have a low tolerance for production breakages and/or low trust for the greater internet. You likely would not want to give control of your infrastructure over to community members and volunteers. Therefore you should not use the packages on the community repository (the packages you find on this site). Please keep reading to understand why.
 
