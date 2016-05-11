@@ -309,13 +309,15 @@ This will install the package right out of your source. As you find things you m
 `%cd%` points to the current directory. You can specify multiple directories separated by a semicolon;
 
 When your `nuspec` specifies dependencies that are not in your source, you should add their paths to the source directory. E.g. in the case of Chocolatey itself:
-```xml
+
+~~~xml
     <dependencies>
       <dependency id="chocolatey" version="0.9.8.20" />
     </dependencies>
-```
+~~~
+
 You'll need to append the API path like so:
-`-source "'%cd%;https://chocolatey.org/api/v2/'"` (note the double quotes bookending the apostrophes here). See [[passing options with quotes|CommandsReference#how-to-pass-options--switches]]. Also, use `$pwd` if you are in PowerShell.exe.
+`-source "'%cd%;https://chocolatey.org/api/v2/'"` (note the double quotes bookending the apostrophes here). See [[passing options with quotes|CommandsReference#how-to-pass-options--switches]]. Also, use `$pwd` if you are in PowerShell.exe. **Note:** If you need to do this, please ensure you run `choco pack` first. This method of passing a source won't work calling a nuspec or nupkg directly as it will override the source passed to the local folder.
 
 You can also use the `-debug` switch on `choco install` to provide more information.
 
