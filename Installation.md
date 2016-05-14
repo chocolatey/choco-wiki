@@ -1,7 +1,30 @@
 ## Installing Chocolatey
 Chocolatey installs in seconds...
 
-There are a few ways to install Chocolatey. Chocolatey exists as a [nuget package](http://nuget.org/list/packages/chocolatey) so virtually any way you can get a nuget package, you have the opportunity to then install it.
+
+To install chocolatey now, open an <strong>administrative</strong> command prompt and paste the text from the box below that applies to the name of your shell and press enter.
+
+If you need to install as a non-administrator or want more advanced options, please continue reading...
+
+* Cmd.exe: 
+
+~~~sh
+@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</code></pre>
+~~~
+
+* PowerShell.exe (Ensure Get-ExecutionPolicy is at least Bypass):
+
+~~~sh
+iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+~~~
+
+* PowerShell v3+ (Ensure Get-ExecutionPolicy is at least Bypass):
+
+~~~sh
+iwr https://chocolatey.org/install.ps1 | iex
+~~~
+   
+There are a few ways to install Chocolatey. Chocolatey exists as a [NuGet package](http://chocolatey.org/packages/chocolatey), so virtually any way you can get a NuGet package, you have the opportunity to then install it.
 
 If you have Visual Studio 2010 and the NuGet extension installed, perhaps the quickest method is to use NuGet Package Manager. Three commands in succession and you are done. See below.
 
