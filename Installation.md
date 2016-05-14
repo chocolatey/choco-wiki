@@ -12,13 +12,13 @@ If you need to install as a non-administrator or want more advanced options, ple
 @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</code></pre>
 ~~~
 
-* PowerShell.exe (Ensure Get-ExecutionPolicy is at least Bypass):
+* PowerShell.exe (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least Bypass):
 
 ~~~sh
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 ~~~
 
-* PowerShell v3+ (Ensure Get-ExecutionPolicy is at least Bypass):
+* PowerShell v3+ (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least Bypass):
 
 ~~~sh
 iwr https://chocolatey.org/install.ps1 | iex
