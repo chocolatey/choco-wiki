@@ -10,7 +10,7 @@ Chocolatey has grown up quite a bit with the release of 0.9.9+ series and has be
 1. Requires administrative permission to add to the Machine PATH environment variable. This reduces escalation of privilege attacks.
 1. choco by default will stop and ask you to confirm before changing state of the system, showing you the script it wants to execute.
 1. choco.exe supports a `-whatif` scenario (aka `--noop`) to 0.9.9 so you can get a feel for what a package would do to your system.
-1. To reduce MITM (Man in the middle) attacks, package installs support [[checksums|HelpersInstallChocolateyPackage]], so that when downloading from a remote location, you can verify you are getting what you believe you should be getting before executing it on the system. We're making steps to allow for [users to supply the checksum as well](https://github.com/chocolatey/choco/issues/112).
+1. To reduce MITM (Man in the middle) attacks, package installs support [[checksums|HelpersInstallChocolateyPackage]], so that when downloading from a remote location, binaries are verified prior to acting on them. We're making steps to allow for [users to supply a runtime checksum as well](https://github.com/chocolatey/choco/issues/112).
 1. Choco will not allow you to push to the community feed without using SSL/TLS (HTTPS). This reduces DNS poisoning issues.
 1. When you host internal packages, those packages can embed software and/or point to internal shares. You are not subject to software distribution rights like the packages on the community feed, so you can create packages that are more reliable and secure. See [[What are Chocolatey Packages|GettingStarted#what-are-chocolatey-packages]] for more details.
 
@@ -66,14 +66,15 @@ For more information on the specifics, see [#36](https://github.com/chocolatey/c
 1. Some packages move into a trusted status. This is usually when the package maintainer is also the software maintainer, but can also occur when the maintainer(s) are trusted and the package is submitted without issues.
 1. Packages that download binaries (installers, zip archives) are checked to ensure that the binary is coming from the official distribution source. 
 1. If the package has a checksum, it provides a further integrity check that the downloadable the maintainer/moderator checked is the same binary that the user gets.
-1. Packages are run through Virus Total to produce a second opinion on the relative safety of the package and underlying software that is contained or downloaded by the package.
+1. Checksums of of included binaries are shown to allow for folks to perform independent verification. We've move to adding an additional VERIFICATION file for verifying the binaries. This will start to show up more over 2016.
+1. Packages are run through Virus Total to produce a second opinion on the relative safety of the package and underlying software that is contained or downloaded by the package. The verification of this is shown on the site.
+
+### Chocolatey Professional / Chocolatey for Business
+1. Licensed editions of Chocolatey perform runtime virus scan verification. We highly recommend a security conscious company look to the business routes for more security (and locking down of components, like locking down folders even more and other nice tweaks that a business would want to make).
 
 ### Future Chocolatey enhancements
-
-1. Virus checking is being added to the pro/business offering - we highly recommend a security conscious company look to the business routes for more security (and locking down of components, like locking down folders even more and other nice tweaks that a business would want to make).
 1. Moderators will cryptographically sign packages with a GPG key that they own. This will allow folks to trust moderators. 
 1. Users will also cryptographically sign packages so we can provide authenticity that the package came from them.
-1. We are looking at more secure checksums and showing those checksums on packages that have executables contained in them. https://github.com/chocolatey/choco/issues/113
 1. We'll show the package checksum on the website for folks that want to verify the package is brought down appropriately.
 1. We've implemented checksumming in the package, but we'll verify that against what the website reports for the checksum for additional integrity checks. We do this now to a naive degree.
 1. A user can optionally pass their own checksums that must be validated for downloaded software - https://github.com/chocolatey/choco/issues/112
