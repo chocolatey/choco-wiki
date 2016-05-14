@@ -24,6 +24,7 @@ iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.p
 iwr https://chocolatey.org/install.ps1 | iex
 ~~~
    
+If that is still too much to type, [Jay Bazuzi](https://twitter.com/jaybazuzi) [has created a short link](https://twitter.com/jaybazuzi/status/625080286934466560) `cin.st` that points to https://chocolatey.org/install.ps1. So you can use `iwr cin.st | iex`, although we recommend `iwr https://cin.st | iex`.
 There are a few ways to install Chocolatey. Chocolatey exists as a [NuGet package](http://chocolatey.org/packages/chocolatey), so virtually any way you can get a NuGet package, you have the opportunity to then install it.
 
 If you have Visual Studio 2010 and the NuGet extension installed, perhaps the quickest method is to use NuGet Package Manager. Three commands in succession and you are done. See below.
