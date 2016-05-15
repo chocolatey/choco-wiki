@@ -1,5 +1,5 @@
 # Getting Started
-## Using chocolatey
+## Using Chocolatey
 Now that you have chocolatey on your machine ([[need to install?|Installation]]), you can run several commands.
 
 Take a look at the [[command reference|CommandsReference]]. We are going to be using the [[install command|CommandsInstall]].
