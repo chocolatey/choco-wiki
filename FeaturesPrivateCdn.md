@@ -6,13 +6,12 @@ We do this by caching a copy of the content on our private CDN. This content als
 ## Important Information for Software Vendors
 When our customers download content from you, we may cache a copy of that content on our private CDN to ensure that later our licensed customers will be able to access that content again. This allows predictable and reliable installations of packages. Like most CDNs, no changes are made, we are simply ensuring the content stays available for our private customers. We are not modifying, selling, renting, leasing, lending, or sub-licensing this content in any way.
 
-This private content cache is ***only*** available for our paying customers.
+This private content cache is ***only*** available as a service for our paying customers.
 
-If you have questions or prefer to opt out, please contact us <a href="mailto:chocolateywebadmin at googlegroups dot com?subject=[Insert Your Software Name Here] - Chocolatey Community Feed Caching&body=Please fill in details of your request (remember to include the package page url, and the software name). Please remember to change the to address to a valid email address.">here</a> (vendor requests only please).
+If you have questions or **prefer to opt out**, please contact us <a href="mailto:chocolateywebadmin at googlegroups dot com?subject=[Insert Your Software Name Here] - Chocolatey Community Feed Caching&body=Please fill in details of your request (remember to include the package page url, and the software name). Please remember to change the to address to a valid email address.">here</a> (vendor requests only please).
 
 ## Usage
 This is mostly automatic, but in case the feature is turned off, you may turn it on by setting the feature `downloadCache` (`choco feature enable -n downloadCache`).
-
 
 To see if a package has content cached on the CDN, you can run `choco info packagename` and it will give you detailed information pertaining to a package.
 
@@ -22,11 +21,15 @@ When you install, you will see a message similar to the following when the cache
 
 ![Pro install with CDN cache](images/choco_install_cached.png)
 
+## See It In Action
+
+![Pro install in action](images/gifs/chocopro_install_stopped.gif)
+
 ## Options and Switches
 
 The following options are added to install and upgrade commands.
 
-~~~sh
+~~~
      --sdc, --skipdownloadcache, --skip-download-cache
      Skip Download Cache - Use the original download even if a
        private CDN cache is available for a package.
@@ -39,11 +42,7 @@ The following options are added to install and upgrade commands.
        set to 'True'. Available in 0.9.10+. Licensed versions only.
 ~~~
 
-## See It In Action
-
-![Pro install in action](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/chocopro_install_stopped.gif)
-
-## FAQs
+## FAQ
 
 ### How do I take advantage of this feature?
 You must have a licensed version of Chocolatey. Professional is a personal, named license that costs about the price of a lunch outing per month and comes with several other features.
@@ -73,7 +72,7 @@ Quite.
 ### Why isn't a cache available for x package?
 There are a variety of factors that go into suitability for a package.
 
-* If the vendor has opted out, there will be no cache for a package that uses that software.
+* If the software vendor has opted out, there will be no cache for a package that uses that software.
 * If the package doesn't actually download anything, there will be no cache.
 * If the package downloads resources, but not in the recommended way, there may not be a cache available.
 
@@ -81,4 +80,4 @@ There are a variety of factors that go into suitability for a package.
 No, you still need to work with the software vendor to obtain a license, if required.
 
 ### I'm a vendor and wish to opt out.
-Please see [the section at the top](#important-information-for-software-vendors).
+Please see [important information for software vendors](#important-information-for-software-vendors).
