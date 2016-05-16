@@ -13,6 +13,11 @@
 - [[Chocolatey.org Packages Disclaimer|CommunityPackagesWarning]]
 - [[Software Vendor?|PackageTriageProcess#are-you-a-software-vendor]]
 
+**Features**
+
+ - [[Runtime Malware Protection|FeaturesVirusCheck]]
+ - [[Private CDN Cache|FeaturesPrivateCdn]]
+
 **Usage**
 
 [[How does choco work?|GettingStarted#how-does-chocolatey-work]]
