@@ -18,6 +18,10 @@
 
 ### 2016
 
+#### May
+
+* http://powershell.org/wp/2016/05/11/episode-313-powerscripting-podcast-rob-reynolds-on-chocolatey/
+
 #### March
 
 * http://imallvirtual.com/azure-devtest-labs-chocolatey-artifacts-integration/
