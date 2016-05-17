@@ -10,7 +10,7 @@
 - [[FAQs|ChocolateyFAQs]]
 - [[Security]]
 - [[Chocolatey.org Moderation|Moderation]]
-- [[Chocolatey.org Packages Disclaimer|CommunityPackagesWarning]]
+- [[Chocolatey.org Packages Disclaimer|CommunityPackagesDisclaimer]]
 - [[Software Vendor?|PackageTriageProcess#are-you-a-software-vendor]]
 
 **Features**
