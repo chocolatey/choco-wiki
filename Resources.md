@@ -52,6 +52,7 @@
 
 #### November
 
+* http://www.spjeff.com/2015/11/09/chocolately-at-work-and-home/
 * https://blog.turbo.net/create-a-turbo-vm-image-with-chocolatey/
 * https://blog.turbo.net/deploying-turbo-with-chocolatey/
 
