@@ -8,7 +8,7 @@
 ## 2014
 * [Plugging Chocolatey into your Puppet Infrastructure](http://www.slideshare.net/ferventcoder/chocolatey-puppet-conf2014) - [PuppetConf2014](http://2014.puppetconf.com/) - Rob Reynolds, [September 23, 2014](http://sched.co/1kHU71L)
 * [Managing Windows with Puppet and Chocolatey](http://www.slideshare.net/SethMcBean/managing-windows-with-puppet-and-chocolatey) - Seth McBean, July 30, 2014
-* [Chocolatey Overview](http://digitaldrummerj.me/ChocolateyTalk/#/)- Justin James - Source at https://github.com/digitaldrummerj/ChocolateyTalk
+* [Chocolatey Overview](http://digitaldrummerj.me/ChocolateyTalk/#/)- Justin James - [Source/Demos](https://github.com/digitaldrummerj/ChocolateyTalk)
 
 ## 2013
 * [Using Chocolatey for Application Deployments](http://www.slideshare.net/perryofpeek/using-chocolatey-for-application-deployments) - Owain Perry, Sep 17, 2013
