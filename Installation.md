@@ -28,7 +28,7 @@ If that is still too much to type, [Jay Bazuzi](https://twitter.com/jaybazuzi) [
 There are a few ways to install Chocolatey. Chocolatey exists as a [NuGet package](http://chocolatey.org/packages/chocolatey), so virtually any way you can get a NuGet package, you have the opportunity to then install it.
 
 ## Requirements
-* Windows 7+/Windows Server 2003+
+* Windows 7+ / Windows Server 2003+
 * PowerShell v2+
 * .NET Framework 4+ (the installation will attempt to install .NET 4.0 if you do not have it installed)
 
