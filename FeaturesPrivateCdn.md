@@ -66,9 +66,6 @@ No, this is the original content as it would have been downloaded.
 ### Is the content publicly available?
 No, this is a private CDN cache available only for licensed customers.
 
-### How secure is it?
-Quite.
-
 ### Why isn't a cache available for x package?
 There are a variety of factors that go into suitability for a package.
 
