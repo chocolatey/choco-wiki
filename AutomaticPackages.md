@@ -1,8 +1,9 @@
-## Automatic Packages
-Automatic packages are what set chocolatey apart from other package managers.
-http://chocolatey.org/packages/ChocolateyPackageUpdater
+# Automatic Packaging
+Automatic packaging is a process that maintainers can run on their own machines to keep the packages they maintain up to date. It is not a required step for maintaining packages on the community feed (https://chocolatey.org/packages), but it is recommended you find a way to automate the delivery of packages to the community feed when there are updates if you are going to maintain more than 5 packages and you are not the software vendor for the packages you maintain.
 
 ## Chocolatey Package Updater aka chocopkgup
+http://chocolatey.org/packages/ChocolateyPackageUpdater
+
 The tool that accomplishes this process is known as [chocopkgup](http://chocolatey.org/packages/ChocolateyPackageUpdater) (Chocolatey Package Updater). It is a free tool (unless you want to use it for uploads to somewhere other than chocolatey.org).
 
 ### Licensing
