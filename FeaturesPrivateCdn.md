@@ -1,5 +1,5 @@
 # Private CDN Download Cache (Licensed Users Only)
-Chocolatey offers a private CDN cache of download content for paying customers. The internet is unpredictable and sometimes sites go down, the cache ensures that the packages on the community repository are not broken by issues with the internet. We lovingly call this the "No more 404s feature".
+Chocolatey offers a private CDN cache of download content for paying customers. The internet is unpredictable and sometimes sites go down, the cache ensures that the packages on the community repository are not broken by issues with the internet. We lovingly call this the "**No more 404s feature**".
 
 We do this by caching a copy of the content on our private CDN. This content also gets virus checked and checksummed to verify that it matches what was originally intended by package maintainers and moderators for you to receive.
 
