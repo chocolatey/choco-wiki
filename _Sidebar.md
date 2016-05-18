@@ -15,9 +15,9 @@
 
 **Features**
 
- - In progress!
  - [[Runtime Malware Protection|FeaturesVirusCheck]]
  - [[Private CDN Cache|FeaturesPrivateCdn]]
+ - In progress, check back for updates!
 
 **Usage**
 
