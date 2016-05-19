@@ -1,6 +1,6 @@
 # Getting Started
 ## Using Chocolatey
-Now that you have chocolatey on your machine ([[need to install?|Installation]]), you can run several commands.
+Now that you have Chocolatey on your machine ([[need to install?|Installation]]), you can run several commands.
 
 Take a look at the [[command reference|CommandsReference]]. We are going to be using the [[install command|CommandsInstall]].
 
@@ -8,15 +8,17 @@ Let's install [Notepad++](http://notepad-plus-plus.org/).
 
 1. Open a command line.
 1. Type `choco install notepadplusplus` and press Enter.
-1. If you have UAC turned on or are not an administrator, chocolatey is going to request administrative permission at some point (at least once during the process). Otherwise it will not be able to finish what it is doing successfully. If you don't have UAC turned on, it will just continue on without stopping to bother you.
+1. If you have UAC turned on or are not an administrator, Chocolatey is going to request administrative permission at some point (at least once during the process). Otherwise it will not be able to finish what it is doing successfully. If you don't have UAC turned on, it will just continue on without stopping to bother you.
 1. That's it. Pretty simple but powerful little concept!
 
 ### Overriding default install directory or other advanced install concepts
 
-1. Yes we support that through the use of installargs - see [[CommandsInstall#installarguments]]
-1. If you wanted to pass native argument to the installer, like the install directory, you would need to know the silent argument passed to that particular installer and then you would specify it on the command line or in the packages.config (upcoming for packages.config).
-1. If it was an MSI, then usually you could pass `-ia "INSTALLDIR=""D:\Program Files"""` (for cmd.exe, it's different for powershell). See [[CommandsReference#how-to-pass-options--switches]] for specifics on passing quoted values through.
-1. For example, Notepad++ uses the [NSIS](http://nsis.sourceforge.net/Main_Page) (NullSoft Scriptable Install System) installer. If we look at the silent options, we see that [/D](http://nsis.sourceforge.net/Docs/Chapter3.html#installerusagecommon) is how we influence the install directory. So we would pass `cinst notepadplusplus.install -ia "'/D=E:\SomeDirectory\somebody\npp'"` -note that we are looking at the specific package over the virtual (this will be corrected in future releases).
+1. Yes we support that through the use of install arguments - see [[CommandsInstall#installarguments]]
+1. If you wanted to pass native argument to the installer, like the install directory, you would need to know the silent argument passed to that particular installer and then you would specify it on the command line or in the packages.config.
+1. If it was an MSI, then usually you could pass `-ia "INSTALLDIR=""D:\Program Files"""` (for cmd.exe, it's different for PowerShell). See [[CommandsReference#how-to-pass-options--switches]] for specifics on passing quoted values through.
+1. For example, Notepad++ uses the [NSIS](http://nsis.sourceforge.net/Main_Page) (NullSoft Scriptable Install System) installer. If we look at the silent options, we see that [/D](http://nsis.sourceforge.net/Docs/Chapter3.html#installerusagecommon) is how we influence the install directory. So we would pass `choco install notepadplusplus.install -ia "'/D=E:\SomeDirectory\somebody\npp'"` -note that we are looking at the specific package over the virtual (although you can do the same with notepadplusplus as well).
+
+Is there a better way? Absolutely, see [[ubiquitous install directory switch|FeaturesInstallDirectoryOverride]]!
 
 ## What Are Chocolatey Packages?
 
@@ -53,7 +55,7 @@ How the heck does this all work?
 2. Choco will make a backup of the package folder.
 3. The automation script is run if found. This should be used to clean up anything that is put there with the install script.
 4. If auto uninstaller is turned on, choco will attempt to run the auto uninstaller if a silent uninstall can be determined. Otherwise it will prompt the user (unless -y) to ask if they want the uninstaller to continue. The auto uninstaller can automatically detect about 80% of the different native uninstallers and determine or use the silent uninstall arguments.
-5. If everything is successful so far, the files snapshot is used to determine what files can be removed from the package folder. If those files have not changed, they will be removed. 
+5. If everything is successful so far, the files snapshot is used to determine what files can be removed from the package folder. If those files have not changed, they will be removed.
 6. If everything is deleted from the package folder, the folder is also removed.
 
 

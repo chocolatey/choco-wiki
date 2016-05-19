@@ -1,4 +1,4 @@
-# Runtime Malware Protection / Virus Scanning (Licensed Users Only)
+# Runtime Malware Protection / Virus Scanning (Licensed Editions Only)
 We are pleased to offer runtime malware protection for our licensed customers! Virus checking is available in two flavors - VirusTotal and Generic malware verification.
 
 ## Usage
@@ -79,6 +79,10 @@ The following options are added to install and upgrade commands.
 
 
 ## FAQ
+
+### How do I take advantage of this feature?
+You must have a [licensed edition of Chocolatey](https://bit.ly/choco_pro_business) (Professional and/or Business). Professional is a personal, named license that costs about the price of a lunch outing per month and comes with several other features. Business editions are great for organizations that need more business friendly features from their software management tool.
+
 ### I'm a licensed customer, now what?
 When you install package that download content, those items will automatically be verified if the feature is turned on (it is automatically turned on for Professional users). We don't turn it on automatically in Business editions because many organizations are wary about reaching out to the internet and the generic virus scanner requires additional configuration.
 

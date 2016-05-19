@@ -17,6 +17,8 @@
 
  - [[Runtime Malware Protection|FeaturesVirusCheck]]
  - [[Private CDN Cache|FeaturesPrivateCdn]]
+ - [[Install Directory Override|FeaturesInstallDirectoryOverride]]
+ - [[Infrastruction Automation Integration|FeaturesInfrastructureAutomation]]
  - In progress, check back for updates!
 
 **Usage**

@@ -1,4 +1,4 @@
-# Private CDN Download Cache (Licensed Users Only)
+# Private CDN Download Cache (Licensed Editions Only)
 Chocolatey offers a private CDN cache of download content for paying customers. The internet is unpredictable and sometimes sites go down, the cache ensures that the packages on the community repository are not broken by issues with the internet. We lovingly call this the "**No more 404s feature**".
 
 We do this by caching a copy of the content on our private CDN. This content also gets virus checked and checksummed to verify that it matches what was originally intended by package maintainers and moderators for you to receive.
@@ -45,7 +45,7 @@ The following options are added to install and upgrade commands.
 ## FAQ
 
 ### How do I take advantage of this feature?
-You must have a licensed version of Chocolatey. Professional is a personal, named license that costs about the price of a lunch outing per month and comes with several other features.
+You must have a [licensed edition of Chocolatey](https://bit.ly/choco_pro_business) (Professional and/or Business). Professional is a personal, named license that costs about the price of a lunch outing per month and comes with several other features. Business editions are great for organizations that need more business friendly features from their software management tool.
 
 ### I'm a licensed customer, now what?
 When you install packages from the community repository and a private cache becomes available, it will use that cache automatically. You don't have to do anything additional.
