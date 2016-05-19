@@ -91,6 +91,10 @@ Install-ChocolateyInstallPackage @packageArgs
 
 ~~~
 
+### Example
+
+Walmart has a really good post on extending package templates. You can read that at https://puppet.com/blog/extending-chocolatey-packaging-walmart
+
 ### Are There Planned Enhancements?
 
 * List Template names - https://github.com/chocolatey/choco/issues/449
