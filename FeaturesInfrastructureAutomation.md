@@ -45,6 +45,29 @@ include_recipe 'chocolatey'
 
 [Cookbook - Read More...](https://bit.ly/choco_chef)
 
+### Example
+
+Here's a more in depth example from [Nordstrom](https://github.com/Nordstrom/chefdk_bootstrap/blob/master/recipes/windows.rb):
+
+~~~ruby
+include_recipe 'chocolatey'
+
+home = Dir.home
+%W(
+  #{home}/.chef
+  #{home}/chef
+  #{home}/chef/cookbooks
+).each do |directory|
+  directory directory
+end
+
+packages = node['chefdk_bootstrap']['package']
+
+packages.each do |pkg, install|
+  include_recipe "#{cookbook_name}::#{pkg}" if install
+end
+~~~
+
 ## PowerShell DSC
 
 PowerShell DSC (Desired State Configuration) has a cChoco module that can manage both packages and the installation of Chocolatey itself.
