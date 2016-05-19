@@ -65,7 +65,7 @@ PowerShell DSC (Desired State Configuration) has a cChoco module that can manage
 [Read More...](https://bit.ly/choco_dsc)
 
 ## Puppet
-Puppet has a [Supported module](https://forge.puppet.com/supported) coming for Chocolatey, but also has an [Approved module](https://forge.puppet.com/approved) written by the Chocolatey team.
+Puppet has a [Supported module](https://forge.puppet.com/supported) coming for Chocolatey, but also has an [Approved module](https://forge.puppet.com/approved) written by the Chocolatey team. The module can manage packages and the install and configuration of Chocolatey itself.
 
 ~~~puppet
 include chocolatey
@@ -82,7 +82,6 @@ package { 'git':
 ## Saltstack
 
 Salt has a Chocolatey module that manages both packages and the installation of Chocolatey itself.
-
 
 ~~~python
 salt '*' chocolatey.bootstrap
