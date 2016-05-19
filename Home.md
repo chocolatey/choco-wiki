@@ -48,6 +48,10 @@ Chocolatey is beneficial for some of the following reasons:
 
 Chocolatey is like apt-get, but built with Windows in mind (there are differences and limitations). For those unfamiliar with APT/Debian, think about Chocolatey as a global silent installer for applications and tools. It can also do configuration tasks and anything that you can do with PowerShell. The power you hold with a tool like Chocolatey is only limited by your imagination!
 
+Here's a good short explanation: 
+
+>Chocolatey is a software management tool that is also a package manager. It functions fantastically well when the software is all included in the package and it doesn't make use of native installers. However to approach the Windows ecosystem a package manager also needs to know how to manage actual software installations, thus why Chocolatey does that as well. For publicly available packages, copyright keeps from having binaries embedded in packages, so Chocolatey is able to download from distribution points and checksum those binaries.
+
 What's the difference between NuGet and Chocolatey? Developers can use NuGet to get 3rd party libraries that they use to build the .NET tools and applications that they release with Chocolatey! But Chocolatey is not just for .NET tools. It's for nearly any Windows application/tool!
 
 Want to [[learn more?|ChocolateyFAQs]]
