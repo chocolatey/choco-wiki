@@ -21,6 +21,7 @@
 #### May
 
 * http://taucetisoft.es/2016/05/19/un-gestor-de-paquetes-para-windows/
+* https://puppet.com/blog/extending-chocolatey-packaging-walmart
 * http://powershell.org/wp/2016/05/11/episode-313-powerscripting-podcast-rob-reynolds-on-chocolatey/
 
 #### March
@@ -39,9 +40,9 @@
 
 #### January
 
-* https://puppetlabs.com/blog/chocolatey-creating-your-own-chocolatey-packages
+* https://puppet.com/blog/chocolatey-creating-your-own-chocolatey-packages
 * http://codebetter.com/robreynolds/2016/01/16/chocolatey-community-update/
-* https://puppetlabs.com/blog/chocolatey-hosting-your-own-server
+* https://puppet.com/blog/chocolatey-hosting-your-own-server
 
 ### 2015
 
