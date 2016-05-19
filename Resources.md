@@ -24,6 +24,10 @@
 * https://puppet.com/blog/extending-chocolatey-packaging-walmart
 * http://powershell.org/wp/2016/05/11/episode-313-powerscripting-podcast-rob-reynolds-on-chocolatey/
 
+#### April
+
+* https://puppet.com/blog/chocolatey-creating-recompiled-packages
+
 #### March
 
 * http://imallvirtual.com/azure-devtest-labs-chocolatey-artifacts-integration/
@@ -36,7 +40,7 @@
 * http://csi-windows.com/blog/all/74-powershell/463-getting-chocolatey-package-management-provider-working-on-windows-10
 * https://zimmergren.net/automating-software-installations-with-boxstarter-and-chocolatey/
 * https://www.chef.io/blog/2016/02/12/chef-client-12-7-released/
-* https://puppetlabs.com/blog/chocolatey-using-chocolatey-puppet
+* https://puppet.com/blog/chocolatey-using-chocolatey-puppet
 
 #### January
 
@@ -88,11 +92,11 @@
 
 #### April
 
-* https://puppetlabs.com/blog/chocolatey-what-it
+* https://puppet.com/blog/chocolatey-what-it
 
 #### March
 
-* https://puppetlabs.com/blog/rewriting-chocolatey-ground-up
+* https://puppet.com/blog/rewriting-chocolatey-from-ground-up-0
 
 #### February
 
