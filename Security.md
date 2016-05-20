@@ -31,6 +31,7 @@ The binary `choco.exe` can be trusted (at least as far as you trust the Chocolat
 *  Starting with 0.9.10, both the binaries and the PowerShell scripts are Authenticode signed. This certificate is only held by the lead Chocolatey maintainer (Rob). This provides quite a bit of trust that you are getting Chocolatey from the source and as intended.
 
 Using PowerShell, you can verify the binary (the path below is the default install location, adjust if necessary).
+
 ~~~sh
 C:\ PS> (Get-AuthenticodeSignature -FilePath C:\ProgramData\chocolatey\choco.exe).SignerCertificate | Format-List
 
@@ -52,6 +53,7 @@ Extensions   : {System.Security.Cryptography.Oid,
 * Although not the best security method, one can also verify choco based on the strong name. choco.exe is strong named with a key that is known only to the lead maintainer of Chocolatey (Rob). Verify the strong name of the official choco binary with the `sn.exe` utility - the public key should be `79d02ea9cad655eb`.
 
 Using a Visual Studio Command Prompt, you can verify the binary (the path below is the default install location, adjust if necessary). You can also download sn separately if necessary.
+
 ~~~sh
 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC>sn -T c:\ProgramData\chocolatey\choco.exe
 
