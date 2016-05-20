@@ -7,6 +7,7 @@
 ## In the community
 ### 2016
 
+* TekThing.com - [TekThing 57: Chocolatey Package Manager](https://youtu.be/lqOIop83ms8?t=14m34s) - http://www.tekthing.com/blog/2016/2/4/wifi-router-lifespan-ninite-or-chocolatey-package-manager-android-receipt-trackers-die-cfl-bulbs
 * Channel9 Demo of The Day - [It's Virtual Chocolate: A Custom VM Dipped in a Chocolatey Box Starter. Delicious](https://channel9.msdn.com/Shows/demooftheday/chocovm) - BC3Tech and Jerry Nixon
 
 ### 2015
