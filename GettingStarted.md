@@ -13,9 +13,9 @@ Let's install [Notepad++](http://notepad-plus-plus.org/).
 
 ### Overriding default install directory or other advanced install concepts
 
-1. Yes we support that through the use of install arguments - see [[CommandsInstall#installarguments]]
+1. Yes we support that through the use of install arguments - see [[Install Arguments|CommandsInstall#installarguments]]
 1. If you wanted to pass native argument to the installer, like the install directory, you would need to know the silent argument passed to that particular installer and then you would specify it on the command line or in the packages.config.
-1. If it was an MSI, then usually you could pass `-ia "INSTALLDIR=""D:\Program Files"""` (for cmd.exe, it's different for PowerShell). See [[CommandsReference#how-to-pass-options--switches]] for specifics on passing quoted values through.
+1. If it was an MSI, then usually you could pass `-ia "INSTALLDIR=""D:\Program Files"""` (for cmd.exe, it's different for PowerShell). See [[how to pass options/switches|CommandsReference#how-to-pass-options--switches]] for specifics on passing quoted values through.
 1. For example, Notepad++ uses the [NSIS](http://nsis.sourceforge.net/Main_Page) (NullSoft Scriptable Install System) installer. If we look at the silent options, we see that [/D](http://nsis.sourceforge.net/Docs/Chapter3.html#installerusagecommon) is how we influence the install directory. So we would pass `choco install notepadplusplus.install -ia "'/D=E:\SomeDirectory\somebody\npp'"` -note that we are looking at the specific package over the virtual (although you can do the same with notepadplusplus as well).
 
 Is there a better way? Absolutely, see [[ubiquitous install directory switch|FeaturesInstallDirectoryOverride]]!

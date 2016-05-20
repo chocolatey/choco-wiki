@@ -37,7 +37,7 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
       * `choco install package-name -source 'c:\path\to\Package\' -f`
 * **Push the package** to the Chocolatey community feed repository:
    * Get a Chocolatey account:
-      * [[https://chocolatey.org/account/Register]]
+      * [Register](https://chocolatey.org/account/register)
    * Copy the API key [[from your Chocolatey account|https://chocolatey.org/account]].
    * `choco apikey -k [API_KEY_HERE] -source https://chocolatey.org/`
    * `choco push package-name.1.1.0.nupkg -s https://chocolatey.org/` - packagename can be omitted

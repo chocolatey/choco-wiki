@@ -10,17 +10,17 @@ First you should determine if you are making a self-contained package or (also) 
 1. Run `choco new -h` to get a feel for what you can pass e.g `choco new bob` (to create a package named `bob`)
 1. Note all the rules below. This will help you, especially in publishing to the community feed (https://chocolatey.org)
 
-#### Self-Contained? 
-If you have a self-contained package, you can remove the automation scripts 
-entirely and just include the executables, they will automatically get shimmed, 
-which puts them on the path. Ensure you have the [[legal right to distribute|Legal]] 
-the application though. You should read up on the Shim Generation section 
-below though to familiarize yourself on what to do with GUI applications 
+#### Self-Contained?
+If you have a self-contained package, you can remove the automation scripts
+entirely and just include the executables, they will automatically get shimmed,
+which puts them on the path. Ensure you have the [[legal right to distribute|Legal]]
+the application though. You should read up on the Shim Generation section
+below though to familiarize yourself on what to do with GUI applications
 and/or ignoring shims (also known as batch redirects).
 
 #### Automation Scripts
 You have a powerful use of Chocolatey, as you are using PowerShell. So you
-can do just about anything you need. Choco has some very handy [[built-in functions|HelpersReference]] that you can use, these are sometimes called 
+can do just about anything you need. Choco has some very handy [[built-in functions|HelpersReference]] that you can use, these are sometimes called
 [[helpers|HelpersReference]].
 
 ## Table of Contents
@@ -38,7 +38,7 @@ can do just about anything you need. Choco has some very handy [[built-in functi
 1. [[Make shim for GUI application|CreatePackages#how-do-i-set-up-batch-redirects-for-applications-that-have-a-gui]]
 1. [[Localization|CreatePackages#internationalization-and-localization-of-packages]]
 1. [[Building|CreatePackages#build-your-package]] / [[Testing|CreatePackages#testing-your-package]] / [[Pushing|CreatePackages#push-your-package]]
-1. [[Automatically updating packages|AutomaticPackages]]
+1. [[Maintainer magic - automatically updating packaging|AutomaticPackages]]
 1. [[Taking over existing package|PackageMantainerHandover]]
 
 ## Quick Start guide
@@ -131,7 +131,7 @@ You can indicate the `Chocolatey` dependency like any other dependency. E.g.:
 
 Logically, the version is based on the lowest compatible version. But if you don't know and used a lot of sorcery in your package, depend on the version of `Chocolatey` that you succesfully tested your package on.
 
-**See also:** [[http://docs.nuget.org/docs/reference/versioning]]
+**See also:** [Nuget Version Reference](http://docs.nuget.org/docs/reference/versioning)
 
 ## But for real, how do I create a package?
 
@@ -330,8 +330,8 @@ To push your package after you have built and tested it, you type `choco push pa
 
 You can also log into chocolatey.org and upload your package from there (not recommended for packages over 2MB).
 
-## Automatic package repositories?
-Yes - [[AutomaticPackages]]
+## Automatic packaging?
+Yes - [[Automatic Packaging|AutomaticPackages]]
 
 ## Becoming a primary maintainer of an existing package
-See [[PackageMantainerHandover]]
+See [[Package Maintainer Handover|PackageMantainerHandover]]

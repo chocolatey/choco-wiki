@@ -6,7 +6,7 @@ To install chocolatey now, open an <strong>administrative</strong> command promp
 
 If you need to install as a non-administrator or want more advanced options, please continue reading...
 
-* Cmd.exe: 
+* Cmd.exe:
 
 ~~~sh
 @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</code></pre>
@@ -23,7 +23,7 @@ iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.p
 ~~~sh
 iwr https://chocolatey.org/install.ps1 | iex
 ~~~
-   
+
 If that is still too much to type, [Jay Bazuzi](https://twitter.com/jaybazuzi) [has created a short link](https://twitter.com/jaybazuzi/status/625080286934466560) `cin.st` that points to https://chocolatey.org/install.ps1. So you can use `iwr cin.st | iex`, although we recommend `iwr https://cin.st | iex`.
 There are a few ways to install Chocolatey. Chocolatey exists as a [NuGet package](http://chocolatey.org/packages/chocolatey), so virtually any way you can get a NuGet package, you have the opportunity to then install it.
 
@@ -50,7 +50,7 @@ Great question - [[Why does Chocolatey install where it does|DefaultChocolateyIn
 
 **Can I install with a proxy?** Yes
 
-Chocolatey will detect and use a system set proxy. However some proxies will need to be set explicitly. To do so, you would do similar to [[Proxy-Settings-for-Chocolatey]]
+Chocolatey will detect and use a system set proxy. However some proxies will need to be set explicitly. To do so, you would do similar to [[Proxy settings for Chocolatey|Proxy-Settings-for-Chocolatey]]
 
 Set the following environment variable(s) prior to install:
 

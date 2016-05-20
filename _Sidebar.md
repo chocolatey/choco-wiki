@@ -1,4 +1,4 @@
-- [[Home]]
+- [[Home|Home]]
 - [[Why Chocolatey?|Why]]
 - [Choco 0.9.8.x & below](https://github.com/chocolatey/chocolatey/wiki)
 
@@ -8,7 +8,7 @@
 - [Submitting Issues](https://github.com/chocolatey/choco/blob/master/README.md#submitting-issues)
 - [Contributing](https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md)
 - [[FAQs|ChocolateyFAQs]]
-- [[Security]]
+- [[Security|Security]]
 - [[Chocolatey.org Moderation|Moderation]]
 - [[Chocolatey.org Packages Disclaimer|CommunityPackagesDisclaimer]]
 - [[Software Vendor?|PackageTriageProcess#are-you-a-software-vendor]]
@@ -85,5 +85,5 @@
 **Other**
 
  - [[Why Chocolatey?|Why]]
- - [[Legal]]
- - [[History]]
+ - [[Legal|Legal]]
+ - [[History|History]]
