@@ -3,7 +3,6 @@
 
 ##### Notes:
  * Edit me at https://github.com/chocolatey/choco-wiki
- * ~~If you are on Chocolatey 0.9.8.x and below, you want to go to https://github.com/chocolatey/chocolatey/wiki~~ (this is no longer available)
 
 ## Build Status
 
