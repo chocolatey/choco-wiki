@@ -40,7 +40,8 @@ Then you surround those templated values with `[[]]` to make them templated for 
 
 This is a template for embedding an MSI into a package. This removes almost everything that is unnecessary for embedding software into packages. And because the autoUninstaller handles MSIs without an issue, we don't need a chocolateyUninstall.ps1.
 
-A file with the extension `.nuspec`
+A file with the extension `.nuspec`:
+
 ~~~xml
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
