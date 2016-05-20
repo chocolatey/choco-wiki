@@ -27,6 +27,7 @@
 
 ### 2016
 
+* Developer on Fire - [Episode 131 | Rob Reynolds - Automate Everything](http://developeronfire.com/episode-131-rob-reynolds-automate-everything)
 * https://www.arresteddevops.com/chocolatey/
 
 ### 2015
