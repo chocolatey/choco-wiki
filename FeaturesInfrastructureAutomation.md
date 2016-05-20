@@ -115,3 +115,7 @@ salt '*' chocolatey.install git
 
 ## System Center Configuration Manager
 Chocolatey integrates with SCCM by handling the software management, and pointing to [distribution points](https://technet.microsoft.com/en-us/library/bb680614.aspx) as the source for packages. This allows folks to get packages and larger binaries out to their network without constraints and still take advantage of Chocolatey's fantastic abilities!
+
+To direct Chocolatey package installs, you can still write GPOs to ensure this.
+
+
