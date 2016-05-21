@@ -14,13 +14,13 @@ If you need to install as a non-administrator or want more advanced options, ple
 
 * PowerShell.exe (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least RemoteSigned):
 
-~~~sh
+~~~powershell
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 ~~~
 
 * PowerShell v3+ (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least RemoteSigned):
 
-~~~sh
+~~~powershell
 iwr https://chocolatey.org/install.ps1 | iex
 ~~~
 
