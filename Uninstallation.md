@@ -24,6 +24,7 @@ There are no warranties on this script whatsoever, but here is something you can
 ***WARNING:*** Seriously, this script may destroy your machine and require a rebuild. Think twice before running this.
 
 If you also intend to delete the Chocolatey directory, remove the `-WhatIf`:
+
 ~~~powershell
 Remove-Item -Recurse -Force "$env:ChocolateyInstall" -WhatIf
 [System.Text.RegularExpressions.Regex]::Replace( ` 
@@ -41,6 +42,7 @@ Remove-Item -Recurse -Force "$env:ChocolateyInstall" -WhatIf
 ~~~
 
 If you also intend to delete the tools directory that was managed by Chocolatey, remove both of the `-WhatIf` switches:
+
 ~~~powershell
 if ($env:ChocolateyBinRoot -ne '' -and $env:ChocolateyBinRoot -ne $null) { Remove-Item -Recurse -Force "$env:ChocolateyBinRoot" -WhatIf }
 if ($env:ChocolateyToolsRoot -ne '' -and $env:ChocolateyToolsRoot -ne $null) { Remove-Item -Recurse -Force "$env:ChocolateyToolsRoot" -WhatIf }
