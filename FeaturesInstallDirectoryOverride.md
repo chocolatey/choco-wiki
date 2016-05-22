@@ -34,7 +34,7 @@ The following options are added to install and upgrade commands.
 ## FAQ
 
 ### How do I take advantage of this feature?
-You must have a [licensed edition of Chocolatey](https://bit.ly/choco_pro_business) (Professional and/or Business). Professional is a personal, named license that costs about the price of a lunch outing per month and comes with several other features. Business editions are great for organizations that need more business friendly features from their software management tool.
+You must have a [licensed edition of Chocolatey](https://chocolatey.org/pricing) (Professional and/or Business). Professional is a personal, named license that costs about the price of a lunch outing per month and comes with several other features. Business editions are great for organizations that need more business friendly features from their software management tool.
 
 ### I'm a licensed customer, now what?
 You just create a package or find a package you want to install that uses a native installer (ends up in Programs and Features).

@@ -60,7 +60,7 @@ Chocolatey FOSS install showing tab completion and `refreshenv` (a way
 
 ![FOSS install in action](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/choco_install.gif)
 
-[Chocolatey Professional](https://bit.ly/choco_pro_business) showing private download cache and virus scan
+[Chocolatey Professional](https://chocolatey.org/pricing) showing private download cache and virus scan
  protection.
 
 ![Pro install in action](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/chocopro_install_stopped.gif)
