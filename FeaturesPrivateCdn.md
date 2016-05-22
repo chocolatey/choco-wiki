@@ -8,7 +8,7 @@ When our customers download content from you, we may cache a copy of that conten
 
 This private content cache is ***only*** available as a service for our paying customers.
 
-If you have questions or **prefer to opt out**, please contact us <a href="mailto:chocolateywebadmin at googlegroups dot com?subject=[Insert Your Software Name Here] - Chocolatey Community Feed Caching&body=Please fill in details of your request (remember to include the package page url, and the software name). Please remember to change the to address to a valid email address.">here</a> (vendor requests only please).
+If you have questions or **prefer to opt out**, please [contact us](https://chocolatey.org/contact) and select "Software Vendor Opt Out" (vendor requests only please).
 
 ## Usage
 This is mostly automatic, but in case the feature is turned off, you may turn it on by setting the feature `downloadCache` (`choco feature enable -n downloadCache`).
