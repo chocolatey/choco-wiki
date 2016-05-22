@@ -89,7 +89,6 @@ $packageArgs = @{
 }
 
 Install-ChocolateyInstallPackage @packageArgs
-
 ~~~
 
 ### Extending Templates
