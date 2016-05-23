@@ -53,7 +53,7 @@
   - [[Apikey|CommandsApiKey]]
   - [[Push|CommandsPush]]
  - [[Function and Variable Reference|HelpersReference]]
- - [[Automatic Packages|AutomaticPackages]]
+ - [[Automatic Packaging|AutomaticPackages]]
 
 **How To's**
 
