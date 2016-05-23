@@ -34,6 +34,12 @@ There are a few ways to install Chocolatey. Chocolatey exists as a [NuGet packag
 
 That's it! All you need is choco.exe (that you get from the installation scripts) and you are good to go!. No Visual Studio required.
 
+## Windows 10
+If you have Windows 10 installed, you can add Chocolatey as a package source to the built-in, compatible package manager [OneGet](https://github.com/OneGet/oneget) by simply opening a PowerShell (as administrator) and issuing the following command:
+```powershell
+Register-PackageSource -Name chocolatey -Location http://chocolatey.org/api/v2 -Provider PSModule -Trusted -Verbose
+```
+
 ## Why does Chocolatey install where it does by default?
 Great question - [[Why does Chocolatey install where it does|DefaultChocolateyInstallReasoning]]
 
