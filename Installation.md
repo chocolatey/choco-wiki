@@ -8,6 +8,8 @@ If you need to install as a non-administrator or want more advanced options, ple
 
 * Cmd.exe:
 
+<input id="cmd_copy" value="@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin" /><button class="copy-button" data-clipboard-target="#cmd_copy" />
+
 ~~~sh
 @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 ~~~
@@ -148,3 +150,9 @@ You can also just download and unzip the Chocolatey package (`.nupkg` is a fancy
  1. Open a PowerShell command shell and navigate into the unzipped package's tools folder.
  1. **NOTE**: Ensure PowerShell execution policy is set to at least bypass or remote signed (if you have issues, you may need to set it to Unrestricted).
  1. Call `& .\chocolateyInstall.ps1` to allow Chocolatey to install.
+
+
+<script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.10/dist/clipboard.min.js"></script>
+<script>
+  new Clipboard('.copy-button');
+</script>
