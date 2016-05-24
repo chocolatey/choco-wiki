@@ -6,21 +6,19 @@ To install chocolatey now, open an <strong>administrative</strong> command promp
 
 If you need to install as a non-administrator or want more advanced options, please continue reading...
 
-* Cmd.exe:
-
-<input id="cmd_copy" value="@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin" /><button class="copy-button" data-clipboard-target="#cmd_copy" />
+* Cmd.exe - <button class="icon-clipboard copy-button" data-clipboard-text="@@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"></button>
 
 ~~~sh
 @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 ~~~
 
-* PowerShell.exe (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least RemoteSigned):
+* PowerShell.exe (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least RemoteSigned) - <button class="icon-clipboard copy-button" data-clipboard-text="iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))"></button>
 
 ~~~powershell
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 ~~~
 
-* PowerShell v3+ (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least RemoteSigned):
+* PowerShell v3+ (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least RemoteSigned) - <button class="icon-clipboard copy-button" data-clipboard-text="iwr https://chocolatey.org/install.ps1 | iex"></button>
 
 ~~~powershell
 iwr https://chocolatey.org/install.ps1 | iex
