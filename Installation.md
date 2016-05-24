@@ -6,7 +6,7 @@ To install chocolatey now, open an <strong>administrative</strong> command promp
 
 If you need to install as a non-administrator or want more advanced options, please continue reading...
 
-* Cmd.exe - <button class="icon-clipboard copy-button" data-clipboard-text="@@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"></button>
+* Cmd.exe - <button class="icon-clipboard copy-button" data-clipboard-text="@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"></button>
 
 ~~~sh
 @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
