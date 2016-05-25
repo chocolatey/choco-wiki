@@ -31,7 +31,7 @@ Fantastic question, see [[Can I use Chocolatey with existing software?|Why#can-i
 
 ### I would like to use Chocolatey in my organization, is the licensing friendly?
 
-Yes, it is. Chocolatey carries a FOSS Apache 2.0 license, which is extremely business friendly. You can use Chocolatey and most of it's infrastructure completely free. Chocolatey will have a business offering with features specifically targeted to businesses in the first half of 2016. See the [Kickstarter](https://www.kickstarter.com/projects/ferventcoder/chocolatey-the-alternative-windows-store-like-yum/description) for details.
+Yes, it is. Chocolatey carries a FOSS Apache 2.0 license, which is extremely business friendly. You can use Chocolatey and most of it's infrastructure completely free. Chocolatey also has a business edition with features organizations need for better software management . See [Compare](https://chocolatey.org/pricing) for details.
 
 ### Should my organization depend on (use) the community feed (https://chocolatey.org/packages)?
 
