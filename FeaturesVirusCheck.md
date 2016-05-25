@@ -1,5 +1,5 @@
 # Runtime Malware Protection / Virus Scanning (Licensed Editions Only)
-We are pleased to offer runtime malware protection for our licensed customers! Virus checking is available in two flavors - VirusTotal and Generic malware verification.
+We are pleased to offer runtime malware protection for our [customers](https://chocolatey.org/pricing)! Virus checking is available in two flavors - VirusTotal and Generic malware verification.
 
 ## Usage
 

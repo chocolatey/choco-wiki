@@ -1,12 +1,12 @@
 # Private CDN Download Cache (Licensed Editions Only)
-Chocolatey offers a private CDN cache of download content for paying customers. The internet is unpredictable and sometimes sites go down, the cache ensures that the packages on the community repository are not broken by issues with the internet. We lovingly call this the "**No more 404s feature**".
+Chocolatey offers a private CDN cache of download content for [customers](https://chocolatey.org/pricing)! The internet is unpredictable and sometimes sites go down, the cache ensures that the packages on the community repository are not broken by issues with the internet. We lovingly call this the "**No more 404s feature**".
 
 We do this by caching a copy of the content on our private CDN. This content also gets virus checked and checksummed to verify that it matches what was originally intended by package maintainers and moderators for you to receive.
 
 ## Important Information for Software Vendors
 When our customers download content from you, we may cache a copy of that content on our private CDN to ensure that later our licensed customers will be able to access that content again. This allows predictable and reliable installations of packages. Like most CDNs, no changes are made, we are simply ensuring the content stays available for our private customers. We are not modifying, selling, renting, leasing, lending, or sub-licensing this content in any way.
 
-This private content cache is ***only*** available as a service for our paying customers.
+This private content cache is ***only*** available as a service for our [licensed customers](https://chocolatey.org/pricing).
 
 If you have questions or **prefer to opt out**, please [contact us](https://chocolatey.org/contact) and select "Software Vendor Opt Out" (vendor requests only please).
 
@@ -64,7 +64,7 @@ When you install packages from the community repository and a private cache beco
 No, this is the original content as it would have been downloaded.
 
 ### Is the content publicly available?
-No, this is a private CDN cache available only for licensed customers.
+No, this is a private CDN cache available only for [licensed customers](https://chocolatey.org/pricing).
 
 ### Why isn't a cache available for x package?
 There are a variety of factors that go into suitability for a package.
