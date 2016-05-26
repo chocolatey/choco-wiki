@@ -21,6 +21,7 @@
 #### May
 
 * http://media.bemyapp.com/chocolatey-windows-software-management-actually-sweet/
+* http://blog.myget.org/post/2016/05/26/Using-build-services-to-create-Chocolatey-packages.aspx
 * http://taucetisoft.es/2016/05/19/un-gestor-de-paquetes-para-windows/
 * https://puppet.com/blog/extending-chocolatey-packaging-walmart
 * http://powershell.org/wp/2016/05/11/episode-313-powerscripting-podcast-rob-reynolds-on-chocolatey/
