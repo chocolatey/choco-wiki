@@ -11,11 +11,11 @@ When a binary is flagged:
 
 
 ### VirusTotal
-We've teamed up with the amazing [VirusTotal](https://virustotal.com/) to offer a second opinion to your built-in anti-virus solution. When your packages download content from the internet, Chocolatey Professional will automatically check the executables prior to running any content. If a certain number of positives have been identified (configurable), Chocolatey will fail the install automatically (but can be overridden).
+We've teamed up with the amazing [VirusTotal](https://virustotal.com/) to offer a second opinion to your built-in anti-virus solution. When your packages download content from the internet, Chocolatey Pro will automatically check the executables prior to running any content. If a certain number of positives have been identified (configurable), Chocolatey will fail the install automatically (but can be overridden).
 
 VirusTotal scans binaries against over 50 different anti-virus scanners. Chocolatey will use the information based on sending a SHA256 checksum of the binary to VirusTotal and determining what the scans have determined.
 
-By default the virus scanner is already enabled and set to VirusTotal for Professional licenses. Organizations usually are more wary about reaching out to the internet, so the feature is set to Generic and the virus scanner may not be enabled by default (because it needs configuration). If you need to configure the virus scanner to use VirusTotal, please run the following two commands:
+By default the virus scanner is already enabled and set to VirusTotal for Pro licenses. Organizations usually are more wary about reaching out to the internet, so the feature is set to Generic and the virus scanner may not be enabled by default (because it needs configuration). If you need to configure the virus scanner to use VirusTotal, please run the following two commands:
 
  * `choco config set virusScannerType VirusTotal`
  * `choco feature enable -n virusCheck`
@@ -81,10 +81,10 @@ The following options are added to install and upgrade commands.
 ## FAQ
 
 ### How do I take advantage of this feature?
-You must have a [licensed edition of Chocolatey](https://chocolatey.org/pricing) (Professional and/or Business). Professional is a personal, named license that costs about the price of a lunch outing per month and comes with several other features. Business editions are great for organizations that need more business friendly features from their software management tool.
+You must have a [licensed edition of Chocolatey](https://chocolatey.org/pricing) (Pro and/or Business). Pro is a personal, named license that costs about the price of a lunch outing per month and comes with several other features. Business editions are great for organizations that need more business friendly features from their software management tool.
 
 ### I'm a licensed customer, now what?
-When you install package that download content, those items will automatically be verified if the feature is turned on (it is automatically turned on for Professional users). We don't turn it on automatically in Business editions because many organizations are wary about reaching out to the internet and the generic virus scanner requires additional configuration.
+When you install package that download content, those items will automatically be verified if the feature is turned on (it is automatically turned on for Pro users). We don't turn it on automatically in Business editions because many organizations are wary about reaching out to the internet and the generic virus scanner requires additional configuration.
 
 ### How do I turn this feature on?
 

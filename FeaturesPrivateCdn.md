@@ -45,7 +45,7 @@ The following options are added to install and upgrade commands.
 ## FAQ
 
 ### How do I take advantage of this feature?
-You must have a [licensed edition of Chocolatey](https://chocolatey.org/pricing) (Professional and/or Business). Professional is a personal, named license that costs about the price of a lunch outing per month and comes with several other features. Business editions are great for organizations that need more business friendly features from their software management tool.
+You must have a [licensed edition of Chocolatey](https://chocolatey.org/pricing) (Pro and/or Business). Pro is a personal, named license that costs about the price of a lunch outing per month and comes with several other features. Business editions are great for organizations that need more business friendly features from their software management tool.
 
 ### I'm a licensed customer, now what?
 When you install packages from the community repository and a private cache becomes available, it will use that cache automatically. You don't have to do anything additional.

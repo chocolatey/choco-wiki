@@ -9,7 +9,7 @@ We take security issues very seriously. Security falls into a few areas of the C
 * If you are an organization and you are using Chocolatey in the recommended way (internal repositories using packages that use local resources only), Chocolatey is secure and reliable.
 * Using the community repository (https://chocolatey.org/packages) is only as secure as the packages that you are using. While Chocolatey provides security features like checksumming, verification against VirusTotal, and moderation to be sure packages are using official binaries, there is no guarantee on the official distributions.
 * Moderation and virus checking of packages on the public community repository (https://chocolatey.org/packages) represent what the package and links represented at the time of original moderation. Many packages on the public feed represent software that has distribution rights, so the packages must contain instructions on how to download those binaries from official sources. There is no guarantee (other than packages using the recommended but optional checksum) against the vendor changing what is at the URLs that the package uses.
-* If you need better runtime protection against malware, you should look at [Chocolatey Professional / Chocolatey For Business](https://chocolatey.org/pricing). While we'd like to offer runtime protection for free to everyone, it's not free for us so we are not able to provide it as a free service.
+* If you need better runtime protection against malware, you should look at [Chocolatey Pro / Chocolatey For Business](https://chocolatey.org/pricing). While we'd like to offer runtime protection for free to everyone, it's not free for us so we are not able to provide it as a free service.
 
 ## Overall
 
@@ -84,8 +84,9 @@ Chocolatey.org has a community repository of packages known as the community fee
 
 With all of that said, you may want to ensure you build trust with each package as the software is coming from somewhere on the internet sometimes and moderators only validate that the package gets the software from those official distribution points, not necessarily the software itself. While VirusTotal provides a bit more of a validation against the binaries, if the maintainer is not using checksums in the package, there isn't a guarantee that the vendor did not pull a switch on the binary. If you are concerned about that you
 
-## Chocolatey Professional / Chocolatey for Business
-1. [Licensed editions of Chocolatey](https://chocolatey.org/pricing) perform runtime virus scan verification. We highly recommend a security conscious company look to the business routes for more security (and locking down of components, like locking down folders even more and other nice tweaks that a business would want to make).
+## Chocolatey Pro / Chocolatey for Business
+1. [Licensed editions of Chocolatey](https://chocolatey.org/pricing) perform runtime virus scan verification. We highly recommend folks concerned about security using the community feed or other packages that download resources from the internet to use Pro.
+1. For organizations, we highly recommend a security conscious company look at the features available in [Chocolatey for Business](https://chocolatey.org/pricing) for more security (and locking down of components, like locking down folders even more and other nice tweaks that a business would need to make). Please note that some features are still in development.
 
 ## Future Chocolatey Enhancements
 1. Moderators will cryptographically sign packages with a GPG key that they own. This will allow folks to trust moderators.
