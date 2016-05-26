@@ -28,7 +28,7 @@ Chocolatey has grown up quite a bit with the release of 0.9.9+ series and has be
 
 The binary `choco.exe` can be trusted (at least as far as you trust the Chocolatey maintainers and RealDimensions Software, LLC).
 
-*  Starting with 0.9.10, both the binaries and the PowerShell scripts are Authenticode signed. This certificate is only held by the lead Chocolatey maintainer (Rob). This provides quite a bit of trust that you are getting Chocolatey from the source and as intended.
+*  **Starting with 0.9.10.0** (still in beta as of May 2016), both the binaries and the PowerShell scripts are Authenticode signed. This certificate is only held by the lead Chocolatey maintainer (Rob). This provides quite a bit of trust that you are getting Chocolatey from the source and as intended.
 
 Using PowerShell, you can verify the binary (the path below is the default install location, adjust if necessary).
 
