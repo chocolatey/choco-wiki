@@ -23,9 +23,6 @@ iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.p
 iwr https://chocolatey.org/install.ps1 | iex
 ~~~
 
-
-If that is still too much to type, [Jay Bazuzi](https://twitter.com/jaybazuzi) (independent from Chocolatey) [has created a short link](https://twitter.com/jaybazuzi/status/625080286934466560) "cin.st" that points to https://chocolatey.org/install.ps1. So you can use `iwr https://cin.st | iex`. It is a redirect that we do not own, so we don't recommend it. There could also be security issues surrounding shortlinks. Plus we've had reports that without the right security certificates, the link does not work over "https". If you care about security, please only use the recommended links above (unless you've decided to trust Jay and the shortlink service he has used to create the link).
-
 There are a few ways to install Chocolatey. Chocolatey exists as a [NuGet package](http://chocolatey.org/packages/chocolatey), so virtually any way you can get a NuGet package, you have the opportunity to then install it.
 
 ## Requirements
