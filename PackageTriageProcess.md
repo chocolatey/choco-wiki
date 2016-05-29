@@ -81,7 +81,7 @@ So a package needs fixed or updated. You have reached out to the maintainer or d
 ![maintainer profile with github repository link](https://cloud.githubusercontent.com/assets/63502/12520758/f755bf4e-c10b-11e5-831e-4da3a91c42c9.png)
 1. If the maintainer(s) do[es] not respond within a few days, it's possible they haven't received your message or don't watch the repository. It's also possible they are on holiday. Use the contact site admins link to contact the site curators, who will attempt to triage the situation.   
 ![Contact admins link](https://cloud.githubusercontent.com/assets/63502/12520681/a8949c9a-c10b-11e5-84f5-ce4063249cab.png)
-1. If you don't hear anything back from the curators within 2 days (usually same day response), then you send a message to the Chocolatey google group (http://groups.google.com/group/chocolatey) and we work to contact the maintainers.
+1. If you don't hear anything back from the curators within 2 days (usually same day response), then you send a message to the Chocolatey google group (https://groups.google.com/group/chocolatey) and we work to contact the maintainers.
 1. If the maintainer(s) are unresponsive after a period of time (determined by the admins), the package is considered abandoned. The curators will TOS the package and new folks can be added as maintainers. The moderators will ask if you would like to become a maintainer of the package. If you choose to become a new maintainer, see the next section.
 
 **NOTE**: We don't have non-maintainer uploads in the community feed and we haven't needed them yet.
