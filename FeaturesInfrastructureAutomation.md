@@ -6,7 +6,9 @@ Chocolatey integrates with several infrastructure automation tools!
 With most of these tools, the interface you would interact with Chocolatey would be through the tool or through the interfaces of the tool, like in scripts.
 
 * [Ansible](#ansible)
+* [Boxstarter](#boxstarter)
 * [Chef](#chef)
+* [Octopus Deploy](#octopus-deploy)
 * [PowerShell DSC](#powershell-dsc)
 * [PowerShell PackageManagement / OneGet](#powershell-packagemanagement)
 * [Puppet](#puppet)
@@ -24,6 +26,14 @@ win_chocolatey:
 ~~~
 
 [Read More...](https://bit.ly/choco_ansible)
+
+## Boxstarter
+
+Boxstarter is a lightweight configuration management utility. 
+
+> Repeatable, **reboot resilient** Windows environment installations made easy using Chocolatey packages. When its time to repave either **bare metal or virtualized instances**, locally or on a **remote machine**, Boxstarter can automate both trivial and highly complex installations. Compatible with all Windows versions from **Windows 7/2008 R2 forward**.
+
+[Read more...](http://boxstarter.org/)
 
 ## Chef
 
@@ -68,6 +78,12 @@ packages.each do |pkg, install|
   include_recipe "#{cookbook_name}::#{pkg}" if install
 end
 ~~~
+
+## Octopus Deploy
+
+Octopus is a friendly deployment automation tool for .NET developers. It integrates with lots of utilities, and they have a template for installing Chocolatey packages: https://library.octopusdeploy.com/step-template/actiontemplate-chocolatey-install-package
+
+[Read more...](https://octopus.com/)
 
 ## PowerShell DSC
 
