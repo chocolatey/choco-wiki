@@ -158,6 +158,7 @@
 
 #### December
 
+* https://thoughtworks.github.io/p2/issue07/cd-in-windows-part-2/
 * http://www.liamjbennett.me/post/2013-12-11-puppet-on-windows-part-2/
 
 #### October
