@@ -83,6 +83,10 @@
 * http://xenappblog.com/2015/how-to-install-chocolatey-packages-offline/
 * http://xenappblog.com/2015/getting-started-with-chocolatey-and-boxstarter/
 
+#### July
+
+* http://www.thebuttonfactory.nl/?p=2648
+
 #### June
 
 * http://xenappblog.com/2015/how-to-use-chocolatey-with-mdt-2013/
