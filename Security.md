@@ -82,7 +82,18 @@ Chocolatey.org has a community repository of packages known as the community fee
 1. Checksums of of included binaries are shown to allow for folks to perform independent verification. We've move to adding an additional VERIFICATION file for verifying the binaries. This will start to show up more over 2016.
 1. Packages are run through Virus Total to produce a second opinion on the relative safety of the package and underlying software that is contained or downloaded by the package. The verification of this is shown on the site.
 
-With all of that said, you may want to ensure you build trust with each package as the software is coming from somewhere on the internet sometimes and moderators only validate that the package gets the software from those official distribution points, not necessarily the software itself. While VirusTotal provides a bit more of a validation against the binaries, if the maintainer is not using checksums in the package, there isn't a guarantee that the vendor did not pull a switch on the binary. If you are concerned about that you
+### Rigorous Moderation Process for Community Packages
+
+ * All community packages go through a rigorous moderation process prior to any public consumption:
+   * All package versions are run through an automated validation process to determine quality.
+   * All package versions are run through an automated verification process to determine if they work.
+   * All packages versions are run through VirusTotal to determine if there are any flagging items. This includes downloading and unpacking any external resources.
+   * A human reviews every package version that is not a trusted package. This process verifies that packages are pulling from official distro sources or checksumming items versus the official distros and checking over scripts for malicious behavior.
+   * Checksumming is not yet a requirement, so keep reading the next section.
+
+
+#### Downloading Internet Resources Can Still Be An Issue
+With all of that said, you may want to ensure you build trust with each package as the software is coming from somewhere on the internet sometimes and moderators only validate that the package gets the software from those official distribution points, not necessarily the software itself. While VirusTotal provides a bit more of a validation against the binaries, if the maintainer is not using checksums in the package, there isn't a guarantee that the vendor did not pull a switch on the binary. If you are concerned about that you should look to Pro or Business (next section).
 
 ## Chocolatey Pro / Chocolatey for Business
 1. [Licensed editions of Chocolatey](https://chocolatey.org/pricing) perform runtime virus scan verification. We highly recommend folks concerned about security using the community feed or other packages that download resources from the internet to use Pro.
