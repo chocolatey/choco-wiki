@@ -5,7 +5,7 @@ Chocolatey installs in seconds...
 
 To install chocolatey now, open an <strong>administrative</strong> command prompt and paste the text from the box below that applies to the name of your shell and press enter. If you need assistance opening an administrative prompt, see [open an elevated prompt in Windows 8+](http://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) (or [Windows 7](http://www.howtogeek.com/howto/windows-vista/run-a-command-as-administrator-from-the-windows-vista-run-box/)).
 
-**NOTE:** Please inspect [https://chocolatey.org/install.ps1](https://chocolatey.org/install.ps1) prior to running any of these scripts to ensure safety. We already know it's safe, but you should also be comfortable before running ***any*** script from the internet you are not familiar with.
+**NOTE:** Please inspect [https://chocolatey.org/install.ps1](https://chocolatey.org/install.ps1) prior to running any of these scripts to ensure safety. We already know it's safe, but you should also be comfortable before running ***any*** script from the internet you are not familiar with. All of these scripts download a remote PowerShell script and execute it on your machine.
 
 * Cmd.exe - <button class="icon-clipboard copy-button" data-clipboard-text="@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"></button>
 
@@ -25,7 +25,9 @@ iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.p
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 ~~~
 
-You may not need `-UseBasicParsing` - `iwr` (`Invoke-WebRequest`) downloads the install script and passes it to `iex` (`Invoke-Expression`). This runs the install script on the machine that calls this function. This installs Chocolatey.
+The easiest option to remember is this one. You may not need `-UseBasicParsing`.
+
+What are these scripts doing? `iwr` (`Invoke-WebRequest`) downloads the install script and passes it to `iex` (`Invoke-Expression`). This runs the install script on the machine that calls this function.
 
 ## Requirements
 * Windows 7+ / Windows Server 2003+
