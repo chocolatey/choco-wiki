@@ -3,9 +3,7 @@ Chocolatey installs in seconds...
 
 To install chocolatey now, open an <strong>administrative</strong> command prompt and paste the text from the box below that applies to the name of your shell and press enter. If you need assistance opening an administrative prompt, see [open an elevated prompt in Windows 8+](http://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) (or [Windows 7](http://www.howtogeek.com/howto/windows-vista/run-a-command-as-administrator-from-the-windows-vista-run-box/)).
 
-If you need to install as a non-administrator or want more advanced options, please see [Before You Install](#before-you-install) below...
-
-Need to install a particular version of Chocolatey? Proxy? See [Before You Install](#before-you-install) below.
+**NOTE:** Need to install a particular version of Chocolatey? Proxy? Install to a different location? Advanced Options? See [Before You Install](#before-you-install) below. [Non-Administrator](#non-administrative-install)?
 
 * Cmd.exe - <button class="icon-clipboard copy-button" data-clipboard-text="@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"></button>
 
