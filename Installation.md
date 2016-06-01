@@ -56,7 +56,16 @@ Set the following environment variable(s) prior to install:
 * `chocolateyProxyUser` / `chocolateyProxyPassword` - optional credentials
 for explicit proxy
 
-**NOTE:** This will only work with the methods below that call https://chocolatey.org/install.ps1 as part of the install.
+In PowerShell, it looks like this:
+
+~~~powershell
+$env:chocolateyProxyLocation = 'https://local/proxy/server'
+#$env:chocolateyProxyUser = 'username'
+#$env:chocolateyProxyPassword = 'password'
+# install script
+~~~
+
+**NOTE:** This will only work with the installation methods that call https://chocolatey.org/install.ps1 as part of the install.
 
 **Can I install a particular version of Chocolatey?** Yes
 
@@ -64,15 +73,29 @@ Set the following environment variable prior to install:
 
 * `chocolateyVersion` - controls what version of Chocolatey is installed
 
-**NOTE:** This will only work with the methods below that call https://chocolatey.org/install.ps1 as part of the install.
+In PowerShell, it looks like this:
+
+~~~powershell
+$env:chocolateyVersion = '0.9.9.12'
+# install script
+~~~
+
+**NOTE:** This will only work with the installation methods that call https://chocolatey.org/install.ps1 as part of the install.
 
 **Can I use Windows built-in compression instead of downloading 7zip?** Yes
 
 Set the following environment variable prior to install:
 
-* `chocolateyUseWindowsCompression` - this will bypass the download and use of 7zip
+* `chocolateyUseWindowsCompression` - this will bypass the download and use of 7zip.
 
-**NOTE:** This will only work with the methods below that call https://chocolatey.org/install.ps1 as part of the install.
+In PowerShell, it looks like this:
+
+~~~powershell
+$env:chocolateyUseWindowsCompression = 'true'
+# install script
+~~~
+
+**NOTE:** This will only work with the installation methods that call https://chocolatey.org/install.ps1 as part of the install.
 
 ## Non-Administrative Install
 
@@ -114,6 +137,8 @@ SET DIR=%~dp0%
 ::run installer
 %systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%DIR%install.ps1' %*"
 ```
+
+You can also get to this file by going to [https://chocolatey.org/installchocolatey.cmd](https://chocolatey.org/installchocolatey.cmd).
 
 If you prefer to have the install.ps1 file already, comment out the download line in the batch file and download the [`install.ps1`](https://chocolatey.org/install.ps1) from [chocolatey.org](https://chocolatey.org/install.ps1) and save it as `install.ps1` next to the `installChocolatey.cmd` file.
 
