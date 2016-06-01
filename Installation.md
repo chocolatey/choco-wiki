@@ -27,7 +27,7 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 
 The easiest option to remember is this one. You may not need `-UseBasicParsing`.
 
-What are these scripts doing? `iwr` (`Invoke-WebRequest`) downloads the install script and passes it to `iex` (`Invoke-Expression`). This runs the install script on the machine that calls this function.
+What are these scripts doing? `iwr` (`Invoke-WebRequest`)/`WebClient.DownloadString` downloads the install script and passes it to `iex` (`Invoke-Expression`) to execute the contents of the script. This runs the installation script for Chocolatey. 
 
 ## Requirements
 * Windows 7+ / Windows Server 2003+
