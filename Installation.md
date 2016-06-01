@@ -17,10 +17,10 @@ If you need to install as a non-administrator or want more advanced options, ple
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 ~~~
 
-* PowerShell v3+ (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least RemoteSigned) - <button class="icon-clipboard copy-button" data-clipboard-text="iwr https://chocolatey.org/install.ps1 | iex"></button>
+* PowerShell v3+ (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least RemoteSigned) - <button class="icon-clipboard copy-button" data-clipboard-text="iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"></button>
 
 ~~~powershell
-iwr https://chocolatey.org/install.ps1 | iex
+iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 ~~~
 
 There are a few ways to install Chocolatey. Chocolatey exists as a [NuGet package](http://chocolatey.org/packages/chocolatey), so virtually any way you can get a NuGet package, you have the opportunity to then install it.
