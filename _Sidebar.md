@@ -41,19 +41,34 @@
   - [[Config|CommandsConfig]]
   - [[Source / Sources|CommandsSources]]
   - [[Feature|CommandsFeature]]
-  - See other commands related to creating packages below
+  - Packaging
+    - [[New|CommandsNew]]
+    - [[Pack|CommandsPack]]
+    - [[Apikey|CommandsApiKey]]
+    - [[Push|CommandsPush]]
 
 **Creating Packages**
 
  - [[Create Packages|CreatePackages]]
  - [[Quick Start|CreatePackagesQuickStart]]
  - **Commands:**
-  - [[New|CommandsNew]]
-  - [[Pack|CommandsPack]]
-  - [[Apikey|CommandsApiKey]]
-  - [[Push|CommandsPush]]
- - [[Function and Variable Reference|HelpersReference]]
- - [[Automatic Packaging|AutomaticPackages]]
+   - [[New|CommandsNew]]
+   - [[Pack|CommandsPack]]
+   - [[Apikey|CommandsApiKey]]
+   - [[Push|CommandsPush]]
+ - [[Automatic Packaging|AutomaticPackages]] 
+ - **PowerShell Reference:**
+   - [[Function and Variable Reference|HelpersReference]]
+   - [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]
+     - [[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]
+     - [[Install-ChocolateyInstallPackage|HelpersInstallChocolateyInstallPackage]]
+   - [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]
+     - [[Get-ChocolateyUnzip|HelpersGetChocolateyUnzip]]
+   - [[Install-ChocolateyVsixPackage|HelpersInstallChocolateyVsixPackage]]
+   - [[Install-ChocolateyPath|HelpersInstallChocolateyPath]]
+   - [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]]
+   - [[Install-ChocolateyShortcut|HelpersInstallChocolateyShortcut]]
+   - [[Install-ChocolateyFileAssociation|HelpersInstallChocolateyFileAssociation]]
 
 **How To's**
 
