@@ -1,9 +1,11 @@
 ## Installing Chocolatey
 Chocolatey installs in seconds...
 
+**NOTE:** Need to install a particular version of Chocolatey? Proxy? Install to a different location? Advanced Options? See [Before You Install](#before-you-install) below. [Non-Administrator](#non-administrative-install)?
+
 To install chocolatey now, open an <strong>administrative</strong> command prompt and paste the text from the box below that applies to the name of your shell and press enter. If you need assistance opening an administrative prompt, see [open an elevated prompt in Windows 8+](http://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) (or [Windows 7](http://www.howtogeek.com/howto/windows-vista/run-a-command-as-administrator-from-the-windows-vista-run-box/)).
 
-**NOTE:** Need to install a particular version of Chocolatey? Proxy? Install to a different location? Advanced Options? See [Before You Install](#before-you-install) below. [Non-Administrator](#non-administrative-install)?
+**NOTE:** Please inspect [https://chocolatey.org/install.ps1](https://chocolatey.org/install.ps1) prior to running any of these scripts to ensure safety. We already know it's safe, but you should also be comfortable before running ***any*** script from the internet you are not familiar with.
 
 * Cmd.exe - <button class="icon-clipboard copy-button" data-clipboard-text="@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"></button>
 
@@ -22,6 +24,8 @@ iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.p
 ~~~powershell
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 ~~~
+
+You may not need `-UseBasicParsing` - `iwr` (`Invoke-WebRequest`) downloads the install script and passes it to `iex` (`Invoke-Expression`). This runs the install script on the machine that calls this function. This installs Chocolatey.
 
 There are a few ways to install Chocolatey. Chocolatey exists as a [NuGet package](http://chocolatey.org/packages/chocolatey), so virtually any way you can get a NuGet package, you have the opportunity to then install it.
 
