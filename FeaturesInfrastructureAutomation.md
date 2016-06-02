@@ -37,7 +37,7 @@ Boxstarter is a lightweight configuration management utility.
 
 ## Chef
 
-Chef has a built-in `chocolatey_package` resource to use with Chocolatey.
+Chef 12.7+ has a [built-in](https://www.chef.io/blog/2016/02/12/chef-client-12-7-released/) `chocolatey_package` resource to use with Chocolatey.
 
 ~~~ruby
 chocolatey_package 'git' do
@@ -48,7 +48,7 @@ end
 
 [Resource - Read More...](https://docs.chef.io/resource_chocolatey_package.html)
 
-When you need to also install Chocolatey, you would use the community cookbook to do so. The cookbook is maintained by the Chocolatey team.
+When you need to also install Chocolatey, you would use the community cookbook to do so. The cookbook is maintained by the Chocolatey team. It has a package resource that can be used with older Chef versions.
 
 ~~~ruby
 include_recipe 'chocolatey'
