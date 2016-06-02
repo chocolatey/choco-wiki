@@ -1,14 +1,10 @@
 # Shimming
 
-Shimming is like symlinking, but it works much better. It's a form of
-redirection, where you create a "shim" that redirects input to the
-actual binary process and shares the output. It can also work to simply
-call the actual binary when it shims GUI applications.
+Shimming is like symlinking, but it works much better. It's a form of redirection, where you create a "shim" that redirects input to the actual binary process and shares the output. It can also work to simply call the actual binary when it shims GUI applications.
 
 We like to call this "batch redirection that works".
 
-This also allows applications and tools to be on the "PATH" without
-cluttering up the PATH environment variable.
+This also allows applications and tools to be on the "PATH" without cluttering up the PATH environment variable.
 
 These are the benefits of creating a shim:
 
@@ -20,16 +16,11 @@ These are the benefits of creating a shim:
  * Does not require special privileges like creating symlinks (symbolic links) do. So you can create shims without administrative rights.
 
 ## Usage
-Chocolatey automatically shims executables in package folders that are
-not explicitly ignored, putting them into the
-`$($env:ChocolateyInstall)\bin` folder (and subsequently onto the PATH).
+Chocolatey automatically shims executables in package folders that are not explicitly ignored, putting them into the `$($env:ChocolateyInstall)\bin` folder (and subsequently onto the PATH).
 
-These executables can come as part of the package or downloaded to the
-package folder during the install script.
+These executables can come as part of the package or downloaded to the package folder during the install script.
 
-Chocolatey ensures the folder `$($env:ChocolateyInstall)\bin` in the
-PATH environment variable, allowing you to put tools on the PATH without
-cluttering up the PATH.
+Chocolatey ensures the folder `$($env:ChocolateyInstall)\bin` in the PATH environment variable, allowing you to put tools on the PATH without cluttering up the PATH.
 
 ## Options and Switches
 
