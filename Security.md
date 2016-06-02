@@ -75,12 +75,12 @@ Chocolatey.org has a community repository of packages known as the community fee
 
 1. Users can report malicious packages/software directly to the site administrators using a form found on every package page.
 1. Everything is enforced as HTTPS where it should be. This reduces DNS poisoning attacks.
-1. As of October 2014, packages submitted to the community feed (https://chocolatey.org) are moderated and approved before they become live.
+1. As of October 2014, every version of every package submitted to the community feed (https://chocolatey.org) is moderated and approved before they become live.
 1. Some packages move into a trusted status. This is usually when the package maintainer is also the software maintainer, but can also occur when the maintainer(s) are trusted and multiple versions of a package have been submitted without issues.
 1. Packages that download binaries (installers, zip archives) are checked to ensure that the binary is coming from the official distribution source.
-1. If the package has a checksum, it provides a further integrity check that the downloadable the maintainer/moderator checked is the same binary that the user gets.
+1. If the package has a checksum, it provides a further integrity check that the downloadable the maintainer/moderator checked is the same binary that the user gets. Chocolatey clients will enforce a checksum requirement in late 2016 by default and it will become a requirement in 2017 for all packages submitted to the community repository.
 1. Checksums of of included binaries are shown to allow for folks to perform independent verification. We've move to adding an additional VERIFICATION file for verifying the binaries. This will start to show up more over 2016.
-1. Packages are run through Virus Total to produce a second opinion on the relative safety of the package and underlying software that is contained or downloaded by the package. The verification of this is shown on the site.
+1. Packages are run through VirusTotal to produce a second opinion on the relative safety of the package and underlying software that is contained or downloaded by the package. The verification of this is shown on the site.
 
 ### Rigorous Moderation Process for Community Packages
 
