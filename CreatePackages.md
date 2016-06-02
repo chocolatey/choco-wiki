@@ -321,6 +321,8 @@ You'll need to append the API path like so:
 
 You can also use the `-debug` switch on `choco install` to provide more information.
 
+**NOTE:** Do not call install with `.nupkg` - pointing to a file this explicitly overrides source. You must call your install with the package name, not the nupkg file and location. You've already specified for choco to look in a local source with `-s "'$pwd;https://chocolatey.org/api/v2/'". Call `choco install dude`, not `choco install .\dude.nupkg`.
+
 ### Alternative testing strategy
 You can also type `choco install -fdv path/to/nuspec` and choco will build the nupkg and attempt to install it.
 
