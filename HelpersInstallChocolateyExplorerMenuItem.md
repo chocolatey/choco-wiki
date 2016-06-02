@@ -10,7 +10,8 @@ Install-ChocolateyExplorerMenuItem `
   [-MenuKey <String>] `
   [-MenuLabel <String>] `
   [-Command <String>] `
-  [-Type <String>]
+  [-Type <String>] `
+  [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
@@ -45,7 +46,7 @@ None
 
 ## Parameters
 
-###  -MenuKey [\<String\>]
+###  -MenuKey [&lt;String&gt;]
 A unique string to identify this menu item in the registry
 
 Property               | Value
@@ -56,7 +57,7 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -MenuLabel [\<String\>]
+###  -MenuLabel [&lt;String&gt;]
 The string that will be displayed in the context menu
 
 Property               | Value
@@ -67,7 +68,7 @@ Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Command [\<String\>]
+###  -Command [&lt;String&gt;]
 A command line command that will be invoked when the menu item is
 selected
 
@@ -79,7 +80,7 @@ Position?              | 3
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Type [\<String\>]
+###  -Type [&lt;String&gt;]
 Specifies if the menu item should be applied to a folder or a file
 
 Property               | Value
@@ -90,6 +91,20 @@ Position?              | 4
 Default Value          | file
 Accept Pipeline Input? | false
  
+###  -IgnoredArguments [&lt;Object[]&gt;]
+Allows splatting with arguments that do not apply. Do not use directly.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 5
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+### &lt;CommonParameters&gt;
+
+This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 ## Examples
@@ -117,6 +132,10 @@ $sublimeDir = (Get-ChildItem $env:ALLUSERSPROFILE\chocolatey\lib\sublimetext* | 
 $sublimeExe = "$sublimeDir\tools\sublime_text.exe"
 Install-ChocolateyExplorerMenuItem "sublime" "Open with Sublime Text 2" $sublimeExe "directory"
 ~~~
+
+## Links
+
+ * [[Install-ChocolateyShortcut|HelpersInstallChocolateyShortcut]]
 
 
 [[Function Reference|HelpersReference]]

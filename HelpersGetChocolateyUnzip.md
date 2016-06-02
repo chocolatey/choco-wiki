@@ -6,10 +6,11 @@ Unzips an archive file and returns the location for further processing.
 
 ~~~powershell
 Get-ChocolateyUnzip `
-  [-FileFullPath <String>] `
-  [-Destination <String>] `
+  -FileFullPath <String> `
+  -Destination <String> `
   [-SpecificFolder <String>] `
-  [-PackageName <String>]
+  [-PackageName <String>] `
+  [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
@@ -41,32 +42,32 @@ None
 
 ## Parameters
 
-###  -FileFullPath [\<String\>]
+###  -FileFullPath &lt;String&gt;
 This is the full path to the zip file. If embedding it in the package
 next to the install script, the path will be like
-`"$(Split-Path -parent $MyInvocation.MyCommand.Definition)\\file.zip"`
+`"$(Split-Path -Parent $MyInvocation.MyCommand.Definition)\\file.zip"`
 
 Property               | Value
 ---------------------- | -----
 Aliases                | 
-Required?              | false
+Required?              | true
 Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Destination [\<String\>]
+###  -Destination &lt;String&gt;
 This is a directory where you would like the unzipped files to end up.
 If it does not exist, it will be created.
 
 Property               | Value
 ---------------------- | -----
 Aliases                | 
-Required?              | false
+Required?              | true
 Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -SpecificFolder [\<String\>]
+###  -SpecificFolder [&lt;String&gt;]
 OPTIONAL - This is a specific directory within zip file to extract.
 
 Property               | Value
@@ -77,7 +78,7 @@ Position?              | 3
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -PackageName [\<String\>]
+###  -PackageName [&lt;String&gt;]
 OPTIONAL - This will faciliate logging unzip activity for subsequent
 uninstalls
 
@@ -89,6 +90,20 @@ Position?              | 4
 Default Value          | 
 Accept Pipeline Input? | false
  
+###  -IgnoredArguments [&lt;Object[]&gt;]
+Allows splatting with arguments that do not apply. Do not use directly.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+### &lt;CommonParameters&gt;
+
+This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 ## Examples

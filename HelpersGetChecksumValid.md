@@ -8,7 +8,8 @@ Checks a file's checksum versus a passed checksum and checksum type.
 Get-ChecksumValid `
   -File <String> `
   [-Checksum <String>] `
-  [-ChecksumType <String>] [<CommonParameters>]
+  [-ChecksumType <String>] `
+  [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
@@ -37,7 +38,7 @@ None
 
 ## Parameters
 
-###  -File \<String\>
+###  -File &lt;String&gt;
 The full path to a binary file that is checksummed and compared to the
 passed Checksum parameter value.
 
@@ -49,7 +50,7 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Checksum [\<String\>]
+###  -Checksum [&lt;String&gt;]
 The expected checksum hash value of the File resource. The checksum
 type is covered by ChecksumType.
 
@@ -61,7 +62,7 @@ Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -ChecksumType [\<String\>]
+###  -ChecksumType [&lt;String&gt;]
 The type of checkum that the file is validated with - 'md5', 'sha1',
 'sha256' or 'sha512' - defaults to 'md5'.
 
@@ -77,7 +78,18 @@ Position?              | 3
 Default Value          | md5
 Accept Pipeline Input? | false
  
-### \<CommonParameters\>
+###  -IgnoredArguments [&lt;Object[]&gt;]
+Allows splatting with arguments that do not apply. Do not use directly.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 

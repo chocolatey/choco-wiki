@@ -26,8 +26,8 @@ Chocolatey tracks packages, which are the files in
 With auto uninstaller turned off, a chocolateyUninstall.ps1 is required
  to perform uninstall from the system. In the absence of
  chocolateyUninstall.ps1, choco uninstall only removes the package from
- Chocolatey but does not remove the software from your system 
- (unless in the package directory).
+ Chocolatey but does not remove the software from your system (unless
+ in the package directory).
 
 **NOTE:** Starting in 0.9.10+, the Automatic Uninstaller (AutoUninstaller)
  is turned on by default. To turn it off, run the following command:
@@ -95,9 +95,10 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
  -r, --limitoutput, --limit-output
      LimitOutput - Limit the output to essential information
 
-     --execution-timeout=VALUE
-     CommandExecutionTimeoutSeconds - Override the default execution timeout 
-       in the configuration of 2700 seconds.
+     --timeout, --execution-timeout=VALUE
+     CommandExecutionTimeout (in seconds) - The time to allow a command to 
+       finish before timing out. Overrides the default execution timeout in the 
+       configuration of 2700 seconds.
 
  -c, --cache, --cachelocation, --cache-location=VALUE
      CacheLocation - Location for download cache, defaults to %TEMP% or value 
@@ -161,6 +162,26 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
        dependency package). Chocolatey defines valid exit codes as 0, 1605, 
        1614, 1641, 3010. Overrides the default feature 'usePackageExitCodes' 
        set to 'True'. Available in 0.9.10+.
+
+     --autouninstaller, --use-autouninstaller
+     UseAutoUninstaller - Use auto uninstaller service when uninstalling. 
+       Overrides the default feature 'autoUninstaller' set to 'True'. Available 
+       in 0.9.10+.
+
+     --skipautouninstaller, --skip-autouninstaller
+     SkipAutoUninstaller - Skip auto uninstaller service when uninstalling. 
+       Overrides the default feature 'autoUninstaller' set to 'True'. Available 
+       in 0.9.10+.
+
+     --failonautouninstaller, --fail-on-autouninstaller
+     FailOnAutoUninstaller - Fail the package uninstall if the auto 
+       uninstaller reports and error. Overrides the default feature 
+       'failOnAutoUninstaller' set to 'False'. Available in 0.9.10+.
+
+     --ignoreautouninstallerfailure, --ignore-autouninstaller-failure
+     Ignore Auto Uninstaller Failure - Do not fail the package if auto 
+       uninstaller reports an error. Overrides the default feature 
+       'failOnAutoUninstaller' set to 'False'. Available in 0.9.10+.
 
 ~~~
 

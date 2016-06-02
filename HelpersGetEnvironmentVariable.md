@@ -8,7 +8,8 @@ Gets an Environment Variable.
 Get-EnvironmentVariable `
   -Name <String> `
   -Scope {Process | User | Machine} `
-  [-PreserveVariables] [<CommonParameters>]
+  [-PreserveVariables] `
+  [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
@@ -37,7 +38,7 @@ None
 
 ## Parameters
 
-###  -Name \<String\>
+###  -Name &lt;String&gt;
 The environemnt variable you want to get the value from.
 
 Property               | Value
@@ -75,7 +76,18 @@ Position?              | named
 Default Value          | False
 Accept Pipeline Input? | false
  
-### \<CommonParameters\>
+###  -IgnoredArguments [&lt;Object[]&gt;]
+Allows splatting with arguments that do not apply. Do not use directly.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 3
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 

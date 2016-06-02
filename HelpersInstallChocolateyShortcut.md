@@ -11,7 +11,8 @@ Install-ChocolateyShortcut `
   [-WorkingDirectory <String>] `
   [-Arguments <String>] `
   [-IconLocation <String>] `
-  [-Description <String>]
+  [-Description <String>] `
+  [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
@@ -35,7 +36,7 @@ None
 
 ## Parameters
 
-###  -ShortcutFilePath [\<String\>]
+###  -ShortcutFilePath [&lt;String&gt;]
 The full absolute path to where the shortcut should be created.  This is mandatory.
 
 Property               | Value
@@ -46,7 +47,7 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -TargetPath [\<String\>]
+###  -TargetPath [&lt;String&gt;]
 The full absolute path to the target for new shortcut.  This is mandatory.
 
 Property               | Value
@@ -57,7 +58,7 @@ Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -WorkingDirectory [\<String\>]
+###  -WorkingDirectory [&lt;String&gt;]
 The full absolute path of the Working Directory that will be used by
 the new shortcut.  This is optional
 
@@ -69,7 +70,7 @@ Position?              | 3
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Arguments [\<String\>]
+###  -Arguments [&lt;String&gt;]
 Additonal arguments that should be passed along to the new shortcut.  This
 is optional.
 
@@ -81,7 +82,7 @@ Position?              | 4
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -IconLocation [\<String\>]
+###  -IconLocation [&lt;String&gt;]
 The full absolute path to an icon file to be used for the new shortcut.  This
 is optional.
 
@@ -93,7 +94,7 @@ Position?              | 5
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Description [\<String\>]
+###  -Description [&lt;String&gt;]
 A text description to be associated with the new description.  This is optional.
 
 Property               | Value
@@ -104,6 +105,20 @@ Position?              | 6
 Default Value          | 
 Accept Pipeline Input? | false
  
+###  -IgnoredArguments [&lt;Object[]&gt;]
+Allows splatting with arguments that do not apply. Do not use directly.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 7
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+### &lt;CommonParameters&gt;
+
+This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 ## Examples
@@ -135,6 +150,12 @@ Install-ChocolateyShortcut `
   -IconLocation "C:\test.ico" `
   -Description "This is the description"
 ~~~
+
+## Links
+
+ * [[Install-ChocolateyDesktopLink|HelpersInstallChocolateyDesktopLink]]
+ * [[Install-ChocolateyExplorerMenuItem|HelpersInstallChocolateyExplorerMenuItem]]
+ * [[Install-ChocolateyPinnedTaskBarItem|HelpersInstallChocolateyPinnedTaskBarItem]]
 
 
 [[Function Reference|HelpersReference]]

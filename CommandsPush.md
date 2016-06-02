@@ -82,9 +82,10 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
  -r, --limitoutput, --limit-output
      LimitOutput - Limit the output to essential information
 
-     --execution-timeout=VALUE
-     CommandExecutionTimeoutSeconds - Override the default execution timeout 
-       in the configuration of 2700 seconds.
+     --timeout, --execution-timeout=VALUE
+     CommandExecutionTimeout (in seconds) - The time to allow a command to 
+       finish before timing out. Overrides the default execution timeout in the 
+       configuration of 2700 seconds.
 
  -c, --cache, --cachelocation, --cache-location=VALUE
      CacheLocation - Location for download cache, defaults to %TEMP% or value 
@@ -112,9 +113,9 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
        file source), does a lookup. If not specified and one is not found for 
        an https source, push will fail.
 
- -t, --timeout=VALUE
+ -t=VALUE
      Timeout (in seconds) - The time to allow a package push to occur before 
-       timing out. Defaults to 300 seconds (5 minutes).
+       timing out. Defaults to execution timeout 2700.
 
 ~~~
 

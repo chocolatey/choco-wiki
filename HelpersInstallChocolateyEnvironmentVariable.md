@@ -8,7 +8,8 @@ Creates a persistent environment variable
 Install-ChocolateyEnvironmentVariable `
   [-VariableName <String>] `
   [-VariableValue <String>] `
-  [-VariableType {Process | User | Machine}]
+  [-VariableType {Process | User | Machine}] `
+  [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
@@ -39,7 +40,7 @@ None
 
 ## Parameters
 
-###  -VariableName [\<String\>]
+###  -VariableName [&lt;String&gt;]
 The name or key of the environment variable
 
 Property               | Value
@@ -50,7 +51,7 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -VariableValue [\<String\>]
+###  -VariableValue [&lt;String&gt;]
 A string value assigned to the above name.
 
 Property               | Value
@@ -76,6 +77,20 @@ Position?              | 3
 Default Value          | User
 Accept Pipeline Input? | false
  
+###  -IgnoredArguments [&lt;Object[]&gt;]
+Allows splatting with arguments that do not apply. Do not use directly.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+### &lt;CommonParameters&gt;
+
+This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 ## Examples
@@ -101,6 +116,12 @@ Install-ChocolateyEnvironmentVariable `
   -VariableValue "symsrv*symsrv.dll*f:\localsymbols*http://msdl.microsoft.com/download/symbols" `
   -VariableType Machine
 ~~~
+
+## Links
+
+ * [[Get-EnvironmentVariable|HelpersGetEnvironmentVariable]]
+ * [[Set-EnvironmentVariable|HelpersSetEnvironmentVariable]]
+ * [[Install-ChocolateyPath|HelpersInstallChocolateyPath]]
 
 
 [[Function Reference|HelpersReference]]

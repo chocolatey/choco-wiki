@@ -9,7 +9,8 @@ the original file name for a file.
 Get-WebFileName `
   [-Url <String>] `
   -DefaultName <String> `
-  [-UserAgent <Object>] [<CommonParameters>]
+  [-UserAgent <Object>] `
+  [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
@@ -44,7 +45,7 @@ None
 
 ## Parameters
 
-###  -Url [\<String\>]
+###  -Url [&lt;String&gt;]
 This is the url to a file that will be possibly downloaded.
 
 Property               | Value
@@ -55,7 +56,7 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -DefaultName \<String\>
+###  -DefaultName &lt;String&gt;
 The name of the file to use when not able to determine the file name
 from the url response.
 
@@ -67,7 +68,7 @@ Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -UserAgent [\<Object\>]
+###  -UserAgent [&lt;Object&gt;]
 The user agent to use as part of the request. Defaults to 'chocolatey
 command line'.
 
@@ -79,7 +80,18 @@ Position?              | named
 Default Value          | chocolatey command line
 Accept Pipeline Input? | false
  
-### \<CommonParameters\>
+###  -IgnoredArguments [&lt;Object[]&gt;]
+Allows splatting with arguments that do not apply. Do not use directly.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 

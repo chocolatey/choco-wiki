@@ -1,26 +1,30 @@
-﻿# Write-ChocolateyFailure
+﻿# Uninstall-BinFile
 
-DEPRECATED - DO NOT USE.
+Removes a shim (or batch redirect) for a file.
 
 ## Syntax
 
 ~~~powershell
-Write-ChocolateyFailure `
-  [-PackageName <String>] `
-  [-FailureMessage <String>] `
+Uninstall-BinFile `
+  -Name <String> `
+  [-Path <String>] `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
 
-Throws the error message as an error.
+Chocolatey installs have the folder `$($env:ChocolateyInstall)\bin`
+included in the PATH environment variable. Chocolatey automatically
+shims executables in package folders that are not explicitly ignored,
+putting them into the bin folder (and subsequently onto the PATH).
+
+When you have other files you have shimmed, you need to use this
+function to remove them from the bin folder.
 
 ## Notes
 
-This has been deprecated and is no longer useful as of 0.9.9. Instead
-please just use `throw $_.Exception` when catching errors. Although
-try/catch is no longer necessary unless you want to do some error
-handling.
+Not normally needed for exe files in the package folder, those are
+automatically discovered and the shims removed.
 
 ## Aliases
 
@@ -36,20 +40,21 @@ None
 
 ## Parameters
 
-###  -PackageName [&lt;String&gt;]
-The name of the package - while this is an arbitrary value, it's
-recommended that it matches the package id.
+###  -Name &lt;String&gt;
+The name of the redirect file without ".exe" appended to it.
 
 Property               | Value
 ---------------------- | -----
 Aliases                | 
-Required?              | false
+Required?              | true
 Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -FailureMessage [&lt;String&gt;]
-The message to throw an error with.
+###  -Path [&lt;String&gt;]
+The path to the original file. Can be relative from
+`$($env:ChocolateyInstall)\bin` back to your file or a full path to the
+file.
 
 Property               | Value
 ---------------------- | -----
@@ -66,7 +71,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 3
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
@@ -78,9 +83,9 @@ This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -Err
 
 ## Links
 
- * [[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]
+ * [[Install-BinFile|HelpersInstallBinFile]]
 
 
 [[Function Reference|HelpersReference]]
 
-***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Write-ChocolateyFailure -Full`.
+***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Uninstall-BinFile -Full`.

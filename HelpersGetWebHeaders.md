@@ -1,26 +1,25 @@
-﻿# Write-ChocolateyFailure
+﻿# Get-WebHeaders
 
-DEPRECATED - DO NOT USE.
+Gets the request/response headers for a url.
 
 ## Syntax
 
 ~~~powershell
-Write-ChocolateyFailure `
-  [-PackageName <String>] `
-  [-FailureMessage <String>] `
+Get-WebHeaders `
+  [-Url <Object>] `
+  [-UserAgent <Object>] `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
 
-Throws the error message as an error.
+This is a low-level function that is used by Chocolatey to get the
+headers for a request/response to better help when getting and
+validating internet resources.
 
 ## Notes
 
-This has been deprecated and is no longer useful as of 0.9.9. Instead
-please just use `throw $_.Exception` when catching errors. Although
-try/catch is no longer necessary unless you want to do some error
-handling.
+Not recommended for use in package scripts.
 
 ## Aliases
 
@@ -36,9 +35,8 @@ None
 
 ## Parameters
 
-###  -PackageName [&lt;String&gt;]
-The name of the package - while this is an arbitrary value, it's
-recommended that it matches the package id.
+###  -Url [&lt;Object&gt;]
+This is the url to get a request/response from.
 
 Property               | Value
 ---------------------- | -----
@@ -48,15 +46,16 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -FailureMessage [&lt;String&gt;]
-The message to throw an error with.
+###  -UserAgent [&lt;Object&gt;]
+The user agent to use as part of the request. Defaults to 'chocolatey
+command line'.
 
 Property               | Value
----------------------- | -----
+---------------------- | -----------------------
 Aliases                | 
 Required?              | false
 Position?              | 2
-Default Value          | 
+Default Value          | chocolatey command line
 Accept Pipeline Input? | false
  
 ###  -IgnoredArguments [&lt;Object[]&gt;]
@@ -78,9 +77,11 @@ This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -Err
 
 ## Links
 
- * [[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]
+ * [[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]
+ * [[Get-WebFileName|HelpersGetWebFileName]]
+ * [[Get-WebFile|HelpersGetWebFile]]
 
 
 [[Function Reference|HelpersReference]]
 
-***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Write-ChocolateyFailure -Full`.
+***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Get-WebHeaders -Full`.

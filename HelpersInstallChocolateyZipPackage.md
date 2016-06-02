@@ -16,7 +16,8 @@ Install-ChocolateyZipPackage `
   [-ChecksumType <String>] `
   [-Checksum64 <String>] `
   [-ChecksumType64 <String>] `
-  [-Options <Hashtable>] [<CommonParameters>]
+  [-Options <Hashtable>] `
+  [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
@@ -49,7 +50,7 @@ None
 
 ## Parameters
 
-###  -PackageName \<String\>
+###  -PackageName &lt;String&gt;
 The name of the package - while this is an arbitrary value, it's
 recommended that it matches the package id.
 
@@ -61,13 +62,15 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Url [\<String\>]
+###  -Url [&lt;String&gt;]
 This is the 32 bit url to download the resource from. This resource can
 be used on 64 bit systems when a package has both a Url and Url64bit
 specified if a user passes `--forceX86`. If there is only a 64 bit url
 available, please remove do not use the paramter (only use Url64bit).
 Will fail on 32bit systems if missing or if a user attempts to force
 a 32 bit installation on a 64 bit system.
+
+Prefer HTTPS when available. Can be HTTP, FTP, or File URIs.
 
 Property               | Value
 ---------------------- | -----
@@ -77,9 +80,11 @@ Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -UnzipLocation \<String\>
-This is a location to unzip the contents to, most likely your script
-folder.
+###  -UnzipLocation &lt;String&gt;
+This is the full path to a location to unzip the contents to, most
+likely your script folder. If unzipping to your package folder, the path
+will be like
+`"$(Split-Path -Parent $MyInvocation.MyCommand.Definition)\\file.exe"`
 
 Property               | Value
 ---------------------- | -----------
@@ -89,7 +94,7 @@ Position?              | 3
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Url64bit [\<String\>]
+###  -Url64bit [&lt;String&gt;]
 OPTIONAL - If there is a 64 bit resource available, use this
 parameter. Chocolatey will automatically determine if the user is
 running a 64 bit OS or not and adjust accordingly. Please note that
@@ -97,6 +102,8 @@ the 32 bit url will be used in the absence of this. This parameter
 should only be used for 64 bit native software. If the original Url
 contains both (which is quite rare), set this to '$url' Otherwise remove
 this parameter.
+
+Prefer HTTPS when available. Can be HTTP, FTP, or File URIs.
 
 Property               | Value
 ---------------------- | -----
@@ -106,7 +113,7 @@ Position?              | 4
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -SpecificFolder [\<String\>]
+###  -SpecificFolder [&lt;String&gt;]
 Property               | Value
 ---------------------- | -----
 Aliases                | 
@@ -115,7 +122,7 @@ Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Checksum [\<String\>]
+###  -Checksum [&lt;String&gt;]
 OPTIONAL (Highly recommended) - The checksum hash value of the Url
 resource. This allows a checksum to be validated for files that are not
 local. The checksum type is covered by ChecksumType.
@@ -128,7 +135,7 @@ Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -ChecksumType [\<String\>]
+###  -ChecksumType [&lt;String&gt;]
 OPTIONAL - The type of checkum that the file is validated with - valid
 values are 'md5', 'sha1', 'sha256' or 'sha512' - defaults to 'md5'.
 
@@ -144,7 +151,7 @@ Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Checksum64 [\<String\>]
+###  -Checksum64 [&lt;String&gt;]
 OPTIONAL (Highly recommended) - The checksum hash value of the Url64bit
 resource. This allows a checksum to be validated for files that are not
 local. The checksum type is covered by ChecksumType64.
@@ -157,7 +164,7 @@ Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -ChecksumType64 [\<String\>]
+###  -ChecksumType64 [&lt;String&gt;]
 OPTIONAL - The type of checkum that the file is validated with - valid
 values are 'md5', 'sha1', 'sha256' or 'sha512' - defaults to
 ChecksumType parameter value.
@@ -174,7 +181,7 @@ Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Options [\<Hashtable\>]
+###  -Options [&lt;Hashtable&gt;]
 OPTIONAL - Specify custom headers. Available in 0.9.10+.
 
 Property               | Value
@@ -185,7 +192,18 @@ Position?              | named
 Default Value          | @{Headers=@{}}
 Accept Pipeline Input? | false
  
-### \<CommonParameters\>
+###  -IgnoredArguments [&lt;Object[]&gt;]
+Allows splatting with arguments that do not apply. Do not use directly.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
@@ -205,7 +223,7 @@ Install-ChocolateyZipPackage -PackageName 'gittfs' -Url 'https://github.com/down
 
 Install-ChocolateyZipPackage -PackageName 'sysinternals' `
  -Url 'http://download.sysinternals.com/Files/SysinternalsSuite.zip' `
- -UnzipLocation "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+ -UnzipLocation "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 ~~~
 
 **EXAMPLE 3**
@@ -214,7 +232,7 @@ Install-ChocolateyZipPackage -PackageName 'sysinternals' `
 
 Install-ChocolateyZipPackage -PackageName 'sysinternals' `
  -Url 'http://download.sysinternals.com/Files/SysinternalsSuite.zip' `
- -UnzipLocation "$(Split-Path -parent $MyInvocation.MyCommand.Definition)" `
+ -UnzipLocation "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)" `
  -Url64 'http://download.sysinternals.com/Files/SysinternalsSuitex64.zip'
 ~~~
 

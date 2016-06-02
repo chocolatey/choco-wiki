@@ -1,16 +1,23 @@
-﻿# Install-ChocolateyPinnedTaskBarItem
+﻿# Set-PowerShellExitCode
 
-Creates an item in the task bar linking to the provided path.
+Sets the exit code for the PowerShell scripts.
 
 ## Syntax
 
 ~~~powershell
-Install-ChocolateyPinnedTaskBarItem `
-  -TargetFilePath <String> `
+Set-PowerShellExitCode `
+  -ExitCode <Int32> `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
+## Description
 
+Sets the exit code as an environment variable that is checked and used
+as the exit code for the package at the end of the package script.
+
+## Notes
+
+This tells PowerShell that it should prepare to shut down.
 
 ## Aliases
 
@@ -26,16 +33,15 @@ None
 
 ## Parameters
 
-###  -TargetFilePath &lt;String&gt;
-The path to the application that should be launched when clicking on the
-task bar icon.
+###  -ExitCode &lt;Int32&gt;
+The exit code to set.
 
 Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | true
 Position?              | 1
-Default Value          | 
+Default Value          | 0
 Accept Pipeline Input? | false
  
 ###  -IgnoredArguments [&lt;Object[]&gt;]
@@ -59,17 +65,11 @@ This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -Err
  **EXAMPLE 1**
 
 ~~~powershell
+Set-PowerShellExitCode 3010
 
-# This will create a Visual Studio task bar icon.
-Install-ChocolateyPinnedTaskBarItem -TargetFilePath "${env:ProgramFiles(x86)}\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
 ~~~
-
-## Links
-
- * [[Install-ChocolateyShortcut|HelpersInstallChocolateyShortcut]]
- * [[Install-ChocolateyExplorerMenuItem|HelpersInstallChocolateyExplorerMenuItem]]
 
 
 [[Function Reference|HelpersReference]]
 
-***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Install-ChocolateyPinnedTaskBarItem -Full`.
+***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Set-PowerShellExitCode -Full`.

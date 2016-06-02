@@ -1,13 +1,14 @@
 ﻿# Install-ChocolateyFileAssociation
 
-Creates an association between a file extension and a executable
+Creates an association between a file extension and a executable.
 
 ## Syntax
 
 ~~~powershell
 Install-ChocolateyFileAssociation `
   [-Extension <String>] `
-  [-Executable <String>]
+  [-Executable <String>] `
+  [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
@@ -35,7 +36,7 @@ None
 
 ## Parameters
 
-###  -Extension [\<String\>]
+###  -Extension [&lt;String&gt;]
 The file extension to be associated.
 
 Property               | Value
@@ -46,7 +47,7 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Executable [\<String\>]
+###  -Executable [&lt;String&gt;]
 The path to the application's executable to be associated.
 
 Property               | Value
@@ -57,6 +58,20 @@ Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
  
+###  -IgnoredArguments [&lt;Object[]&gt;]
+Allows splatting with arguments that do not apply. Do not use directly.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 3
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+### &lt;CommonParameters&gt;
+
+This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 ## Examples

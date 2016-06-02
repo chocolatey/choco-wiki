@@ -1,17 +1,10 @@
-﻿# Feature Command (choco features)
+﻿# Info Command (choco info)
 
-Chocolatey will allow you to interact with features.
+Chocolatey will perform a search for a package local or remote and provide 
+ detailed information about that package. This is a synonym for 
+ `choco search <pkgname> --exact --detailed`.
 
-## Usage
-
-    choco feature [list]|disable|enable [<options/switches>]
-
-## Examples
-
-    choco feature
-    choco feature list
-    choco feature disable -n=bob
-    choco feature enable -n=bob
+**NOTE:** New as of 0.9.10.0.
 
 ## Options and Switches
 
@@ -72,14 +65,34 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
      UseSystemPowerShell - Execute PowerShell using an external process 
        instead of the built-in PowerShell host. Available in 0.9.10+.
 
- -n, --name=VALUE
-     Name - the name of the source. Required with some actions. Defaults to 
-       empty.
+ -s, --source=VALUE
+     Source - Source location for install. Can include special 'webpi'. 
+       Defaults to sources.
+
+ -l, --lo, --localonly, --local-only
+     LocalOnly - Only search against local machine items.
+
+     --pre, --prerelease
+     Prerelease - Include Prereleases? Defaults to false.
+
+ -u, --user=VALUE
+     User - used with authenticated feeds. Defaults to empty.
+
+ -p, --password=VALUE
+     Password - the user's password to the source. Defaults to empty.
+
+     --cert=VALUE
+     Client certificate - PFX pathname for an x509 authenticated feeds. 
+       Defaults to empty. Available in 0.9.10+.
+
+     --cp, --certpassword=VALUE
+     Certificate Password - the client certificate's password to the source. 
+       Defaults to empty. Available in 0.9.10+.
 
 ~~~
 
 [[Command Reference|CommandsReference]]
 
 
-***NOTE:*** This documentation has been automatically generated from `choco features -h`. 
+***NOTE:*** This documentation has been automatically generated from `choco info -h`. 
 

@@ -1,26 +1,26 @@
-﻿# Write-ChocolateyFailure
+﻿# Uninstall-ChocolateyZipPackage
 
-DEPRECATED - DO NOT USE.
+Uninstalls a previous installed zip package
 
 ## Syntax
 
 ~~~powershell
-Write-ChocolateyFailure `
-  [-PackageName <String>] `
-  [-FailureMessage <String>] `
+Uninstall-ChocolateyZipPackage `
+  -PackageName <String> `
+  -ZipFileName <String> `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
 
-Throws the error message as an error.
+This will uninstall a zip file if installed via Install-ChocolateyZipPackage.
+This is not necessary if the files are unzipped to the package location.
 
 ## Notes
 
-This has been deprecated and is no longer useful as of 0.9.9. Instead
-please just use `throw $_.Exception` when catching errors. Although
-try/catch is no longer necessary unless you want to do some error
-handling.
+This helper reduces the number of lines one would have to remove the
+files extracted from a previously installed zip file.
+This method has error handling built into it.
 
 ## Aliases
 
@@ -36,25 +36,25 @@ None
 
 ## Parameters
 
-###  -PackageName [&lt;String&gt;]
+###  -PackageName &lt;String&gt;
 The name of the package - while this is an arbitrary value, it's
 recommended that it matches the package id.
 
 Property               | Value
 ---------------------- | -----
 Aliases                | 
-Required?              | false
+Required?              | true
 Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -FailureMessage [&lt;String&gt;]
-The message to throw an error with.
+###  -ZipFileName &lt;String&gt;
+This is the zip filename originally installed.
 
 Property               | Value
 ---------------------- | -----
 Aliases                | 
-Required?              | false
+Required?              | true
 Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
@@ -66,7 +66,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 3
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
@@ -75,12 +75,21 @@ Accept Pipeline Input? | false
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
+## Examples
+
+ **EXAMPLE 1**
+
+~~~powershell
+Uninstall-ChocolateyZipPackage '__NAME__' 'filename.zip'
+
+~~~
 
 ## Links
 
- * [[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]
+ * [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]
+ * [[Uninstall-ChocolateyPackage|HelpersUninstallChocolateyPackage]]
 
 
 [[Function Reference|HelpersReference]]
 
-***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Write-ChocolateyFailure -Full`.
+***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Uninstall-ChocolateyZipPackage -Full`.

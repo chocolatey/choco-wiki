@@ -6,7 +6,8 @@ DO NOT USE. Not part of the public API.
 
 ~~~powershell
 Format-FileSize `
-  -Size <Double> [<CommonParameters>]
+  -Size <Double> `
+  [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
@@ -31,8 +32,30 @@ None
 None
 
 ## Parameters
+
+###  -Size &lt;Double&gt;
+The size of a file in bytes.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | true
+Position?              | 1
+Default Value          | 0
+Accept Pipeline Input? | false
  
-### \<CommonParameters\>
+###  -IgnoredArguments [&lt;Object[]&gt;]
+Allows splatting with arguments that do not apply. Do not use directly.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 2
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 

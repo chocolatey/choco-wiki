@@ -1,4 +1,4 @@
-# Install-ChocolateyPackage
+﻿# Install-ChocolateyPackage
 
 Installs software into "Programs and Features" based on a remote file
 download. Use Install-ChocolateyInstallPackage when local or embedded
@@ -19,7 +19,8 @@ Install-ChocolateyPackage `
   [-Checksum64 <String>] `
   [-ChecksumType64 <String>] `
   [-Options <Hashtable>] `
-  [-UseOnlyPackageSilentArguments] [<CommonParameters>]
+  [-UseOnlyPackageSilentArguments] `
+  [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
@@ -63,7 +64,7 @@ None
 
 ## Parameters
 
-###  -PackageName \<String\>
+###  -PackageName &lt;String&gt;
 The name of the package - while this is an arbitrary value, it's
 recommended that it matches the package id.
 
@@ -75,9 +76,9 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -FileType [\<String\>]
+###  -FileType [&lt;String&gt;]
 This is the extension of the file. This can be 'exe', 'msi', or 'msu'.
-Licensed versions of Chocolatey use this to automatically determine
+[Licensed editions](https://chocolatey.org/compare) of Chocolatey use this to automatically determine
 silent arguments. If this is not provided, Chocolatey will
 automatically determine this using the downloaded file's extension.
 
@@ -89,21 +90,22 @@ Position?              | 2
 Default Value          | exe
 Accept Pipeline Input? | false
  
-###  -SilentArgs [\<String\>]
-OPTIONAL - These are the parameters to pass to the native installer.
-Licensed versions of Chocolatey will automatically determine the
+###  -SilentArgs [&lt;String&gt;]
+OPTIONAL - These are the parameters to pass to the native installer,
+including any arguments to make the installer silent/unattended.
+[Licensed editions](https://chocolatey.org/compare) of Chocolatey will automatically determine the
 installer type and merge the arguments with what is provided here.
 
-Try any of the to get the silent installer -
+Try any of the to get the silent (unattended) installer -
 `/s /S /q /Q /quiet /silent /SILENT /VERYSILENT`. With msi it is always
 `/quiet`. Please pass it in still but it will be overridden by
 Chocolatey to `/quiet`. If you don't pass anything it could invoke the
 installer with out any arguments. That means a nonsilent installer.
 
 Please include the `notSilent` tag in your Chocolatey package if you
-are not setting up a silent package. Please note that if you are
-submitting to the [community repository](https://chocolatey.org/packages), it is nearly a requirement for
-the package to be completely unattended.
+are not setting up a silent/unattended package. Please note that if you
+are submitting to the [community repository](https://chocolatey.org/packages), it is nearly a requirement
+for the package to be completely unattended.
 
 Property               | Value
 ---------------------- | -----
@@ -113,13 +115,15 @@ Position?              | 3
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Url [\<String\>]
+###  -Url [&lt;String&gt;]
 This is the 32 bit url to download the resource from. This resource can
 be used on 64 bit systems when a package has both a Url and Url64bit
 specified if a user passes `--forceX86`. If there is only a 64 bit url
 available, please remove do not use the paramter (only use Url64bit).
 Will fail on 32bit systems if missing or if a user attempts to force
 a 32 bit installation on a 64 bit system.
+
+Prefer HTTPS when available. Can be HTTP, FTP, or File URIs.
 
 Property               | Value
 ---------------------- | -----
@@ -129,7 +133,7 @@ Position?              | 4
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Url64bit [\<String\>]
+###  -Url64bit [&lt;String&gt;]
 OPTIONAL - If there is a 64 bit resource available, use this
 parameter. Chocolatey will automatically determine if the user is
 running a 64 bit OS or not and adjust accordingly. Please note that
@@ -137,6 +141,8 @@ the 32 bit url will be used in the absence of this. This parameter
 should only be used for 64 bit native software. If the original Url
 contains both (which is quite rare), set this to '$url' Otherwise remove
 this parameter.
+
+Prefer HTTPS when available. Can be HTTP, FTP, or File URIs.
 
 Property               | Value
 ---------------------- | -----
@@ -146,7 +152,9 @@ Position?              | 5
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -ValidExitCodes [\<Object\>]
+###  -ValidExitCodes [&lt;Object&gt;]
+Array of exit codes indicating success. Defaults to `@(0)`.
+
 Property               | Value
 ---------------------- | -----
 Aliases                | 
@@ -155,7 +163,7 @@ Position?              | named
 Default Value          | @(0)
 Accept Pipeline Input? | false
  
-###  -Checksum [\<String\>]
+###  -Checksum [&lt;String&gt;]
 OPTIONAL (Highly recommended) - The checksum hash value of the Url
 resource. This allows a checksum to be validated for files that are not
 local. The checksum type is covered by ChecksumType.
@@ -168,7 +176,7 @@ Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -ChecksumType [\<String\>]
+###  -ChecksumType [&lt;String&gt;]
 OPTIONAL - The type of checkum that the file is validated with - valid
 values are 'md5', 'sha1', 'sha256' or 'sha512' - defaults to 'md5'.
 
@@ -184,7 +192,7 @@ Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Checksum64 [\<String\>]
+###  -Checksum64 [&lt;String&gt;]
 OPTIONAL (Highly recommended) - The checksum hash value of the Url64bit
 resource. This allows a checksum to be validated for files that are not
 local. The checksum type is covered by ChecksumType64.
@@ -197,7 +205,7 @@ Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -ChecksumType64 [\<String\>]
+###  -ChecksumType64 [&lt;String&gt;]
 OPTIONAL - The type of checkum that the file is validated with - valid
 values are 'md5', 'sha1', 'sha256' or 'sha512' - defaults to
 ChecksumType parameter value.
@@ -214,7 +222,7 @@ Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Options [\<Hashtable\>]
+###  -Options [&lt;Hashtable&gt;]
 OPTIONAL - Specify custom headers. Available in 0.9.10+.
 
 Property               | Value
@@ -237,7 +245,18 @@ Position?              | named
 Default Value          | False
 Accept Pipeline Input? | false
  
-### \<CommonParameters\>
+###  -IgnoredArguments [&lt;Object[]&gt;]
+Allows splatting with arguments that do not apply. Do not use directly.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
@@ -249,7 +268,7 @@ This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -Err
 ~~~powershell
 
 $packageName= 'bob'
-$toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+$toolsDir   = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 $url        = 'https://somewhere.com/file.msi'
 $url64      = 'https://somewhere.com/file-x64.msi'
 
@@ -273,23 +292,26 @@ Install-ChocolateyPackage @packageArgs
 **EXAMPLE 2**
 
 ~~~powershell
+
 Install-ChocolateyPackage 'StExBar' 'msi' '/quiet' `
-'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi' `
+ 'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi' `
  'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'
 ~~~
 
 **EXAMPLE 3**
 
 ~~~powershell
+
 Install-ChocolateyPackage 'mono' 'exe' '/SILENT' `
-'http://somehwere/something.exe' -ValidExitCodes @(0,21)
+ 'http://somehwere/something.exe' -ValidExitCodes @(0,21)
 ~~~
 
 **EXAMPLE 4**
 
 ~~~powershell
+
 Install-ChocolateyPackage 'ruby.devkit' 'exe' '/SILENT' `
-'http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe' `
+ 'http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe' `
  'http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe' `
  -checksum '9383f12958aafc425923e322460a84de' -checksumType = 'md5' `
  -checksum64 'ce99d873c1acc8bffc639bd4e764b849'
@@ -326,123 +348,6 @@ Install-ChocolateyPackage -PackageName 'package' -FileType 'exe' -SilentArgs '/S
  * [[Install-ChocolateyInstallPackage|HelpersInstallChocolateyInstallPackage]]
  * [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]
 
-
----
-
-# Install-ChocolateyPackage
-
-This will download a native installer from a url and install it on your machine. Has error handling built in. You do not need to surround this with try catch if it is the only thing in your [[chocolateyInstall.ps1|ChocolateyInstallPS1]].
-
-**NOTE:** This command will assert UAC/Admin privileges on the machine.
-
-## Usage
-
-```powershell
-Install-ChocolateyPackage $packageName $installerType $silentArgs $url $url64bit `
- -validExitCodes $validExitCodes -checksum $checksum -checksumType $checksumType `
- -checksum64 $checksum64 -checksumType64 $checksumType64
-```
-
-## Examples
-
-```powershell
-Install-ChocolateyPackage 'StExBar' 'msi' '/quiet' ` 
- 'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi' `
- 'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'
-
-Install-ChocolateyPackage 'mono' 'exe' '/SILENT' `
- 'http://ftp.novell.com/pub/mono/archive/2.10.2/windows-installer/5/mono-2.10.2-gtksharp-2.12.10-win32-5.exe'
-
-Install-ChocolateyPackage 'mono' 'exe' '/SILENT' ` 
- 'http://somehwere/something.exe' -validExitCodes @(0,21)
-
-Install-ChocolateyPackage 'ruby.devkit' 'exe' '/SILENT' `
- 'http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe' `
- 'http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe' `
- -checksum '9383f12958aafc425923e322460a84de' -checksumType = 'md5' `
- -checksum64 'ce99d873c1acc8bffc639bd4e764b849'
-```
-
-## Parameters
-
-* `-packageName`
-
-    This is an arbitrary name.
-
-    Example: `'7zip'`
-
-* `-installerType`
-
-    Pick only  one to leave here.
-
-    Example: `'exe'` or `'msi'` or `'msu'`
-
-* `-silentArgs`
-
-    Silent and other arguments to pass to the native installer.
-
-    Example: `'/S'`
-
-    If there are no silent arguments, pass this as `''`
-
-* `-url`
-
-    The Url to the native installer.
-
-    Example: `'http://stexbar.googlecode.com/files/StExBar-1.8.3.msi'`
-
-* `-url64bit` _(optional)_
-
-    If there is a 64 bit installer available, put the link next to the other url. Chocolatey will automatically determine if the user is running a 64bit machine or not and adjust accordingly.
-
-    Example: `'http://stexbar.googlecode.com/files/StExBar64-1.8.3.msi'`
-
-    Defaults to the 32bit url.
-
-* `-validExitCodes` _(optional)_
-
-    If there are other valid exit codes besides zero signifying a successful install, please pass `-validExitCodes` with the value, including 0 as long as it is still valid.
-
-    Example: `-validExitCodes @(0,44)`
-
-    Defaults to `@(0)`.
-
-* `-checksum` _(optional)_
-
-    This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
-
-    Example: `-checksum 'C67962F064924F3C7B95D69F88E745C0'`
-
-    Defaults to ``.
-
-* `-checksumType` _(optional)_
-
-    This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
-
-    Example: `-checksumType 'sha1'`
-
-    Defaults to `md5`.
-
-* `-checksum64` _(optional)_
-
-    This allows the x64 file being downloaded to be validated. Can be an MD5 or SHA1 hash.
-
-    Example: `-checksum64 'C67962F064924F3C7B95D69F88E745C0'`
-
-    Defaults to ``.
-
-* `-checksumType64` _(optional)_
-
-    This allows the file being downloaded to be validated. Can be an MD5 or SHA1 hash.
-
-    Example: `-checksumType64 'sha1'`
-
-    Defaults to checksumType's value.
-
-## See Also
-
-* [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]] for installing a zip package.
-* To add executables to the path see [[Get-ChocolateyBins|HelpersGetChocolateyBins]]
 
 [[Function Reference|HelpersReference]]
 

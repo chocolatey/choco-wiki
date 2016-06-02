@@ -56,9 +56,10 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
  -r, --limitoutput, --limit-output
      LimitOutput - Limit the output to essential information
 
-     --execution-timeout=VALUE
-     CommandExecutionTimeoutSeconds - Override the default execution timeout 
-       in the configuration of 2700 seconds.
+     --timeout, --execution-timeout=VALUE
+     CommandExecutionTimeout (in seconds) - The time to allow a command to 
+       finish before timing out. Overrides the default execution timeout in the 
+       configuration of 2700 seconds.
 
  -c, --cache, --cachelocation, --cache-location=VALUE
      CacheLocation - Location for download cache, defaults to %TEMP% or value 

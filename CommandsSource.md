@@ -2,10 +2,10 @@
 
 Chocolatey will allow you to interact with sources.
 
-**NOTE:** Mostly compatible with older chocolatey client (0.9.8.x and 
- below) with options and switches. When enabling, disabling or removing 
- a source, use `-name` in front of the option now. In most cases you 
- can still pass options and switches with one dash (`-`). For more 
+**NOTE:** Mostly compatible with older chocolatey client (0.9.8.x and
+ below) with options and switches. When enabling, disabling or removing
+ a source, use `-name` in front of the option now. In most cases you
+ can still pass options and switches with one dash (`-`). For more
  details, see [[how to pass arguments|CommandsReference#how-to-pass-options--switches]] (`choco -?`).
 
 ## Usage
@@ -17,8 +17,9 @@ Chocolatey will allow you to interact with sources.
 
     choco source
     choco source list
-    choco source add -n=bob -s https://somewhere/out/there/api/v2/
-    choco source add -n=bob -s "'https://somewhere/out/there/api/v2/'" -u=bob -p=12345
+    choco source add -n=bob -s"https://somewhere/out/there/api/v2/"
+    choco source add -n=bob -s"'https://somewhere/out/there/api/v2/'" -cert=\Users\bob\bob.pfx
+    choco source add -n=bob -s"'https://somewhere/out/there/api/v2/'" -u=bob -p=12345
     choco source disable -n=bob
     choco source enable -n=bob
     choco source remove -n=bob
@@ -60,9 +61,10 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
  -r, --limitoutput, --limit-output
      LimitOutput - Limit the output to essential information
 
-     --execution-timeout=VALUE
-     CommandExecutionTimeoutSeconds - Override the default execution timeout 
-       in the configuration of 2700 seconds.
+     --timeout, --execution-timeout=VALUE
+     CommandExecutionTimeout (in seconds) - The time to allow a command to 
+       finish before timing out. Overrides the default execution timeout in the 
+       configuration of 2700 seconds.
 
  -c, --cache, --cachelocation, --cache-location=VALUE
      CacheLocation - Location for download cache, defaults to %TEMP% or value 
@@ -94,6 +96,14 @@ Includes [[default options/switches|CommandsReference#default-options-and-switch
  -p, --password=VALUE
      Password - the user's password to the source. Encrypted in chocolate-
        y.config file.
+
+     --cert=VALUE
+     Client certificate - PFX pathname for an x509 authenticated feeds. 
+       Defaults to empty. Available in 0.9.10+.
+
+     --cp, --certpassword=VALUE
+     Certificate Password - the client certificate's password to the source. 
+       Defaults to empty. Available in 0.9.10+.
 
      --priority=VALUE
      Priority - The priority order of this source as compared to other 
