@@ -1,6 +1,8 @@
 ﻿# Install-ChocolateyEnvironmentVariable
 
-Creates a persistent environment variable
+**NOTE:** Administrative Access Required when `-VariableType 'Machine'.`
+
+Creates a persistent environment variable.
 
 ## Syntax
 
@@ -17,14 +19,16 @@ Install-ChocolateyEnvironmentVariable `
 Install-ChocolateyEnvironmentVariable creates an environment variable
 with the specified name and value. The variable is persistent and
 will remain after reboots and across multiple PowerShell and command
-line sessions. The variable can be scoped either to the user or to
-the machine. If machine level scoping is specified, the command is
+line sessions. The variable can be scoped either to the User or to
+the Machine. If Machine level scoping is specified, the command is
 elevated to an administrative session.
 
 ## Notes
 
 This command will assert UAC/Admin privileges on the machine when
 `-VariableType Machine`.
+
+This will add the environment variable to the current session.
 
 ## Aliases
 
@@ -99,7 +103,7 @@ This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -Err
 
 ~~~powershell
 
-# Creates a User environmet variable "JAVA_HOME" pointing to
+# Creates a User environment variable "JAVA_HOME" pointing to
 # "d:\oracle\jdk\bin".
 Install-ChocolateyEnvironmentVariable "JAVA_HOME" "d:\oracle\jdk\bin"
 ~~~
@@ -108,7 +112,7 @@ Install-ChocolateyEnvironmentVariable "JAVA_HOME" "d:\oracle\jdk\bin"
 
 ~~~powershell
 
-# Creates a User environmet variable "_NT_SYMBOL_PATH" pointing to
+# Creates a User environment variable "_NT_SYMBOL_PATH" pointing to
 # "symsrv*symsrv.dll*f:\localsymbols*http://msdl.microsoft.com/download/symbols".
 # The command will be elevated to admin priviledges.
 Install-ChocolateyEnvironmentVariable `
@@ -117,8 +121,17 @@ Install-ChocolateyEnvironmentVariable `
   -VariableType Machine
 ~~~
 
+**EXAMPLE 3**
+
+~~~powershell
+
+# Remove an environment variable
+Install-ChocolateyEnvironmentVariable -VariableName 'bob' -VariableValue $null
+~~~
+
 ## Links
 
+ * [[Uninstall-ChocolateyEnvironmentVariable|HelpersUninstallChocolateyEnvironmentVariable]]
  * [[Get-EnvironmentVariable|HelpersGetEnvironmentVariable]]
  * [[Set-EnvironmentVariable|HelpersSetEnvironmentVariable]]
  * [[Install-ChocolateyPath|HelpersInstallChocolateyPath]]

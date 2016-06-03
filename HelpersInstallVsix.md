@@ -1,24 +1,24 @@
-﻿# Format-FileSize
+﻿# Install-Vsix
 
 DO NOT USE. Not part of the public API.
 
 ## Syntax
 
 ~~~powershell
-Format-FileSize `
-  -Size <Double> `
+Install-Vsix `
+  -Installer <String> `
+  -InstallFile <String> `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
 
-Formats file size into a human readable format.
+Installs a VSIX package into a particular version of Visual Studio.
 
 ## Notes
 
-Available in 0.9.10+.
-
-This function is not part of the API.
+This is not part of the public API. Please use
+Install-ChocolateyVsixPackage instead.
 
 ## Aliases
 
@@ -34,15 +34,26 @@ None
 
 ## Parameters
 
-###  -Size &lt;Double&gt;
-The size of a file in bytes.
+###  -Installer &lt;String&gt;
+The path to the VSIX installer
 
 Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | true
 Position?              | 1
-Default Value          | 0
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -InstallFile &lt;String&gt;
+The VSIX file that is being installed.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | true
+Position?              | 2
+Default Value          | 
 Accept Pipeline Input? | false
  
 ###  -IgnoredArguments [&lt;Object[]&gt;]
@@ -61,20 +72,12 @@ Accept Pipeline Input? | false
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
-## Examples
-
- **EXAMPLE 1**
-
-~~~powershell
-Format-FileSize -Size $fileSizeBytes
-
-~~~
 
 ## Links
 
- * [[Get-WebFile|HelpersGetWebFile]]
+ * [[Install-ChocolateyVsixPackage|HelpersInstallChocolateyVsixPackage]]
 
 
 [[Function Reference|HelpersReference]]
 
-***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Format-FileSize -Full`.
+***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Install-Vsix -Full`.

@@ -1,30 +1,28 @@
-﻿# Install-ChocolateyPath
+﻿# Set-EnvironmentVariable
 
-**NOTE:** Administrative Access Required when `-PathType 'Machine'.`
+**NOTE:** Administrative Access Required when `-Scope 'Machine'.`
 
-This puts a directory to the PATH environment variable.
+DO NOT USE. Not part of the public API. Use
+`Install-ChocolateyEnvironmentVariable` instead.
 
 ## Syntax
 
 ~~~powershell
-Install-ChocolateyPath `
-  -PathToInstall <String> `
-  [-PathType {Process | User | Machine}] `
+Set-EnvironmentVariable `
+  -Name <String> `
+  [-Value <String>] `
+  [-Scope {Process | User | Machine}] `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
 
-Looks at both PATH environment variables to ensure a path variable
-correctly shows up on the right PATH.
+Saves an environment variable.
 
 ## Notes
 
 This command will assert UAC/Admin privileges on the machine if
-`-PathType 'Machine'`.
-
-This is used when the application/tool is not being linked by Chocolatey
-(not in the lib folder).
+`-Scope 'Machine'`.
 
 ## Aliases
 
@@ -40,9 +38,7 @@ None
 
 ## Parameters
 
-###  -PathToInstall &lt;String&gt;
-The full path to a location to add / ensure is in the PATH.
-
+###  -Name &lt;String&gt;
 Property               | Value
 ---------------------- | -----
 Aliases                | 
@@ -51,10 +47,16 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -PathType
-Which PATH to add it to. If specifying `Machine`, this requires admin
-privileges to run correctly.
-
+###  -Value [&lt;String&gt;]
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 2
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -Scope
 
 Valid options: Process, User, Machine
 
@@ -62,8 +64,8 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 2
-Default Value          | User
+Position?              | 3
+Default Value          | 
 Accept Pipeline Input? | false
  
 ###  -IgnoredArguments [&lt;Object[]&gt;]
@@ -82,30 +84,15 @@ Accept Pipeline Input? | false
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
-## Examples
-
- **EXAMPLE 1**
-
-~~~powershell
-Install-ChocolateyPath -PathToInstall "$($env:SystemDrive)\tools\gittfs"
-
-~~~
-
-**EXAMPLE 2**
-
-~~~powershell
-Install-ChocolateyPath "$($env:SystemDrive)\Program Files\MySQL\MySQL Server 5.5\bin" -PathType 'Machine'
-
-~~~
 
 ## Links
 
  * [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]]
+ * [[Uninstall-ChocolateyEnvironmentVariable|HelpersUninstallChocolateyEnvironmentVariable]]
+ * [[Install-ChocolateyPath|HelpersInstallChocolateyPath]]
  * [[Get-EnvironmentVariable|HelpersGetEnvironmentVariable]]
- * [[Set-EnvironmentVariable|HelpersSetEnvironmentVariable]]
- * [[Get-ToolsLocation|HelpersGetToolsLocation]]
 
 
 [[Function Reference|HelpersReference]]
 
-***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Install-ChocolateyPath -Full`.
+***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Set-EnvironmentVariable -Full`.

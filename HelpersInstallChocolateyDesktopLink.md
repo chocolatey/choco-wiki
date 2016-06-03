@@ -25,6 +25,8 @@ If this errors, such as it will if being installed under the local
 SYSTEM account, it will display a warning instead of failing a package
 installation.
 
+Will not throw an error if it fails.
+
 ## Aliases
 
 None

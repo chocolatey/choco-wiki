@@ -7,9 +7,9 @@ available.
 
 ~~~powershell
 Get-WebFile `
-  [-Url <Object>] `
-  [-FileName <Object>] `
-  [-UserAgent <Object>] `
+  [-Url <String>] `
+  [-FileName <String>] `
+  [-UserAgent <String>] `
   [-Passthru] `
   [-Quiet] `
   [-Options <Hashtable>] `
@@ -40,7 +40,7 @@ None
 
 ## Parameters
 
-###  -Url [&lt;Object&gt;]
+###  -Url [&lt;String&gt;]
 This is the url to download the file from. Prefer HTTPS when available.
 
 Property               | Value
@@ -51,7 +51,7 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -FileName [&lt;Object&gt;]
+###  -FileName [&lt;String&gt;]
 This is the full path to the file to create. If downloading to the
 package folder next to the install script, the path will be like
 `"$(Split-Path -Parent $MyInvocation.MyCommand.Definition)\\file.exe"`
@@ -64,7 +64,7 @@ Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -UserAgent [&lt;Object&gt;]
+###  -UserAgent [&lt;String&gt;]
 The user agent to use as part of the request. Defaults to 'chocolatey
 command line'.
 
@@ -105,7 +105,7 @@ Property               | Value
 ---------------------- | --------------
 Aliases                | 
 Required?              | false
-Position?              | 4
+Position?              | named
 Default Value          | @{Headers=@{}}
 Accept Pipeline Input? | false
  
@@ -116,7 +116,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 5
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  

@@ -1,5 +1,7 @@
 ﻿# Install-ChocolateyExplorerMenuItem
 
+**NOTE:** Administrative Access Required.
+
 Creates a windows explorer context menu item that can be associated with
 a command
 
@@ -7,7 +9,7 @@ a command
 
 ~~~powershell
 Install-ChocolateyExplorerMenuItem `
-  [-MenuKey <String>] `
+  -MenuKey <String> `
   [-MenuLabel <String>] `
   [-Command <String>] `
   [-Type <String>] `
@@ -46,13 +48,13 @@ None
 
 ## Parameters
 
-###  -MenuKey [&lt;String&gt;]
+###  -MenuKey &lt;String&gt;
 A unique string to identify this menu item in the registry
 
 Property               | Value
 ---------------------- | -----
 Aliases                | 
-Required?              | false
+Required?              | true
 Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
@@ -98,7 +100,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 5
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  

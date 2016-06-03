@@ -6,7 +6,7 @@ Downloads and installs a VSIX package for Visual Studio
 
 ~~~powershell
 Install-ChocolateyVsixPackage `
-  [-PackageName <String>] `
+  -PackageName <String> `
   [-VsixUrl <String>] `
   [-VsVersion <Int32>] `
   [-Checksum <String>] `
@@ -47,14 +47,14 @@ None
 
 ## Parameters
 
-###  -PackageName [&lt;String&gt;]
+###  -PackageName &lt;String&gt;
 The name of the package - while this is an arbitrary value, it's
 recommended that it matches the package id.
 
 Property               | Value
 ---------------------- | -----
 Aliases                | 
-Required?              | false
+Required?              | true
 Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
@@ -95,7 +95,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 4
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
@@ -111,7 +111,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 5
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
@@ -122,7 +122,7 @@ Property               | Value
 ---------------------- | --------------
 Aliases                | 
 Required?              | false
-Position?              | 6
+Position?              | named
 Default Value          | @{Headers=@{}}
 Accept Pipeline Input? | false
  
@@ -133,7 +133,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 7
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  

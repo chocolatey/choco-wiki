@@ -1,13 +1,15 @@
 ﻿# Install-ChocolateyFileAssociation
 
+**NOTE:** Administrative Access Required.
+
 Creates an association between a file extension and a executable.
 
 ## Syntax
 
 ~~~powershell
 Install-ChocolateyFileAssociation `
-  [-Extension <String>] `
-  [-Executable <String>] `
+  -Extension <String> `
+  -Executable <String> `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
@@ -36,24 +38,24 @@ None
 
 ## Parameters
 
-###  -Extension [&lt;String&gt;]
+###  -Extension &lt;String&gt;
 The file extension to be associated.
 
 Property               | Value
 ---------------------- | -----
 Aliases                | 
-Required?              | false
+Required?              | true
 Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -Executable [&lt;String&gt;]
+###  -Executable &lt;String&gt;
 The path to the application's executable to be associated.
 
 Property               | Value
 ---------------------- | -----
 Aliases                | 
-Required?              | false
+Required?              | true
 Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
@@ -65,7 +67,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 3
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  

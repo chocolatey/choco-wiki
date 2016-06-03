@@ -6,8 +6,8 @@ Creates a shortcut
 
 ~~~powershell
 Install-ChocolateyShortcut `
-  [-ShortcutFilePath <String>] `
-  [-TargetPath <String>] `
+  -ShortcutFilePath <String> `
+  -TargetPath <String> `
   [-WorkingDirectory <String>] `
   [-Arguments <String>] `
   [-IconLocation <String>] `
@@ -21,6 +21,11 @@ This adds a shortcut, at the specified location, with the option to specify
 a number of additional properties for the shortcut, such as Working Directory,
 Arguments, Icon Location, and Description.
 
+## Notes
+
+If this errors, as it may if being run under the local SYSTEM account with
+particular folder that SYSTEM doesn't have, it will display a warning instead
+of failing a package installation.
 
 ## Aliases
 
@@ -36,24 +41,24 @@ None
 
 ## Parameters
 
-###  -ShortcutFilePath [&lt;String&gt;]
+###  -ShortcutFilePath &lt;String&gt;
 The full absolute path to where the shortcut should be created.  This is mandatory.
 
 Property               | Value
 ---------------------- | -----
 Aliases                | 
-Required?              | false
+Required?              | true
 Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -TargetPath [&lt;String&gt;]
+###  -TargetPath &lt;String&gt;
 The full absolute path to the target for new shortcut.  This is mandatory.
 
 Property               | Value
 ---------------------- | -----
 Aliases                | 
-Required?              | false
+Required?              | true
 Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
@@ -112,7 +117,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 7
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  

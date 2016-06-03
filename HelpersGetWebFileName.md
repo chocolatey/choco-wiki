@@ -9,7 +9,7 @@ the original file name for a file.
 Get-WebFileName `
   [-Url <String>] `
   -DefaultName <String> `
-  [-UserAgent <Object>] `
+  [-UserAgent <String>] `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
@@ -68,7 +68,7 @@ Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -UserAgent [&lt;Object&gt;]
+###  -UserAgent [&lt;String&gt;]
 The user agent to use as part of the request. Defaults to 'chocolatey
 command line'.
 

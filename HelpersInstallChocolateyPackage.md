@@ -1,5 +1,7 @@
 ﻿# Install-ChocolateyPackage
 
+**NOTE:** Administrative Access Required.
+
 Installs software into "Programs and Features" based on a remote file
 download. Use Install-ChocolateyInstallPackage when local or embedded
 file.

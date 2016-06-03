@@ -1,30 +1,34 @@
-﻿# Install-ChocolateyPath
+﻿# Uninstall-ChocolateyEnvironmentVariable
 
-**NOTE:** Administrative Access Required when `-PathType 'Machine'.`
+**NOTE:** Administrative Access Required when `-VariableType 'Machine'.`
 
-This puts a directory to the PATH environment variable.
+Removes a persistent environment variable.
 
 ## Syntax
 
 ~~~powershell
-Install-ChocolateyPath `
-  -PathToInstall <String> `
-  [-PathType {Process | User | Machine}] `
+Uninstall-ChocolateyEnvironmentVariable `
+  -VariableName <String> `
+  [-VariableType {Process | User | Machine}] `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
 ## Description
 
-Looks at both PATH environment variables to ensure a path variable
-correctly shows up on the right PATH.
+Uninstall-ChocolateyEnvironmentVariable removes an environment variable
+with the specified name and value. The variable can be scoped either to
+the User or to the Machine. If Machine level scoping is specified, the
+command is elevated to an administrative session.
 
 ## Notes
 
-This command will assert UAC/Admin privileges on the machine if
-`-PathType 'Machine'`.
+Available in 0.9.10+. If you need compatibility with older versions,
+use Install-ChocolateyEnvironmentVariable and set `-VariableValue $null`
 
-This is used when the application/tool is not being linked by Chocolatey
-(not in the lib folder).
+This command will assert UAC/Admin privileges on the machine when
+`-VariableType Machine`.
+
+This will remove the environment variable from the current session.
 
 ## Aliases
 
@@ -40,8 +44,8 @@ None
 
 ## Parameters
 
-###  -PathToInstall &lt;String&gt;
-The full path to a location to add / ensure is in the PATH.
+###  -VariableName &lt;String&gt;
+The name or key of the environment variable to remove.
 
 Property               | Value
 ---------------------- | -----
@@ -51,9 +55,9 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -PathType
-Which PATH to add it to. If specifying `Machine`, this requires admin
-privileges to run correctly.
+###  -VariableType
+Specifies whether this variable is at either the individual User level
+or at the Machine level.
 
 
 Valid options: Process, User, Machine
@@ -87,25 +91,26 @@ This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -Err
  **EXAMPLE 1**
 
 ~~~powershell
-Install-ChocolateyPath -PathToInstall "$($env:SystemDrive)\tools\gittfs"
 
+# Remove an environment variable
+Uninstall-ChocolateyEnvironmentVariable -VariableName 'bob'
 ~~~
 
 **EXAMPLE 2**
 
 ~~~powershell
-Install-ChocolateyPath "$($env:SystemDrive)\Program Files\MySQL\MySQL Server 5.5\bin" -PathType 'Machine'
 
+# Remove an environment variable from Machine
+Uninstall-ChocolateyEnvironmentVariable -VariableName 'bob' -VariableType 'Machine'
 ~~~
 
 ## Links
 
  * [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]]
- * [[Get-EnvironmentVariable|HelpersGetEnvironmentVariable]]
  * [[Set-EnvironmentVariable|HelpersSetEnvironmentVariable]]
- * [[Get-ToolsLocation|HelpersGetToolsLocation]]
+ * [[Install-ChocolateyPath|HelpersInstallChocolateyPath]]
 
 
 [[Function Reference|HelpersReference]]
 
-***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Install-ChocolateyPath -Full`.
+***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Uninstall-ChocolateyEnvironmentVariable -Full`.

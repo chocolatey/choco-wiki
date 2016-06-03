@@ -7,7 +7,7 @@ Installs a PowerShell Script as a command
 ~~~powershell
 Install-ChocolateyPowershellCommand `
   [-PackageName <String>] `
-  [-PsFileFullPath <String>] `
+  -PsFileFullPath <String> `
   [-Url <String>] `
   [-Url64bit <String>] `
   [-Checksum <String>] `
@@ -61,7 +61,7 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -PsFileFullPath [&lt;String&gt;]
+###  -PsFileFullPath &lt;String&gt;
 Full file path to PowerShell file to turn into a command. If embedding
 it in the package next to the install script, the path will be like
 `"$(Split-Path -parent $MyInvocation.MyCommand.Definition)\\Script.ps1"`
@@ -69,7 +69,7 @@ it in the package next to the install script, the path will be like
 Property               | Value
 ---------------------- | -----
 Aliases                | 
-Required?              | false
+Required?              | true
 Position?              | 2
 Default Value          | 
 Accept Pipeline Input? | false
@@ -120,7 +120,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 5
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
@@ -136,7 +136,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 6
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
@@ -149,7 +149,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 7
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
@@ -166,7 +166,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 8
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  
@@ -177,7 +177,7 @@ Property               | Value
 ---------------------- | --------------
 Aliases                | 
 Required?              | false
-Position?              | 9
+Position?              | named
 Default Value          | @{Headers=@{}}
 Accept Pipeline Input? | false
  
@@ -188,7 +188,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 10
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  

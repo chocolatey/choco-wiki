@@ -6,8 +6,8 @@ Gets the request/response headers for a url.
 
 ~~~powershell
 Get-WebHeaders `
-  [-Url <Object>] `
-  [-UserAgent <Object>] `
+  [-Url <String>] `
+  [-UserAgent <String>] `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
@@ -35,7 +35,7 @@ None
 
 ## Parameters
 
-###  -Url [&lt;Object&gt;]
+###  -Url [&lt;String&gt;]
 This is the url to get a request/response from.
 
 Property               | Value
@@ -46,7 +46,7 @@ Position?              | 1
 Default Value          | 
 Accept Pipeline Input? | false
  
-###  -UserAgent [&lt;Object&gt;]
+###  -UserAgent [&lt;String&gt;]
 The user agent to use as part of the request. Defaults to 'chocolatey
 command line'.
 
@@ -65,7 +65,7 @@ Property               | Value
 ---------------------- | -----
 Aliases                | 
 Required?              | false
-Position?              | 3
+Position?              | named
 Default Value          | 
 Accept Pipeline Input? | false
  

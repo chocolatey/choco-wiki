@@ -11,6 +11,10 @@ Install-ChocolateyPinnedTaskBarItem `
 ~~~
 
 
+## Notes
+
+Does not work with SYSTEM, but does not error. It warns with the error
+message.
 
 ## Aliases
 

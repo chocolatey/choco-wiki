@@ -1,5 +1,7 @@
 ﻿# Install-ChocolateyInstallPackage
 
+**NOTE:** Administrative Access Required.
+
 Installs software into "Programs and Features". Use
 Install-ChocolateyPackage when software must be downloaded first.
 
@@ -21,6 +23,8 @@ Install-ChocolateyInstallPackage `
 This will run an installer (local file) on your machine.
 
 ## Notes
+
+This command will assert UAC/Admin privileges on the machine.
 
 If you are embedding files into a package, ensure that you have the
 rights to redistribute those files if you are sharing this package
@@ -211,6 +215,7 @@ Install-ChocolateyInstallPackage -PackageName 'bob' -FileType 'exe' `
 
  * [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]
  * [[Uninstall-ChocolateyPackage|HelpersUninstallChocolateyPackage]]
+ * [[Start-ChocolateyProcessAsAdmin|HelpersStartChocolateyProcessAsAdmin]]
 
 
 [[Function Reference|HelpersReference]]
