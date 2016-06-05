@@ -104,7 +104,9 @@ $env:chocolateyUseWindowsCompression = 'true'
 
 ## Non-Administrative Install
 
-1. You must choose a different location than the default. The default is a more secure location that only administrators can update.
+This option should be a last resort and is considered to be an advanced scenario. Most things you do on Windows require Administrative rights, especially surrounding software management, so you are going to be limited even in packages you attempt to install. If you run into issues with Chocolatey and you have set Chocolatey up this way, the first thing we are going to ask you to do is to see if it works when you have installed choco under normal circumstances. If you are using the community feed, you should avoid this type of installation as over 75% of the packages you find there require administrative permission to install. 
+
+1. You must choose a different location than the default (see above). The default is a more secure location that only administrators can update.
 1. Follow that with the command line / PowerShell methods of installation.
 
 ## Alternative Installation Options
