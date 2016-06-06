@@ -12,6 +12,9 @@ Install-ChocolateyShortcut `
   [-Arguments <String>] `
   [-IconLocation <String>] `
   [-Description <String>] `
+  [-WindowStyle <Int32>] `
+  [-RunAsAdmin] `
+  [-PinToTaskbar] `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
@@ -30,101 +33,6 @@ of failing a package installation.
 ## Aliases
 
 None
-
-## Inputs
-
-None
-
-## Outputs
-
-None
-
-## Parameters
-
-###  -ShortcutFilePath &lt;String&gt;
-The full absolute path to where the shortcut should be created.  This is mandatory.
-
-Property               | Value
----------------------- | -----
-Aliases                | 
-Required?              | true
-Position?              | 1
-Default Value          | 
-Accept Pipeline Input? | false
- 
-###  -TargetPath &lt;String&gt;
-The full absolute path to the target for new shortcut.  This is mandatory.
-
-Property               | Value
----------------------- | -----
-Aliases                | 
-Required?              | true
-Position?              | 2
-Default Value          | 
-Accept Pipeline Input? | false
- 
-###  -WorkingDirectory [&lt;String&gt;]
-The full absolute path of the Working Directory that will be used by
-the new shortcut.  This is optional
-
-Property               | Value
----------------------- | -----
-Aliases                | 
-Required?              | false
-Position?              | 3
-Default Value          | 
-Accept Pipeline Input? | false
- 
-###  -Arguments [&lt;String&gt;]
-Additonal arguments that should be passed along to the new shortcut.  This
-is optional.
-
-Property               | Value
----------------------- | -----
-Aliases                | 
-Required?              | false
-Position?              | 4
-Default Value          | 
-Accept Pipeline Input? | false
- 
-###  -IconLocation [&lt;String&gt;]
-The full absolute path to an icon file to be used for the new shortcut.  This
-is optional.
-
-Property               | Value
----------------------- | -----
-Aliases                | 
-Required?              | false
-Position?              | 5
-Default Value          | 
-Accept Pipeline Input? | false
- 
-###  -Description [&lt;String&gt;]
-A text description to be associated with the new description.  This is optional.
-
-Property               | Value
----------------------- | -----
-Aliases                | 
-Required?              | false
-Position?              | 6
-Default Value          | 
-Accept Pipeline Input? | false
- 
-###  -IgnoredArguments [&lt;Object[]&gt;]
-Allows splatting with arguments that do not apply. Do not use directly.
-
-Property               | Value
----------------------- | -----
-Aliases                | 
-Required?              | false
-Position?              | named
-Default Value          | 
-Accept Pipeline Input? | false
- 
-### &lt;CommonParameters&gt;
-
-This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
-
 
 ## Examples
 
@@ -155,6 +63,154 @@ Install-ChocolateyShortcut `
   -IconLocation "C:\test.ico" `
   -Description "This is the description"
 ~~~
+
+**EXAMPLE 3**
+
+~~~powershell
+
+# Creates a new notepad shortcut on the root of c: that starts
+# notepad.exe as Administrator. Shortcut is also pinned to taskbar.
+# These parameters are available in 0.9.10+.
+
+Install-ChocolateyShortcut `
+  -ShortcutFilePath "C:\notepad.lnk" `
+  -TargetPath "C:\Windows\System32\notepad.exe" `
+  -WindowStyle 3 `
+  -RunAsAdmin `
+  -PinToTaskbar
+~~~ 
+
+## Inputs
+
+None
+
+## Outputs
+
+None
+
+## Parameters
+
+###  -ShortcutFilePath &lt;String&gt;
+The full absolute path to where the shortcut should be created.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | true
+Position?              | 1
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -TargetPath &lt;String&gt;
+The full absolute path to the target for new shortcut.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | true
+Position?              | 2
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -WorkingDirectory [&lt;String&gt;]
+OPTIONAL - The full absolute path of the Working Directory that will be
+used by the new shortcut.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 3
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -Arguments [&lt;String&gt;]
+OPTIONAL - Additonal arguments that should be passed along to the new
+shortcut.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 4
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -IconLocation [&lt;String&gt;]
+OPTIONAL- The full absolute path to an icon file to be used for the new
+shortcut.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 5
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -Description [&lt;String&gt;]
+OPTIONAL - A text description to be associated with the new description.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 6
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -WindowStyle [&lt;Int32&gt;]
+OPTIONAL - Type of windows target application should open with. 
+Available in 0.9.10+.
+0 = Hidden, 1 = Normal Size, 3 = Maximized, 7 - Minimized.
+Full list table 3.9 here: https://technet.microsoft.com/en-us/library/ee156605.aspx
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | 7
+Default Value          | 0
+Accept Pipeline Input? | false
+ 
+###  -RunAsAdmin
+OPTIONAL - Set "Run As Administrator" checkbox for the created the
+shortcut. Available in 0.9.10+.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | False
+Accept Pipeline Input? | false
+ 
+###  -PinToTaskbar
+OPTIONAL - Pin the new shortcut to the taskbar. Available in 0.9.10+.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | False
+Accept Pipeline Input? | false
+ 
+###  -IgnoredArguments [&lt;Object[]&gt;]
+Allows splatting with arguments that do not apply. Do not use directly.
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+### &lt;CommonParameters&gt;
+
+This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
+
 
 ## Links
 
