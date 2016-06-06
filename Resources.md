@@ -20,6 +20,7 @@
 
 #### May
 
+* http://www.jamessturtevant.com/posts/5-Ways-to-install-git-on-Windows
 * http://media.bemyapp.com/chocolatey-windows-software-management-actually-sweet/
 * http://blog.myget.org/post/2016/05/26/Using-build-services-to-create-Chocolatey-packages.aspx
 * http://taucetisoft.es/2016/05/19/un-gestor-de-paquetes-para-windows/
