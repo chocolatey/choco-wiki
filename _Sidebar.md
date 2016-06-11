@@ -19,6 +19,7 @@
  - [[Private CDN Cache|FeaturesPrivateCdn]]
  - [[Install Directory Override|FeaturesInstallDirectoryOverride]]
  - [[Infrastruction Automation Integration|FeaturesInfrastructureAutomation]]
+ - [[Automatically add exes to PATH w/out clutter (shims)|FeaturesShim]]
  - In progress, check back for updates!
 
 **Usage**
@@ -56,14 +57,14 @@
    - [[Pack|CommandsPack]]
    - [[Apikey|CommandsApiKey]]
    - [[Push|CommandsPush]]
- - [[Automatic Packaging|AutomaticPackages]] 
+ - [[Automatic Packaging|AutomaticPackages]]
  - **PowerShell Reference:**
    - [[Function and Variable Reference|HelpersReference]]
    - [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]
    - [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]
    - [[Install-ChocolateyVsixPackage|HelpersInstallChocolateyVsixPackage]]
    - [[Get-ChocolateyWebFile|HelpersGetChocolateyWebFile]]
-   - [[Install-ChocolateyInstallPackage|HelpersInstallChocolateyInstallPackage]]   
+   - [[Install-ChocolateyInstallPackage|HelpersInstallChocolateyInstallPackage]]
    - [[Get-ChocolateyUnzip|HelpersGetChocolateyUnzip]]
    - [[Install-ChocolateyPath|HelpersInstallChocolateyPath]]
    - [[Install-ChocolateyEnvironmentVariable|HelpersInstallChocolateyEnvironmentVariable]]

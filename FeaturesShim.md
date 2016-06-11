@@ -1,4 +1,4 @@
-# Shimming
+# Shimming - Automatically Add Executables to PATH
 
 Shimming is like symlinking, but it works much better. It's a form of redirection, where you create a "shim" that redirects input to the actual binary process and shares the output. It can also work to simply call the actual binary when it shims GUI applications.
 
@@ -21,6 +21,23 @@ Chocolatey automatically shims executables in package folders that are not expli
 These executables can come as part of the package or downloaded to the package folder during the install script.
 
 Chocolatey ensures the folder `$($env:ChocolateyInstall)\bin` in the PATH environment variable, allowing you to put tools on the PATH without cluttering up the PATH.
+
+## See It In Action
+
+![Shimming - if you are on https://chocolatey.org/docs/features-shim, see commented html below for detailed description of image](images/features/features_shimgen.png)
+
+<!--
+Text in the image above:
+
+Automatically Adds Package Executables to PATH without clutter (Shimming)
+
+- Exclusive to Chocolatey - When executables are found in the package directory, they are automatically shimmed to a folder on the PATH.
+- When items require elevated privileges, shims will raise UAC prompts.
+- Like symbolic links or batch redirects, but better.
+- Shims have logging and other options - pass `--shimgen-help` to a shimmed executable for options.
+
+The image shows installing ruby.portable, then running `ruby -v` followed by `ruby -v --shimgen-log` and the additional output that comes out from the shim.
+-->
 
 ## Options and Switches
 

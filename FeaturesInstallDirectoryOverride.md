@@ -12,6 +12,20 @@ Just pass `--install-directory=value` along and Chocolatey will determine what t
 
 ![choco install 1password --install-directory c:\1password](images/chocopro_features_installdirectory.png)
 
+![Install override - if you are on https://chocolatey.org/docs/features-install-directory-override, see commented html below for detailed description of image](images/features/features_override_install_directory.png)
+
+<!--
+Text in the image above:
+
+Override Install Directory - One Switch, All Installers
+
+- There are over 20 different installer formats for Windows, all with different install directory switches.
+- Chocolatey for Business (and Pro) can override the installation directory for compatible installer types automatically.
+- Save countless hours determining installers, their switches and the correct way to pass those switches.
+
+The image shows installing 1password with Chocolatey for Business. The command passed is `choco install 1password -s . -y --dir c:\1password`, then shows that Chocolatey automatically determines the installer requires `/DIR="c:\1password"` and installs it to the proper location.
+-->
+
 ## See It In Action
 
 ![Directory override in action](images/gifs/chocopro_features_installdirectory.gif)
