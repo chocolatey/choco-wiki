@@ -125,6 +125,8 @@ If you were using any of the functions in a non-recommended way or not comliant 
  * Fix - Some environment variables are set too early for options/switches to have an effect - see [#620](https://github.com/chocolatey/choco/issues/620)
  * [API] Fix - Issue when attempting to execute run command through API - see [#769](https://github.com/chocolatey/choco/issues/769)
  * Fix - Logging of upgrade messages - placement of some messages is incorrect - see [#557](https://github.com/chocolatey/choco/issues/557)
+ * Fix - Get-WebFile fails with - The term '//continue' is not recognized as the name of a cmdlet - see [#789](https://github.com/chocolatey/choco/issues/789)
+ * Fix - Unable to read registry snapshot file - see [#487](https://github.com/chocolatey/choco/issues/487)
 
 ### IMPROVEMENTS
 
@@ -179,6 +181,7 @@ If you were using any of the functions in a non-recommended way or not comliant 
  * After upgrading provide summary of upgraded packages - see [#759](https://github.com/chocolatey/choco/issues/759)
  * Web functions - Check for local file and return early - see [#781](https://github.com/chocolatey/choco/issues/781)
  * Refresh environment variables after each install - see [#439](https://github.com/chocolatey/choco/issues/439)
+ * Capture Arguments for a Package during Install/Upgrade - see [#358](https://github.com/chocolatey/choco/issues/358)
  * Pro/Business - Also check for license in User Profile location - see [#606](https://github.com/chocolatey/choco/issues/606)
  * Pro/Business - Set download cache information if available - see [#562](https://github.com/chocolatey/choco/issues/562)
  * Pro/Business - Allow commands to be added - see [#583](https://github.com/chocolatey/choco/issues/583)
@@ -193,6 +196,7 @@ If you were using any of the functions in a non-recommended way or not comliant 
  * API - Add paging to list command - see [#427](https://github.com/chocolatey/choco/issues/427)
  * API - Choco search should sort by version - see [#668](https://github.com/chocolatey/choco/issues/668)
  * API - Switch dll to .NET Client Profile - see [#680](https://github.com/chocolatey/choco/issues/680)
+
 
 ## [0.9.9.12](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.9.12+is%3Aclosed) (March 18, 2016)
 
