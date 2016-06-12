@@ -40,7 +40,7 @@ If you need the previous behavior, be sure to disable the feature `usePackageExi
 
  * PowerShell module functions adjusted for automatic documentation - see [#697](https://github.com/chocolatey/choco/issues/697)
 
-If you were using any of the functions in a non-recommended way or not comliant with the examples, you are going to find breakages in the functions as some of the things that were called out as non-optional are now enforced. This shouldn't affect most folks.
+If you were using any of the functions in a non-recommended way or not compliant with the examples, you are going to find breakages in the functions as some of the things that were called out as non-optional are now enforced. This shouldn't affect most folks.
 
 ### KNOWN ISSUES
 
