@@ -15,7 +15,7 @@ We take security issues very seriously. Security falls into a few areas of the C
 
 Chocolatey has grown up quite a bit with the release of 0.9.9+ series and has been moving to a more secure by default approach. What that means is that Chocolatey will set the more secure defaults and the user has to do something (e.g. set a switch, choose to install Chocolatey to a less secure location) to reduce the overall security of Chocolatey.
 
-1. Requires elevated permissions to install to the default location (`C:\ProgramData\chocolatey`). This reduces escalation of privilege attacks.
+1. Requires elevated permissions to make changes to the default location (`C:\ProgramData\chocolatey`). This reduces escalation of privilege attacks.
 1. Requires elevated permissions to run `choco.exe` in the default installed location. This reduces escalation of privilege attacks.
 1. Requires administrative permission to add to the Machine PATH environment variable. This reduces escalation of privilege attacks.
 1. choco by default will stop and ask you to confirm before changing state of the system, showing you the script it wants to execute.
@@ -23,7 +23,6 @@ Chocolatey has grown up quite a bit with the release of 0.9.9+ series and has be
 1. To reduce MITM (Man in the middle) attacks, package installs support [[checksums|HelpersInstallChocolateyPackage]], so that when downloading from a remote location, binaries are verified prior to acting on them. We're making steps to allow for [users to supply a runtime checksum as well](https://github.com/chocolatey/choco/issues/112).
 1. Choco will not allow you to push to the community feed without using SSL/TLS (HTTPS). This reduces DNS poisoning issues.
 1. When you host internal packages, those packages can embed software and/or point to internal shares. You are not subject to software distribution rights like the packages on the community feed, so you can create packages that are more reliable and secure. See [[What are Chocolatey Packages|GettingStarted#what-are-chocolatey-packages]] for more details.
-1. The install gives modify permission to the current user - to restrict to only admins in 0.9.10, set `$env:ChocolateyAdminOnlyInstall="true"` prior to install/upgrade of Chocolatey. For v1, this will flip to [the default](https://github.com/chocolatey/choco/issues/791).
 
 ## Chocolatey binaries and the Chocolatey package
 
