@@ -23,6 +23,7 @@ Chocolatey has grown up quite a bit with the release of 0.9.9+ series and has be
 1. To reduce MITM (Man in the middle) attacks, package installs support [[checksums|HelpersInstallChocolateyPackage]], so that when downloading from a remote location, binaries are verified prior to acting on them. We're making steps to allow for [users to supply a runtime checksum as well](https://github.com/chocolatey/choco/issues/112).
 1. Choco will not allow you to push to the community feed without using SSL/TLS (HTTPS). This reduces DNS poisoning issues.
 1. When you host internal packages, those packages can embed software and/or point to internal shares. You are not subject to software distribution rights like the packages on the community feed, so you can create packages that are more reliable and secure. See [[What are Chocolatey Packages|GettingStarted#what-are-chocolatey-packages]] for more details.
+1. The install gives modify permission to the current user - to restrict to only admins in 0.9.10, set `$env:ChocolateyAdminOnlyInstall="true"` prior to install/upgrade of Chocolatey.
 
 ## Chocolatey binaries and the Chocolatey package
 
