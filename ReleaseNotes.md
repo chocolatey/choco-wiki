@@ -6,7 +6,7 @@ The "I got 99 problems, but a package manager ain't one" release. With the relea
 
 Alternative sources (`-source webpi`, `-s windowsfeature`, etc) are back! I mean, am I right?! Have you heard of auto uninstaller? If Chocolatey has installed something that works with Programs and Features, Chocolatey knows how to uninstall it without an uninstall script about 90+% of the time. This feature was in beta for the 0.9.9 series, it is on by default in 0.9.10 (unless you disabled it after trying it, you will need to reenable it, see `choco feature` for more details).
 
-Here's one you probably never knew existed - extensions. Chocolatey has had the ability to extend itself by adding PowerShell modules for years, and most folks either didn't know it existed or have never used them. We've enhanced them a bit in preparation for the licensed version of Chocolatey.
+Here's one you probably never knew existed - extensions. Chocolatey has had the ability to extend itself by adding PowerShell modules for years, and most folks either didn't know it existed or have never used them. We've enhanced them a bit in preparation for the licensed version of Chocolatey. 
 
 We redesigned our `choco new` default packaging template and we've made managing templates as easy as managing packages.
 
@@ -17,6 +17,8 @@ We redesigned our `choco new` default packaging template and we've made managing
 * [search by approved only, not broken, and/or by download cache](https://github.com/chocolatey/choco/issues/670)
 * [sort by version](https://github.com/chocolatey/choco/issues/668)
 * [search with paging](https://github.com/chocolatey/choco/issues/427)
+
+There are 150 tickets closed for this release! We've included remediation steps for when a breaking change affects you. Mostly if you have been using Chocolatey in a recommended way, you won't even notice any adverse changes. There are a number of things we thought to highlight, and quite a few security enhancements coming in this release (look for the [Security] tag on the ticket summary). 
 
 ### BREAKING CHANGES
 
