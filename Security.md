@@ -15,7 +15,7 @@ We take security issues very seriously. Security falls into a few areas of the C
 
 Chocolatey has grown up quite a bit with the release of 0.9.9+ series and has been moving to a more secure by default approach. What that means is that Chocolatey will set the more secure defaults and the user has to do something (e.g. set a switch, choose to install Chocolatey to a less secure location) to reduce the overall security of Chocolatey.
 
-1. Requires elevated permissions to make changes to the default location (`C:\ProgramData\chocolatey`). This reduces escalation of privilege attacks.
+1. Requires elevated permissions to make changes to the default location (`C:\ProgramData\chocolatey`). The default location is locked down to explicitly to admins starting in 0.9.10. This reduces escalation of privilege attacks.
 1. Requires elevated permissions to run `choco.exe` in the default installed location. This reduces escalation of privilege attacks.
 1. Requires administrative permission to add to the Machine PATH environment variable. This reduces escalation of privilege attacks.
 1. choco by default will stop and ask you to confirm before changing state of the system, showing you the script it wants to execute.
