@@ -177,7 +177,7 @@ If you were using any of the functions in a non-recommended way or not compliant
  * Web functions - Check for local file and return early - see [#781](https://github.com/chocolatey/choco/issues/781)
  * Refresh environment variables after each install - see [#439](https://github.com/chocolatey/choco/issues/439)
  * Capture Arguments for a Package during Install/Upgrade - see [#358](https://github.com/chocolatey/choco/issues/358)
- * [Security] Be explicit in permissions  - see [#398](https://github.com/chocolatey/choco/issues/398)
+ * [Security] Explicit permissions - remove inheritance/lock down to admins - see [#398](https://github.com/chocolatey/choco/issues/398)
  * Pro/Business - Also check for license in User Profile location - see [#606](https://github.com/chocolatey/choco/issues/606)
  * Pro/Business - Set download cache information if available - see [#562](https://github.com/chocolatey/choco/issues/562)
  * Pro/Business - Allow commands to be added - see [#583](https://github.com/chocolatey/choco/issues/583)
