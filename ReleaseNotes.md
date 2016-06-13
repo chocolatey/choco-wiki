@@ -1,6 +1,6 @@
 # Release Notes
 
-## [0.9.10](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.10+is%3Aclosed) (unreleased - betas available)
+## [0.9.10](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.10+is%3Aclosed) (unreleased - release candidate available)
 
 The "I got 99 problems, but a package manager ain't one" release. With the release of 0.9.10 (or if you prefer 0.9.10.0), we're about to make everything 100% better in your Windows package management world. We've addressed over 100 features and bugs in this release. We looked at how we could improve PowerShell and we've come out with a [competely internal host](https://github.com/chocolatey/choco/issues/8) that can Prompt and Read-Host in a way that times out and selects default values after a period of time. Speaking of PowerShell, how about some tab completion `choco &lt;tab&gt;` to `choco install node&lt;tab&gt;`? How about never having to [close and reopen your shell again](https://github.com/chocolatey/choco/issues/664)?
 
