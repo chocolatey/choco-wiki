@@ -18,11 +18,6 @@ We redesigned our `choco new` default packaging template and we've made managing
 * [sort by version](https://github.com/chocolatey/choco/issues/668)
 * [search with paging](https://github.com/chocolatey/choco/issues/427)
 
-What will be highlighted:
-
-* Introduce managing package templates, reintroduce extensions.
-* Talk a little about what's coming with pro
-
 ### BREAKING CHANGES
 
  * Only fail automation scripts (chocolateyInstall.ps1) if the script returns non-zero exit code - see [#445](https://github.com/chocolatey/choco/issues/445)
@@ -58,7 +53,7 @@ If you were using any of the functions in a non-recommended way or not compliant
  * Choco list/search should have exact filter search - see [#453](https://github.com/chocolatey/choco/issues/453)
  * RefreshEnv (Refresh Environment Variables) Should also work in PowerShell - see [#664](https://github.com/chocolatey/choco/issues/664)
  * Provide PowerShell tab completion for Chocolatey - see [#412](https://github.com/chocolatey/choco/issues/412)
- * [Security] Sign the powershell scripts and assemblies - see [#501](https://github.com/chocolatey/choco/issues/501)
+ * [Security] Sign the PowerShell scripts and assemblies - see [#501](https://github.com/chocolatey/choco/issues/501)
  * Add a `choco info` command to show info for one package - see [#644](https://github.com/chocolatey/choco/issues/644)
  * Mark packages pending until install completes successfully - see [#198](https://github.com/chocolatey/choco/issues/198)
  * Resolve sources by name - see [#356](https://github.com/chocolatey/choco/issues/356)
@@ -182,6 +177,7 @@ If you were using any of the functions in a non-recommended way or not compliant
  * Web functions - Check for local file and return early - see [#781](https://github.com/chocolatey/choco/issues/781)
  * Refresh environment variables after each install - see [#439](https://github.com/chocolatey/choco/issues/439)
  * Capture Arguments for a Package during Install/Upgrade - see [#358](https://github.com/chocolatey/choco/issues/358)
+ * [Security] Be explicit in permissions  - see [#398](https://github.com/chocolatey/choco/issues/398)
  * Pro/Business - Also check for license in User Profile location - see [#606](https://github.com/chocolatey/choco/issues/606)
  * Pro/Business - Set download cache information if available - see [#562](https://github.com/chocolatey/choco/issues/562)
  * Pro/Business - Allow commands to be added - see [#583](https://github.com/chocolatey/choco/issues/583)
