@@ -39,6 +39,12 @@ If you need the previous behavior, be sure to disable the feature `usePackageExi
 
 If you were using any of the functions in a non-recommended way or not compliant with the examples, you are going to find breakages in the functions as some of the things that were called out as non-optional are now enforced. This shouldn't affect most folks.
 
+
+ * [Security] Explicit permissions - remove inheritance/lock down to admins - see [#398](https://github.com/chocolatey/choco/issues/398)
+
+This further restricts the default installation location by removing all permissions and inheritance of permissions, explicitly giving Administrator/LocalSystem to Full access, and Users are granted Read and Execute. 
+In prior installations, we ensured Modify access to the installing user, but that has been removed for security reasons. Should you need the previous behavior, set `$env:ChocolateyInstallAllowCurrentUser="true"`.
+
 ### KNOWN ISSUES
 
  * [Known Issues](https://github.com/chocolatey/choco/labels/Bug)
@@ -179,7 +185,6 @@ If you were using any of the functions in a non-recommended way or not compliant
  * Web functions - Check for local file and return early - see [#781](https://github.com/chocolatey/choco/issues/781)
  * Refresh environment variables after each install - see [#439](https://github.com/chocolatey/choco/issues/439)
  * Capture Arguments for a Package during Install/Upgrade - see [#358](https://github.com/chocolatey/choco/issues/358)
- * [Security] Explicit permissions - remove inheritance/lock down to admins - see [#398](https://github.com/chocolatey/choco/issues/398)
  * Pro/Business - Also check for license in User Profile location - see [#606](https://github.com/chocolatey/choco/issues/606)
  * Pro/Business - Set download cache information if available - see [#562](https://github.com/chocolatey/choco/issues/562)
  * Pro/Business - Allow commands to be added - see [#583](https://github.com/chocolatey/choco/issues/583)
