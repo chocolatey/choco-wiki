@@ -48,6 +48,7 @@
 #### January
 
 * https://puppet.com/blog/chocolatey-creating-your-own-chocolatey-packages
+* http://www.jamessturtevant.com/posts/How-to-install-elixir-using-chocolatey-on-windows/
 * http://codebetter.com/robreynolds/2016/01/16/chocolatey-community-update/
 * https://puppet.com/blog/chocolatey-hosting-your-own-server
 
