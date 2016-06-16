@@ -115,6 +115,10 @@
 
 ### 2014
 
+#### December
+
+* http://www.jamessturtevant.com/posts/Chocolatey-And-Boxstarter/
+
 #### November
 
 * http://codebetter.com/robreynolds/2014/11/14/how-passion-saved-windows/
