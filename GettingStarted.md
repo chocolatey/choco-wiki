@@ -20,6 +20,19 @@ Let's install [Notepad++](http://notepad-plus-plus.org/).
 
 Is there a better way? Absolutely, see [[ubiquitous install directory switch|FeaturesInstallDirectoryOverride]]!
 
+## Terminology
+
+* Chocolatey - Windows package manager for software management, can also be considered a framework
+* Chocolatey.org - Website that is one stop shop for Chocolatey information and contains a community maintained package repository. It is important to understand that Chocolatey and the community feed are not intertwined, they are not the same thing. See [[community feed disclaimer|CommunityPackagesDisclaimer]] to get a better understanding.
+* NuGet - Framework and .NET package manager for software libraries. Chocolatey uses the NuGet packaging framework
+* Package - See [What are Chocolatey Packages?](#what-are-chocolatey-packages). Packages can contain the software they represent and the final location of software may or may not be in the package.
+* Software - Software refers to the actual runtime software that a package represents. This can be installed to the system through native installers, or come from zip/archive files or just dropping the runtime software right into the package.
+* Native Installer - Actual installers that install software into Programs and Features, "natively" on a Windows machine. This is like MSI, InnoSetup (exe), NSIS (exe), InstallShield (exe/msi), etc. Windows has over 20 different installer formats.
+* Install Package - packages that wrap native installers
+* Portable Package - packages that use zip or just contain the runtime software. Usually these packages do not require administrative privileges to install or run.
+* Extension Package - packages that provide extensions to Chocolatey's PowerShell module through additional PowerShell modules.
+* Template Package - packages that have packaging templates in them, used in package creation. See [[create your own package templates|How-To-Create-Custom-Package-Templates]].
+
 ## What Are Chocolatey Packages?
 
 Chocolatey packages are known as nupkg files, which is a compiled NuSpec or a fancy zip file that knows about package metadata (including dependencies and versioning). These packages are an enhanced NuGet package, they have additional metadata that is specific to Chocolatey. Chocolatey is also compatible with vanilla NuGet packages. A Chocolatey package can contain embedded software and/or automation scripts.
@@ -45,21 +58,23 @@ How the heck does this all work?
 
 ### Upgrade
 
-1. Similar to install, except choco will make a backup of the package folder (and only the package folder) prior to attempting upgrade.
-2. The files snapshot is used to determine what files can be removed from the package folder. If those files have not changed, they will be removed.
-3. If the upgrade fails, choco will ask if you want to rollback the package folder to the previous version. If you choose to move roll back, it will put the backed up package directory back in place. This does not fix any folders you may have been using outside of the package directory, such as where the native installer may have installed a program to nor the location of `Get-ToolsLocation`/`Get-BinRoot` (e.g. `c:\tools`). You will need to handle those fixes on your own. Chocolatey also doesn't rerun any install scripts on rollback.
+1. Starting in 0.9.10, Chocolatey will look for and run a chocolateyBeforeModify.ps1 file in the existing package prior to upgrading or uninstalling a package. This is your opportunity to shut down services and/or processes. This is run from the existing package, not the new version of the package. If it fails, it just passes a warning and continues on.
+2. Similar to install, except choco will make a backup of the package folder (and only the package folder) prior to attempting upgrade.
+3. The files snapshot is used to determine what files can be removed from the package folder. If those files have not changed, they will be removed.
+4. If the upgrade fails, choco will ask if you want to rollback the package folder to the previous version. If you choose to move roll back, it will put the backed up package directory back in place. This does not fix any folders you may have been using outside of the package directory, such as where the native installer may have installed a program to nor the location of `Get-ToolsLocation`/`Get-BinRoot` (e.g. `c:\tools`). You will need to handle those fixes on your own. Chocolatey also doesn't rerun any install scripts on rollback.
 
 ### Uninstall
 
 1. Choco makes the determination that the package is actually installed.
-2. Choco will make a backup of the package folder.
-3. The automation script is run if found. This should be used to clean up anything that is put there with the install script.
-4. If auto uninstaller is turned on, choco will attempt to run the auto uninstaller if a silent uninstall can be determined. Otherwise it will prompt the user (unless -y) to ask if they want the uninstaller to continue. The auto uninstaller can automatically detect about 80% of the different native uninstallers and determine or use the silent uninstall arguments.
-5. If everything is successful so far, the files snapshot is used to determine what files can be removed from the package folder. If those files have not changed, they will be removed.
-6. If everything is deleted from the package folder, the folder is also removed.
+2. Starting in 0.9.10, Chocolatey will look for and run a chocolateyBeforeModify.ps1 file in the existing package prior to upgrading or uninstalling a package. This is your opportunity to shut down services and/or processes. If it fails, it just passes a warning and continues on.
+3. Choco will make a backup of the package folder.
+4. The automation script is run if found. This should be used to clean up anything that is put there with the install script.
+5. If auto uninstaller is turned on, choco will attempt to run the auto uninstaller if a silent uninstall can be determined. Otherwise it will prompt the user (unless -y) to ask if they want the uninstaller to continue. The auto uninstaller can automatically detect about 80% of the different native uninstallers and determine or use the silent uninstall arguments.
+6. If everything is successful so far, the files snapshot is used to determine what files can be removed from the package folder. If those files have not changed, they will be removed.
+7. If everything is deleted from the package folder, the folder is also removed.
 
 
-When a package has an exe file, Chocolatey will create a link "shortcut" to the file (called a shim) so that you can run that tool anywhere on the machine.
+When a package has an exe file, Chocolatey will create a link "shortcut" to the file (called a shim) so that you can run that tool anywhere on the machine. See [[shimming|FeaturesShim]] for more information
 When a package has a chocolateyInstall.ps1, it will run the script. The instructions in the file can be anything. This is limited only by the .NET framework and PowerShell.
 Most of the Chocolatey packages that take advantage of the PowerShell download an application installer and execute it silently.
 
@@ -79,4 +94,4 @@ Many packages use native software installers, so Chocolatey allows the installer
 ## Where does Chocolatey install packages from?
 By default it installs packages from chocolatey.org (the community feed). But you can change this by adding default sources and/or using the  `--source` switch when running a command.
 
-When you host internal packages, those packages can embed software and/or point to internal shares. You are not subject to software distribution rights like the packages on the community feed, so you can create packages that are more reliable and secure.  See [[What are Chocolatey Packages|GettingStarted#what-are-chocolatey-packages]] for more details.
+When you [[host internal packages|How-To-Host-Feed]], those packages can embed software and/or point to internal shares. You are not subject to software distribution rights like the packages on the community feed, so you can [[create packages|CreatePackages]] that are more reliable and secure.  See [[What are Chocolatey Packages|GettingStarted#what-are-chocolatey-packages]] for more details.
