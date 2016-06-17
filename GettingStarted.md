@@ -22,6 +22,8 @@ Is there a better way? Absolutely, see [[ubiquitous install directory switch|Fea
 
 ## Terminology
 
+Software and Package are not terms used interchangeably in the Chocolatey community. It's important to understand the distinction between them and how they are related.
+
 * **Chocolatey** - Windows package manager for software management, can also be considered a framework
 * **Chocolatey.org** - Website that is one stop shop for Chocolatey information and contains a community maintained package repository. It is important to understand that Chocolatey and the community feed are not intertwined, they are not the same thing. See [[community feed disclaimer|CommunityPackagesDisclaimer]] to get a better understanding.
 * **NuGet** - Framework and .NET package manager for software libraries. Chocolatey uses the NuGet packaging framework
@@ -29,9 +31,11 @@ Is there a better way? Absolutely, see [[ubiquitous install directory switch|Fea
 * **Software** - Software refers to the actual runtime software that a package represents. This can be installed to the system through native installers, or come from zip/archive files or just dropping the runtime software right into the package.
 * **Native Installer** - Actual installers that install software into Programs and Features, "natively" on a Windows machine. This is like MSI, InnoSetup (exe), NSIS (exe), InstallShield (exe/msi), etc. Windows has over 20 different installer formats.
 * **Install Package** - packages that wrap native installers
-* **Portable Package** - packages that use zip or just contain the runtime software. Usually these packages do not require administrative privileges to install or run.
+* **Portable Package** - packages that use zip or just contain the runtime software. Usually these packages do not require administrative privileges to install or run. See [[|https://github.com/chocolatey/choco/wiki/ChocolateyFAQs#portable-application-something-that-doesnt-require-a-system-install-to-use]]
 * **Extension Package** - packages that provide extensions to Chocolatey's PowerShell module through additional PowerShell modules.
 * **Template Package** - packages that have packaging templates in them, used in package creation. See [[create your own package templates|How-To-Create-Custom-Package-Templates]].
+* **Metapackage** - packages that only exist to take dependencies on other packages, usually as a way of providing one command to get a complete setup. Some metapackages exist to provide discoverability, such as "git" versus 'git.install." The git package just depends on git.install, so running the install for either package will result in the git software being installed on the machine.
+* **Virtual package** - a concept that a package can "provide" some functionality and any package that meets that provides will be considered a dependency met. For example, if you need to take a dependency on a pdf reader, you wouldn't want to take a hard dependency on AdobeReader, but instead you would hope that adobereader provides pdf as well as other packages like SumatraPDF and FoxitReader. Then you could take a dependency on pdf and if any of those packages are installed, the dependency is met. Otherwise an algorithm would determine which one to install. THIS IS NOT IMPLEMENTED AT THIS TIME WITH CHOCOLATEY.
 
 ## What Are Chocolatey Packages?
 
