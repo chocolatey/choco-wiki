@@ -2,3 +2,16 @@
 This reduces the attack surface on a local installation of Chocolatey and limits who can make changes to the directory.
 
 You can install Chocolatey to Program Files if you feel that is a more appropriate place. Because Chocolatey has files that change with package installations and it doesn't actually install to Programs and Features (what we consider synonymous with Program Files), we didn't feel this was the appropriate location. Plus with logging currently all in the same location, it would mean you would need to run `choco` with administrative permissions every time, even if you are just doing things like searching for packages, finding out what is installed locally, etc.
+
+
+## What about Program Files? Why not default to there?
+
+You can definitely choose to install to Program Files, however bear in mind that the following considerations apply for you as well.
+
+1. Files in Program Files are not supposed to change. Data/user data (aka packages) would need to be somewhere else. Most folks put that common user data to ProgramData. Since the Chocolatey files are not much on top of that, everything is there. 
+2. Program Files is usually, IMHO, reserved for things that are actually system-installed on the machine (like in Program and Features). And again, only what you is installed by the install should go there. All data/packages should go somewhere else, like ProgramData.
+3. .NET doesn't handle long paths well. In fact it doesn't handle them at all. We are not much worse off in Program Files, until you consider Program Files (x86).
+4. Choco is both x86/x64 - but the applications it installs could be either. Where do those go (this is assuming we shim in "C:\Program Files\Chocolatey\bin" and not to "C:\ProgramData\chocolatey\bin")? Technically x86 apps should never be in "C:\Program Files", they should be in "C:\Program Files (x86)" so they can be seen by 32-bit processes.
+5. Which leads to [File System Redirection](https://msdn.microsoft.com/en-us/library/windows/desktop/aa384187(v=vs.85).aspx). If you put Chocolatey in "Program Files", tools/processes running under x86 won't find it. Integration tools like Chef. If you put it in "Program Files (x86)", folks will think Chocolatey is not x64 compatible (even if it runs almost exclusively in 64-bit mode).
+
+Not saying it is an impossible scenario. It's just generally a difficult scenario to say that's what the default should be without creating confusion and incompatibilities.
