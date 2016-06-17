@@ -22,16 +22,16 @@ Is there a better way? Absolutely, see [[ubiquitous install directory switch|Fea
 
 ## Terminology
 
-* Chocolatey - Windows package manager for software management, can also be considered a framework
-* Chocolatey.org - Website that is one stop shop for Chocolatey information and contains a community maintained package repository. It is important to understand that Chocolatey and the community feed are not intertwined, they are not the same thing. See [[community feed disclaimer|CommunityPackagesDisclaimer]] to get a better understanding.
-* NuGet - Framework and .NET package manager for software libraries. Chocolatey uses the NuGet packaging framework
-* Package - See [What are Chocolatey Packages?](#what-are-chocolatey-packages). Packages can contain the software they represent and the final location of software may or may not be in the package.
-* Software - Software refers to the actual runtime software that a package represents. This can be installed to the system through native installers, or come from zip/archive files or just dropping the runtime software right into the package.
-* Native Installer - Actual installers that install software into Programs and Features, "natively" on a Windows machine. This is like MSI, InnoSetup (exe), NSIS (exe), InstallShield (exe/msi), etc. Windows has over 20 different installer formats.
-* Install Package - packages that wrap native installers
-* Portable Package - packages that use zip or just contain the runtime software. Usually these packages do not require administrative privileges to install or run.
-* Extension Package - packages that provide extensions to Chocolatey's PowerShell module through additional PowerShell modules.
-* Template Package - packages that have packaging templates in them, used in package creation. See [[create your own package templates|How-To-Create-Custom-Package-Templates]].
+* **Chocolatey** - Windows package manager for software management, can also be considered a framework
+* **Chocolatey.org** - Website that is one stop shop for Chocolatey information and contains a community maintained package repository. It is important to understand that Chocolatey and the community feed are not intertwined, they are not the same thing. See [[community feed disclaimer|CommunityPackagesDisclaimer]] to get a better understanding.
+* **NuGet** - Framework and .NET package manager for software libraries. Chocolatey uses the NuGet packaging framework
+* **Package** - See [What are Chocolatey Packages?](#what-are-chocolatey-packages). Packages can contain the software they represent and the final location of software may or may not be in the package.
+* **Software** - Software refers to the actual runtime software that a package represents. This can be installed to the system through native installers, or come from zip/archive files or just dropping the runtime software right into the package.
+* **Native Installer** - Actual installers that install software into Programs and Features, "natively" on a Windows machine. This is like MSI, InnoSetup (exe), NSIS (exe), InstallShield (exe/msi), etc. Windows has over 20 different installer formats.
+* **Install Package** - packages that wrap native installers
+* **Portable Package** - packages that use zip or just contain the runtime software. Usually these packages do not require administrative privileges to install or run.
+* **Extension Package** - packages that provide extensions to Chocolatey's PowerShell module through additional PowerShell modules.
+* **Template Package** - packages that have packaging templates in them, used in package creation. See [[create your own package templates|How-To-Create-Custom-Package-Templates]].
 
 ## What Are Chocolatey Packages?
 
