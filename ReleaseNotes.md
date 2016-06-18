@@ -1,5 +1,15 @@
 # Release Notes
 
+## [0.9.10.1](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.10.1+is%3Aclosed) (June 17, 2016)
+
+### BUG FIXES
+
+ * Fix - Cannot bind argument to parameter 'exitCode' because it is null - see [#810](https://github.com/chocolatey/choco/issues/810)
+
+### IMPROVEMENTS
+
+ * [Security] Upgrade to 7zip 16.02 to overcome CVE-2016-2334/CVE-2016-2335 - see [#812](https://github.com/chocolatey/choco/issues/812)
+
 ## [0.9.10](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.10+is%3Aclosed) (June 17, 2016)
 
 The "I got 99 problems, but a package manager ain't one" release. With the release of 0.9.10 (or if you prefer 0.9.10.0), we're about to make everything 100% better in your Windows package management world. We've addressed over 100 features and bugs in this release. We looked at how we could improve PowerShell and we've come out with a [competely internal host](https://github.com/chocolatey/choco/issues/8) that can Prompt and Read-Host in a way that times out and selects default values after a period of time. Speaking of PowerShell, how about some tab completion `choco <tab>` to `choco install node<tab>`? How about never having to [close and reopen your shell again](https://github.com/chocolatey/choco/issues/664)?
