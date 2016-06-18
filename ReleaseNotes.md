@@ -1,6 +1,6 @@
 # Release Notes
 
-## [0.9.10.1](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.10.1+is%3Aclosed) (June 17, 2016)
+## [0.9.10.1](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.10.1+is%3Aclosed) (June 18, 2016)
 
 ### BUG FIXES
 
