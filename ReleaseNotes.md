@@ -1,5 +1,18 @@
 # Release Notes
 
+## [0.9.10.2](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.10.2+is%3Aclosed) (June 19, 2016)
+
+### BUG FIXES
+
+ * Fix - Chocolatey Licensed is unable to find 0.9.10.x (only 0.9.10.0) - see [#814](https://github.com/chocolatey/choco/issues/814)
+ * Fix - Logging is broken in some packages due to new TEMP directory - see [#813](https://github.com/chocolatey/choco/issues/813)
+ * [API] Fix - When performing an Install/Uninstall/Upgrade operation through the API, an error is throw for "chocolatey.resources" - see [#811](https://github.com/chocolatey/choco/issues/811)
+
+### IMPROVEMENTS
+
+ * Ensure log file path exists - and fix the log file arguments if necessary - see [#758](https://github.com/chocolatey/choco/issues/758)
+
+
 ## [0.9.10.1](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.10.1+is%3Aclosed) (June 18, 2016)
 
 ### BUG FIXES
