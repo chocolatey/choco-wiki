@@ -188,3 +188,19 @@ You can also just download and unzip the Chocolatey package (`.nupkg` is a fancy
 <script>
   new Clipboard('.copy-button');
 </script>
+
+## Upgrading Chocolatey
+
+Once installed, Chocolatey can be upgraded in exactly the same way as any other package that has been installed using Chocolatey.  Simply use the command:
+
+```
+choco upgrade chocolatey
+```
+
+to install the latest release of Chocolatey, and:
+
+```
+choco upgrade chocolatey -pre
+```
+
+to install the latest pre-release version of Chocolatey.
