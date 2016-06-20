@@ -73,12 +73,15 @@ Chocolatey.org has a community repository of packages known as the community fee
 
 **NOTE: For Organizational Use of Chocolatey** - First of all, it goes without stating that if you are a business and you are using Chocolatey, you should think long and hard before trusting an external source you have no control over (chocolatey.org packages, in addition to all of the binaries that download from official distribution channels over the internet). It is too easy to set up your [[own private feed|How-To-Host-Feed]] where you can vet packages and have complete control over the binaries and what gets installed. This is what we recommend for businesses that use Chocolatey in production scenarios (and what many of them do). There is a [great article written up](https://puppetlabs.com/blog/chocolatey-hosting-your-own-server) on the reasoning and options for hosting your own server.
 
+
 1. Users can report malicious packages/software directly to the site administrators using a form found on every package page.
 1. Everything is enforced as HTTPS where it should be. This reduces DNS poisoning attacks.
 1. As of October 2014, every version of every package submitted to the community feed (https://chocolatey.org) is moderated and approved before they become live.
 1. Some packages move into a trusted status. This is usually when the package maintainer is also the software maintainer, but can also occur when the maintainer(s) are trusted and multiple versions of a package have been submitted without issues.
 1. Packages that download binaries (installers, zip archives) are checked to ensure that the binary is coming from the official distribution source.
-1. If the package has a checksum, it provides a further integrity check that the downloadable the maintainer/moderator checked is the same binary that the user gets. Chocolatey clients will enforce a checksum requirement in late 2016 by default and it will become a requirement in 2017 for all packages submitted to the community repository.
+1. Packages are pushed to the site over HTTPS. The site grabs a SHA512 checksum of the package, then forwards it on to where packages are stored securely. You can see this package checksum in 0.9.10+ if you call `choco info packagename`.
+1. When installing a package, the site passes the package checksum and then the link for downloading the package. The Chocolatey binaries verify the package meets the package checksum.
+1. If the package scripts have a checksum, it provides a further integrity check that the downloadable the maintainer/moderator checked is the same binary that the user gets. Chocolatey clients will enforce a checksum requirement in late 2016 by default and it will become a requirement in 2017 for all packages submitted to the community repository.
 1. Checksums of of included binaries are shown to allow for folks to perform independent verification. We've move to adding an additional VERIFICATION file for verifying the binaries. This will start to show up more over 2016.
 1. Packages are run through VirusTotal to produce a second opinion on the relative safety of the package and underlying software that is contained or downloaded by the package. The verification of this is shown on the site.
 
