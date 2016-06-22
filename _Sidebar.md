@@ -15,6 +15,8 @@
 
 **Features**
 
+ - [[Synchronize with Programs and Features|FeaturesSynchronize]]
+ - [[Create Packages Automatically from Installers!|FeaturesCreatePackagesFromInstallers]]
  - [[Runtime Malware Protection|FeaturesVirusCheck]]
  - [[Private CDN Cache|FeaturesPrivateCdn]]
  - [[Install Directory Override|FeaturesInstallDirectoryOverride]]

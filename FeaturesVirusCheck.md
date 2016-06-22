@@ -81,7 +81,7 @@ The following options are added to install and upgrade commands.
 ## FAQ
 
 ### How do I take advantage of this feature?
-You must have a [licensed edition of Chocolatey](https://chocolatey.org/pricing) (Pro and/or Business). Pro is a personal, named license that costs about the price of a lunch outing per month and comes with several other features. Business editions are great for organizations that need more business friendly features from their software management tool.
+You must have a [licensed edition of Chocolatey](https://chocolatey.org/pricing) (Pro, Business, or MSP). Pro is a personal, named license that costs about the price of a lunch outing per month and comes with several other features. Business editions are great for organizations that need to manage the total software management lifecycle. MSP editions contain a subset of the Business edition features. MSPs are only able to use the Generic Virus Scanner.
 
 ### I'm a licensed customer, now what?
 When you install package that download content, those items will automatically be verified if the feature is turned on (it is automatically turned on for Pro users). We don't turn it on automatically in Business editions because many organizations are wary about reaching out to the internet and the generic virus scanner requires additional configuration.
