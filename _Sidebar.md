@@ -21,7 +21,7 @@
  - [[Private CDN Cache|FeaturesPrivateCdn]]
  - [[Install Directory Override|FeaturesInstallDirectoryOverride]]
  - [[Infrastruction Automation Integration|FeaturesInfrastructureAutomation]]
- - [[Automatically add exes to PATH w/out clutter (shims)|FeaturesShim]]
+ - [[Automatically Add exes to PATH w/out Clutter (shims)|FeaturesShim]]
  - In progress, check back for updates!
 
 **Usage**

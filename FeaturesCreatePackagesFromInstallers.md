@@ -1,4 +1,4 @@
-# Create Packages from Installers (Licensed Editions Only)
+# Create Packages From Installers (Licensed Editions Only)
 
 Chocolatey for Business is able to inspect an installer and determine silent arguments and complete packaging components for you, saving you minutes or even hours of time in packaging and maintaining software!
 
