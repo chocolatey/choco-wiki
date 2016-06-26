@@ -10,19 +10,25 @@ To install chocolatey now, open an <strong>administrative</strong> command promp
 * Cmd.exe - <button class="icon-clipboard copy-button" data-clipboard-text="@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"></button>
 
 ~~~sh
+
 @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+
 ~~~
 
 * PowerShell.exe (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least RemoteSigned) - <button class="icon-clipboard copy-button" data-clipboard-text="iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))"></button>
 
 ~~~powershell
+
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+
 ~~~
 
 * PowerShell v3+ (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least RemoteSigned) - <button class="icon-clipboard copy-button" data-clipboard-text="iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"></button>
 
 ~~~powershell
+
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+
 ~~~
 
 The easiest option to remember is this one. You may not need `-UseBasicParsing`.
