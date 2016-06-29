@@ -12,7 +12,7 @@ We normally recommend just calling the install as usual with no special switches
 
 However if you are sold on skipping the automation scripts and tricking Chocolatey into believing that a script is installed.
 
-If you wonder over to [[install switches|CommandsInstall#options-and-switches]] you will see 
+If you wander over to [[install switches|CommandsInstall#options-and-switches]] you will see 
 
 ~~~
 -n, --skippowershell, --skip-powershell
