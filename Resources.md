@@ -23,6 +23,10 @@
 * https://thesoftwaredudeblog.wordpress.com/2016/07/08/using-vagrant-with-sitecore-part-1-setup-chocolatey-vagrant-and-virtualbox
 * http://crosscuttingconcerns.com/Podcast-004---Calvin-Allen-on-Chocolatey-NuGet
 
+#### June 
+
+* http://blogs.itpro.es/octaviordz/2016/06/04/integrando-chocolatey-a-mdt-2013-e-instalando-aplicaciones-de-forma-desatendida-en-windows-10/
+
 #### May
 
 * http://www.jamessturtevant.com/posts/5-Ways-to-install-git-on-Windows
