@@ -18,6 +18,10 @@
 
 ### 2016
 
+#### July
+
+* https://thesoftwaredudeblog.wordpress.com/2016/07/08/using-vagrant-with-sitecore-part-1-setup-chocolatey-vagrant-and-virtualbox
+
 #### May
 
 * http://www.jamessturtevant.com/posts/5-Ways-to-install-git-on-Windows
