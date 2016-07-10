@@ -186,7 +186,7 @@ It really depends on the underlying software the package "installs". If the unde
 
 Chocolatey has a different avenue for portable packages that allows both admins and non-admins to be able to use these packages, after all they are just downloading and unzipping an archive. These packages either go into a Tools Root location or just get shims (executables are put on the path) and continue to stay in the Chocolatey lib directory. If we restricted a non-admin for an avenue that would work for them manually, it wouldn't make choco useful for them at all. Since we support non-admin usage of Chocolatey, packages that can support the portable model should support it.
 
-Also consider that if the package **is** using `$env:ChocolateyBinRoot` (which will later be named `$env:ChocolateyToolsRoot`) you an set the root under Program Files and then you get the better of both worlds.
+Also consider that if the package **is** using `$env:ChocolateyBinRoot` (which will later be named `$env:ChocolateyToolsRoot`) you can set the root under Program Files and then you get the better of both worlds.
 
 ### What is the difference between packages named *.install (i.&nbsp;e. [autohotkey.install](https://chocolatey.org/packages/autohotkey.install)), *.portable (i.&nbsp;e. [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable)) and * (i.&nbsp;e. [autohotkey](https://chocolatey.org/packages/autohotkey))?
 
