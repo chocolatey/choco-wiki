@@ -16,11 +16,11 @@ These are the benefits of creating a shim:
  * Does not require special privileges like creating symlinks (symbolic links) do. So you can create shims without administrative rights.
 
 ## Usage
-Chocolatey automatically shims executables in package folders that are not explicitly ignored, putting them into the `$($env:ChocolateyInstall)\bin` folder (and subsequently onto the PATH).
+Chocolatey automatically shims executables in package folders that are not explicitly ignored, putting them into the `"$($env:ChocolateyInstall)\bin"` folder (and subsequently onto the PATH).
 
 These executables can come as part of the package or downloaded to the package folder during the install script.
 
-Chocolatey ensures the folder `$($env:ChocolateyInstall)\bin` in the PATH environment variable, allowing you to put tools on the PATH without cluttering up the PATH.
+Chocolatey ensures the folder `"$($env:ChocolateyInstall)\bin"` in the PATH environment variable, allowing you to put tools on the PATH without cluttering up the PATH.
 
 ## See It In Action
 
@@ -57,10 +57,10 @@ You pass these arguments to an executable that is a shim (e.g. executables in th
 This works with all versions of Chocolatey. Just use packages and when those packages have exe files, those are automatically shimmed so they are on the PATH.
 
 ### How does it work?
-Chocolatey uses a tool called ShimGen that inspects an executable and creates a small binary, known as a "shim", that simply calls the executable. Then it places that shim in the `$($env:ChocolateyInstall)\bin`. It creates the shim by generating it at runtime based on the actual binary's information.
+Chocolatey uses a tool called ShimGen that inspects an executable and creates a small binary, known as a "shim", that simply calls the executable. Then it places that shim in the `"$($env:ChocolateyInstall)\bin"`. It creates the shim by generating it at runtime based on the actual binary's information.
 
 ### How is this better than symlinks?
-When you symlink a file on Windows, you must symlink all of its dependencies like dlls and config files. If you put that all into the `$($env:ChocolateyInstall)\bin` folder to take advantage of being on the PATH, you can quickly see that you will get into a form of "DLL hell" when other executables depend on different versions of the same DLL. Shimming by design does not run into this issue.
+When you symlink a file on Windows, you must symlink all of its dependencies like dlls and config files. If you put that all into the `"$($env:ChocolateyInstall)\bin"` folder to take advantage of being on the PATH, you can quickly see that you will get into a form of "DLL hell" when other executables depend on different versions of the same DLL. Shimming by design does not run into this issue.
 
 ### Does it require admin rights?
 No, and this is another thing that sets it apart from symlinks. To create symlinks on Windows, you need to have `SeCreateSymbolicLinkPrivilege`, which is one of the privileges granted to Administrators.
