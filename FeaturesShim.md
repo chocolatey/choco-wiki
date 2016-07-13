@@ -16,7 +16,7 @@ These are the benefits of creating a shim:
  * Does not require special privileges like creating symlinks (symbolic links) do. So you can create shims without administrative rights.
 
 ## Usage
-Chocolatey automatically shims executables in package folders that are not explicitly ignored, putting them into the `"$($env:ChocolateyInstall)\bin"` folder (and subsequently onto the PATH).
+Chocolatey automatically shims executables in package folders that are not explicitly ignored, putting them into the `"$($env:ChocolateyInstall)\bin"` folder (and subsequently onto the PATH). This typically resolves to `C:\ProgramData\chocolatey\bin` unless you customized your install options or a non-administrator install.
 
 These executables can come as part of the package or downloaded to the package folder during the install script.
 
