@@ -163,6 +163,10 @@
 
 * http://karaaie.blogspot.com/2014/06/continuous-delivery-with-teamcity.html
 
+#### May
+
+* http://www.techrepublic.com/article/chocolatey-brings-linux-style-package-management-to-windows/
+
 #### April
 
 * http://tallmaris.com/using-vagrant-with-chocolatey-and-puppet-to-spin-up-virtual-machines/
