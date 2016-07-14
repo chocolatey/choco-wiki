@@ -10,7 +10,7 @@ There are currently two methods that can be used to maintain automatic packages:
 - Using [Chocolatey Package Updater](http://chocolatey.org/packages/ChocolateyPackageUpdater) with 3td party tool Ketarin.
 - Using only Powershell via [Automatic Update module AU](https://github.com/majkinetor/au).
 
-The rest of this page contains documentation about the first method. You can read more about the AU updater via its [documentation](https://github.com/majkinetor/au/blob/master/README.md). You can also learn about its usage from the [real life example](https://github.com/majkinetor/chocolatey) which runs the udpater on AppVeyor so you are not required to schedule updater on your own machine.
+The rest of this page contains documentation about the first method. You can learn more about the AU updater via its [documentation](https://github.com/majkinetor/au/blob/master/README.md). You can also learn about its usage from the [real life example](https://github.com/majkinetor/chocolatey) which runs the udpater on AppVeyor so you are not required to schedule updater on your own machine.
 
 ## Chocolatey Package Updater aka chocopkgup
 http://chocolatey.org/packages/ChocolateyPackageUpdater
