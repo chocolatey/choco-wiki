@@ -1,7 +1,16 @@
 # Automatic Packaging for Maintenance
-Automatic packaging is a process that **package maintainers can run on *their own machines* to keep the packages they maintain up to date**. It is not a required step for maintaining packages on the community feed (https://chocolatey.org/packages), but it is recommended you find a way to automate the delivery of packages to the community feed when there are updates if you are going to maintain more than 5 packages and you are not the software vendor for the packages you maintain.
+Automatic packaging is a process that **package maintainers can run on *their own* to keep the packages they maintain up to date**. It is not a required step for maintaining packages on the community feed (https://chocolatey.org/packages), but it is recommended you find a way to automate the delivery of packages to the community feed when there are updates if you are going to maintain more than 5 packages and you are not the software vendor for the packages you maintain.
 
 **NOTE:** Not to be confused with the automatic package creation feature in [Chocolatey for Business](https://chocolatey.org/pricing) - that feature creates packages directly from software installer files. This feature is for package maintenance of existing packages on the community feed.
+
+## Automatic update methods
+
+There are currently two methods that can be used to maintain automatic packages:
+
+- Using [Chocolatey Package Updater](http://chocolatey.org/packages/ChocolateyPackageUpdater) with 3thd party tool Ketarin.
+- Using only Powershell via [Automatic Update module AU](https://github.com/majkinetor/au).
+
+ The rest of this page contains documentation about the first method. You can read more about the AU updater in its  [documentation](https://github.com/majkinetor/au/blob/master/README.md). You can also learn about its usage from [real life example](https://github.com/majkinetor/chocolatey) which runs the udpater on AppVeyor so you are not required to run it on your own machine.
 
 ## Chocolatey Package Updater aka chocopkgup
 http://chocolatey.org/packages/ChocolateyPackageUpdater
