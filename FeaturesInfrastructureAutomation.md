@@ -79,6 +79,16 @@ packages.each do |pkg, install|
 end
 ~~~
 
+Another example from [Facebook](https://github.com/facebook/IT-CPE/tree/master/chef/cookbooks/cpe_chocolatey):
+
+~~~ruby
+choco_managed_installs['pkg_name'] = {
+  'name' => 'pkg_name',
+  'version' => 'pkg_version',
+  'feed' => node['cpe_chocolatey']['default_feed'],
+}
+~~~
+
 ## Octopus Deploy
 
 Octopus is a friendly deployment automation tool for .NET developers. It integrates with lots of utilities, and they have a template for installing Chocolatey packages: https://library.octopusdeploy.com/step-template/actiontemplate-chocolatey-install-package
