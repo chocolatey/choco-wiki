@@ -40,7 +40,7 @@ What are these scripts doing? `iwr` (`Invoke-WebRequest`)/`WebClient.DownloadStr
 * PowerShell v2+
 * .NET Framework 4+ (the installation will attempt to install .NET 4.0 if you do not have it installed)
 
-That's it! All you need is choco.exe (that you get from the installation scripts) and you are good to go!. No Visual Studio required.
+That's it! All you need is choco.exe (that you get from the installation scripts) and you are good to go! No Visual Studio required.
 
 
 ## Why does Chocolatey install where it does by default?
