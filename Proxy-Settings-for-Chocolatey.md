@@ -45,27 +45,9 @@ or
 Steps to help address this.
 
 1. Copy the [install.ps1](https://chocolatey.org/install.ps1) file locally.
-2. Edit the file and add proxy details (see code change). Replace the following entries with your specific proxy servers details: **PROXYSERVER:PROXYPORT; USERPASSWORD; USERNAME**
-3. Ensure you have the appropriate domain prefix for the user name. Try: 'AD\UserName' or just 'UserName'.
-4. Run the script to install Chocolatey.
-
-```PowerShell
-function Download-File {
-param (
-  [string]$url,
-  [string]$file
- )
-  Write-Host "Downloading $url to $file"
-    #$proxy = [System.Net.WebRequest]::GetSystemWebProxy()
-    $proxy = New-Object System.Net.WebProxy("PROXYSERVER:PROXYPORT", $true)
-    $passwd = ConvertTo-SecureString "USERPASSWORD" -AsPlainText -Force; ## Website credentials
-    $proxy.Credentials = New-Object System.Management.Automation.PSCredential ("USERNAME", $passwd);
-    $downloader = New-Object System.Net.WebCLient
-    $downloader.UseDefaultCredentials = $true
-    $downloader.Proxy = $proxy
-    $downloader.DownloadFile($url, $file)
-}
-```
+2. Open a PowerShell command line.
+3. Set the following environment variables - `$env:chocolateyProxyLocation` (with proxyserver:proxyport), `$env:chocolateyProxyUser` (if it is a domain account, ensure you have the appropriate domain prefix for the account, e.g. `AD\UserName` or `UserName`), and `$env:chocolateyProxyPassword` with your password.
+4. With that same shell open where the environment variables are set, run the downloaded script to install Chocolatey.
 
 ### Still having trust issues? 
 
