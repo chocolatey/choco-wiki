@@ -35,6 +35,30 @@ The easiest option to remember is this one. You may not need `-UseBasicParsing`.
 
 What are these scripts doing? `iwr` (`Invoke-WebRequest`)/`WebClient.DownloadString` downloads the install script and passes it to `iex` (`Invoke-Expression`) to execute the contents of the script. This runs the installation script for Chocolatey. 
 
+### Proxy?
+
+Have a proxy? Try 
+
+* Cmd.exe - <button class="icon-clipboard copy-button" data-clipboard-text="@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;[net.webrequest]::defaultwebproxy.Credentials = [net.credentialcache]::defaultcredentials; iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"></button>
+
+~~~sh
+
+@powershell -NoProfile -ExecutionPolicy Bypass -Command "[net.webrequest]::defaultwebproxy.Credentials = [net.credentialcache]::defaultcredentials; iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+
+~~~
+
+* PowerShell.exe (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least RemoteSigned) - <button class="icon-clipboard copy-button" data-clipboard-text="[net.webrequest]::defaultwebproxy.Credentials = [net.credentialcache]::defaultcredentials;iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))"></button>
+
+~~~powershell
+
+[net.webrequest]::defaultwebproxy.Credentials = [net.credentialcache]::defaultcredentials; iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+
+~~~
+
+#### Explicit proxy?
+
+See how to [install behind an explicit proxy below](#cmdpowershell-wproxy-server).
+
 ## Requirements
 * Windows 7+ / Windows Server 2003+
 * PowerShell v2+
