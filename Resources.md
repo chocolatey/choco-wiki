@@ -207,9 +207,14 @@
 #### November 
 
 * http://www.pcworld.com/article/2013432/review-chocolatey-offers-easy-software-installation-and-updating.html
+
 #### September
 
 * http://lifehacker.com/5942417/chocolatey-brings-lightning-quick-linux-style-package-management-to-windows
+
+#### May
+
+* http://www.kongsli.net/2012/05/07/running-chocolatey-behind-an-authenticating-firewall/
 
 #### February 
 
