@@ -50,9 +50,9 @@ To make the existing package local, use these steps.
 
  4. Next, open `tools\chocolateyInstall.ps1`.
 
-   ~~~powershell
-   Install-ChocolateyZipPackage 'notepadplusplus.commandline' 'https://notepad-plus-plus.org/repository/6.x/6.8.7/npp.6.8.7.bin.zip' "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-   ~~~
+~~~powershell
+Install-ChocolateyZipPackage 'notepadplusplus.commandline' 'https://notepad-plus-plus.org/repository/6.x/6.8.7/npp.6.8.7.bin.zip' "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+~~~
 
  5. Download the zip file and place it in the tools folder of the package.
 
@@ -62,42 +62,43 @@ To make the existing package local, use these steps.
 
  7. Next, edit `chocolateyInstall.ps1` to point to this embedded file instead of reaching out to the internet (if the size of the file is over 100MB, you might want to put it on a file share somewhere internally for better performance).
 
-   ~~~powershell
-   $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-   Install-ChocolateyZipPackage 'notepadplusplus.commandline' "$toolsDir\npp.6.8.7.bin.zip" "$toolsDir"
-   ~~~
+
+~~~powershell
+$toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+Install-ChocolateyZipPackage 'notepadplusplus.commandline' "$toolsDir\npp.6.8.7.bin.zip" "$toolsDir"
+~~~
 
    The double quotes allow for string interpolation (meaning variables get interpreted instead of taken literally).
 
  8. Next, open the `*.nuspec` file to view its contents and make any necessary changes.
 
-   ~~~xml
-   <?xml version="1.0"?>
-   <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-     <metadata>
-       <id>notepadplusplus.commandline</id>
-       <version>6.8.7</version>
-       <title>Notepad++ (Portable, CommandLine)</title>
-       <authors>Don Ho</authors>
-       <owners>Rob Reynolds</owners>
-       <projectUrl>https://notepad-plus-plus.org/</projectUrl>
-       <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/notepadplusplus.png</iconUrl>
-       <requireLicenseAcceptance>false</requireLicenseAcceptance>
-       <description>Notepad++ is a ... </description>
-       <summary>Notepad++ is a free (as in "free speech" and also as in "free beer") source code editor and Notepad replacement that supports several languages. </summary>
-       <tags>notepad notepadplusplus notepad-plus-plus</tags>
-     </metadata>
-   </package>
-   ~~~
+~~~xml
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+ <metadata>
+   <id>notepadplusplus.commandline</id>
+   <version>6.8.7</version>
+   <title>Notepad++ (Portable, CommandLine)</title>
+   <authors>Don Ho</authors>
+   <owners>Rob Reynolds</owners>
+   <projectUrl>https://notepad-plus-plus.org/</projectUrl>
+   <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/notepadplusplus.png</iconUrl>
+   <requireLicenseAcceptance>false</requireLicenseAcceptance>
+   <description>Notepad++ is a ... </description>
+   <summary>Notepad++ is a free (as in "free speech" and also as in "free beer") source code editor and Notepad replacement that supports several languages. </summary>
+   <tags>notepad notepadplusplus notepad-plus-plus</tags>
+ </metadata>
+</package>
+~~~
 
    Some organizations will change the version field to denote this is an edited internal package, for example changing `6.8.7` to `6.8.7.20151202`. For now, this is not necessary.
 
  9. Now you can navigate via the command line to the folder with the `.nuspec` file (from a Windows machine unless you've installed Mono and built choco.exe from source) and use `choco pack`. You can also be more specific and type `choco pack path\to\notepadplusplus.commandline.nuspec`. The output should be similar to below.
 
-   ~~~
-   Attempting to build package from 'notepadplusplus.commandline.nuspec'.
-   Successfully created package 'notepadplusplus.commandline.6.8.7.nupkg'
-   ~~~
+~~~sh
+Attempting to build package from 'notepadplusplus.commandline.nuspec'.
+Successfully created package 'notepadplusplus.commandline.6.8.7.nupkg'
+~~~
 
  10. Normally you test on a system to ensure that the package you just built is good prior to pushing the package (just the *.nupkg) to your internal repository. This can be done by using `choco.exe` on a test system to install (`choco install notepadplusplus.commandline -source .`) and uninstall (`choco uninstall notepadplusplus.commandline`).
 
