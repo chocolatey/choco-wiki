@@ -29,7 +29,7 @@ win_chocolatey:
 
 ## Boxstarter
 
-Boxstarter is a lightweight configuration management utility. 
+Boxstarter is a lightweight configuration management utility.
 
 > Repeatable, **reboot resilient** Windows environment installations made easy using Chocolatey packages. When its time to repave either **bare metal or virtualized instances**, locally or on a **remote machine**, Boxstarter can automate both trivial and highly complex installations. Compatible with all Windows versions from **Windows 7/2008 R2 forward**.
 
@@ -131,6 +131,8 @@ package { 'git':
   source   => 'https://my.internal.repository/api/v2',
 }
 ~~~~
+
+Puppet has some great documentation on getting started with Chocolatey. Be sure to check that out at [Using Windows modules](https://docs.puppet.com/pe/latest/windows_modules.html).
 
 [Read More...](https://bit.ly/choco_puppet)
 

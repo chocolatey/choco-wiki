@@ -51,11 +51,14 @@ It inspects the installer file using a series of rules that helps determine the 
 ### Will it catch all types of installers?
 It is able to detect 12 types of installers currently.
 
+### Does it always find the silent uninstall arguments?
+In over 90% of the cases it will, but not always. Even with this in mind, it still removes 90% of the packaging work. See the next question on how to handle cases where it can not.
+
 ### This was unable to detect custom installer arguments.
-Unfortunately, some installers out there are just a pain to work with. Consider unpacking the installer and putting the software binaries directly in the package.
+Unfortunately, some installers out there are just a pain to work with. In the case of custom installers, you may be able to find the silent arguments for install and uninstall by searching online. If you can not find anything, consider unpacking the installer and putting the software binaries directly in the package.
 
 ### Does it create auto unattend files?
-Unfortunately, it is not able to do this. See the automatic internalize and recompile packages feature to take advantage of thousands of existing packages without a need for internet access.
+Unfortunately, it is not able to do this. See the [[automatic internalize and recompile packages feature|FeaturesAutomaticallyRecompilePackages]] to take advantage of thousands of existing packages without a need for internet access.
 
 ### Does it work with zip archive?
 Not currently, but archives are on the future enhancements list.
