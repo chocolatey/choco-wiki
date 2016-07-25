@@ -36,38 +36,31 @@ Chocolatey's [community feed](https://chocolatey.org/packages) has quite a few p
 
 To make the existing package local, use these steps.
 
-<ol>
-<li>Download the package from Chocolatey's community feed by going to the [package page](https://chocolatey.org/packages/notepadplusplus.commandline) and clicking the download link.
+`1.` Download the package from Chocolatey's community feed by going to the [package page](https://chocolatey.org/packages/notepadplusplus.commandline) and clicking the download link.
 
 ![Download Link](images/recompile/choco_npp_download.png)
 
-</li>
-<li>Rename the downloaded file to end with `.zip` and unpack the file as a regular archive.
+`2.` Rename the downloaded file to end with `.zip` and unpack the file as a regular archive.
 
 ![Rename to append .zip suffix](images/recompile/choco_rename_nupkg_zip.png)
 
-</li>
-<li>Delete the `_rels` and `package` folders and the `[Content_Types].xml` file. These are created during `choco pack` and should not be included, as they will be regenerated (and their existence leads to issues).
+`3.` Delete the `_rels` and `package` folders and the `[Content_Types].xml` file. These are created during `choco pack` and should not be included, as they will be regenerated (and their existence leads to issues).
 
 ![Remove _rels, package, and the xml file](images/recompile/choco_delete_pkg_files.png)
 
-</li>
-<li>Next, open `tools\chocolateyInstall.ps1`.
+`4.` Next, open `tools\chocolateyInstall.ps1`.
 
 ~~~powershell
 Install-ChocolateyZipPackage 'notepadplusplus.commandline' 'https://notepad-plus-plus.org/repository/6.x/6.8.7/npp.6.8.7.bin.zip' "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 ~~~
 
-</li>
-<li>Download the zip file and place it in the tools folder of the package.
+`5.` Download the zip file and place it in the tools folder of the package.
 
 ![Zip file embedding in package](images/recompile/choco_download_zip.png)
 
-</li>
-<li>If the file ends in `.exe`, create an empty file called `*.exe.ignore`, where the name is an exact match with the exe with `.ignore` appended at the end (e.g. `bob.exe` would have a file next to it named `bob.exe.ignore`).
+`6.` If the file ends in `.exe`, create an empty file called `*.exe.ignore`, where the name is an exact match with the exe with `.ignore` appended at the end (e.g. `bob.exe` would have a file next to it named `bob.exe.ignore`).
 
-</li>
-<li>Next, edit `chocolateyInstall.ps1` to point to this embedded file instead of reaching out to the internet (if the size of the file is over 100MB, you might want to put it on a file share somewhere internally for better performance).
+`7.` Next, edit `chocolateyInstall.ps1` to point to this embedded file instead of reaching out to the internet (if the size of the file is over 100MB, you might want to put it on a file share somewhere internally for better performance).
 
 ~~~powershell
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
@@ -76,8 +69,7 @@ Install-ChocolateyZipPackage 'notepadplusplus.commandline' "$toolsDir\npp.6.8.7.
 
 The double quotes allow for string interpolation (meaning variables get interpreted instead of taken literally).
 
-</li>
-<li>Next, open the `*.nuspec` file to view its contents and make any necessary changes.
+`8.` Next, open the `*.nuspec` file to view its contents and make any necessary changes.
 
 ~~~xml
 <?xml version="1.0"?>
@@ -100,17 +92,13 @@ The double quotes allow for string interpolation (meaning variables get interpre
 
 Some organizations will change the version field to denote this is an edited internal package, for example changing `6.8.7` to `6.8.7.20151202`. For now, this is not necessary.
 
-</li>
-<li>Now you can navigate via the command line to the folder with the `.nuspec` file (from a Windows machine unless you've installed Mono and built choco.exe from source) and use `choco pack`. You can also be more specific and type `choco pack path\to\notepadplusplus.commandline.nuspec`. The output should be similar to below.
+`9.` Now you can navigate via the command line to the folder with the `.nuspec` file (from a Windows machine unless you've installed Mono and built choco.exe from source) and use `choco pack`. You can also be more specific and type `choco pack path\to\notepadplusplus.commandline.nuspec`. The output should be similar to below.
 
 ~~~sh
 Attempting to build package from 'notepadplusplus.commandline.nuspec'.
 Successfully created package 'notepadplusplus.commandline.6.8.7.nupkg'
 ~~~
 
-</li>
-<li>Normally you test on a system to ensure that the package you just built is good prior to pushing the package (just the *.nupkg) to your internal repository. This can be done by using `choco.exe` on a test system to install (`choco install notepadplusplus.commandline -source .`) and uninstall (`choco uninstall notepadplusplus.commandline`).
-</li>
-<ol>
+`10.` Normally you test on a system to ensure that the package you just built is good prior to pushing the package (just the *.nupkg) to your internal repository. This can be done by using `choco.exe` on a test system to install (`choco install notepadplusplus.commandline -source .`) and uninstall (`choco uninstall notepadplusplus.commandline`).
 
 **NOTE:** Originally posted at https://puppet.com/blog/chocolatey-creating-recompiled-packages and https://docs.puppet.com/pe/latest/windows_modules.html
