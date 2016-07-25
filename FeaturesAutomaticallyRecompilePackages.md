@@ -25,9 +25,9 @@ This image shows running `choco download --recompile git.install`.
 
 -->
 
-<!--## See It In Action
+## See It In Action
 
-![automatic recompile](images/gifs/choco_business_features.gif)-->
+![automatic recompile](images/gifs/choco_business_features_recompile.gif)
 
 ## Options and Switches
 
