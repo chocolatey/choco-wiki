@@ -81,6 +81,7 @@
  - [[Install/Upgrade a Package w/out running install scripts|How-To-Install-Upgrade-Package-Without-Scripts]]
  - [[Create Custom Package Templates|How-To-Create-Custom-Package-Templates]]
  - [[Request Package Fixes/Updates|PackageTriageProcess]]
+ - [[Manually Recompile Packages, Embedding/Internalizing Remote Resources|How-To-Recompile-Packages]]
  - [[Request Package|PackageTriageProcess]]
  - [[Maintain Packages for My Software|PackageTriageProcess#i-want-to-take-overhelp-with-package-maintenance-for-my-software]]
  - [[Become a Maintainer|PackageTriageProcess]]
