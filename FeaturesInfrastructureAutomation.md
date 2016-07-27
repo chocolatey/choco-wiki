@@ -79,7 +79,7 @@ packages.each do |pkg, install|
 end
 ~~~
 
-Another example from [Facebook](https://github.com/facebook/IT-CPE/tree/master/chef/cookbooks/cpe_chocolatey):
+Another example from [Facebook](https://github.com/facebook/IT-CPE/tree/master/chef/cookbooks/cpe_choco):
 
 ~~~ruby
 choco_managed_installs['pkg_name'] = {
