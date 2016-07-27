@@ -82,10 +82,8 @@ end
 Another example from [Facebook](https://github.com/facebook/IT-CPE/tree/master/chef/cookbooks/cpe_choco):
 
 ~~~ruby
-choco_managed_installs['pkg_name'] = {
-  'name' => 'pkg_name',
-  'version' => 'pkg_version',
-  'feed' => node['cpe_chocolatey']['default_feed'],
+node.default['cpe_choco']['sources']['bacon'] =
+  'source' => 'http://bacon.es.yummy',
 }
 ~~~
 
