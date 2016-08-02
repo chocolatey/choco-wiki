@@ -21,7 +21,7 @@
  - [[Runtime Malware Protection|FeaturesVirusCheck]]
  - [[Private CDN Cache|FeaturesPrivateCdn]]
  - [[Install Directory Override|FeaturesInstallDirectoryOverride]]
- - [[Infrastruction Automation Integration|FeaturesInfrastructureAutomation]]
+ - [[Infrastructure Automation Integration|FeaturesInfrastructureAutomation]]
  - [[Automatically Add exes to PATH w/out Clutter (shims)|FeaturesShim]]
  - In progress, check back for updates!
 
