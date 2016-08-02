@@ -4,7 +4,7 @@
 Please read [[Depending on the chocolatey.org as an organization|ChocolateyFAQs#should-my-organization-depend-on-use-the-community-feed-httpschocolateyorgpackages]]
 
 ## Host your own server
-There are three types of package repositories, [folder/unc share](#local-folder--unc-share), [simple server](#simple-server), and the sophisticated [package gallery](#package-gallery). 
+There are three types of package repositories, [folder/unc share](#local-folder--unc-share), [simple server](#simple-server), and the sophisticated [package gallery](#package-gallery).
 
 **Alternative Hosting Options (that require less work/maintenance):**
 * [MyGet](https://www.myget.org/) - MyGet has free public and paid for public/private cloud-hosting options if you don't want to handle all of the pain of setup and administration. MyGet offers some stellar options like multi-feed aggregation, mirroring, and source package build services!
@@ -25,7 +25,7 @@ Perhaps the easiest to set up and recommended for testing quick and dirty scenar
 
 **Disadvantages:**
 * Anyone with permission can push and overwrite packages.
-* No HTTP/HTTPS pushing. Must be able to access the folder/share to push to it. 
+* No HTTP/HTTPS pushing. Must be able to access the folder/share to push to it.
 * Starts to affect choco performance once the source has over 500 packages (maybe?).
 * **Big disadvantage**: Does not do anything to keep from package versions being overwritten. This provides no immutability of a package version and no guarantee that a version of a package installed is the same as the version in the source.
 
@@ -72,7 +72,7 @@ Some notable references:
  1. Configure IIS appropriately for the package.
  1. Be sure to give the app pool modify permissions to the `App_Data` folder.
 
-Alternative means of installation? If you have [Puppet](https://docs.puppetlabs.com/puppet/), you can take a look at the [chocolatey server module](https://forge.puppetlabs.com/chocolatey/chocolatey_server). 
+Alternative means of installation? If you have [Puppet](https://docs.puppetlabs.com/puppet/), you can take a look at the [chocolatey server module](https://forge.puppetlabs.com/chocolatey/chocolatey_server).
 
 ## Package Gallery
 This is like what https://chocolatey.org (the community feed runs on). It is the most advanced, having both a file store for packages and a database for tracking all sorts of information.
@@ -83,7 +83,7 @@ This is like what https://chocolatey.org (the community feed runs on). It is the
 * Package store can be File system, Azure blobs, or AWS S3 (**Chocolatey Package Gallery only**).
 * Multiple users each having their own API keys.
 * User registration with email confirmation.
-* Interaction and collaboration based. 
+* Interaction and collaboration based.
 * Can have administrators.
 * Can take advantage of moderation (**Chocolatey Package Gallery only**).
 * Package statistics (download counts, etc).
@@ -110,6 +110,7 @@ If you don't want to host on Windows you have only the following options (from l
 * [NuGet.Java.Server](http://blog.jonnyzzz.name/2012/03/nuget-server-in-pure-java.html) ([NuGet Package](https://www.nuget.org/packages/NuGet.Java.Server)) - simple server (same tool used in TeamCity)
 * [TeamCity](https://www.jetbrains.com/teamcity/) - contains built-in simple server
 * [PHP NuGet](http://www.kendar.org/?p=/dotnet/phpnuget) - Simple server built in PHP
+* [Hazel](https://github.com/MPIB/hazel) - Simple server built in Rust
 * [Artifactory](http://www.jfrog.com/open-source/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories) - not in the free version
 * [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_proxy_repositories.html)
 
