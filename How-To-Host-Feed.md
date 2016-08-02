@@ -104,13 +104,13 @@ Only approach this if you are a Windows Admin with significant experience in set
 At this time we don't have setup instructions and won't answer questions specifically surrounding the setup of a Chocolatey specific gallery. Watch for this to change as Chocolatey for Business becomes a thing.
 
 ## Non-Windows Hosting
-If you don't want to host on Windows you have only the following options (from least advanced to most advanced):
+If you don't want to host on Windows you have only the following options (from least advanced to most advanced - these options typically also work on Windows):
 * CIFS share
 * [JNuGet](https://bitbucket.org/aristar/jnuget/wiki/Home) - a simple server
 * [NuGet.Java.Server](http://blog.jonnyzzz.name/2012/03/nuget-server-in-pure-java.html) ([NuGet Package](https://www.nuget.org/packages/NuGet.Java.Server)) - simple server (same tool used in TeamCity)
 * [TeamCity](https://www.jetbrains.com/teamcity/) - contains built-in simple server
-* [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_proxy_repositories.html)
+* [PHP NuGet](http://www.kendar.org/?p=/dotnet/phpnuget) - Simple server built in PHP
 * [Artifactory](http://www.jfrog.com/open-source/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories) - not in the free version
-
+* [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_proxy_repositories.html)
 
 **Note:** NuGet.Java.Server, TeamCity and JNuGet are about the same in terms of sophistication (they are ordered alphabetically).
