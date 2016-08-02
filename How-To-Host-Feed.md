@@ -111,6 +111,7 @@ If you don't want to host on Windows you have only the following options (from l
 * [TeamCity](https://www.jetbrains.com/teamcity/) - contains built-in simple server
 * [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_proxy_repositories.html)
 * [Artifactory](http://www.jfrog.com/open-source/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories) - not in the free version
+* [Hazel](https://github.com/MPIB/hazel) - a simple server
 
 
 **Note:** NuGet.Java.Server, TeamCity and JNuGet are about the same in terms of sophistication (they are ordered alphabetically).
