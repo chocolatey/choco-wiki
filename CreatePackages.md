@@ -292,21 +292,16 @@ Open a command line in the directory where the nuspec is and type [[cpack|Comman
 
 To test the package you just built, open a command line shell and navigate to the directory where the `*.nupkg` file is located. Then type:
 
-PowerShell:
-```powershell
- choco install packageName -fdv -s $pwd
-```
 
-Other shells, including `cmd.exe`:
-```cmd
- choco install packageName -fdv -s "%cd%"
-```
+~~~powershell
+choco install packageName -fdv -s .
+~~~~
 
 This will install the package right out of your source. As you find things you may need to fix, using `--force` (`-f`) will remove and reinstall the package from the updated `*.nupkg`.
 
 **NOTE:** If you are using a Semver dash in your package version (such as 1.0.0-beta), you will need to use the `-pre` switch or else you will get *Unable to find package* errors from `choco install`.  You can also specify `-version 1.0.0-beta` to try to install that exact version.
 
-`%cd%` points to the current directory. You can specify multiple directories separated by a semicolon;
+`.` points to the current directory. You can specify multiple directories separated by a semicolon;
 
 When your `nuspec` specifies dependencies that are not in your source, you should add their paths to the source directory. E.g. in the case of Chocolatey itself:
 
@@ -317,7 +312,7 @@ When your `nuspec` specifies dependencies that are not in your source, you shoul
 ~~~
 
 You'll need to append the API path like so:
-`-source "'%cd%;https://chocolatey.org/api/v2/'"` (note the double quotes bookending the apostrophes here). See [[passing options with quotes|CommandsReference#how-to-pass-options--switches]]. Also, use `$pwd` if you are in PowerShell.exe. **Note:** If you need to do this, please ensure you run `choco pack` first. This method of passing a source won't work calling a nuspec or nupkg directly as it will override the source passed to the local folder.
+`-source "'.;https://chocolatey.org/api/v2/'"` (note the double quotes bookending the apostrophes here, use `%cd%` or `$pwd` if `.` doesn't resolve). See [[passing options with quotes|CommandsReference#how-to-pass-options--switches]]. Also, use `$pwd` if you are in PowerShell.exe. **Note:** If you need to do this, please ensure you run `choco pack` first. This method of passing a source won't work calling a nuspec or nupkg directly as it will override the source passed to the local folder.
 
 You can also use the `-debug` switch on `choco install` to provide more information.
 
