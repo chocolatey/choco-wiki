@@ -25,6 +25,7 @@ Heading down a sweet road.
 * Adding back in search box
 * Converting rest of site
 * Kickstarter backers
+* Add blog
 * Locking down HTTP without checksums
 * Locking down packages without checksums
 
