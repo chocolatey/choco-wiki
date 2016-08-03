@@ -1,28 +1,33 @@
-## RoadMap - Let's Get Chocolatey!
+# Road Map
+Heading down a sweet road.
+
 
 **NOTE:** This is not always going to be updated, one can take a look at the issues list here and in the chocolatey.org feed.
 
-### Chocolatey v1
 
-* cpack - **Done in v0.9.8.13**
-* cpush - **Done in v0.9.8.13**
-* Chocolatey using its own feed and gallery (see below) and not in the nuget.org gallery except where overlap should occur. - **Done**
-* [Uninstall (cuninst)](https://github.com/chocolatey/chocolatey/issues/6)
-* More general improvements to the rest of the commands
+## Chocolatey
+
+* Validation on packaging (subset of the package-validator)
+* Official support for OneGet/PackageManagement - Summer 2016
+* GPG package signing - likely sometime in 2017
+* Nuspec enhancements - supported versions of Windows, etc
+* Packaging enhancements - like package version, architecture
 * [Virtual packages](https://github.com/chocolatey/chocolatey/issues/7)
-* Ruby Gems Support - **Done in v0.9.8.13**
-* [Puppet Integration](https://github.com/chocolatey/puppet-chocolatey) - **Done**
-* [Chef Integration](https://github.com/chocolatey/chocolatey-cookbook) - **Done**
-* Web PI feed support - [webpicommandline](http://msdn.microsoft.com/en-us/library/gg433092.aspx) - **Done in v0.9.8.13**
+* WSA Support 
+* Windows Nano Support - likely late 2016/early 2017 (switching to .NET Standard/Core)
 
-### Chocolatey.org
+## Licensed Chocolatey
 
-* Chocolatey Gallery - **Done**
-* Package inspector - **Done**
-* Feed Moderation - **Done**
-* RSS/Atom Feed - **Done**
+* Self-Service Installs (Non-Admins)
 
-### Thoughts for future directions (undecided directions)
+## Chocolatey.org
 
-* GUI
+* Adding back in search box
+* Converting rest of site
+* Kickstarter backers
+* Locking down HTTP without checksums
+* Locking down packages without checksums
+
+## Thoughts for future directions (undecided directions)
+
 * Pluggable compositional model
