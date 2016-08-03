@@ -28,6 +28,7 @@ Heading down a sweet road.
 * Converting rest of site
 * Kickstarter backers
 * Add blog
+* ~~VirusTotal scans of all packages and downloaded binaries~~ - Completed Feb 2016
 * Locking down HTTP without checksums
 * Locking down packages without checksums
 
