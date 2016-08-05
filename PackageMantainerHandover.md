@@ -23,5 +23,5 @@ Once that is done you have several steps:
  * One thing to update is any links to the old repository such as images and/or maintainers.
  * Also add/update `<packageSourceUrl />` to point to your repository.
  * Build the package and test locally.
- * Push the package with the updates/fixes. :+1:
+ * Push the package with the updates/fixes.
  * If brought in from another repository, be sure to send a Pull Request to that repository to have the package removed from there (or at the very least file an issue). Link the new location in that request for others who might be searching.
