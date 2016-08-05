@@ -61,7 +61,7 @@ objShell.Run("C:\tools\ChocolateyPackageUpdater\ketarinupdate.cmd"), 0, True
 ![Ketarin Settings](images/chocopkgup/KetarinSettings.png "Ketarin Settings")
 1. Add the following text:
 ```cmd
-chocopkgup /p {appname} /v {version} /u "{preupdate-url}" /u64 "{url64}" /pp "{file}"
+chocopkgup /p {appname} /v {version} /u "{preupdate-url}" /u64 "{url64}" /pp "{file}" /c "{Checksum}" /c64 "{Checksumx64}"
 REM /disablepush
 ```
 1. Check the bottom of this section to be sure it set to **Command**.
@@ -106,7 +106,7 @@ In whichever job the meta package points to, you should add a command to that li
 ![Ketarin Settings](images/chocopkgup/KetarinJobSettings.png "Ketarin Settings")
 1. Add the following text (replace `name` with the actual name of the meta package folder):
 ```cmd
-chocopkgup /p name /v {version} /u "{preupdate-url}" /u64 "{url64}" /pp "{file}"
+chocopkgup /p name /v {version} /u "{preupdate-url}" /u64 "{url64}" /pp "{file}" /c "{Checksum}" /c64 "{Checksumx64}"
 REM /disablepush
 ```
 1. Check the bottom of this section to be sure it set to **Command**.
