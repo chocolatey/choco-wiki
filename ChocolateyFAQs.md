@@ -165,7 +165,7 @@ As of version 0.9.8.24, binaries, libraries and Chocolatey components install in
 * Development Packages – Packages that have the suffix **.dev**. For instance [dropkick.dev](http://nuget.org/list/packages/dropkick.dev).
 * Coming soon – Virtual Packages – Packages that are like a category, and you just want one package from that category. [Read more …](https://github.com/chocolatey/chocolatey/issues/7)
 
-<a name="AppVsTool" />
+<a name="AppVsTool"></a>
 ### What distinction does Chocolatey make between an installable and a portable application?
 #### Installable application
 An installable application is something that comes with a native installer and ends up in the add/remove programs (in control panel of the system).
