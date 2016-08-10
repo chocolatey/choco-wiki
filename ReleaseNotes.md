@@ -1,5 +1,68 @@
 # Release Notes
 
+## [0.10.0](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.0+is%3Aclosed) (unreleased)
+What was planned for 0.9.10.4 is now 0.10.0. This is due partly to a breaking change we are making for security purposes and a move to provide better a better versioning scheme for the remainder of the sub-v1 versions of Chocolatey. Instead of 0.y.z.0 being considered where major verions occur in the sub v1 series, 0.y.0 will now be considered where those major versions occur. We also are moving right along towards v1 (and hope to be there in 2017).
+
+0.10.0 carries the fixes for 0.9.10.4 and includes a major security enhancement (checksum requirement).
+
+### BREAKING CHANGES
+
+ * [Security] Checksum requirement and enhancements - see [#112](https://github.com/chocolatey/choco/issues/112)
+
+Checksums in package scripts are meant as a measure to validate the originally intended downloaded resources used in the creation of a package are the same files that are received at a future date. This also ensures that the same files that are checked by all parts of moderation (if applicable) are the same files that are received by users for a package. This is seen mostly on the community repository because it is public and packages are subject to copyright laws (distribution rights), which typically requires the package scripts to download software from the official distribution locations. The Chocolatey framework has had the ability to use checksums in package scripts since [July 2014](https://chocolatey.org/packages/chocolatey/0.9.8.24#releasenotes).
+
+**What is the requirement?** choco will now fail if a package download resources from HTTP/FTP and does not use checksums to verify those downloaded resources. The requirement for HTTP/FTP is [#112](https://github.com/chocolatey/choco/issues/112). Soon we'll also require it for [HTTPS (#895)](https://github.com/chocolatey/choco/issues/895) as well.
+
+**How does this protect the community anymore than before?** During moderation review, there is a check of these downloaded binaries against VirusTotal (which verifies these binaries against 50-60+ different virus scanners). The binaries are also verified for installation purposes against a test computer. With an independent 3rd party checksum in the package itself, it guarantees that the files received by a user from those remote sources are the exact same files that were used in the verification process.
+
+**Why the requirement, and why now?** This is a measure of protection for the Chocolatey community. HTTP is easy to hack with both DNS poisoning and MITM (man in the middle) attacks. Without independent verification of the integrity of the downloaded resources, users can be left susceptible to these issues. We've been planning a move to require checksums for awhile now, with a planned longer and smoother transition for package maintainers to get packages updated to reduce breakages. Unfortunately there was a recent event with [FOSSHub getting hacked](http://www.audacityteam.org/compromised-download-partner/) (the [community repository had 8 possibly affected packages](http://us8.campaign-archive1.com/?u=86a6d80146a0da7f2223712e4&id=f2fe8dbe6b) and [we quickly took action](http://us8.campaign-archive1.com/?u=86a6d80146a0da7f2223712e4&id=2cbe87d486)), which necessitated a need for us to move in a much swifter fashion to ensure the protection of the community sooner, rather than later. The changes in Chocolatey represented by the checksum changes are a major step in the process to ensure protection. Requiring for HTTPS as well will mitigate any future compromises of software distribution sites that are used with Chocolatey packages.
+
+**Can I shut this behavior off or opt out per package?**
+You can shut off the checksum requirement by enabling the feature `allowEmptyChecksums`. This will return Chocolatey to previous behavior. We strongly recommend against it.
+
+You can shut it off or turn it per package install/upgrade with `--allow-empty-checksums` and `--require-checksums`, respectively. See https://chocolatey.org/docs/commands-install / https://chocolatey.org/docs/commands-upgrade.
+
+**Other things I should know?** Users also now have the ability to pass their own checksums and checksumtypes into the install. See https://chocolatey.org/docs/commands-install / https://chocolatey.org/docs/commands-upgrade.
+
+### KNOWN ISSUES
+
+ * [Known Issues](https://github.com/chocolatey/choco/labels/Bug)
+
+### FEATURES
+
+ * Pro/Business - Download a package without installing it - see [#108](https://github.com/chocolatey/choco/issues/108)
+
+### BUG FIXES
+
+ * Fix - Installing choco on Windows 10 Vagrant box stops Vagrant from being able to manage the box - see [#834](https://github.com/chocolatey/choco/issues/834)
+ * Fix - 64bit 7z.exe on 32bit system in chocolatey\tools - see [#836](https://github.com/chocolatey/choco/issues/836)
+ * Fix - [POSH Host] PowerShell exit code does not reset between packages in a single run - see [#854](https://github.com/chocolatey/choco/issues/854)
+ * Fix - Uninstall-ChocolateyZipPackage is failing - see [#871](https://github.com/chocolatey/choco/issues/871)
+ * Fix - "C:\Program Files\WindowsPowerShell\Modules" is missing in PSModulePath for cmd.exe [#830](https://github.com/chocolatey/choco/issues/830)
+ * Fix - Environment variables update fixes [#840](https://github.com/chocolatey/choco/issues/840)
+ * Fix - Handle null items better - see [#853](https://github.com/chocolatey/choco/issues/853)
+ * Fix - HKCU may not have Environment (Install of Chocolatey) - see [#375](https://github.com/chocolatey/choco/issues/375)
+ * Fix - Progress of download does not clear the whole output line - see [#875](https://github.com/chocolatey/choco/issues/875)
+ * Fix - Wrong download progress reported during package upgrade - see [#872](https://github.com/chocolatey/choco/issues/872)
+ * Fix - Uninstall not supporting side-by-side => ChocolateyUninstall.ps1 not run - see [#862](https://github.com/chocolatey/choco/issues/862)
+ * Fix - Uninstall ignores the version parameter - see [#861](https://github.com/chocolatey/choco/issues/861)
+ * Fix - Search by exact or by id only is case sensitive for remote sources - see [#889](https://github.com/chocolatey/choco/issues/889)
+ * Fix - Deprecated links inserted in .nuspec files created by `choco new ...` - see [#870](https://github.com/chocolatey/choco/issues/870)
+ * Fix - Get-OSArchitectureWidth doesn't do what it says it does - see [#828](https://github.com/chocolatey/choco/issues/828)
+ * Fix - When Choco fails to get a package from NuGet Core, fail the package with exit code 1 - see [#867](https://github.com/chocolatey/choco/issues/867)
+ * Fix - Illegal characters in path - see [#857](https://github.com/chocolatey/choco/issues/857)
+ * Fix - Get-OSArchitectureWidth doesn't do what it says it does - see [#828](https://github.com/chocolatey/choco/issues/828)
+
+### IMPROVEMENTS
+
+ * Do not install tab completion (edit of profile) under certain conditions - see [#833](https://github.com/chocolatey/choco/issues/833)
+ * Choco install with packages.config should print out the packages to install - see [#878](https://github.com/chocolatey/choco/issues/878)
+ * Larger default log file size and retention - see [#852](https://github.com/chocolatey/choco/issues/852)
+ * Allow getting installer type to be overridden - see [#885](https://github.com/chocolatey/choco/issues/885)
+ * Little command name correction on init.ps1 - see [#595](https://github.com/chocolatey/choco/issues/595)
+ * Tab completion - don't query if there is a file in the folder that meets completion - see [#847](https://github.com/chocolatey/choco/issues/847)
+
+
 ## [0.9.10.3](https://github.com/chocolatey/choco/issues?q=milestone%3A0.9.10.3+is%3Aclosed) (June 23, 2016)
 
 ### BUG FIXES
@@ -46,7 +109,7 @@ The "I got 99 problems, but a package manager ain't one" release. With the relea
 
 Alternative sources (`-source webpi`, `-s windowsfeature`, etc) are back! I mean, am I right?! Have you heard of auto uninstaller? If Chocolatey has installed something that works with Programs and Features, Chocolatey knows how to uninstall it without an uninstall script about 90+% of the time. This feature was in beta for the 0.9.9 series, it is on by default in 0.9.10 (unless you disabled it after trying it, you will need to reenable it, see `choco feature` for more details).
 
-Here's one you probably never knew existed - extensions. Chocolatey has had the ability to extend itself by adding PowerShell modules for years, and most folks either didn't know it existed or have never used them. We've enhanced them a bit in preparation for the licensed version of Chocolatey. 
+Here's one you probably never knew existed - extensions. Chocolatey has had the ability to extend itself by adding PowerShell modules for years, and most folks either didn't know it existed or have never used them. We've enhanced them a bit in preparation for the licensed version of Chocolatey.
 
 We redesigned our `choco new` default packaging template and we've made managing templates as easy as managing packages.
 
@@ -58,7 +121,7 @@ We redesigned our `choco new` default packaging template and we've made managing
 * [sort by version](https://github.com/chocolatey/choco/issues/668)
 * [search with paging](https://github.com/chocolatey/choco/issues/427)
 
-There are 150 tickets closed for this release! We've included remediation steps for when a breaking change affects you. Mostly if you have been using Chocolatey in a recommended way, you won't even notice any adverse changes. There are a number of things we thought to highlight, and quite a few security enhancements coming in this release (look for the [Security] tag on the ticket summary). 
+There are 150 tickets closed for this release! We've included remediation steps for when a breaking change affects you. Mostly if you have been using Chocolatey in a recommended way, you won't even notice any adverse changes. There are a number of things we thought to highlight, and quite a few security enhancements coming in this release (look for the [Security] tag on the ticket summary).
 
 ### BREAKING CHANGES
 
@@ -82,7 +145,7 @@ If you were using any of the functions in a non-recommended way or not compliant
 
  * [Security] Explicit permissions - remove inheritance/lock down to admins - see [#398](https://github.com/chocolatey/choco/issues/398)
 
-This further restricts the default installation location by removing all permissions and inheritance of permissions, explicitly giving Administrator/LocalSystem to Full access, and Users are granted Read and Execute. 
+This further restricts the default installation location by removing all permissions and inheritance of permissions, explicitly giving Administrator/LocalSystem to Full access, and Users are granted Read and Execute.
 
 ### KNOWN ISSUES
 
