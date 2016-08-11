@@ -14,7 +14,7 @@ Downloads a package from a source, optionally downloading remote
 ## Examples
 
     choco download sysinternals
-    choco download notepadplusplus.install --recompile --embed
+    choco download notepadplusplus.install --recompile
 
 ## See It In Action
 
