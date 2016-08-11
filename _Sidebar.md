@@ -61,6 +61,7 @@
    - [[Pack|CommandsPack]]
    - [[Apikey|CommandsApiKey]]
    - [[Push|CommandsPush]]
+   - [[Download|CommandsDownload]]
  - [[Automatic Packaging|AutomaticPackages]]
  - **PowerShell Reference:**
    - [[Function and Variable Reference|HelpersReference]]
