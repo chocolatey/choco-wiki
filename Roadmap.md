@@ -11,7 +11,7 @@ Heading down a sweet road.
 * Official support for OneGet/PackageManagement - Summer 2016
 * GPG package signing - likely sometime in 2017
 * Validating authenticodes - see [#643](https://github.com/chocolatey/choco/issues/643)
-* ~~Not allowing package installs that don't have checksums by default - see [#112](https://github.com/chocolatey/choco/issues/112)~~ released in 0.10.0
+* ~~Not allowing package installs that don't have checksums by default when using non-secure resources like HTTP/FTP - see [#112](https://github.com/chocolatey/choco/issues/112)~~ released in 0.10.0
 * Nuspec enhancements - supported versions of Windows, etc
 * Packaging enhancements - like package version, architecture
 * [Virtual packages](https://github.com/chocolatey/chocolatey/issues/7)
