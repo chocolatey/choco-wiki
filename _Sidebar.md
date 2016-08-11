@@ -46,6 +46,7 @@
   - [[Config|CommandsConfig]]
   - [[Source / Sources|CommandsSources]]
   - [[Feature|CommandsFeature]]
+  - [[Download|CommandsDownload]]
   - Packaging
     - [[New|CommandsNew]]
     - [[Pack|CommandsPack]]
