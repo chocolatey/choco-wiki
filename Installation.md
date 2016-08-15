@@ -146,16 +146,16 @@ There are a few ways to install Chocolatey. Chocolatey exists as a [NuGet packag
 ### Command Line
 This really is the easiest method because it requires no configuration of PowerShell prior to executing it. Open a command line, paste the following and press &lt;Enter&gt;:
 
-```cmd
-@powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
-```
+~~~cmd
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH="%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+~~~
 
 ### PowerShell
 This is the second-most easy method. Open a PowerShell command line and paste in the following and press &lt;Enter&gt;:
 
-```powershell
+~~~powershell
 (iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')))>$null 2>&1
-```
+~~~
 
 **<font color="red">Note: You must have your execution policy set to unrestricted (or at least in bypass) for this to work (`Set-ExecutionPolicy Unrestricted`). There have been [reports](https://github.com/chocolatey/chocolatey/issues/70) that RemoteSigned is enough for the install to work.</font>**
 It downloads and runs (https://chocolatey.org/install.ps1).
@@ -168,7 +168,7 @@ This is the best method if you want to repeat it or include it in source control
 
 Create a file named `installChocolatey.cmd` with the following:
 
-```
+~~~
 @echo off
 
 SET DIR=%~dp0%
@@ -177,7 +177,7 @@ SET DIR=%~dp0%
 %systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "((new-object net.webclient).DownloadFile('https://chocolatey.org/install.ps1','install.ps1'))"
 ::run installer
 %systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%DIR%install.ps1' %*"
-```
+~~~
 
 You can also get to this file by going to [https://chocolatey.org/installchocolatey.cmd](https://chocolatey.org/installchocolatey.cmd).
 
@@ -223,14 +223,14 @@ You can also just download and unzip the Chocolatey package (`.nupkg` is a fancy
 
 Once installed, Chocolatey can be upgraded in exactly the same way as any other package that has been installed using Chocolatey.  Simply use the command:
 
-```
+~~~
 choco upgrade chocolatey
-```
+~~~
 
 to install the latest release of Chocolatey, and:
 
-```
+~~~
 choco upgrade chocolatey -pre
-```
+~~~
 
 to install the latest pre-release version of Chocolatey.
