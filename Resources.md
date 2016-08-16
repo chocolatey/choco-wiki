@@ -20,7 +20,7 @@
 
 #### July
 
-* http://blogsprajeesh.blogspot.nl/2016/07/maintain-consistent-development.html
+* http://blogsprajeesh.blogspot.nl/2016/07/maintain-consistent-development.html (PowerShell DSC and Chocolatey)
 * https://digitalis.io/install-apache-cassandra-command-line-windows/
 * https://thesoftwaredudeblog.wordpress.com/2016/07/08/using-vagrant-with-sitecore-part-1-setup-chocolatey-vagrant-and-virtualbox
 * http://crosscuttingconcerns.com/Podcast-004---Calvin-Allen-on-Chocolatey-NuGet
