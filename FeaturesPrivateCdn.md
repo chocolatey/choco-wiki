@@ -21,10 +21,6 @@ When you install, you will see a message similar to the following when the cache
 
 ![Pro install with CDN cache](images/choco_install_cached.png)
 
-## See It In Action
-
-![Pro install in action](images/gifs/chocopro_install_stopped.gif)
-
 ## Options and Switches
 
 The following options are added to install and upgrade commands.
