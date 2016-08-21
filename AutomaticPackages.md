@@ -7,7 +7,7 @@ Automatic packaging is a process that **package maintainers can run on *their ow
 
 There are currently two methods that can be used to maintain automatic packages:
 
-- Using [Chocolatey Package Updater](http://chocolatey.org/packages/ChocolateyPackageUpdater) with 3rd party tool Ketarin.
+- Using [Chocolatey Package Updater](https://chocolatey.org/packages/ChocolateyPackageUpdater) with 3rd party tool [Ketarin](https://chocolatey.org/packages/ketarin).
 - Using only Powershell via [Automatic Update module AU](https://github.com/majkinetor/au).
 
 The rest of this page contains documentation about the first method. You can learn more about the AU updater via its [documentation](https://github.com/majkinetor/au/blob/master/README.md). You can also learn about its usage from the [real life example](https://github.com/majkinetor/chocolatey) which runs the updater on AppVeyor so you are not required to schedule updater on your own machine.
@@ -15,7 +15,7 @@ The rest of this page contains documentation about the first method. You can lea
 ## Chocolatey Package Updater aka chocopkgup
 http://chocolatey.org/packages/ChocolateyPackageUpdater
 
-The tool that accomplishes this process is known as [chocopkgup](http://chocolatey.org/packages/ChocolateyPackageUpdater) (Chocolatey Package Updater). It is a free tool (unless you want to use it for uploads to somewhere other than chocolatey.org).
+The tool that accomplishes this process is known as [chocopkgup](https://chocolatey.org/packages/ChocolateyPackageUpdater) (Chocolatey Package Updater). It is a free tool (unless you want to use it for uploads to somewhere other than chocolatey.org).
 
 ### Licensing
 Check the license at http://realdimensions.net/licenses/chocolateypackageupdater/license.txt to be sure that it applies to you.
@@ -23,61 +23,57 @@ Check the license at http://realdimensions.net/licenses/chocolateypackageupdater
 Basically it boils down to this: if you want to use chocopkgup privately, you will need to pay for it. As long as you are publishing to chocolatey.org, the tool is completely free! The license does expire every once in awhile, but if you are keeping up on your chocolatey updates locally, you won't even notice (`cup all`, remember?).
 
 ### Credits
-This tool makes use of [Ketarin](http://chocolatey.org/packages/ketarin). Ketarin is an awesome tool that helps chocopkgup accomplish its tasks.
+This tool makes use of [Ketarin](https://chocolatey.org/packages/ketarin). Ketarin is an awesome tool that helps chocopkgup accomplish its tasks.
+
+### Requirements
+
+* A Windows box somewhere - to run the updater on
+* [Ketarin](https://chocolatey.org/packages/ketarin)
+* PowerShell v5+ for Ketarin.
+* [Chocolatey Package Updater](https://chocolatey.org/packages/chocolateypackageupdater)
 
 ### Setup
-More of this will become automated over time.
 
-1. **Optional** (strongly recommended) - Ensure you are using a source control repository and file system for keeping packages. A good example is [chocolatey-coreteampackages](https://github.com/chocolatey/chocolatey-coreteampackages) repo.
-1. **Optional** (strongly recommended) - Make sure you have installed the [chocolatey package templates](https://github.com/chocolatey/chocolateytemplates). If you’ve installed the chocolatey templates (ReadMe has instructions), then all you need to do is take a look at the [chocolateyauto](https://github.com/chocolatey/chocolateytemplates/tree/master/_templates/chocolateyauto) and [chocolateyauto3](https://github.com/chocolatey/chocolateytemplates/tree/master/_templates/chocolateyauto3). You will note this looks almost exactly like the regular chocolatey template, except this has some specially named token values.
-```powershell
-#Items that could be replaced based on what you call chocopkgup.exe with
-#{{PackageName}} - Package Name (should be same as nuspec file and folder) |/p
-#{{PackageVersion}} - The updated version | /v
-#{{DownloadUrl}} - The url for the native file | /u
-#{{PackageFilePath}} - Downloaded file if including it in package | /pp
-#{{PackageGuid}} - This will be used later | /pg
-#{{DownloadUrlx64}} - The 64bit url for the native file | /u64
-## included with 0.6.4
-#{{Checksum}} - The checksum for the file downloaded from DownloadUrl | /c
-#{{Checksumx64}} - The checksum for the 64bit file downloaded from DownloadUrlx64  | /c64
-```
-1. These are the tokens that chocopkgup will replace when it generates an instance of a package.
-1. Install chocopkgup (which will install ketarin and nuget.commandline). `cinst chocolateypackageupdater`.
-1. Check the config in `C:\tools\ChocolateyPackageUpdater\chocopkgup.exe.config` (or `ChocolateyBinRoot/ChocolateyPackageUpdater`). The `PackagesFolder` key should point to where your repository is located.
-1. Create a scheduled task (in Windows). This is the command (edit the path to `cmd.exe` accordingly): `C:\Windows\System32\cmd.exe /c c:\tools\chocolateypackageupdater\ketarinupdate.cmd` 
+1. Fork [`chocolatey-packages-template`](https://github.com/chocolatey/chocolatey-packages-template#fork-destination-box) and rename it to something like `chocolatey-packages` (on GitHub - go into Settings, Repository name and rename).
+1. Clone the repo locally.
+1. Install chocopkgup (which will install ketarin and nuget.commandline). `choco install chocolateypackageupdater`.
+1. Check the config in `$env:ChocolateyInstall\lib\ChocolateyPackageUpdater\chocopkgup.exe.config`. The `PackagesFolder` key should point to where your repository is located.
+1. Ensure **PowerShell is on v5** (`choco upgrade powershell`). This is required for Ketarin to use PowerShell scripts. See https://ketarin.org/forum/topic/3923-systemmanagementautomation-error/
+1. Create a scheduled task (in Windows). This is the command (edit the path to `cmd.exe` accordingly): `C:\Windows\System32\cmd.exe /c c:\tools\chocolateypackageupdater\ketarinupdate.cmd`
 1. Alternatively to stop the command window from opening on Windows, you can create a VBS script as well and put the path to the `.vbs` file instead of `ketarinupdate.cmd` as the command to run. The file should have the following:
-```
+~~~vb
 Set objShell = WScript.CreateObject("WScript.Shell")
 objShell.Run("C:\tools\ChocolateyPackageUpdater\ketarinupdate.cmd"), 0, True
-```
-1. Choose a schedule for the task. I run mine once a day but you can set it to run more often. Choose a time when the computer is not that busy.
-1. Save the following Ketarin template somewhere: https://raw.github.com/chocolatey/chocolateytemplates/master/_templates/KetarinChocolateyTemplate.xml
+~~~
+1. Choose a schedule for the task. Some folks run the task about once an hour to catch updates as quickly as they happen.
 1. Open Ketarin. Choose `File` –> `Settings`.
-1. On the **General Tab** we are going to add the Version Column for all jobs. Click `Add…`, then put `Version` in Column name and `{version}` in Column value.
-![Ketarin Settings Custom](images/chocopkgup/KetarinShowCustomField.png "Ketarin Custom Field Setup")
-1. Click **[OK]**. This should add it to the list of Custom Columns.
-1. Click on the **Commands Tab** and set **Edit command for event** to “Before updating an application”.
-![Ketarin Settings](images/chocopkgup/KetarinSettings.png "Ketarin Settings")
-1. Add the following text:
-```cmd
-chocopkgup /p {appname} /v {version} /u "{preupdate-url}" /u64 "{url64}" /pp "{file}" /c "{Checksum}" /c64 "{Checksumx64}"
-REM /disablepush
-```
-1. Check the bottom of this section to be sure it set to **Command**.
-![Ketarin Settings Command](images/chocopkgup/KetarinCustomCommand.png "Ketarin Settings Command")
-1. Click Okay.
-1. Note the commented out `/disablepush`. This is so you can create a few packages and test that everything is working well before actually pushing those packages up to chocolatey. You may want to add that switch to the main command above it. Add it as the first parameter after `chocopkgup` so that none of the other commands conflict.
+1. Now Click Import...
+1. Choose [setup/KetarinSettings.xml](https://github.com/chocolatey/chocolatey-packages-template/blob/master/setup/KetarinSettings.xml) from the repo folder. This is going to add everything in that you will need for settings.
+1. Click on Global Variables. Ensure all of the variables are set appropriately.
+![Ketarin Global Variables](images/chocopkgup/KetarinGlobalVariables.png)
 
-This gets Ketarin all set up with a global command for all packages we create. If you want to use this outside of chocolatey, all you need to do is remove the global setting for Before updating an application and instead apply it to every job that pertains to chocolatey update.
+This gets Ketarin all set up with a global command for all packages we create.
+
+*NOTE*: This has set up global commands for "Before updating an application" and "After updating an application". Those should not need adjusting, however if you do, please be sure to export the settings again.
 
 ### Create an Automatic Package
 Preferably you are taking an existing package that you have tested and converting it to an automatic package.
 
+#### Create a package for automatic packaging
+When you are creating packages, you should ensure you are on the latest version of Chocolatey. This means you have the latest fixes to packaging templates and latest and greatest in the way of automation.
+
+1. Ensuring you are on the latest version of Chocolatey - `choco upgrade chocolatey`.
+1. Open PowerShell (or cmd.exe) and head to the automatic package folder you are using. This should be "repolocation\automatic".
+1. Run `choco new <name> --auto [options]`. You can use a different package template if you have those installed - see https://chocolatey.org/docs/commands-new for all options or run `choco new -?`. For package templates, see https://chocolatey.org/docs/how-to-create-custom-package-templates.
+1. Inspect the output. Merge in your existing package logic if you have an existing package you are converting.
+1. Make any adjustments you need to the package to prepare for packaging.
+
+#### Ketarin
+
 1. Open Ketarin. Choose `File` –> `Import…`
-1. Choose the template you just saved earlier (`KetarinChocolateyTemplate.xml`).
+1. Choose [setup/KetarinChocolateyTemplate.xml](https://github.com/chocolatey/chocolatey-packages-template/blob/master/setup/KetarinChocolateyTemplate.xml) from the repo folder.
 1. Answer the questions. This will create a new job for Ketarin to check.
-1. One important thing to keep in mind is that **the name of the job needs to match the name of the package folder exactly.**
+1. One important thing to keep in mind is that **the name of the job needs to match the name of the package folder and nuspec *exactly*.**
 1. Right click on that new job and select `Edit`. Take a look at the following:
 ![Ketarin Job Main](images/chocopkgup/KetarinMain.png "Ketarin Job Main")
 1. Set the URL appropriately. I would shy away from FileHippo for now, the URL has been known to change and if you upload that as the download url in a chocolatey packages, it won’t work very well.
@@ -94,6 +90,24 @@ Preferably you are taking an existing package that you have tested and convertin
 1. If you have a 64bit url you want to get, do the same for the url64 variable.
 1. When all of this is good, click **OK**.
 1. Click **OK** again.
+
+
+1. When **Optional** (strongly recommended) - Make sure you have installed the [chocolatey package templates](https://github.com/chocolatey/chocolateytemplates). If you’ve installed the chocolatey templates (ReadMe has instructions), then all you need to do is take a look at the [chocolateyauto](https://github.com/chocolatey/chocolateytemplates/tree/master/_templates/chocolateyauto) and [chocolateyauto3](https://github.com/chocolatey/chocolateytemplates/tree/master/_templates/chocolateyauto3). You will note this looks almost exactly like the regular chocolatey template, except this has some specially named token values.
+~~~powershell
+#Items that could be replaced based on what you call chocopkgup.exe with
+#{{PackageName}} - Package Name (should be same as nuspec file and folder) |/p
+#{{PackageVersion}} - The updated version | /v
+#{{DownloadUrl}} - The url for the native file | /u
+#{{PackageFilePath}} - Downloaded file if including it in package | /pp
+#{{PackageGuid}} - This will be used later | /pg
+#{{DownloadUrlx64}} - The 64bit url for the native file | /u64
+## included with 0.6.4
+#{{Checksum}} - The checksum for the file downloaded from DownloadUrl | /c
+#{{Checksumx64}} - The checksum for the 64bit file downloaded from DownloadUrlx64  | /c64
+#{{ChecksumType}} - The checksum type for the file downloaded (requires 0.6.9) | /ct
+#{{ChecksumTypex64}} - The checksum type for the 64-bit file downloaded (requires 0.6.9) | /ct64
+~~~~
+
 
 
 ### Notes about tri-packages (meta/virtual aka *, *.install, and *.portable)
