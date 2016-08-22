@@ -29,7 +29,6 @@ This tool makes use of [Ketarin](https://chocolatey.org/packages/ketarin). Ketar
 
 * A Windows box somewhere - to run the updater on
 * [Ketarin](https://chocolatey.org/packages/ketarin)
-* PowerShell v5+ for Ketarin.
 * [Chocolatey Package Updater](https://chocolatey.org/packages/chocolateypackageupdater)
 
 ### Setup
@@ -38,7 +37,6 @@ This tool makes use of [Ketarin](https://chocolatey.org/packages/ketarin). Ketar
 1. Clone the repo locally.
 1. Install chocopkgup (which will install ketarin and nuget.commandline). `choco install chocolateypackageupdater`.
 1. Check the config in `$env:ChocolateyInstall\lib\ChocolateyPackageUpdater\chocopkgup.exe.config`. The `PackagesFolder` key should point to where your repository is located.
-1. Ensure **PowerShell is on v5** (`choco upgrade powershell`). This is required for Ketarin to use PowerShell scripts. See https://ketarin.org/forum/topic/3923-systemmanagementautomation-error/
 1. Create a scheduled task (in Windows). This is the command (edit the path to `cmd.exe` accordingly): `C:\Windows\System32\cmd.exe /c c:\tools\chocolateypackageupdater\ketarinupdate.cmd`
 1. Alternatively to stop the command window from opening on Windows, you can create a VBS script as well and put the path to the `.vbs` file instead of `ketarinupdate.cmd` as the command to run. The file should have the following:
 ~~~vb
@@ -76,7 +74,6 @@ When you are creating packages, you should ensure you are on the latest version 
 1. One important thing to keep in mind is that **the name of the job needs to match the name of the package folder and nuspec *exactly*.**
 1. Right click on that new job and select `Edit`. Take a look at the following:
 ![Ketarin Job Main](images/chocopkgup/KetarinMain.png "Ketarin Job Main")
-1. Set the URL appropriately. I would shy away from FileHippo for now, the URL has been known to change and if you upload that as the download url in a chocolatey packages, it won’t work very well.
 1. Click on `Variables` on the right of URL
 ![Ketarin Job Variables](images/chocopkgup/KetarinSetVariables.png "Ketarin Job Variables")
 1. On the left side you should see a variable for **version** and one for **url64**. Click on **version**.
@@ -92,25 +89,9 @@ When you are creating packages, you should ensure you are on the latest version 
 1. Click **OK** again.
 
 
-1. When **Optional** (strongly recommended) - Make sure you have installed the [chocolatey package templates](https://github.com/chocolatey/chocolateytemplates). If you’ve installed the chocolatey templates (ReadMe has instructions), then all you need to do is take a look at the [chocolateyauto](https://github.com/chocolatey/chocolateytemplates/tree/master/_templates/chocolateyauto) and [chocolateyauto3](https://github.com/chocolatey/chocolateytemplates/tree/master/_templates/chocolateyauto3). You will note this looks almost exactly like the regular chocolatey template, except this has some specially named token values.
-~~~powershell
-#Items that could be replaced based on what you call chocopkgup.exe with
-#{{PackageName}} - Package Name (should be same as nuspec file and folder) |/p
-#{{PackageVersion}} - The updated version | /v
-#{{DownloadUrl}} - The url for the native file | /u
-#{{PackageFilePath}} - Downloaded file if including it in package | /pp
-#{{PackageGuid}} - This will be used later | /pg
-#{{DownloadUrlx64}} - The 64bit url for the native file | /u64
-## included with 0.6.4
-#{{Checksum}} - The checksum for the file downloaded from DownloadUrl | /c
-#{{Checksumx64}} - The checksum for the 64bit file downloaded from DownloadUrlx64  | /c64
-#{{ChecksumType}} - The checksum type for the file downloaded (requires 0.6.9) | /ct
-#{{ChecksumTypex64}} - The checksum type for the 64-bit file downloaded (requires 0.6.9) | /ct64
-~~~~
-
-
-
 ### Notes about tri-packages (meta/virtual aka *, *.install, and *.portable)
+
+**UPDATE AUG 2016:** This may no longer be true. Just set up three jobs.
 
 When you have the three packages, you should set up only two jobs, one for *.install and one for *.portable.
 
@@ -130,8 +111,7 @@ REM /disablepush
 
 1. We need to get a good idea of whether this will work or not.
 1. Open a command line and type `ketarin`.
-1. Once Ketarin opens, open [global options](#setup) (steps 10 and 11) and set `/disablepush` so that it only goes as far as creating packages.
- * **NOTE**: Do not append it the end, place it first, right after `chocopkgup` e.g. `chocopkgup /disablepush /p ...`. This is done to alleviate issues with messed up parameters coming back from other items.
+1. Once Ketarin opens, open [global options](#setup) (steps 8 and 11), go to Global Variables and set `cscript` to `1` instead of `2` so that it only goes as far as creating packages.
 1. Find your job, and right click -> Update.  If everything is set good, in moments you will have a Chocolatey package in the folder you set under `{PackagesFolder}\_output`, where `{PackagesFolder}` is the path you set in the course of the [*Setup*](#setup) section of this article.
 1. Inspect the resulting Chocolatey package(s) for any issues.
 1. You should also test the scheduled task works appropriately.
@@ -146,7 +126,7 @@ REM /disablepush
 
 ### Important notes for files hosted on SourceForge
 Try this first:
-* In advanced settings, change the user agent to `chocolatey command line`. This will allow ketarin to behave similarly to how Chocolatey does.
+* In advanced settings, ensure the user agent is `chocolatey command line`. This will allow ketarin to behave similarly to how Chocolatey does.
 ![Ketarin Job Advanced Settings](https://cloud.githubusercontent.com/assets/63502/7350038/b1928aaa-ecc2-11e4-8abe-af9e7c65c82a.png)
 
 If you want to make an automatic package that downloads files hosted on SourceForge, it gets a bit tricky. Ketarin does not directly support download links from SourceForge in the format `http://sourceforge.net/projects/…/download`, because these download links automatically redirect to a mirror (e.&nbsp;g. `http://heanet.dl.sourceforge.net/project/…`). Ketarin does not support these kind of automatic redirections, but Chocolatey does.
