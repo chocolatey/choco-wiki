@@ -1,7 +1,7 @@
 # How To Host Your Own [Private/Internal/Public] Package Repository Server (aka Package Feed)
 
 ## Why?
-Please read [[Depending on the chocolatey.org as an organization|ChocolateyFAQs#should-my-organization-depend-on-use-the-community-feed-httpschocolateyorgpackages]]
+Please read [[Depending on the chocolatey.org as an organization|ChocolateyFAQs#should-my-organization-depend-on-use-the-community-feed-httpschocolatey.orgpackages]]
 
 ## Host your own server
 There are three types of package repositories, [folder/unc share](#local-folder--unc-share), [simple server](#simple-server), and the sophisticated [package gallery](#package-gallery).
