@@ -69,7 +69,7 @@ When you are creating packages, you should ensure you are on the latest version 
 #### Ketarin
 
 1. Open Ketarin. Choose `File` –> `Import…`
-1. Choose [setup/KetarinChocolateyTemplate.xml](https://github.com/chocolatey/chocolatey-packages-template/blob/master/setup/KetarinChocolateyTemplate.xml) from the repo folder.
+1. Choose [ketarin/_KetarinChocolateyTemplate.xml](https://github.com/chocolatey/chocolatey-packages-template/blob/master/ketarin/_KetarinChocolateyTemplate.xml) from the repo folder.
 1. Answer the questions. This will create a new job for Ketarin to check.
 1. One important thing to keep in mind is that **the name of the job needs to match the name of the package folder and nuspec *exactly*.**
 1. Right click on that new job and select `Edit`. Take a look at the following:
