@@ -10,7 +10,27 @@ There are currently two methods that can be used to maintain automatic packages:
 - Using [Chocolatey Package Updater](https://chocolatey.org/packages/ChocolateyPackageUpdater) with 3rd party tool [Ketarin](https://chocolatey.org/packages/ketarin).
 - Using only Powershell via [Automatic Update module AU](https://github.com/majkinetor/au).
 
-The rest of this page contains documentation about the first method. You can learn more about the AU updater via its [documentation](https://github.com/majkinetor/au/blob/master/README.md). You can also learn about its usage from the [real life example](https://github.com/majkinetor/chocolatey) which runs the updater on AppVeyor so you are not required to schedule updater on your own machine.
+## Automatic Updater (AU)
+
+You can learn more about the AU updater via its [documentation](https://github.com/majkinetor/au/blob/master/README.md). It is a PowerShell module, so you are doing everything with PowerShell scripts. You can also run everything on AppVeyor so you are  which runs the updater on AppVeyor so you are not required to schedule updater on your own machine.
+
+### Credits
+AU is brought to you by a Chocolatey community member [Miodrag Milic](https://github.com/majkinetor) and it is becoming more awesome all the time.
+
+### Requirements
+
+* PowerShell v3+.
+* The [AU module](https://chocolatey.org/packages/au).
+* Ruby for publishing GitHub Gists.
+
+### Setup
+
+1. Fork [`chocolatey-packages-template`](https://github.com/chocolatey/chocolatey-packages-template#fork-destination-box) and rename it to something like `chocolatey-packages` (on GitHub - go into Settings, Repository name and rename).
+1. Clone the repo locally.
+1. Head into the setup folder and look for `au_setup.ps1`. Review that file and then run it.
+1. Follow the [README](https://github.com/chocolatey/chocolatey-packages-template/blob/master/setup/README.md) in the setup folder.
+
+When creating packages, you can choose to use `--auto` or not as AU doesn't use token replacement for updating packages. There are some additional things generated though, so you may want to use the auto switch.
 
 ## Chocolatey Package Updater aka chocopkgup
 http://chocolatey.org/packages/ChocolateyPackageUpdater
