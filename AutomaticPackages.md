@@ -19,7 +19,7 @@ AU is brought to you by a Chocolatey community member [Miodrag Milic](https://gi
 
 ### Requirements
 
-* PowerShell v3+.
+* PowerShell v4+. It will be v3+ once [au #17](https://github.com/majkinetor/au/issues/17) is implemented.
 * The [AU module](https://chocolatey.org/packages/au).
 * Ruby for publishing GitHub Gists.
 
