@@ -20,7 +20,7 @@ in Pro / Business editions.
 
 ## Notes
 
-Only [licensed editions](https://chocolatey.org/compare) of [Chocolatey pro](https://chocolatey.org/compare)vide runtime malware protection.
+Only [licensed editions](https://chocolatey.org/compare) of Chocolatey provide runtime malware protection.
 
 ## Aliases
 
@@ -78,3 +78,5 @@ This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -Err
 [[Function Reference|HelpersReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Get-VirusCheckValid -Full`.
+
+View the source for [Get-VirusCheckValid](https://github.com/chocolatey/choco/tree/stable/src/chocolatey.resources/helpers/functions/Get-VirusCheckValid.ps1)

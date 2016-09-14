@@ -165,8 +165,8 @@ you can get it to the path with
 `"$(Split-Path -parent $MyInvocation.MyCommand.Definition)\\INSTALLER_FILE"`
 
 Property               | Value
----------------------- | -----
-Aliases                | 
+---------------------- | ------------
+Aliases                | fileFullPath
 Required?              | true
 Position?              | 4
 Default Value          | 
@@ -222,3 +222,5 @@ This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -Err
 [[Function Reference|HelpersReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Install-ChocolateyInstallPackage -Full`.
+
+View the source for [Install-ChocolateyInstallPackage](https://github.com/chocolatey/choco/tree/stable/src/chocolatey.resources/helpers/functions/Install-ChocolateyInstallPackage.ps1)

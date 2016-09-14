@@ -22,6 +22,7 @@ Install-ChocolateyPackage `
   [-ChecksumType64 <String>] `
   [-Options <Hashtable>] `
   [-UseOnlyPackageSilentArguments] `
+  [-UseOriginalLocation] `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
@@ -76,7 +77,7 @@ $packageArgs = @{
   validExitCodes= @(0, 3010, 1641)
   softwareName  = 'Bob*'
   checksum      = '12345'
-  checksumType  = 'sha1'
+  checksumType  = 'sha256'
   checksum64    = '123356'
   checksumType64= 'sha256'
 }
@@ -285,6 +286,8 @@ MD5 is not recommended as certain organizations need to use FIPS
 compliant algorithms for hashing - see
 https://support.microsoft.com/en-us/kb/811833 for more details.
 
+The recommendation is to use at least SHA256.
+
 Property               | Value
 ---------------------- | -----
 Aliases                | 
@@ -327,6 +330,8 @@ MD5 is not recommended as certain organizations need to use FIPS
 compliant algorithms for hashing - see
 https://support.microsoft.com/en-us/kb/811833 for more details.
 
+The recommendation is to use at least SHA256.
+
 Property               | Value
 ---------------------- | -----
 Aliases                | 
@@ -353,6 +358,22 @@ use the ones available with the package. Available in 0.9.10+.
 Property               | Value
 ---------------------- | ------------------------
 Aliases                | useOnlyPackageSilentArgs
+Required?              | false
+Position?              | named
+Default Value          | False
+Accept Pipeline Input? | false
+ 
+###  -UseOriginalLocation
+Do not download the resources. This is typically passed if Url/Url64bit
+are pointed to local files or files on a share and those files should
+be used in place. Available in 0.10.1+.
+
+NOTE: You can also use `Install-ChocolateyInstallPackage` for the same
+functionality (see links).
+
+Property               | Value
+---------------------- | -----
+Aliases                | 
 Required?              | false
 Position?              | named
 Default Value          | False
@@ -385,3 +406,5 @@ This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -Err
 [[Function Reference|HelpersReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Install-ChocolateyPackage -Full`.
+
+View the source for [Install-ChocolateyPackage](https://github.com/chocolatey/choco/tree/stable/src/chocolatey.resources/helpers/functions/Install-ChocolateyPackage.ps1)

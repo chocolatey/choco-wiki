@@ -1,6 +1,8 @@
-# Create Packages Automatically From Installers (Business Editions Only)
+# Package Builder - Create Packages Automatically From Installers (Business Editions Only)
 
-Chocolatey for Business is able to inspect an installer and determine silent arguments and complete packaging components for you, saving you minutes or even hours of time in packaging and maintaining software!
+Creating packages is a pretty quick process as compared to manually installing software on multiple machines. There is still some time involved to create a package. Even the best packagers take between 5-10 minutes to create a package. Chocolatey can do the same in 5-10 seconds when pointed to native installers and zips! You can even point package builder to both a 32-bit and 64-bit url and seconds later you have a fully functioning package using all local/embedded resources!
+
+Chocolatey for Business is able to inspect an installer and determine silent arguments and complete packaging components for you, saving you hours of time in packaging and maintaining software!
 
 ## Usage
 

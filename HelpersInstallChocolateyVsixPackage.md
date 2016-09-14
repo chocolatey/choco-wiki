@@ -150,6 +150,8 @@ MD5 is not recommended as certain organizations need to use FIPS
 compliant algorithms for hashing - see
 https://support.microsoft.com/en-us/kb/811833 for more details.
 
+The recommendation is to use at least SHA256.
+
 Property               | Value
 ---------------------- | -----
 Aliases                | 
@@ -195,3 +197,5 @@ This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -Err
 [[Function Reference|HelpersReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force; Get-Help Install-ChocolateyVsixPackage -Full`.
+
+View the source for [Install-ChocolateyVsixPackage](https://github.com/chocolatey/choco/tree/stable/src/chocolatey.resources/helpers/functions/Install-ChocolateyVsixPackage.ps1)

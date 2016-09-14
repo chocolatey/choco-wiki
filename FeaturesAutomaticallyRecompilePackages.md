@@ -1,4 +1,5 @@
-# Automatically Recompile/Internalize Existing Packages (Business Editions Only)
+# Package Internalizer
+Automatically Internalize/Recompile Existing Packages (Business Editions Only)
 
 There are thousands of existing packages on the [community repository](https://chocolatey.org/packages) that are a tremendous resource when it comes to creating packages that have software that can sometimes be tricky! Unfortunately you may be wary of using those packages without changes because many of those packages are subject to distribution rights and thus have an internet dependency (which creates both [[trust and control issues|CommunityPackagesDisclaimer]]). There is a process for downloading and internalizing packages to use internal or embedded locations for that software that is called **recompiling**.
 
