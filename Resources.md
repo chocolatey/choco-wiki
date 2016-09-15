@@ -18,6 +18,17 @@
 
 ### 2016
 
+#### September
+
+* http://www.winsysblog.com/2016/09/using-powershell-and-chocolatey-to.html
+* http://devopspecialist.co.uk/2016/09/03/full-of-chocolatey-goodness/
+
+#### August
+
+* https://puppet.com/blog/chocolatey-creator-rob-reynolds-speak-puppetconf-2016
+* https://dzone.com/articles/using-chocolatey-to-install-neo4j-on-windows
+* https://neo4j.com/blog/chocolatey-neo4j-windows
+
 #### July
 
 * http://blogsprajeesh.blogspot.nl/2016/07/maintain-consistent-development.html (PowerShell DSC and Chocolatey)
@@ -27,6 +38,7 @@
 
 #### June 
 
+* https://puppet.com/blog/package-management-windows-gets-even-better-chocolatey
 * http://blogs.itpro.es/octaviordz/2016/06/04/integrando-chocolatey-a-mdt-2013-e-instalando-aplicaciones-de-forma-desatendida-en-windows-10/
 
 #### May
