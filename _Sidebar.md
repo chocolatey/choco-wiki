@@ -5,6 +5,7 @@
 **General**
 
 - [[Release Notes|ReleaseNotes]]
+- [[Licensed Release Notes|ReleaseNotesLicensed]]
 - [[Roadmap|RoadMap]]
 - [Submitting Issues](https://github.com/chocolatey/choco/blob/master/README.md#submitting-issues)
 - [Contributing](https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md)

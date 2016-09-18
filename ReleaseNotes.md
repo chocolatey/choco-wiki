@@ -1,4 +1,6 @@
-# Release Notes
+# Release Notes Open Source
+
+For licensed versions, refer to both this set of notes and [[Licensed Release Notes|ReleaseNotesLicensed]].
 
 ## [0.10.0](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.0+is%3Aclosed) (August 11, 2016)
 What was planned for 0.9.10.4 is now 0.10.0. This is due partly to a breaking change we are making for security purposes and a move to provide better a better versioning scheme for the remainder of the sub-v1 versions of Chocolatey. Instead of 0.y.z.0 being considered where major verions occur in the sub 1 series, 0.y.0 will now be considered where those major versions occur. We also are moving right along towards v1 (and hope to be there in 2017).
