@@ -1,6 +1,6 @@
 # Chocolatey Release Notes - Open Source
 
-This covers the release notes for the "chocolatey.extension" package, where the licensed editions of Chocolatey get their enhanced functionality.
+This covers changes for the "chocolatey" and "chocolatey.lib" packages, which are available as FOSS.
 
 **NOTE**: For licensed versions, refer to both this set of notes and [[Licensed Release Notes|ReleaseNotesLicensed]].
 
