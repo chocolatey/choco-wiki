@@ -1,6 +1,8 @@
-# Release Notes Licensed
+# Chocolatey Release Notes - Licensed Edition
 
-For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
+This covers the release notes for the "chocolatey.extension" package, where the licensed editions of Chocolatey get their enhanced functionality.
+
+**NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
 ## 1.6.1 (Sep 8, 2016)
 
