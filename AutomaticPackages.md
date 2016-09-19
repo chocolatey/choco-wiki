@@ -85,6 +85,7 @@ When you are creating packages, you should ensure you are on the latest version 
 1. Open PowerShell (or cmd.exe) and head to the automatic package folder you are using. This should be "repolocation\automatic".
 1. Run `choco new <name> --auto [options]`. You can use a different package template if you have those installed - see https://chocolatey.org/docs/commands-new for all options or run `choco new -?`. For package templates, see https://chocolatey.org/docs/how-to-create-custom-package-templates.
 1. Inspect the output. Merge in your existing package logic if you have an existing package you are converting.
+1. Ensure that `checksumType` and `checksumType64` is `sha256` as this is the type the updater will generate.
 1. Make any adjustments you need to the package to prepare for packaging.
 
 #### Ketarin
@@ -144,6 +145,7 @@ REM /disablepush
 * The name of the application in ketarin matches exactly that of the folder that is in the automatic packages folder.
 * Every once in awhile you want to look in Ketarin to see what jobs might be failing. Then figure out why.
 * Every once in awhile you will want to inspect the chocopkgupfolder to see if there are any packages that did not make it up for some reason or another and then upload them.
+* If the downloaded application/installer has not changed, the package will not be generated. Delete the files in the download location specified in [*Ketarin*](#ketarin) and try again.
 
 ### Important notes for files hosted on SourceForge
 Try this first:
