@@ -1076,7 +1076,7 @@ FEATURES:
 
 BUG FIXES:
 
- * Reinstalls an existing package if -version is passed (first surfaced in 0.9.8.7 w/NuGet 1.5) - [#9](https://github.com/chocolatey/chocolatey/issues/9)
+ * Reinstalls an existing package if --version is passed (first surfaced in 0.9.8.7 w/NuGet 1.5) - [#9](https://github.com/chocolatey/chocolatey/issues/9)
 
 ## 0.9.8.8 (September 10, 2011)
 
@@ -1247,7 +1247,7 @@ IMPROVEMENTS:
 
 IMPROVEMENTS:
 
- * You can now pass -source and -version to install command.
+ * You can now pass -source and --version to install command.
 
 ## 0.9.2 (April 4, 2011)
 
