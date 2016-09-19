@@ -56,6 +56,8 @@ If you are looking for packages to be added to the community feed (aka https://c
 
 When it comes to community packages, we really want folks who are using the software to be package maintainers versus folks who may not be using the software. So when you are asking for other folks to add packages, please consider that it may be better for you to keep the package up to date than someone else who may not be invested in ensuring it stays updated.
 
+We now have an RFP/RFM (request for package/request for maintainership, respectively) process at [Chocolatey Package Requests (https://github.com/chocolatey/chocolatey-package-requests)](https://github.com/chocolatey/chocolatey-package-requests).
+
 ### Package is Broken?
 ![red ball failing testing verification](https://cloud.githubusercontent.com/assets/63502/12519534/1728a086-c105-11e5-9af7-96b188114ae7.png)
 
@@ -71,7 +73,7 @@ Be sure of four things:
 ![versions awaiting moderation](https://cloud.githubusercontent.com/assets/63502/12520149/7bb85aac-c108-11e5-983c-eef01448b00a.png)
 
 ## The Triage Process
-So a package needs fixed or updated. You have reached out to the maintainer or disqus already and are curious what the next steps are. We will elaborate on all of the steps here, including contacting the maintainers.
+So a package needs fixed or updated. You have reached out to the maintainer or Disqus already and are curious what the next steps are. We will elaborate on all of the steps here, including contacting the maintainers.
 
 1. The first step is to contact the maintainers. 
 1. If you are able to provide a fix, that's even better. Look for the maintainer's package source. Please look for package source url information on the package page.  
@@ -82,7 +84,7 @@ So a package needs fixed or updated. You have reached out to the maintainer or d
 1. If the maintainer(s) do[es] not respond within a few days, it's possible they haven't received your message or don't watch the repository. It's also possible they are on holiday. Use the contact site admins link to contact the site curators, who will attempt to triage the situation.   
 ![Contact admins link](https://cloud.githubusercontent.com/assets/63502/12520681/a8949c9a-c10b-11e5-84f5-ce4063249cab.png)
 1. If you don't hear anything back from the curators within 2 days (usually same day response), then you send a message to the Chocolatey google group (https://groups.google.com/group/chocolatey) and we work to contact the maintainers.
-1. If the maintainer(s) are unresponsive after a period of time (determined by the admins), the package is considered abandoned. The curators will TOS the package and new folks can be added as maintainers. The moderators will ask if you would like to become a maintainer of the package. If you choose to become a new maintainer, see the next section.
+1. If the maintainer(s) are unresponsive after a period of time (determined by the admins), the package is considered abandoned. The curators will TOS the package and new folks can be added as maintainers. The moderators will ask if you would like to become a maintainer of the package. If you choose to become a new maintainer, see the next section.  If you choose not to become a maintainer, please create a RFM (request for maintainership) issue at [Chocolatey Package Requests (https://github.com/chocolatey/chocolatey-package-requests)](https://github.com/chocolatey/chocolatey-package-requests).
 
 **NOTE**: We don't have non-maintainer uploads in the community feed and we haven't needed them yet.
 
