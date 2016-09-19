@@ -10,7 +10,7 @@ We're dubbing this the "Shhh! Keep that secret please" release. We've found that
 
 Perhaps the biggest improvement in this release is that Chocolatey will automatically look to see if it can download binaries over HTTPS when provided an HTTP url. If so, Chocolatey will switch to downloading the binaries over SSL. This provides better security in downloading and knowing you are getting the binary from the source location instead of a possible man in the middle location, especially when the package does not provide checksums for verification.
 
-Another improvement you may not even notice, but we think you will love is that Chocolatey now supports TLS v1.2 transport which presents a nice transparent increase in security. You will need to have at least .NET Framework 4.5 to take advantage of this feature.
+Another improvement you may not even notice, but we think you will love is that Chocolatey now supports TLS v1.2 transport which presents a nice transparent increase in security. You will need to have at least .NET Framework 4.5 installed to take advantage of this feature.
 
 ### FEATURES
 
