@@ -144,7 +144,7 @@ REM /disablepush
 * The name of the application in ketarin matches exactly that of the folder that is in the automatic packages folder.
 * Every once in awhile you want to look in Ketarin to see what jobs might be failing. Then figure out why.
 * Every once in awhile you will want to inspect the chocopkgupfolder to see if there are any packages that did not make it up for some reason or another and then upload them.
-* If the downloaded application/installer has not changed, the package will not be generated. Delete the files in the download location specified in ([*Ketarin*]#ketarin) and try again.
+* If the downloaded application/installer has not changed, the package will not be generated. Delete the files in the download location specified in [*Ketarin*](#ketarin) and try again.
 
 ### Important notes for files hosted on SourceForge
 Try this first:
