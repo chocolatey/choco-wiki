@@ -14,7 +14,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
    * Specify checksum and type - checksum will be verified against files/downloaded files.
 
 
- ## 1.6.3 (Sep 20, 2016)
+## 1.6.3 (Sep 20, 2016)
 
 ### BUG FIXES
 
