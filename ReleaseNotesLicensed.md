@@ -4,6 +4,35 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.7.0 (unreleased)
+
+### IMPROVEMENTS
+
+ * Package Builder (Choco New):
+   * `--build-package` to build a package after Package Builder creates the package all in one go.
+   * `--pause-on-error` to pause the output when there are errors for closer inspection (useful when run from a batch file).
+   * Specify checksum and type - checksum will be verified against files/downloaded files.
+
+
+ ## 1.6.3 (Sep 20, 2016)
+
+### BUG FIXES
+
+ * Require Chocolatey be upgraded to at least 0.10.1 due to internal incompatibilities that affect this extension.
+
+
+## 1.6.2 (Sep 19, 2016 - pulled)
+
+### BUG FIXES
+
+ * Recompiled to work with 0.10.1. There were some internal changes that appear to affect the virus scanner and PackageBuilder.
+
+### IMPROVEMENTS
+
+ * Install/upgrade - support MSP (patch files)
+ * PackageBuilder - support MSU/MSP files
+
+
 ## 1.6.1 (Sep 8, 2016)
 
 ### BUG FIXES
