@@ -4,7 +4,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
-## 1.7.0 (unreleased)
+## 1.7.0 (Sep 22, 2016)
 
 ### IMPROVEMENTS
 
