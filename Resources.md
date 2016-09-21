@@ -21,6 +21,7 @@
 #### September
 
 * http://www.winsysblog.com/2016/09/using-powershell-and-chocolatey-to.html
+* http://devopspecialist.co.uk/2016/09/21/a-big-bar-of-chocolatey/
 * http://devopspecialist.co.uk/2016/09/03/full-of-chocolatey-goodness/
 
 #### August
