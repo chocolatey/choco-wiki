@@ -109,6 +109,7 @@
 * http://xenappblog.com/2015/why-chocolatey-a-real-world-example/
 * http://xenappblog.com/2015/how-to-install-chocolatey-packages-offline/
 * http://xenappblog.com/2015/getting-started-with-chocolatey-and-boxstarter/
+* http://www.hanselman.com/blog/AptGetForWindowsOneGetAndChocolateyOnWindows10.aspx
 
 #### July
 
@@ -213,6 +214,14 @@
 
 * http://ferventcoder.com/archive/2013/06/01/chocolatey-official-public-feed-now-has-1000-stable-packages.aspx
 
+#### May
+
+* http://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx
+
+#### March
+
+* http://www.howtogeek.com/141783/how-to-bring-linux-style-apt-get-installations-to-windows-with-chocolatey/
+
 #### January
 
 * http://ferventcoder.com/archive/2013/01/03/chocolatey-automatic-packages.aspx
@@ -225,6 +234,7 @@
 
 #### September
 
+* http://www.developerfusion.com/article/145913/apt-windows-lets-get-chocolatey-part-2-multiple-installs-and-package-creation/
 * http://lifehacker.com/5942417/chocolatey-brings-lightning-quick-linux-style-package-management-to-windows
 
 #### May
@@ -234,9 +244,12 @@
 #### February 
 
 * http://ferventcoder.com/archive/2012/02/25/chocolatey---guidance-on-packaging-apps-with-both-an-install.aspx
+* http://www.powershellmagazine.com/2012/02/20/chocolatey-and-powershell-revolutionize-windows-part-ii/
+* http://www.powershellmagazine.com/2012/02/15/chocolatey-and-powershell-revolutionize-windows-part-i/
 
 #### January
 
+* http://www.developerfusion.com/article/137219/aptget-windows-lets-get-chocolatey-part-1/
 * http://ferventcoder.com/archive/2012/01/25/software-release-management---why-you-canrsquot-and-shouldnrsquot-force.aspx
 
 ### 2011
