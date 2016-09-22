@@ -6,6 +6,11 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 ## 1.7.0 (Sep 22, 2016)
 
+### BUG FIXES
+
+ * Package Internalizer (Choco Download) - ensure logging does not incur log format exceptions
+ * install/upgrade - Look for downloaded file at old path if replaced 'chocolatey\chocolatey' path does not exist - see [#969](https://github.com/chocolatey/choco/issues/969)
+
 ### IMPROVEMENTS
 
  * Package Builder (Choco New):
