@@ -34,9 +34,46 @@ This image shows running `choco new --file .\installers\1Password-4.6.0.598.exe`
 When running `choco new` in the Business editions, pass the following:
 
 ~~~sh
-     --file=VALUE
-     Inspect a file (installer) to determine everything and create a package.
-       Available in 0.9.10+. Business versions only.
+     --file, --url=VALUE
+     Inspect a file (native installer, zip, patch/upgrade file, or remote url
+       to download first) to to completely create a package with proper silent
+       arguments! Can be 32-bit or 64-bit architecture.  Available in Business
+       editions only (licensed version 1.4.0+, url/zip starting in 1.6.0). See
+       https://chocolatey.org/docs/features-create-packages-from-installers
+
+     --file64, --url64=VALUE
+     Optional - used when specifying both a 32-bit and a 64-bit file. Can be
+       an installer or a zip, or remote url to download. Available in Business
+       editions only (licensed version 1.6.0+).
+
+     --keepremote, --originallocation, --original-location, --useoriginallocation, --use-original-location, --useoriginalfileslocation, --use-original-files-location
+     Use Original Files Location - when using file or url, use the original
+       location in packaging. Available in Business editions only (licensed
+       version 1.6.0+).
+
+     --checksum, --downloadchecksum, --download-checksum=VALUE
+     Download Checksum - checksum to verify File/Url with. Defaults to empty.
+       Available in Business editions only (licensed version 1.7.0+).
+
+     --checksum64, --checksumx64, --downloadchecksumx64, --download-checksum-x64=VALUE
+     Download Checksum 64-bit - checksum to verify File64/Url64 with.
+       Defaults to empty. Available in Business editions only (licensed version
+       1.7.0+).
+
+     --checksumtype, --checksum-type, --downloadchecksumtype, --download-checksum-type=VALUE
+     Download Checksum Type - checksum type for File/Url (and optional
+       separate 64-bit files when specifying both). Used in conjunction with
+       Download Checksum and Download Checksum 64-bit. Available values are
+       'md5', 'sha1', 'sha256' or 'sha512'. Defaults to 'sha256'.  Available in
+       Business editions only (licensed version 1.7.0+).
+
+     --pauseonerror, --pause-on-error
+     Pause on Error - Pause when there is an error with creating the package.
+       Available in Business editions only (licensed version 1.7.0+).
+
+     --buildpackage, --build-package
+     Build Package - Attempt to compile the package after creating it.
+       Available in Business editions only (licensed version 1.7.0+).
 ~~~
 
 ## FAQ
