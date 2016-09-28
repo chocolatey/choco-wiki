@@ -38,8 +38,7 @@ When running `choco new` in the Business editions, pass the following:
      Inspect a file (native installer, zip, patch/upgrade file, or remote url
        to download first) to to completely create a package with proper silent
        arguments! Can be 32-bit or 64-bit architecture.  Available in Business
-       editions only (licensed version 1.4.0+, url/zip starting in 1.6.0). See
-       https://chocolatey.org/docs/features-create-packages-from-installers
+       editions only (licensed version 1.4.0+, url/zip starting in 1.6.0).
 
      --file64, --url64=VALUE
      Optional - used when specifying both a 32-bit and a 64-bit file. Can be
