@@ -100,7 +100,7 @@ Unfortunately, some installers out there are just a pain to work with. In the ca
 Unfortunately, it is not able to do this. See the [[automatic internalize and recompile packages feature|FeaturesAutomaticallyRecompilePackages]] to take advantage of thousands of existing packages without a need for internet access.
 
 ### Does it work with zip archive?
-Not currently, but archives are on the future enhancements list.
+Yes, but somewhat naively. It will generate the packaging to unpack the archive for both 7z and zip files.
 
 ### Does this work with keeping the installer on a UNC share or elsewhere yet?
-Not yet, but it's easy to edit the package once it has done all of the hard work for you.
+Yes, as of Licensed version v1.6.0+. Use `--use-original-location`.
