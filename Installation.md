@@ -183,7 +183,7 @@ You can also get to this file by going to [https://chocolatey.org/installchocola
 
 If you prefer to have the install.ps1 file already, comment out the download line in the batch file and download the [`install.ps1`](https://chocolatey.org/install.ps1) from [chocolatey.org](https://chocolatey.org/install.ps1) and save it as `install.ps1` next to the `installChocolatey.cmd` file.
 
-Run `installChocolatey.cmd` and it will install the latest version of Chocolatey.
+Run `installChocolatey.cmd` from an elevated `cmd.exe` command prompt and it will install the latest version of Chocolatey. You can not run this from `powershell.exe` without making changes to your execution policy.
 
 ### NuGet Package Manager Method
 
