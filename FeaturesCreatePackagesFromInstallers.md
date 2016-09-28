@@ -1,6 +1,6 @@
 # Package Builder - Create Packages Automatically From Installers (Business Editions Only)
 
-Creating packages is a pretty quick process as compared to manually installing software on multiple machines. There is still some time involved to create a package. Even the best packagers take between 5-10 minutes to create a package. Chocolatey can do the same in 5-10 seconds when pointed to native installers and zips! You can even point package builder to both a 32-bit and 64-bit url and seconds later you have a fully functioning package using all local/embedded resources!
+Creating packages is a pretty quick process as compared to manually installing software on multiple machines. There is still some time involved to create a package. Even the best packagers take between 5-10 minutes to create a package. Chocolatey's Package Builder creates high quality packages in 5-10 seconds when pointed to native installers and zips! You can even point package builder to both a 32-bit and 64-bit url and seconds later you have a fully functioning package using all local/embedded resources!
 
 Chocolatey for Business is able to inspect an installer and determine silent arguments and complete packaging components for you, saving you hours of time in packaging and maintaining software!
 
@@ -78,7 +78,7 @@ When running `choco new` in the Business editions, pass the following:
 
 ## FAQ
 
-### How do I take advantage of this feature?
+### How do I take advantage of Package Builder?
 You must have a [Business edition of Chocolatey](https://chocolatey.org/compare). Business editions are great for organizations that need to manage the total software management lifecycle.
 
 ### I'm a licensed customer, now what?
@@ -86,6 +86,10 @@ When you run `choco new`, you can add `--file` and point Chocolatey at the insta
 
 ### How does it work?
 It inspects the installer file using a series of rules that helps determine the installer type. From there it builds a package with the information it is able to extract from the installer.
+
+### What types of extensions are supported?
+
+Package Builder supports `.exe`, `.msi`, `.msu`, `.msp`, `.7z`, and `.zip`.
 
 ### Will it catch all types of installers?
 It is able to detect 12 types of installers currently.
