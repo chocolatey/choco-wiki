@@ -185,6 +185,8 @@ If you prefer to have the install.ps1 file already, comment out the download lin
 
 Run `installChocolatey.cmd` from an elevated `cmd.exe` command prompt and it will install the latest version of Chocolatey. You can not run this from `powershell.exe` without making changes to your execution policy.
 
+**NOTE**: To create and save a `.cmd` file, please use a text editor and nothing fancy like Microsoft Word or OneNote.
+
 ### NuGet Package Manager Method
 
 When you have Visual Studio 2010+ and the NuGet extension installed (pre-installed on any newer versions of Visual Studio), you can simply type the following three commands and you will have Chocolatey installed on your machine.
