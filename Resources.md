@@ -145,6 +145,7 @@
 #### December
 
 * http://www.jamessturtevant.com/posts/Chocolatey-And-Boxstarter/
+* https://souladin.wordpress.com/2014/12/05/bake-your-own-chocolatey-nuget-repository/
 
 #### November
 
