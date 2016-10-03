@@ -79,7 +79,7 @@ A lot of folks out there are always wanting to point out that there is Ninite wh
 * Chocolatey - Yes. Consider `choco upgrade all`/`cup all`.
 
 ## Conclusion
-Chocolatey internal use is the best solution for an organization that has a low tolerance for breakages. There are no issues, you have complete control and you are building on top of technologies you know with minimum learning for packaging. 
+Chocolatey internal use is the best solution for an organization that has a low tolerance for breakages. There are no issues, you have a secure solution with complete control. You are building on top of technologies you know with a small amount of learning for packaging. Because it is PowerShell, you are not limited to just installers, and you can add additional logic before and after installations, and you are not limited to just "intalling" software with packaging.
 
 Ninite is a solid solution if you don't mind not being able to script it and only install the applications that it has listed on the Ninite page. You are, however, guaranteed that you have everything you need to install sheerly by having the Ninite Installer. In that way it is better than Chocolatey community repository, which most packages require access to the internet to download installers that do not have distribution rights with them (Ninite may not incur this extra point of failure). Chocolatey community repository with Pro will have a lower chance of breakages thanks to a CDN of those downloads.
 
