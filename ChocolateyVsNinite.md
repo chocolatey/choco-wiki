@@ -67,7 +67,7 @@ A lot of folks out there are always wanting to point out that there is Ninite wh
 * Chocolatey (internal repositories) - Handled by you, embedding software or using internal links you control. Zero chance of breakages that you don't control.
 
 ### Package updates:
-* Both suffer from keeping packages up to date.
+* Ninite and Chocolatey community repository both can suffer from keeping packages up to date.
 * Chocolatey (internal use) - good to go
 
 ### Package dependencies:
