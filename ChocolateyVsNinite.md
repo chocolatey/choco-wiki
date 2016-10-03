@@ -76,7 +76,7 @@ A lot of folks out there are always wanting to point out that there is Ninite wh
 
 ### Versioning/upgrades:
 * Ninite - sort of, you just rerun the installer every once in awhile
-* Chocolatey - Yes. Consider 'cup all'.
+* Chocolatey - Yes. Consider `choco upgrade all`/`cup all`.
 
 ## Conclusion
 Chocolatey internal use is the best solution for an organization that has a low tolerance for breakages. There are no issues, you have complete control and you are building on top of technologies you know with minimum learning for packaging. 
