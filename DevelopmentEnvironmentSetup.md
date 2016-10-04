@@ -60,7 +60,7 @@ cinst nuget.commandline
 
 if (Install-NeededFor 'ruby / ruby devkit') {
   cinst ruby.devkit
-  cinst ruby -version 1.9.3.54500
+  cinst ruby --version 1.9.3.54500
 }
 
 # perform ruby updates and get gems
