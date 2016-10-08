@@ -18,6 +18,10 @@
 
 ### 2016
 
+#### October
+
+* https://marcinbojko.wordpress.com/2016/10/04/puppet-the-foreman-powershell-dsc-your-system-center-in-a-box/
+
 #### September
 
 * http://www.winsysblog.com/2016/09/using-powershell-and-chocolatey-to.html
