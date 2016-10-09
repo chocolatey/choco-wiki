@@ -20,7 +20,9 @@ Chocolatey has grown up quite a bit with the release of 0.9.9+ series and has be
 1. Requires administrative permission to add to the Machine PATH environment variable. This reduces escalation of privilege attacks.
 1. choco by default will stop and ask you to confirm before changing state of the system, showing you the script it wants to execute.
 1. choco.exe supports a `-whatif` scenario (aka `--noop`) to 0.9.9 so you can get a feel for what a package would do to your system.
-1. To reduce MITM (Man in the middle) attacks, package installs support [[checksums|HelpersInstallChocolateyPackage]], so that when downloading from a remote location, binaries are verified prior to acting on them. We're making steps to allow for [users to supply a runtime checksum as well](https://github.com/chocolatey/choco/issues/112).
+1. To reduce MITM (Man in the middle) attacks, package installs support [[checksums|HelpersInstallChocolateyPackage]], so that when downloading from a remote location, binaries are verified prior to acting on them. If the package downloads over non-secure urls/FTP, Chocolatey v0.10.0+ requires the package include checksums by default (can be overridden by the user).
+1. Starting with v0.10.0, users can supply a [runtime checksum](https://github.com/chocolatey/choco/issues/112) so they are not required to just trust what the package supplies (or in the case a package is missing one).
+1. Starting with v0.10.1, Chocolatey will detect whether an SSL download is available and automatically switch to that for more security.
 1. Choco will not allow you to push to the community feed without using SSL/TLS (HTTPS). This reduces DNS poisoning issues.
 1. When you host internal packages, those packages can embed software and/or point to internal shares. You are not subject to software distribution rights like the packages on the community feed, so you can create packages that are more reliable and secure. See [[What are Chocolatey Packages|GettingStarted#what-are-chocolatey-packages]] for more details.
 
@@ -28,7 +30,7 @@ Chocolatey has grown up quite a bit with the release of 0.9.9+ series and has be
 
 The binary `choco.exe` can be trusted (at least as far as you trust the Chocolatey maintainers and RealDimensions Software, LLC).
 
-*  **Starting with 0.9.10.0** (still in beta as of May 2016), both the binaries and the PowerShell scripts are Authenticode signed. This certificate is only held by the lead Chocolatey maintainer (Rob). This provides quite a bit of trust that you are getting Chocolatey from the source and as intended.
+*  **Starting with 0.9.10.0**, both the binaries and the PowerShell scripts are Authenticode signed. This certificate is only held by the lead Chocolatey maintainer (Rob). This provides quite a bit of trust that you are getting Chocolatey from the source and as intended.
 
 Using PowerShell, you can verify the binary (the path below is the default install location, adjust if necessary).
 
