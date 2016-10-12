@@ -68,6 +68,7 @@ Is your package unqualified for the Chocolatey feed, but you like to be able to 
 * **Do not save your `*.nuspec` files with a Byte Order Mark (BOM)**. A `BOM` is neither required nor recommended for `UTF-8`, because it can lead to several issues.
 * **PowerShell scripts need to be saved in UTF-8 with `BOM`**. PowerShell is ignoring the standards and needs a `BOM` in order to recognize scripts as `UTF-8`. Otherwise it processes non `ASCII` characters incorrectly.
 * Don’t use the default Windows Editor. In addition to its lack of features, it can’t even save `UTF-8` files without `BOM`. Alternatives:
+    * [Visual Studio Code](https://chocolatey.org/packages/VisualStudioCode)
     * [Notepad++](http://chocolatey.org/packages/notepadplusplus)
     * [Geany](http://chocolatey.org/packages/geany)
 * Use this **XML declaration**: `<?xml version="1.0" encoding="utf-8"?>`.
