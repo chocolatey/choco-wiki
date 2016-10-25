@@ -21,6 +21,7 @@
 * [Tutorial: Usando o Chocolatey (apt-get/yum para Windows) - Carlos Alberto Castelo Elias Filho (Espanol)](https://www.youtube.com/watch?v=OWgADNDHJzg) - June 29, 2015
 * devGeeK - [MongoDb Tutorial (Shoutout)](https://www.youtube.com/watch?v=W-WihPoEbR4&feature=youtu.be&t=48m45s) - June 17, 2015
 * GEEKBLOGTV - [Chocolatey](https://www.youtube.com/watch?v=nH6jRB5kigc) - May 18, 2015
+* Docker - [Installing Docker Client for Windows from Chocolatey](https://www.youtube.com/watch?v=l026hqjhLRU) - April 1, 2015
 * PhillyPoSH - [PhillyPoSH 3/5/2015 - Derek Murawsky : Introducing Chocolatey](https://www.youtube.com/watch?v=LqyHyoa_F1c) - March 5, 2015
 * DevOpsLibrary - [DevOpsLibrary Episode 6: Salted Chocolatey Windows](https://www.youtube.com/watch?v=WYxXUQCTVWw) - February 24, 2015
 
