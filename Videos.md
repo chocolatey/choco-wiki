@@ -21,15 +21,24 @@
 * GEEKBLOGTV - [Chocolatey](https://www.youtube.com/watch?v=nH6jRB5kigc) - May 18, 2015
 
 ### 2014
-* FOSDEM 2014 - [Is Distribution-Level Package Management Obsolete?](https://www.youtube.com/watch?v=FENKd8NT9cY&t=28m19s) / [Slides](http://www.slideshare.net/dberkholz/is-distributionlevel-package-management-obsolete/18) - If you go to 24m 56s, Donnie talks about how painful packaging is for folks across different platforms - Feb 11, 2014
+* [The Chocolatey Experience](https://vimeo.com/108866814) - October 14, 2014
+* [The New Chocolatey](https://www.youtube.com/watch?v=sm_U53sxt2c) - September 29, 2014
+
 
 ### 2013
-* [Chocolatey Introduction - Joe Maddalone](https://www.youtube.com/watch?v=yBk9DuAHNuc)
+* [Chocolatey Introduction - Joe Maddalone](https://www.youtube.com/watch?v=yBk9DuAHNuc) - June 8, 2013
 
 ### 2012
-* LifeHacker - [Using the Chocolatey Command Line Package Manager in Windows](https://www.youtube.com/watch?v=ArwT8DtK7Cc)
+* LifeHacker - [Using the Chocolatey Command Line Package Manager in Windows](https://www.youtube.com/watch?v=ArwT8DtK7Cc) - September 11, 2012
+
+### 2011
+* [Create a Chocolatey NuGet Package](https://www.youtube.com/watch?v=Wt_unjS_SUo) - April 26, 2011
+* [Chocolatey NuGet - The Power of apt-get for Windows](https://www.youtube.com/watch?v=N-hWOUL8roU) - April 26, 2011
 
 ## Conferences
+### 2016
+* PuppetConf 2016 - Easily Manage Software on Windows with Chocolatey - Rob Reynolds, October 21, 2016
+
 ### 2015
 
 * USENIX LISA15 - [Windows Just Got Chocolatey (Package Management)](http://usenix.org/conference/lisa15/conference-program/presentation/reynolds) - Rob Reynolds, November 12, 2015
@@ -38,6 +47,7 @@
 
 ### 2014
 * PuppetConf 2014 - [Plugging Chocolatey into Your Puppet Infrastructure](https://www.youtube.com/watch?v=cZl_wKSciVk) - Rob Reynolds, September 23, 2014
+* FOSDEM 2014 - [Is Distribution-Level Package Management Obsolete?](https://www.youtube.com/watch?v=FENKd8NT9cY&t=28m19s) / [Slides](http://www.slideshare.net/dberkholz/is-distributionlevel-package-management-obsolete/18) - If you go to 24m 56s, Donnie talks about how painful packaging is for folks across different platforms - Feb 11, 2014
 
 ### 2013
 * PuppetConf 2013 - [Puppet on Windows: Now You're Getting Chocolatey](https://www.youtube.com/watch?v=Im30wziOrBs) - Rob Reynolds, August 23, 2013
