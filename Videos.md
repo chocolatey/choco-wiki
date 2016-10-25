@@ -36,4 +36,5 @@
 ### 2013
 * PuppetConf 2013 - [Puppet on Windows: Now You're Getting Chocolatey](https://www.youtube.com/watch?v=Im30wziOrBs) - Rob Reynolds, August 23, 2013
 
-
+### 2012
+* LifeHacker - [Using the Chocolatey Command Line Package Manager in Windows](https://www.youtube.com/watch?v=ArwT8DtK7Cc)
