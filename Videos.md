@@ -15,8 +15,8 @@
 ### 2015
 
 * [Installing applications in Windows 8.1 with Chocolatey - JGAITPro (Espanol)](https://www.youtube.com/watch?v=aid3ptjLlIk) - December 14, 2015
-* ArrestedDevOps - [Chocolatey Goodness With Rob Reynolds](https://www.arresteddevops.com/chocolatey/)
-* ArrestedDevOps - [Switching Teams: From Linux To Windows And Windows To Linux](https://www.arresteddevops.com/os-switching/) - December, 2015
+* ArrestedDevOps - [Chocolatey Goodness With Rob Reynolds](https://www.arresteddevops.com/chocolatey/) - December 2015
+* ArrestedDevOps - [Switching Teams: From Linux To Windows And Windows To Linux](https://www.arresteddevops.com/os-switching/) - December 2015
 * GoogleChromeDevelopers - [Totally Tooling Tips: Windows Command-line Tooling](https://www.youtube.com/watch?v=msCUKTdBzg4&t=4m19s) - November 11, 2015
 * devGeeK - [MongoDb Tutorial (Shoutout)](https://www.youtube.com/watch?v=W-WihPoEbR4&feature=youtu.be&t=48m45s) - June 17, 2015
 * GEEKBLOGTV - [Chocolatey](https://www.youtube.com/watch?v=nH6jRB5kigc) - May 18, 2015
