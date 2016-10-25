@@ -23,6 +23,12 @@
 ### 2014
 * FOSDEM 2014 - [Is Distribution-Level Package Management Obsolete?](https://www.youtube.com/watch?v=FENKd8NT9cY&t=28m19s) / [Slides](http://www.slideshare.net/dberkholz/is-distributionlevel-package-management-obsolete/18) - If you go to 24m 56s, Donnie talks about how painful packaging is for folks across different platforms - Feb 11, 2014
 
+### 2013
+* [Chocolatey Introduction - Joe Maddalone](https://www.youtube.com/watch?v=yBk9DuAHNuc)
+
+### 2012
+* LifeHacker - [Using the Chocolatey Command Line Package Manager in Windows](https://www.youtube.com/watch?v=ArwT8DtK7Cc)
+
 ## Conferences
 ### 2015
 
@@ -35,6 +41,3 @@
 
 ### 2013
 * PuppetConf 2013 - [Puppet on Windows: Now You're Getting Chocolatey](https://www.youtube.com/watch?v=Im30wziOrBs) - Rob Reynolds, August 23, 2013
-
-### 2012
-* LifeHacker - [Using the Chocolatey Command Line Package Manager in Windows](https://www.youtube.com/watch?v=ArwT8DtK7Cc)
