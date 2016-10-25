@@ -18,12 +18,14 @@
 * ArrestedDevOps - [Chocolatey Goodness With Rob Reynolds](https://www.arresteddevops.com/chocolatey/) - December 2015
 * ArrestedDevOps - [Switching Teams: From Linux To Windows And Windows To Linux](https://www.arresteddevops.com/os-switching/) - December 2015
 * GoogleChromeDevelopers - [Totally Tooling Tips: Windows Command-line Tooling](https://www.youtube.com/watch?v=msCUKTdBzg4&t=4m19s) - November 11, 2015
+* [Tutorial: Usando o Chocolatey (apt-get/yum para Windows) - Carlos Alberto Castelo Elias Filho (Espanol)](https://www.youtube.com/watch?v=OWgADNDHJzg) - June 29, 2015
 * devGeeK - [MongoDb Tutorial (Shoutout)](https://www.youtube.com/watch?v=W-WihPoEbR4&feature=youtu.be&t=48m45s) - June 17, 2015
 * GEEKBLOGTV - [Chocolatey](https://www.youtube.com/watch?v=nH6jRB5kigc) - May 18, 2015
 * PhillyPoSH - [PhillyPoSH 3/5/2015 - Derek Murawsky : Introducing Chocolatey](https://www.youtube.com/watch?v=LqyHyoa_F1c) - March 5, 2015
 * DevOpsLibrary - [DevOpsLibrary Episode 6: Salted Chocolatey Windows](https://www.youtube.com/watch?v=WYxXUQCTVWw) - February 24, 2015
 
 ### 2014
+* [How to use Chocolatey - a Simple and Cool Machine Package Manager - 000abcdexxx Google](https://www.youtube.com/watch?v=nh3lPZssp7s) - November 1, 2014
 * [The Chocolatey Experience](https://vimeo.com/108866814) - October 14, 2014
 * [The New Chocolatey](https://www.youtube.com/watch?v=sm_U53sxt2c) - September 29, 2014
 
