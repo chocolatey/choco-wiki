@@ -20,6 +20,7 @@
 
 #### October
 
+* https://rnelson0.com/2016/10/26/puppetconf-2016-wrap-up/ (Mention of Chocolatey presentation in Day 2)
 * https://marcinbojko.wordpress.com/2016/10/04/puppet-the-foreman-powershell-dsc-your-system-center-in-a-box/
 
 #### September
