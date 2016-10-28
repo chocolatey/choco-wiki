@@ -53,7 +53,7 @@ A lot of folks out there are always wanting to point out that there is Ninite wh
 
 ### Package sources:
 * Ninite - one at Ninite.com
-* Chocolatey - central one at https://chocolatey.org/packaes, create and use public/private sources (folder, network share, OData feed like nuget.org, [chocolatey.org] and/or myget.org)
+* Chocolatey - central one at https://chocolatey.org/packages, create and use public/private sources (folder, network share, OData feed like nuget.org, [chocolatey.org] and/or myget.org)
 * Chocolatey (revisited) - choco install bash --source cygwin | choco isntall gemcutter --source ruby | choco install sphynx --source python | choco install IISExpress --source webpi
 
 ### Creating packages:
