@@ -1,6 +1,6 @@
 # Create Your Own Custom Extensions
 
-For years Chocolatey has allowed you to extend Chocolatey with your own PowerShell modules and functions. This is called extensions.
+For years Chocolatey has allowed you to extend Chocolatey with your own PowerShell modules and functions. These are known as extensions.
 
 ## Overview
 
@@ -28,11 +28,11 @@ Yes, it is really that easy. Enjoy!
 
 ### Naming Your Extension
 
-Avoid "Chocolatey" as part of the name. Yes the example is named that, but the extension is owned by the Core Chocolatey team, so it makes sense for that to be the name.
+Avoid "Chocolatey" as part of the name. Yes the example is named that, but this extension is owned by the Core Chocolatey team, so it makes sense for that to be the name.
 
 ### PowerShell Modules
 
-* The recommendation is typically as few PowerShell modules as possible in an extension, just enough to represent what that extension does. The best extensions are
+* The recommendation is typically as few PowerShell modules as possible in an extension, just enough to represent what that extension does. Strive for one module per extension package, although that may not be realistic.
 * The module should explicitly export the functions, aliases, and cmdlets that are wanted to be used in Chocolatey automation scripts.
 
 ### Taking a Dependency on an Extension Package
