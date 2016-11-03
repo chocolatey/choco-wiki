@@ -25,6 +25,8 @@
  - [[Install Directory Override|FeaturesInstallDirectoryOverride]]
  - [[Infrastructure Automation Integration|FeaturesInfrastructureAutomation]]
  - [[Automatically Add exes to PATH w/out Clutter (shims)|FeaturesShim]]
+ - [[Create Custom Package Templates|How-To-Create-Custom-Package-Templates]]
+ - [[Extend Chocolatey With PowerShell Modules (extensions)|How-To-Create-Extensions]]
  - In progress, check back for updates!
 
 **Usage**
@@ -84,6 +86,7 @@
  - [[Change Download Cache Location aka Don't use TEMP for downloads|How-To-Change-Cache]]
  - [[Install/Upgrade a Package w/out running install scripts|How-To-Install-Upgrade-Package-Without-Scripts]]
  - [[Create Custom Package Templates|How-To-Create-Custom-Package-Templates]]
+ - [[Extend Chocolatey With PowerShell Modules (extensions)|How-To-Create-Extensions]]
  - [[Request Package Fixes/Updates|PackageTriageProcess]]
  - [[Manually Recompile Packages, Embedding/Internalizing Remote Resources|How-To-Recompile-Packages]]
  - [[Request Package|PackageTriageProcess]]
