@@ -91,6 +91,19 @@ $packageArgs = @{
 Install-ChocolateyInstallPackage @packageArgs
 ~~~
 
+### Manage as Templates as Packages
+
+If you have Chocolatey v0.9.10+, then you can manage templates as packages themselves, allowing you to upgrade a template when a new version is available. When it comes to packaging templates, Chocolatey takes a conventional approach. You must create a package with the suffix ".template" and have a templates folder.
+
+To manage a template as a package, create a new package with the name "templatename.template". The name of the package minus the ".template" will be the name of the template.
+
+Then create a templates folder. This is where the template goes. the only thing to remember is that the nuspec file created here must end in ".template" as a Chocolatey package allows only one nuspec file.
+
+Here's an example: https://chocolatey.org/packages/zip.template. The source is at https://github.com/ferventcoder/chocolatey-packages/tree/master/manual/zip.template
+
+Yes, it is really that easy. Enjoy!
+
+
 ### Extending Templates
 
 Walmart has a really good post on extending package templates. You can read that at https://puppet.com/blog/extending-chocolatey-packaging-walmart
@@ -98,5 +111,4 @@ Walmart has a really good post on extending package templates. You can read that
 ### Are There Planned Enhancements?
 
 * List Template names - https://github.com/chocolatey/choco/issues/449
-* Manage templates with Chocolatey - https://github.com/chocolatey/choco/issues/542 - DONE in 0.9.10 (beta available)
 * Arbitrary key/value pairs - https://github.com/chocolatey/choco/issues/658 - DONE in 0.9.10 (beta available)
