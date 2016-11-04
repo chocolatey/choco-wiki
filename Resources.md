@@ -55,6 +55,7 @@
 * http://blog.myget.org/post/2016/05/26/Using-build-services-to-create-Chocolatey-packages.aspx
 * http://taucetisoft.es/2016/05/19/un-gestor-de-paquetes-para-windows/
 * https://puppet.com/blog/extending-chocolatey-packaging-walmart
+* http://hemanshubhojak.com/2016/05/11/settingup-docker-windows-chocolatey.html
 * http://powershell.org/wp/2016/05/11/episode-313-powerscripting-podcast-rob-reynolds-on-chocolatey/
 
 #### April
@@ -79,6 +80,7 @@
 
 * https://puppet.com/blog/chocolatey-creating-your-own-chocolatey-packages
 * http://www.jamessturtevant.com/posts/How-to-install-elixir-using-chocolatey-on-windows/
+* https://stefanscherer.github.io/get-started-with-docker-on-windows-using-chocolatey/
 * http://codebetter.com/robreynolds/2016/01/16/chocolatey-community-update/
 * https://puppet.com/blog/chocolatey-hosting-your-own-server
 
