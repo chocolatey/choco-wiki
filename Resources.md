@@ -246,6 +246,10 @@
 * http://www.developerfusion.com/article/145913/apt-windows-lets-get-chocolatey-part-2-multiple-installs-and-package-creation/
 * http://lifehacker.com/5942417/chocolatey-brings-lightning-quick-linux-style-package-management-to-windows
 
+#### July
+
+* https://www.topbug.net/blog/2012/07/02/a-simple-tutorial-create-and-publish-chocolatey-packages/
+
 #### May
 
 * http://www.kongsli.net/2012/05/07/running-chocolatey-behind-an-authenticating-firewall/
