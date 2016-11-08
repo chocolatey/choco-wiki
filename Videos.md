@@ -43,7 +43,7 @@
 
 ## Conferences
 ### 2016
-* PuppetConf 2016 - Easily Manage Software on Windows with Chocolatey - Rob Reynolds, October 21, 2016
+* PuppetConf 2016 - [Easily Manage Software on Windows with Chocolatey](https://www.youtube.com/watch?v=K5jq35wezHI) - Rob Reynolds, October 21, 2016
 
 ### 2015
 
