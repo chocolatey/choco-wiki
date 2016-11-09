@@ -7,6 +7,8 @@ To install chocolatey now, open an <strong>administrative</strong> command promp
 
 **NOTE:** Please inspect [https://chocolatey.org/install.ps1](https://chocolatey.org/install.ps1) prior to running any of these scripts to ensure safety. We already know it's safe, but you should also be comfortable before running ***any*** script from the internet you are not familiar with. All of these scripts download a remote PowerShell script and execute it on your machine.
 
+**NOTE:** If your server is restricted to TLS 1.1+, you need to add additional logic to be able to download and install Chocolatey (this is not necessary when running Chocolatey as it does this automatically). If this is for organizational use, you should consider hosting Chocolatey internally and installing from there. Otherwise, please see the [TLS1.1+ section](#installing-with-restricted-tls)
+
 * Cmd.exe - <button class="icon-clipboard copy-button" data-clipboard-text="@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;"></button>
 
 ~~~sh
@@ -34,6 +36,50 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 The easiest option to remember is this one. You may not need `-UseBasicParsing`.
 
 What are these scripts doing? `iwr` (`Invoke-WebRequest`)/`WebClient.DownloadString` downloads the install script and passes it to `iex` (`Invoke-Expression`) to execute the contents of the script. This runs the installation script for Chocolatey. 
+
+### Installing With Restricted TLS
+
+If you see an error that looks similar to the following:
+
+~~~sh
+Exception calling "DownloadString" with "1" argument(s): "The underlying connection was closed: An unexpected error
+occurred on a receive."
+At line:1 char:1
++ iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/in ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : WebException
+~~~
+
+It's possible that you are attempting to install from a server that needs to use TLS 1.1 or TLS 1.2, you have some options.
+
+#### Option 1 
+If you have the following:
+
+* PowerShell v3+
+* .NET Framework 4.5
+
+You can just run the following instead of just the one-liner to get Chocolatey installed: 
+
+~~~powershell
+$securityProtocolSettingsOriginal = [System.Net.ServicePointManager]::SecurityProtocol
+
+try {
+  # This should work in .NET 4 where .NET 4.5 is installed as an in place upgrade
+  # Set TLS 1.2 (3072), then TLS 1.1 (768), then TLS 1.0 (192), finally SSL 3.0 (48)
+  $securityProtocolSettings = 3072 -bor 768 -bor 192 -bor 48 
+  [System.Net.ServicePointManager]::SecurityProtocol = $securityProtocolSettings
+} catch {
+  Write-Warning "Unable to set PowerShell to use TLS 1.2 and TLS 1.1 due to old .NET Framework installed. Please upgrade to at least .NET Framework 4.5 and PowerShell v3 for this to work appropriately."
+}
+
+iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+[System.Net.ServicePointManager]::SecurityProtocol = $securityProtocolSettingsOriginal
+~~~
+
+#### Option 2 
+You need to download and unzip the Chocolatey package, then call the PowerShell install script from there. See [Download + PowerShell Method](#download--powershell-method)
 
 ### Installing Behind a Proxy?
 
@@ -223,16 +269,14 @@ You can also just download and unzip the Chocolatey package (`.nupkg` is a fancy
 
 ## Upgrading Chocolatey
 
-Once installed, Chocolatey can be upgraded in exactly the same way as any other package that has been installed using Chocolatey.  Simply use the command:
+Once installed, Chocolatey can be upgraded in exactly the same way as any other package that has been installed using Chocolatey.  Simply use the command to install the latest stable release of Chocolatey:
 
 ~~~
 choco upgrade chocolatey
 ~~~
 
-to install the latest release of Chocolatey, and:
+OR to install the absolute latest version including possible pre-releases of Chocolatey:
 
 ~~~
 choco upgrade chocolatey -pre
 ~~~
-
-to install the latest pre-release version of Chocolatey.
