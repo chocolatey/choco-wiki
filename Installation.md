@@ -260,6 +260,7 @@ You can also just download and unzip the Chocolatey package (`.nupkg` is a fancy
  1. Open a PowerShell command shell and navigate into the unzipped package's tools folder.
  1. **NOTE**: Ensure PowerShell execution policy is set to at least bypass or remote signed (if you have issues, you may need to set it to Unrestricted).
  1. Call `& .\chocolateyInstall.ps1` to allow Chocolatey to install.
+ 1. **NOTE**: This will not set Chocolatey as an installed package, so it may be a good idea to also call `choco upgrade chocolatey -y` and let it reinstall the same version, but at least it will be available for upgrades then.
 
 
 <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.10/dist/clipboard.min.js"></script>
