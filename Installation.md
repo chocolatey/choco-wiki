@@ -79,7 +79,7 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/in
 ~~~
 
 #### Option 2 
-You need to download and unzip the Chocolatey package, then call the PowerShell install script from there. See [Download + PowerShell Method](#download--powershell-method)
+You need to download and unzip the Chocolatey package, then call the PowerShell install script from there. See the [Download + PowerShell Method](#download--powershell-method) section below.
 
 ### Installing Behind a Proxy?
 
