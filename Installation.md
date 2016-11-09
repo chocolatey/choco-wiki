@@ -51,7 +51,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : WebException
 ~~~
 
-It's possible that you are attempting to install from a server that needs to use TLS 1.1 or TLS 1.2, you have some options.
+It's possible that you are attempting to install from a server that needs to use TLS 1.1 or TLS 1.2 (has restricted the use of TLS 1.0 and SSL v3), you have some options.
 
 #### Option 1 
 If you have the following:
