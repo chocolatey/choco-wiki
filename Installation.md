@@ -65,10 +65,11 @@ You can just run the following instead of just the one-liner to get Chocolatey i
 $securityProtocolSettingsOriginal = [System.Net.ServicePointManager]::SecurityProtocol
 
 try {
-  # This should work in .NET 4 where .NET 4.5 is installed as an in place upgrade
   # Set TLS 1.2 (3072), then TLS 1.1 (768), then TLS 1.0 (192), finally SSL 3.0 (48)
-  $securityProtocolSettings = 3072 -bor 768 -bor 192 -bor 48 
-  [System.Net.ServicePointManager]::SecurityProtocol = $securityProtocolSettings
+  # Use integers because the enumeration values for TLS 1.2 and TLS 1.1 won't
+  # exist in .NET 4.0, even though they are addressable if .NET 4.5+ is
+  # installed (.NET 4.5 is an in-place upgrade).
+  [System.Net.ServicePointManager]::SecurityProtocol = 3072 -bor 768 -bor 192 -bor 48 
 } catch {
   Write-Warning "Unable to set PowerShell to use TLS 1.2 and TLS 1.1 due to old .NET Framework installed. Please upgrade to at least .NET Framework 4.5 and PowerShell v3 for this to work appropriately."
 }
