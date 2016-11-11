@@ -121,7 +121,8 @@ Great question - [[Why does Chocolatey install where it does|DefaultChocolateyIn
 #### Can I install Chocolatey to another location?
 Yes! 
 
-1. Create a __machine__ level (__user__ level will also work) environment variable named ```ChocolateyInstall``` and set it to the folder you want Chocolatey to install to prior to installation (this environment variable must be set globally or available to PowerShell- it is not enough to simply make it available to your current command prompt session).  Keep in mind the [[restrictions|DefaultChocolateyInstallReasoning]] though!
+1. Create a __machine__ level (__user__ level will also work) environment variable named ```ChocolateyInstall``` and set it to the folder you want Chocolatey to install to prior to installation (this environment variable must be set globally or available to PowerShell- it is not enough to simply make it available to your current command prompt session).  
+1. Don't use `"C:\Chocolatey"` unless necessary. 
 1. Create the folder manually.
 1. If you have already installed (and want to change the location after the fact):
   * Follow the above steps.
