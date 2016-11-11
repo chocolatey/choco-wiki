@@ -128,6 +128,8 @@ Great question - [[Why does Chocolatey install where it does|DefaultChocolateyIn
   * Copy/Move over the items from the old lib/bin directory.
   * Delete your old install directory.
 
+**NOTE**: There is one really important consideration when installing Chocolatey to a non-default location - Chocolatey only locks down the permissions to Admins when installed to the default location. If you are installing to another location, you will need to handle this yourself. This is due to alternative locations could have a range of permissions that should not be changed - see https://github.com/chocolatey/choco/issues/398 for more details.
+
 **Can I install with a proxy?** Yes
 
 Chocolatey will detect and use a system set proxy. However some proxies will need to be set explicitly. To do so, you would do similar to [[Proxy settings for Chocolatey|Proxy-Settings-for-Chocolatey]]
