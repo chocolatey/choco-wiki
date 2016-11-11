@@ -118,7 +118,8 @@ That's it! All you need is choco.exe (that you get from the installation scripts
 Great question - [[Why does Chocolatey install where it does|DefaultChocolateyInstallReasoning]]
 
 ## Before You Install
-**Can I install Chocolatey to another location?** Yes
+#### Can I install Chocolatey to another location?
+Yes! 
 
 1. Create a __machine__ level (__user__ level will also work) environment variable named ```ChocolateyInstall``` and set it to the folder you want Chocolatey to install to prior to installation (this environment variable must be set globally or available to PowerShell- it is not enough to simply make it available to your current command prompt session).  Keep in mind the [[restrictions|DefaultChocolateyInstallReasoning]] though!
 1. Create the folder manually.
@@ -130,7 +131,8 @@ Great question - [[Why does Chocolatey install where it does|DefaultChocolateyIn
 
 **NOTE**: There is one really important consideration when installing Chocolatey to a non-default location - Chocolatey only locks down the permissions to Admins when installed to the default location. If you are installing to another location, you will need to handle this yourself. This is due to alternative locations could have a range of permissions that should not be changed - see https://github.com/chocolatey/choco/issues/398 for more details.
 
-**Can I install with a proxy?** Yes
+#### Can I install with a proxy?
+You bet.
 
 Chocolatey will detect and use a system set proxy. However some proxies will need to be set explicitly. To do so, you would do similar to [[Proxy settings for Chocolatey|Proxy-Settings-for-Chocolatey]]
 
@@ -151,7 +153,8 @@ $env:chocolateyProxyLocation = 'https://local/proxy/server'
 
 **NOTE:** This will only work with the installation methods that call https://chocolatey.org/install.ps1 as part of the install.
 
-**Can I install a particular version of Chocolatey?** Yes
+#### Can I install a particular version of Chocolatey?
+Sure.
 
 Set the following environment variable prior to install:
 
@@ -166,7 +169,8 @@ $env:chocolateyVersion = '0.9.9.12'
 
 **NOTE:** This will only work with the installation methods that call https://chocolatey.org/install.ps1 as part of the install.
 
-**Can I use Windows built-in compression instead of downloading 7zip?** Yes
+#### Can I use Windows built-in compression instead of downloading 7zip?
+Yes.
 
 Set the following environment variable prior to install:
 
