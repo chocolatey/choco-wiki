@@ -17,9 +17,9 @@
 
 **Features**
 
- - [[Synchronize with Programs and Features|FeaturesSynchronize]]
- - [[Create Packages Automatically from Installers!|FeaturesCreatePackagesFromInstallers]]
- - [[Automatically Internalize Existing Packages (Recompile)!|FeaturesAutomaticallyRecompilePackages]]
+ - [[Package Synchronizer - Sync with Programs and Features|FeaturesSynchronize]]
+ - [[Package Builder - Create Packages Automatically from Installers!|FeaturesCreatePackagesFromInstallers]]
+ - [[Package Internalizer - Automatically Internalize Existing Packages (Recompile)!|FeaturesAutomaticallyRecompilePackages]]
  - [[Runtime Malware Protection|FeaturesVirusCheck]]
  - [[Private CDN Cache|FeaturesPrivateCdn]]
  - [[Install Directory Override|FeaturesInstallDirectoryOverride]]
