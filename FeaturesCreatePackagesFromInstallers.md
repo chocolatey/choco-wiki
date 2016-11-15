@@ -33,7 +33,7 @@ This image shows running `choco new --file .\installers\1Password-4.6.0.598.exe`
 
 ### Package Builder CLI and Scripts
 
-We've prepared a short video going over the concepts (click on the image below):
+We've prepared a short video going over the concepts:
 [![Chocolatey's Package Builder - Package Builder CLI and Scripting](https://cloud.githubusercontent.com/assets/63502/20327872/b0caf0d8-ab54-11e6-8c40-8bdeeb8eb13c.png)](https://www.youtube.com/watch?v=6TXY5Ie-3wg&list=PLfn-TaDnc1us5X-PVlxW8M1h-6mXEXZSG&index=1 "Chocolatey's Package Builder - Package Builder CLI and Scripting")
 
 Quickly script out creating packages for your entire organization's cache of software, allowing you to completely automate your Windows installations in moments, not months. You can do that with a simple script:
@@ -56,14 +56,13 @@ Get-ChildItem -Path $path -Recurse | ?{
 Not every person is going to love the command line or may not be familiar with the command line and at Chocolatey we realize this. We've spent countless hours talking to customers and with their feedback we're introducing Package Builder UI. This also gives you an opportunity to transition from existing UI tools while taking advantage of powerful Chocolatey concepts!
 
 
-
-We've prepared a short video to show the power of the UI (click the image to see the video):
-[![Chocolatey's Package Builder - Package Builder UI](https://img.youtube.com/vi/qJNKR_PEQqY/0.jpg)](https://www.youtube.com/watch?v=qJNKR_PEQqY&list=PLfn-TaDnc1us5X-PVlxW8M1h-6mXEXZSG&index=2 "Chocolatey's Package Builder - Package Builder UI")
+We've prepared a short video to show the power of the UI:
+[![Chocolatey's Package Builder - Package Builder UI](https://cloud.githubusercontent.com/assets/63502/20327926/f54ac81e-ab54-11e6-9cb1-60df170c338e.png)](https://www.youtube.com/watch?v=qJNKR_PEQqY&list=PLfn-TaDnc1us5X-PVlxW8M1h-6mXEXZSG&index=2 "Chocolatey's Package Builder - Package Builder UI")
 
 ### Generate Packages from Programs and Features
 Another way Package Builder can generate packages is based on looking at what is installed on a system in Programs and Features. This gives you lightning quick ramp up time in both package and automating your Windows software installations!
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Mw_ReipnskI" frameborder="0" allowfullscreen></iframe>
+[![Chocolatey's Package Builder - Generate Packages from Programs and Features Automatically!](https://cloud.githubusercontent.com/assets/63502/20327972/46c8ff3a-ab55-11e6-9c03-32b0f83540bb.png)](https://www.youtube.com/watch?v=Mw_ReipnskI&list=PLfn-TaDnc1us5X-PVlxW8M1h-6mXEXZSG&index=3 "Chocolatey's Package Builder - Generate Packages from Programs and Features Automatically!")
 
 ## Options and Switches
 
