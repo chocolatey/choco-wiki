@@ -1,5 +1,7 @@
 # Package Builder - Create Packages Automatically From Installers (Business Editions Only)
 
+> Chocolatey's Package Builder allows you to create fully ready to go software deployments for Windows in 5-10 seconds! There is nothing faster than Chocolatey when it comes to preparing software for an unattended deployment across your organization.
+
 Creating packages is a pretty quick process as compared to manually installing software on multiple machines. There is still some time involved to create a package. Even the best packagers take between 5-10 minutes to create a package. Chocolatey's Package Builder creates high quality packages in 5-10 seconds when pointed to native installers and zips! You can even point package builder to both a 32-bit and 64-bit url and seconds later you have a fully functioning package using all local/embedded resources!
 
 Chocolatey for Business is able to inspect an installer and determine silent arguments and complete packaging components for you, saving you hours of time in packaging and maintaining software!
@@ -28,6 +30,36 @@ This image shows running `choco new --file .\installers\1Password-4.6.0.598.exe`
 ## See It In Action
 
 ![auto package creation/synchronize](images/gifs/choco_business_features.gif)
+
+### Package Builder CLI and Scripts
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6TXY5Ie-3wg" frameborder="0" allowfullscreen></iframe>
+
+Quickly script out creating packages for your entire organization's cache of software, allowing you to completely automate your Windows installations in moments, not months. You can do that with a simple script:
+
+~~~powershell
+$path = '\\company.file.server\installers'
+
+# Generate packages over supported types of files
+$supportedTypes = @('.exe', '.msi', '.7z', '.zip', '.msu', '.msp')
+Get-ChildItem -Path $path -Recurse | ?{
+  $extension = [System.IO.Path]::GetExtension($_.Name)
+  $supportedTypes.Contains($extension)
+  } | %{
+  Write-Host "$($_.FullName)"
+  & choco new --file "$($_.FullName)" --build-package --outputdirectory $pwd
+}
+~~~
+
+### Package Builder UI
+Not every person is going to love the command line or may not be familiar with the command line and at Chocolatey we realize this. We've spent countless hours talking to customers and with their feedback we're introducing Package Builder UI. This also gives you an opportunity to transition from existing UI tools while taking advantage of powerful Chocolatey concepts!
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qJNKR_PEQqY" frameborder="0" allowfullscreen></iframe>
+
+### Generate Packages from Programs and Features
+Another way Package Builder can generate packages is based on looking at what is installed on a system in Programs and Features. This gives you lightning quick ramp up time in both package and automating your Windows software installations!
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Mw_ReipnskI" frameborder="0" allowfullscreen></iframe>
 
 ## Options and Switches
 
