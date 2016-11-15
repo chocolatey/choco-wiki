@@ -40,7 +40,7 @@ Simply right click on an installer, executable, or zip type and select "Create C
 
 ![Package Builder UI](https://cloud.githubusercontent.com/assets/63502/20328042/bb944018-ab55-11e6-884f-0a45babce40a.png)
 
-Then just add in and fill out the requested information. It uses Chocolatey CLI under the covers allowing you to really ramp up fast, especially when you don't have a lot of command line experience.
+Then just add in and fill out the requested information. It uses `choco new` under the covers allowing you to really ramp up fast, especially when you don't have a lot of command line experience.
 
 Another way to bring up the ui is to call `packagebuilder` from the command line.
 
