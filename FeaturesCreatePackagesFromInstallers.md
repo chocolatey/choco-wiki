@@ -8,6 +8,7 @@ Chocolatey for Business is able to inspect an installer and determine silent arg
 
 ## Usage
 
+### Command Line
 When calling `choco new`, just add `--file=value` to point to a native installer and Chocolatey for Business will automatically determine the silent arguments, create the packaging and wrap that all around the installer.
 
 ![Create Packages from Installers - if you are on https://chocolatey.org/docs/features-create-packages-from-installers, see commented html below for detailed description of image](images/features/features_packages_from_installers.png)
@@ -27,9 +28,20 @@ This image shows running `choco new --file .\installers\1Password-4.6.0.598.exe`
 
 -->
 
-## See It In Action
+### Package Builder UI
 
-![auto package creation/synchronize](images/gifs/choco_business_features.gif)
+Starting in version 1.8.0 of the licensed editions, you have access to the Package Builder UI.
+
+Simply right click on an installer, executable, or zip type and select "Create Chocolatey Package..."
+
+![Package Builder UI](https://cloud.githubusercontent.com/assets/63502/20328042/bb944018-ab55-11e6-884f-0a45babce40a.png)
+
+Then just add in and fill out the requested information. It uses Chocolatey CLI under the covers allowing you to really ramp up fast, especially when you don't have a lot of command line experience.
+
+Another way to bring up the ui is to call `packagebuilder` from the command line.
+
+
+## See It In Action
 
 ### Package Builder CLI and Scripts
 
@@ -63,6 +75,10 @@ We've prepared a short video to show the power of the UI:
 Another way Package Builder can generate packages is based on looking at what is installed on a system in Programs and Features. This gives you lightning quick ramp up time in both package and automating your Windows software installations!
 
 [![Chocolatey's Package Builder - Generate Packages from Programs and Features Automatically!](https://cloud.githubusercontent.com/assets/63502/20327972/46c8ff3a-ab55-11e6-9c03-32b0f83540bb.png)](https://www.youtube.com/watch?v=Mw_ReipnskI&list=PLfn-TaDnc1us5X-PVlxW8M1h-6mXEXZSG&index=3 "Chocolatey's Package Builder - Generate Packages from Programs and Features Automatically!")
+
+### More business concepts
+
+![auto package creation/synchronize](images/gifs/choco_business_features.gif)
 
 ## Options and Switches
 
