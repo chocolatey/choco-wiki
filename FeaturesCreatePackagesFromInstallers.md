@@ -33,6 +33,7 @@ This image shows running `choco new --file .\installers\1Password-4.6.0.598.exe`
 
 ### Package Builder CLI and Scripts
 
+Click on the image to see the video:
 [![Chocolatey's Package Builder - Package Builder CLI and Scripting](https://img.youtube.com/vi/6TXY5Ie-3wg/0.jpg)](https://www.youtube.com/watch?v=6TXY5Ie-3wg&list=PLfn-TaDnc1us5X-PVlxW8M1h-6mXEXZSG&index=1 "Chocolatey's Package Builder - Package Builder CLI and Scripting")
 
 Quickly script out creating packages for your entire organization's cache of software, allowing you to completely automate your Windows installations in moments, not months. You can do that with a simple script:
