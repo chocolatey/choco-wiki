@@ -133,7 +133,7 @@ When running `choco new` in the Business editions, pass the following:
 ## FAQ
 
 ### How do I take advantage of Package Builder?
-You must have a [Business edition of Chocolatey](https://chocolatey.org/compare). Business editions are great for organizations that need to manage the total software management lifecycle.
+You must have a [Business edition of Chocolatey](https://chocolatey.org/compare). Business editions are great for organizations that need to manage the total software lifecycle.
 
 ### I'm a licensed customer, now what?
 When you run `choco new`, you can add `--file` and point Chocolatey at the installer file and let Chocolatey figure out everything for creating a package and the silent arguments and wrap that around the installer.
