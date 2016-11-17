@@ -51,7 +51,7 @@ There is where the bulk of NuGet compatible servers fall (Nexus, Nuget.Server, C
 * No moderation.
 * No website to view packages.
 * No package statistics.
-* A package should not be bigger than 50MB. You can host the installer internally somewhere and access it through packaging though.
+* A package should may be limited to 28.61MB by default on some simple servers. Depending on your simple server - For IIS simple servers package size can be controlled through [maxAllowedContentLength](https://msdn.microsoft.com/en-us/library/ms689462(v=vs.90).aspx) and [maxRequestLength](https://msdn.microsoft.com/en-us/library/e1f13641(v=vs.100).aspx). For others like Nexus, it may already be set very high. You can host the installer internally somewhere and access it through packaging though. 
 
 The actual limit for package sizes varies depending on what each simple server can handle (usually determined by the limitation of pushing a package to the server). If you determine what those are, we'd be happy to least each one here.
 
@@ -66,7 +66,12 @@ Some notable references:
  * Brandon - [Host NuGet Server in Azure](http://netitude.bc3tech.net/2015/01/07/create-your-own-hosted-nuget-server-in-azure/)
 
 ##### Chocolatey Server Setup
-[Chocolatey Server](https://chocolatey.org/packages/chocolatey.server) is a simple Nuget.Server that is ready to rock and roll. It has already completed Steps 1-3 of NuGet's [host your own remote feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds).
+[Chocolatey Server](https://chocolatey.org/packages/chocolatey.server) is a simple Nuget.Server that is ready to rock and roll. It has already completed Steps 1-3 of NuGet's [host your own remote feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds). Version 0.1.2 has the following additional adds:
+
+* Uses same enhanced NuGet that Chocolatey uses so you can see more information in search if you choose to use those things.
+* Allows packages up to 2GB. Package size can be controlled through [maxAllowedContentLength](https://msdn.microsoft.com/en-us/library/ms689462(v=vs.90).aspx) and [maxRequestLength](https://msdn.microsoft.com/en-us/library/e1f13641(v=vs.100).aspx).
+
+Set it up:
 
  1. Install the [Chocolatey Server](https://chocolatey.org/packages/chocolatey.server) package - `choco install chocolatey.server -y`
  1. Configure IIS appropriately for the package.
@@ -94,7 +99,7 @@ This is like what https://chocolatey.org (the community feed runs on). It is the
 * Speed of setup (can take longer than the rest). There are many moving parts to configure.
 * Requires Windows/IIS/SQL Server/SMTP (hopefully with the proper licenses on each of those).
 * Not well-documented, could require some diligence to get working.
-* A package should not be bigger than 50M-100B. You can host the installer internally somewhere and access it through packaging though.
+* A package should not be bigger than 150MB. You can host the installer internally somewhere and access it through packaging though. Package size can be controlled through [maxAllowedContentLength](https://msdn.microsoft.com/en-us/library/ms689462(v=vs.90).aspx) and [maxRequestLength](https://msdn.microsoft.com/en-us/library/e1f13641(v=vs.100).aspx).
 
 #### Package Gallery Setup
 Only approach this if you are a Windows Admin with significant experience in setting up SQL Server databases and IIS for ASP.NET MVC sites. We don't have resources to help support the setup, but we can point you to [NuGet Gallery Setup](https://github.com/NuGet/NuGetGallery/wiki/Hosting-the-NuGet-Gallery-Locally-in-IIS).
