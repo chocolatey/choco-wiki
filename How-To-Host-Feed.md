@@ -53,7 +53,7 @@ There is where the bulk of NuGet compatible servers fall (Nexus, Nuget.Server, C
 * No package statistics.
 * A package should may be limited to 28.61MB by default on some simple servers. Depending on your simple server - For IIS simple servers package size can be controlled through [maxAllowedContentLength](https://msdn.microsoft.com/en-us/library/ms689462(v=vs.90).aspx) and [maxRequestLength](https://msdn.microsoft.com/en-us/library/e1f13641(v=vs.100).aspx). For others like Nexus, it may already be set very high. You can host the installer internally somewhere and access it through packaging though. 
 
-The actual limit for package sizes varies depending on what each simple server can handle (usually determined by the limitation of pushing a package to the server). If you determine what those are, we'd be happy to least each one here.
+The actual limit for package sizes varies depending on what each simple server can handle (usually determined by the limitation of pushing a package to the server). If you determine what those are, we'd be happy to list each one here.
 
 #### Simple Server Setup
 
