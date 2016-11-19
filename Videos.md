@@ -7,6 +7,7 @@
 ## In the community
 ### 2016
 
+* Arrested DevOps - [Microsoft Redux (Shout out)](https://youtu.be/rsnxc1l3Fz8?t=7m29s) - November 15, 2016
 * Developer on Fire - [Episode 131 | Rob Reynolds - Automate Everything](http://developeronfire.com/episode-131-rob-reynolds-automate-everything) - May 16, 2016
 * [Chocolatey Demonstration - Andy Melton](https://www.youtube.com/watch?v=HlnTZF3H1Ac) - April 8, 2016
 * Channel9 Demo of The Day - [It's Virtual Chocolate: A Custom VM Dipped in a Chocolatey Box Starter. Delicious](https://channel9.msdn.com/Shows/demooftheday/chocovm) - BC3Tech and Jerry Nixon - March 3, 2016
@@ -15,11 +16,11 @@
 ### 2015
 
 * [Installing applications in Windows 8.1 with Chocolatey - JGAITPro (Espanol)](https://www.youtube.com/watch?v=aid3ptjLlIk) - December 14, 2015
-* ArrestedDevOps - [Chocolatey Goodness With Rob Reynolds](https://www.arresteddevops.com/chocolatey/) - December 2015
-* ArrestedDevOps - [Switching Teams: From Linux To Windows And Windows To Linux](https://www.arresteddevops.com/os-switching/) - December 2015
+* Arrested DevOps - [Chocolatey Goodness With Rob Reynolds](https://www.arresteddevops.com/chocolatey/) - December 2015
+* Arrested DevOps - [Switching Teams: From Linux To Windows And Windows To Linux](https://www.arresteddevops.com/os-switching/) - December 2015
 * GoogleChromeDevelopers - [Totally Tooling Tips: Windows Command-line Tooling](https://www.youtube.com/watch?v=msCUKTdBzg4&t=4m19s) - November 11, 2015
 * [Tutorial: Usando o Chocolatey (apt-get/yum para Windows) - Carlos Alberto Castelo Elias Filho (Espanol)](https://www.youtube.com/watch?v=OWgADNDHJzg) - June 29, 2015
-* devGeeK - [MongoDb Tutorial (Shoutout)](https://www.youtube.com/watch?v=W-WihPoEbR4&feature=youtu.be&t=48m45s) - June 17, 2015
+* devGeeK - [MongoDb Tutorial (Shout out)](https://www.youtube.com/watch?v=W-WihPoEbR4&feature=youtu.be&t=48m45s) - June 17, 2015
 * GEEKBLOGTV - [Chocolatey](https://www.youtube.com/watch?v=nH6jRB5kigc) - May 18, 2015
 * Docker - [Installing Docker Client for Windows from Chocolatey](https://www.youtube.com/watch?v=l026hqjhLRU) - April 1, 2015
 * PhillyPoSH - [PhillyPoSH 3/5/2015 - Derek Murawsky : Introducing Chocolatey](https://www.youtube.com/watch?v=LqyHyoa_F1c) - March 5, 2015
