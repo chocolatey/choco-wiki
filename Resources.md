@@ -18,6 +18,10 @@
 
 ### 2016
 
+#### November
+
+* http://blog.amosti.net/rolling-out-web-services-with-topshelf-chocolatey-and-ansible/
+
 #### October
 
 * https://weblog.west-wind.com/posts/2016/Oct/25/Automating-Installation-Builds-and-Chocolatey-Packaging
@@ -32,6 +36,7 @@
 
 #### August
 
+* http://tech.dips.no/2016/08/17/Deployment-av-servere.html
 * https://puppet.com/blog/chocolatey-creator-rob-reynolds-speak-puppetconf-2016
 * https://dzone.com/articles/using-chocolatey-to-install-neo4j-on-windows
 * https://neo4j.com/blog/chocolatey-neo4j-windows
