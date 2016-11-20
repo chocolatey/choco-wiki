@@ -20,6 +20,7 @@
 
 #### November
 
+* http://www.42u.ca/2016/11/20/using-chocolatey-for-windows-package-management/
 * http://blog.amosti.net/rolling-out-web-services-with-topshelf-chocolatey-and-ansible/
 
 #### October
