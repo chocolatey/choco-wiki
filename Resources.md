@@ -72,6 +72,7 @@
 
 * http://imallvirtual.com/azure-devtest-labs-chocolatey-artifacts-integration/
 * https://channel9.msdn.com/Shows/demooftheday/chocovm
+* http://techbutter.com/getting-started-with-chocolatey/
 * https://azure.microsoft.com/en-us/documentation/articles/automation-dsc-cd-chocolatey/
 * http://tomow.de/general/chocolatey-a-sweet-package-manager-for-windows/
 
