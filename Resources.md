@@ -122,7 +122,6 @@
 * http://blogsprajeesh.blogspot.com/2015/08/setup-your-chocolatey-repository-in_6.html
 * http://mattridpath.com/?p=43
 * http://xenappblog.com/2015/why-chocolatey-a-real-world-example/
-* http://xenappblog.com/2015/how-to-install-chocolatey-packages-offline/
 * http://xenappblog.com/2015/getting-started-with-chocolatey-and-boxstarter/
 * http://www.hanselman.com/blog/AptGetForWindowsOneGetAndChocolateyOnWindows10.aspx
 
