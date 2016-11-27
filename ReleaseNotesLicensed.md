@@ -4,6 +4,21 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.8.1 (November 27, 2016)
+
+### BUG FIXES
+
+ * AutoUninstaller - Fix - do not fail on auto-detection of type when uninstall executable is not in the correct format.
+ * Package Builder (Choco New):
+    * Fix - Programs and Features - do not fail on auto-detection of type based on uninstall string
+
+### IMPROVEMENTS
+
+ * Package Builder (Choco New):
+    * version - always set to 3 segments (x.y.z)
+    * version - remove extra version segments when more than 4 segments are returned
+
+
 ## 1.8.0 (November 16, 2016)
 
 Package Builder has some major improvements in this release, including a new UI! See https://chocolatey.org/blog/package-builder-announcements for details! While building some of the features for the enhancements for this release, we've made quite a few tweaks and fixes to Package Builder and we think you are going to like the results. Being able to generate packages from the installed software on a reference system is huge (`choco new --from-programs-and-features`)!
