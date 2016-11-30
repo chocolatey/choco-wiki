@@ -1,7 +1,7 @@
 ## Installing Chocolatey
 Chocolatey installs in seconds...
 
-**NOTE:** Need to install a particular version of Chocolatey? Proxy? Install to a different location? Advanced Options? See [Before You Install](#before-you-install) below. [Alternative installation options](#alternative-installation-options)? [Non-Administrator installation](#non-administrative-install)? [Restricted/no internet access on target machine](#download--powershell-method)?
+**NOTE:** Need to install a particular version of Chocolatey? Proxy? Install to a different location? Advanced Options? See [Before You Install](#before-you-install) below. [Alternative installation options](#alternative-installation-options)? [Non-Administrator installation](#non-administrative-install)? [Restricted/no internet access on target machine](#download--powershell-method)? Looking for [[licensed edition installation|Installation-Licensed]]?
 
 To install chocolatey now, open an <strong>administrative</strong> command prompt and paste the text from the box below that applies to the name of your shell and press enter. If you need assistance opening an administrative prompt, see [open an elevated prompt in Windows 8+](http://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) (or [Windows 7](http://www.howtogeek.com/howto/windows-vista/run-a-command-as-administrator-from-the-windows-vista-run-box/)).
 
@@ -35,7 +35,7 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 
 The easiest option to remember is this one. You may not need `-UseBasicParsing`.
 
-What are these scripts doing? `iwr` (`Invoke-WebRequest`)/`WebClient.DownloadString` downloads the install script and passes it to `iex` (`Invoke-Expression`) to execute the contents of the script. This runs the installation script for Chocolatey. 
+What are these scripts doing? `iwr` (`Invoke-WebRequest`)/`WebClient.DownloadString` downloads the install script and passes it to `iex` (`Invoke-Expression`) to execute the contents of the script. This runs the installation script for Chocolatey.
 
 ### Installing With Restricted TLS
 
@@ -53,13 +53,13 @@ At line:1 char:1
 
 It's possible that you are attempting to install from a server that needs to use TLS 1.1 or TLS 1.2 (has restricted the use of TLS 1.0 and SSL v3), you have some options.
 
-#### Option 1 
+#### Option 1
 If you have the following:
 
 * PowerShell v3+
 * .NET Framework 4.5
 
-You can just run the following instead of just the one-liner to get Chocolatey installed: 
+You can just run the following instead of just the one-liner to get Chocolatey installed:
 
 ~~~powershell
 $securityProtocolSettingsOriginal = [System.Net.ServicePointManager]::SecurityProtocol
@@ -69,7 +69,7 @@ try {
   # Use integers because the enumeration values for TLS 1.2 and TLS 1.1 won't
   # exist in .NET 4.0, even though they are addressable if .NET 4.5+ is
   # installed (.NET 4.5 is an in-place upgrade).
-  [System.Net.ServicePointManager]::SecurityProtocol = 3072 -bor 768 -bor 192 -bor 48 
+  [System.Net.ServicePointManager]::SecurityProtocol = 3072 -bor 768 -bor 192 -bor 48
 } catch {
   Write-Warning 'Unable to set PowerShell to use TLS 1.2 and TLS 1.1 due to old .NET Framework installed. If you see underlying connection closed or trust errors, you may need to do one or more of the following: (1) upgrade to .NET Framework 4.5 and PowerShell v3, (2) specify internal Chocolatey package location (set $env:chocolateyDownloadUrl prior to install or host the package internally), (3) use the Download + PowerShell method of install. See https://chocolatey.org/install for all install options.'
 }
@@ -79,12 +79,12 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/in
 [System.Net.ServicePointManager]::SecurityProtocol = $securityProtocolSettingsOriginal
 ~~~
 
-#### Option 2 
+#### Option 2
 You need to download and unzip the Chocolatey package, then call the PowerShell install script from there. See the [Download + PowerShell Method](#download--powershell-method) section below.
 
 ### Installing Behind a Proxy?
 
-Have a proxy? Try 
+Have a proxy? Try
 
 * Cmd.exe - <button class="icon-clipboard copy-button" data-clipboard-text="@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;[System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"></button>
 
@@ -119,10 +119,10 @@ Great question - [[Why does Chocolatey install where it does|DefaultChocolateyIn
 
 ## Before You Install
 #### Can I install Chocolatey to another location?
-Yes! 
+Yes!
 
-1. Create a __machine__ level (__user__ level will also work) environment variable named ```ChocolateyInstall``` and set it to the folder you want Chocolatey to install to prior to installation (this environment variable must be set globally or available to PowerShell- it is not enough to simply make it available to your current command prompt session).  
-1. Don't use `"C:\Chocolatey"` unless necessary. 
+1. Create a __machine__ level (__user__ level will also work) environment variable named ```ChocolateyInstall``` and set it to the folder you want Chocolatey to install to prior to installation (this environment variable must be set globally or available to PowerShell- it is not enough to simply make it available to your current command prompt session).
+1. Don't use `"C:\Chocolatey"` unless necessary.
 1. Create the folder manually.
 1. If you have already installed (and want to change the location after the fact):
   * Follow the above steps.
@@ -188,7 +188,7 @@ $env:chocolateyUseWindowsCompression = 'true'
 
 ## Non-Administrative Install
 
-**NOTE**: This option should be a last resort and is considered to be an advanced scenario. Most things you do on Windows require administrative rights, especially surrounding software management, so you are going to be limited even in packages you attempt to install. If you run into issues with Chocolatey and you have set Chocolatey up this way, the first thing we are going to ask you to do is to see if it works when you have installed choco under normal circumstances. If you are using the [community package repository](https://chocolatey.org/packages), you should avoid this type of installation as over 75% of the packages you find there require administrative permission. 
+**NOTE**: This option should be a last resort and is considered to be an advanced scenario. Most things you do on Windows require administrative rights, especially surrounding software management, so you are going to be limited even in packages you attempt to install. If you run into issues with Chocolatey and you have set Chocolatey up this way, the first thing we are going to ask you to do is to see if it works when you have installed choco under normal circumstances. If you are using the [community package repository](https://chocolatey.org/packages), you should avoid this type of installation as over 75% of the packages you find there require administrative permission.
 
 1. You must choose a different location than the default (see [before you install](#before-you-install) above). The default is a more secure location that only administrators can update.
 1. Follow that with the command line / PowerShell methods of installation.
