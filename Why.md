@@ -1,4 +1,23 @@
 ## Why Chocolatey?
+
+"You've never deployed software faster than you will with Chocolatey." -Rob Reynolds
+
+Chocolatey is software management automation.
+
+Chocolatey works with over 20+ installer technologies for Windows, but it can manage things you would normally xcopy deploy (like runtime binaries and zip files). You can also work with registry settings or managing files and configurations, or any combination. Since it uses PowerShell, if you can dream it, you can do it with Chocolatey.
+
+Chocolatey builds on technologies that are familiar:
+* PowerShell
+* Unattended installations
+
+We didn't try to reinvent the wheel with Chocolatey. We are building on technologies you know, technologies you may have been using for years. It's going to feel good knowing that time you have spent working with software deployment plugs right into Chocolatey in a much better and more manageable way. Welcome to sane software management. With those familiar technologies, Chocolatey brings the concepts of true package management to allow you to version things, manage dependencies and installation order, better inventory management, and other features.
+
+Chocolatey also integrates with [[infrastructure management tools (like Puppet, Chef or SCCM)|FeaturesInfrastructureAutomation]] and other remote administration tools (like LabTech or LANDesk).
+
+You are going to find the simplicity and absolute power of Chocolatey reinvigorating for Windows software deployments. Yes, we know that is a bold statement. Yes, we have hundreds of organizations and thousands of individuals that use Chocolatey that will back that statement up.
+
+Chocolatey is the package manager for Windows.
+
 ### What is the purpose of Chocolatey?
 
 How many times do you hear about an awesome tool/application from your friends and want to try it out? How much effort do you go through to set a tool and all of its requirements up on your machine? Do you realize that all of this manual effort is a pain? It's a pain we are used to! It's something we just do and don't realize we are wasting time doing all of this manual process. And worse, when we install applications it's always... Next Next Next Finish.
@@ -46,7 +65,7 @@ Let me start by saying that testing how a single package won't give you a warm a
 
 Now that we have baselined that - each piece of software out there is a special snowflake, so  each package has to be able to account for differences in the installers.
 
-So when a package takes over the existing install, if the registry snapshot doesn't differ, it won't be able to automatically uninstall it (if you have autoUninstaller turned on, check `choco feature`). If there is no `chocolateyUninstall.ps1` that would uninstall the software, choco won't be able to uninstall it. At some point it will though, choco continues to get better at things. And at some point in the near future it will contain a check to do nothing for an install if a registry key exists (and record that for later uninstall). 
+So when a package takes over the existing install, if the registry snapshot doesn't differ, it won't be able to automatically uninstall it (if you have autoUninstaller turned on, check `choco feature`). If there is no `chocolateyUninstall.ps1` that would uninstall the software, choco won't be able to uninstall it. At some point it will though, choco continues to get better at things. And at some point in the near future it will contain a check to do nothing for an install if a registry key exists (and record that for later uninstall).
 
 The question I need to ask is whether you are worse off by adding choco into the mix? It handles upgrades for you. It brings about some level of consistency and a unifying interface to this madness that is the Windows installer infrastructure.
 
