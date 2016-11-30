@@ -40,3 +40,5 @@ For a simple `include chocolatey_server` it does the following automatically:
 ## Additional Configuration
 
 Looking for where the apikey is and how it is changed, that is all done through the web.config. The config is pretty well-documented on each of the appSettings key values.
+
+To update the apiKey, it is kept in the web.config, search for that value and update it. If you reach out to the server on https://localhost (it will show you what the apikey is, only locally though).
