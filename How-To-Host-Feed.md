@@ -13,6 +13,11 @@ There are three types of package repositories, [folder/unc share](#local-folder-
 * [TeamCity](https://www.jetbrains.com/teamcity/) has built-in Simple Server
 * [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_proxy_repositories.html) - Sonatype Nexus has a built-in simple server
 
+## Package Version Immutability
+A package version is immutable on some sources. This means that everybody's version 1.0.1 of a particular package is the same. You do not need to worry about this when updating with newer versions of packages, because each package version compiled nupkg has the unique version in the name (e.g `bob.1.0.0.nupkg` vs `bob.1.0.1.nupkg` ).
+
+Package immutability is usually desired, because then you know that everyone on v1.0.0 of a package has exactly the same code as does even everyone else. Even a broken version v1.0.0 gives you a global understanding that everyone who has v1.0.0 has exactly the same bits. This really simplifies administration. Without immutability, there is no guarantee that a version of a package installed is the same as the version of the package at the source.
+
 ## Local Folder / UNC Share (CIFS)
 Perhaps the easiest to set up and recommended for testing quick and dirty scenarios, local folder is easily a strong point when you need a quick source for packages.
 
@@ -27,7 +32,7 @@ Perhaps the easiest to set up and recommended for testing quick and dirty scenar
 * Anyone with permission can push and overwrite packages.
 * No HTTP/HTTPS pushing. Must be able to access the folder/share to push to it.
 * Starts to affect choco performance once the source has over 500 packages (maybe?).
-* **Big disadvantage**: Does not do anything to keep from package versions being overwritten. This provides no immutability of a package version and no guarantee that a version of a package installed is the same as the version in the source.
+* **Big disadvantage**: For a file share there is not a guarantee of package version immutability. Does not do anything to keep from package versions being overwritten. This provides no immutability of a package version and no guarantee that a version of a package installed is the same as the version in the source.
 
 ### Local Folder Share Setup
 
@@ -35,7 +40,7 @@ No really, it's that easy. Just set your permissions appropriately and put packa
 
 ## Simple Server
 
-There is where the bulk of NuGet compatible servers fall (Nexus, Nuget.Server, Chocolatey.Server, Artifactory, MyGet, etc).
+There is where the bulk of NuGet OData compatible servers fall (Nexus, Nuget.Server, Chocolatey.Server, Artifactory, MyGet, etc). Since Chocolatey just uses an enhanced version of the NuGet framework, it is compatible everywhere you can put a NuGet package.
 
 **Advantages:**
 * Setup can be really simple - just a website and IIS for some simple servers.
@@ -51,7 +56,7 @@ There is where the bulk of NuGet compatible servers fall (Nexus, Nuget.Server, C
 * No moderation.
 * No website to view packages.
 * No package statistics.
-* A package should may be limited to 28.61MB by default on some simple servers. Depending on your simple server - For IIS simple servers package size can be controlled through [maxAllowedContentLength](https://msdn.microsoft.com/en-us/library/ms689462(v=vs.90).aspx) and [maxRequestLength](https://msdn.microsoft.com/en-us/library/e1f13641(v=vs.100).aspx). For others like Nexus, it may already be set very high. You can host the installer internally somewhere and access it through packaging though. 
+* A package should may be limited to 28.61MB by default on some simple servers. Depending on your simple server - For IIS simple servers package size can be controlled through [maxAllowedContentLength](https://msdn.microsoft.com/en-us/library/ms689462(v=vs.90).aspx) and [maxRequestLength](https://msdn.microsoft.com/en-us/library/e1f13641(v=vs.100).aspx). For others like Nexus, it may already be set very high. You can host the installer internally somewhere and access it through packaging though.
 
 The actual limit for package sizes varies depending on what each simple server can handle (usually determined by the limitation of pushing a package to the server). If you determine what those are, we'd be happy to list each one here.
 
@@ -106,7 +111,7 @@ Only approach this if you are a Windows Admin with significant experience in set
 
 ##### Chocolatey Package Gallery Setup
 
-At this time we don't have setup instructions and won't answer questions specifically surrounding the setup of a Chocolatey specific gallery. Watch for this to change as Chocolatey for Business becomes a thing.
+At this time we don't have setup instructions and are not keen to answer questions specifically surrounding the setup of a Chocolatey Gallery (the code behind chocolatey.org). This is due to specific necessary settings regarding the community packages repository and tight integration to what it offers. Chocolatey for Business is likely to offer a gallery at some point, depending on prioritization.
 
 ## Non-Windows Hosting
 If you don't want to host on Windows you have only the following options (from least advanced to most advanced - these options typically also work on Windows):
