@@ -35,14 +35,29 @@ This image shows running `choco download --recompile git.install`.
 When running `choco download` in the Business editions, pass the following:
 
 ~~~sh
-
-     --recompile
-     Recompile - Download all external resources and recompile the package to
-       use the local resources instead.
-
      --outputdirectory=VALUE
      OutputDirectory - Specifies the directory for the downloaded Chocolatey
        package file. If not specified, uses the current directory.
+
+     --recompile, --internalize
+     Recompile / Internalize - Download all external resources and recompile
+       the package to use the local resources instead.
+
+     --resources-location=VALUE
+     Resources Location - When recompiling, use this location for resources
+       instead of embedding the downloaded resources into the package. Can be
+       a file share or an internal url location.  When it is a file share, it
+       will attempt to download to that location. When it is an internal url,
+       it will download locally and give further instructions on where it
+       should be uploaded to match package edits.
+
+     --append-useoriginallocation, --append-use-original-location
+     Append -UseOriginalLocation - When `Install-ChocolateyPackage` is
+       internalized, append the `-UseOriginalLocation` parameter to the
+       function. Business editions only (licensed version 1.7.0+). Requires at
+       least Chocolatey v0.10.1 for `Install-ChocolateyPacakge` to recognize
+       the switch appropriately. Overrides the feature
+       'internalizeAppendUseOriginalLocation' set to by default to 'False'.
 ~~~
 
 See [[download command|CommandsDownload]] for more information.
@@ -63,6 +78,8 @@ Some packages are already internalized or don't have remote resources. In those 
 
 ### It was not able to download a resource. Why not?
 This feature is in preview, but is able to download/recompile quite a few packages. There are a few that it may have issues with, especially if variables with methods are used (e.g. `$(somevar).Replace(".","")`). In those cases it attempts to warn you ahead of time that it cannot handle those yet.
+
+Future versions of the licensed edition will support advanced scenarios such as these.
 
 ### Are all packages guaranteed to be compatible?
 Unfortunately not all packages on the community repository are created equal, even with the rigorous moderation process. A few packages do not use the built-in functions for acquiring files from the internet, so they don't lend well to automatic recompiling. Typically Chocolatey will let you know when this is the case and allow you to inspect the package to allow you to finish up the next steps of recompiling. As a future enhancement, it's possible this scenario would also be supported, although it is a very small subset of packages that are created in this way.
