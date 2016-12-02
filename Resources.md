@@ -16,7 +16,7 @@
 
 ## Integrations
 
-See [[Infastructure automation|FeaturesInfrastructureAutomation]]
+See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 ## Community
 
