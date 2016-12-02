@@ -14,6 +14,10 @@
 * https://github.com/chocolatey/chocolatey-test-environment
 * https://github.com/ferventcoder/vagrant-windows-puppet
 
+## Integrations
+
+See [[Infastructure automation|FeaturesInfrastructureAutomation]]
+
 ## Community
 
 ### 2016
