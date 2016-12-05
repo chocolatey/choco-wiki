@@ -22,6 +22,10 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 ### 2016
 
+### December
+
+* https://medium.com/@omer727/choco-2651de9bfee
+
 #### November
 
 * http://www.42u.ca/2016/11/20/using-chocolatey-for-windows-package-management/
