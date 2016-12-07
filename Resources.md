@@ -28,6 +28,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 #### November
 
+* https://www.simple-talk.com/sysadmin/general/automating-setup-local-developer-machine
 * http://www.42u.ca/2016/11/20/using-chocolatey-for-windows-package-management/
 * http://blog.amosti.net/rolling-out-web-services-with-topshelf-chocolatey-and-ansible/
 
