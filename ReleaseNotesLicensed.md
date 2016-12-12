@@ -4,6 +4,25 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.8.2 (December 12, 2016)
+
+### BUG FIXES
+
+ * Package Builder (Choco New):
+    * Fix - Ignore first argument for name if not a name. This will also be fixed in 0.10.4 with [#1085](https://github.com/chocolatey/choco/issues/1085)
+    * Fix - PackageBuilder UI will request administrative permissions when run by admin.
+    * Fix - Urls should be set when using original location.
+ * Package Downloader/Internalizer (Choco Download):
+    * Fix - Do not use unparsed options as package names. Similar to [#983](https://github.com/chocolatey/choco/issues/983).
+ * Countdown days counting in incorrect direction
+
+### IMPROVEMENTS
+
+ * Package Builder (Choco New):
+    * version - add TODO if version is 0.0.0.0
+    * outputdirectory option has more aliases.
+
+
 ## 1.8.1 (November 27, 2016)
 
 ### BUG FIXES
