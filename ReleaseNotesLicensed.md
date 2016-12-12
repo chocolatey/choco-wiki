@@ -9,7 +9,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 ### BUG FIXES
 
  * Package Builder (Choco New):
-    * Fix - Ignore first argument for name if not a name. This will also be fixed in 0.10.4 with [#1085](https://github.com/chocolatey/choco/issues/1085)
+    * Fix - Ignore first argument for name if not a name. This will also be fixed in Chocolatey v0.10.4 with [#1085](https://github.com/chocolatey/choco/issues/1085)
     * Fix - PackageBuilder UI will request administrative permissions when run by admin.
     * Fix - Urls should be set when using original location.
  * Package Downloader/Internalizer (Choco Download):
