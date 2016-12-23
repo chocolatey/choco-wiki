@@ -24,6 +24,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 ### December
 
+* https://www.linkedin.com/pulse/simplify-your-windows-os-refresh-chocolatey-install-script-zach-baker
 * https://medium.com/@omer727/choco-2651de9bfee
 
 #### November
