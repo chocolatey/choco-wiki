@@ -3,8 +3,8 @@ From time to time, a previously approved Chocolatey Package needs to be deprecat
 
 * It was created in error.
 * It has been superseded by another package.
-* It is an older package that no longer follows the [Package Guidelines](https://github.com/chocolatey/choco/wiki/CreatePackages).
-* It's package id has been changed to something that better fits with the [package naming guidelines](https://github.com/chocolatey/choco/wiki/CreatePackages#naming-your-package).
+* It is an older package that no longer follows the [Package Guidelines](CreatePackages).
+* It's package id has been changed to something that better fits with the [package naming guidelines](CreatePackages#naming-your-package).
 
 All versions of this package could simply be unlisted from chocolatey.org, meaning that they could no longer be installed, however, this solution is not ideal.  Any user who previously installed this package, and added it as part of an installation script, would get an error the next time that they tried to install it, and this is far from ideal.
 
@@ -13,7 +13,7 @@ When a package needs to be deprecated, it needs to be handled in such a way that
 ## The Solution
 When deprecating a Chocolatey Package, the following steps should be followed:
 
-* Create a **[new version](https://github.com/chocolatey/choco/wiki/CreatePackages#package-fix-version-notation)** of the deprecated Chocolatey Package.
+* Create a **[new version](CreatePackages#package-fix-version-notation)** of the deprecated Chocolatey Package.
 * Prepend **[Deprecated]** to the **title** of the package (e.g. `<title="[Deprecated] Software Title" />`
 * Update the package **description**: Why is the package being deprecated?
 * Add a **[dependency](http://docs.nuget.org/docs/reference/nuspec-reference#Specifying_Dependencies) on the other package** (if the package is being superseded).
