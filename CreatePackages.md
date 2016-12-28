@@ -43,14 +43,14 @@ can do just about anything you need. Choco has some very handy [[built-in functi
 
 ## Quick Start guide
 
-If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](https://github.com/chocolatey/choco/wiki/CreatePackagesQuickStart) for you. **NOTE**: This doesn't exempt you from observing the rules, requirements and guidelines (noted below).
+If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](CreatePackagesQuickStart) for you. **NOTE**: This doesn't exempt you from observing the rules, requirements and guidelines (noted below).
 
 ## Rules to be observed before publishing packages
 
 There are a few rules that you have to follow before pushing packages to chocolatey.org:
 
 1. **Don't package illegal software.** Packages of software that is illegal in most countries in the world are prohibited to publish on Chocolatey.org. This applies in particular to software that violates the copyright, pirated software and activation cracks. Remember that this also affects software that is especially designed to accomplish software piracy.
-2. **Do not package software that you don't have the right to distribute.** Please see [Distribution Rights](https://github.com/chocolatey/choco/wiki/Legal#wiki-distributions-aka-chocolatey-packages) for more information. Any package found not in compliance with this will be removed immediately.
+2. **Do not package software that you don't have the right to distribute.** Please see [Distribution Rights](Legal#wiki-distributions-aka-chocolatey-packages) for more information. Any package found not in compliance with this will be removed immediately.
 1. **Packaging commercial or trial software?** Clearly state this in the package description. Does it require an activation key? Is there a trial period if you don't have a key? How long is this trial period?
 1. **Only post publicly relevant packages.** You should consider whether this package is useful for others. If that is not the case, it shouldn't be published on Chocolatey.org. Reasons for that can be if the package would require a very customized configuration. You can host your personal packages on [MyGet](https://www.myget.org/) and still be able to install them with Chocolatey using the `-source` parameter.
 1. **Do not publish junk or malware** packages.
@@ -60,7 +60,7 @@ There are a few rules that you have to follow before pushing packages to chocola
 1. **Split dependencies into multiple packages.** Try to split up packages as much as possible. If for example a program comes with additional modules/installers that are optional, make different packages for them instead of including all the things into one package. This idea is already widely applied for Linux packages, because it leads to a more lightweight system and reduces potential issues and conflicts.
 1. **Use a simple intuitive lowercase name for the package**. See the [package naming guidelines](http://github.com/chocolatey/chocolatey/wiki/CreatePackages#naming-your-package) for details. (If you are a reviewer/moderator, this is considered a guideline).
 
-Is your package unqualified for the Chocolatey feed, but you like to be able to install it through Chocolatey? Don't worry, you can always host your package for free on MyGet. See [Hosting Chocolatey Packages on MyGet](https://github.com/chocolatey/choco/wiki/Hosting-Chocolatey-Packages-on-MyGet).
+Is your package unqualified for the Chocolatey feed, but you like to be able to install it through Chocolatey? Don't worry, you can always host your package for free on MyGet. See [Hosting Chocolatey Packages on MyGet](Hosting-Chocolatey-Packages-on-MyGet).
 
 ## Character encoding
 
@@ -149,7 +149,7 @@ There is at least one noted exception to this and that is low-level packages tha
 
 ## Installation Paths
 
-As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does Chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/choco/wiki/ChocolateyFAQs)) there are a couple of suitable locations (not listed in any particular order):
+As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does Chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](ChocolateyFAQs)) there are a couple of suitable locations (not listed in any particular order):
 
 ### 1. The default installation path of your .msi/.exe setup file
 
