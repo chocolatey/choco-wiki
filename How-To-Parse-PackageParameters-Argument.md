@@ -1,4 +1,4 @@
-When installing a Chocolatey Package, it is possible to use a number of arguments to control how the package is installed.  Each one of these arguments is detailed [here](https://github.com/chocolatey/choco/wiki/CommandsInstall).
+When installing a Chocolatey Package, it is possible to use a number of arguments to control how the package is installed.  Each one of these arguments is detailed [here](CommandsInstall).
 
 Package parameters provide a way for a package consumer to make choices about how they want things installed and configuration of the underlying software.
 

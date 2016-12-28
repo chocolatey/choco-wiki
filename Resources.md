@@ -14,12 +14,22 @@
 * https://github.com/chocolatey/chocolatey-test-environment
 * https://github.com/ferventcoder/vagrant-windows-puppet
 
+## Integrations
+
+See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
+
 ## Community
 
 ### 2016
 
+### December
+
+* https://www.linkedin.com/pulse/simplify-your-windows-os-refresh-chocolatey-install-script-zach-baker
+* https://medium.com/@omer727/choco-2651de9bfee
+
 #### November
 
+* https://www.simple-talk.com/sysadmin/general/automating-setup-local-developer-machine
 * http://www.42u.ca/2016/11/20/using-chocolatey-for-windows-package-management/
 * http://blog.amosti.net/rolling-out-web-services-with-topshelf-chocolatey-and-ansible/
 

@@ -35,3 +35,10 @@ If you've received a trial license, you will also receive a link to download a r
  * Instead download the `chocolatey.extension` (licensed package) from the provided download link location and remember where you saved it.
  * Now run this command: `choco upgrade chocolatey.extension --pre --source c:\folder\where\downloaded\nupkg\resides` (or you can use `install` instead of `upgrade`). **Note**: Source location is not `--source c:\downloads\chocolatey.extension.1.8.1.nupkg`, it is `--source c:\downloads`.
 
+
+### Some Administrative Actions
+
+* The email this license is being sent to will automatically be subscribed to the customer advisory list. If there are other folks who need to be on that list for important notifications, please have them sign up at [Chocolatey Customers](http://eepurl.com/b6zpGv).
+* Please sign up for software announcements at [Chocolatey Announce](https://groups.google.com/d/forum/chocolatey-announce). Direct others to sign up for the list as well.
+* For support, remember to use the support email address (below).
+* Learn how to install below. Installation is also found at https://chocolatey.org/docs/installation-licensed.

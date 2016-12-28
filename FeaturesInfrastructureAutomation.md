@@ -11,6 +11,7 @@ With most of these tools, the interface you would interact with Chocolatey would
 * [Octopus Deploy](#octopus-deploy)
 * [PowerShell DSC](#powershell-dsc)
 * [PowerShell PackageManagement / OneGet](#powershell-packagemanagement)
+* [PSDeploy](#psdeploy)
 * [Puppet](#puppet)
 * [Saltstack](#saltstack)
 * [SCCM](#system-center-configuration-manager)
@@ -116,6 +117,24 @@ PowerShell DSC (Desired State Configuration) has a cChoco module that can manage
 **NOTE:** Chocolatey has a provider for the built-in package manager on Windows 10/Windows Server 2016. The official provider is still under development at this time and is expected to be complete in early summer 2016.
 
 [PowerShell PackageManagement (aka OneGet)](https://github.com/OneGet/oneget) is a package manager ***aggregator*** that depends on the existence of package managers as providers to work, one of which is Chocolatey. For a pretty comprehensive post about what PackageManagement is and what it is not, see the PackageManagement Blog post on [10 things about OneGet that are completely different than you think](https://blogs.technet.microsoft.com/packagemanagement/2015/05/05/10-things-about-oneget-that-are-completely-different-than-you-think/).
+
+## PSDeploy
+PSDeploy is a quick and dirty module to simplify PowerShell based deployments.
+
+~~~powershell
+Deploy SingleChocolateyPackage {
+    By Chocolatey {
+        FromSource 'c:\ChocolateyPackages\examplepackage.0.1.1.nupkg'
+        To "http://your-choco-repo.internal.com/"
+        WithOptions @{
+            ApiKey = 'yourAPIkey'
+            Force = $true
+        }
+    }
+}
+~~~
+
+[Read More...](http://psdeploy.readthedocs.io/en/latest/Example-Chocolatey-Deployment/)
 
 ## Puppet
 Puppet has a [Supported module](https://forge.puppet.com/supported) coming for Chocolatey, but also has an [Approved module](https://forge.puppet.com/approved) written by the Chocolatey team. The module can manage packages and the install and configuration of Chocolatey itself.

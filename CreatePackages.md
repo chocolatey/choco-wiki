@@ -43,14 +43,14 @@ can do just about anything you need. Choco has some very handy [[built-in functi
 
 ## Quick Start guide
 
-If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](https://github.com/chocolatey/choco/wiki/CreatePackagesQuickStart) for you. **NOTE**: This doesn't exempt you from observing the rules, requirements and guidelines (noted below).
+If you think you got what it takes and just want to know the basic steps to get a package out, there is a special [Quick Start Guide](CreatePackagesQuickStart) for you. **NOTE**: This doesn't exempt you from observing the rules, requirements and guidelines (noted below).
 
 ## Rules to be observed before publishing packages
 
 There are a few rules that you have to follow before pushing packages to chocolatey.org:
 
 1. **Don't package illegal software.** Packages of software that is illegal in most countries in the world are prohibited to publish on Chocolatey.org. This applies in particular to software that violates the copyright, pirated software and activation cracks. Remember that this also affects software that is especially designed to accomplish software piracy.
-2. **Do not package software that you don't have the right to distribute.** Please see [Distribution Rights](https://github.com/chocolatey/choco/wiki/Legal#wiki-distributions-aka-chocolatey-packages) for more information. Any package found not in compliance with this will be removed immediately.
+2. **Do not package software that you don't have the right to distribute.** Please see [Distribution Rights](Legal#wiki-distributions-aka-chocolatey-packages) for more information. Any package found not in compliance with this will be removed immediately.
 1. **Packaging commercial or trial software?** Clearly state this in the package description. Does it require an activation key? Is there a trial period if you don't have a key? How long is this trial period?
 1. **Only post publicly relevant packages.** You should consider whether this package is useful for others. If that is not the case, it shouldn't be published on Chocolatey.org. Reasons for that can be if the package would require a very customized configuration. You can host your personal packages on [MyGet](https://www.myget.org/) and still be able to install them with Chocolatey using the `-source` parameter.
 1. **Do not publish junk or malware** packages.
@@ -60,7 +60,7 @@ There are a few rules that you have to follow before pushing packages to chocola
 1. **Split dependencies into multiple packages.** Try to split up packages as much as possible. If for example a program comes with additional modules/installers that are optional, make different packages for them instead of including all the things into one package. This idea is already widely applied for Linux packages, because it leads to a more lightweight system and reduces potential issues and conflicts.
 1. **Use a simple intuitive lowercase name for the package**. See the [package naming guidelines](http://github.com/chocolatey/chocolatey/wiki/CreatePackages#naming-your-package) for details. (If you are a reviewer/moderator, this is considered a guideline).
 
-Is your package unqualified for the Chocolatey feed, but you like to be able to install it through Chocolatey? Don't worry, you can always host your package for free on MyGet. See [Hosting Chocolatey Packages on MyGet](https://github.com/chocolatey/choco/wiki/Hosting-Chocolatey-Packages-on-MyGet).
+Is your package unqualified for the Chocolatey feed, but you like to be able to install it through Chocolatey? Don't worry, you can always host your package for free on MyGet. See [Hosting Chocolatey Packages on MyGet](Hosting-Chocolatey-Packages-on-MyGet).
 
 ## Character encoding
 
@@ -81,7 +81,7 @@ The main release of a product versions are usually sufficient. If there are also
 ## Okay, how do I create packages?
 There are three main elements to a Chocolatey package. Only the nuspec is required (#1 below).
 
-1. [Nuspec](https://github.com/chocolatey/chocolateytemplates/blob/master/_templates/chocolatey/__NAME__.nuspec) - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
+1. [Nuspec](CreatePackages#nuspec)
 1. [[chocolateyInstall.ps1|ChocolateyInstallPS1]] - check out the [[helper reference|HelpersReference]]
 1. any application files to include (it is highly suggested that you are the author in this case or you have the right to [[distribute files|Legal]]). EXE files in the package/downloaded to package folder from chocolateyInstall.ps1 will get a link to the command line.
 1. chocolateyUninstall.ps1, for uninstalling your package. See [[helper reference|HelpersReference]] for functions available in your script.
@@ -113,13 +113,13 @@ chocolateyUninstall.ps1                        |         |         | Yes
 
 The chocolateyBeforeModify.ps1 script will only be executed if using choco version 0.9.10 or later.
 
-## Nuspec?
-
-For reference - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
+## Nuspec
 
 The `Chocolatey` Windows package manager uses the same infrastructure as [NuGet](http://nuget.org/) , the Visual Studio package manager by Outercurve Foundation (sponsored by Microsoft). Therefore packages are based on the same principles. One of those is a package description (specification) in `xml` format, known as the `Nuspec`.
 
-The `Nuspec` contains basic information such as the version, license, maintainer, and package dependencies.
+The `Nuspec` contains basic information such as the version, license, maintainer, and package dependencies. `Chocolatey` includes additional optional functionality on top of [NuGet's Nuspec format](http://docs.nuget.org/docs/reference/nuspec-reference) - the best way to determine currently supported features is to create a test package, and look at the generated nuspec file.
+
+```choco new testpackage```
 
 **Note:** If your package uses recently introduced functionality, you might want to include `chocolatey` as a dependency with the version being the lowest version that has the introduced functionality. Otherwise the installation could fail for users with an older version of `Chocolatey` installed.
 
@@ -132,7 +132,7 @@ You can indicate the `Chocolatey` dependency like any other dependency. E.g.:
 
 Logically, the version is based on the lowest compatible version. But if you don't know and used a lot of sorcery in your package, depend on the version of `Chocolatey` that you succesfully tested your package on.
 
-**See also:** [Nuget Version Reference](http://docs.nuget.org/docs/reference/versioning)
+**See also:** [NuGet Version Reference](http://docs.nuget.org/docs/reference/versioning)
 
 ## But for real, how do I create a package?
 
@@ -149,7 +149,7 @@ There is at least one noted exception to this and that is low-level packages tha
 
 ## Installation Paths
 
-As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does Chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](https://github.com/chocolatey/choco/wiki/ChocolateyFAQs)) there are a couple of suitable locations (not listed in any particular order):
+As the package maintainer, you decide where the packaged application is installed or extracted to. Depending on your type of application (see *“What distinction does Chocolatey make between an installable and a portable application?”* at the bottom of the [FAQ](ChocolateyFAQs)) there are a couple of suitable locations (not listed in any particular order):
 
 ### 1. The default installation path of your .msi/.exe setup file
 
