@@ -81,7 +81,7 @@ The main release of a product versions are usually sufficient. If there are also
 ## Okay, how do I create packages?
 There are three main elements to a Chocolatey package. Only the nuspec is required (#1 below).
 
-1. [Nuspec](https://github.com/chocolatey/chocolateytemplates/blob/master/_templates/chocolatey/__NAME__.nuspec) - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
+1. [Nuspec](CreatePackages#nuspec)
 1. [[chocolateyInstall.ps1|ChocolateyInstallPS1]] - check out the [[helper reference|HelpersReference]]
 1. any application files to include (it is highly suggested that you are the author in this case or you have the right to [[distribute files|Legal]]). EXE files in the package/downloaded to package folder from chocolateyInstall.ps1 will get a link to the command line.
 1. chocolateyUninstall.ps1, for uninstalling your package. See [[helper reference|HelpersReference]] for functions available in your script.
@@ -113,13 +113,13 @@ chocolateyUninstall.ps1                        |         |         | Yes
 
 The chocolateyBeforeModify.ps1 script will only be executed if using choco version 0.9.10 or later.
 
-## Nuspec?
-
-For reference - [Nuspec Reference](http://docs.nuget.org/docs/reference/nuspec-reference)
+## Nuspec
 
 The `Chocolatey` Windows package manager uses the same infrastructure as [NuGet](http://nuget.org/) , the Visual Studio package manager by Outercurve Foundation (sponsored by Microsoft). Therefore packages are based on the same principles. One of those is a package description (specification) in `xml` format, known as the `Nuspec`.
 
-The `Nuspec` contains basic information such as the version, license, maintainer, and package dependencies.
+The `Nuspec` contains basic information such as the version, license, maintainer, and package dependencies. `Chocolatey` includes additional optional functionality on top of [NuGet's Nuspec format](http://docs.nuget.org/docs/reference/nuspec-reference) - the best way to determine currently supported features is to create a test package, and look at the generated nuspec file.
+
+```choco new testpackage```
 
 **Note:** If your package uses recently introduced functionality, you might want to include `chocolatey` as a dependency with the version being the lowest version that has the introduced functionality. Otherwise the installation could fail for users with an older version of `Chocolatey` installed.
 
@@ -132,7 +132,7 @@ You can indicate the `Chocolatey` dependency like any other dependency. E.g.:
 
 Logically, the version is based on the lowest compatible version. But if you don't know and used a lot of sorcery in your package, depend on the version of `Chocolatey` that you succesfully tested your package on.
 
-**See also:** [Nuget Version Reference](http://docs.nuget.org/docs/reference/versioning)
+**See also:** [NuGet Version Reference](http://docs.nuget.org/docs/reference/versioning)
 
 ## But for real, how do I create a package?
 
