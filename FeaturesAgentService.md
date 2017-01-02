@@ -27,6 +27,8 @@ To set Chocolatey in background mode, you need to run the following:
 * `choco install chocolatey-agent <options>`
 * `choco feature enable -n useBackgroundService`
 
+This will install Chocolatey Agent as LocalSystem (`SYSTEM`). To change the user, edit the username/password in the services management console on `Chocolatey Agent` properties and restart the service.
+
 ### Chocolatey Background Service / Self-Service Installer
 
 When an administrator installs the agent, they can configure Chocolatey to use background mode so that non-administrators can still perform installations of approved software as configured by an administrator.
