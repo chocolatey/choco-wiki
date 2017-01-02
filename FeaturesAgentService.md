@@ -2,7 +2,7 @@
 
 > Empower your users and give your IT folks the precious gift of time to invest into taking your organization to the next level!
 
-The Chocolatey Agent service allows you to go further with your software management, bringing Chocolatey to desktop users in organizations that wish or have controlled environments. This provides users in controlled environments more empowerment and instant turn around on required software. This frees up IT folks and admins time to spend on making the organization even better.
+The Chocolatey Agent service allows you to go further with your software management, bringing Chocolatey to desktop users in organizations that have controlled environments. This provides users in controlled environments more empowerment and instant turn around on required software. This frees up IT folks and admins time to spend on making the organization even better.
 
 ## Usage
 
