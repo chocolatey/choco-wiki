@@ -18,6 +18,7 @@
 **Features**
 
  - [[Package Synchronizer - Sync with Programs and Features|FeaturesSynchronize]]
+ - [[Background Mode - Allow Non-Administrators To Install/Upgrade Software!|FeaturesAgentService]]
  - [[Package Builder - Create Packages Automatically from Installers!|FeaturesCreatePackagesFromInstallers]]
  - [[Package Internalizer - Automatically Internalize Existing Packages (Recompile)!|FeaturesAutomaticallyRecompilePackages]]
  - [[Runtime Malware Protection|FeaturesVirusCheck]]
