@@ -8,26 +8,25 @@ The Chocolatey Agent service allows you to go further with your software managem
 
 The Chocolatey agent enables two simultaneous modes of operation, one as an agent for a central console and the other as a background service for use in controlled environments. You can configure one or both modes.
 
-### Setup
+### Requirements
 
-To install the background agent, you need to install the `chocolatey-agent` package. The chocolatey agent is only available for business edition customers to install from the licensed source (customers trialling the business edition will also be provided instructions on how to install).
-
-#### Background Mode
-
-##### Requirements
-
-* Chocolatey v0.10.3+
+* Chocolatey v0.10.3+ - v0.10.4+ is recommended for better compatibility.
 * Chocolatey Licensed Edition (`chocolatey.extension`) v1.8.4+
 * Chocolatey for Business edition
 
-##### Background Mode Setup
+### Setup
+
+To install the Chocolatey agent service, you need to install the `chocolatey-agent` package. The chocolatey agent is only available for business edition customers to install from the licensed source (customers trialling the business edition will also be provided instructions on how to install).
+
+#### Background Mode Setup
 
 To set Chocolatey in background mode, you need to run the following:
 
 * `choco install chocolatey-agent <options>`
 * `choco feature enable -n useBackgroundService`
+* `choco feature disable -n showNonElevatedWarnings` - Chocolatey v0.10.4+
 
-This will install Chocolatey Agent as LocalSystem (`SYSTEM`). To change the user, edit the username/password in the services management console on `Chocolatey Agent` properties and restart the service.
+This will install Chocolatey Agent as LocalSystem (`SYSTEM`). To change the user, edit the username/password in the services management console on `Chocolatey Agent` properties and restart the service. Currently you will need to do this on upgrade as well.
 
 ### Chocolatey Background Service / Self-Service Installer
 
