@@ -6,8 +6,8 @@ Heading down a sweet road.
 
 ## Chocolatey
 
-* Validation on packaging (subset of the package-validator)
-* Official support for OneGet/PackageManagement - Summer 2016
+* Validation on choco pack (subset of the package-validator)
+* Official support for OneGet/PackageManagement - Prioritizing
 * GPG package signing - likely sometime in 2017
 * Validating authenticodes - see [#643](https://github.com/chocolatey/choco/issues/643)
 * ~~Not allowing package installs that don't have checksums by default when using non-secure resources like HTTP/FTP - see [#112](https://github.com/chocolatey/choco/issues/112)~~ released in 0.10.0
@@ -15,18 +15,19 @@ Heading down a sweet road.
 * Packaging enhancements - like package version, architecture
 * [Virtual packages](https://github.com/chocolatey/chocolatey/issues/7)
 * WSA Support 
-* Windows Nano Support - likely late 2016/early 2017 (switching to .NET Standard/Core)
+* Windows Nano Support - likely Q2 2017 (switching to .NET Standard/Core)
 
 ## Licensed Chocolatey
 
-* Self-Service Installs (Non-Admins)
+* ~~[[Self-Service Installs (Non-Admins)|FeaturesAgentService]]~~ released in Jan 2017
+* [[Chocolatey Central Console|FeaturesAgentService]]
 * Package Modernizer
 * Package Sync command
   * finding existing packages
   * building packages on the fly with sync (business edition)
-* Package Builder - create packages from Programs and Features
-* Right Click `Create Chocolatey Package...` (business editions)
-* Package Builder UI (business edition)
+* ~~Package Builder - [[create packages from Programs and Features|FeaturesCreatePackagesFromInstallers#generate-packages-from-programs-and-features]]~~ - released in Q3 2016
+* ~~Right Click `Create Chocolatey Package...` (business editions)~~ - released in Q3 2016
+* ~~[[Package Builder UI|FeaturesCreatePackagesFromInstallers#package-builder-ui]] (business edition)~~ - released in Q3 2016
 * Package Builder UI (pro edition without the auto detection)
 * Possibly a business edition gallery with features specific to business needs.
 
