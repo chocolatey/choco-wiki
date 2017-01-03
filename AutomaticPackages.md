@@ -61,10 +61,10 @@ This tool makes use of [Ketarin](https://chocolatey.org/packages/ketarin). Ketar
 1. Create a scheduled task (in Windows). This is the command (edit the path to `cmd.exe` accordingly): `C:\Windows\System32\cmd.exe /c c:\tools\chocolateypackageupdater\ketarinupdate.cmd`
 1. Alternatively to stop the command window from opening on Windows, you can create a VBS script as well and put the path to the `.vbs` file instead of `ketarinupdate.cmd` as the command to run. The file should have the following:
 
-    ```vb
+    ~~~vb
     Set objShell = WScript.CreateObject("WScript.Shell")
     objShell.Run("C:\tools\ChocolateyPackageUpdater\ketarinupdate.cmd"), 0, True
-    ```
+    ~~~
     
 1. Choose a schedule for the task. Some folks run the task about once an hour to catch updates as quickly as they happen.
 1. Open Ketarin. Choose `File` –> `Settings`.
@@ -124,10 +124,12 @@ In whichever job the meta package points to, you should add a command to that li
 1. Click on the **Commands Tab** and set **Edit command for event** to “Before updating an application”.
 ![Ketarin Settings](images/chocopkgup/KetarinJobSettings.png "Ketarin Settings")
 1. Add the following text (replace `name` with the actual name of the meta package folder):
-```cmd
-chocopkgup /p name /v {version} /u "{preupdate-url}" /u64 "{url64}" /pp "{file}" /c "{Checksum}" /c64 "{Checksumx64}"
-REM /disablepush
-```
+
+    ~~~cmd
+    chocopkgup /p name /v {version} /u "{preupdate-url}" /u64 "{url64}" /pp "{file}" /c "{Checksum}" /c64 "{Checksumx64}"
+    REM /disablepush
+    ~~~
+    
 1. Check the bottom of this section to be sure it set to **Command**.
 ![Ketarin Settings Command](images/chocopkgup/KetarinCustomCommand.png "Ketarin Settings Command")
 
