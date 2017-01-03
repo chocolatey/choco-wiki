@@ -16,7 +16,7 @@ You can learn more about the AU updater via its [documentation](https://github.c
 
 ### Credits
 
-AU is brought to you by a Chocolatey community member [Miodrag Milić](https://github.com/majkinetor) and it is becoming more awesome all the time.
+AU is brought to you by a Chocolatey community member [Miodrag Mili&cacute;](https://github.com/majkinetor) and it is becoming more awesome all the time.
 
 ### Requirements
 
