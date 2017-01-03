@@ -25,7 +25,7 @@
  - [[Private CDN Cache|FeaturesPrivateCdn]]
  - [[Install Directory Override|FeaturesInstallDirectoryOverride]]
  - [[Infrastructure Automation Integration|FeaturesInfrastructureAutomation]]
- - [[Automatically Add exes to PATH w/out Clutter (shims)|FeaturesShim]]
+ - [[Shims - Automatically Add exes to PATH w/out Clutter|FeaturesShim]]
  - [[Create Custom Package Templates|How-To-Create-Custom-Package-Templates]]
  - [[Extend Chocolatey With PowerShell Modules (extensions)|How-To-Create-Extensions]]
  - In progress, check back for updates!
