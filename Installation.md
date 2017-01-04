@@ -16,9 +16,11 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 
 <!--remove
 
-Troubleshooting? Install from cmd.exe or PowerShell v2? Need more options?
+<p>&nbsp;</p>
+<p><strong>Troubleshooting? Install from cmd.exe or PowerShell v2? Need more options?</strong><br />
 
 <a onclick="if ($(this).text() == 'Less Options') {$('#div-moreoptions').addClass('hide');$(this).text('More Options');} else {$('#div-moreoptions').removeClass('hide');$(this).text('Less Options');}">More Options</a>
+</p>
 
 <p>&nbsp;</p>
 <div id="div-moreoptions" class="hide">
