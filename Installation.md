@@ -14,23 +14,10 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 
 ~~~
 
-## Upgrading Chocolatey
-
-Once installed, Chocolatey can be upgraded in exactly the same way as any other package that has been installed using Chocolatey.  Simply use the command to install the latest stable release of Chocolatey:
-
-~~~
-choco upgrade chocolatey
-~~~
-
-## Uninstalling Chocolatey
-
-See [[uninstall|Uninstallation]].
-
 ## More Install Options
 
 <!--remove
 
-<p>&nbsp;</p>
 <p><strong>Troubleshooting? Install from cmd.exe or PowerShell v2? Proxy? Need more options?</strong><br />
 
 <a onclick="if ($(this).text() == 'Less Options') {$('#div-moreoptions').addClass('hide');$(this).text('More Options');} else {$('#div-moreoptions').removeClass('hide');$(this).text('Less Options');}">More Options</a>
@@ -301,11 +288,28 @@ You can also just download and unzip the Chocolatey package (`.nupkg` is a fancy
  1. Call `& .\chocolateyInstall.ps1` to allow Chocolatey to install.
  1. **NOTE**: This will not set Chocolatey as an installed package, so it may be a good idea to also call `choco upgrade chocolatey -y` and let it reinstall the same version, but at least it will be available for upgrades then.
 
+<!--remove
+</div>
+remove-->
+
+## Upgrading Chocolatey
+
+Once installed, Chocolatey can be upgraded in exactly the same way as any other package that has been installed using Chocolatey.  Simply use the command to install the latest stable release of Chocolatey:
+
+~~~
+choco upgrade chocolatey
+~~~
+
+## Uninstalling Chocolatey
+
+See [[uninstall|Uninstallation]].
+
+<!--remove
+<p>&nbsp;</p>
+remove-->
+
 <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.10/dist/clipboard.min.js"></script>
 <script>
   new Clipboard('.copy-button');
 </script>
 
-<!--remove
-</div>
-remove-->
