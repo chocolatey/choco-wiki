@@ -20,9 +20,14 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 ## Community
 
+### 2017
+#### January
+
+* http://www.gep13.co.uk/blog/2016-a-retrospective
+
 ### 2016
 
-### December
+#### December
 
 * https://www.linkedin.com/pulse/simplify-your-windows-os-refresh-chocolatey-install-script-zach-baker
 * https://medium.com/@omer727/choco-2651de9bfee
