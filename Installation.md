@@ -14,10 +14,24 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 
 ~~~
 
+## Upgrading Chocolatey
+
+Once installed, Chocolatey can be upgraded in exactly the same way as any other package that has been installed using Chocolatey.  Simply use the command to install the latest stable release of Chocolatey:
+
+~~~
+choco upgrade chocolatey
+~~~
+
+## Uninstalling Chocolatey
+
+See [[uninstall|Uninstallation]].
+
+## More Install Options
+
 <!--remove
 
 <p>&nbsp;</p>
-<p><strong>Troubleshooting? Install from cmd.exe or PowerShell v2? Need more options?</strong><br />
+<p><strong>Troubleshooting? Install from cmd.exe or PowerShell v2? Proxy? Need more options?</strong><br />
 
 <a onclick="if ($(this).text() == 'Less Options') {$('#div-moreoptions').addClass('hide');$(this).text('More Options');} else {$('#div-moreoptions').removeClass('hide');$(this).text('Less Options');}">More Options</a>
 </p>
@@ -25,8 +39,6 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 <p>&nbsp;</p>
 <div id="div-moreoptions" class="hide">
 remove-->
-
-## More Options
 
 **NOTE:** Need to install a particular version of Chocolatey? Proxy? Install to a different location? Advanced Options? See [Before You Install](#before-you-install) below. [Alternative installation options](#alternative-installation-options)? [Non-Administrator installation](#non-administrative-install)? [Restricted/no internet access on target machine](#download--powershell-method)? Looking for [[licensed edition installation|Installation-Licensed]]?
 
@@ -293,20 +305,6 @@ You can also just download and unzip the Chocolatey package (`.nupkg` is a fancy
 <script>
   new Clipboard('.copy-button');
 </script>
-
-## Upgrading Chocolatey
-
-Once installed, Chocolatey can be upgraded in exactly the same way as any other package that has been installed using Chocolatey.  Simply use the command to install the latest stable release of Chocolatey:
-
-~~~
-choco upgrade chocolatey
-~~~
-
-OR to install the absolute latest version including possible pre-releases of Chocolatey:
-
-~~~
-choco upgrade chocolatey -pre
-~~~
 
 <!--remove
 </div>
