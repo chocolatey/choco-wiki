@@ -20,6 +20,7 @@ Troubleshooting? Install from cmd.exe or PowerShell v2? Need more options?
 
 <a onclick="if ($(this).text() == 'Less Options') {$('#div-moreoptions').addClass('hide');$(this).text('More Options');} else {$('#div-moreoptions').removeClass('hide');$(this).text('Less Options');}">More Options</a>
 
+<p>&nbsp;</p>
 <div id="div-moreoptions" class="hide">
 remove-->
 
