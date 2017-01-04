@@ -6,13 +6,15 @@
 That's it! All you need is choco.exe (that you get from the installation scripts) and you are good to go! No Visual Studio required.
 
 ## Installing Chocolatey
-Chocolatey installs in seconds. Just run the following command from PowerShell v3+ <!--remove - <button class="icon-clipboard copy-button" data-clipboard-text="iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"></button> (copy command) remove-->
+Chocolatey installs in seconds. Just run the following command from an ***administrative*** PowerShell v3+ prompt: <!--remove <button class="icon-clipboard copy-button" data-clipboard-text="iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"></button> (copy command) remove-->
 
 ~~~powershell
 
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 
 ~~~
+
+We take security very seriously. <a href="https://chocolatey.org/security">Learn more</a>.
 
 ## More Install Options
 
@@ -293,7 +295,7 @@ remove-->
 
 ## Upgrading Chocolatey
 
-Once installed, Chocolatey can be upgraded in exactly the same way as any other package that has been installed using Chocolatey.  Simply use the command to install the latest stable release of Chocolatey:
+Once installed, Chocolatey can be upgraded in exactly the same way as any other package that has been installed using Chocolatey.  Simply use the command to upgrade to the latest stable release of Chocolatey:
 
 ~~~
 choco upgrade chocolatey
