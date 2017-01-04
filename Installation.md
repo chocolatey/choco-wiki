@@ -1,6 +1,23 @@
 ## Installing Chocolatey
 Chocolatey installs in seconds...
 
+* PowerShell v3+ - <button class="icon-clipboard copy-button" data-clipboard-text="iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"></button>
+
+~~~powershell
+
+iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+
+~~~
+
+<a onclick="if ($(this).text() == 'Less Options') {$('#div-moreoptions').addClass('hide');$(this).text('More Options');} else {$('#div-moreoptions').removeClass('hide');$(this).text('Less Options');}">More Options</a>
+
+<div class="hide">
+
+### More Options
+
+</div>
+
+<div id="div-moreoptions" class="hide">
 **NOTE:** Need to install a particular version of Chocolatey? Proxy? Install to a different location? Advanced Options? See [Before You Install](#before-you-install) below. [Alternative installation options](#alternative-installation-options)? [Non-Administrator installation](#non-administrative-install)? [Restricted/no internet access on target machine](#download--powershell-method)? Looking for [[licensed edition installation|Installation-Licensed]]?
 
 To install chocolatey now, open an <strong>administrative</strong> command prompt and paste the text from the box below that applies to the name of your shell and press enter. If you need assistance opening an administrative prompt, see [open an elevated prompt in Windows 8+](http://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) (or [Windows 7](http://www.howtogeek.com/howto/windows-vista/run-a-command-as-administrator-from-the-windows-vista-run-box/)).
@@ -270,7 +287,6 @@ You can also just download and unzip the Chocolatey package (`.nupkg` is a fancy
  1. Call `& .\chocolateyInstall.ps1` to allow Chocolatey to install.
  1. **NOTE**: This will not set Chocolatey as an installed package, so it may be a good idea to also call `choco upgrade chocolatey -y` and let it reinstall the same version, but at least it will be available for upgrades then.
 
-
 <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.10/dist/clipboard.min.js"></script>
 <script>
   new Clipboard('.copy-button');
@@ -289,3 +305,5 @@ OR to install the absolute latest version including possible pre-releases of Cho
 ~~~
 choco upgrade chocolatey -pre
 ~~~
+
+</div>
