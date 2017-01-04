@@ -1,13 +1,18 @@
 # Security
-## Summary
 
-* Report general security issue - please email security [at] realdimensions dot net
-* Report package malware/security/other issue - please use the Report Abuse link directly on the package page on https://chocolatey.org/packages.
+Bottom line: If someone tells you Chocolatey ***is*** insecure, please respond with "You mean Chocolatey ***used*** to be insecure. You may want to check out chocolatey dot org slash security and catch up with the last 2+ years. Or do you mean a ***community package*** may not be secure? Organizations don't typically use the community repository anyway and only use Chocolatey in a completely secure manner."
+
+## Report Issue
+
+* Report general security issue - please email security [at] realdimensions dot net.
+* Report package malware/security/other package issue - please use the Report Abuse link directly on the package page on https://chocolatey.org/packages.
+
+## Summary
 
 We take security issues very seriously. Security falls into a few areas of the Chocolatey framework - the clients (choco.exe and ChocolateyGUI), and the community repository (aka https://chocolatey.org/packages). While no one can give you a guarantee of complete security, we can provide information here for you to make the best decision for your use of Chocolatey. The most secure use of Chocolatey is when you use Chocolatey with packages that use embedded or local software resources. If you are super security conscious, you should understand the tradeoffs prior to using the community repository.
 
-* If you are an organization and you are using Chocolatey in the recommended way (internal repositories using packages that use local resources only), Chocolatey is secure and reliable.
-* Using the community repository (https://chocolatey.org/packages) is only as secure as the packages that you are using. While Chocolatey provides security features like checksumming, verification against VirusTotal, and moderation to be sure packages are using official binaries, there is no guarantee on the official distributions.
+* If you are an organization and you are using Chocolatey in the recommended way (internal repositories using packages that use internal resources only), Chocolatey is secure and reliable.
+* Using the community repository (https://chocolatey.org/packages) is only as secure as the packages that you are using. While Chocolatey provides security features like checksumming, verification against VirusTotal (for packages and any binaries they contain or download), and moderation to be sure packages are using official binaries, there is no guarantee for what may be in the official distributions.
 * Moderation and virus checking of packages on the public community repository (https://chocolatey.org/packages) represent what the package and links represented at the time of original moderation. Many packages on the public feed represent software that has distribution rights, so the packages must contain instructions on how to download those binaries from official sources. There is no guarantee (other than packages using a package checksum - required for non-secure downloads) against the vendor changing what is at the URLs that the package uses.
 * If you need better runtime protection against malware, you should look at [Chocolatey Pro / Chocolatey For Business](https://chocolatey.org/compare). While we'd like to offer runtime protection for free to everyone, it's not free for us so we are not able to provide it as a free service.
 
