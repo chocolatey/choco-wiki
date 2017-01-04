@@ -1,7 +1,12 @@
-## Installing Chocolatey
-Chocolatey installs in seconds...
+## Requirements
+* Windows 7+ / Windows Server 2003+
+* PowerShell v2+
+* .NET Framework 4+ (the installation will attempt to install .NET 4.0 if you do not have it installed)
 
-* PowerShell v3+ - <button class="icon-clipboard copy-button" data-clipboard-text="iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"></button>
+That's it! All you need is choco.exe (that you get from the installation scripts) and you are good to go! No Visual Studio required.
+
+## Installing Chocolatey
+Chocolatey installs in seconds. Just run the following command from PowerShell v3+ <!--remove - <button class="icon-clipboard copy-button" data-clipboard-text="iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"></button> (copy command) remove-->
 
 ~~~powershell
 
@@ -10,6 +15,9 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 ~~~
 
 <!--remove
+
+Troubleshooting? Install from cmd.exe or PowerShell v2? Need more options?
+
 <a onclick="if ($(this).text() == 'Less Options') {$('#div-moreoptions').addClass('hide');$(this).text('More Options');} else {$('#div-moreoptions').removeClass('hide');$(this).text('Less Options');}">More Options</a>
 
 <div id="div-moreoptions" class="hide">
@@ -121,14 +129,6 @@ Have a proxy? Try
 #### Explicit proxy?
 
 See how to [install behind an explicit proxy below](#cmdpowershell-wproxy-server).
-
-## Requirements
-* Windows 7+ / Windows Server 2003+
-* PowerShell v2+
-* .NET Framework 4+ (the installation will attempt to install .NET 4.0 if you do not have it installed)
-
-That's it! All you need is choco.exe (that you get from the installation scripts) and you are good to go! No Visual Studio required.
-
 
 ## Why does Chocolatey install where it does by default?
 Great question - [[Why does Chocolatey install where it does|DefaultChocolateyInstallReasoning]]
@@ -305,6 +305,6 @@ OR to install the absolute latest version including possible pre-releases of Cho
 choco upgrade chocolatey -pre
 ~~~
 
-<!--remove 
+<!--remove
 </div>
 remove-->
