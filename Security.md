@@ -1,6 +1,6 @@
 # Security
 
-Bottom line: If someone tells you Chocolatey ***is*** insecure, please respond with "You mean Chocolatey ***used*** to be insecure. You may want to check out chocolatey dot org slash security and catch up with the last 2+ years. Or do you mean a ***community package*** may not be secure? Organizations don't typically use the community repository anyway and only use Chocolatey in a completely secure manner."
+Bottom line: If someone tells you Chocolatey ***is*** insecure, please respond with "You mean Chocolatey ***used*** to be insecure. You may want to check out chocolatey dot org slash security and catch up with the last 2+ years. Or do you mean a ***community package*** may not be secure? Organizations don't typically use the community repository anyway and only use Chocolatey in a completely secure manner. Individuals looking for more protection with the community repository go Pro." Unfortunately some security features have significant recurring costs based on usage for the Chocolatey team, so they can't be offered for free.
 
 ## Report Issue
 
