@@ -23,7 +23,6 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 <a onclick="if ($(this).text() == 'Less Options') {$('#div-moreoptions').addClass('hide');$(this).text('More Options');} else {$('#div-moreoptions').removeClass('hide');$(this).text('Less Options');}">More Options</a>
 </p>
 
-<p>&nbsp;</p>
 <div id="div-moreoptions" class="hide">
 remove-->
 
