@@ -17,8 +17,6 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 
 </div>
 
-<div id="div-moreoptions" class="hide">
-
 **NOTE:** Need to install a particular version of Chocolatey? Proxy? Install to a different location? Advanced Options? See [Before You Install](#before-you-install) below. [Alternative installation options](#alternative-installation-options)? [Non-Administrator installation](#non-administrative-install)? [Restricted/no internet access on target machine](#download--powershell-method)? Looking for [[licensed edition installation|Installation-Licensed]]?
 
 To install chocolatey now, open an <strong>administrative</strong> command prompt and paste the text from the box below that applies to the name of your shell and press enter. If you need assistance opening an administrative prompt, see [open an elevated prompt in Windows 8+](http://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) (or [Windows 7](http://www.howtogeek.com/howto/windows-vista/run-a-command-as-administrator-from-the-windows-vista-run-box/)).
@@ -307,4 +305,3 @@ OR to install the absolute latest version including possible pre-releases of Cho
 choco upgrade chocolatey -pre
 ~~~
 
-</div>
