@@ -9,13 +9,11 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 
 ~~~
 
+<!--remove
 <a onclick="if ($(this).text() == 'Less Options') {$('#div-moreoptions').addClass('hide');$(this).text('More Options');} else {$('#div-moreoptions').removeClass('hide');$(this).text('Less Options');}">More Options</a>
 
-<div class="hide">
-
-### More Options
-
-</div>
+<div id="div-moreoptions" class="hide">
+remove-->
 
 **NOTE:** Need to install a particular version of Chocolatey? Proxy? Install to a different location? Advanced Options? See [Before You Install](#before-you-install) below. [Alternative installation options](#alternative-installation-options)? [Non-Administrator installation](#non-administrative-install)? [Restricted/no internet access on target machine](#download--powershell-method)? Looking for [[licensed edition installation|Installation-Licensed]]?
 
@@ -305,3 +303,6 @@ OR to install the absolute latest version including possible pre-releases of Cho
 choco upgrade chocolatey -pre
 ~~~
 
+<!--remove 
+</div>
+remove-->
