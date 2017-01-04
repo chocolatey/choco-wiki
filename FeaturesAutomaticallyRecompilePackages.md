@@ -9,12 +9,12 @@ Chocolatey for Business is able to automatically download packages and resources
 
 Call `choco download` with options including the name of an existing package for Chocolatey for Business to download and download all existing remote resources.
 
-![Recompile Existing Packages, Internalizeing Resources - if you are on https://chocolatey.org/docs/features-automatically-recompile-packages, see commented html below for detailed description of image](images/features/features_recompile_packages.png)
+![Internalize Existing Packages, Recompiling Resources - if you are on https://chocolatey.org/docs/features-automatically-recompile-packages, see commented html below for detailed description of image](images/features/features_recompile_packages.png)
 
 <!--
 Text in the image above:
 
-Reuse Existing Packages - Automatic Download and Recompile Support
+Reuse Existing Packages - Automatic Download and Internalize Support
 
 - Chocolatey for Business allows you to take advantage of thousands of existing packages without a dependency on the internet!
 - Downloads an existing package and all remote resources.

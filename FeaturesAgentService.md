@@ -75,7 +75,51 @@ The console will allow:
 
 ## See It In Action
 
-coming soon
+Here's a short 8 minute walkthrough (preview):
+
+[![Chocolatey's Self-Service Install - Background Mode (Preview)](https://cloud.githubusercontent.com/assets/63502/21634430/d8b94416-d21c-11e6-80c6-6a1b6def72fc.png)](https://www.youtube.com/watch?v=6HRmbTQ9wNM "Chocolatey's Self-Service Install - Background Mode (Preview)")
+
+
+Consider the following image:
+
+![Attempting to install software as non-admin - if you are on https://chocolatey.org/docs/features-agent-service, see commented html below for detailed description of image](images/features/features_non_admin_installer.png)
+
+<!--
+Text in the image above:
+
+Non-administrators need an administrator to perform installs.
+
+This image shows attempting to install VLC as a non-administrator and having the computer show the question for an administrator username and password to continue.
+-->
+
+This is the status quo for a non-administrative user. Can't install software without the help of an administrator. That takes up time, time for both the user waiting to get work done and the IT admin that performs the work.
+
+Now, how does that change once we have background mode?
+
+![Installing software with Chocolatey's background mode from the command line. - if you are on https://chocolatey.org/docs/features-agent-service, see commented html below for detailed description of image](images/features/features_non_admin_selfservice.png)
+
+<!--
+Text in the image above:
+
+Background Mode / Self-Service Installer
+
+- Non-admin can install only from approved, configured sources
+- Chocolatey Agent Service validates commands prior to running
+- Output streams as it happens
+- Attempted abuses are logged for further review
+- Background mode only for install / upgrade (configuring commands allowed on roadmap)
+- GUI on roadmap
+
+This image shows running `choco install adobereader -y`.
+-->
+
+Once you've configured background mode and configured approved sources for installation, a user can install only those approved applications using the command line or the Chocolatey GUI (coming soon).
+
+
+Now, if a user wants to install from a non-approved source, they are met with the following message:
+![Not able to install from custom source](images/features/features_non_admin_custom_source_error.png)
+
+This ensures non-admin users can only install from sources that you configure.
 
 ## FAQ
 
