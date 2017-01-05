@@ -11,7 +11,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
  * Support Self-Service Install / Background Mode - see https://chocolatey.org/docs/features-agent-service
  * Manage Windows Services
 
- We've introduced some service management functions to the business edition. `Install-ChocolateyWindowsService`, `Uninstall-ChocolateyWindowsService`, `Start-ChocolateyWindowsService`, and `Stop-ChocolateyWindowsService`. Those will be documented soon enough. For now some example code will suffice.
+ We've introduced some service management functions to the business edition. `Install-ChocolateyWindowsService`, `Uninstall-ChocolateyWindowsService`, `Start-ChocolateyWindowsService`, and `Stop-ChocolateyWindowsService`. Those will be documented soon enough. For now some example code should suffice.
 
 ~~~powershell
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
