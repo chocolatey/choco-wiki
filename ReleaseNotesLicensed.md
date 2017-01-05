@@ -4,6 +4,48 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.8.4 (January 5, 2017)
+
+### FEATURES
+
+ * Support Self-Service Install / Background Mode - see https://chocolatey.org/docs/features-agent-service
+ * Manage Windows Services
+
+ We've introduced some service management functions to the business edition. `Install-ChocolateyWindowsService`, `Uninstall-ChocolateyWindowsService`, `Start-ChocolateyWindowsService`, and `Stop-ChocolateyWindowsService`. Those will be documented soon enough. For now some example code will suffice.
+
+~~~powershell
+$toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+$serviceExe = Join-Path $toolsDir 'service\chocolatey-agent.exe'
+
+$packageArgs = @{
+  Name                  = 'chocolatey-agent'
+  DisplayName           = 'Chocolatey Agent'
+  Description           = 'Chocolatey Agent is a backgound service for Chocolatey.'
+  StartupType           = 'Automatic'
+  ServiceExecutablePath = $serviceExe
+}
+
+#Username, Password, -DoNotStartService are also considered
+
+Install-ChocolateyWindowsService @packageArgs
+
+# The other three methods simply take the service name.
+Start-ChocolateyWindowsService -Name 'chocolatey-agent'
+Stop-ChocolateyWindowsService -Name 'chocolatey-agent'
+Uninstall-ChocolateyWindowsService -Name 'chocolatey-agent'
+~~~
+
+### BUG FIXES
+
+ * Package Synchronizer - Do not run automatic sync when non-elevated. It fails in weird ways
+ * Package Builder (Choco New) - fix "(Install)" - append space in nuspec Title.
+
+### IMPROVEMENTS
+
+ * Downloading remote files - don't show bytes, only formatted values
+ * Authenticode sign licensed binaries
+
+
 ## 1.8.3 (December 21, 2016)
 
 ### FEATURES
