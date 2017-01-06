@@ -1,3 +1,12 @@
+Table of Contents
+
+* [Courses](#courses)
+* [Translations](#translations)
+* [Vagrant Boxes](#vagrant-boxes)
+* [Integrating with other tools](#integrations)
+* [Community](#community)
+* [Testimonials](#testimonials)
+
 ## Courses
 
 * https://www.pluralsight.com/courses/chocolatey-nuget-automation-pros
