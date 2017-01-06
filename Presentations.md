@@ -1,4 +1,5 @@
-Presentations and [[Podcasts|#podcasts]]
+* [Presentations](#presentations)
+* [Podcasts](#podcasts)
 
 ## Presentations
 ### 2016
