@@ -32,6 +32,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ### 2017
 #### January
 
+* https://www.dotnetrocks.com/?show=1395 (shout-out in MarkdownMonster podcast)
 * http://www.gep13.co.uk/blog/2016-a-retrospective
 
 ### 2016
