@@ -19,6 +19,7 @@ choco config set proxyPassword <passwordThatGetsEncryptedInFile>
 ### Example
 
 Running the following commands in 0.9.9.9:
+
 ~~~sh
 choco config set proxy http://localhost:8888
 choco config set proxyUser bob
