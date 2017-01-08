@@ -40,6 +40,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 #### December
 
 * https://www.linkedin.com/pulse/simplify-your-windows-os-refresh-chocolatey-install-script-zach-baker
+* http://obfuscurity.com/2016/12/The-Grand-Windows-Laptop-Experiment
 * https://medium.com/@omer727/choco-2651de9bfee
 
 #### November
