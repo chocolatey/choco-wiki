@@ -19,7 +19,7 @@ below though to familiarize yourself on what to do with GUI applications
 and/or ignoring shims (also known as batch redirects).
 
 #### Including the Software Installer in the Package 
-Sometimes called embedding the binaries, you have methods you can use that will use the installers directly from the package instead of downloading first.
+Sometimes called embedding the binaries, there are functions in the automation scripts you can call that will use the installers directly from the package instead of downloading first.
 
 #### Automation Scripts
 You have a powerful use of Chocolatey, as you are using PowerShell. So you
