@@ -12,11 +12,14 @@ First you should determine if you are making a self-contained package or (also) 
 
 #### Self-Contained?
 If you have a self-contained package, you can remove the automation scripts
-entirely and just include the executables, they will automatically get shimmed,
+entirely and just include the runtime executables, they will automatically get shimmed,
 which puts them on the path. Ensure you have the [[legal right to distribute|Legal]]
 the application though. You should read up on the Shim Generation section
 below though to familiarize yourself on what to do with GUI applications
 and/or ignoring shims (also known as batch redirects).
+
+#### Including the Software Installer in the Package 
+Sometimes called embedding the binaries, you have methods you can use that will use the installers directly from the package instead of downloading first.
 
 #### Automation Scripts
 You have a powerful use of Chocolatey, as you are using PowerShell. So you
@@ -50,7 +53,7 @@ If you think you got what it takes and just want to know the basic steps to get 
 There are a few rules that you have to follow before pushing packages to chocolatey.org:
 
 1. **Don't package illegal software.** Packages of software that is illegal in most countries in the world are prohibited to publish on Chocolatey.org. This applies in particular to software that violates the copyright, pirated software and activation cracks. Remember that this also affects software that is especially designed to accomplish software piracy.
-2. **Do not package software that you don't have the right to distribute.** Please see [Distribution Rights](Legal#wiki-distributions-aka-chocolatey-packages) for more information. Any package found not in compliance with this will be removed immediately.
+2. **Do not include software in a package that you don't have the right to distribute.** Please see [Distribution Rights](Legal#wiki-distributions-aka-chocolatey-packages) for more information. Any package found not in compliance with this will be removed immediately. Instead you can download binaries from official distribution locations at runtime.
 1. **Packaging commercial or trial software?** Clearly state this in the package description. Does it require an activation key? Is there a trial period if you don't have a key? How long is this trial period?
 1. **Only post publicly relevant packages.** You should consider whether this package is useful for others. If that is not the case, it shouldn't be published on Chocolatey.org. Reasons for that can be if the package would require a very customized configuration. You can host your personal packages on [MyGet](https://www.myget.org/) and still be able to install them with Chocolatey using the `-source` parameter.
 1. **Do not publish junk or malware** packages.
