@@ -1,5 +1,5 @@
 ## Chocolatey - kind of like apt-get, but for Windows
-[![](http://img.shields.io/chocolatey/dt/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/chocolatey/v/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](http://img.shields.io/gratipay/Chocolatey.svg)](https://www.gratipay.com/Chocolatey/) [![Project Stats](https://www.openhub.net/p/chocolatey/widgets/project_thin_badge.gif)](https://www.openhub.net/p/chocolatey)
+[![](https://img.shields.io/chocolatey/dt/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](https://img.shields.io/chocolatey/v/chocolatey.svg)](https://chocolatey.org/packages/chocolatey) [![](https://img.shields.io/gratipay/Chocolatey.svg)](https://www.gratipay.com/Chocolatey/) [![Project Stats](https://www.openhub.net/p/chocolatey/widgets/project_thin_badge.gif)](https://www.openhub.net/p/chocolatey)
 
 ##### Notes:
  * Edit me at https://github.com/chocolatey/choco-wiki
@@ -8,7 +8,7 @@
 
 TeamCity  | AppVeyor | Travis
 ------------- | ------------- | -------------
-[![TeamCity Build Status](http://img.shields.io/teamcity/codebetter/bt429.svg)](http://teamcity.codebetter.com/viewType.html?buildTypeId=bt429) | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/jfxywa3xuwowt20w/branch/master?svg=true)](https://ci.appveyor.com/project/ferventcoder/choco/branch/master) | [![Travis Build Status](https://travis-ci.org/chocolatey/choco.svg?branch=master)](https://travis-ci.org/chocolatey/choco)
+[![TeamCity Build Status](https://img.shields.io/teamcity/codebetter/bt429.svg)](http://teamcity.codebetter.com/viewType.html?buildTypeId=bt429) | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/jfxywa3xuwowt20w/branch/master?svg=true)](https://ci.appveyor.com/project/ferventcoder/choco/branch/master) | [![Travis Build Status](https://travis-ci.org/chocolatey/choco.svg?branch=master)](https://travis-ci.org/chocolatey/choco)
 
 ### You can just call me Chocolatey.
 
@@ -92,7 +92,7 @@ Want to [[learn more?|ChocolateyFAQs]]
 Where are [[we|RoadMap]]? Where are we [[going|RoadMap]]?
 
 ## Google Group
-Chocolatey has a [Google Groups group](http://groups.google.com/group/chocolatey). Please join and ask questions and send feedback.
+Chocolatey has a [Google Groups group](https://groups.google.com/group/chocolatey). Please join and ask questions and send feedback.
 
 If you have issues with a package (or it is out of date), please use the contact maintainers link on the package page itself. If the maintainer doesn’t respond within a given time frame (say a day or two), please refer to the [[Package Triage Process|PackageTriageProcess]].
 
