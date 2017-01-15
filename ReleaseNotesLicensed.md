@@ -4,6 +4,47 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.9.0 (January 15, 2017)
+
+This release brings the coveted PackageBuilder UI to the Pro+ license (minus auto detection) and adds a tabbed interface that allows you to fill out the entire nuspec. Package Synchronizer now has `choco sync` to compliment the automatic synchronization. The sync command brings all unmanaged software in Programs and Features under Chocolatey management.
+
+### FEATURES
+
+ * Package Synchronizer v2 - `choco sync` to associate existing packages with unmanaged software - see https://chocolatey.org/docs/features-synchronize#sync-command
+ * Package Builder UI:
+    * Starts at Professional edition (minus autodetection)
+    * Tabbed interface
+    * Tab for entire Nuspec
+    * [Business] Tab to generate from Programs and Features
+
+### BUG FIXES
+
+ * Self-Service / Background Mode:
+    * Fix - Add a line after progress is complete
+ * Fix - Automatic creation of ignore file in Install-ChocolateyInstallPackage throws errors when it fails - see [#380](https://github.com/chocolatey/chocolatey/issues/380) for original issue.
+ * Package Builder (Choco New):
+    * Fix - remove "version/ver" if next to version number in DisplayName
+    * Fix - todo / logging need to escape curly braces to properly format
+    * Fix - continue on error
+
+### IMPROVEMENTS
+
+ * User can turn on Preview Features - `choco feature enable -n allowPreviewFeatures`
+ * InstallDirectory switch added to Install-ChocolateyInstallPackage
+ * Package Internalizer (Choco Download)
+    * option to ignore dependencies `--ignore-dependencies`
+ * Package Builder (Choco New)
+    * Generates package arguments with install directory override
+    * Add optional scripts - beforeModify/uninstall
+    * Add other template files
+    * Remove any version number from package id
+    * allow for quiet logging
+    * auto detection fills out more fields for MSIs
+ * Self-Service / Background Mode Enhancements
+    * Do not warn if command is `choco feature`
+    * Provide user context when background service not available
+
+
 ## 1.8.4 (January 5, 2017)
 
 ### FEATURES
