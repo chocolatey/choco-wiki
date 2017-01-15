@@ -1,9 +1,9 @@
 # Package Internalizer
 Automatically Internalize/Recompile Existing Packages (Business Editions Only)
 
-There are thousands of existing packages on the [community repository](https://chocolatey.org/packages) that are a tremendous resource when it comes to creating packages that have software that can sometimes be tricky! Unfortunately you may be wary of using those packages without changes because many of those packages are subject to distribution rights and thus have an internet dependency (which creates both [[trust and control issues|CommunityPackagesDisclaimer]]). There is a process for downloading and internalizing packages to use internal or embedded locations for that software that is called **recompiling**.
+There are thousands of existing packages on the [community repository](https://chocolatey.org/packages) that are a tremendous resource when it comes to creating packages that have software that can sometimes be tricky! Unfortunately you may be wary of using those packages without changes because many of those packages are subject to distribution rights and thus have an internet dependency (which creates both [[trust and control issues|CommunityPackagesDisclaimer]]). There is a process for downloading and internalizing packages to use internal or embedded locations for that software that is called **internalizing** (also known as recompiling).
 
-Chocolatey for Business is able to automatically download packages and resources, edit the scripts, and recompile packages to internalize and remove internet dependencies from those packages, saving you hours of time in [[manually recompiling packages|How-To-Recompile-Packages]]!
+Chocolatey for Business is able to automatically download packages and resources, edit the scripts, and recompile packages to internalize and remove internet dependencies from those packages, saving you hours of time in [[manually internalizing/recompiling packages|How-To-Recompile-Packages]]!
 
 ## Usage
 
@@ -39,23 +39,35 @@ When running `choco download` in the Business editions, pass the following:
      OutputDirectory - Specifies the directory for the downloaded Chocolatey
        package file. If not specified, uses the current directory.
 
+ -i, --ignoredependencies, --ignore-dependencies
+     IgnoreDependencies - Ignore dependencies when installing package(s).
+       Licensed editions v1.9.0+ Defaults to false.
+
      --recompile, --internalize
      Recompile / Internalize - Download all external resources and recompile
-       the package to use the local resources instead.
+       the package to use the local resources instead. Business editions only
+       (licensed version 1.5.0+).
 
      --resources-location=VALUE
-     Resources Location - When recompiling, use this location for resources
-       instead of embedding the downloaded resources into the package. Can be
-       a file share or an internal url location.  When it is a file share, it
-       will attempt to download to that location. When it is an internal url,
-       it will download locally and give further instructions on where it
-       should be uploaded to match package edits.
+     Resources Location - When internalizing, use this location for resources
+       instead of embedding the downloaded resources into the package. Can be a
+       file share or an internal url location. When it is a file share, it will
+       attempt to download to that location. When it is an internal url, it
+       will download locally and give further instructions on where it should
+       be uploaded to match package edits. Business editions only (licensed
+       version 1.5.1+).
+
+     --download-location=VALUE
+     Download Location - OPTIONAL - when internalizing, download the
+       resources to this location. Used with Resources Location (and defaults
+       to Resources Location when not set). Business editions only (licensed
+       version 1.8.3+).
 
      --append-useoriginallocation, --append-use-original-location
      Append -UseOriginalLocation - When `Install-ChocolateyPackage` is
        internalized, append the `-UseOriginalLocation` parameter to the
        function. Business editions only (licensed version 1.7.0+). Requires at
-       least Chocolatey v0.10.1 for `Install-ChocolateyPacakge` to recognize
+       least Chocolatey v0.10.1 for `Install-ChocolateyPackage` to recognize
        the switch appropriately. Overrides the feature
        'internalizeAppendUseOriginalLocation' set to by default to 'False'.
 ~~~

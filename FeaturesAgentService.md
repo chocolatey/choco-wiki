@@ -11,7 +11,7 @@ The Chocolatey agent enables two simultaneous modes of operation, one as an agen
 ### Requirements
 
 * Chocolatey v0.10.3+ - v0.10.4+ is recommended for better compatibility.
-* Chocolatey Licensed Edition (`chocolatey.extension`) v1.8.4+
+* Chocolatey Licensed Edition (`chocolatey.extension`) v1.8.4+. For chocolatey-agent v0.5.0+, licensed edition v1.9.0+.
 * Chocolatey for Business edition
 
 ### Setup
