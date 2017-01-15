@@ -94,7 +94,7 @@ Use `-r`. `choco sync -r`
 
 Synchronize can recognize existing packages and sync to those as long as the name of the package is a close match to the software name (e.g. Google Chrome becomes either google-chrome or googlechrome).
 
-## Known issues
+## Sync Command Known issues
 
 * Any packages you've installed side by side (`-m`) will show up every time during sync.
 * If you have both a 64-bit and 32-bit version of some software installed, sync will track to one on the first run and the other on the next run. This is not a normal scenario.
