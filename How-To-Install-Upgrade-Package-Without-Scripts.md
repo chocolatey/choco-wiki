@@ -72,7 +72,7 @@ Consider the following scenario:
 
 You should run
 
-`choco pin googlechrome`
+`choco pin add -n=googlechrome`
 
 For more information see [[Pin Command|CommandsPin]].
 
@@ -106,5 +106,5 @@ See [Community Feed has a version older than your version](#community-feed-has-a
 
 ~~~
 choco upgrade firefox -n -y --version 1.8.0
-choco pin firefox
+choco pin add -n=firefox
 ~~~
