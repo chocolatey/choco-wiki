@@ -4,9 +4,17 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.9.1 (January 16, 2017)
+
+### BUG FIXES
+
+ * Ensure Pro users can call Package Builder from the command line after install.
+ * Correct title of package to "Chocolatey Licensed Edition"
+
+
 ## 1.9.0 (January 15, 2017)
 
-This release brings the coveted PackageBuilder UI to the Pro+ license (minus auto detection) and adds a tabbed interface that allows you to fill out the entire nuspec. Package Synchronizer now has `choco sync` to compliment the automatic synchronization. The sync command brings all unmanaged software in Programs and Features under Chocolatey management.
+This release brings the coveted Package Builder UI to the Pro+ license (minus auto detection) and adds a tabbed interface that allows you to fill out the entire nuspec. Package Synchronizer now has `choco sync` to compliment the automatic synchronization. The sync command brings all unmanaged software in Programs and Features under Chocolatey management.
 
 ### FEATURES
 
