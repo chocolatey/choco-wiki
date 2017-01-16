@@ -8,7 +8,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 ### BUG FIXES
 
- * Ensure Pro users can call Package Builder from the command line after install.
+ * Ensure Pro users can call Package Builder from the command line ("package builder") after install.
  * Correct title of package to "Chocolatey Licensed Edition"
 
 
