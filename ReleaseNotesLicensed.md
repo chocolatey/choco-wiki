@@ -4,12 +4,19 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.9.2 (January 17, 2017)
+
+### BUG FIXES
+
+ * Fix - virus scanner not working properly
+
+
 ## 1.9.1 (January 16, 2017)
 
 ### BUG FIXES
 
- * Ensure Pro users can call Package Builder from the command line ("package builder") after install.
- * Correct title of package to "Chocolatey Licensed Edition"
+ * Fix - Ensure Pro users can call Package Builder from the command line ("packagebuilder") after install
+ * Fix - Correct title of package to "Chocolatey Licensed Edition"
 
 
 ## 1.9.0 (January 15, 2017)
