@@ -8,7 +8,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 ### BUG FIXES
 
- * Fix - trial users unable to use Business version of Package Builder UI.
+ * Fix - trial users unable to use Business edition of Package Builder UI.
 
 
 ## 1.9.2 (January 17, 2017)
