@@ -4,6 +4,13 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.9.3 (January 17, 2017)
+
+### BUG FIXES
+
+ * Fix - trial users unable to use Business version of Package Builder UI.
+
+
 ## 1.9.2 (January 17, 2017)
 
 ### BUG FIXES
