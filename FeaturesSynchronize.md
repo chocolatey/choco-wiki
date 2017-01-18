@@ -62,7 +62,27 @@ At 1.9.0, sync is in preview. You need to turn it on by enabling the feature  `a
 
 ## See it in action
 
-Coming soon
+We've prepared a short video to show sync in action:
+[![Chocolatey's Package Synchronizer - Sync Command](https://cloud.githubusercontent.com/assets/63502/22050108/ade28e5a-dcfd-11e6-8835-afc9f699e400.png)](https://youtu.be/tzSsYHYsjf4 "Chocolatey's Package Synchronizer - Sync Command")
+
+In the following image, sync is run on a system that has 18 applications installed and a base Chocolatey for Business install. Note after running sync, all software on the machine is now being managed by Chocolatey.
+
+![Chocolatey's Package Synchronizer Sync Command - if you are on https://chocolatey.org/docs/features-synchronize, see commented html below for detailed description of image](images/features/features_choco_sync.png)
+
+<!--
+Text in the image above:
+
+Package Synchronizer's Sync Command
+
+- Brings unmanaged software under Chocolatey management
+- Provides you the source packaging and package output
+- Automate existing systems in under 90 seconds!
+- Machine parseable with `-r`
+- Links existing packages not tracking to Programs and Features
+
+This image shows running `choco sync`. It shows first a system that has 18 applications installed outside of Chocolatey, then runs `choco sync` and watches Chocolatey generate packages and baseline the system. Then it shows `choco list -lo --include-programs` again, which shows that all software on the machine is now being managed by Chocolatey.
+
+-->
 
 ## Options and Switches
 
@@ -88,7 +108,7 @@ Generating packages on the fly from Programs and Features for non-MSI installers
 
 ### How do I get machine parseable output?
 
-Use `-r`. `choco sync -r`. May require Chocolatey v0.10.4+.
+Use `-r`. `choco sync -r`. Requires Chocolatey v0.10.4+.
 
 ### What if I have an existing package that is just not tracking to Programs and Features?
 

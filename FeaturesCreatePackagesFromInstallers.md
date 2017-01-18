@@ -44,7 +44,6 @@ Then just add in and fill out the requested information. It uses `choco new` und
 
 Another way to bring up the ui is to call `packagebuilder` from the command line.
 
-
 ## See It In Action
 
 ### Package Builder CLI and Scripts
