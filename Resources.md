@@ -32,6 +32,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ### 2017
 #### January
 
+* http://pinter.org/archives/3492
 * http://blog.sass-lang.com/posts/1305238
 * https://www.dotnetrocks.com/?show=1395 (shout-out in MarkdownMonster podcast at 47:20)
 * http://www.gep13.co.uk/blog/2016-a-retrospective
