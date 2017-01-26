@@ -32,6 +32,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ### 2017
 #### January
 
+* https://codehollow.com/2017/01/chocolatey-package-management-windows/
 * http://pinter.org/archives/3492
 * http://blog.sass-lang.com/posts/1305238
 * https://www.dotnetrocks.com/?show=1395 (shout-out in MarkdownMonster podcast at 47:20)
@@ -51,6 +52,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 * https://www.simple-talk.com/sysadmin/general/automating-setup-local-developer-machine
 * http://www.42u.ca/2016/11/20/using-chocolatey-for-windows-package-management/
 * http://blog.amosti.net/rolling-out-web-services-with-topshelf-chocolatey-and-ansible/
+* https://codehollow.com/2016/11/powershell-package-management-nuget-chocolatey-co/
 
 #### October
 
