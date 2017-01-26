@@ -20,7 +20,7 @@ The name of the package should be "extensionname.extension". The name of the pac
 * Then create an extensions folder in the root of the package.
 * In the extensions folder, create your PowerShell module.
 
-Here's an example: https://chocolatey.org/packages/chocolatey-uninstall.extension. The source is at https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/extensions
+Here's an example: https://chocolatey.org/packages/chocolatey-core.extension. The source is at https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/extensions
 
 Yes, it is really that easy. Enjoy!
 
@@ -45,7 +45,7 @@ What does a minimum version depdency look like?
 
 ~~~xml
 <dependencies>
-  <dependency id="chocolatey-uninstall.extension" version="1.1.0" />
+  <dependency id="chocolatey-core.extension" version="1.1.0" />
 </dependencies>
 ~~~
 
@@ -57,7 +57,7 @@ Avoid version ranges when it comes to extensions as it can lock out fixes and en
 
 <dependencies>
   <!-- This means at least 1.0.0, and anything less than 2 -->
-  <dependency id="chocolatey-uninstall.extension" version="[1.0.0, 2)" />
+  <dependency id="chocolatey-core.extension" version="[1.0.0, 2)" />
   <!-- This means anything between 1.0.0 and 2.0.1 (including 2.0.1) is good to go -->
   <dependency id="another.extension" version="[1.0.0, 2.0.1]" />
 </dependencies>
@@ -70,7 +70,7 @@ Try to never lock into an exact version dependency:
 ~~~xml
 <!-- DO NOT DO THIS -->
 <dependencies>
-  <dependency id="chocolatey-uninstall.extension" version="[1.1.0]" />
+  <dependency id="chocolatey-core.extension" version="[1.1.0]" />
 </dependencies>
 ~~~
 
@@ -82,7 +82,7 @@ There is also the concept of versionless dependencies.
 
 ~~~xml
 <dependencies>
-  <dependency id="chocolatey-uninstall.extension" />
+  <dependency id="chocolatey-core.extension" />
 </dependencies>
 ~~~
 
