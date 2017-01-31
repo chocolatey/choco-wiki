@@ -17,7 +17,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
     * Right click - create a package without bringing up the GUI.
  * Package Internalizer (Choco Download)
     * Don't delete the download directory unless `--force`
- * Set user modes for terminal services (change user /install | change user /execute)
+ * Set user modes for terminal services (`change user /install` | `change user /execute`)
 
 
 ## 1.9.4 (January 19, 2017)
