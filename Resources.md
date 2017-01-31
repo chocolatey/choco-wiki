@@ -23,6 +23,12 @@ Table of Contents
 * https://github.com/chocolatey/chocolatey-test-environment
 * https://github.com/ferventcoder/vagrant-windows-puppet
 
+## Docker
+
+* http://www.onitato.com/running-chocolatey-on-linux.html
+* https://hub.docker.com/r/microsoft/windowsservercore/
+* (Turbo - similar technology to Docker) https://turbo.net/
+
 ## Integrations
 
 See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
@@ -32,6 +38,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ### 2017
 #### January
 
+* http://www.onitato.com/running-chocolatey-on-linux.html
 * https://codehollow.com/2017/01/chocolatey-package-management-windows/
 * http://pinter.org/archives/3492
 * http://blog.sass-lang.com/posts/1305238
