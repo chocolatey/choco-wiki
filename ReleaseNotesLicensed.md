@@ -4,6 +4,22 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.9.5 (January 31, 2017)
+
+### BUG FIXES
+
+ * Fix - Error when running Install-ChocolateyInstallPackage without specifying silent arguments
+ * Remove *.istext file before the content-type check that creates file - see [#1012](https://github.com/chocolatey/choco/issues/1012)
+
+### IMPROVEMENTS
+
+ * Package Builder (Choco New):
+    * Right click - create a package without bringing up the GUI.
+ * Package Internalizer (Choco Download)
+    * Don't delete the download directory unless `--force`
+ * Set user modes for terminal services (change user /install | change user /execute)
+
+
 ## 1.9.4 (January 19, 2017)
 
 ### BUG FIXES
