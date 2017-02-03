@@ -19,6 +19,7 @@ The name of the package should be "extensionname.extension". The name of the pac
 * To create an extension package, run `choco new name.extension` and then delete everything but the nuspec.
 * Then create an extensions folder in the root of the package.
 * In the extensions folder, create your PowerShell module.
+* The important file you will need is a PSM1 (PowerShell Module) file that loads up and ensures functions are available. Have a look at [profile module](https://github.com/chocolatey/choco/blob/master/src/chocolatey.resources/helpers/chocolateyProfile.psm1) and [chocolatey-core.extensions module](https://github.com/chocolatey/chocolatey-coreteampackages/blob/master/extensions/extensions.psm1)
 
 Here's an example: https://chocolatey.org/packages/chocolatey-core.extension. The source is at https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/extensions
 
