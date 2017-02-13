@@ -65,6 +65,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 * https://weblog.west-wind.com/posts/2016/Oct/25/Automating-Installation-Builds-and-Chocolatey-Packaging
 * https://rnelson0.com/2016/10/26/puppetconf-2016-wrap-up/ (Mention of Chocolatey presentation in Day 2)
+* https://cloudywindows.com/post/chocolatey-nuget---smooth-and-sweet-for-windows-software-deployment-automation/
 * https://marcinbojko.wordpress.com/2016/10/04/puppet-the-foreman-powershell-dsc-your-system-center-in-a-box/
 
 #### September
