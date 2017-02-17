@@ -1,5 +1,26 @@
 # Install The Licensed Edition
 
+Congratulations on your recent purchase of a licensed edition of Chocolatey! If you are trialing, please pay particular attention to that section:
+
+* [Administrative Actions](#some-administrative-actions)
+* [Know When License is Good](#how-do-i-know-when-the-license-is-installed)
+* [See It!](#see-it-in-action)
+* [How To Install](#how-do-i-install-the-licensed-edition)
+   * [Install Trial Edition](#how-do-i-install-the-trial-edition)
+* [How To Upgrade](#upgrading)
+   * [Upgrade Trial Edition](#how-do-i-upgrade-the-trial-edition)
+* [Install / Upgrade in Secure Environments](#installing--upgrading-in-secure-environments--without-internet-access)
+* [Set Up With Puppet](#set-up-licensed-edition-with-puppet)
+
+
+## Some Administrative Actions
+
+* The email the license is sent to will automatically be subscribed to the customer advisory list. If there are other folks who need to be on that list for important notifications, please have them sign up at [Chocolatey Customers](http://eepurl.com/b6zpGv).
+* Please sign up for software announcements at [Chocolatey Announce](https://groups.google.com/d/forum/chocolatey-announce). Direct others to sign up for the list as well.
+* For support, remember to use the support email address (below).
+* Learn how to install below. Installation is also found at https://chocolatey.org/docs/installation-licensed.
+
+
 ## How Do I Know When the License is Installed?
 
 Installing a licensed edition requires two parts
@@ -27,6 +48,14 @@ Here's the whole process for installing your license and installing the licensed
   ![install/upgrade](https://cloud.githubusercontent.com/assets/63502/13052159/e6d1be92-d3c2-11e5-8856-d7580e51e3b6.png)
  1. That's it! You are good to go.
 
+### How Do I Install The Trial Edition?
+
+If you've received a trial license, you will also receive a link to download a recent version of the `chocolatey.extension` package. You will not be able to install or upgrade the licensed edition through regular means. Chocolatey may add the licensed source, but your license will not be recognized on the server.
+
+ * Follow all of the instructions above except the `choco upgrade chocolatey.extension` command, that will not work with the trial license as the license will not be recognized by the licensed source.
+ * Instead download the `chocolatey.extension` (licensed package) from the provided download link location and remember where you saved it.
+ * Now run this command: `choco upgrade chocolatey.extension --pre --source c:\folder\where\downloaded\nupkg\resides` (or you can use `install` instead of `upgrade`). **Note**: Source location is not `--source c:\downloads\chocolatey.extension.1.8.1.nupkg`, it is `--source c:\downloads`.
+
 ## Upgrading
 
 To upgrade the licensed edition just run the following code:
@@ -34,6 +63,11 @@ To upgrade the licensed edition just run the following code:
 * `choco upgrade chocolatey.extension`
 
 Your license automatically adds the licensed source.
+
+### How Do I Upgrade The Trial Edition?
+
+You will not be able to upgrade through regular means - please reach back out to the Chocolatey Software folks to get an updated edition (and possibly an extended trial license).
+
 
 ## Installing / Upgrading In Secure Environments / Without Internet Access
 
@@ -46,7 +80,7 @@ From a machine that will have access to do this you simply run:
 
 You can even script this or add it to a CI job that would automatically make the newer edition available.
 
-**NOTE**: The licensed source that is automatically can be disabled, but it cannot be removed. So just run `choco source disable -n chocolatey.licensed` to disable it or set that up in your configuration management solution scripts. Some of them, like Puppet, have a resource dedicated strictly to this:
+**NOTE**: The licensed source that is automatically added can be disabled, but it cannot be removed. So just run `choco source disable -n chocolatey.licensed` to disable it or set that up in your configuration management solution scripts. Some of them, like Puppet, have a resource dedicated strictly to this:
 
 ~~~puppet
 chocolateysource {'chocolatey.licensed':
@@ -119,22 +153,3 @@ package { 'chocolatey.extension':
   require  => File['C:/ProgramData/chocolatey/license/chocolatey.license.xml'],
 }
 ~~~
-
-## How Do I Install The Trial Edition?
-
-If you've received a trial license, you will also receive a link to download a recent version of the `chocolatey.extension` package. You will not be able to install or upgrade the licensed edition through regular means. Chocolatey may add the licensed source, but your license will not be recognized on the server.
-
- * Follow all of the instructions above except the `choco upgrade chocolatey.extension` command, that will not work with the trial license as the license will not be recognized by the licensed source.
- * Instead download the `chocolatey.extension` (licensed package) from the provided download link location and remember where you saved it.
- * Now run this command: `choco upgrade chocolatey.extension --pre --source c:\folder\where\downloaded\nupkg\resides` (or you can use `install` instead of `upgrade`). **Note**: Source location is not `--source c:\downloads\chocolatey.extension.1.8.1.nupkg`, it is `--source c:\downloads`.
-
-## How Do I Upgrade The Trial Edition?
-
-You will not be able to upgrade through regular means - please reach back out to the Chocolatey Software folks to get an updated edition (and possibly an extended trial license).
-
-### Some Administrative Actions
-
-* The email this license is being sent to will automatically be subscribed to the customer advisory list. If there are other folks who need to be on that list for important notifications, please have them sign up at [Chocolatey Customers](http://eepurl.com/b6zpGv).
-* Please sign up for software announcements at [Chocolatey Announce](https://groups.google.com/d/forum/chocolatey-announce). Direct others to sign up for the list as well.
-* For support, remember to use the support email address (below).
-* Learn how to install below. Installation is also found at https://chocolatey.org/docs/installation-licensed.
