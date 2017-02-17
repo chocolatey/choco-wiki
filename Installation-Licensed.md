@@ -27,6 +27,99 @@ Here's the whole process for installing your license and installing the licensed
   ![install/upgrade](https://cloud.githubusercontent.com/assets/63502/13052159/e6d1be92-d3c2-11e5-8856-d7580e51e3b6.png)
  1. That's it! You are good to go.
 
+## Upgrading
+
+To upgrade the licensed edition just run the following code:
+
+* `choco upgrade chocolatey.extension`
+
+Your license automatically adds the licensed source.
+
+## Installing / Upgrading In Secure Environments / Without Internet Access
+
+Once you have the license down and the licensed edition extension intstalled the first time, you will have access to `choco download`. This will allow you to download the licensed edition and put it on your internally hosted repository.
+
+From a machine that will have access to do this you simply run:
+
+* `choco download chocolatey.extension --source https://licensedpackages.chocolatey.org/api/v2/ --ignore-dependencies`
+* Whatever followup command you need to push that downloaded package to your internal package repository.
+
+You can even script this or add it to a CI job that would automatically make the newer edition available.
+
+**NOTE**: The licensed source that is automatically can be disabled, but it cannot be removed. So just run `choco source disable -n chocolatey.licensed` to disable it or set that up in your configuration management solution scripts. Some of them, like Puppet, have a resource dedicated strictly to this:
+
+~~~puppet
+chocolateysource {'chocolatey.licensed':
+  ensure   => disabled,
+  require  => File['C:/ProgramData/chocolatey/license/chocolatey.license.xml'],
+}
+~~~
+
+## Set Up Licensed Edition With Puppet
+
+Most organizations using Chocolatey and Puppet are going to do so with zero internet access. Here is what a completely offline ensurance of Chocolatey looks like (complete with a Chocolatey.Server instance):
+
+~~~puppet
+# ensure Chocolatey is installed - host the package internally
+class {'chocolatey':
+  chocolatey_download_url         => 'https://internalurl/to/chocolatey.nupkg',
+}
+
+# ensure installation of the Chocolatey Simple Server package repository
+class {'chocolatey_server':
+  server_package_source => 'https://internalurl/odata/server',
+}
+
+file { ['C:/ProgramData/chocolatey','C:/ProgramData/chocolatey/license']:
+  ensure => directory,
+}
+
+file {'C:/ProgramData/chocolatey/license/chocolatey.license.xml':
+  ensure             => file,
+  source             => 'puppet:///modules/choco_internal/chocolatey.license.xml',
+  source_permissions => ignore,
+}
+
+# configure sources
+chocolateysource {'chocolatey':
+  ensure   => absent,
+}
+
+chocolateysource {'chocolatey.licensed':
+  ensure   => disabled,
+  require  => File['C:/ProgramData/chocolatey/license/chocolatey.license.xml'],
+}
+
+chocolateysource {'internal_chocolatey':
+  ensure   => enabled,
+  location => 'http://internal/server',
+  priority => 1,
+}
+
+# set features appropriately
+chocolateyfeature {'useFipsCompliantChecksums':
+  ensure => enabled,
+}
+
+# https://chocolatey.org/docs/features-automatically-recompile-packages
+chocolateyfeature {'internalizeAppendUseOriginalLocation':
+  ensure => enabled,
+  require => Package['chocolatey.extension'],
+}
+
+# configuration
+chocolateyconfig {'cacheLocation':
+  value  => 'c:\ProgramData\choco-cache',
+}
+
+# ensure licensed edition is installed
+package { 'chocolatey.extension':
+  ensure   => latest,
+  source   => 'internal_chocolatey',
+  require  => File['C:/ProgramData/chocolatey/license/chocolatey.license.xml'],
+}
+~~~
+
 ## How Do I Install The Trial Edition?
 
 If you've received a trial license, you will also receive a link to download a recent version of the `chocolatey.extension` package. You will not be able to install or upgrade the licensed edition through regular means. Chocolatey may add the licensed source, but your license will not be recognized on the server.
@@ -35,6 +128,9 @@ If you've received a trial license, you will also receive a link to download a r
  * Instead download the `chocolatey.extension` (licensed package) from the provided download link location and remember where you saved it.
  * Now run this command: `choco upgrade chocolatey.extension --pre --source c:\folder\where\downloaded\nupkg\resides` (or you can use `install` instead of `upgrade`). **Note**: Source location is not `--source c:\downloads\chocolatey.extension.1.8.1.nupkg`, it is `--source c:\downloads`.
 
+## How Do I Upgrade The Trial Edition?
+
+You will not be able to upgrade through regular means - please reach back out to the Chocolatey Software folks to get an updated edition (and possibly an extended trial license).
 
 ### Some Administrative Actions
 
