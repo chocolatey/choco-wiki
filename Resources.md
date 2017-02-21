@@ -90,6 +90,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 #### June 
 
+* https://www.youtube.com/watch?v=1OrpZpeEmL0
 * https://puppet.com/blog/package-management-windows-gets-even-better-chocolatey
 * http://blogs.itpro.es/octaviordz/2016/06/04/integrando-chocolatey-a-mdt-2013-e-instalando-aplicaciones-de-forma-desatendida-en-windows-10/
 
