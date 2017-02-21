@@ -6,6 +6,7 @@ Table of Contents
 * [Integrating with other tools](#integrations)
 * [Community](#community)
 * [Testimonials](#testimonials)
+* [[Videos|videos]]
 
 ## Courses
 
