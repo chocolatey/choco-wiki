@@ -38,9 +38,15 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ## Community
 
 ### 2017
+#### February
+
+* https://www.jungledisk.com/blog/2017/02/06/installing-software-with-package-managers/
+
 #### January
 
+* https://weblog.west-wind.com/posts/2017/Jan/29/Creating-a-portable-and-embedded-Chocolatey-Package
 * http://www.onitato.com/running-chocolatey-on-linux.html
+* https://www.pressreader.com/australia/maximum-pc/20170110/282982514605832 (Its actually in Maximum PC Magazine - January 2017 but this is the best link I could find)
 * https://codehollow.com/2017/01/chocolatey-package-management-windows/
 * http://pinter.org/archives/3492
 * http://blog.sass-lang.com/posts/1305238
