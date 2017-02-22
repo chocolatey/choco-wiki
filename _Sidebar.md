@@ -100,6 +100,7 @@
  - [[Mount Iso|How-To-Mount-An-Iso-In-Chocolatey-Package]]
  - [[Deprecate a Package|How-To-Deprecate-A-Chocolatey-Package]]
  - [[Host Your Own Server|How-To-Host-Feed]]
+ - [[Set up the Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]]
 
 **Use Cases**
 
