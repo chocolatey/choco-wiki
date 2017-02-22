@@ -27,8 +27,9 @@ For a simple `include chocolatey_server` it does the following automatically:
  * Install or upgrade the package - `choco upgrade chocolatey.server -y`
  * Ensure IIS is installed. You can try `choco install IIS-WebServer --source windowsfeatures`
  * Ensure that ASP.NET is installed. Try `choco install IIS-ASPNET45 --source windowsfeatures` (`IIS-ASPNET` for Windows 2008).
+ * Disable or remove the Default website
  * Set up an app pool for Chocolatey.Server. Ensure 32-bit is enabled and the managed runtime version is `v4.0`.
- * Set up the IIS website pointed to the install location and set it to use the app pool.
+ * Set up an IIS website pointed to the install location and set it to use the app pool. 
  * Go to explorer and right click on `c:\tools\chocolatey.server` and add the following permissions:
    * `IIS_IUSRS` - Read
    * `IUSR` - Read
