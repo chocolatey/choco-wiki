@@ -47,7 +47,7 @@ Chocolatey tracks applications that it installs, so it is able to keep up with t
 
 # Sync Command
 
-Starting in 1.9.0 of the licensed extension, sync has been added as a preview feature for organizations to try out.
+Starting in 1.9.0 of the licensed extension, sync has been added as a preview feature for organizations to try out. Currently Business edition only, but expected to be in Pro+ in Q3 2017.
 
 Sync looks at all software that is in Programs and Features that is not being managed with Chocolatey packages and brings them under management. This means you can run one command and suddenly, all of the software installed on a machine is under management by Chocolatey!
 
