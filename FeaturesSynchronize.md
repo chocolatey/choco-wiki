@@ -3,7 +3,7 @@
 Chocolatey maintains its own state of the world, while Windows maintains the state of Programs and Features. If an application is upgraded or uninstalled outside of Chocolatey, such as is the case with Google Chrome and its auto updating utility, Chocolatey doesn't know about the change. The synchronize feature keeps Chocolatey's state in sync with Programs and Features, removing possible system-installed state drift.
 
 * [Automatic Sync](#automatic-synchronize)
-* [Synchronize Command](#sync-command)
+* [Synchronize Command](#sync-command) (Business edition only until Q3 2017)
 
 # Automatic Synchronize
 
