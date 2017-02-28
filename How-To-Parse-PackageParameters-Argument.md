@@ -1,16 +1,69 @@
+# Package Parameters
+
 When installing a Chocolatey Package, it is possible to use a number of arguments to control how the package is installed.  Each one of these arguments is detailed [here](CommandsInstall).
 
 Package parameters provide a way for a package consumer to make choices about how they want things installed and configuration of the underlying software.
 
+* [Walkthrough](#walkthrough)
+   * [Step 1 - Determine Parameters](#step-1---determine-your-package-parameters)
+   * [Step 2 - Add to Package Description]()
+* [Installing With Package Parameters](#installing-with-package-parameters)
+
+**NOTE:** There is also the concept of "Install Arguments", or silent arguments you can pass through transparently to the native installer. This is more of a way for a package consumer to override the default silent arguments that are passed to the native installer.
+
 **NOTE:** Package parameters are not meant to be a substitute for sensible default values. A package installation should require no arguments and the default values should just happen. This is especially true of the packages on the community feed. If you are hosting your own internal feeds, it is recommended you follow this behavior, but not required.
 
-**NOTE:** See [#312](https://github.com/chocolatey/choco/issues/312) for Chocolatey v0.9.10 adding a helper to do the below with almost no boilerplate.
+**NOTE:** `Get-PackageParameters` is available now with a dependency on `chocolatey-core.extension`, and in a future version of Chocolatey (see [#312](https://github.com/chocolatey/choco/issues/312)), it will also be one of Chocolatey's built-in functions.
 
+## Walkthrough
+
+We are going to use the Git package as an example as we walkthrough setting this up.
+
+### Step 1 - Determine your Package Parameters
+One thing you will need is a good idea of what package parameters and defaults for those parameters what you would offer. Let's say the following package parameters can be set:
+
+ * `/GitOnlyOnPath` - this puts gitinstall\cmd on path. This is also done by default if no package parameters are set.
+ * `/GitAndUnixToolsOnPath` - this puts gitinstall\bin on path. This setting will override `/GitOnlyOnPath`.
+ * `/NoAutoCrlf` - this setting only affects new installs, it will not override an existing `.gitconfig`. This will ensure 'Checkout as is, commit as is'
+
+These are all switches, but you can also offer settings, that may have a default value. Imagine `/Port:8080` but `$port` could have a default value of 80.
+
+### Step 2 - Add Package Parameters to the Description
+
+Be sure to let folks know about the package parameters (**Note:** this will be a holding review item by moderators).
+
+Set up your nuspec appropriately:
+
+~~~xml
+    <description>
+Git (for Windows) - Git is a powerful distributed Source Code Management tool. If you just want to use Git to do your version control in Windows, you will need to download Git for Windows, run the installer, and you are ready to start.
+
+Note: Git for Windows is a project run by volunteers, so if you want it to improve, volunteer!
+
+### Package Parameters
+The following package parameters can be set:
+
+ * `/GitOnlyOnPath` - this puts gitinstall\cmd on path. This is also done by default if no package parameters are set.
+ * `/GitAndUnixToolsOnPath` - this puts gitinstall\bin on path. This setting will override `/GitOnlyOnPath`.
+ * `/NoAutoCrlf` - this setting only affects new installs, it will not override an existing `.gitconfig`. This will ensure 'Checkout as is, commit as is'
+
+These parameters can be passed to the installer with the use of `-params`.
+For example: `-params '"/GitAndUnixToolsOnPath /NoAutoCrlf"'`.
+    </description>
+~~~
+
+### Step 3 - Use Core Community extension
+
+If you want to do this simply, take a dependency on the [core community extension](https://chocolatey.org/packages/chocolatey-core.extension), which already has the above function `Get-PackageParameters` built in. 
+
+
+
+### Step 3 (alternative) - Set up Your Own Parsing
 This _How-To_ focuses on how a package creator can make use of the PackageParameters argument within their package, and how they can parse the string which is passed through into their package from the installation command.
 
-## Code Sample
+#### Code Sample
 
-```powershell
+~~~powershell
 
   $arguments = @{}
 
@@ -72,65 +125,40 @@ This _How-To_ focuses on how a package creator can make use of the PackageParame
   if ($additionalTools) { $silentArgs += " /Additionaltools" }
 
   Write-Debug "This would be the Chocolatey Silent Arguments: $silentArgs"
-```
+~~~
 
-## What does this mean?
+### What does this mean?
 
-The Code Sample assumes that there will be no PackageParameters passed into it, as a result, we need to define a number of default values for each of the variables contained within the script.  In this case, the ```port```, the ```edition```, the ```additionalTools``` and the ```installationPath```.
+The Code Sample assumes that there will be no PackageParameters passed into it, as a result, we need to define a number of default values for each of the variables contained within the script.  In this case, the `port`, the `edition`, the `additionalTools` and the `installationPath`.
 
-Once that is done, assuming that the PackageParameters contains "something", use a Regular Expression to parse each of the values into a dictionary.  Here, we are assuming that the package parameters will come through in a pre-defined format, such as ```/Port:82 /Edition:LicenseKey1 /AdditionalTools /InstallationPath:'C:\temp\folder with spaces'```.  Now, this format can be anything you want it to be.  What is shown here is just **one** way of doing it.  If you need to deviate from this sample structure, it is likely that you will need to update the regular expression to account for this.
+Once that is done, assuming that the PackageParameters contains "something", use a Regular Expression to parse each of the values into a dictionary.  Here, we are assuming that the package parameters will come through in a pre-defined format, such as `/Port:82 /Edition:LicenseKey1 /AdditionalTools /InstallationPath:'C:\temp\folder with spaces'`.  Now, this format can be anything you want it to be.  What is shown here is just **one** way of doing it.  If you need to deviate from this sample structure, it is likely that you will need to update the regular expression to account for this.
 
 Having collected all the arguments into the dictionary, we can then inspect the values of each parameter that we are interested in.  If it exists in the dictionary, replace the corresponding default value, otherwise, continue to use the default value.
 
-## Add Package Parameter Information to the Description
-Be sure to let folks know about the package parameters (**Note:** this will be a holding review item by moderators).
 
-Here's an example:
-
-```xml
-    <description>
-Git (for Windows) - Git is a powerful distributed Source Code Management tool. If you just want to use Git to do your version control in Windows, you will need to download Git for Windows, run the installer, and you are ready to start.
-
-Note: Git for Windows is a project run by volunteers, so if you want it to improve, volunteer!
-
-### Package Specifics
-The package uses default install options minus cheetah integration and desktop icons. Cheetah prevents a good upgrade scenario, so it has been removed.
-
-#### Package Parameters
-The following package parameters can be set:
-
- * `/GitOnlyOnPath` - this puts gitinstall\cmd on path. This is also done by default if no package parameters are set.
- * `/GitAndUnixToolsOnPath` - this puts gitinstall\bin on path. This setting will override `/GitOnlyOnPath`.
- * `/NoAutoCrlf` - this setting only affects new installs, it will not override an existing `.gitconfig`. This will ensure 'Checkout as is, commit as is'
-
-These parameters can be passed to the installer with the use of `-params`.
-For example: `-params '"/GitAndUnixToolsOnPath /NoAutoCrlf"'`.
-    </description>
-```
-
-## Installing the Package
+## Installing With Package Parameters
 Now, in this example, if we were to call:
 
-```choco install <packageName>```
+`choco install <packageName>`
 
 The output would be:
 
-```
+~~~
 This would be the Chocolatey Silent Arguments: /S /Port:81 /Edition:LicenseKey /InstallationPath:c:\temp
-```
+~~~
 
 i.e. it is using the default values which we made at the top of the file
 
 However, if we instead used:
 
-```
-choco install <packageName> -packageParameters '"/Port:82 /Edition:LicenseKey1 /InstallationPath:""C:\temp\folder with space"" /AdditionalTools"'
-```
-Keep in mind how to pass pkg args: https://github.com/chocolatey/choco/wiki/CommandsReference#how-to-pass-options--switches
+~~~sh
+choco install <packageName> -packageParameters "'/Port:82 /Edition:LicenseKey1 /InstallationPath:""C:\temp\folder with space"" /AdditionalTools'"
+~~~
 
+Keep in mind how to pass package args: https://github.com/chocolatey/choco/wiki/CommandsReference#how-to-pass-options--switches
 
 The output would be:
 
-```
+~~~
 This would be the Chocolatey Silent Arguments: /S /Port:82 /Edition:LicenseKey1 /InstallationPath:"C:\temp\folder with space" /Additionaltools
-```
+~~~
