@@ -59,16 +59,31 @@ For example: `-params '"/GitAndUnixToolsOnPath /NoAutoCrlf"'`.
 
 If you want to do this simply, take a dependency on the [core community extension](https://chocolatey.org/packages/chocolatey-core.extension), which already has the above function `Get-PackageParameters` built in. 
 
-Open the nuspec back up and add a dependency on `chocolatey-core.extension`.
+Open the nuspec back up and add a dependency on `chocolatey-core.extension`. This will be inserted just above the closing "metadata" tag (`</metadata>`).
 
 ~~~xml
   <dependencies>
       <dependency id="chocolatey-core.extension" version="1.0.0" /> 
   </dependencies>
-</metadata>
 ~~~
 
 **NOTE**: The version specified without brackets (`[]`) means this is a minimum version dependency. So in this case, 1.0.0 or newer (`>=1.0.0`). If it was `[1.0.0]`, that would mean exactly version 1.0.0 (`=1.0.0`).
+
+Now use `Get-PackageParameters` to parse the parameters as it will automatically be added to the functions when Chocolatey adds the `chocolatey-core.extension`.
+
+~~~powershell
+$pp = Get-PackageParameters
+
+if ($pp["Port"] -eq $null -or $pp["Port"] -eq '') { $pp["Port"] = '81' }
+if ($pp["Edition"] -eq $null -or $pp["Edition"] -eq '') { $pp["Edition"] = 'LicenseKey' }
+if ($pp["AdditionalTools"] -eq $null -or $pp["AdditionalTools"] -eq '') { $pp["AdditionalTools"] = 'false' }
+if ($pp["InstallationPath"] -eq $null -or $pp["InstallationPath"] -eq '') { $pp["InstallationPath"] = "$env:SystemDrive\temp" }
+
+$silentArgs = "/S /Port:$($pp["Port"]) /Edition:$($pp["Edition"]) /InstallationPath:$($pp["InstallationPath"])"
+if ($pp["AdditionalTools"] -eq 'true') { $silentArgs += " /Additionaltools" }
+
+Write-Debug "This would be the Chocolatey Silent Arguments: $silentArgs"
+~~~
 
 
 ### Step 3 (alternative) - Set up Your Own Parsing
