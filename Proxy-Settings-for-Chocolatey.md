@@ -14,6 +14,8 @@ You can simply configure 1 or 3 settings and Chocolatey will use a proxy server.
 choco config set proxy <locationandport>
 choco config set proxyUser <username>
 choco config set proxyPassword <passwordThatGetsEncryptedInFile>
+choco config set proxyBypassList "'<bypasslist, comma separated>'" #0.10.4 required
+choco config set proxyBypassOnLocal true #0.10.4 required
 ~~~~
 
 ### Example
@@ -24,10 +26,16 @@ Running the following commands in 0.9.9.9:
 choco config set proxy http://localhost:8888
 choco config set proxyUser bob
 choco config set proxyPassword 123Sup#rSecur3
+choco config set proxyBypassList "'http://localhost,http://this.location/'" #0.10.4 required
+choco config set proxyBypassOnLocal true #0.10.4 required
 ~~~
 
 Results in the following items being added to the config file:
 ![image](https://cloud.githubusercontent.com/assets/63502/10038348/4205507c-618a-11e5-911b-122eb960bc53.png)
+
+#### Explicit from CLI
+
+Starting in 0.10.4, you can pass proxy information at runtime with each command. See 
 
 ### What to do if My proxy is socks?
 
