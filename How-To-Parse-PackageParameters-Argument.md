@@ -6,7 +6,10 @@ Package parameters provide a way for a package consumer to make choices about ho
 
 * [Walkthrough](#walkthrough)
    * [Step 1 - Determine Parameters](#step-1---determine-your-package-parameters)
-   * [Step 2 - Add to Package Description]()
+   * [Step 2 - Add to Package Description](#step-2---add-package-parameters-to-the-description)
+   * [Step 3 - Use `Get-PackageParameters`](#step-3---use-core-community-extension)
+   * [Step 3 (alternative) - Parse Your Own](#step-3-alternative---set-up-your-own-parsing)
+   * [Review]()
 * [Installing With Package Parameters](#installing-with-package-parameters)
 
 **NOTE:** There is also the concept of "Install Arguments", or silent arguments you can pass through transparently to the native installer. This is more of a way for a package consumer to override the default silent arguments that are passed to the native installer.
@@ -127,14 +130,15 @@ This _How-To_ focuses on how a package creator can make use of the PackageParame
   Write-Debug "This would be the Chocolatey Silent Arguments: $silentArgs"
 ~~~
 
-### What does this mean?
+## Review Set Parameters
 
-The Code Sample assumes that there will be no PackageParameters passed into it, as a result, we need to define a number of default values for each of the variables contained within the script.  In this case, the `port`, the `edition`, the `additionalTools` and the `installationPath`.
+We've set up package parameters now for a package and have added information for consumers to know what is offered.
+
+The code samples above assume that there will be no PackageParameters passed into it by default and have set sensible defaults for the values. In this case, the `port`, the `edition`, the `additionalTools` and the `installationPath`.
 
 Once that is done, assuming that the PackageParameters contains "something", use a Regular Expression to parse each of the values into a dictionary.  Here, we are assuming that the package parameters will come through in a pre-defined format, such as `/Port:82 /Edition:LicenseKey1 /AdditionalTools /InstallationPath:'C:\temp\folder with spaces'`.  Now, this format can be anything you want it to be.  What is shown here is just **one** way of doing it.  If you need to deviate from this sample structure, it is likely that you will need to update the regular expression to account for this.
 
 Having collected all the arguments into the dictionary, we can then inspect the values of each parameter that we are interested in.  If it exists in the dictionary, replace the corresponding default value, otherwise, continue to use the default value.
-
 
 ## Installing With Package Parameters
 Now, in this example, if we were to call:
@@ -143,7 +147,7 @@ Now, in this example, if we were to call:
 
 The output would be:
 
-~~~
+~~~sh
 This would be the Chocolatey Silent Arguments: /S /Port:81 /Edition:LicenseKey /InstallationPath:c:\temp
 ~~~
 
