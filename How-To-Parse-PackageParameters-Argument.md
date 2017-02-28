@@ -25,7 +25,7 @@ One thing you will need is a good idea of what package parameters and defaults f
 
  * Port - defaults to "81"
  * Edition - defaults to "LicenseKey"
- * /AdditionalTools (boolean switch) - all booleans default to false
+ * AdditionalTools (boolean switch) - all booleans default to false
  * InstallationPath - defaulting to "c:\temp" (or `$env:SystemDrive\temp`)
 
 ### Step 2 - Add Package Parameters to the Description
@@ -36,19 +36,20 @@ Set up your nuspec appropriately:
 
 ~~~xml
     <description>
-Git (for Windows) - Git is a powerful distributed Source Code Management tool. If you just want to use Git to do your version control in Windows, you will need to download Git for Windows, run the installer, and you are ready to start.
+Main description here about the software
 
-Note: Git for Windows is a project run by volunteers, so if you want it to improve, volunteer!
+### Package Specific
 
-### Package Parameters
+#### Package Parameters
 The following package parameters can be set:
 
- * `/GitOnlyOnPath` - this puts gitinstall\cmd on path. This is also done by default if no package parameters are set.
- * `/GitAndUnixToolsOnPath` - this puts gitinstall\bin on path. This setting will override `/GitOnlyOnPath`.
- * `/NoAutoCrlf` - this setting only affects new installs, it will not override an existing `.gitconfig`. This will ensure 'Checkout as is, commit as is'
+ * `/Port` - determines what port to listen on - defaults to "81"
+ * `/Edition` - What edition to install - defaults to "LicenseKey"
+ * `/AdditionalTools` - install additional tools
+ * `/InstallationPath` - Where to install the binaries to - defaults to "`$env:SystemDrive\temp`"
 
 These parameters can be passed to the installer with the use of `-params`.
-For example: `-params '"/GitAndUnixToolsOnPath /NoAutoCrlf"'`.
+For example: `-params "'/Port:82 /AdditionalTools'"`.
     </description>
 ~~~
 
