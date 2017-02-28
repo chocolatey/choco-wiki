@@ -35,7 +35,9 @@ Results in the following items being added to the config file:
 
 #### Explicit from CLI
 
-Starting in 0.10.4, you can pass proxy information at runtime with each command. See 
+Starting in 0.10.4, you can pass proxy information at runtime with each command. See https://github.com/chocolatey/choco/issues/1173
+
+`--proxy="'value'" --proxy-user="'<user>'" --proxy-password="'<pwd>'" --proxy-bypass-list="'<comma separated, list>'" --proxy-bypass-on-local`
 
 ### What to do if My proxy is socks?
 
