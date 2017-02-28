@@ -9,7 +9,7 @@ Package parameters provide a way for a package consumer to make choices about ho
    * [Step 2 - Add to Package Description](#step-2---add-package-parameters-to-the-description)
    * [Step 3 - Use `Get-PackageParameters`](#step-3---use-core-community-extension)
    * [Step 3 (alternative) - Parse Your Own](#step-3-alternative---set-up-your-own-parsing)
-   * [Review]()
+   * [Review](#review-set-parameters)
 * [Installing With Package Parameters](#installing-with-package-parameters)
 
 **NOTE:** There is also the concept of "Install Arguments", or silent arguments you can pass through transparently to the native installer. This is more of a way for a package consumer to override the default silent arguments that are passed to the native installer.
