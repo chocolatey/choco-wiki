@@ -59,6 +59,16 @@ For example: `-params '"/GitAndUnixToolsOnPath /NoAutoCrlf"'`.
 
 If you want to do this simply, take a dependency on the [core community extension](https://chocolatey.org/packages/chocolatey-core.extension), which already has the above function `Get-PackageParameters` built in. 
 
+Open the nuspec back up and add a dependency on `chocolatey-core.extension`.
+
+~~~xml
+  <dependencies>
+      <dependency id="chocolatey-core.extension" version="1.0.0" /> 
+  </dependencies>
+</metadata>
+~~~
+
+**NOTE**: The version specified without brackets (`[]`) means this is a minimum version dependency. So in this case, 1.0.0 or newer (`>=1.0.0`). If it was `[1.0.0]`, that would mean exactly version 1.0.0 (`=1.0.0`).
 
 
 ### Step 3 (alternative) - Set up Your Own Parsing
