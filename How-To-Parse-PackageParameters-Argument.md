@@ -20,16 +20,13 @@ Package parameters provide a way for a package consumer to make choices about ho
 
 ## Walkthrough
 
-We are going to use the Git package as an example as we walkthrough setting this up.
-
 ### Step 1 - Determine your Package Parameters
 One thing you will need is a good idea of what package parameters and defaults for those parameters what you would offer. Let's say the following package parameters can be set:
 
- * `/GitOnlyOnPath` - this puts gitinstall\cmd on path. This is also done by default if no package parameters are set.
- * `/GitAndUnixToolsOnPath` - this puts gitinstall\bin on path. This setting will override `/GitOnlyOnPath`.
- * `/NoAutoCrlf` - this setting only affects new installs, it will not override an existing `.gitconfig`. This will ensure 'Checkout as is, commit as is'
-
-These are all switches, but you can also offer settings, that may have a default value. Imagine `/Port:8080` but `$port` could have a default value of 80.
+ * Port - defaults to "81"
+ * Edition - defaults to "LicenseKey"
+ * /AdditionalTools (boolean switch) - all booleans default to false
+ * InstallationPath - defaulting to "c:\temp" (or `$env:SystemDrive\temp`)
 
 ### Step 2 - Add Package Parameters to the Description
 
