@@ -48,33 +48,43 @@ The following package parameters can be set:
  * `/AdditionalTools` - install additional tools
  * `/InstallationPath` - Where to install the binaries to - defaults to "`$env:SystemDrive\temp`"
 
-These parameters can be passed to the installer with the use of `-params`.
-For example: `-params "'/Port:82 /AdditionalTools'"`.
+These parameters can be passed to the installer with the use of `--params`.
+For example: `--params "'/Port:82 /AdditionalTools'"`.
     </description>
+~~~
+
+**NOTE**: Package parameters can be passed as `--params`, but also as a few different ways including `--package-parameters`. See [[install options|CommandsInstall#options-and-switches]]:
+
+~~~sh
+ --params, --parameters, --pkgparameters, --packageparameters, --package-parameters=VALUE
+     PackageParameters - Parameters to pass to the package. Defaults to unspecified.
 ~~~
 
 ### Step 3 - Use Core Community extension
 
-If you want to do this simply, take a dependency on the [core community extension](https://chocolatey.org/packages/chocolatey-core.extension), which already has the above function `Get-PackageParameters` built in. 
+If you want to do this simply, take a dependency on the [core community extension](https://chocolatey.org/packages/chocolatey-core.extension), which already has the above function `Get-PackageParameters` built in.
 
 Open the nuspec back up and add a dependency on `chocolatey-core.extension`. This will be inserted just above the closing "metadata" tag (`</metadata>`).
 
 ~~~xml
   <dependencies>
-      <dependency id="chocolatey-core.extension" version="1.0.0" /> 
+      <dependency id="chocolatey-core.extension" version="1.1.0" />
   </dependencies>
 ~~~
 
-**NOTE**: The version specified without brackets (`[]`) means this is a minimum version dependency. So in this case, 1.0.0 or newer (`>=1.0.0`). If it was `[1.0.0]`, that would mean exactly version 1.0.0 (`=1.0.0`).
+**NOTE**: The version specified without brackets (`[]`) means this is a minimum version dependency. So in this case, 1.1.0 or newer (`>=1.1.0`). If it was `[1.1.0]`, that would mean exactly version 1.1.0 (`=1.1.0`).
 
 Now use `Get-PackageParameters` to parse the parameters as it will automatically be added to the functions when Chocolatey adds the `chocolatey-core.extension`.
+
+Let's open and add the following to `tools\chocolateyInstall.ps1`:
+
 
 ~~~powershell
 $pp = Get-PackageParameters
 
 if ($pp["Port"] -eq $null -or $pp["Port"] -eq '') { $pp["Port"] = '81' }
 if ($pp["Edition"] -eq $null -or $pp["Edition"] -eq '') { $pp["Edition"] = 'LicenseKey' }
-if ($pp["AdditionalTools"] -eq $null -or $pp["AdditionalTools"] -eq '') { $pp["AdditionalTools"] = 'false' }
+if ($pp["AdditionalTools"] -ne $null -and $pp["AdditionalTools"] -ne '') { $pp["AdditionalTools"] = 'true' }
 if ($pp["InstallationPath"] -eq $null -or $pp["InstallationPath"] -eq '') { $pp["InstallationPath"] = "$env:SystemDrive\temp" }
 
 $silentArgs = "/S /Port:$($pp["Port"]) /Edition:$($pp["Edition"]) /InstallationPath:$($pp["InstallationPath"])"
@@ -166,7 +176,7 @@ Having collected all the arguments into the dictionary, we can then inspect the 
 ## Installing With Package Parameters
 Now, in this example, if we were to call:
 
-`choco install <packageName>`
+`choco install <packageName> -d`
 
 The output would be:
 
@@ -179,7 +189,7 @@ i.e. it is using the default values which we made at the top of the file
 However, if we instead used:
 
 ~~~sh
-choco install <packageName> -packageParameters "'/Port:82 /Edition:LicenseKey1 /InstallationPath:""C:\temp\folder with space"" /AdditionalTools'"
+choco install <packageName> -d --package-parameters "'/Port:82 /Edition:LicenseKey1 /InstallationPath:""C:\temp\folder with space"" /AdditionalTools'"
 ~~~
 
 Keep in mind how to pass package args: https://github.com/chocolatey/choco/wiki/CommandsReference#how-to-pass-options--switches
