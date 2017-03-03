@@ -4,6 +4,22 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.9.6 (March 3, 2017)
+
+### BUG FIXES
+
+ * Fix - Ensure silent args in logs are escaped
+ * Fix - Package Internalizer - use console adapter for downloading
+
+### IMPROVEMENTS
+
+ * Ensure proxy values are used with Chocolatey v0.10.4+ - see [#1141](https://github.com/chocolatey/choco/issues/1141) and [#1165](https://github.com/chocolatey/choco/issues/1165)
+ * Install - do not create a `.ignore` file outside Chocolatey directories - same as [#1180](https://github.com/chocolatey/choco/issues/1180)
+ * Package Synchronizer (Choco Sync):
+    * Use local directory for outputting created packages by default.
+    * Specify output directory for created packages.
+
+
 ## 1.9.5 (January 31, 2017)
 
 ### BUG FIXES
