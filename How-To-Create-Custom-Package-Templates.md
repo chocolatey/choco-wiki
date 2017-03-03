@@ -36,6 +36,8 @@ However `PackageName` and `PackageNameLower` also show up as they are based on t
 
 Then you surround those templated values with `[[]]` to make them templated for choco to use.
 
+**NOTE**: You can set and pass arbitrary values through as well. This is shown in the example with `CustomValue`.
+
 ## Example
 
 This is a template for embedding an MSI into a package. This removes almost everything that is unnecessary for embedding software into packages. And because the autoUninstaller handles MSIs without an issue, we don't need a chocolateyUninstall.ps1.
@@ -68,6 +70,7 @@ A file with the extension `.nuspec`:
 `tools\chocolateyInstall.ps1`:
 
 ~~~powershell
+# Custom value: [[CustomValue]]
 $ErrorActionPreference = 'Stop'; # stop on all errors
 
 [[AutomaticPackageNotesInstaller]]
@@ -91,6 +94,8 @@ $packageArgs = @{
 Install-ChocolateyInstallPackage @packageArgs
 ~~~
 
+Once installed, call this with `choco new test -t mytemplatename CustomValue=Yes`
+
 ### Manage as Templates as Packages
 
 If you have Chocolatey v0.9.10+, then you can manage templates as packages themselves, allowing you to upgrade a template when a new version is available. When it comes to packaging templates, Chocolatey takes a conventional approach. You must create a package with the suffix ".template" and have a templates folder.
@@ -103,7 +108,6 @@ Here's an example: https://chocolatey.org/packages/zip.template. The source is a
 
 Yes, it is really that easy. Enjoy!
 
-
 ### Extending Templates
 
 Walmart has a really good post on extending package templates. You can read that at https://puppet.com/blog/extending-chocolatey-packaging-walmart
@@ -111,4 +115,3 @@ Walmart has a really good post on extending package templates. You can read that
 ### Are There Planned Enhancements?
 
 * List Template names - https://github.com/chocolatey/choco/issues/449
-* Arbitrary key/value pairs - https://github.com/chocolatey/choco/issues/658 - DONE in 0.9.10 (beta available)
