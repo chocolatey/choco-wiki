@@ -186,6 +186,11 @@ The output would be:
 This would be the Chocolatey Silent Arguments: /S /Port:81 /Edition:LicenseKey /InstallationPath:c:\temp
 ~~~
 
+**NOTE**: `<packageName>` is synonymous with the value you put in the nuspec `<id />` field. It is NEVER `name.version.nupkg` or `name.nuspec`. If you are testing a package locally, always use `choco install <pkgid> -d -s .`. That is a literal `-s .` (set source to local folder where the compiled nupkg is located), unless you have a dependency on another package, then use `-s "'.;other feeds here'"` - when you override the source (`--source` or `-s`), it means use ONLY this source for resolving packages.
+
+**NOTE**: If you have a prerelease (has a `-` in the version value e.g. `1.0.0-beta1`), make sure you add `--pre` to the install/upgrade arguments.
+
+
 i.e. it is using the default values which we made at the top of the file
 
 However, if we instead used:
