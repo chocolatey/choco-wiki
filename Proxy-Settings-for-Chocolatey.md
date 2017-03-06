@@ -4,6 +4,7 @@
 * [Pass through System Proxy Settings](#system-proxy-settings)
 * [Existing Proxy Environment Variable Pass through](#existing-proxy-environment-variables)
 * [Explicit Proxy Settings (most deterministic)](#explicit-proxy-settings)
+   * [Explicit at Runtime](#explicit-proxy-settings-at-runtime)
 
 ## Installing Chocolatey behind a proxy server
 
@@ -89,7 +90,7 @@ choco config set proxyBypassOnLocal true #0.10.4 required
 Results in the following items being added to the config file:
 ![image](https://cloud.githubusercontent.com/assets/63502/10038348/4205507c-618a-11e5-911b-122eb960bc53.png)
 
-#### Explicit from CLI
+### Explicit Proxy Settings at Runtime
 
 Starting in 0.10.4, you can pass proxy information at runtime with each command. See https://github.com/chocolatey/choco/issues/1173
 
