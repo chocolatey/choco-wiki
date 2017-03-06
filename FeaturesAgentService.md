@@ -136,7 +136,7 @@ Yes! Add `--run-actual` to your install options. Most likely your tool won't nee
 ### How does it work?
 As a background service, it is able to call Chocolatey with an administrative account that is configured by you. It is secure communication that only starts once Chocolatey is configured to work with the background service.
 
-### What's the minimum Chocolatey licenced edition version that I need to install the agent?
+### What's the minimum Chocolatey licensed edition version that I need to install the agent?
 
 You need `chocolatey.extension` version 1.8.4+.
 
@@ -152,3 +152,32 @@ For background mode / self-service installer:
 For the central console:
 
 * Coming later when central console is more complete.
+* Communication will be done over TLS (w/self-signed certificate) or another medium with message encryption
+
+### Do you have an example of a message that goes across the agent service named pipe, from the client?
+
+The message is a serialized object that contains:
+
+* hashed passcode - SHA512 Hash of args, user, current directory, and a salt value only shared with agent and licensed edition
+* command arguments to run - verified against validation checks
+* username - this is what we'll use to ensure things like desktop shortcuts, etc
+* timeout - how long before the command should timeout (from choco config)
+* working directory - where is the context of this being executed, in case there are things to place relative to current directory
+
+Here is the interface:
+
+`void run_choco_command(string passcode, IEnumerable<string> arguments, string userName, int timeout, string workingDirectory);`
+
+Keep in mind this message is only put on localhost. It does not go over any networks.
+
+### What is the purpose of the hash that is used to protect the named pipe?
+You may notice the hash changes every time based on what command is called. This is a security measure to ensure the call is coming from a configured Chocolatey client and not from another source. The agent will ignore anything that does not match up.
+
+### Does the agent service or Chocolatey stop installation from unconfigured sources?
+
+The agent stops unconfigured sources from installation. Right now it simply logs those abuses to the log file (that is locked down to admins for modify). The log file can be slurped into a tool like Splunk. Alternatively considering this is preview and we are waiting for feedback, we can look to providing those alerts in a different way, like the event log. We welcome any feedback on how you might like to see this.
+
+Chocolatey doesn't stop unconfigured sources for install, it lets the agent do so. Once Chocolatey is in background mode, all commands for install/upgrade go through the agent service.
+
+The one exception is when someone calls `--run-actual` in their arguments. But there is no escalation of privilege here because they would be running that under their own user context and thus only have the permissions granted to them already.
+
