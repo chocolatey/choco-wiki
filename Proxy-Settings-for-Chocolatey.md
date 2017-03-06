@@ -52,7 +52,7 @@ Chocolatey by default already supports system set proxy servers
 
 ![image](https://cloud.githubusercontent.com/assets/63502/10038284/454be026-6189-11e5-8f83-e29d1705995c.png)
 
-Unfortunately proxy bypass lists may not be available when using this method. We recommend explicit proxy settings.
+**NOTE:** Unfortunately proxy bypass lists may not be available when using this method. We recommend explicit proxy settings.
 
 ## Existing Proxy Environment Variables
 Starting with Chocolatey v0.10.4, Chocolatey will automatically pick up the following environment variables if they are already set:
