@@ -60,6 +60,17 @@ Steps to help address this.
 3. Set the following environment variables - `$env:chocolateyProxyLocation` (with proxyserver:proxyport), `$env:chocolateyProxyUser` (if it is a domain account, ensure you have the appropriate domain prefix for the account, e.g. `AD\UserName` or `UserName`), and `$env:chocolateyProxyPassword` with your password.
 4. With that same shell open where the environment variables are set, run the downloaded script to install Chocolatey.
 
+In PowerShell, it looks like this:
+
+~~~powershell
+$env:chocolateyProxyLocation = 'https://local/proxy/server'
+#$env:chocolateyProxyUser = 'username'
+#$env:chocolateyProxyPassword = 'password'
+# install script
+~~~
+
+**NOTE:** This will only work with the installation methods that call https://chocolatey.org/install.ps1 as part of the install.
+
 ### Still having trust issues? 
 
 You've tried everything and Chocolatey still won't install - 
