@@ -72,6 +72,11 @@ Start-ChocolateyProcessAsAdmin -Statements "$silentArgs" -ExeToRun $file -ValidE
 # Run PowerShell statements
 $psFile = Join-Path "$(Split-Path -parent $MyInvocation.MyCommand.Definition)" 'someInstall.ps1'
 Start-ChocolateyProcessAsAdmin "& `'$psFile`'"
+
+# This also works for cmd and is required if you have any spaces in the paths within your command
+$appPath = "$env:ProgramFiles\myapp"
+$cmdBatch = "/c `"$appPath\bin\installmyappservice.bat`""
+Start-ChocolateyProcessAsAdmin $cmdBatch cmd # or -Statements $cmdBatch -ExeToRun "cmd.exe"
 ~~~ 
 
 ## Inputs
