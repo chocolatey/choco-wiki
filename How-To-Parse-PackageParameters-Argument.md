@@ -196,7 +196,7 @@ i.e. it is using the default values which we made at the top of the file
 However, if we instead used:
 
 ~~~sh
-choco install <packageName> -d --package-parameters "'/Port:82 /Edition:LicenseKey1 /InstallationPath:""C:\temp\folder with space"" /AdditionalTools'" 
+choco install <packageName> -d --package-parameters '/Port:82 /Edition:LicenseKey1 /InstallationPath:""C:\temp\folder with space"" /AdditionalTools' # SEE note below, shell affects this
 ~~~
 
 **NOTE:** How you pass options with spaces varies with shell (cmd.exe vs powershell.exe) and other related information with choco options is important to keep in mind here. See [[how to pass options/switches|CommandsReference#how-to-pass-options--switches]].
