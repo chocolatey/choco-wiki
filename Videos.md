@@ -9,6 +9,7 @@
 
 * Arrested DevOps - [Microsoft Redux (Shout out)](https://youtu.be/rsnxc1l3Fz8?t=7m29s) - November 15, 2016
 * [A Tale of Two Hierarchies: Group Policy & Puppet (Shout out)](https://youtu.be/mNW9pDZT-8c?t=33m1s) - Matt Stone, PuppetConf 2016
+* [Introducing and installing Chocolatey](https://www.youtube.com/watch?v=6GGTcUbhc3o)
 * BJTechNews - [Chocolatey and MDT 2013 Update 2 with Windows 10](https://www.youtube.com/watch?v=1OrpZpeEmL0) - Bernardo Arocho Jr. 
 * Developer on Fire - [Episode 131 | Rob Reynolds - Automate Everything](http://developeronfire.com/episode-131-rob-reynolds-automate-everything) - May 16, 2016
 * [Chocolatey Demonstration - Andy Melton](https://www.youtube.com/watch?v=HlnTZF3H1Ac) - April 8, 2016
