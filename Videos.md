@@ -22,6 +22,7 @@
 * Arrested DevOps - [Chocolatey Goodness With Rob Reynolds](https://www.arresteddevops.com/chocolatey/) - December 2015
 * Arrested DevOps - [Switching Teams: From Linux To Windows And Windows To Linux](https://www.arresteddevops.com/os-switching/) - December 2015
 * GoogleChromeDevelopers - [Totally Tooling Tips: Windows Command-line Tooling](https://www.youtube.com/watch?v=msCUKTdBzg4&t=4m19s) - November 11, 2015
+* ITPro TV - [What's New Windows 10 - OneGet Package Manager](https://www.youtube.com/watch?v=yDkjf8EOU2Q) - Jul 15, 2015
 * [Tutorial: Usando o Chocolatey (apt-get/yum para Windows) - Carlos Alberto Castelo Elias Filho (Espanol)](https://www.youtube.com/watch?v=OWgADNDHJzg) - June 29, 2015
 * devGeeK - [MongoDb Tutorial (Shout out)](https://www.youtube.com/watch?v=W-WihPoEbR4&feature=youtu.be&t=48m45s) - June 17, 2015
 * GEEKBLOGTV - [Chocolatey](https://www.youtube.com/watch?v=nH6jRB5kigc) - May 18, 2015
