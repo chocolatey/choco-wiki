@@ -4,6 +4,22 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.9.7 (March 20, 2017)
+
+### BUG FIXES 
+
+ * Fix - Support automatic decompression on downloads - see [#1056](https://github.com/chocolatey/choco/issues/1056)
+ * Fix - Package Builder - Restrict Get-UninstallRegistryKey params in chocolateyUninstall.ps1
+ * Fix - Package Internalizer - exit non-zero when variable replacement fails
+
+### IMPROVEMENTS
+
+ * Ensure PowerShell scripts use CRLF so authenticode verification doesn't fail
+ * Install Directory should see `INSTALLFOLDER` MSI Property
+ * Virus Scanner - provide context for other answers (No/Skip)
+ * Allow both 32bit and 64bit file parameters with Install-ChocolateyInstallPackage - see [#1187](https://github.com/chocolatey/choco/issues/1187)
+
+
 ## 1.9.6 (March 3, 2017)
 
 ### BUG FIXES
