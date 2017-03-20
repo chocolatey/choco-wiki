@@ -38,6 +38,10 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ## Community
 
 ### 2017
+#### March
+
+* http://www.winsysblog.com/2017/03/creating-software-packages-with.html
+
 #### February
 
 * https://www.jungledisk.com/blog/2017/02/06/installing-software-with-package-managers/
