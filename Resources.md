@@ -41,6 +41,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 #### March
 
 * http://www.winsysblog.com/2017/03/creating-software-packages-with.html
+* https://brian.teeman.net/joomla/885-install-amp-on-windows-with-chocolatey
 
 #### February
 
