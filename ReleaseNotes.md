@@ -4,10 +4,9 @@ This covers changes for the "chocolatey" and "chocolatey.lib" packages, which ar
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Licensed Release Notes|ReleaseNotesLicensed]].
 
-
 ## [0.10.4](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.4+is%3Aclosed) (unreleased)
 
-We're dubbing this the "10-4 good buddy" release. We've added some major functionality and fixes we think you are going to find top notch - do we dare say as smooth as really expensive chocolate? A lot of work for this release has been provided by the community. Remember that Chocolatey is only as good as the support that comes from the community! Be sure to thank other community members for the awesome that is Chocolatey and Chocolatey 10-4. We've closed over 30 bugs and added 39 enhancements!
+We're dubbing this the "10-4 good buddy" release. We've added some major functionality and fixes we think you are going to find top notch - dare we say as smooth as really expensive chocolate? A lot of work for this release has been provided by the community. Remember that Chocolatey is only as good as the support that comes from the community! Be sure to thank other community members for the awesome that is Chocolatey and Chocolatey 10-4. We've closed over 30 bugs and added 39 enhancements!
 
 Proxy support just got some major enhancements with the ability to not only [specify proxy information at runtime](https://github.com/chocolatey/choco/issues/1173), but also to [set bypass lists and bypassing on local connections](https://github.com/chocolatey/choco/issues/1165). A major issue with [changing command execution timeout](https://github.com/chocolatey/choco/issues/1059) was just fixed. And there used to be a tiny chance you might [corrupt the choco config when running multiple choco processes](https://github.com/chocolatey/choco/issues/1047) - which is now fixed.
 
