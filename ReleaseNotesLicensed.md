@@ -8,7 +8,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 ### BUG FIXES
 
- * Fix - ensure Chocolatey Licensed is compatible with 0.10.4.
+ * Fix - Ensure Chocolatey Licensed is compatible with 0.10.4.
  * Fix - AutoUninstaller - ensure uninstallExe is split by quotes when necessary - see [#1208](https://github.com/chocolatey/choco/issues/1208)
  * Package Synchronizer (Choco Sync):
     * Fix - Ensure template properties are cleared, even when skipping due to errors
