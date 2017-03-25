@@ -13,7 +13,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
  * Package Synchronizer (Choco Sync):
     * Fix - Ensure template properties are cleared, even when skipping due to errors
  * Package Builder (Choco New):
-    * Fix - Ensure authors is never null
+    * Fix - Ensure authors is never empty
     * Fix - Before setting properties from registry, ensure they have a value.
     * Fix - Replace invalid ".-" in package id
 
