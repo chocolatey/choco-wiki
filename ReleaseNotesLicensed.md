@@ -4,6 +4,20 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.9.8 (March 25, 2017)
+
+### BUG FIXES
+
+ * Fix - ensure Chocolatey Licensed is compatible with 0.10.4.
+ * Fix - AutoUninstaller - ensure uninstallExe is split by quotes when necessary - see [#1208](https://github.com/chocolatey/choco/issues/1208)
+ * Package Synchronizer (Choco Sync):
+    * Fix - Ensure template properties are cleared, even when skipping due to errors
+ * Package Builder (Choco New):
+    * Fix - Ensure authors is never null
+    * Fix - Before setting properties from registry, ensure they have a value.
+    * Fix - Replace invalid ".-" in package id
+
+
 ## 1.9.7 (March 20, 2017)
 
 ### BUG FIXES 
