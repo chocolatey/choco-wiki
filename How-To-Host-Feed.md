@@ -7,6 +7,7 @@ Please read [[Depending on the chocolatey.org as an organization|ChocolateyFAQs#
 There are three types of package repositories, [folder/unc share](#local-folder--unc-share), [simple server](#simple-server), and the sophisticated [package gallery](#package-gallery).
 
 **Known Hosting Options**
+* File Share\UNC share
 * [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_hosted_repositories.html) - Sonatype Nexus has a built-in simple server
 * [ProGet](http://inedo.com/proget/overview) - ProGet gives you a ready to go On-Premise option. Enterprise has replication
 * [Artifactory](http://www.jfrog.com/open-source/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories) - not in the free version
