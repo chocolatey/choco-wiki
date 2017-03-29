@@ -8,6 +8,7 @@ There are three types of package repositories, [folder/unc share](#local-folder-
 
 **Known Hosting Options**
 * File Share\UNC share (below)
+* [[Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]]
 * [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_hosted_repositories.html) - Sonatype Nexus has a built-in simple server
 * [ProGet](http://inedo.com/proget/overview) - ProGet gives you a ready to go On-Premise option. Enterprise has replication
 * [Artifactory](http://www.jfrog.com/open-source/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories) - not in the free version
@@ -16,6 +17,8 @@ There are three types of package repositories, [folder/unc share](#local-folder-
 * [Klondike](https://github.com/themotleyfool/Klondike) - Ember front-end that builds on NuGet.Lucene for private NuGet package hosting
 * [PHP NuGet](http://www.kendar.org/?p=/dotnet/phpnuget) - Simple server built in PHP
 * [Hazel](https://github.com/MPIB/hazel) - Simple server built in Rust
+* NuGet.Server
+* [NuGet Gallery](https://github.com/NuGet/NuGetGallery/wiki/Hosting-the-NuGet-Gallery-Locally-in-IIS)
 
 ## Package Version Immutability
 A package version is immutable on some sources. This means that everybody's version 1.0.1 of a particular package is the same. You do not need to worry about this when updating with newer versions of packages, because each package version compiled nupkg has the unique version in the name (e.g `bob.1.0.0.nupkg` vs `bob.1.0.1.nupkg` ).
@@ -66,7 +69,7 @@ The actual limit for package sizes varies depending on what each simple server c
 
 #### Simple Server Setup
 
-Many google searches will throw out good ways to set up your own feed (hint: search for host your own nuget server feed)
+Many google searches will throw out good ways to set up your own feed (hint: search for "host your own NuGet server feed")
 
 Some notable references:
  * Nuget Docs [Host Your Own Remote Feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds)
