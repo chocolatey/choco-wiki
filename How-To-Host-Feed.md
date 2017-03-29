@@ -7,11 +7,11 @@ Please read [[Depending on the chocolatey.org as an organization|ChocolateyFAQs#
 There are three types of package repositories, [folder/unc share](#local-folder--unc-share), [simple server](#simple-server), and the sophisticated [package gallery](#package-gallery).
 
 **Known Hosting Options**
-* [MyGet](https://www.myget.org/) - MyGet has free public and paid for public/private cloud-hosting options if you don't want to handle all of the pain of setup and administration. MyGet offers some stellar options like multi-feed aggregation, mirroring, and source package build services!
-* [ProGet](http://inedo.com/proget/overview) - ProGet gives you a ready to go On-Premise option.
+* [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_hosted_repositories.html) - Sonatype Nexus has a built-in simple server
+* [ProGet](http://inedo.com/proget/overview) - ProGet gives you a ready to go On-Premise option. Enterprise has replication
 * [Artifactory](http://www.jfrog.com/open-source/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories) - not in the free version
+* [MyGet](https://www.myget.org/) - MyGet has free public and paid for public/private cloud-hosting options if you don't want to handle all of the pain of setup and administration. MyGet offers some stellar options like multi-feed aggregation, mirroring, and source package build services!
 * [TeamCity](https://www.jetbrains.com/teamcity/) has built-in Simple Server
-* [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_proxy_repositories.html) - Sonatype Nexus has a built-in simple server
 * [Klondike](https://github.com/themotleyfool/Klondike) - Ember front-end that builds on NuGet.Lucene for private NuGet package hosting
 * [PHP NuGet](http://www.kendar.org/?p=/dotnet/phpnuget) - Simple server built in PHP
 * [Hazel](https://github.com/MPIB/hazel) - Simple server built in Rust
@@ -119,6 +119,6 @@ If you don't want to host on Windows you have only the following options (from l
 * [PHP NuGet](http://www.kendar.org/?p=/dotnet/phpnuget) - Simple server built in PHP
 * [Hazel](https://github.com/MPIB/hazel) - Simple server built in Rust
 * [Artifactory](http://www.jfrog.com/open-source/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories) - not in the free version
-* [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_proxy_repositories.html)
+* [Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_hosted_repositories.html)
 
 **Note:** NuGet.Java.Server, TeamCity and JNuGet are about the same in terms of sophistication (they are ordered alphabetically).
