@@ -19,6 +19,7 @@ There are three types of package repositories, [folder/unc share](#local-folder-
 * [Hazel](https://github.com/MPIB/hazel) - Simple server built in Rust
 * NuGet.Server
 * [NuGet Gallery](https://github.com/NuGet/NuGetGallery/wiki/Hosting-the-NuGet-Gallery-Locally-in-IIS)
+* Chocolatey Gallery
 
 ## Package Version Immutability
 A package version is immutable on some sources. This means that everybody's version 1.0.1 of a particular package is the same. You do not need to worry about this when updating with newer versions of packages, because each package version compiled nupkg has the unique version in the name (e.g `bob.1.0.0.nupkg` vs `bob.1.0.1.nupkg` ).
