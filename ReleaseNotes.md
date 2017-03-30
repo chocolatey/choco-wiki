@@ -4,7 +4,7 @@ This covers changes for the "chocolatey" and "chocolatey.lib" packages, which ar
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Licensed Release Notes|ReleaseNotesLicensed]].
 
-## [0.10.4](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.4+is%3Aclosed) (unreleased)
+## [0.10.4](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.4+is%3Aclosed) (March 30, 2017)
 
 We're dubbing this the "10-4 good buddy" release. We've added some major functionality and fixes we think you are going to find top notch - dare we say as smooth as really expensive chocolate? A lot of work for this release has been provided by the community. Remember that Chocolatey is only as good as the support that comes from the community! Be sure to thank other community members for the awesome that is Chocolatey and Chocolatey 10-4. We've closed over 30 bugs and added 39 enhancements!
 
