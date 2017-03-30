@@ -35,11 +35,11 @@ Heading down a sweet road.
 
 * Adding back in search box
 * Converting rest of site
-* Kickstarter backers
-* Add blog
+* ~~Kickstarter backers~~ - https://chocolatey.org/kickstarters
+* ~~Add blog~~ - https://chocolatey.org/blog
 * ~~VirusTotal scans of all packages and downloaded binaries~~ - Completed Feb 2016
-* Locking down HTTP without checksums
-* Locking down packages without checksums
+* ~~Locking down non-secure downloads in packages (HTTP) without checksums~~ - completed Aug 2016
+* Locking down secure downloads in packages (HTTPS) without checksums
 
 ## Thoughts for future directions (undecided directions)
 
