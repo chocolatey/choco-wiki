@@ -6,6 +6,41 @@
 That's it! All you need is choco.exe (that you get from the installation scripts) and you are good to go! No Visual Studio required.
 
 ## Installing Chocolatey
+
+Chocolatey installs in seconds. You are just a few steps from running choco right now!
+
+1. First, ensure that you are using an ***[administrative shell](http://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)*** - you can also install as a non-admin, check out [More Options](#more-install-options).
+1. Copy the text specific to your command shell - [cmd.exe](#install-with-cmdexe) or [powershell.exe](#install-with-powershellexe).
+1. Paste the copied text into your shell and press Enter.
+1. Wait a few seconds for the command to complete.
+1. If you don't see any errors, you are ready to use Chocolatey! Type `choco` or `choco -?` now.
+
+**NOTE**: If you are behind a proxy, please see [More Options](#more-install-options).
+
+#### Install with cmd.exe
+
+Run the following command: <!--remove <button class="icon-clipboard copy-button" data-clipboard-text="@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;"></button> remove-->
+
+~~~sh
+
+@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+
+~~~
+
+#### Install with PowerShell.exe
+
+With PowerShell, there is an additional step. You must ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is not Restricted. We suggest using `Bypass` to bypass the policy to get things installed or `AllSigned` for quite a bit more security.
+
+* Run `Get-ExecutionPolicy`. If it returns `Restricted`, then run `Set-ExecutionPolicy AllSigned` or `Set-ExecutionPolicy Bypass`.
+* Now run the following command: <!--remove Copy command to clipboard: <button class="icon-clipboard copy-button" data-clipboard-text="iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"></button> remove-->
+
+~~~powershell
+
+# Don't forget `Set-ExecutionPolicy AllSigned` above
+iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+~~~
+
 Chocolatey installs in seconds. Just run the following command from an ***administrative*** PowerShell v3+ prompt (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is not Restricted): <!--remove <button class="icon-clipboard copy-button" data-clipboard-text="iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"></button> (copy command) remove-->
 
 ~~~powershell
@@ -14,13 +49,17 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 
 ~~~
 
+#### Additional considerations
+
+**NOTE:** Please inspect [https://chocolatey.org/install.ps1](https://chocolatey.org/install.ps1) prior to running any of these scripts to ensure safety. We already know it's safe, but you should also be comfortable before running ***any*** script from the internet you are not familiar with. All of these scripts download a remote PowerShell script and execute it on your machine.
+
 We take security very seriously. <a href="https://chocolatey.org/security">Learn more</a>.
 
 ## More Install Options
 
 <!--remove
 
-<p><strong>Troubleshooting? Install from cmd.exe or PowerShell v2? Proxy? Need more options?</strong><br />
+<p><strong>Troubleshooting? Proxy? Need more options?</strong><br />
 
 <a onclick="if ($(this).text() == 'Less Options') {$('#div-moreoptions').addClass('hide');$(this).text('More Options');} else {$('#div-moreoptions').removeClass('hide');$(this).text('Less Options');}">More Options</a>
 </p>
@@ -28,13 +67,7 @@ We take security very seriously. <a href="https://chocolatey.org/security">Learn
 <div id="div-moreoptions" class="hide">
 remove-->
 
-To install chocolatey now, open an <strong>administrative</strong> command prompt and paste the text from the box below that applies to the name of your shell and press enter.
-If you need assistance opening an administrative prompt, see [open an elevated prompt in Windows 8+](http://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) (or [Windows 7](http://www.howtogeek.com/howto/windows-vista/run-a-command-as-administrator-from-the-windows-vista-run-box/)).
-
-**NOTE:** Please inspect [https://chocolatey.org/install.ps1](https://chocolatey.org/install.ps1) prior to running any of these scripts to ensure safety. We already know it's safe, but you should also be comfortable before running ***any*** script from the internet you are not familiar with. All of these scripts download a remote PowerShell script and execute it on your machine.
-
-* [Install from cmd.exe](#install-from-cmdexe)
-* [Install from PowerShell v2](#install-from-powershell-v2)
+* [Install from PowerShell v3+](#install-from-powershell-v3)
 * [Install using PowerShell from cmd.exe](#install-using-powershell-from-cmdexe)
 * [Install using NuGet Package Manager](#install-using-nuget-package-manager)
 * [Install using NuGet.exe from PowerShell](#install-using-nugetexe-from-powershell)
@@ -48,23 +81,16 @@ If you need assistance opening an administrative prompt, see [open an elevated p
 * [Installing with restricted TLS](#installing-with-restricted-tls)
 * [Non-Administrative install](#non-administrative-install)
 
-### Install from cmd.exe
+### Install from PowerShell v3+
 
-* Cmd.exe - <button class="icon-clipboard copy-button" data-clipboard-text="@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;"></button>
+With PowerShell, there is an additional step or two. You must ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is not Restricted. We suggest using `Bypass` to bypass the policy to get things installed or `AllSigned` for quite a bit more security.
 
-~~~sh
-
-@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
-
-~~~
-
-### Install from PowerShell v2
-
-* PowerShell.exe (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is not Restricted) - <button class="icon-clipboard copy-button" data-clipboard-text="iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"></button>
+* Run `Get-ExecutionPolicy`. If it returns `Restricted`, then run `Set-ExecutionPolicy AllSigned` or `Set-ExecutionPolicy Bypass`.
+* Now run the following command: <!--remove <button class="icon-clipboard copy-button" data-clipboard-text="iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"></button> (copy command) remove-->
 
 ~~~powershell
 
-iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 
 ~~~
 
