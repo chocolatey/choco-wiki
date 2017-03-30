@@ -21,14 +21,15 @@ Heading down a sweet road.
 
 * ~~[[Self-Service Installs (Non-Admins)|FeaturesAgentService]]~~ released in Jan 2017
 * [[Chocolatey Central Console|FeaturesAgentService]]
+* ~~Package Throttle - reduce download speeds for low bandwidth areas~~ - released in Q1 2017 (March)
 * Package Modernizer
-* Package Sync command
+* Package Sync command:
   * finding existing packages
-  * building packages on the fly with sync (business edition)
+  * ~~building packages on the fly with sync (business edition)~~ released in Jan 2017
 * ~~Package Builder - [[create packages from Programs and Features|FeaturesCreatePackagesFromInstallers#generate-packages-from-programs-and-features]]~~ - released in Q3 2016
 * ~~Right Click `Create Chocolatey Package...` (business editions)~~ - released in Q3 2016
 * ~~[[Package Builder UI|FeaturesCreatePackagesFromInstallers#package-builder-ui]] (business edition)~~ - released in Q3 2016
-* Package Builder UI (pro edition without the auto detection)
+* ~~Package Builder UI (pro edition without the auto detection)~~ - released Q1 2017
 * Possibly a business edition gallery with features specific to business needs.
 
 ## Chocolatey.org
