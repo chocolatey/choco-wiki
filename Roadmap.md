@@ -8,14 +8,14 @@ Heading down a sweet road.
 
 * Validation on choco pack (subset of the package-validator)
 * Official support for OneGet/PackageManagement - Prioritizing
-* GPG package signing - likely sometime in 2017
-* Validating authenticodes - see [#643](https://github.com/chocolatey/choco/issues/643)
+* GPG package signing - likely sometime in late 2017/early 2018
+* Validating authenticode - see [#643](https://github.com/chocolatey/choco/issues/643)
 * ~~Not allowing package installs that don't have checksums by default when using non-secure resources like HTTP/FTP - see [#112](https://github.com/chocolatey/choco/issues/112)~~ released in 0.10.0
 * Nuspec enhancements - supported versions of Windows, etc
 * Packaging enhancements - like package version, architecture
 * [Virtual packages](https://github.com/chocolatey/chocolatey/issues/7)
 * WSA Support 
-* Windows Nano Support - likely Q2 2017 (switching to .NET Standard/Core)
+* Windows Nano Support - likely second half of 2017 (switching to .NET Standard/Core)
 
 ## Licensed Chocolatey
 
