@@ -36,16 +36,8 @@ With PowerShell, there is an additional step. You must ensure [Get-ExecutionPoli
 
 ~~~powershell
 
-# Don't forget `Set-ExecutionPolicy AllSigned` above
+# Don't forget to ensure ExecutionPolicy above
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-
-~~~
-
-Chocolatey installs in seconds. Just run the following command from an ***administrative*** PowerShell v3+ prompt (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is not Restricted): <!--remove <button class="icon-clipboard copy-button" data-clipboard-text="iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"></button> (copy command) remove-->
-
-~~~powershell
-
-iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 
 ~~~
 
