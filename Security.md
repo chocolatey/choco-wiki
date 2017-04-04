@@ -2,6 +2,24 @@
 
 Bottom line: If someone tells you Chocolatey ***is*** insecure, please respond with "You mean Chocolatey ***used*** to be insecure. You may want to check out chocolatey dot org slash security and catch up with the last 2+ years. Or do you mean a ***community package*** may not be secure? Organizations don't typically use the community repository anyway and only use Chocolatey in a completely secure manner. Individuals looking for more protection with the community repository go Pro." Unfortunately some security features have significant recurring costs based on usage for the Chocolatey team, so they can't be offered for free.
 
+<!-- TOC -->
+
+- [Report Issue](#report-issue)
+- [Summary](#summary)
+- [Overall](#overall)
+- [Chocolatey binaries and the Chocolatey package](#chocolatey-binaries-and-the-chocolatey-package)
+- [Chocolatey.org Packages](#chocolateyorg-packages)
+  - [Rigorous Moderation Process for Community Packages](#rigorous-moderation-process-for-community-packages)
+    - [Downloading Internet Resources Can Still Be An Issue](#downloading-internet-resources-can-still-be-an-issue)
+- [Chocolatey Pro / Chocolatey for Business](#chocolatey-pro--chocolatey-for-business)
+- [Future Chocolatey Enhancements](#future-chocolatey-enhancements)
+- [History](#history)
+  - [Past Security Concerns](#past-security-concerns)
+  - [What about a non-administrative installation of Chocolatey? Is it secure?](#what-about-a-non-administrative-installation-of-chocolatey-is-it-secure)
+  - [Security Scenarios to Keep in Mind / Avoid](#security-scenarios-to-keep-in-mind--avoid)
+
+<!-- /TOC -->
+
 ## Report Issue
 
 * Report general security issue - please email security [at] realdimensions dot net.
@@ -38,25 +56,43 @@ The binary `choco.exe` can be trusted (at least as far as you trust the Chocolat
 
 *  **Starting with 0.9.10.0**, both the binaries and the PowerShell scripts are Authenticode signed. This certificate is only held by the lead Chocolatey maintainer (Rob). This provides quite a bit of trust that you are getting Chocolatey from the source and as intended.
 
-Using PowerShell, you can verify the binary (the path below is the default install location, adjust if necessary):
+    Using PowerShell, you can verify the binary (the path below is the default install location, adjust if necessary):
 
-~~~sh
-C:\ PS> (Get-AuthenticodeSignature -FilePath C:\ProgramData\chocolatey\choco.exe).SignerCertificate | Format-List
+    0.10.4+:
+
+    ~~~sh
+    C:\ PS> (Get-AuthenticodeSignature -FilePath C:\ProgramData\chocolatey\choco.exe).SignerCertificate | Format-List
 
 
-Subject      : CN="RealDimensions Software, LLC", O="RealDimensions Software,
-               LLC", L=Topeka, S=Kansas, C=US
-Issuer       : CN=DigiCert SHA2 Assured ID Code Signing CA, OU=www.digicert.com,
-               O=DigiCert Inc, C=US
-Thumbprint   : C9F7FD1A91F078DB6BFCFCCE28B9749F8F2A0C38
-FriendlyName :
-NotBefore    : 3/23/2016 7:00:00 PM
-NotAfter     : 3/28/2017 7:00:00 AM
-Extensions   : {System.Security.Cryptography.Oid,
-               System.Security.Cryptography.Oid,
-               System.Security.Cryptography.Oid,
-               System.Security.Cryptography.Oid...}
-~~~
+    Subject      : CN="Chocolatey Software, Inc.", O="Chocolatey Software, Inc.", L=Topeka, S=Kansas, C=US
+    Issuer       : CN=DigiCert SHA2 Assured ID Code Signing CA, OU=www.digicert.com, O=DigiCert Inc, C=US
+    Thumbprint   : 493018BA27EAA09B895BC5660E77F694B84877C7
+    FriendlyName :
+    NotBefore    : 3/27/2017 7:00:00 PM
+    NotAfter     : 4/3/2018 7:00:00 AM
+    Extensions   : {System.Security.Cryptography.Oid, System.Security.Cryptography.Oid,
+                  System.Security.Cryptography.Oid, System.Security.Cryptography.Oid...}
+    ~~~
+
+    0.9.10 - 0.10.3:
+
+    ~~~sh
+    C:\ PS> (Get-AuthenticodeSignature -FilePath C:\ProgramData\chocolatey\choco.exe).SignerCertificate | Format-List
+
+
+    Subject      : CN="RealDimensions Software, LLC", O="RealDimensions Software,
+                  LLC", L=Topeka, S=Kansas, C=US
+    Issuer       : CN=DigiCert SHA2 Assured ID Code Signing CA, OU=www.digicert.com,
+                  O=DigiCert Inc, C=US
+    Thumbprint   : C9F7FD1A91F078DB6BFCFCCE28B9749F8F2A0C38
+    FriendlyName :
+    NotBefore    : 3/23/2016 7:00:00 PM
+    NotAfter     : 3/28/2017 7:00:00 AM
+    Extensions   : {System.Security.Cryptography.Oid,
+                  System.Security.Cryptography.Oid,
+                  System.Security.Cryptography.Oid,
+                  System.Security.Cryptography.Oid...}
+    ~~~
 
 * Although not the best security method, one can also verify choco based on the strong name. choco.exe is strong named with a key that is known only to the lead maintainer of Chocolatey (Rob). Verify the strong name of the official choco binary with the `sn.exe` utility - the public key should be `79d02ea9cad655eb`.
 

@@ -2,19 +2,23 @@
 
 Chocolatey integrates with several infrastructure automation tools!
 
-## Usage
 With most of these tools, the interface you would interact with Chocolatey would be through the tool or through the interfaces of the tool, like in scripts.
 
-* [Ansible](#ansible)
-* [Boxstarter](#boxstarter)
-* [Chef](#chef)
-* [Octopus Deploy](#octopus-deploy)
-* [PowerShell DSC](#powershell-dsc)
-* [PowerShell PackageManagement / OneGet](#powershell-packagemanagement)
-* [PSDeploy](#psdeploy)
-* [Puppet](#puppet)
-* [Saltstack](#saltstack)
-* [SCCM](#system-center-configuration-manager)
+<!-- TOC depthTo:2 -->
+
+- [Ansible](#ansible)
+- [Boxstarter](#boxstarter)
+- [Chef](#chef)
+- [Octopus Deploy](#octopus-deploy)
+- [PowerShell DSC](#powershell-dsc)
+- [PowerShell PackageManagement](#powershell-packagemanagement)
+- [PSDeploy](#psdeploy)
+- [Puppet](#puppet)
+- [Saltstack](#saltstack)
+- [System Center Configuration Manager](#system-center-configuration-manager)
+
+<!-- /TOC -->
+
 
 ## Ansible
 

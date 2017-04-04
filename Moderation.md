@@ -1,7 +1,31 @@
 # Community Feed Moderation
-The community feed, which is found at https://chocolatey.org/packages, is a moderated feed. That means all new versions of packages are human reviewed prior to approval to check for safety, quality, and correctness. See [[What is moderation|ChocolateyFAQs#what-is-moderation]] for more details. There are also [[trusted packages|ChocolateyFAQs#what-is-a-trusted-package]], which only go through automated moderation review and bypass human review as they are coming from trusted sources and/or the software vendors themselves. 
+The community feed, which is found at https://chocolatey.org/packages, is a moderated feed. That means all new versions of packages are human reviewed prior to approval to check for safety, quality, and correctness. See [[What is moderation|ChocolateyFAQs#what-is-moderation]] for more details. There are also [[trusted packages|ChocolateyFAQs#what-is-a-trusted-package]], which only go through automated moderation review and bypass human review as they are coming from trusted sources and/or the software vendors themselves.
 
 By safety - we check that the package scripts do not do anything devious and that you get the software that the package indicates you are getting. Please note that the underlying software may contain crapware/malware (although it is usually not installed when allowing Chocolatey to install silently). This is not checked for currently, but we have plans for checking this in licensed versions of Chocolatey because a feature doing that is not free for us to provide.
+
+<!-- TOC -->
+
+- [Definitions](#definitions)
+- [Requirements and Guidelines](#requirements-and-guidelines)
+  - [Existing Packages](#existing-packages)
+    - [Requirements](#requirements)
+    - [Guidelines](#guidelines)
+- [Package Review Process](#package-review-process)
+  - [Moderation Workflow](#moderation-workflow)
+    - [First Time Go Workflow](#first-time-go-workflow)
+    - [Full Workflow](#full-workflow)
+    - [Trusted Package Workflow](#trusted-package-workflow)
+  - [Maintainer Process](#maintainer-process)
+  - [Reviewer / Moderator Process](#reviewer--moderator-process)
+    - [Moderator Review](#moderator-review)
+- [Roles](#roles)
+    - [Becoming a Maintainer](#becoming-a-maintainer)
+    - [Becoming a Reviewer](#becoming-a-reviewer)
+    - [Becoming a Moderator](#becoming-a-moderator)
+    - [Becoming an Admin](#becoming-an-admin)
+  - [New Reviewers / Moderators](#new-reviewers--moderators)
+
+<!-- /TOC -->
 
 ## Definitions
 
@@ -13,7 +37,7 @@ By safety - we check that the package scripts do not do anything devious and tha
 
 
 ## Requirements and Guidelines
-While probably the most comprehensive, this list may not be fully up-to-date. This should serve as a most general understanding, knowing that the [validator](https://github.com/chocolatey/package-validator/wiki) may be checking for newer things than are written here and that reviewers/moderators may find newer things to check from time to time. 
+While probably the most comprehensive, this list may not be fully up-to-date. This should serve as a most general understanding, knowing that the [validator](https://github.com/chocolatey/package-validator/wiki) may be checking for newer things than are written here and that reviewers/moderators may find newer things to check from time to time.
 
 **NOTE**: Moderators tend to get somewhat picky about properly stating the license, authors (software vendors), and copyright attributions. They are very important to protect both maintainers and the software vendors.
 
@@ -99,7 +123,7 @@ The full normal workflow is like this:
 Currently, when a trusted package is submitted, the flow of moderation works like this:
 
 1. A maintainer submits a package. That puts the package in a "Pending" status (Pending automated review checks).
-1. Whether or not the automated reviews require changes, the package moves to an "Approved" status. 
+1. Whether or not the automated reviews require changes, the package moves to an "Approved" status.
 
 This is changing in the future. https://github.com/chocolatey/chocolatey.org/issues/308
 
@@ -120,7 +144,7 @@ This is the future state trusted package workflow:
 
 The process of moderation review is an interactive process for both maintainers and moderators. As a maintainer you submit packages and they are reviewed to be sure they meet a minimum quality and correctness to be published on Chocolatey.org. It's an important distinction that while almost all valid packages are approved, a package can be rejected for a variety of reasons.
 
-Packages go through three automated checks: validation, verification, and cleanup. There is about a 30 minute lag time from submission until automatic review kicks off - this allows the CDN to recheck and pull a newer version of the package up (in the case of resubmission), so that the package version being verified is the one you submitted and not a stale copy. 
+Packages go through three automated checks: validation, verification, and cleanup. There is about a 30 minute lag time from submission until automatic review kicks off - this allows the CDN to recheck and pull a newer version of the package up (in the case of resubmission), so that the package version being verified is the one you submitted and not a stale copy.
 
 When you receive emails that require you to take action, you should review what is requested and make the changes. If a package is flagged and needs changes based on requirements, the process is for you to make the required changes and resubmit the ***exact*** same version. The faster you respond to the review process, the faster your package can get approved.
 
@@ -136,7 +160,7 @@ Typically a package goes into the moderation queue when submitted.You can get to
  3. You grab a package and head in and review it based on the following items in the requirements and guidelines.
  4. Ensure the verifier has run. It will have both comments in the review and a colored ball up next to the title of the package  (see image below). The ball should be:
     - **Green** if it is ready for review and approval.
-    - **Orange** if still pending verification (has not yet run). 
+    - **Orange** if still pending verification (has not yet run).
     - **Red** if it failed verification. The maintainer needs to fix or respond. If you find a package needs to skip verification, please contact an admin to do so. If you see a network issue from the log, you can rerun verification (see how in the next step).
     - **Grey** if a package skips verification for some reason (which will be listed by the admin that flagged the package to skip verification). If possible, you will need to run the install/uninstall yourself.
  ![Passed Verifier](https://cloud.githubusercontent.com/assets/63502/11872220/bf58f590-a499-11e5-84bb-6fcf6d320227.png)

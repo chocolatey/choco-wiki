@@ -1,10 +1,17 @@
 # Proxy Support For Chocolatey
 
-* [Installing Chocolatey](#installing-chocolatey-behind-a-proxy-server)
-* [Pass through System Proxy Settings](#system-proxy-settings)
-* [Existing Proxy Environment Variable Pass through](#existing-proxy-environment-variables)
-* [Explicit Proxy Settings (most deterministic)](#explicit-proxy-settings)
-   * [Explicit at Runtime](#explicit-proxy-settings-at-runtime)
+<!-- TOC -->
+
+- [Installing Chocolatey behind a proxy server](#installing-chocolatey-behind-a-proxy-server)
+  - [Troubleshooting Installation](#troubleshooting-installation)
+- [System Proxy Settings](#system-proxy-settings)
+- [Existing Proxy Environment Variables](#existing-proxy-environment-variables)
+- [Explicit Proxy Settings](#explicit-proxy-settings)
+  - [Example](#example)
+  - [Explicit Proxy Settings at Runtime](#explicit-proxy-settings-at-runtime)
+- [What to do if my proxy is socks?](#what-to-do-if-my-proxy-is-socks)
+
+<!-- /TOC -->
 
 ## Installing Chocolatey behind a proxy server
 
@@ -12,7 +19,7 @@ When trying to install Chocolatey behind a proxy server, you may be faced with e
 
 > Get Response returned: (407) Proxy Authentication Required
 
-or 
+or
 
 > The underlying connection was closed: Could not establish trust relationship for the SSL / TLS secure channel.
 
@@ -34,9 +41,9 @@ $env:chocolateyProxyLocation = 'https://local/proxy/server'
 
 **NOTE:** This will only work with the installation methods that call https://chocolatey.org/install.ps1 (or use a similar script, like Puppet/Chef scripts do) as part of the install.
 
-### Troubleshooting Installation 
+### Troubleshooting Installation
 
-You've tried everything and Chocolatey still won't install from https://chocolatey.org - 
+You've tried everything and Chocolatey still won't install from https://chocolatey.org -
 
 > The underlying connection was closed: Could not establish trust relationship for the SSL / TLS secure channel.
 
@@ -49,7 +56,7 @@ To access [packages.chocolatey.org](https://packages.chocolatey.org):
 * [AddTrust External CA Root](https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/917/91/) (File: `addtrustexternalcaroot.crt`; Thumbprint: `02FAF3E291435468607857694DF5E45B68851868`)
 
 ## System Proxy Settings
-Chocolatey by default already supports system set proxy servers 
+Chocolatey by default already supports system set proxy servers
 
 ![image](https://cloud.githubusercontent.com/assets/63502/10038284/454be026-6189-11e5-8f83-e29d1705995c.png)
 

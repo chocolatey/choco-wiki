@@ -2,6 +2,22 @@
 
 For years Chocolatey has allowed you to extend Chocolatey with your own PowerShell modules and functions. These are known as extensions.
 
+<!-- TOC -->
+
+- [Overview](#overview)
+  - [Why Would I Create an Extension?](#why-would-i-create-an-extension)
+- [Creating a Chocolatey Extension](#creating-a-chocolatey-extension)
+- [Recommendations](#recommendations)
+  - [Naming Your Extension](#naming-your-extension)
+  - [PowerShell Modules](#powershell-modules)
+  - [Taking a Dependency on an Extension Package](#taking-a-dependency-on-an-extension-package)
+    - [Minimum Version Depdendencies](#minimum-version-depdendencies)
+    - [Avoid Version Ranges For Extensions](#avoid-version-ranges-for-extensions)
+    - [Avoid Exact Version Dependencies For Extensions at All Costs](#avoid-exact-version-dependencies-for-extensions-at-all-costs)
+    - [Version-less Dependencies](#version-less-dependencies)
+
+<!-- /TOC -->
+
 ## Overview
 
 Extensions allow you to package up PowerShell functions that you may reuse across packages as a package that other packages can use and depend on. This allows you to use those same functions as if they were part of Chocolatey itself. Chocolatey loads these PowerShell modules up as part of the regular module import load that it does for built-in PowerShell modules.

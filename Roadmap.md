@@ -1,6 +1,15 @@
 # Roadmap
 Heading down a sweet road.
 
+<!-- TOC -->
+
+- [Chocolatey](#chocolatey)
+- [Licensed Chocolatey](#licensed-chocolatey)
+- [Chocolatey.org](#chocolateyorg)
+- [Thoughts for future directions (undecided directions)](#thoughts-for-future-directions-undecided-directions)
+- [Legal](#legal)
+
+<!-- /TOC -->
 
 **NOTE:** This is not always going to be updated, one can take a look at the issues list here and in the chocolatey.org repositories.
 
@@ -14,7 +23,7 @@ Heading down a sweet road.
 * Nuspec enhancements - supported versions of Windows, etc
 * Packaging enhancements - like package version, architecture
 * [Virtual packages](https://github.com/chocolatey/chocolatey/issues/7)
-* WSA Support 
+* WSA Support
 * Windows Nano Support - likely second half of 2017 (switching to .NET Standard/Core)
 
 ## Licensed Chocolatey

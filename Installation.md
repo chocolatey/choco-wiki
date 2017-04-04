@@ -16,6 +16,7 @@ Chocolatey installs in seconds. You are just a few steps from running choco righ
 1. If you don't see any errors, you are ready to use Chocolatey! Type `choco` or `choco -?` now.
 
 **NOTE**: If you are behind a proxy, please see [More Options](#more-install-options).
+**NOTE**: Installing the licensed edition? See [[install licensed edition|Installation-Licensed]].
 
 #### Install with cmd.exe
 

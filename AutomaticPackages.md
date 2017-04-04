@@ -3,6 +3,28 @@ Automatic packaging is a process that **package maintainers can run on *their ow
 
 **NOTE:** Not to be confused with the automatic package creation feature in [Chocolatey for Business](https://chocolatey.org/pricing) - that feature creates packages directly from software installer files. This feature is for package maintenance of existing packages on the community feed.
 
+<!-- TOC -->
+
+- [Automatic update methods](#automatic-update-methods)
+- [Automatic Updater (AU)](#automatic-updater-au)
+  - [Credits](#credits)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+- [Chocolatey Package Updater aka chocopkgup](#chocolatey-package-updater-aka-chocopkgup)
+  - [Licensing](#licensing)
+  - [Credits](#credits-1)
+  - [Requirements](#requirements-1)
+  - [Setup](#setup-1)
+  - [Create an Automatic Package](#create-an-automatic-package)
+    - [Create a package for automatic packaging](#create-a-package-for-automatic-packaging)
+    - [Ketarin](#ketarin)
+  - [Notes about tri-packages (meta/virtual aka *, *.install, and *.portable)](#notes-about-tri-packages-metavirtual-aka--install-and-portable)
+  - [Testing Ketarin/ChocoPkgUp:](#testing-ketarinchocopkgup)
+  - [Troubleshooting/Notes](#troubleshootingnotes)
+  - [Important notes for files hosted on SourceForge](#important-notes-for-files-hosted-on-sourceforge)
+
+<!-- /TOC -->
+
 ## Automatic update methods
 
 There are currently two methods that can be used to maintain automatic packages:
@@ -64,7 +86,7 @@ This tool makes use of [Ketarin](https://chocolatey.org/packages/ketarin). Ketar
     Set objShell = WScript.CreateObject("WScript.Shell")
     objShell.Run("C:\tools\ChocolateyPackageUpdater\ketarinupdate.cmd"), 0, True
     ~~~
-    
+
 1. Choose a schedule for the task. Some folks run the task about once an hour to catch updates as quickly as they happen.
 1. Open Ketarin. Choose `File` –> `Settings`.
 1. Now Click Import...
@@ -128,7 +150,7 @@ In whichever job the meta package points to, you should add a command to that li
     chocopkgup /p name /v {version} /u "{preupdate-url}" /u64 "{url64}" /pp "{file}" /c "{Checksum}" /c64 "{Checksumx64}"
     REM /disablepush
     ~~~
-    
+
 1. Check the bottom of this section to be sure it set to **Command**.
 ![Ketarin Settings Command](images/chocopkgup/KetarinCustomCommand.png "Ketarin Settings Command")
 

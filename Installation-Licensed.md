@@ -2,16 +2,19 @@
 
 Congratulations on your recent purchase of a licensed edition of Chocolatey! If you are trialing, please pay particular attention to that section:
 
-* [Administrative Actions](#some-administrative-actions)
-* [Know When License is Good](#how-do-i-know-when-the-license-is-installed)
-* [See It!](#see-it-in-action)
-* [How To Install](#how-do-i-install-the-licensed-edition)
-   * [Install Trial Edition](#how-do-i-install-the-trial-edition)
-* [How To Upgrade](#upgrading)
-   * [Upgrade Trial Edition](#how-do-i-upgrade-the-trial-edition)
-* [Install / Upgrade in Secure Environments](#installing--upgrading-in-secure-environments--without-internet-access)
-* [Set Up With Puppet](#set-up-licensed-edition-with-puppet)
+<!-- TOC -->
 
+- [Some Administrative Actions](#some-administrative-actions)
+- [How Do I Know When the License is Installed?](#how-do-i-know-when-the-license-is-installed)
+- [See It In Action](#see-it-in-action)
+- [How Do I Install The Licensed Edition?](#how-do-i-install-the-licensed-edition)
+  - [How Do I Install The Trial Edition?](#how-do-i-install-the-trial-edition)
+- [Upgrading](#upgrading)
+  - [How Do I Upgrade The Trial Edition?](#how-do-i-upgrade-the-trial-edition)
+- [Installing / Upgrading In Secure Environments / Without Internet Access](#installing--upgrading-in-secure-environments--without-internet-access)
+- [Set Up Licensed Edition With Puppet](#set-up-licensed-edition-with-puppet)
+
+<!-- /TOC -->
 
 ## Some Administrative Actions
 
@@ -67,7 +70,6 @@ Your license automatically adds the licensed source.
 ### How Do I Upgrade The Trial Edition?
 
 You will not be able to upgrade through regular means - please reach back out to the Chocolatey Software folks to get an updated edition (and possibly an extended trial license).
-
 
 ## Installing / Upgrading In Secure Environments / Without Internet Access
 

@@ -1,5 +1,15 @@
 # How To Setup the Chocolatey.Server Package
 
+<!-- TOC -->
+
+- [What is Chocolatey.Server?](#what-is-chocolateyserver)
+- [Setup with Puppet](#setup-with-puppet)
+- [Setup Normally](#setup-normally)
+- [Additional Configuration](#additional-configuration)
+
+<!-- /TOC -->
+
+## What is Chocolatey.Server?
 The [Chocolatey.Server package](https://chocolatey.org/packages/chocolatey.server) contains the binaries for a fully ready to go Chocolatey NuGet Server where you can serve packages over HTTP using a NuGet-compatible OData feed.
 
 [Chocolatey Server](https://chocolatey.org/packages/chocolatey.server) is a simple Nuget.Server that is ready to rock and roll. It has already completed Steps 1-3 of NuGet's [host your own remote feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds). Version 0.1.2 has the following additional adds:
@@ -29,7 +39,7 @@ For a simple `include chocolatey_server` it does the following automatically:
  * Ensure that ASP.NET is installed. Try `choco install IIS-ASPNET45 --source windowsfeatures` (`IIS-ASPNET` for Windows 2008).
  * Disable or remove the Default website
  * Set up an app pool for Chocolatey.Server. Ensure 32-bit is enabled and the managed runtime version is `v4.0`.
- * Set up an IIS website pointed to the install location and set it to use the app pool. 
+ * Set up an IIS website pointed to the install location and set it to use the app pool.
  * Go to explorer and right click on `c:\tools\chocolatey.server` and add the following permissions:
    * `IIS_IUSRS` - Read
    * `IUSR` - Read

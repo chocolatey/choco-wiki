@@ -5,6 +5,21 @@ There are thousands of existing packages on the [community repository](https://c
 
 Chocolatey for Business is able to automatically download packages and resources, edit the scripts, and recompile packages to internalize and remove internet dependencies from those packages, saving you hours of time in [[manually internalizing/recompiling packages|How-To-Recompile-Packages]]!
 
+<!-- TOC -->
+
+- [Usage](#usage)
+- [See It In Action](#see-it-in-action)
+- [Options and Switches](#options-and-switches)
+- [FAQ](#faq)
+  - [How do I take advantage of this feature?](#how-do-i-take-advantage-of-this-feature)
+  - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
+  - [How does it work?](#how-does-it-work)
+  - [Does it work with all types of packages?](#does-it-work-with-all-types-of-packages)
+  - [It was not able to download a resource. Why not?](#it-was-not-able-to-download-a-resource-why-not)
+  - [Are all packages guaranteed to be compatible?](#are-all-packages-guaranteed-to-be-compatible)
+
+<!-- /TOC -->
+
 ## Usage
 
 Call `choco download` with options including the name of an existing package for Chocolatey for Business to download and download all existing remote resources.

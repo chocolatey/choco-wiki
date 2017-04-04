@@ -10,6 +10,31 @@ Creating packages is a pretty quick process as compared to manually installing s
 
 Chocolatey for Business is able to inspect an installer and determine silent arguments and complete packaging components for you, saving you hours of time in packaging and maintaining software!
 
+<!-- TOC -->
+
+- [Usage](#usage)
+  - [Command Line](#command-line)
+  - [Package Builder UI](#package-builder-ui)
+- [See It In Action](#see-it-in-action)
+  - [Package Builder CLI and Scripts](#package-builder-cli-and-scripts)
+  - [Package Builder UI](#package-builder-ui-1)
+  - [Generate Packages from Programs and Features](#generate-packages-from-programs-and-features)
+  - [More business concepts](#more-business-concepts)
+- [Options and Switches](#options-and-switches)
+- [FAQ](#faq)
+  - [How do I take advantage of Package Builder?](#how-do-i-take-advantage-of-package-builder)
+  - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
+  - [How does it work?](#how-does-it-work)
+  - [What types of extensions are supported?](#what-types-of-extensions-are-supported)
+  - [Will it catch all types of installers?](#will-it-catch-all-types-of-installers)
+  - [Does it always find the silent uninstall arguments?](#does-it-always-find-the-silent-uninstall-arguments)
+  - [This was unable to detect custom installer arguments.](#this-was-unable-to-detect-custom-installer-arguments)
+  - [Does it create auto unattend files?](#does-it-create-auto-unattend-files)
+  - [Does it work with zip archive?](#does-it-work-with-zip-archive)
+  - [Does this work with keeping the installer on a UNC share or elsewhere yet?](#does-this-work-with-keeping-the-installer-on-a-unc-share-or-elsewhere-yet)
+
+<!-- /TOC -->
+
 ## Usage
 
 ### Command Line

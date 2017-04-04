@@ -6,6 +6,29 @@ We like to call this "batch redirection that works".
 
 This also allows applications and tools to be on the "PATH" without cluttering up the PATH environment variable.
 
+<!-- TOC -->
+
+- [Benefits](#benefits)
+- [Usage](#usage)
+- [See It In Action](#see-it-in-action)
+- [Options and Switches](#options-and-switches)
+- [FAQ](#faq)
+  - [How do I take advantage of this feature?](#how-do-i-take-advantage-of-this-feature)
+  - [How does it work?](#how-does-it-work)
+  - [How is this better than symlinks?](#how-is-this-better-than-symlinks)
+  - [Does it require admin rights?](#does-it-require-admin-rights)
+  - [Does the shim work with UAC?](#does-the-shim-work-with-uac)
+  - [Why not simple batch redirection?](#why-not-simple-batch-redirection)
+  - [Have you thought about shimming in more places?](#have-you-thought-about-shimming-in-more-places)
+  - [I need to shim a non-exe file.](#i-need-to-shim-a-non-exe-file)
+  - [I need to exclude a file from shimming.](#i-need-to-exclude-a-file-from-shimming)
+  - [How can I ensure a GUI shim?](#how-can-i-ensure-a-gui-shim)
+  - [A package messed up and should have set up a shim as a GUI.](#a-package-messed-up-and-should-have-set-up-a-shim-as-a-gui)
+  - [An executable requires being run from the folder where it actually is.](#an-executable-requires-being-run-from-the-folder-where-it-actually-is)
+
+<!-- /TOC -->
+
+## Benefits
 These are the benefits of creating a shim:
 
  * Provides an exe file that calls a target executable.

@@ -6,6 +6,19 @@ It can be a pain determining the native installer type (MSI, NSIS, InnoSetup, et
 
 With the ubiquitous switch, you are not only saving time, but also possible errors in passing the wrong arguments to an installer!
 
+<!-- TOC -->
+
+- [Usage](#usage)
+- [See It In Action](#see-it-in-action)
+- [Options and Switches](#options-and-switches)
+- [FAQ](#faq)
+  - [How do I take advantage of this feature?](#how-do-i-take-advantage-of-this-feature)
+  - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
+  - [How does it work?](#how-does-it-work)
+  - [Do you have plans to make this work for zip files?](#do-you-have-plans-to-make-this-work-for-zip-files)
+
+<!-- /TOC -->
+
 ## Usage
 
 Just pass `--install-directory=value` along and Chocolatey will determine what the actual call to the native installer needs to be and manage that for you!

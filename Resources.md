@@ -103,7 +103,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 * https://thesoftwaredudeblog.wordpress.com/2016/07/08/using-vagrant-with-sitecore-part-1-setup-chocolatey-vagrant-and-virtualbox
 * http://crosscuttingconcerns.com/Podcast-004---Calvin-Allen-on-Chocolatey-NuGet
 
-#### June 
+#### June
 
 * https://www.youtube.com/watch?v=1OrpZpeEmL0
 * https://puppet.com/blog/package-management-windows-gets-even-better-chocolatey
@@ -131,7 +131,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 * https://azure.microsoft.com/en-us/documentation/articles/automation-dsc-cd-chocolatey/
 * http://tomow.de/general/chocolatey-a-sweet-package-manager-for-windows/
 
-#### February 
+#### February
 
 * http://csi-windows.com/blog/all/74-powershell/463-getting-chocolatey-package-management-provider-working-on-windows-10
 * https://zimmergren.net/automating-software-installations-with-boxstarter-and-chocolatey/
@@ -205,7 +205,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 * https://blogs.msdn.microsoft.com/garretts/2015/02/04/oneget-and-chocolatey-whats-the-connection/
 
-#### January 
+#### January
 
 * https://blogs.msdn.microsoft.com/cesardelatorre/2015/01/13/automating-windows-environments-setup-with-boxstarter-and-chocolatey-packages/
 
@@ -298,7 +298,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 ### 2012
 
-#### November 
+#### November
 
 * http://www.pcworld.com/article/2013432/review-chocolatey-offers-easy-software-installation-and-updating.html
 
@@ -315,7 +315,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 * http://www.kongsli.net/2012/05/07/running-chocolatey-behind-an-authenticating-firewall/
 
-#### February 
+#### February
 
 * http://ferventcoder.com/archive/2012/02/25/chocolatey---guidance-on-packaging-apps-with-both-an-install.aspx
 * http://www.powershellmagazine.com/2012/02/20/chocolatey-and-powershell-revolutionize-windows-part-ii/
@@ -345,7 +345,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 * https://web.archive.org/web/20111031004316/http://blogs.lessthandot.com/index.php/DesktopDev/MSTech/chocolatey-apt-get-for-windows
 
-#### May 
+#### May
 
 * http://ferventcoder.com/archive/2011/05/06/iowa-code-camp-presentations.aspx
 

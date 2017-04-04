@@ -1,4 +1,21 @@
 # Getting Started
+
+<!-- TOC -->
+
+- [Using Chocolatey](#using-chocolatey)
+  - [Overriding default install directory or other advanced install concepts](#overriding-default-install-directory-or-other-advanced-install-concepts)
+- [Terminology](#terminology)
+- [What Are Chocolatey Packages?](#what-are-chocolatey-packages)
+- [How does Chocolatey work?](#how-does-chocolatey-work)
+  - [Installation](#installation)
+  - [Upgrade](#upgrade)
+  - [Uninstall](#uninstall)
+- [Where are Chocolatey packages installed to?](#where-are-chocolatey-packages-installed-to)
+- [How does Chocolatey work with Programs and Features? Existing installs?](#how-does-chocolatey-work-with-programs-and-features-existing-installs)
+- [Where does Chocolatey install packages from?](#where-does-chocolatey-install-packages-from)
+
+<!-- /TOC -->
+
 ## Using Chocolatey
 Now that you have Chocolatey on your machine ([[need to install?|Installation]]), you can run several commands.
 

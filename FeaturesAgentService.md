@@ -4,6 +4,30 @@
 
 The Chocolatey Agent service allows you to go further with your software management, bringing Chocolatey to desktop users in organizations that have controlled environments. This provides users in controlled environments more empowerment and instant turn around on required software. This frees up IT folks and admins time to spend on making the organization even better.
 
+<!-- TOC -->
+
+- [Usage](#usage)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+    - [Background Mode Setup](#background-mode-setup)
+  - [Chocolatey Background Service / Self-Service Installer](#chocolatey-background-service--self-service-installer)
+    - [Self-Service Roadmap:](#self-service-roadmap)
+  - [Chocolatey Central Console](#chocolatey-central-console)
+    - [Chocolatey Central Console Roadmap](#chocolatey-central-console-roadmap)
+- [See It In Action](#see-it-in-action)
+- [FAQ](#faq)
+  - [How do I take advantage of Chocolatey Agent?](#how-do-i-take-advantage-of-chocolatey-agent)
+  - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
+  - [I have Puppet or some other configuration management tool (RMM tool, infrastructure automation tool, etc.) that also runs Chocolatey. Can I configure it to skip background mode?](#i-have-puppet-or-some-other-configuration-management-tool-rmm-tool-infrastructure-automation-tool-etc-that-also-runs-chocolatey-can-i-configure-it-to-skip-background-mode)
+  - [How does it work?](#how-does-it-work)
+  - [What's the minimum Chocolatey licensed edition version that I need to install the agent?](#whats-the-minimum-chocolatey-licensed-edition-version-that-i-need-to-install-the-agent)
+  - [How is it secure?](#how-is-it-secure)
+  - [Do you have an example of a message that goes across the agent service named pipe, from the client?](#do-you-have-an-example-of-a-message-that-goes-across-the-agent-service-named-pipe-from-the-client)
+  - [What is the purpose of the hash that is used to protect the named pipe?](#what-is-the-purpose-of-the-hash-that-is-used-to-protect-the-named-pipe)
+  - [Does the agent service or Chocolatey stop installation from unconfigured sources?](#does-the-agent-service-or-chocolatey-stop-installation-from-unconfigured-sources)
+
+<!-- /TOC -->
+
 ## Usage
 
 The Chocolatey agent enables two simultaneous modes of operation, one as an agent for a central console and the other as a background service for use in controlled environments. You can configure one or both modes.

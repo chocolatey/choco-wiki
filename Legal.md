@@ -1,5 +1,12 @@
 # Legalities and Distributions
-### What you need to know
+
+<!-- TOC -->
+
+- [Package License Acceptance Terms](#package-license-acceptance-terms)
+- [Waiver of Responsibility](#waiver-of-responsibility)
+- [Distributions](#distributions)
+
+<!-- /TOC -->
 
 
 ## Package License Acceptance Terms

@@ -2,6 +2,19 @@
 
 As of [choco 0.9.9.9](https://github.com/chocolatey/choco/issues/76), you can create your own custom package templates when the built-in template is not enough.
 
+<!-- TOC -->
+
+- [Overview](#overview)
+  - [Where Do Templates Go?](#where-do-templates-go)
+  - [Can I replace the built-in template?](#can-i-replace-the-built-in-template)
+  - [What values can I template?](#what-values-can-i-template)
+- [Example](#example)
+  - [Manage as Templates as Packages](#manage-as-templates-as-packages)
+  - [Extending Templates](#extending-templates)
+  - [Are There Planned Enhancements?](#are-there-planned-enhancements)
+
+<!-- /TOC -->
+
 ## Overview
 A template is used for creating packages. Chocolatey (choco) has a built-in template that it uses when generating a new package from the command [[`choco new`|CommandsNew]].
 

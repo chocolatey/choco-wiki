@@ -1,5 +1,14 @@
 # How To Internalize/Recompile Packages
 
+<!-- TOC -->
+
+- [What is it? Why?](#what-is-it-why)
+- [Process of Internalization](#process-of-internalization)
+- [How to Internalize An Existing Package Automatically](#how-to-internalize-an-existing-package-automatically)
+- [How To Internalize/Recompile An Existing Package Manually](#how-to-internalizerecompile-an-existing-package-manually)
+
+<!-- /TOC -->
+
 ## What is it? Why?
 Sometimes creating packages from scratch can be an involved process. Not all software installers are created equal (and not all are easily automated either)! Thankfully there is already a tremendous resource you can use to make the process of getting your software all packaged up even smoother.
 

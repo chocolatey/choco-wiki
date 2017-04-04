@@ -4,6 +4,21 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
 
 **Problem?** Read the detailed version: [[Creating Chocolatey Packages|CreatePackages]]
 
+<!-- TOC -->
+
+- [Creating Chocolatey Packages - TL;DR version](#creating-chocolatey-packages---tldr-version)
+- [Prerequisites](#prerequisites)
+- [Quick start guide](#quick-start-guide)
+- [Common Mistakes](#common-mistakes)
+- [Environmental Variables](#environmental-variables)
+- [Examples](#examples)
+  - [chocolateyInstall.ps1 for .exe installer](#chocolateyinstallps1-for-exe-installer)
+  - [chocolateyInstall.ps1 for .msi installer](#chocolateyinstallps1-for-msi-installer)
+  - [Parsing Package Parameters](#parsing-package-parameters)
+- [Tips](#tips)
+
+<!-- /TOC -->
+
 ## Prerequisites
 
 * You have Chocolatey installed.

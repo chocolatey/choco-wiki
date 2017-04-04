@@ -3,6 +3,24 @@ Chocolatey offers a customer CDN cache of download content for [customers](https
 
 We do this by caching a copy of the content on our private CDN. This content also gets virus checked and checksummed to verify that it matches what was originally intended by package maintainers and moderators for you to receive.
 
+<!-- TOC -->
+
+- [Important Information for Software Vendors](#important-information-for-software-vendors)
+- [Usage](#usage)
+- [Options and Switches](#options-and-switches)
+- [FAQ](#faq)
+  - [How do I take advantage of this feature?](#how-do-i-take-advantage-of-this-feature)
+  - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
+  - [How do I turn this feature on?](#how-do-i-turn-this-feature-on)
+  - [How do I turn this feature off?](#how-do-i-turn-this-feature-off)
+  - [Is the content modified?](#is-the-content-modified)
+  - [Is the content publicly available?](#is-the-content-publicly-available)
+  - [Why isn't a cache available for x package?](#why-isnt-a-cache-available-for-x-package)
+  - [Does this grant me a license to the software?](#does-this-grant-me-a-license-to-the-software)
+  - [I'm a vendor and wish to opt out.](#im-a-vendor-and-wish-to-opt-out)
+
+<!-- /TOC -->
+
 ## Important Information for Software Vendors
 When our customers download content from you, we may cache a copy of that content on our customer CDN to ensure that later our licensed customers will be able to access that content again. This allows predictable and reliable installations of packages. Like most CDNs, no changes are made, we are simply ensuring the content stays available for our private customers. We are not modifying, selling, renting, leasing, lending, or sub-licensing this content in any way.
 

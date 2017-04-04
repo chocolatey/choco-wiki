@@ -1,5 +1,20 @@
 # How To Host Your Own [Private/Internal/Public] Package Repository Server (aka Package Feed)
 
+<!-- TOC -->
+
+- [Why?](#why)
+- [Host your own server](#host-your-own-server)
+- [Package Version Immutability](#package-version-immutability)
+- [Local Folder / UNC Share (CIFS)](#local-folder--unc-share-cifs)
+  - [Local Folder Share Setup](#local-folder-share-setup)
+- [Simple Server](#simple-server)
+    - [Simple Server Setup](#simple-server-setup)
+- [Package Gallery](#package-gallery)
+    - [Package Gallery Setup](#package-gallery-setup)
+- [Non-Windows Hosting](#non-windows-hosting)
+
+<!-- /TOC -->
+
 ## Why?
 Please read [[Depending on the chocolatey.org as an organization|ChocolateyFAQs#should-my-organization-depend-on-use-the-community-feed-httpschocolateyorgpackages]]
 

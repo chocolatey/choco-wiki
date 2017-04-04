@@ -1,6 +1,26 @@
 # Runtime Malware Protection / Virus Scanning (Licensed Editions Only)
 We are pleased to offer runtime malware protection for our [customers](https://chocolatey.org/pricing)! Virus checking is available in two flavors - VirusTotal and Generic malware verification.
 
+<!-- TOC -->
+
+- [Usage](#usage)
+  - [VirusTotal](#virustotal)
+  - [Generic](#generic)
+- [See It In Action](#see-it-in-action)
+- [Options And Switches](#options-and-switches)
+- [FAQ](#faq)
+  - [How do I take advantage of this feature?](#how-do-i-take-advantage-of-this-feature)
+  - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
+  - [How do I turn this feature on?](#how-do-i-turn-this-feature-on)
+  - [How do I turn this feature off?](#how-do-i-turn-this-feature-off)
+  - [How do I override the minium number of positives?](#how-do-i-override-the-minium-number-of-positives)
+  - [How does the VirusTotal integration work?](#how-does-the-virustotal-integration-work)
+  - [How does VirusTotal verify the binary?](#how-does-virustotal-verify-the-binary)
+  - [What if VirusTotal doesn't have results for a binary?](#what-if-virustotal-doesnt-have-results-for-a-binary)
+  - [Do you have plans to offer better integration with particular anti-virus scanners?](#do-you-have-plans-to-offer-better-integration-with-particular-anti-virus-scanners)
+
+<!-- /TOC -->
+
 ## Usage
 
 When a binary is not flagged:
