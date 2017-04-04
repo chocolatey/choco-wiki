@@ -111,7 +111,7 @@ For more information on the specifics, see [#36](https://github.com/chocolatey/c
 
 ## Organizational Use of Chocolatey
 
-When you use Chocolatey in an organizational sense, do so in a manner that requires no internet access. Chocolatey doesn't require internet access at all. The default source that is available on installed is typically the first thing to go when organizations are using Chocolatey. This provides the utmost in security for organizations.
+When you use Chocolatey in an organizational sense, do so in a manner that requires no internet access. Chocolatey doesn't require internet access at all. The default source (https://chocolatey.org/packages, aka the community package repository) that is available on installed is typically the first thing to go when organizations are using Chocolatey. This provides the utmost in security for organizations.
 
 > "Hundreds of organizations use a packaging solution that requires zero internet access. It's pretty much the de facto for packaging software deployments on Windows. Have you looked at Chocolatey and building and hosting your own internal packages?"
 
