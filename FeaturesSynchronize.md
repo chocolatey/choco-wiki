@@ -59,7 +59,17 @@ This image shows running `choco list -lo`. Chocolatey for Business automatically
 
 ### Options and Switches
 
-N/A
+The following are available in the [[choco sync|CommandsSync]] command.
+
+~~~
+     --id=VALUE
+     Id - The Display Name from Programs and Features
+
+     --out, --outdir, --outputdirectory, --output-directory=VALUE
+     OutputDirectory - Specifies the directory for the generated Chocolatey
+       package file(s). If not specified, uses a subdirectory of the current
+       directory.
+~~~
 
 ### FAQ
 
