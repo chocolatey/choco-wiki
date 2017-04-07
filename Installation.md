@@ -62,7 +62,7 @@ We take security very seriously. <a href="https://chocolatey.org/security">Learn
 remove-->
 
 * [Install from PowerShell v3+](#install-from-powershell-v3)
-* [Completely offline/internal instal](#completely-offline-install)
+* [Completely offline/internal install](#completely-offline-install)
 * [Install using PowerShell from cmd.exe](#install-using-powershell-from-cmdexe)
 * [Install using NuGet Package Manager](#install-using-nuget-package-manager)
 * [Install using NuGet.exe from PowerShell](#install-using-nugetexe-from-powershell)
