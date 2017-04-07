@@ -94,7 +94,7 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 
 With completely offline use of Chocolatey, you want to ensure you remove the default community package source (`choco source list` followed by `choco source remove -n chocolatey`, or however you would do that with a configuration manager [like Puppet](https://forge.puppet.com/puppetlabs/chocolatey#sources-configuration)).
 
-1. The first step with offline is to obtain a copy of the Chocolatey Nupkg (which is a fancy zip file). Go to https://chocolatey.org/packages/chocolatey and find a version you want.
+1. The first step with offline is to obtain a copy of the Chocolatey Nupkg (nupkg files are just fancy zip files). Go to https://chocolatey.org/packages/chocolatey and find a version you want.
 1. Click on Download to download that version's nupkg file.
 
     ![download chocolatey.nupkg visual](images/DownloadChocolateyPackage.png)
