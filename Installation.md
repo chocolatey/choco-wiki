@@ -350,10 +350,47 @@ You need to download and unzip the Chocolatey package, then call the PowerShell 
 
 ### Non-Administrative install
 
-**NOTE**: This option should be a last resort and is considered to be an advanced scenario. Most things you do on Windows require administrative rights, especially surrounding software management, so you are going to be limited even in packages you attempt to install. If you run into issues with Chocolatey and you have set Chocolatey up this way, the first thing we are going to ask you to do is to see if it works when you have installed choco under normal circumstances. If you are using the [community package repository](https://chocolatey.org/packages), you should avoid this type of installation as over 75% of the packages you find there require administrative permission.
+**NOTE**: This option should be a last resort and is considered to be a more advanced scenario - most things you do on Windows require administrative rights, especially surrounding software management, so you are going to be limited even in packages you attempt to install. If you are using the [community package repository](https://chocolatey.org/packages), there are over 200 packages you can install from the community repository without administrative permission - see https://chocolatey.org/packages?q=id%3Aportable.
 
 1. You must choose a different location than the default (see [Installing to a different location](#Installing-to-a-different-location) above). The default is a more secure location that only administrators can update.
 1. Follow that with the command line / PowerShell methods of installation.
+1. Here is an example of this.
+
+NonAdmin.ps1:
+
+~~~powershell
+# Set directory for installation - Chocolatey does not lock
+# down the directory if not the default
+$InstallDir='C:\ProgramData\chocoportable'
+$env:ChocolateyInstall="$InstallDir"
+
+# If your PowerShell Execution policy is restrictive, you may
+# not be able to get around that. Try setting your session to
+# Bypass.
+Set-ExecutionPolicy Bypass
+
+# All install options - offline, proxy, etc at
+# https://chocolatey.org/install
+iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+# PowerShell 3+?
+#iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+
+choco install puppet-agent.portable -y
+choco install ruby.portable -y
+choco install git.commandline -y
+
+# pick an editor
+#choco install visualstudiocode.portable -y # not yet available
+choco install notepadplusplus.commandline -y
+#choco install nano -y
+#choco install vim-tux.portable
+
+# What else can I install without admin rights?
+# https://chocolatey.org/packages?q=id%3Aportable
+~~~
+
+If you prefer or need cmd.exe example, please see https://gist.github.com/ferventcoder/78fa6b6f4d6e2b12c89680cbc0daec78
+
 
 <!--remove
 </div>
