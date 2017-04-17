@@ -5,6 +5,8 @@ Chocolatey maintains its own state of the world, while Windows maintains the sta
 * [Automatic Sync](#automatic-synchronize)
 * [Synchronize Command](#sync-command) (Business edition only until Q3 2017)
 
+---
+
 <!-- TOC -->
 
 - [Automatic Synchronize](#automatic-synchronize)
@@ -59,17 +61,7 @@ This image shows running `choco list -lo`. Chocolatey for Business automatically
 
 ### Options and Switches
 
-The following are available in the [[choco sync|CommandsSync]] command.
-
-~~~
-     --id=VALUE
-     Id - The Display Name from Programs and Features
-
-     --out, --outdir, --outputdirectory, --output-directory=VALUE
-     OutputDirectory - Specifies the directory for the generated Chocolatey
-       package file(s). If not specified, uses a subdirectory of the current
-       directory.
-~~~
+There are none - automatic sync just happens every run.
 
 ### FAQ
 
@@ -123,7 +115,17 @@ This image shows running `choco sync`. It shows first a system that has 18 appli
 
 ### Options and Switches
 
-N/A at this time. More switches will be added as this feature is enhanced
+The following are available in the [[choco sync|CommandsSync]] command.
+
+~~~
+     --id=VALUE
+     Id - The Display Name from Programs and Features
+
+     --out, --outdir, --outputdirectory, --output-directory=VALUE
+     OutputDirectory - Specifies the directory for the generated Chocolatey
+       package file(s). If not specified, uses a subdirectory of the current
+       directory.
+~~~
 
 ### FAQ
 
