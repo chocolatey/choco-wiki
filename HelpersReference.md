@@ -3,7 +3,7 @@
 <!-- This documentation file is automatically generated from the files at $sourceFunctions using $($sourceLocation)GenerateDocs.ps1. Contributions are welcome at the original location(s). -->
 ## Main Functions
 
-These functions call other functions and many times may be the only thing you need in your [[chocolateyInstall.ps1 file|ChocolateyInstallPS1]].
+These functions call other functions and many times may be the only thing you need in your [[chocolateyInstall.ps1 file|ChocolateyInstallPS1]] or other special Chocolatey scripts. (You can find a complete list of Chocolately helper scripts and when they run [[here.|CreatePackages]])
 
 * [[Install-ChocolateyPackage|HelpersInstallChocolateyPackage]]
 * [[Install-ChocolateyZipPackage|HelpersInstallChocolateyZipPackage]]
