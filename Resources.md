@@ -214,6 +214,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 #### December
 
 * http://www.jamessturtevant.com/posts/Chocolatey-And-Boxstarter/
+* https://gripdev.wordpress.com/2014/12/10/chocolatey-powershell-dsc-and-azure-iaas-automating-dev-box-creation/
 * https://souladin.wordpress.com/2014/12/05/bake-your-own-chocolatey-nuget-repository/
 
 #### November
