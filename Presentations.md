@@ -76,6 +76,7 @@
 
 #### September
 
+* https://ajisoftware.com/media/Podcasts/Chocolatey%20and%20Open%20Source
 * http://powershell.org/wp/2012/09/07/episode-199-rob-reynolds-talks-powershell-and-chocolatey/
 
 ### 2011
