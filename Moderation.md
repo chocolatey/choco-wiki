@@ -119,15 +119,7 @@ The full normal workflow is like this:
 1. If a moderator doesn't find any required changes, they move the package to an "Approved" status.
 
 #### Trusted Package Workflow
-
-Currently, when a trusted package is submitted, the flow of moderation works like this:
-
-1. A maintainer submits a package. That puts the package in a "Pending" status (Pending automated review checks).
-1. Whether or not the automated reviews require changes, the package moves to an "Approved" status.
-
-This is changing in the future. https://github.com/chocolatey/chocolatey.org/issues/308
-
-This is the future state trusted package workflow:
+This is the trusted package workflow:
 
 1. A maintainer submits a trusted package. That puts the package in a "Pending" status (Pending automated review checks).
 1. If automated reviews don't require changes, the package moves to an "Approved" status.
