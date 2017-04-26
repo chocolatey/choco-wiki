@@ -33,6 +33,7 @@
 
 ### 2016
 
+* PowerScripting Podcast - [Episode 313 - Rob Reynolds on Chocolatey](https://powershell.org/2016/05/11/episode-313-powerscripting-podcast-rob-reynolds-on-chocolatey/) - [Video](https://www.youtube.com/watch?v=pd5QEkXUeDI)
 * Developer on Fire - [Episode 131 | Rob Reynolds - Automate Everything](http://developeronfire.com/episode-131-rob-reynolds-automate-everything)
 * https://www.arresteddevops.com/chocolatey/
 
