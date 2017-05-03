@@ -29,8 +29,8 @@
     - [Installable application](#installable-application)
     - [Portable application – something that doesn't require a system install to use](#portable-application--something-that-doesnt-require-a-system-install-to-use)
   - [Why doesn't a package install software to Program Files?](#why-doesnt-a-package-install-software-to-program-files)
-  - [What is the difference between packages named *.install (i.&nbsp;e. [autohotkey.install](https://chocolatey.org/packages/autohotkey.install)), *.portable (i.&nbsp;e. [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable)) and * (i.&nbsp;e. [autohotkey](https://chocolatey.org/packages/autohotkey))?](#what-is-the-difference-between-packages-named-install-inbspe-autohotkeyinstallhttpschocolateyorgpackagesautohotkeyinstall-portable-inbspe-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-and--inbspe-autohotkeyhttpschocolateyorgpackagesautohotkey)
-  - [When I install a portable app like [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable), how is it on my path? Without littering my path?](#when-i-install-a-portable-app-like-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-how-is-it-on-my-path-without-littering-my-path)
+  - [What is the difference between packages no suffix as compared to *.install *.portable?](#what-is-the-difference-between-packages-no-suffix-as-compared-to-install-portable)
+  - [When I install a portable app like autohotkey.portable, how is it on my path? Without littering my path?](#when-i-install-a-portable-app-like-autohotkeyportable-how-is-it-on-my-path-without-littering-my-path)
   - [Is there a PowerShell Module for Chocolatey?](#is-there-a-powershell-module-for-chocolatey)
 - [Troubleshooting](#troubleshooting)
   - [I'm running into some issue with Chocolatey, packaging, or something else.](#im-running-into-some-issue-with-chocolatey-packaging-or-something-else)
@@ -218,8 +218,12 @@ Chocolatey has a different avenue for portable packages that allows both admins 
 
 Also consider that if the package **is** using `$env:ChocolateyBinRoot` (which will later be named `$env:ChocolateyToolsRoot`) you can set the root under Program Files and then you get the better of both worlds.
 
-<a id="markdown-what-is-the-difference-between-packages-named-install-inbspe-autohotkeyinstallhttpschocolateyorgpackagesautohotkeyinstall-portable-inbspe-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-and--inbspe-autohotkeyhttpschocolateyorgpackagesautohotkey" name="what-is-the-difference-between-packages-named-install-inbspe-autohotkeyinstallhttpschocolateyorgpackagesautohotkeyinstall-portable-inbspe-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-and--inbspe-autohotkeyhttpschocolateyorgpackagesautohotkey"></a>
-### What is the difference between packages named *.install (i.&nbsp;e. [autohotkey.install](https://chocolatey.org/packages/autohotkey.install)), *.portable (i.&nbsp;e. [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable)) and * (i.&nbsp;e. [autohotkey](https://chocolatey.org/packages/autohotkey))?
+<a id="markdown-what-is-the-difference-between-packages-no-suffix-as-compared-to-install-portable" name="what-is-the-difference-between-packages-no-suffix-as-compared-to-install-portable"></a>
+### What is the difference between packages no suffix as compared to *.install *.portable?
+
+What is the difference between packages named *.install (i.&nbsp;e. [autohotkey.install](https://chocolatey.org/packages/autohotkey.install)), *.portable (i.&nbsp;e. [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable)) and * (i.&nbsp;e. [autohotkey](https://chocolatey.org/packages/autohotkey))?
+
+tl;dr: Nearly 100% of the time, the package with no suffix (autohotkey in this example) is going to ensure the *.install. The package without the suffix is for both discoverability and for other packages to take a dependency on.
 
 Hey, good question! You are paying attention! Chocolatey has the concept of virtual packages (coming) and meta packages. Virtual packages are packages that represent other packages when used as a dependency. Metapackages are packages that only exist to provide a grouping of dependencies.
 
@@ -235,8 +239,8 @@ The *.portable packages are the packages that will usually result in an executab
 
 Want more information? See http://ferventcoder.com/archive/2012/02/25/chocolatey---guidance-on-packaging-apps-with-both-an-install.aspx
 
-<a id="markdown-when-i-install-a-portable-app-like-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-how-is-it-on-my-path-without-littering-my-path" name="when-i-install-a-portable-app-like-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-how-is-it-on-my-path-without-littering-my-path"></a>
-### When I install a portable app like [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable), how is it on my path? Without littering my path?
+<a id="markdown-when-i-install-a-portable-app-like-autohotkeyportable-how-is-it-on-my-path-without-littering-my-path" name="when-i-install-a-portable-app-like-autohotkeyportable-how-is-it-on-my-path-without-littering-my-path"></a>
+### When I install a portable app like autohotkey.portable, how is it on my path? Without littering my path?
 When you install portable apps that have executables in the package, Chocolatey automatically creates a "shim" file and puts that in a folder that is on the path. That allows you to run a portable application by asking for it on the command line.
 
 When you take an application with a native installer, say like WinDirStat, it is only on your path if the native installer has put it there or the instructions in the Chocolatey package itself has requested for it to be on the path. In this case, this is the “littering” the path concept.
