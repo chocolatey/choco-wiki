@@ -1,48 +1,79 @@
 # Frequently Asked Questions
 <!-- TOC insertAnchor:true -->
 
-- [Can't find your answer here?](#cant-find-your-answer-here)
-- [What is Chocolatey?](#what-is-chocolatey)
-- [What is the purpose of Chocolatey?](#what-is-the-purpose-of-chocolatey)
-- [How does Chocolatey work?](#how-does-chocolatey-work)
-- [Why Chocolatey?](#why-chocolatey)
-- [What can a Chocolatey Package consist of?](#what-can-a-chocolatey-package-consist-of)
-- [Can I use Chocolatey with existing installs?](#can-i-use-chocolatey-with-existing-installs)
-- [I would like to use Chocolatey in my organization, is the licensing friendly?](#i-would-like-to-use-chocolatey-in-my-organization-is-the-licensing-friendly)
-- [Should my organization depend on (use) the community feed (https://chocolatey.org/packages)?](#should-my-organization-depend-on-use-the-community-feed-httpschocolateyorgpackages)
-- [How is Chocolatey different than OneGet/PowerShell Package Management?](#how-is-chocolatey-different-than-onegetpowershell-package-management)
-- [How is Chocolatey different than Ninite?](#how-is-chocolatey-different-than-ninite)
-- [How is Chocolatey different than NuGet and/or OpenWrap?](#how-is-chocolatey-different-than-nuget-andor-openwrap)
-- [How is/will Chocolatey be different than apt?](#how-iswill-chocolatey-be-different-than-apt)
-- [Is there a video I can watch to show me Chocolatey in action?](#is-there-a-video-i-can-watch-to-show-me-chocolatey-in-action)
-- [What is the default feed URL (community feed url)?](#what-is-the-default-feed-url-community-feed-url)
-- [What can I install?](#what-can-i-install)
-- [What if I install X and I already have X installed?](#what-if-i-install-x-and-i-already-have-x-installed)
-- [Can I override the installation directory?](#can-i-override-the-installation-directory)
-- [What is moderation?](#what-is-moderation)
-- [How does the moderation review process work?](#how-does-the-moderation-review-process-work)
-- [What is a trusted package?](#what-is-a-trusted-package)
-- [How do I install a package version under moderation?](#how-do-i-install-a-package-version-under-moderation)
-- [How do I install an unlisted package / package version?](#how-do-i-install-an-unlisted-package--package-version)
-- [How do I install a rejected package?](#how-do-i-install-a-rejected-package)
-- [How do I self-reject a package?](#how-do-i-self-reject-a-package)
-- [What is the validator?](#what-is-the-validator)
-- [What is the verifier?](#what-is-the-verifier)
-- [What does Chocolatey do? Are you redistributing software?](#what-does-chocolatey-do-are-you-redistributing-software)
-- [When I install a portable app like [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable), how is it on my path? Without littering my path?](#when-i-install-a-portable-app-like-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-how-is-it-on-my-path-without-littering-my-path)
-- [Where does Chocolatey install by default?](#where-does-chocolatey-install-by-default)
-- [What kind of package types does Chocolatey support?](#what-kind-of-package-types-does-chocolatey-support)
-- [What distinction does Chocolatey make between an installable and a portable application?](#what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application)
-  - [Installable application](#installable-application)
-  - [Portable application – something that doesn't require a system install to use](#portable-application--something-that-doesnt-require-a-system-install-to-use)
-- [Why doesn't a package install software to Program Files?](#why-doesnt-a-package-install-software-to-program-files)
-- [What is the difference between packages named *.install (i.&nbsp;e. [autohotkey.install](https://chocolatey.org/packages/autohotkey.install)), *.portable (i.&nbsp;e. [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable)) and * (i.&nbsp;e. [autohotkey](https://chocolatey.org/packages/autohotkey))?](#what-is-the-difference-between-packages-named-install-inbspe-autohotkeyinstallhttpschocolateyorgpackagesautohotkeyinstall-portable-inbspe-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-and--inbspe-autohotkeyhttpschocolateyorgpackagesautohotkey)
-- [I just took over as the primary maintainer of a package. What do I need to do?](#i-just-took-over-as-the-primary-maintainer-of-a-package-what-do-i-need-to-do)
-- [I'm seeing Chocolatey / *application* / *tool* using 32 bit to run instead of x64. What is going on?](#im-seeing-chocolatey--application--tool-using-32-bit-to-run-instead-of-x64-what-is-going-on)
-- [Is there a PowerShell Module for Chocolatey?](#is-there-a-powershell-module-for-chocolatey)
-- [Why do I have to confirm packages now? Is there a way to remove this?](#why-do-i-have-to-confirm-packages-now-is-there-a-way-to-remove-this)
+- [General](#general)
+  - [Can't find your answer here?](#cant-find-your-answer-here)
+  - [What is Chocolatey?](#what-is-chocolatey)
+  - [I need a tool that manages software - using scripts to work with those unattended installs. Is that Chocolatey?](#i-need-a-tool-that-manages-software---using-scripts-to-work-with-those-unattended-installs-is-that-chocolatey)
+  - [What is the purpose of Chocolatey?](#what-is-the-purpose-of-chocolatey)
+  - [How does Chocolatey work?](#how-does-chocolatey-work)
+  - [Why Chocolatey?](#why-chocolatey)
+  - [Can I use Chocolatey at my organization?](#can-i-use-chocolatey-at-my-organization)
+  - [Are you redistributing software?](#are-you-redistributing-software)
+  - [Where does Chocolatey install by default?](#where-does-chocolatey-install-by-default)
+  - [What kind of package types does Chocolatey support?](#what-kind-of-package-types-does-chocolatey-support)
+  - [Do you have a roadmap I can see?](#do-you-have-a-roadmap-i-can-see)
+- [Using Chocolatey](#using-chocolatey)
+  - [Can I use Chocolatey in a cmd.exe shell?](#can-i-use-chocolatey-in-a-cmdexe-shell)
+  - [Tab-completion?](#tab-completion)
+  - [What is the difference between Open Source Chocolatey, Chocolatey Pro, and Chocolatey for Business?](#what-is-the-difference-between-open-source-chocolatey-chocolatey-pro-and-chocolatey-for-business)
+  - [I'm interested in C4B (Chocolatey for Business) but I have questions.](#im-interested-in-c4b-chocolatey-for-business-but-i-have-questions)
+  - [Does Chocolatey require administrative permissions to run?](#does-chocolatey-require-administrative-permissions-to-run)
+  - [I would like to be able to offer my non-admin desktop users an option for self-service type of installations.](#i-would-like-to-be-able-to-offer-my-non-admin-desktop-users-an-option-for-self-service-type-of-installations)
+  - [Can I use Chocolatey with existing installs?](#can-i-use-chocolatey-with-existing-installs)
+  - [What is the default package source repository URL (community feed url)?](#what-is-the-default-package-source-repository-url-community-feed-url)
+  - [What can I install?](#what-can-i-install)
+  - [What if I install X and I already have X installed?](#what-if-i-install-x-and-i-already-have-x-installed)
+  - [Can I override the installation directory?](#can-i-override-the-installation-directory)
+  - [What distinction does Chocolatey make between an installable and a portable application?](#what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application)
+    - [Installable application](#installable-application)
+    - [Portable application – something that doesn't require a system install to use](#portable-application--something-that-doesnt-require-a-system-install-to-use)
+  - [Why doesn't a package install software to Program Files?](#why-doesnt-a-package-install-software-to-program-files)
+  - [What is the difference between packages named *.install (i.&nbsp;e. [autohotkey.install](https://chocolatey.org/packages/autohotkey.install)), *.portable (i.&nbsp;e. [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable)) and * (i.&nbsp;e. [autohotkey](https://chocolatey.org/packages/autohotkey))?](#what-is-the-difference-between-packages-named-install-inbspe-autohotkeyinstallhttpschocolateyorgpackagesautohotkeyinstall-portable-inbspe-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-and--inbspe-autohotkeyhttpschocolateyorgpackagesautohotkey)
+  - [When I install a portable app like [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable), how is it on my path? Without littering my path?](#when-i-install-a-portable-app-like-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-how-is-it-on-my-path-without-littering-my-path)
+  - [Is there a PowerShell Module for Chocolatey?](#is-there-a-powershell-module-for-chocolatey)
+- [Troubleshooting](#troubleshooting)
+  - [I'm running into some issue with Chocolatey, packaging, or something else.](#im-running-into-some-issue-with-chocolatey-packaging-or-something-else)
+- [Organizational Use](#organizational-use)
+  - [I would like to use Chocolatey in my organization, is the licensing friendly?](#i-would-like-to-use-chocolatey-in-my-organization-is-the-licensing-friendly)
+  - [Should my organization depend on (use) the community feed (https://chocolatey.org/packages)?](#should-my-organization-depend-on-use-the-community-feed-httpschocolateyorgpackages)
+  - [Chocolatey is great! I need it to do something additional for my organization.](#chocolatey-is-great-i-need-it-to-do-something-additional-for-my-organization)
+- [Packaging](#packaging)
+  - [What can a Chocolatey Package consist of?](#what-can-a-chocolatey-package-consist-of)
+  - [Tell me about packaging](#tell-me-about-packaging)
+  - [How do I create packages?](#how-do-i-create-packages)
+  - [I'm creating offline packages, what do I need?](#im-creating-offline-packages-what-do-i-need)
+- [Videos / Reference](#videos--reference)
+  - [Where can I learn more?](#where-can-i-learn-more)
+  - [Do you have any references or videos I can see?](#do-you-have-any-references-or-videos-i-can-see)
+  - [Is there a video I can watch to show me Chocolatey in action?](#is-there-a-video-i-can-watch-to-show-me-chocolatey-in-action)
+- [Community Package Repository](#community-package-repository)
+  - [I just took over as the primary maintainer of a package. What do I need to do?](#i-just-took-over-as-the-primary-maintainer-of-a-package-what-do-i-need-to-do)
+  - [What is moderation?](#what-is-moderation)
+  - [How does the moderation review process work?](#how-does-the-moderation-review-process-work)
+  - [What is a trusted package?](#what-is-a-trusted-package)
+  - [How do I install a package version under moderation?](#how-do-i-install-a-package-version-under-moderation)
+  - [How do I install an unlisted package / package version?](#how-do-i-install-an-unlisted-package--package-version)
+  - [How do I install a rejected package?](#how-do-i-install-a-rejected-package)
+  - [How do I self-reject a package?](#how-do-i-self-reject-a-package)
+  - [What is the validator?](#what-is-the-validator)
+  - [What is the verifier?](#what-is-the-verifier)
+  - [What is the package scanner?](#what-is-the-package-scanner)
+  - [What is the package cacher?](#what-is-the-package-cacher)
+- [Security](#security)
+  - [Is Chocolatey secure?](#is-chocolatey-secure)
+  - [Why do I have to confirm packages now? Is there a way to remove this?](#why-do-i-have-to-confirm-packages-now-is-there-a-way-to-remove-this)
+- [Comparison](#comparison)
+  - [How is Chocolatey different than OneGet/PowerShell Package Management?](#how-is-chocolatey-different-than-onegetpowershell-package-management)
+  - [How is Chocolatey different than Ninite?](#how-is-chocolatey-different-than-ninite)
+  - [How is Chocolatey different than NuGet and/or OpenWrap?](#how-is-chocolatey-different-than-nuget-andor-openwrap)
+  - [How is/will Chocolatey be different than apt?](#how-iswill-chocolatey-be-different-than-apt)
 
 <!-- /TOC -->
+
+<a id="markdown-general" name="general"></a>
+## General
+
 <a id="markdown-cant-find-your-answer-here" name="cant-find-your-answer-here"></a>
 ### Can't find your answer here?
 Feel free to reach out to us on [Gitter](https://gitter.im/chocolatey/choco) or by the [email distribution list / forum](https://groups.google.com/group/chocolatey).
@@ -55,6 +86,10 @@ Chocolatey is kind of like apt-get, but for Windows (with Windows comes limitati
 "Okay, machine package manager, that's nice. What does that mean though?" It means you can simply install software with a few keystrokes and go get coffee while your co-workers are downloading and running an install manually (and I do mean something like an MSI).
 
 How about updates? Wouldn't it be nice to update nearly everything on your machine with a few simple keystrokes? We think so, too. Chocolatey does that. `choco upgrade all -y`
+
+<a id="markdown-i-need-a-tool-that-manages-software---using-scripts-to-work-with-those-unattended-installs-is-that-chocolatey" name="i-need-a-tool-that-manages-software---using-scripts-to-work-with-those-unattended-installs-is-that-chocolatey"></a>
+### I need a tool that manages software - using scripts to work with those unattended installs. Is that Chocolatey?
+Yes, in a nutshell that is what Chocolatey does. Nearly exactly what you may already be doing, except wrapped up into a package file that allows you to modularize and easily manage order with dependencies on other packages.
 
 <a id="markdown-what-is-the-purpose-of-chocolatey" name="what-is-the-purpose-of-chocolatey"></a>
 ### What is the purpose of Chocolatey?
@@ -70,14 +105,162 @@ See [[What is Chocolatey?|Why#what-is-chocolatey]]
 ### Why Chocolatey?
 First a [[story|ChocolateyStory]]. Then [[Why Chocolatey?|Why]]
 
-<a id="markdown-what-can-a-chocolatey-package-consist-of" name="what-can-a-chocolatey-package-consist-of"></a>
-### What can a Chocolatey Package consist of?
-See [[What are Chocolatey Packages?|GettingStarted#what-are-chocolatey-packages]]
+<a id="markdown-can-i-use-chocolatey-at-my-organization" name="can-i-use-chocolatey-at-my-organization"></a>
+### Can I use Chocolatey at my organization?
+Absolutely! The licensing is very business friendly (plus we have [paid options](https://chocolatey.org/compare) to better help organizations - *hint, hint*). We typically recommend organizations depending Chocolatey look to managing their own packaging as opposed to using the Community Package Repository (https://chocolatey.org/packages) - packages there are not 100% reliable due to distribution rights in the public domain (which causes a major failure point). See the next question for details.
+
+<a id="markdown-are-you-redistributing-software" name="are-you-redistributing-software"></a>
+### Are you redistributing software?
+No. Packages on Chocolatey's community repository (https://chocolatey.org/packages) are in the public domain and as such they are subject to software distribution rights. With those packages the following applies:
+
+> Chocolatey does the same thing that you would do based on the package instructions. This usually means going out and downloading an installer from the official distribution point and then silently installing it on your machine. With most packages this means Chocolatey is not redistributing software because they are going to the same distribution point that you yourself would go get the software if you were performing this process manually.
+
+To put it another way, Microsoft would be quite upset if the Office 365 packages on the community repository actually contained the Office 365 binaries. This is not something organizations would be subject to when hosting their own internal package.
+
+When you host internal packages, those packages can embed software and/or point to internal shares. You are not subject to software distribution rights, thus you can create packages that are more reliable, offline, and secure. See [[What are Chocolatey Packages|GettingStarted#what-are-chocolatey-packages]] for more details.
+
+For more information on organizational cautions about the community package repository, see [[the community repository disclaimer|CommunityPackagesDisclaimer]].
+
+<a id="markdown-where-does-chocolatey-install-by-default" name="where-does-chocolatey-install-by-default"></a>
+### Where does Chocolatey install by default?
+As of version 0.9.8.24, binaries, libraries and Chocolatey components install in ```C:\ProgramData\chocolatey``` (environment variable %ProgramData%) by default. This reduces the attack surface on a local installation of Chocolatey and limits who can make changes to the directory.
+
+**NOTE:** Historically, Chocolatey installed to ```C:\Chocolatey``` and currently, performing an update of Chocolatey doesn't change the installation location, except for when the install path is `C:\chocolatey`. It will upgrade that path and all variables automatically.  For more information about why Chocolatey used ```C:\Chocolatey``` as the default location, look here - [[Default Install Reasoning|DefaultChocolateyInstallReasoning]]
+
+<a id="markdown-what-kind-of-package-types-does-chocolatey-support" name="what-kind-of-package-types-does-chocolatey-support"></a>
+### What kind of package types does Chocolatey support?
+* Binary Packages – Installable/portable applications – This is 98% of the Chocolatey packages – most are pointers to the real deal native installers and/or zipped software.
+* PowerShell Command Packages – Packages that have the suffix **.powershell** will install PowerShell scripts as commands for you to call from anywhere.
+* Development Packages – Packages that have the suffix **.dev**. For instance [dropkick.dev](http://nuget.org/list/packages/dropkick.dev).
+* Roadmap – Virtual Packages – Packages that are like a category, and you just want one package from that category. [Read more …](https://github.com/chocolatey/chocolatey/issues/7)
+
+<a id="markdown-do-you-have-a-roadmap-i-can-see" name="do-you-have-a-roadmap-i-can-see"></a>
+### Do you have a roadmap I can see?
+We do, take a look at the [[roadmap|Roadmap]]
+
+
+<a id="markdown-using-chocolatey" name="using-chocolatey"></a>
+## Using Chocolatey
+
+<a id="markdown-can-i-use-chocolatey-in-a-cmdexe-shell" name="can-i-use-chocolatey-in-a-cmdexe-shell"></a>
+### Can I use Chocolatey in a cmd.exe shell?
+Yes, Chocolatey has some official clients, one of which is `choco.exe` and it is a command line tool, so it works equally well in Powershell.exe and cmd.exe. However if you have the PowerShell profile installed, you also get tab completion in Powershell.exe.
+
+<a id="markdown-tab-completion" name="tab-completion"></a>
+### Tab-completion?
+See the [[troubleshooting|Troubleshooting]] page if `choco <tab>` doesn't work for you when you are using PowerShell.
+
+<a id="markdown-what-is-the-difference-between-open-source-chocolatey-chocolatey-pro-and-chocolatey-for-business" name="what-is-the-difference-between-open-source-chocolatey-chocolatey-pro-and-chocolatey-for-business"></a>
+### What is the difference between Open Source Chocolatey, Chocolatey Pro, and Chocolatey for Business?
+Great question, we have a comparison table listed at [compare](https://chocolatey.org/compare). There is also an FAQ section related specifically to licensing.
+
+<a id="markdown-im-interested-in-c4b-chocolatey-for-business-but-i-have-questions" name="im-interested-in-c4b-chocolatey-for-business-but-i-have-questions"></a>
+### I'm interested in C4B (Chocolatey for Business) but I have questions.
+Please see [pricing](https://chocolatey.org/pricing) and the FAQ section. If it doesn't answer your questions, please feel free to reach out to the team from there!
+
+<a id="markdown-does-chocolatey-require-administrative-permissions-to-run" name="does-chocolatey-require-administrative-permissions-to-run"></a>
+### Does Chocolatey require administrative permissions to run?
+It does by default - based on where it is installed. However there is an non-administrative installation for Chocolatey under More Options at [[installation|Installation]]. Do keep in mind that there is pass through to what packages are doing that makes a determination for whether the package needs administrative permissions, and Chocolatey works within the context of Windows permissions, so you are not going to get around that (aside from what is provided with self-service, see question below).
+
+<a id="markdown-i-would-like-to-be-able-to-offer-my-non-admin-desktop-users-an-option-for-self-service-type-of-installations" name="i-would-like-to-be-able-to-offer-my-non-admin-desktop-users-an-option-for-self-service-type-of-installations"></a>
+### I would like to be able to offer my non-admin desktop users an option for self-service type of installations.
+Yes, we absolutely support that scenario in Chocolatey for Business.
+
 
 <a id="markdown-can-i-use-chocolatey-with-existing-installs" name="can-i-use-chocolatey-with-existing-installs"></a>
 ### Can I use Chocolatey with existing installs?
-
 Fantastic question, see [[Can I use Chocolatey with existing software?|Why#can-i-use-chocolatey-with-existing-software]]
+
+<a id="markdown-what-is-the-default-package-source-repository-url-community-feed-url" name="what-is-the-default-package-source-repository-url-community-feed-url"></a>
+### What is the default package source repository URL (community feed url)?
+That would be https://chocolatey.org/api/v2/ aka the Community Package Repository.
+
+<a id="markdown-what-can-i-install" name="what-can-i-install"></a>
+### What can I install?
+You can package and install anything on Windows using Chocolatey - if it can be automated, Chocolatey and PowerShell can install, upgrade, and uninstall it.
+
+However, if you are just curious on what is available, check out the community package repository at http://chocolatey.org/packages.
+
+You can also install packages from other sources (nuget.org, rubygems.org, web pi tools, etc).
+
+<a id="markdown-what-if-i-install-x-and-i-already-have-x-installed" name="what-if-i-install-x-and-i-already-have-x-installed"></a>
+### What if I install X and I already have X installed?
+With most packages when you already have something installed, the Chocolatey process will just perform the install again silently. Most times this means that it does nothing and in the end you have what you already had.
+
+<a id="markdown-can-i-override-the-installation-directory" name="can-i-override-the-installation-directory"></a>
+### Can I override the installation directory?
+Yes you can, see [[Overriding install directory|GettingStarted#overriding-default-install-directory-or-other-advanced-install-concepts]] and [[Ubiquitous Install Directory Option|FeaturesInstallDirectoryOverride]].
+
+<a name="AppVsTool"></a>
+<a id="markdown-what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application" name="what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application"></a>
+### What distinction does Chocolatey make between an installable and a portable application?
+<a id="markdown-installable-application" name="installable-application"></a>
+#### Installable application
+An installable application is something that comes with a native installer and ends up in the add/remove programs (in control panel of the system).
+Installable applications end up where the native installer wants them to end up (i.&nbsp;e. Program Files). If you want to override that, please feel free to with the proper commands using InstallArgs (-ia) at the command line and possibly override – Install Command. Yes this does mean you will need to have intimate knowledge of the installer. Having Chocolatey itself make the override directory is likely at some point, but it is wwwwaaaaayyyy out on the radar (like after Rob is somehow paid to work on Chocolatey full time ;) ).
+
+<a id="markdown-portable-application--something-that-doesnt-require-a-system-install-to-use" name="portable-application--something-that-doesnt-require-a-system-install-to-use"></a>
+#### Portable application – something that doesn't require a system install to use
+A portable application is something that doesn't require a native installer to use. In other words, it is not “installed” on your system (where you can go to uninstall in the control panel). It also requires no administrative access for the package install.
+
+Portable applications end up in the %ChocolateyInstall%/lib (i.&nbsp;e. C:\ProgramData\Chocolatey\lib) folder yes, but they get a "shim" to put them on the path of the machine. This behavior is very much to how Chocolatey works and is not configurable (the directory). Where the portable apps end up is still going to be %ChocolateyInstall%/lib no matter where you move the directory, unless a package itself unpacks the portable app elsewhere (as in the case of [git-tfs](http://chocolatey.org/packages/gittfs)).
+
+<a id="markdown-why-doesnt-a-package-install-software-to-program-files" name="why-doesnt-a-package-install-software-to-program-files"></a>
+### Why doesn't a package install software to Program Files?
+Most packages that use native installers (MSI, InnoSetup, etc) will install to Program Files, but there are packages that do not. There are two really important reasons why:
+
+* Program Files is synonymous with software that has uninstall registry keys - or put another way, applications that have native installers that you can find for uninstall in the Control Panel under Programs and Features.
+* Writing to Program Files requires administrative permissions and the package you are installing is likely a portable package (even if not explicitly named so, it may have a zip that it extracts). There is also a way for non-administrators to use Chocolatey and these types of packages need to work for them as well.
+
+It really depends on the underlying software the package "installs". If the underlying software is a native installer, then it has a machine install (meaning it gets an uninstall registry key and shows up in Programs and Features) and Program Files is the appropriate place for it.
+
+Chocolatey has a different avenue for portable packages that allows both admins and non-admins to be able to use these packages, after all they are just downloading and unzipping an archive. These packages either go into a Tools Root location or just get shims (executables are put on the path) and continue to stay in the Chocolatey lib directory. If we restricted a non-admin for an avenue that would work for them manually, it wouldn't make choco useful for them at all. Since we support non-admin usage of Chocolatey, packages that can support the portable model should support it.
+
+Also consider that if the package **is** using `$env:ChocolateyBinRoot` (which will later be named `$env:ChocolateyToolsRoot`) you can set the root under Program Files and then you get the better of both worlds.
+
+<a id="markdown-what-is-the-difference-between-packages-named-install-inbspe-autohotkeyinstallhttpschocolateyorgpackagesautohotkeyinstall-portable-inbspe-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-and--inbspe-autohotkeyhttpschocolateyorgpackagesautohotkey" name="what-is-the-difference-between-packages-named-install-inbspe-autohotkeyinstallhttpschocolateyorgpackagesautohotkeyinstall-portable-inbspe-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-and--inbspe-autohotkeyhttpschocolateyorgpackagesautohotkey"></a>
+### What is the difference between packages named *.install (i.&nbsp;e. [autohotkey.install](https://chocolatey.org/packages/autohotkey.install)), *.portable (i.&nbsp;e. [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable)) and * (i.&nbsp;e. [autohotkey](https://chocolatey.org/packages/autohotkey))?
+
+Hey, good question! You are paying attention! Chocolatey has the concept of virtual packages (coming) and meta packages. Virtual packages are packages that represent other packages when used as a dependency. Metapackages are packages that only exist to provide a grouping of dependencies.
+
+A package with no suffix that is surrounded by packages with suffixes is to provide a virtual package. So in the case of git, git.install, and git.commandline (deprecated for .portable) – git is that virtual package (currently it is really just a metapackage until the virtual packages feature is complete). That means that other packages could depend on it and you could have either git.install or git.portable installed and you would meet the dependency of having git installed. That keeps Chocolatey from trying to install something that already meets the dependency requirement for a package.
+
+Talking specifically about the *.install package suffix – those are for the packages that have a native installer that they have bundled or they download and run.
+
+**NOTE:** the suffix *.app has been used previously to mean the same as *.install. But the *.app suffix is now deprecated and should not be used for new packages.
+
+The *.portable packages are the packages that will usually result in an executable on your path somewhere but do not get installed onto the system (Add/Remove Programs). Previously the suffixes *.tool and *.commandline have been used to refer to the same type of packages.
+
+**NOTE:** now *.tool and *.commandline are deprecated and should not be used for new packages.
+
+Want more information? See http://ferventcoder.com/archive/2012/02/25/chocolatey---guidance-on-packaging-apps-with-both-an-install.aspx
+
+<a id="markdown-when-i-install-a-portable-app-like-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-how-is-it-on-my-path-without-littering-my-path" name="when-i-install-a-portable-app-like-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-how-is-it-on-my-path-without-littering-my-path"></a>
+### When I install a portable app like [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable), how is it on my path? Without littering my path?
+When you install portable apps that have executables in the package, Chocolatey automatically creates a "shim" file and puts that in a folder that is on the path. That allows you to run a portable application by asking for it on the command line.
+
+When you take an application with a native installer, say like WinDirStat, it is only on your path if the native installer has put it there or the instructions in the Chocolatey package itself has requested for it to be on the path. In this case, this is the “littering” the path concept.
+
+
+<a id="markdown-is-there-a-powershell-module-for-chocolatey" name="is-there-a-powershell-module-for-chocolatey"></a>
+### Is there a PowerShell Module for Chocolatey?
+Not yet, but when/if there is it will be provided as a binary DLL.
+
+Chocolatey itself is now a binary with 0.9.9+. This provides the ability to run it on Linux/OSX, which is why it is not by default a PowerShell module (\*nix still doesn't really have PowerShell support). The intention is to have something that has a larger portability - this is why it is not something you can ***only*** use in PowerShell, but rather something you can ***also*** use in PowerShell.
+
+**It was NEVER a PowerShell module, it just used PowerShell as a programming language and was meant to be a CLI app.** I bolded this so it might get read twice. ;)
+
+Chocolatey up until 0.9.9 was provided completely written in PowerShell, with the approach above. I don't know of any other app that has ever tried that approach, which made the original chocolatey client a rarity indeed.
+
+<a id="markdown-troubleshooting" name="troubleshooting"></a>
+## Troubleshooting
+
+<a id="markdown-im-running-into-some-issue-with-chocolatey-packaging-or-something-else" name="im-running-into-some-issue-with-chocolatey-packaging-or-something-else"></a>
+### I'm running into some issue with Chocolatey, packaging, or something else.
+See [[Troubleshooting]]
+
+<a id="markdown-organizational-use" name="organizational-use"></a>
+## Organizational Use
 
 <a id="markdown-i-would-like-to-use-chocolatey-in-my-organization-is-the-licensing-friendly" name="i-would-like-to-use-chocolatey-in-my-organization-is-the-licensing-friendly"></a>
 ### I would like to use Chocolatey in my organization, is the licensing friendly?
@@ -91,48 +274,60 @@ For production-level scenarios, I couldn't justify giving up that level of contr
 
 If you are just setting up or updating developer workstations and can tolerate things breaking every once in awhile because internet/uncertainty, it's fine to use the community feed.
 
-<a id="markdown-how-is-chocolatey-different-than-onegetpowershell-package-management" name="how-is-chocolatey-different-than-onegetpowershell-package-management"></a>
-### How is Chocolatey different than OneGet/PowerShell Package Management?
-OneGet is a package manager ***aggregator***, which means [it is not really a package manager at all](http://blogs.msdn.com/b/garretts/archive/2015/05/05/10-things-about-oneget-that-are-completely-different-than-you-think.aspx). Chocolatey will have a provider that plugs right into OneGet. At the current time there is a CTP available, but it is based on 2 year old Chocolatey technology (we've had security fixes since then, plus a world of features), so we can't really recommend it. But if you must use it, make sure your PowerShell execution policy is set correctly and you are in an administrative console. See http://www.hanselman.com/blog/AptGetForWindowsOneGetAndChocolateyOnWindows10.aspx for more details.
+<a id="markdown-chocolatey-is-great-i-need-it-to-do-something-additional-for-my-organization" name="chocolatey-is-great-i-need-it-to-do-something-additional-for-my-organization"></a>
+### Chocolatey is great! I need it to do something additional for my organization.
+Please see https://chocolatey.org/compare - we may already support it doing that for the business edition. If not, feel free to reach out to our team.
 
-<a id="markdown-how-is-chocolatey-different-than-ninite" name="how-is-chocolatey-different-than-ninite"></a>
-### How is Chocolatey different than Ninite?
-Great question, see [[Chocolatey vs Ninite|ChocolateyVsNinite]].
+<a id="markdown-packaging" name="packaging"></a>
+## Packaging
 
-<a id="markdown-how-is-chocolatey-different-than-nuget-andor-openwrap" name="how-is-chocolatey-different-than-nuget-andor-openwrap"></a>
-### How is Chocolatey different than NuGet and/or OpenWrap?
-Chocolatey is a machine package manager. Where NuGet/OW are focused on developer library packages, Chocolatey is focused on applications and tools, and not necessarily developer focused.
+<a id="markdown-what-can-a-chocolatey-package-consist-of" name="what-can-a-chocolatey-package-consist-of"></a>
+### What can a Chocolatey Package consist of?
+See [[What are Chocolatey Packages?|GettingStarted#what-are-chocolatey-packages]]
 
-A typical way of stating the difference is "Developers use NuGet to get 3rd party libraries that they use to build the .NET tools and applications that they release with Chocolatey!"
+<a id="markdown-tell-me-about-packaging" name="tell-me-about-packaging"></a>
+### Tell me about packaging
+Chocolatey packages are what we like to think of as just fancy zip files. Zip files that have package metadata about the package and the underlying software a package may represent, dependencies, and optional binaries, files, and/or optional PowerShell automation scripts.
 
-<a id="markdown-how-iswill-chocolatey-be-different-than-apt" name="how-iswill-chocolatey-be-different-than-apt"></a>
-### How is/will Chocolatey be different than apt?
+<a id="markdown-how-do-i-create-packages" name="how-do-i-create-packages"></a>
+### How do I create packages?
 
- * Chocolatey does not support the idea of source packages, which are packages that must be built to be used. For someone interested in that, check out https://github.com/coapp.
- * Library packages are not completely off the plate, but mostly. How would you link the library up to the application/tool?
+Try running `choco new test` from a command shell and inspect the output. You will find quite a bit of helpful information and just in time documentation in there.
+
+<a id="markdown-im-creating-offline-packages-what-do-i-need" name="im-creating-offline-packages-what-do-i-need"></a>
+### I'm creating offline packages, what do I need?
+Well, if you are not creating packages for the community package repository, you have different rules that apply. Embed as much as possible into the package (as long as it is under 500MB you should see no issues). We typically recommend 500MB as the threshhold for organizations for the following reasons:
+
+* a nupkg file size takes up some space
+* files in the package directory (can be cleaned up as part of the script)
+* the actual install location if using an installer
+* MSI cache for MSIs - Windows caches the complete MSI binaries (and now you know where all that space went)
+
+
+<a id="markdown-videos--reference" name="videos--reference"></a>
+## Videos / Reference
+
+<a id="markdown-where-can-i-learn-more" name="where-can-i-learn-more"></a>
+### Where can I learn more?
+We have a documentation section of the site at https://chocolatey.org/docs
+
+<a id="markdown-do-you-have-any-references-or-videos-i-can-see" name="do-you-have-any-references-or-videos-i-can-see"></a>
+### Do you have any references or videos I can see?
+Yes we do, take a look at [[videos|Videos]] and [[known posts, presentations, etc|Resources]].
 
 <a id="markdown-is-there-a-video-i-can-watch-to-show-me-chocolatey-in-action" name="is-there-a-video-i-can-watch-to-show-me-chocolatey-in-action"></a>
 ### Is there a video I can watch to show me Chocolatey in action?
 There is! This is a long video due to slow internet connections, but watch the first 1:30ish minutes and the last 1:30ish minutes and that will give you a general idea. [http://www.youtube.com/watch?v=N-hWOUL8roU](http://www.youtube.com/watch?v=N-hWOUL8roU)
 
-**NOTE:** This video shows dependency chaining, so you are seeing it install 11 applications/tools.
+**NOTE:** This video shows dependency chaining, so you are seeing it install 11 applications/tools. It's also 6 years old and there have been many, many improvements since then.
 
-<a id="markdown-what-is-the-default-feed-url-community-feed-url" name="what-is-the-default-feed-url-community-feed-url"></a>
-### What is the default feed URL (community feed url)?
-https://chocolatey.org/api/v2/
 
-<a id="markdown-what-can-i-install" name="what-can-i-install"></a>
-### What can I install?
-Check out http://chocolatey.org/packages
-and any package on another feed (nuget.org, rubygems.org, web pi tools, etc).
+<a id="markdown-community-package-repository" name="community-package-repository"></a>
+## Community Package Repository
 
-<a id="markdown-what-if-i-install-x-and-i-already-have-x-installed" name="what-if-i-install-x-and-i-already-have-x-installed"></a>
-### What if I install X and I already have X installed?
-With most packages when you already have something installed, the Chocolatey process will just perform the install again silently. Most times this means that it does nothing and in the end you have what you already had.
-
-<a id="markdown-can-i-override-the-installation-directory" name="can-i-override-the-installation-directory"></a>
-### Can I override the installation directory?
-Yes you can, see [[Overriding install directory|GettingStarted#overriding-default-install-directory-or-other-advanced-install-concepts]].
+<a id="markdown-i-just-took-over-as-the-primary-maintainer-of-a-package-what-do-i-need-to-do" name="i-just-took-over-as-the-primary-maintainer-of-a-package-what-do-i-need-to-do"></a>
+### I just took over as the primary maintainer of a package. What do I need to do?
+See [[Package Maintainer Handover|PackageMantainerHandover]]
 
 <a id="markdown-what-is-moderation" name="what-is-moderation"></a>
 ### What is moderation?
@@ -192,7 +387,6 @@ If you are a maintainer of a package and you would like to self-reject an older 
 
 ![image](https://cloud.githubusercontent.com/assets/63502/12429736/8c67689c-beb1-11e5-83e9-02fe1db91272.png)
 
-
 * Failing verification -
 ![image](https://cloud.githubusercontent.com/assets/63502/12429697/509d2b94-beb1-11e5-9e1d-73a156117672.png)
 * Failing validation - a message from the validator telling you it failed validation.
@@ -214,98 +408,25 @@ The [verifier](https://github.com/chocolatey/package-verifier) is a service that
 * Red means it failed verification for some reason. The ball is a link to the results.
 * Grey means unknown or excluded from verification (if excluded, a reason will be listed on the package page).
 
-<a id="markdown-what-does-chocolatey-do-are-you-redistributing-software" name="what-does-chocolatey-do-are-you-redistributing-software"></a>
-### What does Chocolatey do? Are you redistributing software?
-Packages on Chocolatey.org are subject to software distribution rights, so in that case the following applies:
+<a id="markdown-what-is-the-package-scanner" name="what-is-the-package-scanner"></a>
+### What is the package scanner?
+All packages (and the binaries they contain or download at runtime) on community repository are scanned by 50-60 antivirus scanners. We have partnered with [VirusTotal](https://virustotal.com) to provide this information back to the website so you can know when you are on a package page whether it is something you should be concerned with or not. It falls just under the files section of the package pages.
 
-Chocolatey does the same thing that you would do based on the package instructions. This usually means going out and downloading an installer from the official distribution point and then silently installing it on your machine. With most packages this means Chocolatey is not redistributing software because they are going to the same distribution point that you yourself would go get the software if you were performing this process manually.
+**NOTE**: Did you know that 60% or more of the sofware that is submitted to the community repository has its first scans by VirusTotal through Chocolatey's package scanner submissions? It's helped many of those anti-virus manufacturers get a clearer picture of heuristics and hopefully ends up in better anti-virus products with less false positives.
 
-When you host internal packages, those packages can embed software and/or point to internal shares. You are not subject to software distribution rights, thus you can create packages that are more reliable and secure. See [[What are Chocolatey Packages|GettingStarted#what-are-chocolatey-packages]] for more details.
+**NOTE**: Need runtime malware protection? Learn more about [[runtime malware protection|]]
 
-<a id="markdown-when-i-install-a-portable-app-like-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-how-is-it-on-my-path-without-littering-my-path" name="when-i-install-a-portable-app-like-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-how-is-it-on-my-path-without-littering-my-path"></a>
-### When I install a portable app like [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable), how is it on my path? Without littering my path?
-When you install portable apps that have executables in the package, Chocolatey automatically creates a "shim" file and puts that in a folder that is on the path. That allows you to run a portable application by asking for it on the command line.
+<a id="markdown-what-is-the-package-cacher" name="what-is-the-package-cacher"></a>
+### What is the package cacher?
+On the community repository, we have a CDN cache for those files that would be downloaded by packages - those remote urls are overridden by default in licensed editions of Chocolatey to use those cached binaries. This is to avoid 404 errors you would normally see if those urls changed or were removed. See [[Customer CDN Download Cache|FeaturesPrivateCdn]] for more details.
 
-When you take an application with a native installer, say like WinDirStat, it is only on your path if the native installer has put it there or the instructions in the Chocolatey package itself has requested for it to be on the path. In this case, this is the “littering” the path concept.
 
-<a id="markdown-where-does-chocolatey-install-by-default" name="where-does-chocolatey-install-by-default"></a>
-### Where does Chocolatey install by default?
-As of version 0.9.8.24, binaries, libraries and Chocolatey components install in ```C:\ProgramData\chocolatey``` (environment variable %ProgramData%) by default. This reduces the attack surface on a local installation of Chocolatey and limits who can make changes to the directory.
+<a id="markdown-security" name="security"></a>
+## Security
 
-**NOTE:** Historically, Chocolatey installed to ```C:\Chocolatey``` and currently, performing an update of Chocolatey doesn't change the installation location, except for when the install path is `C:\chocolatey`. It will upgrade that path and all variables automatically.  For more information about why Chocolatey used ```C:\Chocolatey``` as the default location, look here - [[Default Install Reasoning|DefaultChocolateyInstallReasoning]]
-
-<a id="markdown-what-kind-of-package-types-does-chocolatey-support" name="what-kind-of-package-types-does-chocolatey-support"></a>
-### What kind of package types does Chocolatey support?
-* Binary Packages – Installable/portable applications – This is 98% of the Chocolatey packages – most are pointers to the real deal native installers and/or zipped software.
-* PowerShell Command Packages – Packages that have the suffix **.powershell** will install PowerShell scripts as commands for you to call from anywhere.
-* Development Packages – Packages that have the suffix **.dev**. For instance [dropkick.dev](http://nuget.org/list/packages/dropkick.dev).
-* Coming soon – Virtual Packages – Packages that are like a category, and you just want one package from that category. [Read more …](https://github.com/chocolatey/chocolatey/issues/7)
-
-<a name="AppVsTool"></a>
-<a id="markdown-what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application" name="what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application"></a>
-### What distinction does Chocolatey make between an installable and a portable application?
-<a id="markdown-installable-application" name="installable-application"></a>
-#### Installable application
-An installable application is something that comes with a native installer and ends up in the add/remove programs (in control panel of the system).
-Installable applications end up where the native installer wants them to end up (i.&nbsp;e. Program Files). If you want to override that, please feel free to with the proper commands using InstallArgs (-ia) at the command line and possibly override – Install Command. Yes this does mean you will need to have intimate knowledge of the installer. Having Chocolatey itself make the override directory is likely at some point, but it is wwwwaaaaayyyy out on the radar (like after Rob is somehow paid to work on Chocolatey full time ;) ).
-
-<a id="markdown-portable-application--something-that-doesnt-require-a-system-install-to-use" name="portable-application--something-that-doesnt-require-a-system-install-to-use"></a>
-#### Portable application – something that doesn't require a system install to use
-A portable application is something that doesn't require a native installer to use. In other words, it is not “installed” on your system (where you can go to uninstall in the control panel). It also requires no administrative access for the package install.
-
-Portable applications end up in the %ChocolateyInstall%/lib (i.&nbsp;e. C:\ProgramData\Chocolatey\lib) folder yes, but they get a "shim" to put them on the path of the machine. This behavior is very much to how Chocolatey works and is not configurable (the directory). Where the portable apps end up is still going to be %ChocolateyInstall%/lib no matter where you move the directory, unless a package itself unpacks the portable app elsewhere (as in the case of [git-tfs](http://chocolatey.org/packages/gittfs)).
-
-<a id="markdown-why-doesnt-a-package-install-software-to-program-files" name="why-doesnt-a-package-install-software-to-program-files"></a>
-### Why doesn't a package install software to Program Files?
-Most packages that use native installers (MSI, InnoSetup, etc) will install to Program Files, but there are packages that do not. There are two really important reasons why:
-
-* Program Files is synonymous with software that has uninstall registry keys - or put another way, applications that have native installers that you can find for uninstall in the Control Panel under Programs and Features.
-* Writing to Program Files requires administrative permissions and the package you are installing is likely a portable package (even if not explicitly named so, it may have a zip that it extracts). There is also a way for non-administrators to use Chocolatey and these types of packages need to work for them as well.
-
-It really depends on the underlying software the package "installs". If the underlying software is a native installer, then it has a machine install (meaning it gets an uninstall registry key and shows up in Programs and Features) and Program Files is the appropriate place for it.
-
-Chocolatey has a different avenue for portable packages that allows both admins and non-admins to be able to use these packages, after all they are just downloading and unzipping an archive. These packages either go into a Tools Root location or just get shims (executables are put on the path) and continue to stay in the Chocolatey lib directory. If we restricted a non-admin for an avenue that would work for them manually, it wouldn't make choco useful for them at all. Since we support non-admin usage of Chocolatey, packages that can support the portable model should support it.
-
-Also consider that if the package **is** using `$env:ChocolateyBinRoot` (which will later be named `$env:ChocolateyToolsRoot`) you can set the root under Program Files and then you get the better of both worlds.
-
-<a id="markdown-what-is-the-difference-between-packages-named-install-inbspe-autohotkeyinstallhttpschocolateyorgpackagesautohotkeyinstall-portable-inbspe-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-and--inbspe-autohotkeyhttpschocolateyorgpackagesautohotkey" name="what-is-the-difference-between-packages-named-install-inbspe-autohotkeyinstallhttpschocolateyorgpackagesautohotkeyinstall-portable-inbspe-autohotkeyportablehttpschocolateyorgpackagesautohotkeyportable-and--inbspe-autohotkeyhttpschocolateyorgpackagesautohotkey"></a>
-### What is the difference between packages named *.install (i.&nbsp;e. [autohotkey.install](https://chocolatey.org/packages/autohotkey.install)), *.portable (i.&nbsp;e. [autohotkey.portable](https://chocolatey.org/packages/autohotkey.portable)) and * (i.&nbsp;e. [autohotkey](https://chocolatey.org/packages/autohotkey))?
-
-Hey, good question! You are paying attention! Chocolatey has the concept of virtual packages (coming) and meta packages. Virtual packages are packages that represent other packages when used as a dependency. Metapackages are packages that only exist to provide a grouping of dependencies.
-
-A package with no suffix that is surrounded by packages with suffixes is to provide a virtual package. So in the case of git, git.install, and git.commandline (deprecated for .portable) – git is that virtual package (currently it is really just a metapackage until the virtual packages feature is complete). That means that other packages could depend on it and you could have either git.install or git.portable installed and you would meet the dependency of having git installed. That keeps Chocolatey from trying to install something that already meets the dependency requirement for a package.
-
-Talking specifically about the *.install package suffix – those are for the packages that have a native installer that they have bundled or they download and run.
-
-**NOTE:** the suffix *.app has been used previously to mean the same as *.install. But the *.app suffix is now deprecated and should not be used for new packages.
-
-The *.portable packages are the packages that will usually result in an executable on your path somewhere but do not get installed onto the system (Add/Remove Programs). Previously the suffixes *.tool and *.commandline have been used to refer to the same type of packages.
-
-**NOTE:** now *.tool and *.commandline are deprecated and should not be used for new packages.
-
-Want more information? See http://ferventcoder.com/archive/2012/02/25/chocolatey---guidance-on-packaging-apps-with-both-an-install.aspx
-
-<a id="markdown-i-just-took-over-as-the-primary-maintainer-of-a-package-what-do-i-need-to-do" name="i-just-took-over-as-the-primary-maintainer-of-a-package-what-do-i-need-to-do"></a>
-### I just took over as the primary maintainer of a package. What do I need to do?
-See [[Package Maintainer Handover|PackageMantainerHandover]]
-
-<a id="markdown-im-seeing-chocolatey--application--tool-using-32-bit-to-run-instead-of-x64-what-is-going-on" name="im-seeing-chocolatey--application--tool-using-32-bit-to-run-instead-of-x64-what-is-going-on"></a>
-### I'm seeing Chocolatey / *application* / *tool* using 32 bit to run instead of x64. What is going on?
-The shims are generated as "Any CPU" programs, which depend on the `Enable64Bit` registry value to be set to `1`, which it is by default. A way to fix it is to issue the following command at the location where the prompt shows below:
-
-    C:\Windows\Microsoft.NET\Framework64\v2.0.50727> Ldr64 set64
-
-[Any CPU 32-bit mode on 64 bit machine](http://stackoverflow.com/a/14857294)
-
-<a id="markdown-is-there-a-powershell-module-for-chocolatey" name="is-there-a-powershell-module-for-chocolatey"></a>
-### Is there a PowerShell Module for Chocolatey?
-Not yet, but when there is it will be provided as a binary DLL.
-
-Chocolatey itself is now a binary with 0.9.9+. This provides the ability to run it on Linux/OSX, which is why it is not by default a PowerShell module (\*nix still doesn't really have PowerShell support). The intention is to have something that has a larger portability - this is why it is not something you can ***only*** use in PowerShell, but rather something you can ***also*** use in PowerShell.
-
-**It was NEVER a PowerShell module, it just used PowerShell as a programming language and was meant to be a CLI app.** I bolded this so it might get read twice. ;)
-
-Chocolatey up until 0.9.9 was provided completely written in PowerShell, with the approach above. I don't know of any other app that has ever tried that approach, which made the original chocolatey client a rarity indeed.
+<a id="markdown-is-chocolatey-secure" name="is-chocolatey-secure"></a>
+### Is Chocolatey secure?
+Yes, it is. You can read more at [[security|Security]] to understand the important details.
 
 <a id="markdown-why-do-i-have-to-confirm-packages-now-is-there-a-way-to-remove-this" name="why-do-i-have-to-confirm-packages-now-is-there-a-way-to-remove-this"></a>
 ### Why do I have to confirm packages now? Is there a way to remove this?
@@ -326,3 +447,29 @@ The [relevant bits of the release notes](ReleaseNotes#099-march-3-2015) for the 
 Some folks may find the change quite annoying. The perspective of some folks isn't the perspective of everyone and we have some very security-conscious folks that want a verification of what they requested is what they end up with. So this prompt is extremely important for them. We are moving to a more secure by default approach so this change was important to get us there. Security related changes are some of the only things you will see that affect Chocolatey in such a way.
 
 We spent many months stressing over this change because of the breaking part and decided it wasn't going to get easier to change later. We've added the ability for you to set Chocolatey back to the way it was before with `allowGlobalConfirmation` and if the prompts annoy you, you should probably look at making this change.
+
+
+<a id="markdown-comparison" name="comparison"></a>
+## Comparison
+
+<a id="markdown-how-is-chocolatey-different-than-onegetpowershell-package-management" name="how-is-chocolatey-different-than-onegetpowershell-package-management"></a>
+### How is Chocolatey different than OneGet/PowerShell Package Management?
+OneGet is a package manager ***manager***, which means [it is not really a package manager at all](http://blogs.msdn.com/b/garretts/archive/2015/05/05/10-things-about-oneget-that-are-completely-different-than-you-think.aspx). Chocolatey will have a provider that plugs right into OneGet. At the current time there is a CTP available, but it is based on 2 year old Chocolatey technology (we've had security fixes since then, plus a world of features), so we can't really recommend it. But if you must use it, make sure your PowerShell execution policy is set correctly and you are in an administrative console. See http://www.hanselman.com/blog/AptGetForWindowsOneGetAndChocolateyOnWindows10.aspx for more details.
+
+Use ChocolateyGet for now.
+
+<a id="markdown-how-is-chocolatey-different-than-ninite" name="how-is-chocolatey-different-than-ninite"></a>
+### How is Chocolatey different than Ninite?
+Great question, see [[Chocolatey vs Ninite|ChocolateyVsNinite]].
+
+<a id="markdown-how-is-chocolatey-different-than-nuget-andor-openwrap" name="how-is-chocolatey-different-than-nuget-andor-openwrap"></a>
+### How is Chocolatey different than NuGet and/or OpenWrap?
+Chocolatey is a machine package manager. Where NuGet/OW are focused on developer library packages, Chocolatey is focused on applications and tools, and not necessarily developer focused.
+
+A typical way of stating the difference is "Developers use NuGet to get 3rd party libraries that they use to build the .NET tools and applications that they release with Chocolatey!"
+
+<a id="markdown-how-iswill-chocolatey-be-different-than-apt" name="how-iswill-chocolatey-be-different-than-apt"></a>
+### How is/will Chocolatey be different than apt?
+
+ * Chocolatey does not support the idea of source packages, which are packages that must be built to be used. For someone interested in that, check out https://github.com/coapp.
+ * Library packages are not completely off the plate, but mostly. How would you link the library up to the application/tool?
