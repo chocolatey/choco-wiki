@@ -9,6 +9,7 @@
 - [[Roadmap|RoadMap]]
 - [Submitting Issues](https://github.com/chocolatey/choco/blob/master/README.md#submitting-issues)
 - [Contributing](https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md)
+- [[Troubleshooting|Troubleshooting]]
 - [[FAQs|ChocolateyFAQs]]
 - [[Security|Security]]
 - [[Chocolatey.org Moderation|Moderation]]
