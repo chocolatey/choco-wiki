@@ -16,7 +16,7 @@ There are some well-known things you may run into when you are using Chocolatey.
   - ["ERROR: This package does not support 64 bit architecture." when trying to install from a local or included binary.](#error-this-package-does-not-support-64-bit-architecture-when-trying-to-install-from-a-local-or-included-binary)
 - [Runtime](#runtime)
   - [I can't get the PowerShell tab completion working.](#i-cant-get-the-powershell-tab-completion-working)
-  - [Why does choco in<tab><tab> not work for me?](#why-does-choco-intabtab-not-work-for-me)
+  - [Why does choco in{tab} not work for me?](#why-does-choco-intab-not-work-for-me)
   - [Microsoft.Powershell_profile.ps1 cannot be loaded. The file is not digitally signed.](#microsoftpowershell_profileps1-cannot-be-loaded-the-file-is-not-digitally-signed)
   - [I'm getting a 403 unauthorized issue when attempting to use the community package repository.](#im-getting-a-403-unauthorized-issue-when-attempting-to-use-the-community-package-repository)
   - [I'm seeing Chocolatey / *application* / *tool* using 32 bit to run instead of x64. What is going on?](#im-seeing-chocolatey--application--tool-using-32-bit-to-run-instead-of-x64-what-is-going-on)
@@ -126,8 +126,8 @@ Reference: https://groups.google.com/d/msgid/chocolatey/d11d8eb2-74b3-4c2c-b0bb-
 
 <a id="markdown-i-cant-get-the-powershell-tab-completion-working" name="i-cant-get-the-powershell-tab-completion-working"></a>
 ### I can't get the PowerShell tab completion working.
-<a id="markdown-why-does-choco-intabtab-not-work-for-me" name="why-does-choco-intabtab-not-work-for-me"></a>
-### Why does choco in<tab><tab> not work for me?
+<a id="markdown-why-does-choco-intab-not-work-for-me" name="why-does-choco-intab-not-work-for-me"></a>
+### Why does choco in{tab} not work for me?
 
 This means the import failed during install/upgrade. Chocolatey does supply a warning when this happens in the install/upgrade log. Take a look there.
 - If this is the same shell that the upgrade occurred in, the message states you need to update your profile - run `. $profile`. Try that first, then try restarting your shell and see if it takes hold.
