@@ -9,7 +9,7 @@
   - [Reliability](#reliability)
   - [Trust / Control](#trust--control)
   - [Distro-provided Repositories](#distro-provided-repositories)
-  - [Excessive Use](#excessive-use)
+- [Excessive Use](#excessive-use)
 - [Community Provided Packages Are Not Supported](#community-provided-packages-are-not-supported)
 - [Put It Another Way](#put-it-another-way)
 
@@ -40,7 +40,7 @@ There is another psychology aspect to this - Debian/RPM are nearly the ONLY way 
 
 However Windows doesn't have a distro-provided repo. Chocolatey Software does not support use of the community repo for organizational use that doesn't also benefit the community (providing and maintaining packages). Reliability plays a huge part in that. If something breaks within the context of a package, then Chocolatey gets blamed (even though it is not Chocolatey's fault).
 
-### Excessive Use
+## Excessive Use
 
 ***Please note that individuals (even organizations) using the community repository are unlikely to hit these excessive use numbers under normal usage scenarios.***
 
