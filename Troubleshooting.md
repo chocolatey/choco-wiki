@@ -43,7 +43,7 @@ See the More Options section of [[installation|Installation]].
 <a id="markdown-licensed-installation" name="licensed-installation"></a>
 ## Licensed Installation
 
-See [[Installation-Licensed]]
+See [[licensed installation|Installation-Licensed]]. If you are having issues, please see https://chocolatey.org/support for details on how to get support. 
 
 <a id="markdown-creating-packages" name="creating-packages"></a>
 ## Creating Packages
@@ -160,7 +160,7 @@ It could be one of a few things:
 * It is being blocked in your organization
 * We broke something (this is the least likely reason)
 * CloudFlare has blocked your IP due to reasons
-* The Chocolatey Community Team may have blocked access due to abuse (1M+ package installs over 30 days)
+* The Chocolatey Community Team may have blocked access due to abuse (1M+ package installs over 30 days) see [[excessive use for details|CommunityPackagesDisclaimer#excessive-use]]
 
 You can use a tool like [Fiddler](http://www.telerik.com/fiddler) (choco install for this would not be helpful in your case) to help determine what is going on.
 
