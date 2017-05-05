@@ -160,7 +160,7 @@ It could be one of a few things:
 * It is being blocked in your organization
 * We broke something (this is the least likely reason)
 * CloudFlare has blocked your IP due to reasons
-* The Chocolatey Community Team may have blocked access for excessive use (1M+ package installs over 30 days)
+* The Chocolatey Community Team may have blocked access due to abuse (1M+ package installs over 30 days)
 
 You can use a tool like [Fiddler](http://www.telerik.com/fiddler) (choco install for this would not be helpful in your case) to help determine what is going on.
 
