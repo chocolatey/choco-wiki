@@ -160,10 +160,11 @@ It could be one of a few things:
 * It is being blocked in your organization
 * We broke something (this is the least likely reason)
 * CloudFlare has blocked your IP due to reasons
+* The Chocolatey Community Team may have blocked access for excessive use (1M+ package installs over 30 days)
 
 You can use a tool like [Fiddler](http://www.telerik.com/fiddler) (choco install for this would not be helpful in your case) to help determine what is going on.
 
-If you determine it is CloudFlare blocking your IP, we may be able to get you whitelisted for Chocolatey - see https://chocolatey.org/contact
+If you determine it is CloudFlare blocking your IP, we may be able to get you whitelisted for Chocolatey - see https://chocolatey.org/contact (send message to "Website" in drop down). If you have been completely blocked, go to https://gitter.im/chocolatey/choco and contact us there.
 
 <a id="markdown-im-seeing-chocolatey--application--tool-using-32-bit-to-run-instead-of-x64-what-is-going-on" name="im-seeing-chocolatey--application--tool-using-32-bit-to-run-instead-of-x64-what-is-going-on"></a>
 ### I'm seeing Chocolatey / *application* / *tool* using 32 bit to run instead of x64. What is going on?
