@@ -42,7 +42,7 @@ However Windows doesn't have a distro-provided repo. Chocolatey Software does no
 
 ### Excessive Use
 
-***Please note that organizations using the community repository are unlikely to hit excessive use numbers under normal usage scenarios.***
+***Please note that individuals (even organizations) using the community repository are unlikely to hit these excessive use numbers under normal usage scenarios.***
 
 Another aspect to keep in mind is that the community package repository is meant for the community. Perceived abuses of the community package repository that affect it in a detrimental way for the rest of the community will not be allowed. By abusive, it means more than 10,000 package installs per day on average over an internally determined number of days. If that is 30 days, that would be over 300,000 installs during that period of time. When that is seen, our community team will make attempts to warn an organization (keep in mind that we are highly unlikely to have your contact information, so it will be in the form of a daily captcha). If that number goes above 30,000 installs per day (or 1M+ installs in 30 days), the community team will take swift action to block that usage to ensure it does not affect the community in a detrimental way. **This is meant to be temporary, but requires you to act to remedy the situation.** 
 
