@@ -19,7 +19,7 @@
 
 ### Summary
 
-As an organization, you want 100% reliability (or at least that potential), and you may want full trust and control as well. This is something you can get with internally hosted packages, and you are unlikely to achieve from use of the Community Package Repository. If your use of Chocolatey is for an organization/business, you likely have a low tolerance for production breakages and/or low trust for the greater internet. You likely would not want to give control of your infrastructure over to community members and volunteers. You should probably not use the packages on the community repository.
+As an organization, you want 100% reliability (or at least that potential), and you may want full trust and control as well. This is something you can get with internally hosted packages, and you are unlikely to achieve from use of the Community Package Repository. If your use of Chocolatey is for an organization/business, you likely have a low tolerance for production breakages and/or low trust for the greater internet. You likely would not want to give control of your infrastructure over to community members and volunteers. Organizational use of the community repository is not recommended.
 
 ### Reliability
 
