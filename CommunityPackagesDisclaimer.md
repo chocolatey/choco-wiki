@@ -9,6 +9,7 @@
   - [Reliability](#reliability)
   - [Trust / Control](#trust--control)
   - [Distro-provided Repositories](#distro-provided-repositories)
+  - [Excessive Use](#excessive-use)
 - [Community Provided Packages Are Not Supported](#community-provided-packages-are-not-supported)
 - [Put It Another Way](#put-it-another-way)
 
@@ -35,9 +36,14 @@ There are options for organizations to be able to reuse packaging from the commu
 
 ### Distro-provided Repositories
 
-There is another psychology aspect to this - debian/rpm are nearly the ONLY way you install software on those machines, so it is expected that you would go that route. There are organizations using POSIX environments (typically RedHat) where it is becoming more typical that they pull those repositories local as well so they can trust everything will always work and be reliable.
+There is another psychology aspect to this - Debian/RPM are nearly the ONLY way you install software on those machines, so it is expected that you would go that route. There are organizations using POSIX environments (typically RedHat) where it is becoming more typical that they pull those repositories local as well so they can trust everything will always work and be reliable.
 
-However Windows doesn't have a distro-provided repo. Chocolatey Software does not support use of the community repo for organizational use that doesn't also benefit the community (providing and maintaining packages). Reliability plays a huge part in that. If something breaks within the context of a package, then Chocolatey gets blamed (even thoough it is not Chocolatey's fault).
+However Windows doesn't have a distro-provided repo. Chocolatey Software does not support use of the community repo for organizational use that doesn't also benefit the community (providing and maintaining packages). Reliability plays a huge part in that. If something breaks within the context of a package, then Chocolatey gets blamed (even though it is not Chocolatey's fault).
+
+### Excessive Use
+Another aspect to keep in mind is that the community package repository is meant for the community. The Chocolatey team will check from time to time to see if there are abuses of the repository. By abusive, we mean more than 10,000 package installs per day on average over an internally determined number of days. If that is 30 days, that would be over 300,000 installs during that period of time. When that is seen, our community team will make attempts to warn an organization. If that number goes above 30,000 installs per day (or 1M+ installs in 30 days), the community team will take swift action to ensure it does not affect the community in a detrimental way.
+
+***Please note that organizations using the community repository are unlikely to hit these numbers under normal usage scenarios.***
 
 ## Community Provided Packages Are Not Supported
 
