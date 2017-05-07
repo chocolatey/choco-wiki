@@ -71,7 +71,7 @@ Install-ChocolateyPackage @packageArgs
 
 `Install-ChocolateyPackage` didn't have both a `File` parameter and a `FileType` parameter. PowerShell has a "feature" where it does partial matching of parameters. When you splat the parameters in, it tries to apply both `File` and `FileType` to `FileType` and throws the above error.
 
-Typically, when you are installing locally, you want to use `Install-ChocolateyInstallPackage` anyway.
+Typically, when you are installing locally, you likely want to use `Install-ChocolateyInstallPackage` anyway.
 
 Reference: https://groups.google.com/d/msgid/chocolatey/40736df7-7f3f-4be7-929d-1606be0e3a62%40googlegroups.com
 
@@ -95,7 +95,7 @@ $packageArgs = @{
   validExitCodes= @(0, 3010, 1641)
 }
 
-Install-ChocolateyPackage $packageArgs # this is 100% wrong and will pass the entire hash as the first positional parameter
+Install-ChocolateyPackage $packageArgs # this is incorrect and will pass the entire hash as the first positional parameter
 #Install-ChocolateyPackage @packageArgs # is what you are looking for
 
 # Splatting takes the above hash and calls Install-ChocolateyPackage like this:
