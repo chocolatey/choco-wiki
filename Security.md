@@ -150,7 +150,7 @@ In October 2014, the community feed had moderation turned on. All community pack
    * Checksumming is not yet a requirement in some scenarios, so keep reading the next section.
 
 #### Downloading Internet Resources Can Still Be An Issue
-With all of that said, you may want to ensure you build trust with each package as the software is coming from somewhere on the internet sometimes and moderators only validate that the package gets the software from those official distribution points, not necessarily the software itself. While VirusTotal provides a bit more of a validation against the binaries, if the maintainer is not using checksums in the package, there isn't a guarantee that the software vendor did not pull a switch on the binary (the remote distribution source). If you are concerned about that you should look to Pro or Business (next section).
+With all of that said, you may want to ensure you build trust with each package as the software is coming from somewhere on the internet sometimes and moderators only validate that the package gets the software from those official distribution points, not necessarily the software itself. While VirusTotal provides a bit more of a validation against the binaries, if the maintainer is not using checksums in the package (checksums are required if the package downloads from non-secure locations), there isn't a guarantee that the software vendor did not pull a switch on the binary (the remote distribution source). If you are concerned about that you should look to Pro or Business (next section).
 
 ## Chocolatey Pro / Chocolatey for Business
 1. [Licensed editions of Chocolatey](https://chocolatey.org/compare) perform runtime virus scan verification. We highly recommend folks concerned about security using the community feed or other packages that download resources from the internet to use Pro.
@@ -160,7 +160,7 @@ With all of that said, you may want to ensure you build trust with each package 
 1. Moderators will cryptographically sign packages with a PGP key that they own. This will allow folks to trust moderators.
 1. Users will also cryptographically sign packages so we can provide authenticity that the package came from them.
 1. We'll show the package checksum on the website for folks that want to verify the package is brought down appropriately.
-1. A user can optionally pass their own checksums that must be validated for downloaded software - https://github.com/chocolatey/choco/issues/112
+1. ~~A user can optionally pass their own checksums that must be validated for downloaded software - https://github.com/chocolatey/choco/issues/112~~ Available in v0.10.0+.
 
 ## History
 
