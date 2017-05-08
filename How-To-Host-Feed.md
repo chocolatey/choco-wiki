@@ -24,7 +24,10 @@
 <!-- /TOC -->
 
 ## Why?
-Please read [[Depending on the chocolatey.org as an organization|ChocolateyFAQs#should-my-organization-depend-on-use-the-community-feed-httpschocolateyorgpackages]]
+Chocolatey has had the ability to be able to use packages from one or more sources since its inception back in 2011. With that, Chocolatey installs with a default package repository - the community package repository (https://chocolatey.org/packages). However due to distribution rights, it has a failure point in that it can not be 100% reliable (most packages can't contain software and must download at runtime). It's not something an organization hosting their own package repository would be subject to, so we recommend organizational use of Chocolatey should include an internal package repository. Organizations looking to use Chocolatey should review the following topics to learn more:
+
+* [[Community package repository - organizational use|CommunityPackagesDisclaimer]]
+* [[Security and the community repository|Security#chocolateyorg-the-community-feed]]
 
 ## Host your own server
 There are three types of package repositories, [folder/unc share](#local-folder--unc-share), [simple server](#simple-server), and the sophisticated [package gallery](#package-gallery).
