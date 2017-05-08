@@ -55,6 +55,7 @@ Perhaps the easiest to set up and recommended for testing quick and dirty scenar
 * Anyone with permission can push and overwrite packages.
 * No HTTP/HTTPS pushing. Must be able to access the folder/share to push to it.
 * Starts to affect choco performance once the source has over 500 packages (maybe?).
+* No tracking on number of downloads / no package statistics
 * **Big disadvantage**: For a file share there is not a guarantee of package version immutability. Does not do anything to keep from package versions being overwritten. This provides no immutability of a package version and no guarantee that a version of a package installed is the same as the version in the source.
 
 ### Local Folder Share Setup
@@ -74,32 +75,35 @@ There is where the bulk of NuGet OData compatible servers fall (Nexus, Nuget.Ser
 * Package store is file system.
 
 **Disadvantages:**
-* Only one API key, so no multi user scenarios.
-* Starts to affect choco performance once the source has over 500 packages (maybe?).
+* Only one API key, so no multi-user scenarios. Some options like ProGet/Nexus/Artifactory can manage several repos with different keys. I believe they can also offer multiple API Keys
+* Starts to affect choco performance once the source has over 2,000 packages for some sources. It depends on how they keep that information (in a db or file scans).
 * No moderation.
-* No website to view packages.
-* No package statistics.
+* No pretty interface for viewing package information aside from ChocolateyGUI.
+* No package statistics for most of the simple server sources.
 * A package should may be limited to 28.61MB by default on some simple servers. Depending on your simple server - For IIS simple servers package size can be controlled through [maxAllowedContentLength](https://msdn.microsoft.com/en-us/library/ms689462(v=vs.90).aspx) and [maxRequestLength](https://msdn.microsoft.com/en-us/library/e1f13641(v=vs.100).aspx). For others like Nexus, it may already be set very high. You can host the installer internally somewhere and access it through packaging though.
 
 The actual limit for package sizes varies depending on what each simple server can handle (usually determined by the limitation of pushing a package to the server). If you determine what those are, we'd be happy to list each one here.
 
-#### Simple Server Setup
+### Setup
 
-Many google searches will throw out good ways to set up your own feed (hint: search for "host your own NuGet server feed")
+There are setup instructions for each of the different repositories at the links in the top section of this page. When it comes to Chocolatey.Server and NuGet.Server, we have the following additional information.
 
-Some notable references:
- * Nuget Docs [Host Your Own Remote Feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds)
- * itToby - [Setup Your Own Chocolatey/NuGet Repository](http://blog.ittoby.com/2014/07/setup-your-own-chocoloateynuget.html)
- * Rich Hopkins - [Bake your own Chocolatey NuGet repository](https://souladin.wordpress.com/2014/12/05/bake-your-own-chocolatey-nuget-repository/)
- * Brandon - [Host NuGet Server in Azure](http://netitude.bc3tech.net/2015/01/07/create-your-own-hosted-nuget-server-in-azure/)
-
-##### Chocolatey Server Setup
+#### Chocolatey.Server Setup
 [Chocolatey Simple Server](https://chocolatey.org/packages/chocolatey.server) is a simple Nuget.Server that is ready to rock and roll. It has already completed Steps 1-3 of NuGet's [host your own remote feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds). Version 0.1.2 has the following additional adds:
 
 * Uses same enhanced NuGet that Chocolatey uses so you can see more information in search if you choose to use those things.
 * Allows packages up to 2GB. Package size can be controlled through [maxAllowedContentLength](https://msdn.microsoft.com/en-us/library/ms689462(v=vs.90).aspx) and [maxRequestLength](https://msdn.microsoft.com/en-us/library/e1f13641(v=vs.100).aspx).
 
 To set it up, see [[Set up the Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]].
+
+#### NuGet.Server Setup
+
+Many google searches will throw out good ways to set up your own feed (hint: search for "host your own NuGet server feed")
+Some notable references:
+ * Nuget Docs [Host Your Own Remote Feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds)
+ * itToby - [Setup Your Own Chocolatey/NuGet Repository](http://blog.ittoby.com/2014/07/setup-your-own-chocoloateynuget.html)
+ * Rich Hopkins - [Bake your own Chocolatey NuGet repository](https://souladin.wordpress.com/2014/12/05/bake-your-own-chocolatey-nuget-repository/)
+ * Brandon - [Host NuGet Server in Azure](http://netitude.bc3tech.net/2015/01/07/create-your-own-hosted-nuget-server-in-azure/)
 
 ## Package Gallery
 This is like what https://chocolatey.org (the community feed runs on). It is the most advanced, having both a file store for packages and a database for tracking all sorts of information.
