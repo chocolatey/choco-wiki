@@ -417,3 +417,10 @@ remove-->
   new Clipboard('.copy-button');
 </script>
 
+<script language="javascript" type="text/javascript">
+  $(function () {
+    if (window.location.hash) {
+      $('#div-moreoptions').removeClass('hide');
+    }
+  });
+</script>
