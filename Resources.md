@@ -38,6 +38,10 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ## Community
 
 ### 2017
+#### May
+
+* https://powershell.org/forums/topic/package-management-in-a-dsc-world/
+
 #### March
 
 * http://www.winsysblog.com/2017/03/creating-software-packages-with.html
