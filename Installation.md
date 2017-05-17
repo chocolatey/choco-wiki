@@ -45,7 +45,7 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/in
 
 #### Additional considerations
 
-**NOTE:** Please inspect [https://chocolatey.org/install.ps1](https://chocolatey.org/install.ps1) prior to running any of these scripts to ensure safety. We already know it's safe, but you should also be comfortable before running ***any*** script from the internet you are not familiar with. All of these scripts download a remote PowerShell script and execute it on your machine.
+**NOTE:** Please inspect [https://chocolatey.org/install.ps1](https://chocolatey.org/install.ps1) prior to running any of these scripts to ensure safety. We already know it's safe, but you should verify the security and contents of ***any*** script from the internet you are not familiar with. All of these scripts download a remote PowerShell script and execute it on your machine.
 
 We take security very seriously. <a href="https://chocolatey.org/security">Learn more</a>.
 
@@ -412,15 +412,13 @@ See [[uninstall|Uninstallation]].
 <p>&nbsp;</p>
 remove-->
 
-<script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.10/dist/clipboard.min.js"></script>
-<script>
+<script language="javascript" type="text/javascript" src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.10/dist/clipboard.min.js"></script>
+<script language="javascript" type="text/javascript">
   new Clipboard('.copy-button');
 </script>
 
 <script language="javascript" type="text/javascript">
-  $(function () {
-    if (window.location.hash) {
-      $('#div-moreoptions').removeClass('hide');
-    }
-  });
+  if (window.location.hash) {
+    document.getElementById("div-moreoptions").classList.remove("hide");
+  }
 </script>
