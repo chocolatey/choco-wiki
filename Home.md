@@ -16,9 +16,11 @@ TeamCity  | AppVeyor | Travis
 ### Let's get Chocolatey!
 "I'm a tools enabler, I'm a global silent application installer. I configure stuff. Some people want to call me apt-get for Windows, I just want to get #chocolatey!"
 
-Home: https://chocolatey.org (Backup: http://chocolatey.apphb.com)
-Forum: http://groups.google.com/group/chocolatey
-Twitter: https://twitter.com/chocolateynuget
+ * [Chocolatey Website and Community Package Repository](https://chocolatey.org)
+ * [Mailing List](http://groups.google.com/group/chocolatey) / [Release Announcements Only Mailing List](https://groups.google.com/group/chocolatey-announce) / [Build Status Mailing List](http://groups.google.com/group/chocolatey-build-status)
+ * [Twitter](https://twitter.com/chocolateynuget) / [Facebook](https://www.facebook.com/ChocolateySoftware) / [Github](https://github.com/chocolatey)
+ * [Blog](https://chocolatey.org/blog) / [Newsletter](https://chocolatey.us8.list-manage1.com/subscribe?u=86a6d80146a0da7f2223712e4&id=73b018498d)
+ * [Documentation](https://chocolatey.org/docs) / [Support](https://chocolatey.org/support)
 
 ## Chocolatey?
 Chocolatey is a global PowerShell execution engine using the NuGet packaging infrastructure. Think of it as the ultimate automation tool for Windows. Chocolatey is a package manager that can also embed/wrap native installers and has functions for downloading and checksumming resources from the internet - useful for when you have public packages, but don't have distribution rights for the underlying software that packages represent (seen all the time with publicly available packages on the community repository).
@@ -47,7 +49,7 @@ Chocolatey is beneficial for some of the following reasons:
 
 Chocolatey is like apt-get, but built with Windows in mind (there are differences and limitations). For those unfamiliar with APT/Debian, think about Chocolatey as a global silent installer for applications and tools. It can also do configuration tasks and anything that you can do with PowerShell. The power you hold with a tool like Chocolatey is only limited by your imagination!
 
-Here's a good short explanation: 
+Here's a good short explanation:
 
 > Chocolatey is a software management tool that is also a package manager. It functions fantastically well when the runtime software is all included in the package and it doesn't make use of native installers. However to approach the Windows ecosystem a package manager also needs to know how to manage actual software installations, thus why Chocolatey does that as well. For publicly available packages, copyright keeps from having binaries embedded in packages, so Chocolatey is able to download from distribution points and checksum those binaries.
 
