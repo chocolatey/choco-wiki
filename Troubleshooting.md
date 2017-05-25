@@ -8,6 +8,7 @@ There are some well-known things you may run into when you are using Chocolatey.
 
 - [General](#general)
 - [Chocolatey Installation](#chocolatey-installation)
+  - [The underlying connection was closed](#the-underlying-connection-was-closed)
   - [I am having trouble with PowerShell to install Chocolatey](#i-am-having-trouble-with-powershell-to-install-chocolatey)
 - [Licensed Installation](#licensed-installation)
 - [Creating Packages](#creating-packages)
@@ -35,10 +36,28 @@ Also consider the [[frequently asked questions|ChocolateyFAQs]].
 <a id="markdown-chocolatey-installation" name="chocolatey-installation"></a>
 ## Chocolatey Installation
 
+<a name="the-underlying-connection-was-closed"></a>
+### The underlying connection was closed 
+If you see an error that looks similar to the following:
+
+~~~sh
+Exception calling "DownloadString" with "1" argument(s): "The underlying connection was closed: An unexpected error
+occurred on a receive."
+At line:1 char:1
++ iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/in ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : WebException
+~~~
+
+It's possible that you are attempting to install from a server that needs to use TLS 1.1 or TLS 1.2. 
+
+Please see [[Installing with Restricted TLS|Installation#installing-with-restricted-tls]]
+
 <a id="markdown-i-am-having-trouble-with-powershell-to-install-chocolatey" name="i-am-having-trouble-with-powershell-to-install-chocolatey"></a>
 ### I am having trouble with PowerShell to install Chocolatey
 
-See the More Options section of [[installation|Installation]].
+See the More Options section of [[installation|Installation#more-install-options]].
 
 <a id="markdown-licensed-installation" name="licensed-installation"></a>
 ## Licensed Installation
