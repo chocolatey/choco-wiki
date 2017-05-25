@@ -412,7 +412,7 @@ See [[uninstall|Uninstallation]].
 
 <!--remove
 <p>&nbsp;</p>
-remove-->
+
 
 <script language="javascript" type="text/javascript" src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.10/dist/clipboard.min.js"></script>
 <script language="javascript" type="text/javascript">
@@ -424,3 +424,5 @@ remove-->
     document.getElementById("div-moreoptions").classList.remove("hide");
   }
 </script>
+
+remove-->
