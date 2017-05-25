@@ -156,6 +156,21 @@ With all of that said, you may want to ensure you build trust with each package 
 1. [Licensed editions of Chocolatey](https://chocolatey.org/compare) perform runtime virus scan verification. We highly recommend folks concerned about security using the community feed or other packages that download resources from the internet to use Pro.
 1. For organizations, we highly recommend a security conscious company look at the features available in [Chocolatey for Business](https://chocolatey.org/compare) for more security (and locking down of components, like locking down folders even more and other nice tweaks that a business would need to make). Please note that some features are still in development.
 
+## Servers / IP Addresses
+
+For using Chocolatey, if you are using the community repository, you will need to whitelist the following servers:
+
+* https://chocolatey.org
+* https://packages.chocolatey.org
+* https://licensedpackages.chocolatey.org (licensed editions of Chocolatey)
+* https://files.chocolatey.org (licensed editions of Chocolatey)
+
+For specific IP addresses to whitelist, please set the following: https://www.cloudflare.com/ips/ 
+
+If you are using open source Chocolatey, you would also need to whitelist the official distribution location for **EVERY** package that you intend to manage. This is due to distribution rights and the community repo being in the public domain (discussed above at [Chocolatey.org Packages](#chocolateyorg-packages)). The licensed editions of Chocolatey has a [[CDN cache|FeaturesPrivateCdn]] of those downloaded resources, which is used instead of reaching out to those remote locations. 
+
+Keep in mind that the Chocolatey CDN can only download resources for packages that it has been able to cache. While it is currently able to cache 70% of the existing packages (https://chocolatey.org/stats for actuals - use PackagesCached divided by UniquePackages), we always recommend running `choco search pkgid` (or `choco info pkgid`) to determine if it has the "Downloads cached for licensed users" aspect, or look on the package page for the indicator that the packages are cached. If it does not, you would either need to go through the process of internalization for that package, or look to whitelisting whatever resources that package needed to download.
+
 ## Future Chocolatey Enhancements
 1. Moderators will cryptographically sign packages with a PGP key that they own. This will allow folks to trust moderators.
 1. Users will also cryptographically sign packages so we can provide authenticity that the package came from them.
