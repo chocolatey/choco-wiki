@@ -1,21 +1,20 @@
-- [[Home|Home]]
-- [[Why Chocolatey?|Why]]
-- [Choco 0.9.8.x & below](https://github.com/chocolatey/chocolatey/wiki)
+ - [[Home|Home]]
+ - [[Why Chocolatey?|Why]]
+ - [Choco 0.9.8.x & below](https://github.com/chocolatey/chocolatey/wiki)
 
-**General**
+### General
+ - [[Troubleshooting|Troubleshooting]]
+ - [[FAQs|ChocolateyFAQs]]
+ - [[Security|Security]]
+ - [[Roadmap|RoadMap]]
+ - [Submitting Issues](https://github.com/chocolatey/choco/blob/master/README.md#submitting-issues)
+ - [Contributing](https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md)
+ - [[Release Notes|ReleaseNotes]]
+ - [[Licensed Release Notes|ReleaseNotesLicensed]]
 
-- [[Troubleshooting|Troubleshooting]]
-- [[FAQs|ChocolateyFAQs]]
-- [[Security|Security]]
-- [[Roadmap|RoadMap]]
-- [Submitting Issues](https://github.com/chocolatey/choco/blob/master/README.md#submitting-issues)
-- [Contributing](https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md)
-- [[Release Notes|ReleaseNotes]]
-- [[Licensed Release Notes|ReleaseNotesLicensed]]
-
-- [[Chocolatey.org Moderation|Moderation]]
-- [[Chocolatey.org Packages Disclaimer|CommunityPackagesDisclaimer]]
-- [[Software Vendor?|PackageTriageProcess#are-you-a-software-vendor]]
+ - [[Chocolatey.org Moderation|Moderation]]
+ - [[Chocolatey.org Packages Disclaimer|CommunityPackagesDisclaimer]]
+ - [[Software Vendor?|PackageTriageProcess#are-you-a-software-vendor]]
 
 **Features**
 
