@@ -10,6 +10,7 @@ There are some well-known things you may run into when you are using Chocolatey.
 - [Chocolatey Installation](#chocolatey-installation)
   - [The underlying connection was closed](#the-underlying-connection-was-closed)
   - [I am having trouble with PowerShell to install Chocolatey](#i-am-having-trouble-with-powershell-to-install-chocolatey)
+  - [I'm getting a 403 unauthorized issue attempting to install Chocolatey](#im-getting-a-403-unauthorized-issue-when-attempting-to-install-chocolatey)
 - [Licensed Installation](#licensed-installation)
 - [Creating Packages](#creating-packages)
   - [ERROR: Cannot bind parameter because parameter 'fileType' is specified more than once.](#error-cannot-bind-parameter-because-parameter-filetype-is-specified-more-than-once)
@@ -53,6 +54,11 @@ At line:1 char:1
 It's possible that you are attempting to install from a server that needs to use TLS 1.1 or TLS 1.2. 
 
 Please see [[Installing with Restricted TLS|Installation#installing-with-restricted-tls]]
+
+<a id="im-getting-a-403-unauthorized-issue-when-attempting-to-install-chocolatey"></a>
+### I'm getting a 403 unauthorized issue attempting to install Chocolatey
+
+Please see [I'm getting a 403 unauthorized issue when attempting to use the community package repository.](#im-getting-a-403-unauthorized-issue-when-attempting-to-use-the-community-package-repository)
 
 <a id="markdown-i-am-having-trouble-with-powershell-to-install-chocolatey" name="i-am-having-trouble-with-powershell-to-install-chocolatey"></a>
 ### I am having trouble with PowerShell to install Chocolatey
