@@ -123,7 +123,7 @@ It's important to keep the following in mind:
 It goes without stating that if you are a business and you are using Chocolatey, you should think long and hard before trusting an external source you have no control over (chocolatey.org packages, in addition to all of the binaries that download from official distribution channels over the internet). It is too easy to set up your [[own private feed|How-To-Host-Feed]] where you can vet packages and have complete control over the binaries and what gets installed. This also provides a complete offline solution that is reliable and trustworthy. This is what we recommend for businesses that use Chocolatey in production scenarios (and what many of them do). There is a [great article written up](https://chocolatey.org/blog/host-your-own-server) on the reasoning and options for hosting your own server.
 
 ## Chocolatey.org Packages
-Chocolatey.org has a community repository of packages known as the community feed / community package repository. These packages are created by folks in the community and due to distribution rights, they usually contain executable instructions on how to download software from official distribution points written in PowerShell.
+Chocolatey.org has a community repository of packages known as the community feed / community package repository. These packages are created by folks in the community and due to [[distribution rights|CommunityPackagesDisclaimer]], they usually contain executable instructions on how to download software from official distribution points written in PowerShell.
 
 
 ### Security for the Community Package Repository:
