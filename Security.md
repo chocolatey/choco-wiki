@@ -13,6 +13,7 @@ Bottom line: If someone tells you Chocolatey ***is*** insecure, please respond w
   - [Rigorous Moderation Process for Community Packages](#rigorous-moderation-process-for-community-packages)
     - [Downloading Internet Resources Can Still Be An Issue](#downloading-internet-resources-can-still-be-an-issue)
 - [Chocolatey Pro / Chocolatey for Business](#chocolatey-pro--chocolatey-for-business)
+- [Chocolatey Servers / IP Addresses](#servers--ip-addresses)
 - [Future Chocolatey Enhancements](#future-chocolatey-enhancements)
 - [History](#history)
   - [Past Security Concerns](#past-security-concerns)
