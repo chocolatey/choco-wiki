@@ -15,9 +15,9 @@ Chocolatey installs in seconds. You are just a few steps from running choco righ
 1. Wait a few seconds for the command to complete.
 1. If you don't see any errors, you are ready to use Chocolatey! Type `choco` or `choco -?` now.
 
-**NOTE**: If you are behind a proxy, please see <a href="#installing-behind-a-proxy" onclick="document.getElementById('div-moreoptions').classList.remove('hide')">Installing behind a proxy</a>.
-**NOTE**: Need completely offline solution? See <a href="#completely-offline-install" onclick="document.getElementById('div-moreoptions').classList.remove('hide')">Completely Offline Install</a>.
-**NOTE**: Installing the licensed edition? See [[install licensed edition|Installation-Licensed]].
+**NOTE**: If you are behind a proxy, please see <a href="#installing-behind-a-proxy" onclick="document.getElementById('div-moreoptions').classList.remove('hide')">Installing behind a proxy</a>.  
+**NOTE**: Need completely offline solution? See <a href="#completely-offline-install" onclick="document.getElementById('div-moreoptions').classList.remove('hide')">Completely Offline Install</a>.  
+**NOTE**: Installing the licensed edition? See [[install licensed edition|Installation-Licensed]].  
 
 #### Install with cmd.exe
 
