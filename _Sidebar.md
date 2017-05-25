@@ -2,7 +2,7 @@
  - [[Why Chocolatey?|Why]]
  - [Choco 0.9.8.x & below](https://github.com/chocolatey/chocolatey/wiki)
 
-### General
+#### General
  - [[Troubleshooting|Troubleshooting]]
  - [[FAQs|ChocolateyFAQs]]
  - [[Security|Security]]
@@ -16,7 +16,7 @@
  - [[Chocolatey.org Packages Disclaimer|CommunityPackagesDisclaimer]]
  - [[Software Vendor?|PackageTriageProcess#are-you-a-software-vendor]]
 
-**Features**
+#### Features
 
  - [[Package Synchronizer - Sync with Programs and Features|FeaturesSynchronize]]
  - [[Background Mode - Allow Non-Administrators To Install/Upgrade Software!|FeaturesAgentService]]
@@ -31,7 +31,7 @@
  - [[Extend Chocolatey With PowerShell Modules (extensions)|How-To-Create-Extensions]]
  - In progress, check back for updates!
 
-**Usage**
+#### Usage
 
 [[How does choco work?|GettingStarted#how-does-chocolatey-work]]
 
@@ -60,7 +60,7 @@
     - [[Apikey|CommandsApiKey]]
     - [[Push|CommandsPush]]
 
-**Creating Packages**
+#### Creating Packages
 
  - [[Create Packages|CreatePackages]]
  - [[Quick Start|CreatePackagesQuickStart]]
@@ -84,7 +84,7 @@
    - [[Install-ChocolateyShortcut|HelpersInstallChocolateyShortcut]]
    - [[Install-ChocolateyFileAssociation|HelpersInstallChocolateyFileAssociation]]
 
-**How To's**
+#### How To's
 
  - [[Use Chocolatey w/Proxy Server|Proxy-Settings-for-Chocolatey]]
  - [[Change Download Cache Location aka Don't use TEMP for downloads|How-To-Change-Cache]]
@@ -103,18 +103,18 @@
  - [[Host Your Own Server|How-To-Host-Feed]]
  - [[Set up the Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]]
 
-**Use Cases**
+#### Use Cases
 
  - [[Development Environment|DevelopmentEnvironmentSetup]]
  - [[Host on MyGet|Hosting-Chocolatey-Packages-on-MyGet]]
 
-**Learning Resources**
+#### Learning Resources
 
  - [[Resources|Resources]]
  - [[Videos|Videos]]
  - [[Presentations|Presentations]]
 
-**Other**
+#### Other
 
  - [[Why Chocolatey?|Why]]
  - [[Legal|Legal]]
