@@ -4,14 +4,15 @@
 
 **General**
 
-- [[Release Notes|ReleaseNotes]]
-- [[Licensed Release Notes|ReleaseNotesLicensed]]
-- [[Roadmap|RoadMap]]
-- [Submitting Issues](https://github.com/chocolatey/choco/blob/master/README.md#submitting-issues)
-- [Contributing](https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md)
 - [[Troubleshooting|Troubleshooting]]
 - [[FAQs|ChocolateyFAQs]]
 - [[Security|Security]]
+- [[Roadmap|RoadMap]]
+- [Submitting Issues](https://github.com/chocolatey/choco/blob/master/README.md#submitting-issues)
+- [Contributing](https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md)
+- [[Release Notes|ReleaseNotes]]
+- [[Licensed Release Notes|ReleaseNotesLicensed]]
+
 - [[Chocolatey.org Moderation|Moderation]]
 - [[Chocolatey.org Packages Disclaimer|CommunityPackagesDisclaimer]]
 - [[Software Vendor?|PackageTriageProcess#are-you-a-software-vendor]]
