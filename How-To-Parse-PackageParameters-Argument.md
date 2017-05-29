@@ -176,6 +176,15 @@ Once that is done, assuming that the PackageParameters contains "something", use
 Having collected all the arguments into the dictionary, we can then inspect the values of each parameter that we are interested in.  If it exists in the dictionary, replace the corresponding default value, otherwise, continue to use the default value.
 
 ## Installing With Package Parameters
+
+Typically this is handled in the following way:
+
+~~~sh
+choco install <packageName> --params "'/key:value key2:value'"
+~~~
+
+**NOTE**: `<packageName>` is synonymous with the value you put in the nuspec `<id />` field. It is NEVER `name.version.nupkg` or `name.nuspec`. If you are testing a package locally, always use `choco install <pkgid> -d -s .`. That is a literal `-s .` (set source to local folder where the compiled nupkg is located), unless you have a dependency on another package, then use `-s "'.;other feeds here'"` - when you override the source (`--source` or `-s`), it means use ONLY this source for resolving packages.
+
 Now, in this example, if we were to call:
 
 `choco install <packageName> -d`
@@ -186,10 +195,7 @@ The output would be:
 This would be the Chocolatey Silent Arguments: /S /Port:81 /Edition:LicenseKey /InstallationPath:c:\temp
 ~~~
 
-**NOTE**: `<packageName>` is synonymous with the value you put in the nuspec `<id />` field. It is NEVER `name.version.nupkg` or `name.nuspec`. If you are testing a package locally, always use `choco install <pkgid> -d -s .`. That is a literal `-s .` (set source to local folder where the compiled nupkg is located), unless you have a dependency on another package, then use `-s "'.;other feeds here'"` - when you override the source (`--source` or `-s`), it means use ONLY this source for resolving packages.
-
 **NOTE**: If you have a prerelease (has a `-` in the version value e.g. `1.0.0-beta1`), make sure you add `--pre` to the install/upgrade arguments.
-
 
 i.e. it is using the default values which we made at the top of the file
 
@@ -197,7 +203,7 @@ However, if we instead used:
 
 ~~~sh
 # See NOTE below, shell affects the way to pass args when you need to include quotes
-choco install <packageName> -d --package-parameters '/Port:82 /Edition:LicenseKey1 /InstallationPath:""C:\temp\folder with space"" /AdditionalTools' 
+choco install <packageName> -d --package-parameters '/Port:82 /Edition:LicenseKey1 /InstallationPath:""C:\temp\folder with space"" /AdditionalTools'
 ~~~
 
 **NOTE:** How you pass options with spaces varies with shell (cmd.exe vs powershell.exe) and other related information with choco options is important to keep in mind here. See [[how to pass options/switches|CommandsReference#how-to-pass-options--switches]].

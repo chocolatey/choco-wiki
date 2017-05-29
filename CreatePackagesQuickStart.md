@@ -46,16 +46,13 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
 * **Test the package**
    * **Testing should probably be done on a Virtual Machine**
    * In your package directory, use:
-      * `choco install package-name -s "$pwd" -f` - powershell
-      * `choco install package-name -s '%cd%' -f` - everywhere else
-   * Otherwise, use the full path:
-      * `choco install package-name -source 'c:\path\to\Package\' -f`
-* **Push the package** to the Chocolatey community feed repository:
+      * `choco install package-name -s .` (package-name is the id element in the nuspec)
+* **Push the package** to the Chocolatey community package repository:
    * Get a Chocolatey account:
       * [Register](https://chocolatey.org/account/register)
    * Copy the API key from [your Chocolatey account](https://chocolatey.org/account).
-   * `choco apikey -k [API_KEY_HERE] -source https://chocolatey.org/`
-   * `choco push package-name.1.1.0.nupkg -s https://chocolatey.org/` - packagename can be omitted
+   * `choco apikey -k [API_KEY_HERE] -source https://push.chocolatey.org/`
+   * `choco push package-name.1.1.0.nupkg -s https://push.chocolatey.org/` - nupkg file can be ommitted if it is the only one in the directory.
 
 ## Common Mistakes
 
@@ -71,10 +68,11 @@ Here's a TL;DR quick start version of the package creating tutorial. Follow thes
 * `%ChocolateyInstall%` - Chocolatey installation directory
 * `%ChocolateyInstall%\lib\package-name` - Package directory
 * `%cd%` or `$pwd` - current directory
+* Environment variable reference available in the README when using `choco new` or [[online|HelpersReference#variables]].
 
 ## Examples
 
-Here are some simple examples.
+Here are some simple examples. **NOTE**: This needs updated with checksums and newer package concepts. Please run `choco new` when creating packages as it contains all of the most up to date notes.
 
 ### chocolateyInstall.ps1 for .exe installer
 

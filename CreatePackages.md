@@ -18,7 +18,7 @@ the application though. You should read up on the Shim Generation section
 below though to familiarize yourself on what to do with GUI applications
 and/or ignoring shims (also known as batch redirects).
 
-#### Including the Software Installer in the Package 
+#### Including the Software Installer in the Package
 Sometimes called embedding the binaries, there are functions in the automation scripts you can call that will use the installers directly from the package instead of downloading first. This makes for the most reliable and deterministic packages, but ensure you have the [[legal right to distribute|Legal]] the software first if publishing to a public location (like the community package repository).
 
 #### Automation Scripts
@@ -118,7 +118,7 @@ The chocolateyBeforeModify.ps1 script will only be executed if using choco versi
 
 ## Nuspec
 
-The `Chocolatey` Windows package manager uses the same infrastructure as [NuGet](http://nuget.org/) , the Visual Studio package manager by Outercurve Foundation (sponsored by Microsoft). Therefore packages are based on the same principles. One of those is a package description (specification) in `xml` format, known as the `Nuspec`.
+The `Chocolatey` Windows package manager uses the same infrastructure as [NuGet](http://nuget.org/), the Visual Studio package manager by Outercurve Foundation (sponsored by Microsoft). Therefore packages are based on the same principles. One of those is a package description (specification) in `xml` format, known as the `Nuspec`.
 
 The `Nuspec` contains basic information such as the version, license, maintainer, and package dependencies. `Chocolatey` includes additional optional functionality on top of [NuGet's Nuspec format](http://docs.nuget.org/docs/reference/nuspec-reference) - the best way to determine currently supported features is to create a test package, and look at the generated nuspec file.
 
@@ -245,9 +245,9 @@ When the fourth segment is already used, it is recommended to add two zeroes (00
 
 ## Internationalization and localization of packages
 For Chocolatey, internationalization and localization of packages is very important, because it has users from all over the world. Many applications support multiple languages, but they use several different methods to achieve that. Therefore, there is no standard how internationalization/localization has to be integrated into packages. However, here are a few examples of packages that use various techniques. You can use them as inspiration for new packages:
-* The ideal situation is when an application determines the user’s system language and automatically installs with that language. Then you don’t have to take any action relating to localization, because the application already handles that. Examples of such applications are [VLC Media Player](https://chocolatey.org/packages/vlc) and [LibreOffice](https://chocolatey.org/packages/libreoffice).
+* The ideal situation is when an application determines the user's system language and automatically installs with that language. Then you don't have to take any action relating to localization, because the application already handles that. Examples of such applications are [VLC Media Player](https://chocolatey.org/packages/vlc) and [LibreOffice](https://chocolatey.org/packages/libreoffice).
 * When an application provides different installers for different languages, you should determine the system language and download the appropriate installer. The package for [Mozilla Firefox](https://chocolatey.org/packages/Firefox) ([source code](https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/automatic/Firefox)) uses this method.
-* Sometimes an application installer or executable has already integrated all supported languages, but doesn’t automatically select the system language during a silent install. Often you can pass an additional install parameter to select the desired language. This is used for example in the [CCleaner](https://chocolatey.org/packages/ccleaner) package ([source code](https://github.com/tonigellida/chocolateyautomaticpackages/tree/master/ccleaner)).
+* Sometimes an application installer or executable has already integrated all supported languages, but doesn't automatically select the system language during a silent install. Often you can pass an additional install parameter to select the desired language. This is used for example in the [CCleaner](https://chocolatey.org/packages/ccleaner) package ([source code](https://github.com/tonigellida/chocolateyautomaticpackages/tree/master/ccleaner)).
 * Some application use separate language files which must be downloaded separately and put somewhere in the application directory. It is best when you create a separate package for the language files. If your package id is `packageid`, then call it `packageid-langfiles`. The [language files package for KeePass](https://chocolatey.org/packages/keepass-langfiles) is an example how this can be achieved.
 
 ## Package icon guidelines
@@ -298,12 +298,11 @@ Open a command line in the directory where the nuspec is and type [[cpack|Comman
 
 To test the package you just built, open a command line shell and navigate to the directory where the `*.nupkg` file is located. Then type:
 
-
 ~~~powershell
-choco install packageName -fdv -s .
+choco install packageName -dv -s .
 ~~~~
 
-This will install the package right out of your source. As you find things you may need to fix, using `--force` (`-f`) will remove and reinstall the package from the updated `*.nupkg`.
+This will install the package right out of your source. As you find things you may need to fix, using `--force` (`-f`) will remove and reinstall the package from the updated `*.nupkg`. If you are specifically testing `chocolateyBeforeModify.ps1`, you need to be testing upgrade and uninstall scenarios. You need to install a version of the package with this file **first** as before modify is like uninstall, it runs from the installed package, not the package you are installing (like `chocolateyInstall.ps1` does).
 
 **NOTE:** If you are using a Semver dash in your package version (such as 1.0.0-beta), you will need to use the `-pre` switch or else you will get *Unable to find package* errors from `choco install`.  You can also specify `-version 1.0.0-beta` to try to install that exact version.
 

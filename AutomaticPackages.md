@@ -10,7 +10,8 @@ Automatic packaging is a process that **package maintainers can run on *their ow
   - [Credits](#credits)
   - [Requirements](#requirements)
   - [Setup](#setup)
-- [Chocolatey Package Updater aka chocopkgup](#chocolatey-package-updater-aka-chocopkgup)
+  - [Everything Related to AU](#everything-related-to-au)
+- [Chocolatey Package Updater aka chocopkgup [DEPRECATED]](#chocolatey-package-updater-aka-chocopkgup-deprecated)
   - [Licensing](#licensing)
   - [Credits](#credits-1)
   - [Requirements](#requirements-1)
@@ -29,8 +30,9 @@ Automatic packaging is a process that **package maintainers can run on *their ow
 
 There are currently two methods that can be used to maintain automatic packages:
 
-- Using [Chocolatey Package Updater](https://chocolatey.org/packages/ChocolateyPackageUpdater) with 3rd party tool [Ketarin](https://chocolatey.org/packages/ketarin).
-- Using only Powershell via [Automatic Update module AU](https://github.com/majkinetor/au).
+- RECOMMENDED - Using only Powershell via [Automatic Update module AU](https://github.com/majkinetor/au).
+- DEPRECATED - Using [Chocolatey Package Updater](https://chocolatey.org/packages/ChocolateyPackageUpdater) with 3rd party tool [Ketarin](https://chocolatey.org/packages/ketarin).
+
 
 ## Automatic Updater (AU)
 
@@ -52,9 +54,14 @@ AU is brought to you by a Chocolatey community member [Miodrag Milic](https://gi
 1. Head into the setup folder and look for `au_setup.ps1`. Review that file and then run it.
 1. Follow the [README](https://github.com/chocolatey/chocolatey-packages-template/blob/master/setup/README.md) in the setup folder.
 
-When creating packages, you can choose to use `--auto` or not as AU doesn't use token replacement for updating packages. There are some additional things generated though, so you may want to use the auto switch.
+When creating packages, do not use `--auto` as AU doesn't use token replacement for updating packages, it replaces the xml elements and code directly.
 
-## Chocolatey Package Updater aka chocopkgup
+### Everything Related to AU
+AU maintains its own documentation at [documentation](https://github.com/majkinetor/au/blob/master/README.md).
+
+
+## Chocolatey Package Updater aka chocopkgup [DEPRECATED]
+<a name="chocolatey-package-updater-aka-chocopkgup"></a>
 http://chocolatey.org/packages/ChocolateyPackageUpdater
 
 The tool that accomplishes this process is known as [chocopkgup](https://chocolatey.org/packages/ChocolateyPackageUpdater) (Chocolatey Package Updater). It is a free tool (unless you want to use it for uploads to somewhere other than chocolatey.org).
