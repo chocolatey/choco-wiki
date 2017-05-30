@@ -13,6 +13,11 @@
   - [Where does Chocolatey install by default?](#where-does-chocolatey-install-by-default)
   - [What kind of package types does Chocolatey support?](#what-kind-of-package-types-does-chocolatey-support)
   - [Do you have a roadmap I can see?](#do-you-have-a-roadmap-i-can-see)
+- [Security](#security)
+  - [Is Chocolatey secure?](#is-chocolatey-secure)
+  - [Why do I have to confirm packages now? Is there a way to remove this?](#why-do-i-have-to-confirm-packages-now-is-there-a-way-to-remove-this)
+  - [What doesn't the website implement x security standard?](#what-doesnt-the-website-implement-x-security-standard)
+  - [I have other security questions](#i-have-other-security-questions)
 - [Using Chocolatey](#using-chocolatey)
   - [Can I use Chocolatey in a cmd.exe shell?](#can-i-use-chocolatey-in-a-cmdexe-shell)
   - [Tab-completion?](#tab-completion)
@@ -38,6 +43,14 @@
   - [I would like to use Chocolatey in my organization, is the licensing friendly?](#i-would-like-to-use-chocolatey-in-my-organization-is-the-licensing-friendly)
   - [Should my organization depend on (use) the community feed (https://chocolatey.org/packages)?](#should-my-organization-depend-on-use-the-community-feed-httpschocolateyorgpackages)
   - [Chocolatey is great! I need it to do something additional for my organization.](#chocolatey-is-great-i-need-it-to-do-something-additional-for-my-organization)
+- [Licensed Editions](#licensed-editions)
+  - [What is the difference between FOSS and the licensed editions?](#what-is-the-difference-between-foss-and-the-licensed-editions)
+  - [Are the licensed editions costs annual?](#are-the-licensed-editions-costs-annual)
+  - [Can you do monthly?](#can-you-do-monthly)
+  - [What is C4B?](#what-is-c4b)
+  - [I have not received my license.](#i-have-not-received-my-license)
+  - [I just purchased and I need my license sooner!](#i-just-purchased-and-i-need-my-license-sooner)
+  - [I have a different question about the licensed edition.](#i-have-a-different-question-about-the-licensed-edition)
 - [Packaging](#packaging)
   - [What can a Chocolatey Package consist of?](#what-can-a-chocolatey-package-consist-of)
   - [Tell me about packaging](#tell-me-about-packaging)
@@ -60,9 +73,6 @@
   - [What is the verifier?](#what-is-the-verifier)
   - [What is the package scanner?](#what-is-the-package-scanner)
   - [What is the package cacher?](#what-is-the-package-cacher)
-- [Security](#security)
-  - [Is Chocolatey secure?](#is-chocolatey-secure)
-  - [Why do I have to confirm packages now? Is there a way to remove this?](#why-do-i-have-to-confirm-packages-now-is-there-a-way-to-remove-this)
 - [Comparison](#comparison)
   - [How is Chocolatey different than OneGet/PowerShell Package Management?](#how-is-chocolatey-different-than-onegetpowershell-package-management)
   - [How is Chocolatey different than Ninite?](#how-is-chocolatey-different-than-ninite)
@@ -139,6 +149,44 @@ As of version 0.9.8.24, binaries, libraries and Chocolatey components install in
 We do, take a look at the [[roadmap|Roadmap]]
 
 
+
+<a id="markdown-security" name="security"></a>
+## Security
+
+<a id="markdown-is-chocolatey-secure" name="is-chocolatey-secure"></a>
+### Is Chocolatey secure?
+Yes, it is. You can read more at [[security|Security]] to understand the important details.
+
+<a id="markdown-why-do-i-have-to-confirm-packages-now-is-there-a-way-to-remove-this" name="why-do-i-have-to-confirm-packages-now-is-there-a-way-to-remove-this"></a>
+### Why do I have to confirm packages now? Is there a way to remove this?
+tl;dr - Yes, completely possible. Use `-y` or turn on `allowGlobalConfirmation`.
+
+Also check out the help menus now - `choco -h`, `choco install -h`
+
+Longer answer, we've moved a little closer towards other package managers for security reasons, where by default we stop and confirm if you are okay with the state change. We always communicate changes in the [[release notes|ReleaseNotes]] / [Changelog](https://github.com/chocolatey/choco/blob/master/CHANGELOG.md), which also end up in the [nuspec file](https://chocolatey.org/packages/chocolatey#releasenotes), so we highly recommend folks scan at least one of those to see anything tagged breaking changes. Always scan from your current version up to the one you are upgrading to so that you catch all changes.
+
+The one that is the most important right now is the `x.y.z` release (in this case 0.9.9), once we reach v1 we will be fully SemVer compliant and breaking changes will constitute a major version bump (we're still SemVer in a less than v1), so you can scan breaking changes and major new features in an `x` release, new compatible features in a `.y` release, and `.z` releases will only contain compatible fixes for the current release.
+
+0.9.9 introduced a new compiled client that was/is a total rewrite. 0.9.10 will have complete feature parity with the older client - see [FeatureParity](https://github.com/chocolatey/choco/labels/FeatureParity). Why the rewrite? For a more maintainable, faster client that can run on mono now, so you are not completely tied to Windows. We've started adding support for other install providers (like [Scriptcs](https://github.com/chocolatey/choco/issues/247)).
+
+The [relevant bits of the release notes](ReleaseNotes#099-march-3-2015) for the FAQ:
+
+ - [Security] Prompt for confirmation: For security reasons, we now stop for confirmation before changing the state of the system on most commands. You can pass `-y` to confirm any prompts or set a value in the config that will globally confirm and behave like older versions of Chocolatey (`allowGlobalConfirmation`, see `choco feature -h` for how to enable).
+
+Some folks may find the change quite annoying. The perspective of some folks isn't the perspective of everyone and we have some very security-conscious folks that want a verification of what they requested is what they end up with. So this prompt is extremely important for them. We are moving to a more secure by default approach so this change was important to get us there. Security related changes are some of the only things you will see that affect Chocolatey in such a way.
+
+We spent many months stressing over this change because of the breaking part and decided it wasn't going to get easier to change later. We've added the ability for you to set Chocolatey back to the way it was before with `allowGlobalConfirmation` and if the prompts annoy you, you should probably look at making this change.
+
+<a id="markdown-what-doesnt-the-website-implement-x-security-standard" name="what-doesnt-the-website-implement-x-security-standard"></a>
+### What doesn't the website implement x security standard?
+While we keep up with most security aspects, sometimes we miss things. Always feel free to reach out to us if you feel there is something we should implement to make that better.
+
+<a id="markdown-i-have-other-security-questions" name="i-have-other-security-questions"></a>
+### I have other security questions
+Please see [[security|Security]]. Please reach out to us if you cannot find answers to what you are looking for.
+
+
+
 <a id="markdown-using-chocolatey" name="using-chocolatey"></a>
 ## Using Chocolatey
 
@@ -156,7 +204,7 @@ Great question, we have a comparison table listed at [compare](https://chocolate
 
 <a id="markdown-im-interested-in-c4b-chocolatey-for-business-but-i-have-questions" name="im-interested-in-c4b-chocolatey-for-business-but-i-have-questions"></a>
 ### I'm interested in C4B (Chocolatey for Business) but I have questions.
-Please see [pricing](https://chocolatey.org/pricing) and the FAQ section. If it doesn't answer your questions, please feel free to reach out to the team from there!
+Please see [licensed editions](#licensed-editions) section below.
 
 <a id="markdown-does-chocolatey-require-administrative-permissions-to-run" name="does-chocolatey-require-administrative-permissions-to-run"></a>
 ### Does Chocolatey require administrative permissions to run?
@@ -164,8 +212,7 @@ It does by default - based on where it is installed. However there is an non-adm
 
 <a id="markdown-i-would-like-to-be-able-to-offer-my-non-admin-desktop-users-an-option-for-self-service-type-of-installations" name="i-would-like-to-be-able-to-offer-my-non-admin-desktop-users-an-option-for-self-service-type-of-installations"></a>
 ### I would like to be able to offer my non-admin desktop users an option for self-service type of installations.
-Yes, we absolutely support that scenario in Chocolatey for Business.
-
+Yes, we absolutely support that scenario in Chocolatey for Business. See [Licensed Editions](#licensed-editions) for more information.
 
 <a id="markdown-can-i-use-chocolatey-with-existing-installs" name="can-i-use-chocolatey-with-existing-installs"></a>
 ### Can I use Chocolatey with existing installs?
@@ -179,7 +226,7 @@ That would be https://chocolatey.org/api/v2/ aka the Community Package Repositor
 ### What can I install?
 You can package and install anything on Windows using Chocolatey - if it can be automated, Chocolatey and PowerShell can install, upgrade, and uninstall it.
 
-However, if you are just curious on what is available, check out the community package repository at http://chocolatey.org/packages.
+However, if you are just curious on what is available in the community, check out the community package repository at http://chocolatey.org/packages. Note that it does have one large limitation, distribution rights, which makes the community package repository not fully reliable like an internal repository which is not subject to distribution rights.
 
 You can also install packages from other sources (nuget.org, rubygems.org, web pi tools, etc).
 
@@ -256,12 +303,16 @@ Chocolatey itself is now a binary with 0.9.9+. This provides the ability to run 
 
 Chocolatey up until 0.9.9 was provided completely written in PowerShell, with the approach above. I don't know of any other app that has ever tried that approach, which made the original chocolatey client a rarity indeed.
 
+
+
 <a id="markdown-troubleshooting" name="troubleshooting"></a>
 ## Troubleshooting
 
 <a id="markdown-im-running-into-some-issue-with-chocolatey-packaging-or-something-else" name="im-running-into-some-issue-with-chocolatey-packaging-or-something-else"></a>
 ### I'm running into some issue with Chocolatey, packaging, or something else.
 See [[Troubleshooting]]
+
+
 
 <a id="markdown-organizational-use" name="organizational-use"></a>
 ## Organizational Use
@@ -281,6 +332,57 @@ If you are just setting up or updating developer workstations and can tolerate t
 <a id="markdown-chocolatey-is-great-i-need-it-to-do-something-additional-for-my-organization" name="chocolatey-is-great-i-need-it-to-do-something-additional-for-my-organization"></a>
 ### Chocolatey is great! I need it to do something additional for my organization.
 Please see https://chocolatey.org/compare - we may already support it doing that for the business edition. If not, feel free to reach out to our team.
+
+Also see the [Licensed Editions](#licensed-editions) section below.
+
+
+
+<a id="markdown-licensed-editions" name="licensed-editions"></a>
+## Licensed Editions
+
+<a id="markdown-what-is-the-difference-between-foss-and-the-licensed-editions" name="what-is-the-difference-between-foss-and-the-licensed-editions"></a>
+### What is the difference between FOSS and the licensed editions?
+A lot of that is covered in the FAQ on the [pricing](https://chocolatey.org/pricing#faq), but also be sure to check out the [comparison table](https://chocolatey.org/pricing#compare).
+
+<a id="markdown-are-the-licensed-editions-costs-annual" name="are-the-licensed-editions-costs-annual"></a>
+### Are the licensed editions costs annual?
+They are, but we can also do multi-year if you need to support something closer to that model. We also have a perpetual for Chocolatey for Business. For more detail, please see the [pricing FAQ](https://chocolatey.org/pricing#faq).
+
+<a id="markdown-can-you-do-monthly" name="can-you-do-monthly"></a>
+### Can you do monthly?
+Not at this current time. Please see the [pricing FAQ](https://chocolatey.org/pricing#faq) for more details.
+
+<a id="markdown-what-is-c4b" name="what-is-c4b"></a>
+### What is C4B?
+That is the short name for Chocolatey for Business.
+
+<a id="markdown-i-have-not-received-my-license" name="i-have-not-received-my-license"></a>
+### I have not received my license.
+
+The license email is sent from a support email at chocolatey dot io with an xml file (the license) attachment within 1-3 business days. If it has been 3 business days and you have not received your business license, please reach through the [sales contact](https://chocolatey.org/contact) (or any method you may already have for contacting sales) to get this resolved.
+
+Any number of things could have happened:
+
+* The message could be block by your servers
+* The message could be misidentified as spam
+
+To reduce these kind of occurrences, please make sure you have whitelisted the following email domains:
+
+* `realdimensions.net`
+* `chocolatey.io`
+* `chocolatey.org`
+
+Once you receive a few emails from there, it will give you an idea of how to lock that down further to fewer email addresses.
+
+<a id="markdown-i-just-purchased-and-i-need-my-license-sooner" name="i-just-purchased-and-i-need-my-license-sooner"></a>
+### I just purchased and I need my license sooner!
+Just reply to the order email you receive and let us know so we can bump the priority of your order.
+
+<a id="markdown-i-have-a-different-question-about-the-licensed-edition" name="i-have-a-different-question-about-the-licensed-edition"></a>
+### I have a different question about the licensed edition.
+Check out the FAQ on the [pricing](https://chocolatey.org/pricing#faq). If it doesn't answer your questions, please feel free to reach out to the sales team from there!
+
+
 
 <a id="markdown-packaging" name="packaging"></a>
 ## Packaging
@@ -308,6 +410,7 @@ Well, if you are not creating packages for the community package repository, you
 * MSI cache for MSIs - Windows caches the complete MSI binaries (and now you know where all that space went)
 
 
+
 <a id="markdown-videos--reference" name="videos--reference"></a>
 ## Videos / Reference
 
@@ -324,6 +427,7 @@ Yes we do, take a look at [[videos|Videos]] and [[known posts, presentations, et
 There is! This is a long video due to slow internet connections, but watch the first 1:30ish minutes and the last 1:30ish minutes and that will give you a general idea. [http://www.youtube.com/watch?v=N-hWOUL8roU](http://www.youtube.com/watch?v=N-hWOUL8roU)
 
 **NOTE:** This video shows dependency chaining, so you are seeing it install 11 applications/tools. It's also 6 years old and there have been many, many improvements since then.
+
 
 
 <a id="markdown-community-package-repository" name="community-package-repository"></a>
@@ -424,33 +528,6 @@ All packages (and the binaries they contain or download at runtime) on community
 ### What is the package cacher?
 On the community repository, we have a CDN cache for those files that would be downloaded by packages - those remote urls are overridden by default in licensed editions of Chocolatey to use those cached binaries. This is to avoid 404 errors you would normally see if those urls changed or were removed. See [[Customer CDN Download Cache|FeaturesPrivateCdn]] for more details.
 
-
-<a id="markdown-security" name="security"></a>
-## Security
-
-<a id="markdown-is-chocolatey-secure" name="is-chocolatey-secure"></a>
-### Is Chocolatey secure?
-Yes, it is. You can read more at [[security|Security]] to understand the important details.
-
-<a id="markdown-why-do-i-have-to-confirm-packages-now-is-there-a-way-to-remove-this" name="why-do-i-have-to-confirm-packages-now-is-there-a-way-to-remove-this"></a>
-### Why do I have to confirm packages now? Is there a way to remove this?
-tl;dr - Yes, completely possible. Use `-y` or turn on `allowGlobalConfirmation`.
-
-Also check out the help menus now - `choco -h`, `choco install -h`
-
-Longer answer, we've moved a little closer towards other package managers for security reasons, where by default we stop and confirm if you are okay with the state change. We always communicate changes in the [[release notes|ReleaseNotes]] / [Changelog](https://github.com/chocolatey/choco/blob/master/CHANGELOG.md), which also end up in the [nuspec file](https://chocolatey.org/packages/chocolatey#releasenotes), so we highly recommend folks scan at least one of those to see anything tagged breaking changes. Always scan from your current version up to the one you are upgrading to so that you catch all changes.
-
-The one that is the most important right now is the `x.y.z` release (in this case 0.9.9), once we reach v1 we will be fully SemVer compliant and breaking changes will constitute a major version bump (we're still SemVer in a less than v1), so you can scan breaking changes and major new features in an `x` release, new compatible features in a `.y` release, and `.z` releases will only contain compatible fixes for the current release.
-
-0.9.9 introduced a new compiled client that was/is a total rewrite. 0.9.10 will have complete feature parity with the older client - see [FeatureParity](https://github.com/chocolatey/choco/labels/FeatureParity). Why the rewrite? For a more maintainable, faster client that can run on mono now, so you are not completely tied to Windows. We've started adding support for other install providers (like [Scriptcs](https://github.com/chocolatey/choco/issues/247)).
-
-The [relevant bits of the release notes](ReleaseNotes#099-march-3-2015) for the FAQ:
-
- - [Security] Prompt for confirmation: For security reasons, we now stop for confirmation before changing the state of the system on most commands. You can pass `-y` to confirm any prompts or set a value in the config that will globally confirm and behave like older versions of Chocolatey (`allowGlobalConfirmation`, see `choco feature -h` for how to enable).
-
-Some folks may find the change quite annoying. The perspective of some folks isn't the perspective of everyone and we have some very security-conscious folks that want a verification of what they requested is what they end up with. So this prompt is extremely important for them. We are moving to a more secure by default approach so this change was important to get us there. Security related changes are some of the only things you will see that affect Chocolatey in such a way.
-
-We spent many months stressing over this change because of the breaking part and decided it wasn't going to get easier to change later. We've added the ability for you to set Chocolatey back to the way it was before with `allowGlobalConfirmation` and if the prompts annoy you, you should probably look at making this change.
 
 
 <a id="markdown-comparison" name="comparison"></a>
