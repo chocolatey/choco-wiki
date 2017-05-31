@@ -40,6 +40,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ### 2017
 #### May
 
+* http://searchwindowsserver.techtarget.com/tip/Use-Chocolatey-to-automate-software-installations-on-Windows-Server
 * https://powershell.org/forums/topic/package-management-in-a-dsc-world/
 
 #### March
