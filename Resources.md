@@ -41,6 +41,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 #### May
 
 * http://searchwindowsserver.techtarget.com/tip/Use-Chocolatey-to-automate-software-installations-on-Windows-Server
+* https://4sysops.com/archives/installing-and-removing-programs-with-the-powershell-package-manager
 * https://www.linuxexpres.cz/software/chocolatey-balickovaci-system-pro-windows
 * https://powershell.org/forums/topic/package-management-in-a-dsc-world/
 
