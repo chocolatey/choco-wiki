@@ -14,6 +14,7 @@ This release includes fixes and adjustments to the API to make it more usable. S
  * Fix - Chocolatey config changes in 0.10.4+ - The process cannot access the file because it is being used by another process - see [#1241](https://github.com/chocolatey/choco/issues/1241)
  * Fix - PowerShell sees authenticode hash as changed in scripts that are UTF8 (w/out BOM) that contain unicode characters - see [#1225](https://github.com/chocolatey/choco/issues/1225)
  * Fix - Chocolatey timed out immediately when execution timeout was infinite (0) - see [#1224](https://github.com/chocolatey/choco/issues/1224)
+ * Fix - Multiple authenticated sources with same base url fail when authentication is different - see [#1248](https://github.com/chocolatey/choco/issues/1248)
  * Fix - choco list / search / info - Some packages can't be found - see [#1004](https://github.com/chocolatey/choco/issues/1004)
  * Fix - chocolatey.config gets corrupted when multiple processes access simultaneously - see [#1258](https://github.com/chocolatey/choco/issues/1258)
  * Fix - Update ShimGen to 0.8.x to address some issues - see [#1243](https://github.com/chocolatey/choco/issues/1243)
