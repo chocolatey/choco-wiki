@@ -1,3 +1,14 @@
+<!-- TOC depthTo:2 -->
+
+- [Requirements](#requirements)
+- [Installing Chocolatey](#installing-chocolatey)
+- [More Install Options](#more-install-options)
+- [Upgrading Chocolatey](#upgrading-chocolatey)
+- [Uninstalling Chocolatey](#uninstalling-chocolatey)
+- [FAQs](#faqs)
+
+<!-- /TOC -->
+
 ## Requirements
 * Windows 7+ / Windows Server 2003+
 * PowerShell v2+
@@ -409,6 +420,34 @@ choco upgrade chocolatey
 ## Uninstalling Chocolatey
 
 See [[uninstall|Uninstallation]].
+
+## FAQs
+
+### I'm having trouble installing Chocolatey
+Make sure you've reviewed <a href="#more-install-options" onclick="document.getElementById('div-moreoptions').classList.remove('hide')">More Install Options</a> and looked over [[Troubleshooting|Troubleshooting]]. If you've done those things, reach out over the mailing list or over the chat (Gitter). The links to those can be found in the open source section of https://chocolatey.org/support.
+
+### I'm getting a 403 attempting to install
+This is addressed in [[Troubleshooting|Troubleshooting]].
+
+### Why isn't there an MSI?
+
+**tl;dr** - Chocolatey installs as a nupkg like everything else, a PowerShell install script just ensures that.
+
+Chocolatey was born out of providing automation for Windows and doing that with packages, packages that could surround an installer but didn't necessarily need to. The Chocolatey install scripts use the Chocolatey package (a nupkg file itself) to be installed and upgraded as just another package. This means Chocolatey is "eating its own dogfood" and it is unlikely we'd offer it as an MSI (native installer)as it would fly a bit in the face of what Chocolatey represents (although it is something that we would not rule out).
+
+The installation actually ensures a couple of things:
+
+* PowerShell is installed and is set up properly.
+
+    PowerShell is a requirement for using Chocolatey, not just for install. It is what drives the package installation process in most cases. Every package can have binaries and/or installation/uninstallation scripts (written in PowerShell). Chocolatey is the framework and each package gets to define how it is installed, upgraded, and uninstalled. It's an extremely flexible framework that has been proven to meet the insanity that is the Windows software installation ecosystem. That flexibility would not be easily achieved without PowerShell.
+
+    We do recognize there are a few organizations that disable PowerShell, so it's very likely in the future our [Business Edition](https://chocolatey.org/pricing#compare) will meet that need. PowerShell is a staple of Windows automation, so it is not the norm for an organization in this day and age to disable PowerShell.
+
+    Having an install process that uses PowerShell helps you determine quickly if Chocolatey will be able to be used in your environment.
+
+* You are open to doing things in a slightly different way, e.g. working with packages as opposed to installers.
+
+    You are open to the concept of using packages. Some folks might say this means we are asking folks to learn to 'do things "our way" because we know better'. It's less about "knowing better" and more about learning that Chocolatey does things in a slightly different way. It does that because the world of software is not just installers. Software goes beyond Programs and Features and a system that can track all of that also needs to as well. Package management is not a new concept in the world of software, perhaps just newer to Windows. If folks are not open to that, then they are probably not going to be open to Chocolatey. And that's completely fine. Chocolatey is not for everyone. We may eventually get to more of a masses approach. Right now we are targeting a specific type of audience - those that are looking for better ways to manage software on Windows and open to looking for the best process of doing that.
 
 <!--remove
 <p>&nbsp;</p>
