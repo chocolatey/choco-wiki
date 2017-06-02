@@ -8,7 +8,7 @@ There are settings and features that can customize the way that Chocolatey works
 Config settings are adjusted using `choco config set --name <nameFromBelow> --value <value>` and set back to default with `choco config unset --name <nameFromBelow>`. For more information see [[`choco config` command|CommandsConfig]] or run `choco config -?`.
 
 General
-* `cacheLocation` = **' '** - Cache location if not TEMP folder. Replaces $env:TEMP value.
+* `cacheLocation` = **' '** - Cache location if not TEMP folder. Replaces `$env:TEMP` value.
 * `containsLegacyPackageInstalls` = **'true'** - Install has packages installed prior to 0.9.9 series.
 * `commandExecutionTimeoutSeconds` = **'2700'** - Default timeout for command execution. '0' for infinite (starting in 0.10.4).
 * `webRequestTimeoutSeconds` = **'45'** - Default timeout for web requests. Available in 0.9.10+.
@@ -38,6 +38,8 @@ Virus Scanning
 
 Features are adjusted using `choco feature enable|disable -n <nameFromBelow>`. For more information see [[`choco feature` command|CommandsFeature]] or run `choco feature -?`.
 
+A checkbox means this feature is turned on by default.
+
 General
 * [x] `autoUninstaller` - Uninstall from programs and features without requiring an explicit uninstall script.
 * [ ] `failOnAutoUninstaller` - Fail if automatic uninstaller fails.
@@ -49,8 +51,6 @@ General
 * [x] `showDownloadProgress` - Show Download Progress - Show download progress percentages in the CLI. Available in 0.10.4+.
 * [ ] `stopOnFirstPackageFailure` - Stop On First Package Failure - stop running install, upgrade or uninstall on first package failure instead of continuing with others. As this will affect upgrade all, it is normally recommended to leave this off. Available in 0.10.4+.
 * [ ] `useRememberedArgumentsForUpgrades` - Use Remembered Arguments For Upgrades - when running upgrades, use arguments for upgrade that were used for installation ('remembered'). This is helpful when running upgrade for all packages. Available in 0.10.4+. This is considered in preview for 0.10.4 and will be flipped to on by default in a future release.
-
-
 
 Security
 * [ ] `allowGlobalConfirmation` - Prompt for confirmation in scripts or bypass.
