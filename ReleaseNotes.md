@@ -4,6 +4,13 @@ This covers changes for the "chocolatey" and "chocolatey.lib" packages, which ar
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Licensed Release Notes|ReleaseNotesLicensed]].
 
+## [0.10.6.1](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.6.1+is%3Aclosed) (June 2, 2017)
+
+### BUG FIXES
+* Fix - Do not fail extracting resources at runtime - see [#1318](https://github.com/chocolatey/choco/issues/1318)
+* Fix - Silently fail when deleting choco.exe.old - see [#1319](https://github.com/chocolatey/choco/issues/1319)
+
+
 ## [0.10.6](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.6+is%3Aclosed) (June 1, 2017)
 
 This release includes fixes and adjustments to the API to make it more usable. Search / List has also been improved with the data that it returns when verbose/detailed, along with info always returning a package with information instead of erroring sometimes. The search results from the community package repository now match what you see on the website.
