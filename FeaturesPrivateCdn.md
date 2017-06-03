@@ -59,7 +59,7 @@ The following options are added to install and upgrade commands.
 ## FAQ
 
 ### How do I take advantage of this feature?
-You must have a [licensed edition of Chocolatey](https://chocolatey.org/pricing) (Pro, Business, or MSP). Pro is a personal, named license that costs about the price of a lunch outing per month and comes with several other features. Business editions are great for organizations that need to manage the total software management lifecycle. MSP editions contain a subset of the Business edition features.
+You must have a [licensed edition of Chocolatey](https://chocolatey.org/pricing) (Pro, MSP, or Business) and use the community package repository to install/upgrade packages. Pro is a personal, named license that costs about the price of a lunch outing per month and comes with several other features. Business editions are great for organizations that need to manage the total software management lifecycle. MSP editions are for managed service providers and contain the same features as Pro (minus VirusTotal integration).
 
 ### I'm a licensed customer, now what?
 When you install packages from the community repository and a private cache becomes available, it will use that cache automatically. You don't have to do anything additional.
