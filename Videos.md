@@ -8,7 +8,7 @@
 
 ### 2017
 
-* https://www.youtube.com/watch?v=eXMTb3qetT0
+* Egee - [Chocolatey - The Windows Package Manager!](https://www.youtube.com/watch?v=eXMTb3qetT0) - June 5, 2017
 
 ### 2016
 
