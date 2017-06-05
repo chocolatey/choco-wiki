@@ -5,6 +5,11 @@
 ## Presentations
 
 ## In the community
+
+### 2017
+
+* https://www.youtube.com/watch?v=eXMTb3qetT0
+
 ### 2016
 
 * Arrested DevOps - [Microsoft Redux (Shout out)](https://youtu.be/rsnxc1l3Fz8?t=7m29s) - November 15, 2016
