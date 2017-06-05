@@ -38,6 +38,10 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ## Community
 
 ### 2017
+#### June
+
+* https://www.youtube.com/watch?v=eXMTb3qetT0
+
 #### May
 
 * http://searchwindowsserver.techtarget.com/tip/Use-Chocolatey-to-automate-software-installations-on-Windows-Server
