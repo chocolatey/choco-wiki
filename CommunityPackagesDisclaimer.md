@@ -48,7 +48,7 @@ Another aspect to keep in mind is that the community package repository is meant
 
 **CAPTCHAs and Blocks are meant to be temporary bans, but requires you to act to remedy the situation.**
 
-**NOTE**: If you or your organization feels you will need to go over this limit (or you have found that you have gone over the limit and have been warned/blocked), please reach out at https://chocolatey.org/contact (send message to "Website" in the drop down) or go to https://gitter.im/chocolatey/choco to contact the community team. As we have limited information, please include your name, email address, phone number, and the IP addresses you believe are blocked so we can contact you and verify if there is a ban. Once you have resolved any issues on your side, we can lift the ban.
+**NOTE**: If you or your organization feels you will need to go over this limit (or you have found that you have gone over the limit and have been warned/blocked), please reach out at https://chocolatey.org/contact (send message to "Website" in the drop down) or go to https://gitter.im/chocolatey/choco to contact the community team. As we have limited information, please include your name, email address, phone number, and the IP addresses you believe are blocked so we can contact you and verify if there is a ban. Once you have resolved any issues on your side, we can lift the ban. This will not automatically expire, we do need you to contact us.
 
 ## Community Provided Packages Are Not Supported
 
