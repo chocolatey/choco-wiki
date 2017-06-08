@@ -4,7 +4,7 @@ This covers changes for the "chocolatey" and "chocolatey.lib" packages, which ar
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Licensed Release Notes|ReleaseNotesLicensed]].
 
-## [0.10.7](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.7+is%3Aclosed) (unreleased)
+## [0.10.7](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.7+is%3Aclosed) (June 8, 2017)
 
 ### BREAKING CHANGES
 
