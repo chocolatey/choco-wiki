@@ -21,6 +21,11 @@ This covers changes for the "chocolatey" and "chocolatey.lib" packages, which ar
  * Fix - choco list / search / info - fails with local directory source - see [#1325](https://github.com/chocolatey/choco/issues/1325)
  * Fix - When version is four digits, Chocolatey version heading is not shown - see [#1326](https://github.com/chocolatey/choco/issues/1326)
  * Fix - search / list - page/page-size not honored for exact search in 0.10.6 - see [#1322](https://github.com/chocolatey/choco/issues/1322)
+ * Fix - Deserializing failures on package info files should not fail the choco run - see [#1328](https://github.com/chocolatey/choco/issues/1328)
+
+### IMPROVEMENTS
+
+ * Use `$packageArgs` in default template for uninstall script - see [#1330](https://github.com/chocolatey/choco/issues/1330)
 
 
 ## [0.10.6.1](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.6.1+is%3Aclosed) (June 3, 2017)
