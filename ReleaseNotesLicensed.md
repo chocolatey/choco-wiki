@@ -6,7 +6,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 ## 1.10.0 (June 9, 2017)
 
-This release brings Package Throttle, Package Synchronizer's "Show All Packages in Programs and Features", and Direct Installer (install and upgrade from exe/msi directly) to Chocolatey. There are also numerous improvements to Package Builder, fixes and improvements to Package Internalizer and Self-Service. Package Throttle is in all licensed editions, allowing Pro, MSP, and C4B customers the ability to slow down Chocolatey as it downloads packages and any resources the packages are downloading. See more details each section below.
+This release brings Package Throttle, Package Synchronizer's "Show All Packages in Programs and Features", and Direct Installer (aka Package-less Install) to Chocolatey. There are also numerous improvements to Package Builder, fixes and improvements to Package Internalizer and Self-Service. Package Throttle is in all licensed editions, allowing Pro, MSP, and C4B customers the ability to slow down Chocolatey as it downloads packages and any resources the packages are downloading. See more details each section below.
 
 ### BREAKING CHANGES
 
@@ -28,7 +28,7 @@ This release brings Package Throttle, Package Synchronizer's "Show All Packages 
 
     To turn this feature on, simply run the following command `choco feature enable -n showAllPackagesInProgramsAndFeatures`. For more details on the feature, see https://chocolatey.org/docs/chocolatey-configuration#package-synchronizer and https://chocolatey.org/docs/features-synchronize. This does require one additional run of `choco` to take affect (same when disabling the feature), hopefully we can remove that in the future.
 
- * Package-less Install / Direct Installer - Install and upgrade directly from installers!
+ * Package-less Install / Direct Installer - Install and upgrade directly from installers (MSIs, EXEs, etc)!!
 
     If Package Builder can create a fully unattended package for an installer, you don't even need a package first. You can simply call `choco install nameoffile.msi` or `choco upgrade nameoffile.exe` and Chocolatey will generate packaging on the fly and install/upgrade the package!
 
