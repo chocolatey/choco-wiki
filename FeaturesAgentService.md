@@ -20,7 +20,7 @@ The Chocolatey Agent service allows you to go further with your software managem
   - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
   - [I have Puppet or some other configuration management tool (RMM tool, infrastructure automation tool, etc.) that also runs Chocolatey. Can I configure it to skip background mode?](#i-have-puppet-or-some-other-configuration-management-tool-rmm-tool-infrastructure-automation-tool-etc-that-also-runs-chocolatey-can-i-configure-it-to-skip-background-mode)
   - [How does it work?](#how-does-it-work)
-  - [What's the minimum Chocolatey licensed edition version that I need to install the agent?](#whats-the-minimum-chocolatey-licensed-edition-version-that-i-need-to-install-the-agent)
+  - [What's the minimum Chocolatey licensed extension version that I need to install the agent?](#whats-the-minimum-chocolatey-licensed-extension-version-that-i-need-to-install-the-agent)
   - [How is it secure?](#how-is-it-secure)
   - [Do you have an example of a message that goes across the agent service named pipe, from the client?](#do-you-have-an-example-of-a-message-that-goes-across-the-agent-service-named-pipe-from-the-client)
   - [What is the purpose of the hash that is used to protect the named pipe?](#what-is-the-purpose-of-the-hash-that-is-used-to-protect-the-named-pipe)
@@ -35,8 +35,8 @@ The Chocolatey agent enables two simultaneous modes of operation, one as an agen
 ### Requirements
 
 * Chocolatey v0.10.3+ - v0.10.4+ is recommended for better compatibility.
-* Chocolatey Licensed Edition (`chocolatey.extension`) v1.8.4+. For chocolatey-agent v0.5.0+, licensed edition v1.9.0+.
-* Chocolatey for Business edition
+* Chocolatey for Business (C4B) Edition
+* Chocolatey Licensed Extension (`chocolatey.extension`) v1.8.4+. For chocolatey-agent v0.5.0+, licensed edition v1.9.0+.
 
 ### Setup
 
@@ -160,7 +160,7 @@ Yes! Add `--run-actual` to your install options. Most likely your tool won't nee
 ### How does it work?
 As a background service, it is able to call Chocolatey with an administrative account that is configured by you. It is secure communication that only starts once Chocolatey is configured to work with the background service.
 
-### What's the minimum Chocolatey licensed edition version that I need to install the agent?
+### What's the minimum Chocolatey licensed extension version that I need to install the agent?
 
 You need `chocolatey.extension` version 1.8.4+.
 
