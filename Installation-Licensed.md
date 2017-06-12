@@ -13,6 +13,7 @@ Congratulations on your recent purchase of a licensed edition of Chocolatey! If 
   - [How Do I Upgrade The Trial Edition?](#how-do-i-upgrade-the-trial-edition)
 - [Installing / Upgrading In Secure Environments / Without Internet Access](#installing--upgrading-in-secure-environments--without-internet-access)
 - [Set Up Licensed Edition With Puppet](#set-up-licensed-edition-with-puppet)
+- [Install the Chocolatey Agent Service](#install-the-chocolatey-agent-service)
 
 <!-- /TOC -->
 
@@ -155,3 +156,14 @@ package { 'chocolatey.extension':
   require  => File['C:/ProgramData/chocolatey/license/chocolatey.license.xml'],
 }
 ~~~
+
+## Install the Chocolatey Agent Service
+
+For C4B (Chocolatey for Business) customers, there is an optional agent service you can install. The agent service allows for things like background mode, setting up maintenance windows (future), and hooking up to Chocolatey Central Management (future).
+
+To be able to install it, you must first have the licensed edition properly installed. Once you have [verified your install](#how-do-i-know-when-the-license-is-installed), you can run the following:
+
+* `choco install chocolatey-agent <options>`
+
+
+**NOTE**: If you have internalized licensed packages (or are on a trial) and you see something similar to the following: `ERROR: The term 'Install-ChocolateyWindowsService' is not recognized as the name of a cmdlet, function, script file, or operable program`, it means you don't yet have a verified set up of the licensed edition. You will need to resolve that first and then install the agent service as it won't install without a verified setup. 
