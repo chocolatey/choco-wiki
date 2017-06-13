@@ -14,6 +14,9 @@ Congratulations on your recent purchase of a licensed edition of Chocolatey! If 
 - [Installing / Upgrading In Secure Environments / Without Internet Access](#installing--upgrading-in-secure-environments--without-internet-access)
 - [Set Up Licensed Edition With Puppet](#set-up-licensed-edition-with-puppet)
 - [Install the Chocolatey Agent Service](#install-the-chocolatey-agent-service)
+- [Common Errors and Resolutions](#common-errors-and-resolutions)
+  - [Exception of type 'Rhino.Licensing.LicenseNotFoundException' was thrown.](#exception-of-type-rhinolicensinglicensenotfoundexception-was-thrown)
+  - [ERROR: The term 'Install-ChocolateyWindowsService' is not recognized as the name of a cmdlet, function, script file, or operable program.](#error-the-term-install-chocolateywindowsservice-is-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
 
 <!-- /TOC -->
 
@@ -30,10 +33,14 @@ Congratulations on your recent purchase of a licensed edition of Chocolatey! If 
 Installing a licensed edition requires two parts
 
 * The properly placed license file
-* Installing/upgrading the licensed code.
+* Installing/upgrading the licensed package - Chocolatey Licensed Extension (`chocolatey.extension`)
 
-When you have performed all parts correctly, running `choco` will produce a message like
-`Chocolatey v0.10.3 Professional` / `Chocolatey v0.10.3 Business`
+When you have performed all parts correctly, running `choco` will produce a message like one of the following:
+
+* `Chocolatey v0.10.7 Professional`
+* `Chocolatey v0.10.7 Business`
+
+If you do not see the edition next to the name and version, you need to check over your installation procedure again to ensure you've completed it properly. See below.
 
 ## See It In Action
 Here's the whole process for installing your license and installing the licensed code.
@@ -165,5 +172,20 @@ To be able to install it, you must first have the licensed edition properly inst
 
 * `choco install chocolatey-agent <options>`
 
+For more on the agent service, please see [[Agent Service|FeaturesAgentService]].
 
-**NOTE**: If you have internalized licensed packages (or are on a trial) and you see something similar to the following: `ERROR: The term 'Install-ChocolateyWindowsService' is not recognized as the name of a cmdlet, function, script file, or operable program`, it means you don't yet have a verified set up of the licensed edition. You will need to resolve that first and then install the agent service as it won't install without a verified setup. 
+## Common Errors and Resolutions
+
+When you are attempting to install the licensed edition, you may run into some errors depending on your configuration. Here are some common ones we've seen.
+
+### Exception of type 'Rhino.Licensing.LicenseNotFoundException' was thrown.
+
+If you run into this error, it means you are on an older version of Chocolatey and you need to upgrade.
+
+1. Remove the license file.
+1. Upgrade the `chocolatey` package - `choco upgrade chocolatey <options>`
+1. Set the license file back and proceed with the install or upgrade process as above.
+
+### ERROR: The term 'Install-ChocolateyWindowsService' is not recognized as the name of a cmdlet, function, script file, or operable program.
+
+You can get this if you are attempting to install the `chocolatey-agent` package, but you don't have a verified installation of a licensed edition of Chocolatey. You must resolve that prior to attempting to install the `chocolatey-agent` package. See [How Do I Know When the License is Installed?](#how-do-i-know-when-the-license-is-installed).
