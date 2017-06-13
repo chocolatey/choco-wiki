@@ -9,6 +9,7 @@ Congratulations on your recent purchase of a licensed edition of Chocolatey! If 
 - [See It In Action](#see-it-in-action)
 - [How Do I Install The Licensed Edition?](#how-do-i-install-the-licensed-edition)
   - [How Do I Install The Trial Edition?](#how-do-i-install-the-trial-edition)
+    - [Notes on the Trial Version](#notes-on-the-trial-version)
 - [Upgrading](#upgrading)
   - [How Do I Upgrade The Trial Edition?](#how-do-i-upgrade-the-trial-edition)
 - [Installing / Upgrading In Secure Environments / Without Internet Access](#installing--upgrading-in-secure-environments--without-internet-access)
@@ -66,6 +67,12 @@ If you've received a trial license, you will also receive a link to download a r
  * Follow all of the instructions above except the `choco upgrade chocolatey.extension` command, that will not work with the trial license as the license will not be recognized by the licensed source.
  * Instead download the `chocolatey.extension` (licensed package) from the provided download link location and remember where you saved it.
  * Now run this command: `choco upgrade chocolatey.extension --pre --source c:\folder\where\downloaded\nupkg\resides` (or you can use `install` instead of `upgrade`). **Note**: Source location is not `--source c:\downloads\chocolatey.extension.1.8.1.nupkg`, it is `--source c:\downloads`.
+
+#### Notes on the Trial Version
+
+In the trial, package authoring features have nag warnings that require someone to manually hit the Enter key a random number of times. Do not attempt to automate Package Internalizer / Package Builder or `choco sync` when using a trial of C4B. Execute those things directly and see how well they work for you.
+
+There are no trial type messages for runtime features unless they need to use Package Builder (like `choco sync` does), which should allow you to test those features with other integration tools.
 
 ## Upgrading
 
