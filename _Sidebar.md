@@ -36,8 +36,8 @@
 [[How does choco work?|GettingStarted#how-does-chocolatey-work]]
 
  - [[How to install|installation]]
- - [[Configuration / chocolatey.config|ChocolateyConfiguration]]
  - [[How to install licensed edition|installation-licensed]]
+ - [[Configuration / chocolatey.config|ChocolateyConfiguration]]
  - [[How to uninstall|Uninstallation]]
  - [[Getting Started|GettingStarted]]
  - [[Proxy Settings|Proxy-Settings-for-Chocolatey]]
