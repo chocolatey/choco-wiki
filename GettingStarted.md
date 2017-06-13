@@ -29,6 +29,7 @@ Let's install [Notepad++](http://notepad-plus-plus.org/).
 1. That's it. Pretty simple but powerful little concept!
 
 ### Overriding default install directory or other advanced install concepts
+<a name="overriding-default-install-directory"></a>
 
 1. Yes we support that through the use of install arguments - see [[Install Arguments|CommandsInstall#installarguments]]
 1. If you wanted to pass native argument to the installer, like the install directory, you would need to know the silent argument passed to that particular installer and then you would specify it on the command line or in the packages.config.
