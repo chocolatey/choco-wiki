@@ -28,8 +28,8 @@ Let's install [Notepad++](http://notepad-plus-plus.org/).
 1. If you have UAC turned on or are not an administrator, Chocolatey is going to request administrative permission at some point (at least once during the process). Otherwise it will not be able to finish what it is doing successfully. If you don't have UAC turned on, it will just continue on without stopping to bother you.
 1. That's it. Pretty simple but powerful little concept!
 
-### Overriding default install directory or other advanced install concepts
 <a name="overriding-default-install-directory"></a>
+### Overriding default install directory or other advanced install concepts
 
 1. Yes we support that through the use of install arguments - see [[Install Arguments|CommandsInstall#installarguments]]
 1. If you wanted to pass native argument to the installer, like the install directory, you would need to know the silent argument passed to that particular installer and then you would specify it on the command line or in the packages.config.
