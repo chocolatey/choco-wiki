@@ -157,6 +157,14 @@ Once you have the agent service installed and Chocolatey for Business configured
 
 Yes! Add `--run-actual` to your install options. Most likely your tool won't need to be reconfigured though as it will just work with background mode. You will need Chocolatey v0.10.3+ installed across your environment so Chocolatey handles the unknown arguments appropriately.
 
+### I'm getting the following: "There are no sources enabled for packages and none were passed as arguments."
+
+This means you need to opt a source into self-service (new in Chocolatey Extension v1.10). 
+
+This just involves ensuring a source is set so that it allows self-service. To do this you run `choco source add -n name -s location <--other details need repeated> --allow-self-service`. Editing a source happens when the name is the same in `choco source add`.
+
+To change this behavior back to the way it was previously, simply run `choco disable -n useBackgroundServiceWithSelfServiceSourcesOnly`. For feature options, run `choco feature list` or see [[Self-Service Feature Configuration|Chocolatey-Configuration#self-service-background-mode]]
+
 ### How does it work?
 As a background service, it is able to call Chocolatey with an administrative account that is configured by you. It is secure communication that only starts once Chocolatey is configured to work with the background service.
 
