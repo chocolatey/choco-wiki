@@ -164,7 +164,7 @@ This means you need to opt a source into self-service (new in Chocolatey Extensi
 
 This just involves ensuring a source is set so that it allows self-service. To do this you run `choco source add -n name -s location <--other details need repeated> --allow-self-service`. Editing a source happens when the name is the same in `choco source add`.
 
-To change this behavior back to the way it was previously, simply run `choco disable -n useBackgroundServiceWithSelfServiceSourcesOnly`. For feature options, run `choco feature list` or see [[Self-Service Feature Configuration|Chocolatey-Configuration#self-service-background-mode]]
+To change this behavior back to the way it was previously, simply run `choco disable -n useBackgroundServiceWithSelfServiceSourcesOnly`. For feature options, run `choco feature list` or see [[Self-Service Feature Configuration|ChocolateyConfiguration#self-service-background-mode]]
 
 ### How does it work?
 As a background service, it is able to call Chocolatey with an administrative account that is configured by you. It is secure communication that only starts once Chocolatey is configured to work with the background service.
