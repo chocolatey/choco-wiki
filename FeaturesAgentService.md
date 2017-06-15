@@ -49,7 +49,7 @@ To set Chocolatey in background mode, you need to run the following:
 * `choco install chocolatey-agent <options>`
 * `choco feature enable -n useBackgroundService`
 * `choco feature disable -n showNonElevatedWarnings` - Chocolatey v0.10.4+
-* You also need to opt a source in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`)
+* You also need to opt in sources in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`). Alternatively, you can allow any configured source to be used for self-service by running the following: `choco disable -n useBackgroundServiceWithSelfServiceSourcesOnly` - Chocolatey Extension v1.10+.
 
 This will install Chocolatey Agent as LocalSystem (`SYSTEM`). To change the user, edit the username/password in the services management console on `Chocolatey Agent` properties and restart the service. Currently you will need to do this on upgrade as well.
 
