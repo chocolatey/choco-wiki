@@ -32,6 +32,8 @@ This also allows applications and tools to be on the "PATH" without cluttering u
 These are the benefits of creating a shim:
 
  * Provides an exe file that calls a target executable.
+ * Runs the target executable where it is, which means all dependencies and other things used are all in the original location
+ * When items require elevated privileges, shims will raise UAC prompts.
  * The exe can be called from powershell, bash, cmd.exe, or other shells just like you would call the target.
  * Blocks and waits for command line apps to finish running, exits immediately when running a GUI app.
  * Uses the icon of the target if the target exists on creation.
