@@ -85,7 +85,9 @@ This works with all versions of Chocolatey. Just use packages and when those pac
 Chocolatey uses a tool called ShimGen that inspects an executable and creates a small binary, known as a "shim", that simply calls the executable. Then it places that shim in the `"$($env:ChocolateyInstall)\bin"`. It creates the shim by generating it at runtime based on the actual binary's information.
 
 ### How is this better than symlinks?
-When you symlink a file on Windows, you must symlink all of its dependencies like dlls and config files. If you put that all into the `"$($env:ChocolateyInstall)\bin"` folder to take advantage of being on the PATH, you can quickly see that you will get into a form of "DLL hell" when other executables depend on different versions of the same DLL. Shimming by design does not run into this issue.
+When you symlink a file on Windows, you must symlink all of its dependencies like dlls and config files. If you put that all into the `"$($env:ChocolateyInstall)\bin"` folder to take advantage of being on the PATH, you can quickly see that you will get into a form of "DLL hell" when other executables depend on different versions of the same DLL. You would also need to symlink folders and files for things like plugins, extensions, skins, and other things that are in the original directory. If you are trying to create a symlink to not add more locations to your PATH environment variable, then this particular shortcoming defeats that purpose entirely.
+
+Shimming by design does not run into this issue.
 
 ### Does it require admin rights?
 No, and this is another thing that sets it apart from symlinks. To create symlinks on Windows, you need to have `SeCreateSymbolicLinkPrivilege`, which is one of the privileges granted to Administrators.
