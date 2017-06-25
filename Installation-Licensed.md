@@ -18,6 +18,7 @@ Congratulations on your recent purchase of a licensed edition of Chocolatey! If 
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Exception of type 'Rhino.Licensing.LicenseNotFoundException' was thrown.](#exception-of-type-rhinolicensinglicensenotfoundexception-was-thrown)
   - [ERROR: The term 'Install-ChocolateyWindowsService' is not recognized as the name of a cmdlet, function, script file, or operable program.](#error-the-term-install-chocolateywindowsservice-is-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
+  - [Unable to load licensed version extensions and commands.](#unable-to-load-licensed-version-extensions-and-commands)
 
 <!-- /TOC -->
 
@@ -196,3 +197,22 @@ If you run into this error, it means you are on an older version of Chocolatey a
 ### ERROR: The term 'Install-ChocolateyWindowsService' is not recognized as the name of a cmdlet, function, script file, or operable program.
 
 You can get this if you are attempting to install the `chocolatey-agent` package, but you don't have a verified installation of a licensed edition of Chocolatey. You must resolve that prior to attempting to install the `chocolatey-agent` package. See [How Do I Know When the License is Installed?](#how-do-i-know-when-the-license-is-installed).
+
+### Unable to load licensed version extensions and commands.
+
+You may see a message like this: `Unable to load licensed version extensions and commands. Please make sure the version of Chocolatey you are on is up to date and meets the minimum requirements of the licensed version. If that version is in beta, that means the latest avaialble version.` followed by the actual error that may look something like this: `Could not load type 'chocolatey.infrastructure.app.services.Isomething' from assembly 'choco, Version=0.10.7.0, Culture=neutral, PublicKeyToken=79d02ea9cad655eb'. 0.10.7`.
+
+If you see this, it is typically due to an incompatibility between Chocolatey and the licensed extension (Chocolatey.Extension). As these two are tightly integrated to each other, sometimes there are incompatibilities introduced. Chocolatey Software will inform customers of these issues and ways to get around that, typically ahead of releases on the customer advisory list (the link for this is sent with the email that contained the license).
+
+First steps:
+
+* Try `choco upgrade chocolatey.extension -y`
+
+If that is successful, you are good to go.
+
+If not, the following steps should remedy the situation:
+
+* Remove the license file - rename the `license` folder to `licensed`.
+* Run `choco uninstall chocolatey.extension`
+* Add the license file again - rename the `licensed` folder back to `license`.
+* Run `choco upgrade chocolatey.extension`.
