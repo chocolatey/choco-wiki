@@ -4,6 +4,19 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.11.0 (June 27, 2017)
+
+### BUG FIXES
+
+ * Self-Service / Background Mode
+    * Fix - Use a URI with WCF named pipes that doesn't exclusively hold a lock on the root (blocking other services). Fallback to old URI for versions of chocolatey-agent less than 0.7.0+. - see [#12](https://github.com/chocolatey/chocolatey-licensed-issues/issues/12).
+    * Fix - Ensure chocolatey.lib can send arguments through and not just choco.exe.
+
+### IMPROVEMENTS
+
+ * Package Synchronizer - update registry links when software updates
+
+
 ## 1.10.0 (June 9, 2017)
 
 This release brings Package Throttle, Package Synchronizer's "Show All Packages in Programs and Features", and Direct Installer (aka Package-less Install) to Chocolatey. There are also numerous improvements to Package Builder, fixes and improvements to Package Internalizer and Self-Service. Package Throttle is in all licensed editions, allowing Pro, MSP, and C4B customers the ability to slow down Chocolatey as it downloads packages and any resources the packages are downloading. See more details each section below.
