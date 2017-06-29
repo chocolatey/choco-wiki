@@ -19,12 +19,14 @@ The Chocolatey Agent service allows you to go further with your software managem
   - [How do I take advantage of Chocolatey Agent?](#how-do-i-take-advantage-of-chocolatey-agent)
   - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
   - [I have Puppet or some other configuration management tool (RMM tool, infrastructure automation tool, etc.) that also runs Chocolatey. Can I configure it to skip background mode?](#i-have-puppet-or-some-other-configuration-management-tool-rmm-tool-infrastructure-automation-tool-etc-that-also-runs-chocolatey-can-i-configure-it-to-skip-background-mode)
+  - [I'm getting the following: "There are no sources enabled for packages and none were passed as arguments."](#im-getting-the-following-there-are-no-sources-enabled-for-packages-and-none-were-passed-as-arguments)
   - [How does it work?](#how-does-it-work)
   - [What's the minimum Chocolatey licensed extension version that I need to install the agent?](#whats-the-minimum-chocolatey-licensed-extension-version-that-i-need-to-install-the-agent)
   - [How is it secure?](#how-is-it-secure)
   - [Do you have an example of a message that goes across the agent service named pipe, from the client?](#do-you-have-an-example-of-a-message-that-goes-across-the-agent-service-named-pipe-from-the-client)
   - [What is the purpose of the hash that is used to protect the named pipe?](#what-is-the-purpose-of-the-hash-that-is-used-to-protect-the-named-pipe)
   - [Does the agent service or Chocolatey stop installation from unconfigured sources?](#does-the-agent-service-or-chocolatey-stop-installation-from-unconfigured-sources)
+  - [I'm having trouble seeing packages on a file share source](#im-having-trouble-seeing-packages-on-a-file-share-source)
 
 <!-- /TOC -->
 
@@ -164,7 +166,7 @@ Yes! Add `--run-actual` to your install options. Most likely your tool won't nee
 
 ### I'm getting the following: "There are no sources enabled for packages and none were passed as arguments."
 
-This means you need to opt a source into self-service (new in Chocolatey Extension v1.10). 
+This means you need to opt a source into self-service (new in Chocolatey Extension v1.10).
 
 This just involves ensuring a source is set so that it allows self-service. To do this you run `choco source add -n name -s location <--other details need repeated> --allow-self-service`. Editing a source happens when the name is the same in `choco source add`.
 
@@ -218,3 +220,10 @@ Chocolatey doesn't stop unconfigured sources for install, it lets the agent do s
 
 The one exception is when someone calls `--run-actual` in their arguments. But there is no escalation of privilege here because they would be running that under their own user context and thus only have the permissions granted to them already.
 
+### I'm having trouble seeing packages on a file share source
+
+The Chocolatey Agent service installs as LocalSystem by default, which may not have access to UNC shares. We recommend changing the service to a named account that is a local admin that would also have network access. You can do that in the Service Manager properties for the service itself (future state through package parameters). Please note you would need to make this change on each upgrade of the Agent until it is supported in the packaging itself.
+
+So if you've set up a source like `choco source add -n="'name'" -s="'\\unc\packages'" --priority=1`, by default this won't work with the Chocolatey Agent. You would need to grant access to machines or anonymous access to the share (Everyone Read is likely not enough).
+
+A great read on your options can be found at [Stack Exchange](https://serverfault.com/q/135867/79259).
