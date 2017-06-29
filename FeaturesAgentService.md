@@ -226,4 +226,7 @@ The Chocolatey Agent service installs as LocalSystem by default, which may not h
 
 So if you've set up a source like `choco source add -n="'name'" -s="'\\unc\packages'" --priority=1`, by default this won't work with the Chocolatey Agent. You would need to grant access to machines or anonymous access to the share (Everyone Read is likely not enough).
 
-A great read on your options can be found at [Stack Exchange](https://serverfault.com/q/135867/79259).
+A great read on your options can be found at the following Stack Exchange links:
+
+* https://serverfault.com/q/135867/79259
+* https://serverfault.com/q/41130/79259
