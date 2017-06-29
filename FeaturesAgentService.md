@@ -234,7 +234,7 @@ A great read on your options can be found at the following Stack Exchange links:
 A way to do this with LocalSystem (the default):
 
 1. Create a global group on the Domain
-    * add all computers \ desktops \ laptops to this group 
+    * add all machines to this group 
 1. Add this group to the share permissions with "Read" Access
 1. Add this group to the NTFS permissions with "Read" Access
 
