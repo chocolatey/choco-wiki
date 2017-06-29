@@ -230,3 +230,12 @@ A great read on your options can be found at the following Stack Exchange links:
 
 * https://serverfault.com/q/135867/79259
 * https://serverfault.com/q/41130/79259
+
+A way to do this with LocalSystem (the default):
+
+1. Create a global group on the Domain
+    * add all computers \ desktops \ laptops to this group 
+1. Add this group to the share permissions with "Read" Access
+1. Add this group to the NTFS permissions with "Read" Access
+
+**Note**:  You'll need to add this group itself and not nest it inside of another one. 
