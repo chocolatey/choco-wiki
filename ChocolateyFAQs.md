@@ -55,7 +55,8 @@
   - [What can a Chocolatey Package consist of?](#what-can-a-chocolatey-package-consist-of)
   - [Tell me about packaging](#tell-me-about-packaging)
   - [How do I create packages?](#how-do-i-create-packages)
-  - [I'm creating offline packages, what do I need?](#im-creating-offline-packages-what-do-i-need)
+  - [I'm created packages with the software contained in the package.](#im-created-packages-with-the-software-contained-in-the-package)
+  - [I'm creating internal or offline packages, what do I need?](#im-creating-internal-or-offline-packages-what-do-i-need)
 - [Videos / Reference](#videos--reference)
   - [Where can I learn more?](#where-can-i-learn-more)
   - [Do you have any references or videos I can see?](#do-you-have-any-references-or-videos-i-can-see)
@@ -358,7 +359,6 @@ That is the short name for Chocolatey for Business.
 
 <a id="markdown-i-have-not-received-my-license" name="i-have-not-received-my-license"></a>
 ### I have not received my license.
-
 The license email is sent from a support email at chocolatey dot io with an xml file (the license) attachment within 1-3 business days. If it has been 3 business days and you have not received your business license, please reach through the [sales contact](https://chocolatey.org/contact) (or any method you may already have for contacting sales) to get this resolved.
 
 Any number of things could have happened:
@@ -397,11 +397,14 @@ Chocolatey packages are what we like to think of as just fancy zip files. Zip fi
 
 <a id="markdown-how-do-i-create-packages" name="how-do-i-create-packages"></a>
 ### How do I create packages?
-
 Try running `choco new test` from a command shell and inspect the output. You will find quite a bit of helpful information and just in time documentation in there.
 
-<a id="markdown-im-creating-offline-packages-what-do-i-need" name="im-creating-offline-packages-what-do-i-need"></a>
-### I'm creating offline packages, what do I need?
+<a id="markdown-im-created-packages-with-the-software-contained-in-the-package" name="im-created-packages-with-the-software-contained-in-the-package"></a>
+### I'm created packages with the software contained in the package.
+Great! This is the most reliable use of Chocolatey, to embed the binaries directly in the package. See the next question for more details.
+
+<a id="markdown-im-creating-internal-or-offline-packages-what-do-i-need" name="im-creating-internal-or-offline-packages-what-do-i-need"></a>
+### I'm creating internal or offline packages, what do I need?
 Well, if you are not creating packages for the community package repository, you have different rules that apply. Embed as much as possible into the package (as long as it is under 500MB you should see no issues). We typically recommend 500MB as the threshhold for organizations for the following reasons:
 
 * a nupkg file size takes up some space
@@ -409,7 +412,7 @@ Well, if you are not creating packages for the community package repository, you
 * the actual install location if using an installer
 * MSI cache for MSIs - Windows caches the complete MSI binaries (and now you know where all that space went)
 
-If you on a licensed edition of Chocolatey, you can go up in size if you turn on Package Deflater (see https://chocolatey.org/pricing#compare). This changes the above:
+If you on a licensed edition of Chocolatey, you can go up in size if you turn on Package Reducer (see https://chocolatey.org/pricing#compare). This changes the above:
 
 * nupkg file is reduced to 5KB or less, no matter the size on install
 
@@ -419,7 +422,7 @@ Any of the following file extensions are removed from the package directory if t
 * msi / msu / msp
 * exe files if they are detected to be an installer
 
-So your foot print is more:
+So the space usage impact changes to what you'd normally experience outside of Chocolatey:
 
 * the actual install location (package directory, Program Files, etc)
 * MSI cache for MSIs
