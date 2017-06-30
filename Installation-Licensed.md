@@ -8,6 +8,7 @@ Congratulations on your recent purchase of a licensed edition of Chocolatey! If 
 - [How Do I Know When the License is Installed?](#how-do-i-know-when-the-license-is-installed)
 - [See It In Action](#see-it-in-action)
 - [How Do I Install The Licensed Edition?](#how-do-i-install-the-licensed-edition)
+  - [How Do I Install a Local nupkg File?](#how-do-i-install-a-local-nupkg-file)
   - [How Do I Install The Trial Edition?](#how-do-i-install-the-trial-edition)
     - [Notes on the Trial Version](#notes-on-the-trial-version)
 - [Upgrading](#upgrading)
@@ -60,6 +61,10 @@ Here's the whole process for installing your license and installing the licensed
 
   ![install/upgrade](https://cloud.githubusercontent.com/assets/63502/13052159/e6d1be92-d3c2-11e5-8856-d7580e51e3b6.png)
  1. That's it! You are good to go.
+
+### How Do I Install a Local nupkg File?
+
+See the next section
 
 ### How Do I Install The Trial Edition?
 
