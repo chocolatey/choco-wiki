@@ -29,6 +29,7 @@
  - <u>**Paid**</u>
  - [[Runtime Malware Protection (Pro+)|FeaturesVirusCheck]]
  - [[Download CDN Cache (Pro+)|FeaturesPrivateCdn]]
+ - [[Package Reducer (Pro+) - reduce package installation space impact|FeaturesPackageReducer]]
  - [[Ubiquitous Install Directory Option (Pro+)|FeaturesInstallDirectoryOverride]]
  - [[Package Throttle (Pro+)|FeaturesPackageThrottle]]
  - [[Package Synchronizer (Pro+ Auto / C4B Sync Command) - Sync with Programs and Features|FeaturesSynchronize]]
