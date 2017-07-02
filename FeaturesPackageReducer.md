@@ -57,6 +57,8 @@ So the space usage impact changes to what you'd normally experience outside of C
 
 ### Setup
 
+To turn on Package Reducer, you need to run the following:
+
 * `choco upgrade chocolatey.extension <options>`
 * `choco feature enable -n reduceInstalledPackageSpaceUsage`
 * If you want to limit to just nupkg files being reduced and not automatically removing zips and installers, run the following: `choco feature enable -n reduceOnlyNupkgSize`
