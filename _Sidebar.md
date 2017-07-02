@@ -29,9 +29,9 @@
  - <u>**Paid**</u>
  - [[Runtime Malware Protection (Pro+)|FeaturesVirusCheck]]
  - [[Download CDN Cache (Pro+)|FeaturesPrivateCdn]]
- - [[Ubiquitous Install Directory Option (Paid)|FeaturesInstallDirectoryOverride]]
- - [[Package Throttle (Paid)|FeaturesPackageThrottle]]
- - [[Package Synchronizer (Paid / C4B) - Sync with Programs and Features|FeaturesSynchronize]]
+ - [[Ubiquitous Install Directory Option (Pro+)|FeaturesInstallDirectoryOverride]]
+ - [[Package Throttle (Pro+)|FeaturesPackageThrottle]]
+ - [[Package Synchronizer (Pro+ Auto / C4B Sync Command) - Sync with Programs and Features|FeaturesSynchronize]]
  - [[Self-Service / Background Mode (C4B) - Allow non-administrators to install/upgrade software|FeaturesAgentService]]
  - [[Package Builder (C4B) - Create packages automatically from installers|FeaturesCreatePackagesFromInstallers]]
  - [[Package Internalizer (C4B) - Convert existing packages for complete offline / reliable use|FeaturesAutomaticallyRecompilePackages]]
