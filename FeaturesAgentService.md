@@ -1,4 +1,4 @@
-# Chocolatey Agent Service (C4B)
+# Chocolatey Agent Service (Business Editions Only)
 
 > Empower your users and give your IT folks the precious gift of time to invest into taking your organization to the next level!
 

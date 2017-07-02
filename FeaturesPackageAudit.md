@@ -1,4 +1,4 @@
-# Package Audit (C4B)
+# Package Audit (Business Editions Only)
 > Know who installed what package and when.
 
 Reporting is very important, and auditing not only when your installations occurred but who installed them can be critical. There is nothing that presents this kind of information as easily as you will be able to gather it with Chocolatey for Business (C4B) and Package Audit.

@@ -1,4 +1,4 @@
-# Package Throttle (Pro+)
+# Package Throttle (Licensed Editions Only)
 
 WORK IN PROGRESS, CHECK BACK FOR UPDATES
 

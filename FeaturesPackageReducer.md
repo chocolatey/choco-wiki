@@ -1,4 +1,4 @@
-# Package Reducer (Pro+)
+# Package Reducer (Licensed Editions Only)
 > Reduce the size of your package installations automatically
 
 If you have a significant number of Chocolatey packages you manage, you may notice that you also may have a pretty significant space usage under the Chocolatey lib directory. Package reducer automatically decreases the size of nupkg files to around 5KB and removes installers and zips automatically from your package install directories. This may allow you to save GBs of usage for a large amount of packages being managed!
