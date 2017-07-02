@@ -18,17 +18,26 @@
 
 #### Features
 
- - [[Package Synchronizer - Sync with Programs and Features|FeaturesSynchronize]]
- - [[Background Mode - Allow Non-Administrators To Install/Upgrade Software!|FeaturesAgentService]]
- - [[Package Builder - Create Packages Automatically from Installers!|FeaturesCreatePackagesFromInstallers]]
- - [[Package Internalizer - Automatically Internalize Existing Packages (Recompile)!|FeaturesAutomaticallyRecompilePackages]]
- - [[Runtime Malware Protection|FeaturesVirusCheck]]
- - [[Private CDN Cache|FeaturesPrivateCdn]]
- - [[Install Directory Override|FeaturesInstallDirectoryOverride]]
- - [[Infrastructure Automation Integration|FeaturesInfrastructureAutomation]]
- - [[Shims - Automatically Add exes to PATH w/out Clutter|FeaturesShim]]
+ - <u>**Free**</u>
+ - [[Create your own packages|CreatePackages]]
+ - [[Host packages internally|How-To-Host-Feed]]
+ - [[Integrates with everything|FeaturesInfrastructureAutomation]]
+ - [[Shim - Automatically Add exes to PATH w/out Clutter|FeaturesShim]]
  - [[Create Custom Package Templates|How-To-Create-Custom-Package-Templates]]
  - [[Extend Chocolatey With PowerShell Modules (extensions)|How-To-Create-Extensions]]
+ - Automatic Uninstaller
+ - <u>**Paid**</u>
+ - [[Runtime Malware Protection (Pro+)|FeaturesVirusCheck]]
+ - [[Download CDN Cache (Pro+)|FeaturesPrivateCdn]]
+ - [[Ubiquitous Install Directory Option (Paid)|FeaturesInstallDirectoryOverride]]
+ - [[Package Throttle (Paid)|FeaturesPackageThrottle]]
+ - [[Package Synchronizer (Paid / C4B) - Sync with Programs and Features|FeaturesSynchronize]]
+ - [[Self-Service / Background Mode (C4B) - Allow non-administrators to install/upgrade software|FeaturesAgentService]]
+ - [[Package Builder (C4B) - Create packages automatically from installers|FeaturesCreatePackagesFromInstallers]]
+ - [[Package Internalizer (C4B) - Convert existing packages for complete offline / reliable use|FeaturesAutomaticallyRecompilePackages]]
+ - Direct Installer (C4B) - install/upgrade directly from msi / exe installers
+ - [[Package Audit (C4B) - know who installed what and when|FeaturesPackageAudit]]
+ - Windows Service Management PowerShell Functions (C4B)
  - In progress, check back for updates!
 
 #### Usage
@@ -101,7 +110,7 @@
  - [[Parse Package Parameters|How-To-Parse-PackageParameters-Argument]]
  - [[Mount Iso|How-To-Mount-An-Iso-In-Chocolatey-Package]]
  - [[Deprecate a Package|How-To-Deprecate-A-Chocolatey-Package]]
- - [[Host Your Own Server|How-To-Host-Feed]]
+ - [[Host Your Own Package Repository Server|How-To-Host-Feed]]
  - [[Set up the Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]]
 
 #### Use Cases

@@ -412,20 +412,9 @@ Well, if you are not creating packages for the community package repository, you
 * the actual install location if using an installer
 * MSI cache for MSIs - Windows caches the complete MSI binaries (and now you know where all that space went)
 
-If you on a licensed edition of Chocolatey, you can go up in size if you turn on Package Reducer (see https://chocolatey.org/pricing#compare). This changes the above:
+If you are on a licensed edition of Chocolatey, you can turn on Package Reducer and the first two items above no longer take up any significant space. This can reduce space usage in the order of GBs for some installations of Chocolatey. See [[Package Reducer|FeaturesPackageReducer]] for more details.
 
-* nupkg file is reduced to 5KB or less, no matter the size on install
 
-Any of the following file extensions are removed from the package directory if they are found:
-* 7z / zip / rar / gz / tar / sfx
-* iso
-* msi / msu / msp
-* exe files if they are detected to be an installer
-
-So the space usage impact changes to what you'd normally experience outside of Chocolatey:
-
-* the actual install location (package directory, Program Files, etc)
-* MSI cache for MSIs
 
 <a id="markdown-videos--reference" name="videos--reference"></a>
 ## Videos / Reference

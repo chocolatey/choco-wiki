@@ -1,4 +1,4 @@
-# Chocolatey Agent Service
+# Chocolatey Agent Service (C4B)
 
 > Empower your users and give your IT folks the precious gift of time to invest into taking your organization to the next level!
 
@@ -158,11 +158,13 @@ This ensures non-admin users can only install from sources that you configure.
 You must have a [Business edition of Chocolatey](https://chocolatey.org/compare). Business editions are great for organizations that need to manage the total software lifecycle.
 
 ### I'm a licensed customer, now what?
-Once you have the agent service installed and Chocolatey for Business configured for background mode, most tools that use Chocolatey will automatically use the background service.
+Once you have the agent service installed and Chocolatey for Business configured for background mode (see [Setup](#setup) above), most tools that use Chocolatey will automatically use the background service.
 
 ### I have Puppet or some other configuration management tool (RMM tool, infrastructure automation tool, etc.) that also runs Chocolatey. Can I configure it to skip background mode?
 
 Yes! Add `--run-actual` to your install options. Most likely your tool won't need to be reconfigured though as it will just work with background mode. You will need Chocolatey v0.10.3+ installed across your environment so Chocolatey handles the unknown arguments appropriately.
+
+Another way to handle this as of Chocolatey Extension v1.12.0, turn on the `useBackgroundServiceWithNonAdministratorsOnly` feature to make self-service apply only to non-administrators. See [Background Mode Setup](#background-mode-setup) for details.
 
 ### I'm getting the following: "There are no sources enabled for packages and none were passed as arguments."
 
@@ -234,8 +236,8 @@ A great read on your options can be found at the following Stack Exchange links:
 A way to do this with LocalSystem (the default):
 
 1. Create a global group on the Domain
-    * add all machines to this group 
+    * add all machines to this group
 1. Add this group to the share permissions with "Read" Access
 1. Add this group to the NTFS permissions with "Read" Access
 
-**Note**:  You'll need to add this group itself and not nest it inside of another one. 
+**Note**:  You'll need to add this group itself and not nest it inside of another one.

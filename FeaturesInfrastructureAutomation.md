@@ -1,4 +1,4 @@
-# Configuration Management Integration
+# Configuration Management Integration  (Free / Open Source)
 
 Chocolatey integrates with several infrastructure automation tools!
 

@@ -1,4 +1,4 @@
-# Shimming - Automatically Add Executables to PATH
+# Shimming - Automatically Add Executables to PATH (Free / Open Source)
 
 Shimming is like symlinking, but it works much better. It's a form of redirection, where you create a "shim" that redirects input to the actual binary process and shares the output. It can also work to simply call the actual binary when it shims GUI applications.
 
