@@ -22,9 +22,9 @@
  - [[Create your own packages|CreatePackages]]
  - [[Host packages internally|How-To-Host-Feed]]
  - [[Integrates with everything|FeaturesInfrastructureAutomation]]
- - [[Shim - Automatically Add exes to PATH w/out Clutter|FeaturesShim]]
+ - [[Package Shims - Automatically Add exes to PATH w/out Clutter|FeaturesShim]]
  - [[Create Custom Package Templates|How-To-Create-Custom-Package-Templates]]
- - [[Extend Chocolatey With PowerShell Modules (extensions)|How-To-Create-Extensions]]
+ - [[Package Extensions - Extend Chocolatey With PowerShell Modules (extensions)|How-To-Create-Extensions]]
  - Automatic Uninstaller
  - <u>**Paid**</u>
  - [[Runtime Malware Protection (Pro+)|FeaturesVirusCheck]]
