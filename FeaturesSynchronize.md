@@ -2,8 +2,9 @@
 
 Chocolatey maintains its own state of the world, while Windows maintains the state of Programs and Features. If an application is upgraded or uninstalled outside of Chocolatey, such as is the case with Google Chrome and its auto updating utility, Chocolatey doesn't know about the change. The synchronize feature keeps Chocolatey's state in sync with Programs and Features, removing possible system-installed state drift.
 
-* [Automatic Sync](#automatic-synchronize)
+* [Automatic Sync (All Licensed Editions)](#automatic-synchronize)
 * [Synchronize Command](#sync-command) (Business edition only until Q3 2017)
+* [All Packages in Programs And Features (C4B)](#all-packages-in-programs-and-features)
 
 ---
 
@@ -31,11 +32,20 @@ Chocolatey maintains its own state of the world, while Windows maintains the sta
     - [How do I get machine parseable output?](#how-do-i-get-machine-parseable-output)
     - [What if I have an existing package that is just not tracking to Programs and Features?](#what-if-i-have-an-existing-package-that-is-just-not-tracking-to-programs-and-features)
   - [Sync Command Known issues](#sync-command-known-issues)
+- [All Packages in Programs and Features](#all-packages-in-programs-and-features)
+  - [Usage](#usage-2)
+  - [Requirements](#requirements)
+  - [Setup](#setup-1)
+  - [Options and Switches](#options-and-switches-2)
+  - [FAQ](#faq-2)
+    - [How do I take advantage of this feature?](#how-do-i-take-advantage-of-this-feature-2)
+    - [I'm a business customer, now what?](#im-a-business-customer-now-what-1)
+    - [How does it work?](#how-does-it-work-2)
+  - [Packages in Programs and Features Known Issues](#packages-in-programs-and-features-known-issues)
 
 <!-- /TOC -->
 
 ## Automatic Synchronize
-
 In licensed editions of Chocolatey, synchronize for existing packages that are tracking to software installed in Programs and Features happens automatically and takes effect prior to the command running.
 
 ### Usage
@@ -73,6 +83,8 @@ It just works.
 
 #### How does it work?
 Chocolatey tracks applications that it installs, so it is able to keep up with those applications as they are upgraded and uninstalled, even outside of Chocolatey.
+
+
 
 ## Sync Command
 
@@ -139,21 +151,70 @@ You would periodically run `choco sync`.
 Chocolatey takes a look at all software in Programs and Features that is not under Chocolatey management, generates packages on the fly and baselines them under the Chocolatey install, ensuring all of the links are tracked.
 
 #### Do I get the packages to add to source?
-
 Yes! Chocolatey will tell you the location of the sync files so you can put them into source control.
 
 #### Some packages have a TODO list
 Generating packages on the fly from Programs and Features for non-MSI installers doesn't provide everything necessary to ensure an actual install. So when you take those packages back to source, you will need to finish out the packaging for those so that later when you upgrade, things will work appropriately.
 
 #### How do I get machine parseable output?
-
 Use `-r`. `choco sync -r`. Requires Chocolatey v0.10.4+.
 
 #### What if I have an existing package that is just not tracking to Programs and Features?
-
 Synchronize can recognize existing packages and sync to those as long as the name of the package is a close match to the software name (e.g. Google Chrome becomes either google-chrome or googlechrome).
 
 ### Sync Command Known issues
-
 * Any packages you've installed side by side (`-m`) will show up every time during sync.
 * If you have both a 64-bit and 32-bit version of some software installed, sync will track to one on the first run and the other on the next run. This is not a normal scenario.
+
+
+
+## All Packages in Programs and Features
+In C4B, you can flip a switch and see all packages in Programs and Features, even those packages that don't have underlying native installers! This makes reporting back to legacy inventory reporting systems a snap.
+
+### Usage
+
+![All Packages in Programs And Features - if you are on https://chocolatey.org/docs/features-synchronize, see commented html below for detailed description of image](images/features/features_packages_in_programs_and_features.png)
+
+<!--
+Text in the image above:
+
+Package Synchronizer - All Packages in Programs and Features
+
+- All packages show up, even if they don't use a native installer
+- Managed automatically by Chocolatey
+- Supporting legacy inventory tracking systems is now a snap
+- No need to build MSIs for internal software
+
+This image shows a display of `choco list -lo` side by side with Programs and Features. It links a package with a native installer (Launchy) to show that it didn't do anything differently. It links a package that uses a zip archive (Screen To Gif), shows part of the nuspec file and how that all maps to the Programs and Features entry.
+-->
+
+### Requirements
+
+* Chocolatey (`chocolatey` package) v0.10.7+.
+* Chocolatey for Business (C4B) Edition.
+* Chocolatey Licensed Extension (`chocolatey.extension` package) v1.10.0+.
+
+### Setup
+
+* `choco feature enable -n showAllPackagesInProgramsAndFeatures`
+
+### Options and Switches
+
+ Global Feature Setting:
+
+ * `showAllPackagesInProgramsAndFeatures` - Package Synchronizer's Packages In Programs And Features Synchronization - Show all packages in Programs and Features, not just packages that use a native installer.
+
+### FAQ
+
+#### How do I take advantage of this feature?
+You must have the [business edition of Chocolatey](https://chocolatey.org/pricing). Business editions are great for organizations that need to manage the total software management lifecycle.
+
+#### I'm a business customer, now what?
+Once you set the feature, it just works automatically.
+
+#### How does it work?
+Chocolatey tracks packages that manage natively installed software. For packages that are zip archives or configuration, Chocolatey will add an entry into Programs and Features based on the nuspec. It's smart enough not to add an entry for a meta-package - say `notepadplusplus` and `notepadplusplus.install` are installed. The meta-package would be `notepadpluplus`.
+
+### Packages in Programs and Features Known Issues
+* MSU type packages will show up - Chocolatey doesn't automatically track Windows Updates types of installers. So if you install WMF 5 through Chocolatey and turn this feature on, it will show up as well.
+* You must run choco at least one more time after setting the feature for it to take effect. So flip the feature and then run `choco -v`.
