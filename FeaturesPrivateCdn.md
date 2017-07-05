@@ -41,7 +41,12 @@ When you install, you will see a message similar to the following when the cache
 
 ## Options and Switches
 
-The following options are added to install and upgrade commands.
+Global Feature:
+
+* `downloadCache` - Download Cache - use the private download cache if available for a package.
+
+
+`choco install` / `choco upgrade` provide the following option(s):
 
 ~~~
      --sdc, --skipdownloadcache, --skip-download-cache

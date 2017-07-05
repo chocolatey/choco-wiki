@@ -1,8 +1,6 @@
 # Package Throttle (Licensed Editions Only)
 
-WORK IN PROGRESS, CHECK BACK FOR UPDATES
-
-> Use Chocolatey in low bandwidth areas
+> Use Chocolatey in low bandwidth environments
 
 By default, Chocolatey downloads packages and any resources the packages use as fast as it can. In most cases, this is exactly the behavior you want. However, low bandwidth areas would be overwhelmed with this behavior and so you need to slow Chocolatey down. Package Throttle covers these low bandwidth scenarios automatically.
 
@@ -10,7 +8,6 @@ By default, Chocolatey downloads packages and any resources the packages use as 
 
 - [Usage](#usage)
   - [Requirements](#requirements)
-  - [Setup](#setup)
 - [See It In Action](#see-it-in-action)
 - [Options and Switches](#options-and-switches)
 - [FAQ](#faq)
@@ -18,10 +15,15 @@ By default, Chocolatey downloads packages and any resources the packages use as 
   - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
   - [How does it work?](#how-does-it-work)
   - [Package Throttle didn't slow down the downloads of resources in my package](#package-throttle-didnt-slow-down-the-downloads-of-resources-in-my-package)
+  - [How do I turn this feature on?](#how-do-i-turn-this-feature-on)
+  - [How do I turn this feature off?](#how-do-i-turn-this-feature-off)
 
 <!-- /TOC -->
 
 ## Usage
+Adding the option or config setting for maximum download rate will slow down the speed a package and any resources are downloaded to a particular machine. This is done in "bit per second" (b/s or bps), which is a common unit of data transmission rate (bandwidth) in computers. The symbol bps is often pronounced "bips."
+
+A good way to find what you need is to translate from Kbps to bits: [Google Kbps to bps](https://www.google.com/search?q=2+Kb/s+%3D+?+bps) or KB/s (bytes) to bits: [Google KB/s to bps](https://www.google.com/search?q=2+KB/s+%3D+bps).
 
 ### Requirements
 
@@ -29,17 +31,29 @@ By default, Chocolatey downloads packages and any resources the packages use as 
 * Chocolatey for Business (C4B) Edition.
 * Chocolatey Licensed Extension (`chocolatey.extension` package) v1.10.0+.
 
-### Setup
-
-Coming Soong!
-
 ## See It In Action
 
-Coming soon!
+![Package Throttle downloading a package and resources - - if you are on https://chocolatey.org/docs/features-package-throttle, see commented html below for detailed description of image](images/features/features_package_throttle.png)
+
+<!--
+Text in the image above:
+Package Throttle - Slow Downloads of Packages and Downloaded Resources
+
+- Great for low bandwidth environments
+- Will not overwhelm bandwidth pipes
+- Set in configuration and forget
+- Future Licensed editions: set auto and let Windows determine this value automatically
+
+-->
 
 ## Options and Switches
 
-With `choco install`/`choco upgrade`:
+Global Config Setting:
+
+ * `maximumDownloadRateBitsPerSecond` - The maximum download rate in bits per second. '0' or empty means no maximum. A number means that will be the maximum download rate in bps. Defaults to ''.
+
+
+`choco install` / `choco upgrade` provide the following option(s):
 
 ~~~sh
      --bps, --maxdownloadrate, --max-download-rate, --maxdownloadbitspersecond, --max-download-bits-per-second, --maximumdownloadbitspersecond, --maximum-download-bits-per-second=VALUE
@@ -59,6 +73,15 @@ You must have a [licensed edition of Chocolatey](https://chocolatey.org/pricing)
 It works to slow the download rate when you provide the maximum download rate as an argument or as a set feature.
 
 ### How does it work?
+It sees a resource being downloaded and throttles the download to lower download speeds, ensuring it doesn't go over a set number of bits per second during the entire course of the download.
 
 ### Package Throttle didn't slow down the downloads of resources in my package
 Package Throttle only works for resources downloaded with built-in Chocolatey PowerShell functions. It will not be able to slow down downloads using WebClient, and it's an anti-pattern in packaging to use WebClient anyways.
+
+### How do I turn this feature on?
+* Globally - `choco config set maximumDownloadRateBitsPerSecond <value>`
+* Per command - use the option `--max-download-bits-per-second="'<value>'"` with install/upgrade commands.
+
+### How do I turn this feature off?
+* Globally - `choco config unset maximumDownloadRateBitsPerSecond`
+* Per command - don't specify the `--max-download-bits-per-second` option.
