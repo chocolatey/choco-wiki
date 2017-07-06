@@ -84,4 +84,4 @@ Package Throttle only works for resources downloaded with built-in Chocolatey Po
 
 ### How do I turn this feature off?
 * Globally - `choco config unset maximumDownloadRateBitsPerSecond`
-* Per command - don't specify the `--max-download-bits-per-second` option.
+* Per command - don't specify the `--max-download-bits-per-second` option (and don't have the config set) or `--max-download-bits-per-second="'0'"` if you want to temporarily disable it but keep the config setting.
