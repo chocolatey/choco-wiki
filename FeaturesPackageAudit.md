@@ -29,11 +29,26 @@ When calling `choco list -lo`, add `--audit` to see information on who installed
 
 ## See It In Action
 
-Coming soon!
+![Package Audit - if you are on https://chocolatey.org/docs/features-package-audit, see commented html below for detailed description of image](images/features/features_package_audit.png)
+
+<!--
+Text in the image above:
+
+Package Audit - See who installed what and when
+
+-
+
+-->
 
 ## Options and Switches
 
-Coming soon!
+When calling `choco list -lo`:
+
+~~~sh
+   --audit, --showaudit, --show-audit, --show-audit-info
+   Show Audit Information - Display auditing information for a package.
+     Available in business editions 1.12.0+.
+~~~
 
 ## FAQ
 

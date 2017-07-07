@@ -81,7 +81,18 @@ To turn on Package Reducer, you need to run the following:
 
 ### See It In Action
 
-Coming soon!
+![Package Reducer - if you are on https://chocolatey.org/docs/features-package-reducer, see commented html below for detailed description of image](images/features/features_package_reducer.png)
+
+<!--
+Text in the image above:
+
+Package Reducer - Reduce Space Usage Automatically on Install/Upgrade
+
+- Nupkg file is reduced to 5KB or less, no matter the size
+- Zips / installers are automatically removed from the package directory if found
+- Zips / installers are removed from TEMP cache if found
+
+-->
 
 ### Options and Switches
 
@@ -189,7 +200,6 @@ choco optimize --reduce-nupkg-only
 ~~~
 
 ### See It In Action
-
 
 ![choco optimize - if you are on https://chocolatey.org/docs/features-package-reducer, see commented html below for detailed description of image](images/features/features_package_reducer_optimize.png)
 
