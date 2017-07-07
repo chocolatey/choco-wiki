@@ -28,7 +28,7 @@ A good way to find what you need is to translate from Kbps to bits: [Google Kbps
 ### Requirements
 
 * Chocolatey (`chocolatey` package) v0.10.7+.
-* Chocolatey for Business (C4B) Edition.
+* Chocolatey Licensed Edition.
 * Chocolatey Licensed Extension (`chocolatey.extension` package) v1.10.0+.
 
 ## See It In Action
