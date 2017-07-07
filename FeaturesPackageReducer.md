@@ -68,7 +68,7 @@ So the space usage impact changes to what you'd normally experience outside of C
 #### Requirements
 
 * Chocolatey (`chocolatey` package) v0.10.7+.
-* Chocolatey for Business (C4B) Edition
+* Chocolatey Licensed Edition
 * Chocolatey Licensed Extension (`chocolatey.extension` package) v1.12.0+.
 
 #### Setup
@@ -172,7 +172,7 @@ choco optimize [<options/switches>]
 #### Requirements
 
 * Chocolatey (`chocolatey` package) v0.10.7+.
-* Chocolatey for Business (C4B) Edition
+* Chocolatey Licensed Edition
 * Chocolatey Licensed Extension (`chocolatey.extension` package) v1.12.0+.
 
 #### Setup
