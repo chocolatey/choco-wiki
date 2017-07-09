@@ -4,6 +4,37 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.12.0 (July 10, 2017)
+
+### FEATURES
+
+ * Package Reducer / Optimize (All licensed editions) - Reduce Space Usage for Chocolatey Installations
+
+    If you have a significant number of Chocolatey packages you manage, you may notice that you also may have a pretty significant space usage under the Chocolatey lib directory. Package reducer automatically decreases the size of nupkg files to around 5KB and removes installers and zips automatically from your package install directories. This may allow you to save GBs of usage for a large amount of packages being managed.
+
+    To learn more about Package Reducer and `choco optimize`, please see https://chocolatey.org/docs/features-package-reducer.
+
+ * Package Audit (C4B) - Learn Who and When
+
+    Reporting is very important, and auditing not only when your installations occurred but who installed them can be critical. There is nothing that presents this kind of information as easily as you will be able to gather it with Chocolatey for Business (C4B) and Package Audit.
+
+    To learn more about Package Audit, please see https://chocolatey.org/docs/features-package-audit.
+
+### IMPROVEMENTS
+
+ * Package Internalizer (Choco Download):
+    * Option (`--internalize-all-urls`) to internalize any url in a package (not just if the package scripts contain known-compatible known functions).
+ * Self-Service / Background Mode:
+    * Added `useBackgroundServiceWithNonAdministratorsOnly` feature switch to skip background mode for administrators.
+ * Windows Service Management Functions:
+    * Added `useLocalSystemForServiceInstalls` feature switch to disable using LocalSystem as the user for services by default.
+    * Added config settings to provide local user / password.
+    * If the password is empty or not provided, Chocoaltey will manage the password securely.
+    * If the user doesn't exist, the account will be created
+    * Accounts are ensured to be administrators
+    * Accounts are ensured to have Log on as service and batch rights.
+
+
 ## 1.11.0 (June 27, 2017)
 
 ### BUG FIXES
@@ -82,7 +113,7 @@ This release brings Package Throttle, Package Synchronizer's "Show All Packages 
 
 ## 1.9.7 (March 20, 2017)
 
-### BUG FIXES 
+### BUG FIXES
 
  * Fix - Support automatic decompression on downloads - see [#1056](https://github.com/chocolatey/choco/issues/1056)
  * Fix - Package Builder - Restrict Get-UninstallRegistryKey params in chocolateyUninstall.ps1
