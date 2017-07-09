@@ -92,6 +92,8 @@ Package Reducer - Reduce Space Usage Automatically on Install/Upgrade
 - Zips / installers are automatically removed from the package directory if found
 - Zips / installers are removed from TEMP cache if found
 
+The image shows an installation without and with package reducer. The difference in size is over 20MB, as the package included the binaries.
+
 -->
 
 ### Options and Switches

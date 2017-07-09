@@ -31,12 +31,14 @@ When calling `choco list -lo`, add `--audit` to see information on who installed
 
 ![Package Audit - if you are on https://chocolatey.org/docs/features-package-audit, see commented html below for detailed description of image](images/features/features_package_audit.png)
 
+When shown, the user and domain are for the user who actually performed the installation. The "Original User" is the user who requested the install (outside of [[Self-Service|FeaturesAgentService]], it would be the same as the installing user). The Installation Date and Time are in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) UTC time.
+
 <!--
 Text in the image above:
 
-Package Audit - See who installed what and when
+choco list -lo --audit -r
 
--
+Shows output as described above.
 
 -->
 
