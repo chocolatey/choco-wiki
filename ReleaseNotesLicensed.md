@@ -29,7 +29,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
  * Windows Service Management Functions:
     * Added `useLocalSystemForServiceInstalls` feature switch to disable using LocalSystem as the user for services by default.
     * Added config settings to provide local user / password.
-    * If the password is empty or not provided, Chocoaltey will manage the password securely.
+    * If the password is empty or not provided, Chocolatey will manage the password securely.
     * If the user doesn't exist, the account will be created
     * Accounts are ensured to be administrators
     * Accounts are ensured to have Log on as service and batch rights.
