@@ -8,6 +8,7 @@
 
 ### 2017
 
+* Inedo - [Chocolatey Package Management with ProGet](https://www.youtube.com/watch?v=BcTYGf7sQ8Q) - June 22, 2017
 * Egee - [Chocolatey - The Windows Package Manager!](https://www.youtube.com/watch?v=eXMTb3qetT0) - June 5, 2017
 
 ### 2016
