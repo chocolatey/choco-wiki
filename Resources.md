@@ -44,6 +44,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 #### May
 
+* https://skatterbrainz.wordpress.com/2017/05/19/sccm-and-chocolatey/
 * http://searchwindowsserver.techtarget.com/tip/Use-Chocolatey-to-automate-software-installations-on-Windows-Server
 * https://4sysops.com/archives/installing-and-removing-programs-with-the-powershell-package-manager
 * https://www.linuxexpres.cz/software/chocolatey-balickovaci-system-pro-windows
