@@ -38,6 +38,10 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ## Community
 
 ### 2017
+#### July
+
+* https://skatterbrainz.wordpress.com/2017/07/10/deploy-chocolatey-with-a-sccm-1706-script/
+
 #### June
 
 * https://www.youtube.com/watch?v=eXMTb3qetT0
