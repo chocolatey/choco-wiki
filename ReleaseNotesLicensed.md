@@ -4,6 +4,25 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.12.1 (July 13, 2017)
+
+Among the bug fixes, we've brought Package Internalizer to the MSP edition of Chocolatey.
+
+### BUG FIXES
+
+ * Fix - Configuration item is not serialized, causing issues with installs with packages.config and ChocolateyGUI.
+ * Package Synchronizer (Choco Sync):
+    * Fix - syncing new items should capture audit information for Package Audit.
+ * Self-Service / Background Mode
+    * Fix - timeout should be near infinite when execution timeout is 0.
+    * Fix - loading commands over PowerShell remoting can fail.
+    * Fix - do not configure background service unless it applies.
+
+### IMPROVEMENTS
+
+ * Package Internalizer is now available for MSP edition as well.
+
+
 ## 1.12.0 (July 10, 2017)
 
 ### FEATURES
