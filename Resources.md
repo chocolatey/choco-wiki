@@ -80,6 +80,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 #### December
 
+* https://skatterbrainz.wordpress.com/2016/12/19/building-an-sccm-1606-site-server-with-boxstarter-windows-server-2016-sql-server-2016/
 * https://www.linkedin.com/pulse/simplify-your-windows-os-refresh-chocolatey-install-script-zach-baker
 * http://obfuscurity.com/2016/12/The-Grand-Windows-Laptop-Experiment
 * http://blog.victorsilva.com.uy/chocolatey/
