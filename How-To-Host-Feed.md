@@ -5,20 +5,27 @@
 - [Why?](#why)
 - [Host your own server](#host-your-own-server)
   - [Known Hosting Options](#known-hosting-options)
+    - [Others](#others)
 - [Package Version Immutability](#package-version-immutability)
 - [Local Folder / UNC Share (CIFS)](#local-folder--unc-share-cifs)
   - [Advantages](#advantages)
   - [Disadvantages](#disadvantages)
   - [Local Folder Share Setup](#local-folder-share-setup)
 - [Simple Server](#simple-server)
+  - [Known Simple Server Options](#known-simple-server-options)
   - [Advantages](#advantages-1)
   - [Disadvantages](#disadvantages-1)
-  - [Simple Server Setup](#simple-server-setup)
-    - [Third Party / Commercial Options](#third-party--commercial-options)
     - [Chocolatey.Server Setup](#chocolateyserver-setup)
     - [NuGet.Server Setup](#nugetserver-setup)
 - [Package Gallery](#package-gallery)
+  - [Advantages](#advantages-2)
+  - [Disadvantages](#disadvantages-2)
     - [Package Gallery Setup](#package-gallery-setup)
+- [Commercial Package Repositories](#commercial-package-repositories)
+    - [Commercial Options](#commercial-options)
+  - [Advantages](#advantages-3)
+  - [Disadvantages](#disadvantages-3)
+  - [Commercial Repository Setup](#commercial-repository-setup)
 - [Non-Windows Hosting](#non-windows-hosting)
 
 <!-- /TOC -->
@@ -30,14 +37,14 @@ Chocolatey has had the ability to be able to work with packages from one or more
 * [[Security and the community repository|Security#organizational-use-of-chocolatey]]
 
 ## Host your own server
-There are three types of package repositories, [folder/unc share](#local-folder--unc-share), [simple server](#simple-server), and the sophisticated [package gallery](#package-gallery).
+There are a few types of package repositories, [folder/unc share](#local-folder--unc-share), [simple server](#simple-server), the sophisticated [package gallery](#package-gallery), and the more sophisticated [commercial package repositories](#commercial-package-repositories).
 
 ### Known Hosting Options
 Some of these options also work from a non-Windows hosting perspective. See [Non-Windows Hosting](#non-windows-hosting).
 
 * File Share\UNC share (below)
 * [[Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]] (supported by Chocolatey Software with your Chocolatey for Business subscription)
-* [Nexus2](https://books.sonatype.com/nexus-book/reference/nuget-nuget_hosted_repositories.html) / [Nexus3](https://books.sonatype.com/nexus-book/3.0/reference/nuget.html#nuget-hosted)- Sonatype Nexus has a built-in simple server
+* Sonatype Nexus - [Nexus2](https://books.sonatype.com/nexus-book/reference/nuget-nuget_hosted_repositories.html) / [Nexus3](https://books.sonatype.com/nexus-book/3.0/reference/nuget.html#nuget-hosted)- Sonatype Nexus has a built-in simple server
 * [ProGet](http://inedo.com/proget/overview) - ProGet gives you a ready to go On-Premise option. Enterprise has replication
 * [Artifactory Pro](https://www.jfrog.com/artifactory/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories)
 * [MyGet](https://www.myget.org/) - MyGet has free public and paid for public/private cloud-hosting options if you don't want to handle all of the pain of setup and administration. MyGet offers some stellar options like multi-feed aggregation, mirroring, and source package build services!
@@ -67,7 +74,10 @@ Perhaps the easiest to set up and recommended for testing quick and dirty scenar
 * Package store is filesystem.
 * Can be easily upgrade to Simple Server.
 * Permissions are based on file system/share permissions.
+* Can manage PowerShell gallery type packages.
 * There is no limitation on package sizes (or rather, it can likely handle 100MB+ file sizes, maybe even GB sized packages). Don't create multiple GB sized packages, what is wrong with you?! ;)
+
+**NOTE**: If you must create large packages, see [[Package Reducer|FeaturesPackageReducer]] for keeping used space down on client machines.
 
 ### Disadvantages
 * Anyone with permission can push and overwrite packages.
@@ -77,47 +87,53 @@ Perhaps the easiest to set up and recommended for testing quick and dirty scenar
 * **Big disadvantage**: For a file share there is not a guarantee of package version immutability. Does not do anything to keep from package versions being overwritten. This provides no immutability of a package version and no guarantee that a version of a package installed is the same as the version in the source.
 
 ### Local Folder Share Setup
-
 No really, it's that easy. Just set your permissions appropriately and put packages in the folder. You are already done.
 
-## Simple Server
 
-There is where the bulk of NuGet OData compatible servers fall (Nexus, Nuget.Server, Chocolatey.Server, Artifactory, MyGet, etc). Since Chocolatey just uses an enhanced version of the NuGet framework, it is compatible everywhere you can put a NuGet package.
+## Simple Server
+There is where the bulk of NuGet OData compatible servers fall (NuGet.Server, Chocolatey.Server, etc). There are simple servers that are very enhanced, which fall into the [Commercial Package Repositories](#commercial-package-repositories) section.
+
+* Since Chocolatey just uses an enhanced version of the NuGet framework, it is compatible everywhere you can put a NuGet package.
+* We recommend Chocolatey.Server if you are choosing between these options.
+* A simple server typically has one repo per instance and manages only Chocolatey / NuGet packages.
+
+### Known Simple Server Options
+
+* [[Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]]
+* NuGet.Server
+* [TeamCity](https://www.jetbrains.com/teamcity/) has built-in Simple Server
+* [JNuGet](https://bitbucket.org/aristar/jnuget/wiki/Home)
+* [NuGet.Java.Server](http://blog.jonnyzzz.name/2012/03/nuget-server-in-pure-java.html) ([NuGet Package](https://www.nuget.org/packages/NuGet.Java.Server)) - simple server (same tool used in TeamCity)
+* [PHP NuGet](http://www.kendar.org/?p=/dotnet/phpnuget)
+* [Hazel](https://github.com/MPIB/hazel)
+* [LaGet](https://github.com/ikkentim/LaGet)
+* [Klondike](https://github.com/themotleyfool/Klondike)
+
+If the option you've chosen is not listed, take a look at [known hosting options](#known-hosting-options) and follow the link from there to see what the vendor provides in the way of documentation.
 
 ### Advantages
 * Setup can be really simple - just a website and IIS for some simple servers.
 * Windows is not required - there are at least two pure Java versions (see [Non-Windows Hosting](#non-windows-hosting)).
-* Push over HTTP/HTTPS.
-* API key for pushing packages.
+* Push over HTTP / HTTPS/TLS.
+* Authentication / Authorization:
+   * API key for pushing packages.
+   * Basic Authentication with IIS.
 * No direct access to packages so security can be locked down to just modify through push.
 * Package store is file system.
+* Can manage PowerShell gallery type packages.
 
 ### Disadvantages
-* Only one API key, so no multi-user scenarios. Some options like ProGet/Nexus/Artifactory can manage several repos with different keys. I believe they can also offer multiple API Keys
-* Starts to affect choco performance once the source has over 2,000 packages for some sources. It depends on how they keep that information (in a db or file scans).
+* May only have one API key per repository.
+* Starts to affect performance once the source has over 2,000 packages for some sources. It depends on how they keep that information (in a db or file scans).
+* Authentication is typically limited to Basic Auth.
 * No moderation.
-* No pretty interface for viewing package information aside from ChocolateyGUI.
+* May not have a website for viewing package information. Use ChocolateyGUI for seeing package information.
 * No package statistics for most of the simple server sources.
-* A package should may be limited to 28.61MB by default on some simple servers. Depending on your simple server - For IIS simple servers package size can be controlled through [maxAllowedContentLength](https://msdn.microsoft.com/en-us/library/ms689462(v=vs.90).aspx) and [maxRequestLength](https://msdn.microsoft.com/en-us/library/e1f13641(v=vs.100).aspx). For others like Nexus, it may already be set very high. You can host the installer internally somewhere and access it through packaging though.
+* Package size may be limited to 28.61MB by default on some simple servers. Depending on your simple server - For IIS simple servers package size can be controlled through [maxAllowedContentLength](https://msdn.microsoft.com/en-us/library/ms689462(v=vs.90).aspx) and [maxRequestLength](https://msdn.microsoft.com/en-us/library/e1f13641(v=vs.100).aspx). For others like Nexus, it may already be set very high. You can host the installer internally somewhere and access it through packaging though.
 
 The actual limit for package sizes varies depending on what each simple server can handle (usually determined by the limitation of pushing a package to the server). If you determine what those are, we'd be happy to list each one here.
 
-### Simple Server Setup
-
-Most hosting options have great information on how to set up the package repository. When it comes to Chocolatey.Server and NuGet.Server, we've added additional information that is quite helpful.
-
-#### Third Party / Commercial Options
-
-* [Nexus2](https://books.sonatype.com/nexus-book/reference/nuget-nuget_hosted_repositories.html) / [Nexus3](https://books.sonatype.com/nexus-book/3.0/reference/nuget.html#nuget-hosted)
-* [ProGet](http://inedo.com/support/documentation/proget/installation/installation-guide)
-* [Artifactory Pro](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories)
-* [MyGet](https://www.myget.org/)
-
-If the option you've chosen is not listed, take a look at [known hosting options](#known-hosting-options) and follow the link from there to see what the vendor provides in the way of documentation.
-
-
 #### Chocolatey.Server Setup
-
 Please see [[Set up the Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]]. More details below on what this option provides.
 
 [Chocolatey Simple Server](https://chocolatey.org/packages/chocolatey.server) is a simple Nuget.Server that is ready to rock and roll. It has already completed Steps 1-3 of NuGet's [host your own remote feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds). Some things to consider with Chocolatey.Server as compared to other options:
@@ -128,7 +144,6 @@ Please see [[Set up the Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]]. Mor
 **NOTE:** Commercial options of Chocolatey also may have support for the Chocolatey.Server.
 
 #### NuGet.Server Setup
-
 Setting up NuGet.Server is very much a hands on approach for a packaging server - it requires Visual Studio as you will be adding the NuGet package to a Website project. We recommend looking at Chocolatey.Server as it is nearly the same thing but fully ready to go (and with Chocolatey enhancements).
 
 Many google searches will throw out good ways to set up your own feed (hint: search for "host your own NuGet server feed")
@@ -138,10 +153,11 @@ Some notable references:
  * Rich Hopkins - [Bake your own Chocolatey NuGet repository](https://souladin.wordpress.com/2014/12/05/bake-your-own-chocolatey-nuget-repository/)
  * Brandon - [Host NuGet Server in Azure](http://netitude.bc3tech.net/2015/01/07/create-your-own-hosted-nuget-server-in-azure/)
 
+
 ## Package Gallery
 This is like what https://chocolatey.org (the community feed runs on). It is the most advanced, having both a file store for packages and a database for tracking all sorts of information.
 
-**Advantages:**
+### Advantages
 * Can deal with thousands of packages with no performance issues.
 * Package versions are immutable - in other words you can guarantee the version installed is the same as the version in the source.
 * Package store can be File system, Azure blobs, or AWS S3 (**S3 available with Chocolatey Package Gallery only**).
@@ -153,8 +169,9 @@ This is like what https://chocolatey.org (the community feed runs on). It is the
 * Package statistics (download counts, etc).
 * A website to view package information.
 * Can be configured to send email.
+* Can manage PowerShell gallery type packages.
 
-**Disadvantages:**
+### Disadvantages
 * Speed of setup (can take longer than the rest). There are many moving parts to configure.
 * Requires Windows/IIS/SQL Server/SMTP (hopefully with the proper licenses on each of those).
 * Not well-documented, could require some diligence to get working.
@@ -166,6 +183,49 @@ Only approach this if you are a Windows Admin with significant experience in set
 ##### Chocolatey Package Gallery Setup
 
 At this time we don't have setup instructions and are not keen to answer questions specifically surrounding the setup of a Chocolatey Gallery (the code behind chocolatey.org). This is due to specific necessary settings regarding the community packages repository and tight integration to what it offers. Chocolatey for Business is likely to offer a gallery at some point, depending on prioritization.
+
+## Commercial Package Repositories
+These are simple servers that have more advanced options and authentication scenarios, plus multiple repository types. This section accounts for the following types.
+
+#### Commercial Options
+
+* Sonatype Nexus - [Nexus2](https://books.sonatype.com/nexus-book/reference/nuget-nuget_hosted_repositories.html) / [Nexus3](https://books.sonatype.com/nexus-book/3.0/reference/nuget.html#nuget-hosted)
+* [ProGet](http://inedo.com/support/documentation/proget/installation/installation-guide)
+* [Artifactory Pro](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories)
+* [MyGet](https://www.myget.org/)
+
+If the option you've chosen is not listed, take a look at [known hosting options](#known-hosting-options) and follow the link from there to see what the vendor provides in the way of documentation.
+
+### Advantages
+* Setup can be really simple - just a website, IIS, and a local database or file to store configuration.
+* May have free tier available (Artifactory is the only known option that does not have a free tier).
+* Windows is not required for Nexus and Artifactory.
+* Push over HTTP / HTTPS/TLS.
+* API key for pushing packages.
+* No direct access to packages so security can be locked down to just modify through push or upload.
+* Authentication / Authorization:
+   * Multiple api keys.
+   * Basic Authentication through IIS.
+   * RBAC (role-based access control) available in some options.
+   * LDAP authentication in some options (although Nuget/Chocolatey may not support this for package operations).
+* Package stores can be file system, database, Azure blobs, and AWS S3 depending on the product.
+* Website interface.
+   * Uploading packages can also be done through website.
+* Multiple repositories in an instance.
+* Multiple repository types (not limited to just NuGet/Chocolatey types).
+* HA (High Availability) available in some options.
+* Replication available in some options.
+* Can manage PowerShell gallery type packages.
+
+### Disadvantages
+* Still unlikely to have moderation. You may not want this anyway.
+* Package size may be limited. Check with the vendor to learn what their limits are. You can host the installer internally somewhere and access it through packaging though. Many times these repository types will also support a binary/raw repository you can use to download installers from, keeping a single point of failure on the package repository server.
+
+The actual limit for package sizes varies depending on what each server can handle (usually determined by the limitation of pushing a package to the server). If you determine what those are, we'd be happy to list each one here.
+
+### Commercial Repository Setup
+Most hosting options have great information on how to set up the package repository. Please see the documentation with each vendor to learn what options are available and how to set up.
+
 
 ## Non-Windows Hosting
 If you don't want to host on Windows you have only the following options (from least advanced to most advanced - these options typically also work on Windows):
@@ -180,3 +240,5 @@ If you don't want to host on Windows you have only the following options (from l
 * [Sonatype Nexus](https://books.sonatype.com/nexus-book/reference/nuget-nuget_hosted_repositories.html)
 
 **Note:** NuGet.Java.Server, TeamCity and JNuGet are about the same in terms of sophistication (they are ordered alphabetically).
+
+**Note:** Artifactory Pro and Nexus are about the same in terms of sophistication (they are also ordered alphabetically).
