@@ -40,6 +40,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ### 2017
 #### July
 
+* https://baremetalblog.com/2017/07/14/chocolatey-package-manager/
 * https://skatterbrainz.wordpress.com/2017/07/10/deploy-chocolatey-with-a-sccm-1706-script/
 
 #### June
