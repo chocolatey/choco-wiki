@@ -218,6 +218,7 @@ If that is successful, you are good to go.
 If not, the following steps should remedy the situation:
 
 * Remove the license file - rename the `license` folder to `licensed`.
+* In the `extensions` folder, you will find `chocolatey`. Delete that folder.
 * Run `choco uninstall chocolatey.extension`
 * Add the license file again - rename the `licensed` folder back to `license`.
 * Run `choco upgrade chocolatey.extension`.
