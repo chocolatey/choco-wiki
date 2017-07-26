@@ -6,6 +6,8 @@
 - [Setup with Puppet](#setup-with-puppet)
 - [Setup Normally](#setup-normally)
 - [Additional Configuration](#additional-configuration)
+  - [Performance](#performance)
+    - [Future](#future)
 
 <!-- /TOC -->
 
@@ -53,3 +55,21 @@ For a simple `include chocolatey_server` it does the following automatically:
 Looking for where the apikey is and how it is changed, that is all done through the web.config. The config is pretty well-documented on each of the appSettings key values.
 
 To update the apiKey, it is kept in the web.config, search for that value and update it. If you reach out to the server on https://localhost (it will show you what the apikey is, only locally though).
+
+### Performance
+
+To configure for performance, you will want to do the following:
+
+* Keep the site warm (https://serverfault.com/a/595215/79259):
+  * Turn on Application Initialization in Windows Features under Web Server (IIS) -> Web Server -> Application Development -> Application Initialization (you can also try `choco install IIS-ApplicationInit --source windowsfeatures`)
+  * Application Pool Advanced Settings:
+    * General: Start Mode -> Always Running
+    * Process Model: Idle Time-out (minutes) -> 0
+    * Recycling: Regular Time Interval (minutes) -> 0
+  * Under the Site's Advanced Settings:
+    * Preload Enabled -> True
+
+
+#### Future
+
+We are looking to add support for the package source to automatically handle this aspect - http://blog.nuget.org/20150922/Accelerate-Package-Source.html
