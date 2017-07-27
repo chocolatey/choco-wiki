@@ -217,8 +217,12 @@ If that is successful, you are good to go.
 
 If not, the following steps should remedy the situation:
 
-* Remove the license file - rename the `license` folder to `licensed`.
-* In the `extensions` folder, delete the `chocolatey` folder.
+**NOTE**: Running choco in an unlicensed sense will reset/remove all licensed configuration. 
+
+* Make a backup of the `chocolatey.config` (typically at "C:\ProgramData\chocolatey\config\chocolatey.config").
+* Remove the license file - rename the `license` folder to `licensed` (typically at "C:\ProgramData\chocolatey\license").
+* In the `extensions` folder, delete the `chocolatey` folder (typically at "C:\ProgramData\chocolatey\extensions\chocolatey").
 * Run `choco uninstall chocolatey.extension`.
 * Add the license file again - rename the `licensed` folder back to `license`.
 * Run `choco upgrade chocolatey.extension`.
+* Compare the current `chocolatey.config to your backed up `chocolatey.config` and set anything that was reset in this process.
