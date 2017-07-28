@@ -13,7 +13,7 @@ Bottom line: If someone tells you Chocolatey ***is*** insecure, please respond w
   - [Rigorous Moderation Process for Community Packages](#rigorous-moderation-process-for-community-packages)
     - [Downloading Internet Resources Can Still Be An Issue](#downloading-internet-resources-can-still-be-an-issue)
 - [Chocolatey Pro / Chocolatey for Business](#chocolatey-pro--chocolatey-for-business)
-- [Chocolatey Servers / IP Addresses](#servers--ip-addresses)
+- [Servers / IP Addresses](#servers--ip-addresses)
 - [Future Chocolatey Enhancements](#future-chocolatey-enhancements)
 - [History](#history)
   - [Past Security Concerns](#past-security-concerns)
@@ -165,9 +165,9 @@ For using Chocolatey, if you are using the community repository, you will need t
 * https://licensedpackages.chocolatey.org (licensed editions of Chocolatey)
 * https://files.chocolatey.org (licensed editions of Chocolatey)
 
-For specific IP addresses to whitelist, please see the following: https://www.cloudflare.com/ips/ 
+For specific IP addresses to whitelist, please see the following: https://www.cloudflare.com/ips/
 
-If you are using open source Chocolatey, you would also need to whitelist the official distribution location for **EVERY** package that you intend to manage. This is due to distribution rights and the community repo being in the public domain (discussed above at [Chocolatey.org Packages](#chocolateyorg-packages)), so those community packages are not able to embed binaries directly into the package and must download those resources at runtime. Licensed editions of Chocolatey take advantage of a [[CDN cache|FeaturesPrivateCdn]] of those downloaded resources, which is used instead of reaching out to those remote locations to ensure availability. 
+If you are using open source Chocolatey, you would also need to whitelist the official distribution location for **EVERY** package that you intend to manage. This is due to distribution rights and the community repo being in the public domain (discussed above at [Chocolatey.org Packages](#chocolateyorg-packages)), so those community packages are not able to embed binaries directly into the package and must download those resources at runtime. Licensed editions of Chocolatey take advantage of a [[CDN cache|FeaturesPrivateCdn]] of those downloaded resources, which is used instead of reaching out to those remote locations to ensure availability.
 
 Keep in mind that the Chocolatey CDN can only download resources for packages that it has been able to cache. While it is currently able to cache 70% of the existing packages (https://chocolatey.org/stats for actuals - use PackagesCached divided by UniquePackages), we always recommend running `choco search pkgid` (or `choco info pkgid`) to determine if it has the "Downloads cached for licensed users" aspect, or look on the package page for the indicator that the packages are cached. If it does not, you would either need to go through the process of internalization for that package, or look to whitelisting whatever resources that package needed to download.
 
@@ -191,7 +191,7 @@ These are things that used to be security concerns. They are listed here for his
 1. ~~Downloads packages from S3 over HTTP (subject to DNS poisoning)~~ - this was corrected in March 2014 (https://github.com/chocolatey/chocolatey.org/issues/70)
 1. ~~Site doesn't require HTTPS (could be subject to DNS poisoning)~~ - https://github.com/chocolatey/chocolatey.org/issues/126 (closed completely in November 2014)
 1. ~~Downloads files from the internet with no integrity check~~ - we've added checksumming in August 2014 and started enforcing it by default for non-secure downloads with 0.10.0 in August 2016. Secure downloads will also require checksums sometime in 2017 (but can be flipped on with `choco feature disable -n allowEmptyChecksumsSecure` or with a runtime switch).
-1. ~~Poor permissions with `c:\Chocolatey` at root (allows attacker to gain Admin perms through specially crafted exes dropped in bin folder, among other things)~~ - we don't install here by default anymore. We install to `C:\ProgramData\chocolatey` by default for more secure permissions. The default location is locked down to explicitly to Administrators starting in 0.9.10.
+1. ~~Poor permissions with `c:\Chocolatey` at root (allows attacker to gain Admin perms through specially crafted exes dropped in bin folder, among other things)~~ - we don't install here by default anymore. We install to `C:\ProgramData\chocolatey` by default for more secure permissions. The default location is locked down explicitly to Administrators starting in 0.9.10.
 
 ### What about a non-administrative installation of Chocolatey? Is it secure?
 
