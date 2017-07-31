@@ -118,11 +118,11 @@ First a [[story|ChocolateyStory]]. Then [[Why Chocolatey?|Why]]
 
 <a id="markdown-can-i-use-chocolatey-at-my-organization" name="can-i-use-chocolatey-at-my-organization"></a>
 ### Can I use Chocolatey at my organization?
-Absolutely! The licensing is very business friendly (plus we have [paid options](https://chocolatey.org/compare) to better help organizations - *hint, hint*). We typically recommend organizations depending Chocolatey look to managing their own packaging as opposed to using the Community Package Repository (https://chocolatey.org/packages) - packages there are not 100% reliable due to distribution rights in the public domain (which causes a major failure point). See the next question for details.
+Absolutely! The licensing is very business friendly (plus we have [paid options](https://chocolatey.org/compare) to better help organizations - *hint, hint*). We typically recommend organizations depending Chocolatey look to managing their own packaging as opposed to using the Community Package Repository (https://chocolatey.org/packages) - packages there are not 100% reliable due to distribution rights with publicly available packages (which causes a major failure point). See the next question for details.
 
 <a id="markdown-are-you-redistributing-software" name="are-you-redistributing-software"></a>
 ### Are you redistributing software?
-No. Packages on Chocolatey's community repository (https://chocolatey.org/packages) are in the public domain and as such they are subject to software distribution rights. With those packages the following applies:
+No. Packages on Chocolatey's community repository (https://chocolatey.org/packages) are publicly available and as such they are subject to software distribution rights. With those packages the following applies:
 
 > Chocolatey does the same thing that you would do based on the package instructions. This usually means going out and downloading an installer from the official distribution point and then silently installing it on your machine. With most packages this means Chocolatey is not redistributing software because they are going to the same distribution point that you yourself would go get the software if you were performing this process manually.
 
