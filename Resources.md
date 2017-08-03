@@ -1,6 +1,7 @@
 Table of Contents
 
 * [Courses](#courses)
+* [Labs](#labs)
 * [Translations](#translations)
 * [Vagrant Boxes](#vagrant-boxes)
 * [Integrating with other tools](#integrations)
@@ -12,6 +13,10 @@ Table of Contents
 ## Courses
 
 * https://www.pluralsight.com/courses/chocolatey-nuget-automation-pros
+
+## Labs
+
+* https://github.com/ferventcoder/chocolatey-workshop (Packaging Workshop)
 
 ## Translations
 
