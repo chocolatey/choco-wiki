@@ -19,6 +19,8 @@ Install-ChocolateyZipPackage `
   [-Checksum64 <String>] `
   [-ChecksumType64 <String>] `
   [-Options <Hashtable>] `
+  [-File <String>] `
+  [-File64 <String>] `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
@@ -254,6 +256,34 @@ Aliases                |
 Required?              | false
 Position?              | named
 Default Value          | @{Headers=@{}}
+Accept Pipeline Input? | false
+ 
+###  -File [&lt;String&gt;]
+Will be used for Url if Url is empty. Available in 0.10.7+.
+
+This parameter provides compatibility, but should not be used directly
+and not with the community package repository until January 2018.
+
+Property               | Value
+---------------------- | ------------
+Aliases                | fileFullPath
+Required?              | false
+Position?              | named
+Default Value          | 
+Accept Pipeline Input? | false
+ 
+###  -File64 [&lt;String&gt;]
+Will be used for Url64bit if Url64bit is empty. Available in 0.10.7+.
+
+This parameter provides compatibility, but should not be used directly
+and not with the community package repository until January 2018.
+
+Property               | Value
+---------------------- | --------------
+Aliases                | fileFullPath64
+Required?              | false
+Position?              | named
+Default Value          | 
 Accept Pipeline Input? | false
  
 ###  -IgnoredArguments [&lt;Object[]&gt;]

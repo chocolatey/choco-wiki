@@ -14,6 +14,7 @@ Install-ChocolateyVsixPackage `
   [-Checksum <String>] `
   [-ChecksumType <String>] `
   [-Options <Hashtable>] `
+  [-File <String>] `
   [-IgnoredArguments <Object[]>] [<CommonParameters>]
 ~~~
 
@@ -180,6 +181,20 @@ Aliases                |
 Required?              | false
 Position?              | named
 Default Value          | @{Headers=@{}}
+Accept Pipeline Input? | false
+ 
+###  -File [&lt;String&gt;]
+Will be used for VsixUrl if VsixUrl is empty. Available in 0.10.7+.
+
+This parameter provides compatibility, but should not be used directly
+and not with the community package repository until January 2018.
+
+Property               | Value
+---------------------- | ------------
+Aliases                | fileFullPath
+Required?              | false
+Position?              | named
+Default Value          | 
 Accept Pipeline Input? | false
  
 ###  -IgnoredArguments [&lt;Object[]&gt;]
