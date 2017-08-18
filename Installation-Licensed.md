@@ -131,10 +131,12 @@ Here is what a completely offline use of Chocolatey looks like (complete with a 
 # Requires puppetlabs/chocolatey module - see https://forge.puppet.com/puppetlabs/chocolatey
 
 ## - Ensure Chocolatey Install -
-## Download chocolatey.nupkg to your internal repository (see above about getting the package for offline use)
-## Note `chocolatey_download_url is completely different than source locations
-## This is directly to the bare download url for the chocolatey.nupkg, similar to
-##  what you see when you browse to https://chocolatey.org/api/v2/package/chocolatey
+## Download chocolatey.nupkg to your internal repository (see above
+##  about getting the package for offline use)
+## Note: `chocolatey_download_url is completely different than normal
+##  source locations. This is directly to the bare download url for the
+##  chocolatey.nupkg, similar to what you see when you browse to
+##  https://chocolatey.org/api/v2/package/chocolatey
 class {'chocolatey':
   chocolatey_download_url => 'https://<internalurl/to>/chocolatey.nupkg',
   use_7zip                => false,
@@ -287,8 +289,9 @@ chocolateyfeature {'reduceInstalledPackageSpaceUsage':
 #}
 
 
-## - Chocolatey.Server Repository (Chocolatey Simple Server Package Repository) -
-## Requires chocolatey/chocolatey_server module  - see https://forge.puppet.com/chocolatey/chocolatey_server
+## - Chocolatey Simple Server Package Repository -
+## Requires chocolatey/chocolatey_server module  - see
+##  https://forge.puppet.com/chocolatey/chocolatey_server
 ## this contains the bits to install the custom server
 ## - Ensures IIS and Ensure ASP.NET
 ## - Installs and configures the Chocolatey.Server website and app pool

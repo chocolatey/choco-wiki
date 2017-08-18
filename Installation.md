@@ -178,7 +178,7 @@ if (!(Test-Path $ChocoInstallPath)) {
 
 ### Install with Puppet
 
-**NOTE**: If you have the licensed edition, see [[Setting up Licensed Edition with Puppet|Installation-Licensed#set-up-licensed-edition-with-puppet]] instead.
+**NOTE**: If you have the licensed edition, see [[Setting up Licensed Edition with Puppet|Installation-Licensed#set-up-licensed-edition-with-puppet]] instead. This only additionally contains some package examples and setting up tab completion.
 
 Here's an example of setting Chocolatey up with Puppet that sets up and configures Chocolatey, sets up an internal package repository, and shows setting up the licensed edition and ensuring some packages.
 
@@ -202,11 +202,13 @@ case $operatingsystem {
 
 ## - Ensure Chocolatey Install -
 #include chocolatey
-### OR
-### Download chocolatey.nupkg to your internal repository (see above about getting the package for offline use)
-### Note `chocolatey_download_url is completely different than source locations
-### This is directly to the bare download url for the chocolatey.nupkg, similar to
-###  what you see when you browse to https://chocolatey.org/api/v2/package/chocolatey
+## OR
+## Download chocolatey.nupkg to your internal repository (see above
+##  about getting the package for offline use)
+## Note: `chocolatey_download_url is completely different than normal
+##  source locations. This is directly to the bare download url for the
+##  chocolatey.nupkg, similar to what you see when you browse to
+##  https://chocolatey.org/api/v2/package/chocolatey
 class {'chocolatey':
   chocolatey_download_url => 'https://<internalurl/to>/chocolatey.nupkg',
   use_7zip                => false,
@@ -276,8 +278,9 @@ chocolateyfeature {'useRememberedArgumentsForUpgrades':
 }
 
 
-## - Chocolatey.Server Repository (Chocolatey Simple Server Package Repository) -
-## Requires chocolatey/chocolatey_server module  - see https://forge.puppet.com/chocolatey/chocolatey_server
+## - Chocolatey Simple Server Package Repository -
+## Requires chocolatey/chocolatey_server module  - see
+##  https://forge.puppet.com/chocolatey/chocolatey_server
 ## this contains the bits to install the custom server
 ## - Ensures IIS and Ensure ASP.NET
 ## - Installs and configures the Chocolatey.Server website and app pool
