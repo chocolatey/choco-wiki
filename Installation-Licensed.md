@@ -16,6 +16,7 @@ Congratulations on your recent purchase of a licensed edition of Chocolatey! If 
 - [Installing / Upgrading In Secure Environments / Without Internet Access](#installing--upgrading-in-secure-environments--without-internet-access)
 - [Set Up Licensed Edition With Puppet](#set-up-licensed-edition-with-puppet)
 - [Install the Chocolatey Agent Service](#install-the-chocolatey-agent-service)
+  - [Ensure the Chocolatey Agent Service with Puppet](#ensure-the-chocolatey-agent-service-with-puppet)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Exception of type 'Rhino.Licensing.LicenseNotFoundException' was thrown.](#exception-of-type-rhinolicensinglicensenotfoundexception-was-thrown)
   - [ERROR: The term 'Install-ChocolateyWindowsService' is not recognized as the name of a cmdlet, function, script file, or operable program.](#error-the-term-install-chocolateywindowsservice-is-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
@@ -114,66 +115,195 @@ chocolateysource {'chocolatey.licensed':
 
 ## Set Up Licensed Edition With Puppet
 
-Most organizations using Chocolatey and Puppet are going to do so with zero internet access. Here is what a completely offline ensurance of Chocolatey looks like (complete with a Chocolatey.Server instance):
+Most organizations using Chocolatey and Puppet are going to do so with zero internet access.
+
+* Set up a local licensed edition of Chocolatey and run the following commands:
+* `choco download chocolatey --source https://chocolatey.org/api/v2/`
+* `choco download chocolatey.server --source https://chocolatey.org/api/v2/`
+* `choco download chocolatey.extension --source https://licensedpackages.chocolatey.org/api/v2/ --ignore-dependencies`
+* `choco download chocolatey-agent --source https://licensedpackages.chocolatey.org/api/v2/ --ignore-dependencies`
+* Use `choco push` to push those items to your internal package repository (e.g. `choco push chocolatey.0.10.7.nupkg -s http://internal_repo/ -k abc123`)
+* Determine how to get the bare url to download the Chocolatey.Nupkg directly. You will need that for the internal url for installing Chocolatey offline. For the community repository, it is https://chocolatey.org/api/v2/package/chocolatey
+
+Here is what a completely offline use of Chocolatey looks like (complete with a Chocolatey.Server instance):
 
 ~~~puppet
-# ensure Chocolatey is installed - host the package internally
+# Requires puppetlabs/chocolatey module - see https://forge.puppet.com/puppetlabs/chocolatey
+
+## - Ensure Chocolatey Install -
+## Download chocolatey.nupkg to your internal repository (see above about getting the package for offline use)
+## Note `chocolatey_download_url is completely different than source locations
+## This is directly to the bare download url for the chocolatey.nupkg, similar to
+##  what you see when you browse to https://chocolatey.org/api/v2/package/chocolatey
 class {'chocolatey':
-  chocolatey_download_url         => 'https://internalurl/to/chocolatey.nupkg',
+  chocolatey_download_url => 'https://<internalurl/to>/chocolatey.nupkg',
+  use_7zip                => false,
 }
 
-# ensure installation of the Chocolatey Simple Server package repository
-class {'chocolatey_server':
-  server_package_source => 'https://internalurl/odata/server',
+
+## If you need FIPS compliance
+## make this the first thing you configure before you do any additional
+## configuration or package installations
+#chocolateyfeature {'useFipsCompliantChecksums':
+#  ensure => enabled,
+#}
+
+## Keep chocolatey up to date based on your internal source
+## You control the upgrades based on when you push an updated version
+##  to your internal repository.
+## Note the source here is to the OData feed, similar to what you see
+##  when you browse to https://chocolatey.org/api/v2
+package {'chocolatey':
+  ensure   => latest,
+  provider => chocolatey,
+  source   => 'https://<internal_repo>/chocolatey',
 }
 
-file { ['C:/ProgramData/chocolatey','C:/ProgramData/chocolatey/license']:
-  ensure => directory,
+## - Configure Chocolatey -
+### Config Settings
+
+## Move cache location so Chocolatey is very deterministic about
+## cleaning up temporary data
+chocolateyconfig {'cacheLocation':
+  value => 'c:\ProgramData\choco-cache',
 }
 
-file {'C:/ProgramData/chocolatey/license/chocolatey.license.xml':
-  ensure             => file,
-  source             => 'puppet:///modules/choco_internal/chocolatey.license.xml',
-  source_permissions => ignore,
+## Increase timeout to 4 hours
+chocolateyconfig {'commandExecutionTimeoutSeconds':
+  value => '14400',
 }
 
-# configure sources
+### Sources
+## Remove the default community package repository source
 chocolateysource {'chocolatey':
   ensure   => absent,
+  location => 'https://chocolatey.org/api/v2/',
 }
 
+## Disable the licensed source, it can't be removed
 chocolateysource {'chocolatey.licensed':
   ensure   => disabled,
   require  => File['C:/ProgramData/chocolatey/license/chocolatey.license.xml'],
 }
 
+## Add default sources for your internal repositories
 chocolateysource {'internal_chocolatey':
-  ensure   => enabled,
-  location => 'http://internal/server',
+  ensure   => present,
+  location => 'http://internal_location/OData/endpoint',
   priority => 1,
+  username => 'optional',
+  password => 'optional,not ensured',
 }
 
-# set features appropriately
-chocolateyfeature {'useFipsCompliantChecksums':
+### Features
+chocolateyfeature {'checksumFiles':
   ensure => enabled,
 }
 
-# https://chocolatey.org/docs/features-automatically-recompile-packages
-chocolateyfeature {'internalizeAppendUseOriginalLocation':
+## When using Puppet for installs
+chocolateyfeature {'showDownloadProgress':
+  ensure => disabled,
+}
+
+chocolateyfeature {'useRememberedArgumentsForUpgrades':
   ensure => enabled,
+}
+
+## - LICENSED OPTIONS -
+### See https://chocolatey.org/docs/installation-licensed
+
+file { ['C:/ProgramData/chocolatey','C:/ProgramData/chocolatey/license']:
+  ensure => directory,
+}
+
+### Ensure the license file is in the module
+### `puppet:///modules/module_name` == files directory of the module
+### `<module_name>\files\chocolatey.license.xml` is where the example
+###  be found, where <module_name> is the name of the module (e.g. `choco_internal`)
+file {'C:/ProgramData/chocolatey/license/chocolatey.license.xml':
+  ensure              => file,
+  source              => 'puppet:///modules/<module_name>/chocolatey.license.xml',
+  source_permissions  => ignore,
+}
+
+## Ensure the chocolatey.extension package
+package {'chocolatey.extension':
+  ensure          => latest,
+  source          => 'internal_chocolatey',
+  install_options => ['-pre'],
+  require         => File['C:/ProgramData/chocolatey/license/chocolatey.license.xml'],
+}
+
+### Licensed Config Settings
+chocolateyconfig {'virusScannerType':
+  value   => 'Generic',
   require => Package['chocolatey.extension'],
 }
 
-# configuration
-chocolateyconfig {'cacheLocation':
-  value  => 'c:\ProgramData\choco-cache',
+## McAfee options
+## https://kc.mcafee.com/corporate/index?page=content&id=KB75478
+#chocolateyconfig {'genericVirusScannerPath':
+#  value   => 'C:\full\path\to\scan.exe',
+#  require => Package['chocolatey.extension'],
+#}
+
+## https://community.mcafee.com/thread/70968?start=0&tstart=0
+## You could try cleaning as well /CLEAN /NORENAME (instead of /DEL)
+#chocolateyconfig {'genericVirusScannerArgs':
+#  value   => '[[File]] /ANALYZE /NC /NOEXPIRE /DEL /NOEXPIRE /SILENT /REPORT=c:\ProgramData\choco-cache\lastscan.log',
+#  require => Package['chocolatey.extension'],
+#}
+
+## 0 for no issues, 19 for success on cleaning any infected files
+#chocolateyconfig {'genericVirusScannerValidExitCodes':
+#  value   => '0, 19',
+#  require => Package['chocolatey.extension'],
+#}
+
+### Licensed Feature Settings
+chocolateyfeature {'virusCheck':
+  ensure  => enabled,
+  require => Package['chocolatey.extension'],
 }
 
-# ensure licensed edition is installed
-package { 'chocolatey.extension':
-  ensure   => latest,
-  source   => 'internal_chocolatey',
-  require  => File['C:/ProgramData/chocolatey/license/chocolatey.license.xml'],
+## Package Internalizer enhancement
+## See https://chocolatey.org/docs/features-automatically-recompile-packages
+chocolateyfeature {'internalizeAppendUseOriginalLocation':
+  ensure  => enabled,
+  require => Package['chocolatey.extension'],
+}
+
+## Package Reducer - keep space down
+chocolateyfeature {'reduceInstalledPackageSpaceUsage':
+  ensure  => enabled,
+  require => Package['chocolatey.extension'],
+}
+
+## Unlock preview features - check before you do this, may not be
+##  production ready
+#chocolateyfeature {'allowPreviewFeatures':
+#  ensure  => enabled,
+#  require => Package['chocolatey.extension'],
+#}
+
+
+## - Chocolatey.Server Repository (Chocolatey Simple Server Package Repository) -
+## Requires chocolatey/chocolatey_server module  - see https://forge.puppet.com/chocolatey/chocolatey_server
+## this contains the bits to install the custom server
+## - Ensures IIS and Ensure ASP.NET
+## - Installs and configures the Chocolatey.Server website and app pool
+## - Sets permissions appropriately
+
+## `server_package_source` is to the OData feed, similar to what you see
+##  when you browse to https://chocolatey.org/api/v2
+class {'chocolatey_server':
+  server_package_source => 'https://internalurl/odata/server',
+}
+
+chocolateysource {'local_chocolatey_server':
+  ensure   => present,
+  location => 'http://localhost/chocolatey',
+  priority => 2,
 }
 ~~~
 
@@ -186,6 +316,97 @@ To be able to install it, you must first have the licensed edition properly inst
 * `choco install chocolatey-agent <options>`
 
 For more on the agent service, please see [[Agent Service|FeaturesAgentService]].
+
+### Ensure the Chocolatey Agent Service with Puppet
+
+This is used in conjunction with the script in [Set Up Licensed Edition With Puppet](#set-up-licensed-edition-with-puppet).
+Here are some additional commands and scripts you will need for that setup:
+
+* `choco download chocolatey-agent --source https://licensedpackages.chocolatey.org/api/v2/ --ignore-dependencies`
+* Use `choco push` to push packages to your internal package repository (e.g. `choco push chocolatey-agent.0.8.0.nupkg -s http://internal_repo/ -k abc123`)
+
+~~~puppet
+## - Chocolatey Agent (Additional optional Chocolatey for Business install) -
+## See https://chocolatey.org/docs/features-agent-service
+
+## ensure we set the user up properly
+chocolateyfeature {'useLocalSystemForServiceInstalls':
+  ensure  => disabled,
+  require => Package['chocolatey.extension'],
+}
+
+## this is the default setting
+chocolateyconfig {'serviceInstallsDefaultUserName':
+  value   => 'ChocolateyLocalAdmin',
+  require => Package['chocolatey.extension'],
+}
+
+## if you are passing through a password, set that here
+## otherwise Chocolatey will manage a password that is secured
+## and different per machine
+#chocolateyconfig {'serviceInstallsDefaultUserPassword':
+#  value   => '<inject_from_hiera>',
+#  require => Package['chocolatey.extension'],
+#}
+
+package {'chocolatey-agent':
+  ensure          => latest,
+  install_options => ['-pre'],
+  require         => Chocolateyfeature['useLocalSystemForServiceInstalls'],
+}
+~~~
+
+For setting up Self-Service / Background Mode, add the following elements:
+
+* `choco download chocolateygui --pre --source="'https://www.myget.org/F/chocolateygui/;https://chocolatey.org/api/v2'" --ignore-dependencies`
+* `choco download dotnet4.5.2 --internalize --source https://chocolatey.org/api/v2`
+* Use `choco push` to push those items to your internal package repository (e.g. `choco push chocolatey.0.10.7.nupkg -s http://internal_repo/ -k abc123`)
+
+
+~~~puppet
+## You don't want a non-admin to get a warning when using self-service
+chocolateyfeature {'showNonElevatedWarnings':
+  ensure => disabled,
+  require => Package['chocolatey-agent'],
+}
+
+## Ensure Admins (and Puppet) do not use the background service
+chocolateyfeature {'useBackgroundServiceWithNonAdministratorsOnly':
+  ensure  => enabled,
+  require => Package['chocolatey-agent'],
+}
+
+## You still need to figure out how to set up a source as allowed for
+## Self-service until the Puppet module gets that attribute added to
+## chocolateysource
+## We don't recommend disabling this unless you've removed all sources
+##  except for your internal and they are fine for self-service
+#chocolateyfeature {'useBackgroundServiceWithSelfServiceSourcesOnly':
+#  ensure  => disabled,
+#  require => Package['chocolatey-agent'],
+#}
+
+## Set Chocolatey into background mode
+chocolateyfeature {'useBackgroundService':
+  ensure  => enabled,
+  require => Chocolateyfeature['useBackgroundServiceWithNonAdministratorsOnly'],
+}
+
+package {'dotnet4.5.2':
+  ensure => latest,
+  notify => Reboot['pending_dot_net_install'],
+}
+
+reboot { 'pending_dot_net_install':
+  when => pending,
+}
+
+package {'chocolateygui':
+  ensure          => latest,
+  install_options => ['-pre'],
+  require         => Package['dotnet4.5.2'],
+}
+~~~
 
 ## Common Errors and Resolutions
 
@@ -217,7 +438,7 @@ If that is successful, you are good to go.
 
 If not, the following steps should remedy the situation:
 
-**NOTE**: Running choco in an unlicensed sense will reset/remove all licensed configuration. 
+**NOTE**: Running choco in an unlicensed sense will reset/remove all licensed configuration.
 
 * Make a backup of the `chocolatey.config` (typically at "C:\ProgramData\chocolatey\config\chocolatey.config").
 * Remove the license file - rename the `license` folder to `licensed` (typically at "C:\ProgramData\chocolatey\license").

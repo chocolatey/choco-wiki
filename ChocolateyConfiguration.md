@@ -16,6 +16,7 @@ There are settings and features that can customize the way that Chocolatey works
   - [Other](#other)
 - [Features - Licensed Edition](#features---licensed-edition)
   - [General](#general-3)
+  - [Access Control / Security](#access-control--security)
   - [Package Synchronizer](#package-synchronizer)
   - [Self-Service / Background Mode](#self-service--background-mode)
 
@@ -44,6 +45,8 @@ Config settings are adjusted using `choco config set --name <nameFromBelow> --va
 
 ### General
 * `maximumDownloadRateBitsPerSecond` = **' '** - The maximum download rate in bits per second. '0' or empty means no maximum. A number means that will be the maximum download rate in bps. Defaults to ''. Available in licensed editions v1.10+ only. See https://chocolatey.org/docs/features-download-throttle
+* `serviceInstallsDefaultUserName` = **ChocolateyLocalAdmin** - The default user name to use for installing services when one is not specified. Defaults to 'ChocolateyLocalAdmin'. The feature 'useLocalSystemForServiceInstalls' must be set to 'false' to use this field. Available in business editions v1.12.0+ only.
+* `serviceInstallsDefaultUserPassword` = **''** - The default user password to use for installing services when one is not specified. Defaults to ''. When '', the value will be generated as encrypted hash specific to the machine and will not be known. The feature 'useLocalSystemForServiceInstalls' must be set to 'false' to use this field. Available in business editions v1.12.0+ only.
 
 ### Virus Scanning
 * `virusCheckMinimumPositives` = **'5'** - Minimum numer of scan result positives before flagging a binary as a possible virus. Used when virusScannerType is VirusTotal. Available in 0.9.10+. Licensed editions only. See https://chocolatey.org/docs/features-virus-check
@@ -90,6 +93,14 @@ A checkbox means this feature is turned on by default.
 * [x] `downloadCache` - Download Cache - use the private download cache if available for a package. Available in 0.9.10+. Licensed editions only. See https://chocolatey.org/docs/features-private-cdn
 * [ ] `internalizeAppendUseOriginalLocation` - Package Internalizer - When `Install-ChocolateyPackage` is internalized, append the `-UseOriginalLocation` parameter to the function. Business editions only (licensed version 1.7.0+). Requires at least Chocolatey v0.10.1 for `Install-ChocolateyPackage` to recognize the switch appropriately. See https://chocolatey.org/docs/features-automatically-recompile-packages
 * [ ] `allowPreviewFeatures` - Allow Preview Features - Turns on Preview Features. Some features become available for preview before they are released for testing purposes. Please note these should not be used for production systems as they could mess up a system.  Licensed editions only (version 1.9.0+).
+* [x] `reduceInstalledPackageSpaceUsage` - Reduce Installed Package Size (Package Reducer) - Reduce size of the nupkg file to very small and remove extracted archives and installers. Licensed editions only (version 1.12.0+). See https://chocolatey.org/docs/features-package-reducer
+* [ ] `reduceOnlyNupkgSize` - Reduce Only Nupkg File Size - reduce only the size of nupkg file when using Package Reducer. Licensed editions only (version 1.12.0+). Also requires 'reduceInstalledPackageSpaceUsage' to be enabled. See https://chocolatey.org/docs/features-package-reducer
+
+### Access Control / Security
+* [ ] `adminOnlyExecutionForNewCommand` - Limit to Administrator Execution Only for New Command - If enabled, only administrators will be able to run 'choco new'. Business editions only (version 1.10.0+).
+* [ ] `adminOnlyExecutionForDownloadCommand` - Limit to Administrator Execution Only for Download Command - If enabled, only administrators will be able to run 'choco download'. Business editions only (version 1.10.0+).
+* [ ] `useBackgroundServiceWithNonAdministratorsOnly` - Use Background Service With Non-Administrators Only - When using Self-Service, only execute background mode for non-administrators. Business editions only (version 1.12.0+).
+* [x] `useLocalSystemForServiceInstalls` - Use LocalSystem For Service Installs - When installing services that don't indicate a user/password, use the LocalSystem for those installations. When turned off, Chocolatey will manage a local admin with a password unique to the machine but will never know it. Business editions only (version 1.12.0+).
 
 ### Package Synchronizer
 * [x] `allowSynchronization` - Synchronization - Keep Chocolatey packages in sync with changes in Programs and Features. Available in 0.9.10+. Licensed editions only. See https://chocolatey.org/docs/features-synchronize
@@ -98,3 +109,4 @@ A checkbox means this feature is turned on by default.
 ### Self-Service / Background Mode
 * [ ] `useBackgroundService` - Use Background Service - For some commands like install and upgrade, use a background service instead of running the command directly. Business editions only (licensed version 1.8.4+). Uninstall requires Chocolatey v0.10.4. Requires the package chocolatey-agent (choco install chocolatey-agent). See https://chocolatey.org/docs/features-agent-service
 * [x] `useBackgroundServiceWithSelfServiceSourcesOnly` - Use Background Service With Self-Service Sources Only - When using Self-Service, opt-in only sources configured to be used with self-service. This allows for other sources only an admin can use. Business editions only (version 1.9.7+). Requires Chocolatey 0.10.4+ for enabling sources with self-service only.
+* [ ] `useBackgroundServiceWithNonAdministratorsOnly` - Use Background Service With Non-Administrators Only - When using Self-Service, only execute background mode for non-administrators. Business editions only (version 1.12.0+).

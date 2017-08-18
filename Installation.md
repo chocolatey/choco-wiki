@@ -1,13 +1,10 @@
-<!-- TOC depthTo:2 -->
-
 - [Requirements](#requirements)
 - [Installing Chocolatey](#installing-chocolatey)
-- [More Install Options](#more-install-options)
+- <a href="#more-install-options" onclick="document.getElementById('div-moreoptions').classList.remove('hide')">More Install Options</a>
+- [[Installing Licensed Edition|Installation-Licensed]]
 - [Upgrading Chocolatey](#upgrading-chocolatey)
 - [Uninstalling Chocolatey](#uninstalling-chocolatey)
 - [FAQs](#faqs)
-
-<!-- /TOC -->
 
 ## Requirements
 * Windows 7+ / Windows Server 2003+
@@ -71,6 +68,7 @@ remove-->
 
 * [Install from PowerShell v3+](#install-from-powershell-v3)
 * [Completely offline/internal install](#completely-offline-install)
+* [Install with Puppet](#install-with-puppet)
 * [Install using PowerShell from cmd.exe](#install-using-powershell-from-cmdexe)
 * [Install using NuGet Package Manager](#install-using-nuget-package-manager)
 * [Install using NuGet.exe from PowerShell](#install-using-nugetexe-from-powershell)
@@ -104,6 +102,7 @@ With completely offline use of Chocolatey, you want to ensure you remove the def
 
     ![download chocolatey.nupkg visual](images/DownloadChocolateyPackage.png)
 
+1. You can also download [the latest version directly](https://chocolatey.org/api/v2/package/chocolatey).
 1. You can put the chocolatey.nupkg on an internal package repository and then address that full path, similar to how you see in the Puppet provider - https://forge.puppet.com/puppetlabs/chocolatey#manage-chocolatey-installation
 1. Then you would run a script similar to the below to address that local install. If it is on a repository somewhere, you will need to enhance the below script to get that file  (the Chocolatey Puppet provider install script shows that).
 
@@ -174,6 +173,186 @@ param (
 if (!(Test-Path $ChocoInstallPath)) {
   # Install Chocolatey
   Install-LocalChocolateyPackage $localChocolateyPackageFilePath
+}
+~~~
+
+### Install with Puppet
+
+**NOTE**: If you have the licensed edition, see [[Setting up Licensed Edition with Puppet|Installation-Licensed#set-up-licensed-edition-with-puppet]] instead.
+
+Here's an example of setting Chocolatey up with Puppet that sets up and configures Chocolatey, sets up an internal package repository, and shows setting up the licensed edition and ensuring some packages.
+
+* Download the chocolatey.nupkg from the community repository - [download the latest chocolatey nupkg](https://chocolatey.org/api/v2/package/chocolatey) or see [Completely offline install](#completely-offline-install) to get an older version.
+* Optionally download the chocolatey.server package from the community repository - [download the latest chocolatey.server nupkg](https://chocolatey.org/api/v2/package/chocolatey.server).
+* Use `choco push` to push those items to your internal package repository (e.g. `choco push chocolatey.0.10.7.nupkg -s http://internal_repo/ -k abc123`)
+* Determine how to get the bare url to download the Chocolatey.Nupkg directly. You will need that for the internal url for installing Chocolatey offline. For the community repository, it is https://chocolatey.org/api/v2/package/chocolatey
+
+
+~~~puppet
+# Requires puppetlabs/chocolatey module - see https://forge.puppet.com/puppetlabs/chocolatey
+
+## Set resource defaults for `package` resources on Windows to use the Chocolatey provider
+case $operatingsystem {
+  'windows':    {
+    Package {
+      provider => chocolatey,
+    }
+  }
+}
+
+## - Ensure Chocolatey Install -
+#include chocolatey
+### OR
+### Download chocolatey.nupkg to your internal repository (see above about getting the package for offline use)
+### Note `chocolatey_download_url is completely different than source locations
+### This is directly to the bare download url for the chocolatey.nupkg, similar to
+###  what you see when you browse to https://chocolatey.org/api/v2/package/chocolatey
+class {'chocolatey':
+  chocolatey_download_url => 'https://<internalurl/to>/chocolatey.nupkg',
+  use_7zip                => false,
+}
+
+## If you need FIPS compliance
+## make this the first thing you configure before you do any additional
+## configuration or package installations
+#chocolateyfeature {'useFipsCompliantChecksums':
+#  ensure => enabled,
+#}
+
+## Keep chocolatey up to date based on your internal source
+## You control the upgrades based on when you push an updated version
+##  to your internal repository.
+## Note the source here is to the OData feed, similar to what you see
+##  when you browse to https://chocolatey.org/api/v2
+package {'chocolatey':
+  ensure   => latest,
+  provider => chocolatey,
+  source   => 'https://<internal_repo>/chocolatey',
+}
+
+
+## - Configure Chocolatey -
+### Config Settings
+
+## Move cache location so Chocolatey is very deterministic about
+## cleaning up temporary data
+chocolateyconfig {'cacheLocation':
+  value => 'c:\ProgramData\choco-cache',
+}
+
+## Increase timeout to 4 hours
+chocolateyconfig {'commandExecutionTimeoutSeconds':
+  value => '14400',
+}
+
+### Sources
+## Remove the default community package repository source
+chocolateysource {'chocolatey':
+  ensure   => absent,
+  location => 'https://chocolatey.org/api/v2/',
+}
+
+## Add default sources for your internal repositories
+chocolateysource {'internal_chocolatey':
+  ensure   => present,
+  location => 'http://internal_location/OData/endpoint',
+  priority => 1,
+  username => 'optional',
+  password => 'optional,not ensured',
+}
+
+### Features
+chocolateyfeature {'checksumFiles':
+  ensure => enabled,
+}
+
+## When using Puppet for installs
+chocolateyfeature {'showDownloadProgress':
+  ensure => disabled,
+}
+
+chocolateyfeature {'useRememberedArgumentsForUpgrades':
+  ensure => enabled,
+}
+
+
+## - Chocolatey.Server Repository (Chocolatey Simple Server Package Repository) -
+## Requires chocolatey/chocolatey_server module  - see https://forge.puppet.com/chocolatey/chocolatey_server
+## this contains the bits to install the custom server
+## - Ensures IIS and Ensure ASP.NET
+## - Installs and configures the Chocolatey.Server website and app pool
+## - Sets permissions appropriately
+
+#include chocolatey_server
+## OR
+## `server_package_source` is to the OData feed, similar to what you see
+##  when you browse to https://chocolatey.org/api/v2
+class {'chocolatey_server':
+  server_package_source => 'https://internalurl/odata/server',
+}
+
+chocolateysource {'local_chocolatey_server':
+  ensure   => present,
+  location => 'http://localhost/chocolatey',
+  priority => 2,
+}
+
+
+## - Tab Completion -
+## Ensure that when someone uses choco from powershell.exe, they have tab completion
+file {'C:/Users/Administrator/Documents/WindowsPowerShell':
+  ensure => directory,
+}
+
+file {'C:/Users/Administrator/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1':
+  ensure => file,
+  content => '$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}',
+}
+
+
+## - Package Examples -
+package {'roundhouse':
+  ensure   => '0.8.5.0',
+}
+
+package {'git':
+  ensure => latest,
+}
+
+## see https://forge.puppet.com/puppetlabs/chocolatey#install-options-with-spaces
+package {'launchy':
+  ensure          => installed,
+  install_options => ['--override', '--installArgs','"', '/VERYSILENT','/NORESTART','"'],
+}
+
+package {['virustotaluploader',
+          'googlechrome',
+          'notepadplusplus',
+          '7zip',
+          'ruby',
+          'charles',
+          'grepwin',
+          'stexbar',
+          'inkscape',
+          'gitextensions',
+          'pandoc',
+          'snagit',
+          'nodejs',
+          ]:
+  ensure => latest,
+  source => 'https://chocolatey.org/api/v2/',
+}
+
+package {'screentogif':
+  ensure => '2.2.160907',
+  source => 'https://chocolatey.org/api/v2/',
+}
+
+package {'dotnet4.5.2':
+  ensure => latest,
 }
 ~~~
 
