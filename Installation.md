@@ -189,7 +189,8 @@ Here's an example of setting Chocolatey up with Puppet that sets up and configur
 
 
 ~~~puppet
-# Requires puppetlabs/chocolatey module - see https://forge.puppet.com/puppetlabs/chocolatey
+# Requires puppetlabs/chocolatey module
+# See https://forge.puppet.com/puppetlabs/chocolatey
 
 ## Set resource defaults for `package` resources on Windows to use the Chocolatey provider
 case $operatingsystem {

@@ -128,7 +128,8 @@ Most organizations using Chocolatey and Puppet are going to do so with zero inte
 Here is what a completely offline use of Chocolatey looks like (complete with a Chocolatey.Server instance):
 
 ~~~puppet
-# Requires puppetlabs/chocolatey module - see https://forge.puppet.com/puppetlabs/chocolatey
+# Requires puppetlabs/chocolatey module
+# See https://forge.puppet.com/puppetlabs/chocolatey
 
 ## - Ensure Chocolatey Install -
 ## Download chocolatey.nupkg to your internal repository (see above
