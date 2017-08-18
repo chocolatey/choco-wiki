@@ -46,7 +46,9 @@ Chocolatey maintains its own state of the world, while Windows maintains the sta
 <!-- /TOC -->
 
 ## Automatic Synchronize
-In licensed editions of Chocolatey, synchronize for existing packages that are tracking to software installed in Programs and Features happens automatically and takes effect prior to the command running.
+In licensed editions of Chocolatey, synchronize for installed packages that are tracking to software installed in Programs and Features happens automatically and takes effect prior to the command running.
+
+When you install a package, many times that package will install software into Programs and Features.  If someone were to manually remove the software, upgrade it, or it automatically upgrades, automatic sync will ensure the package stays in sync with those changes happening outside of Chocolatey. This is one place where commercial editions have better system integration.
 
 ### Usage
 
