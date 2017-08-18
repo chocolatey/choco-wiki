@@ -54,6 +54,8 @@ When you install a package, many times that package will install software into P
 
 ![Synchronize - if you are on https://chocolatey.org/docs/features-synchronize, see commented html below for detailed description of image](images/features/features_synchronize.png)
 
+In the image above, someone manually removed the 1Password software. On the next run of Chocolatey, auto sync sees the software has been removed, so it removes the package tracking to that software in response to those system changes.
+
 <!--
 Text in the image above:
 
