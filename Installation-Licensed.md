@@ -53,7 +53,7 @@ Here's the whole process for installing your license and installing the licensed
 
 ## How Do I Install The Licensed Edition?
 
- 1. Install a recent version of Chocolatey (0.9.10+) - `choco upgrade chocolatey`.
+ 1. Install a recent version of Chocolatey (0.10.7+) - `choco upgrade chocolatey` (due to a tight integration, `chocolatey.extension` may need a newer version than what is listed here).
  1. You received a license file in email.
  1. Take that license file and copy it to your Chocolatey install folder `license` subdirectory (you may need to create it first). For most folks that path would be `"C:\ProgramData\chocolatey\license"`. Alternatively, you can put the license in your user profile directory, e.g. `"C:\Users\YourUserName\chocolatey.license.xml"`
 
