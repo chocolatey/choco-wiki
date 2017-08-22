@@ -151,10 +151,16 @@ Reference: https://groups.google.com/d/msgid/chocolatey/d11d8eb2-74b3-4c2c-b0bb-
 
 <a id="markdown-i-cant-get-the-powershell-tab-completion-working" name="i-cant-get-the-powershell-tab-completion-working"></a>
 ### I can't get the PowerShell tab completion working.
+See next question.
+
 <a id="markdown-why-does-choco-intab-not-work-for-me" name="why-does-choco-intab-not-work-for-me"></a>
 ### Why does choco in{tab} not work for me?
 
 This means the import failed during install/upgrade. Chocolatey does supply a warning when this happens in the install/upgrade log. Take a look there.
+
+The warning may look like: `"Not setting tab completion: Profile file does not exist at 'C:\Users\garyc\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1'."`
+
+Once you've looked at your log to determine what it said, here are some followup steps:
 - If this is the same shell that the upgrade occurred in, the message states you need to update your profile - run `. $profile`. Try that first, then try restarting your shell and see if it takes hold.
 - If it still doesn't work, it means there was a failure setting the profile with the module.
 - This could be due to PowerShell Execution Policy settings. Run `Get-ExecutionPolicy` - if it is set to `Restricted` you need to adjust that to something like `RemoteSigned`. See about execution policies (link)
