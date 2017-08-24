@@ -3,7 +3,7 @@
 <!-- This documentation is automatically generated from https://github.com/chocolatey/choco/tree/stable/src/chocolatey.resources/helpers/functions/Get-PackageParameters.ps1 using https://github.com/chocolatey/choco/tree/stable/GenerateDocs.ps1. Contributions are welcome at the original location(s). -->
 
 Parses a string and returns a hash table array of those values for use
-in packages.
+in package scripts.
 
 ## Syntax
 
