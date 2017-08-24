@@ -49,6 +49,7 @@ These are the functions from above as one list.
 * [[Install-ChocolateyPinnedTaskBarItem|HelpersInstallChocolateyPinnedTaskBarItem]]
 * [[Install-ChocolateyShortcut|HelpersInstallChocolateyShortcut]] - v0.9.9+
 * [[Update-SessionEnvironment|HelpersUpdateSessionEnvironment]]
+* [[Get-PackageParameters|HelpersGetPackageParameters]] - v0.10.8+
 
 ## Complete List (alphabetical order)
 
