@@ -63,8 +63,10 @@ $pp = Get-PackageParameters
 # see https://chocolatey.org/docs/how-to-parse-package-parameters-argument
 # command line call: `choco install <pkg_id> --params "'/LICENSE:value'"`
 $pp = Get-PackageParameters
-# Read-Host, Prompt and Prompt For Choice all time out after 30 seconds with
-# Chocolatey's PowerShell host. That way they are not
+# Read-Host, PromptForChoice, etc are not blocking calls with Chocolatey.
+# Chocolatey has a custom PowerShell host that will time these calls
+# after 30 seconds, allowing headless operation to continue but offer
+# prompts to users to ask questions during installation.
 if (!$pp['LICENSE']) { $pp['LICENSE'] = Read-Host 'License key?' }
 # set a default if not passed
 if (!$pp['LICENSE']) { $pp['LICENSE'] = '1234' }
