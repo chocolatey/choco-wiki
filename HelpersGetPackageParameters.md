@@ -34,7 +34,7 @@ to take a dependency on the core extension until January 2018. How to
 do this is explained at https://chocolatey.org/docs/how-to-parse-package-parameters-argument#step-3---use-core-community-extension.
 
 The differences between this and the `chocolatey-core.extension` package
-functionaly is that the extension function can only do one string at a
+functionality is that the extension function can only do one string at a
 time and it only looks at `$env:ChocolateyPackageParameters` by default.
 It also only supports splitting by `:`, with this function you can
 either split by `:` or `=`. For compatibility with the core extension,
