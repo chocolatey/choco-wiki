@@ -8,6 +8,10 @@
 - [Additional Configuration](#additional-configuration)
   - [Performance](#performance)
     - [Future](#future)
+- [Common Errors and Resolutions](#common-errors-and-resolutions)
+  - [Error 500](#error-500)
+  - [Error 500.19 - "The requested page cannot be accessed because the related configuration data for the page is invalid."](#error-50019---the-requested-page-cannot-be-accessed-because-the-related-configuration-data-for-the-page-is-invalid)
+  - [Other error](#other-error)
 
 <!-- /TOC -->
 
@@ -38,9 +42,9 @@ For a simple `include chocolatey_server` it does the following automatically:
 
  * Install or upgrade the package - `choco upgrade chocolatey.server -y`
  * Ensure IIS is installed. You can try `choco install IIS-WebServer --source windowsfeatures`
- * Ensure that ASP.NET is installed. Try `choco install IIS-ASPNET45 --source windowsfeatures` (`IIS-ASPNET` for Windows 2008).
+ * Ensure that ASP.NET is installed. Try `choco install IIS-ASPNET45 --source windowsfeatures` (Windows Server 2012). Use `IIS-ASPNET` for Windows Server 2008, possibly `IIS-ASPNET46` for Windows Server 2016.
  * Disable or remove the Default website
- * Set up an app pool for Chocolatey.Server. Ensure 32-bit is enabled and the managed runtime version is `v4.0`.
+ * Set up an app pool for Chocolatey.Server. Ensure 32-bit is enabled and the managed runtime version is `v4.0` (or some version of 4).
  * Set up an IIS website pointed to the install location and set it to use the app pool.
  * Go to explorer and right click on `c:\tools\chocolatey.server` and add the following permissions:
    * `IIS_IUSRS` - Read
@@ -73,3 +77,28 @@ To configure for performance, you will want to do the following:
 #### Future
 
 We are looking to add support for the package source to automatically handle this aspect - http://blog.nuget.org/20150922/Accelerate-Package-Source.html
+
+
+## Common Errors and Resolutions
+
+When you are attempting to install the Simple Server, you may run into some errors depending on your configuration. Here are some common ones we've seen that you may get when you browse to the the site.
+
+### Error 500
+
+Take a closer look at the error. It may be one of the other errors below.
+
+### Error 500.19 - "The requested page cannot be accessed because the related configuration data for the page is invalid."
+
+This can mean a couple of things:
+
+* You missed ensuring the website is using an app pool that is at least .NET 4.0. Check the app pool that your site is using, then ensure that app pool has `32-bit` enabled and the managed runtime version is `v4.0` (or some version of 4).
+* You have made a change to the xml file and it is not valid xml. This typically happens if you put an xml escape character into the password (`&`). To do that you would need to set CData around the value or use a different password. It could also happen if you accidentallly change the xml and it is no longer valid.
+
+### Other error
+
+Turn on customErrors under system.web - <customErrors mode="Off" /> - see this guide to set it - https://stackify.com/web-config-customerrors-asp-net/
+
+Then browse to the site to see if you can gather any more information.
+
+If so, and you are a commercial edition customer, please open a support ticket. If you are using open source Chocolatey, please open a ticket at https://github.com/chocolatey/simple-server/issues.
+
