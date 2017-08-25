@@ -419,13 +419,11 @@ When you are attempting to install the licensed edition, you may run into some e
 
 ### Chocolatey doesn't recognize the license file
 
-Depending on your install location, please ensure there is a license folder (check that the spelling is US `license`) and a file named exactly `chocolatey.license.xml` in it. If you are still seeing issues, as in you don't see a commercial edition name next to the version when you run `choco` (e.g. 'Chocolatey v0.10.7 Professional'), then do the following steps.
+When you run `choco`, it doesn't show a commercial edition next to the name. Like 'Chocolatey v0.10.7 Professional'. This means that Chocolatey is not detecting a license file. This could be an incorrectly placed or incorrectly named file. For troubleshooting, please perform the following:
 
-If you've done this and it still will not work, please open Powershell and run the following command (verbatim, copy/paste):
+1. Open PowerShell and run the following command (verbatim): `Get-Content $env:ChocolateyInstall\license\chocolatey.license.xml`
 
-1. `Get-Content C:\ProgramData\chocolatey\license\chocolatey.license.xml`
-
-You should see the output of the license. If you do not, you do not have the license placed correctly. Please go back and set the license correctly to see if that fixes the issue.
+You should see the output of the license file. If you do not see this, the license file is not placed correctly or misnamed. Please go back and set the license correctly to see if that fixes the issue.
 
 If you do see the expected output but Chocolatey is still not recognizing the file, please do the following:
 
