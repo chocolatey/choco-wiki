@@ -87,7 +87,7 @@ Perhaps the easiest to set up and recommended for testing quick and dirty scenar
 * **Big disadvantage**: For a file share there is not a guarantee of package version immutability. Does not do anything to keep from package versions being overwritten. This provides no immutability of a package version and no guarantee that a version of a package installed is the same as the version in the source.
 
 ### Local Folder Share Setup
-No really, it's that easy. Just set your permissions appropriately and put packages in the folder. You are already done.
+No really, it's that easy. Just set your permissions appropriately and put packages in the folder (no subfolders). You are already done.
 
 
 ## Simple Server
