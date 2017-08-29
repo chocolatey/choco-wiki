@@ -186,11 +186,15 @@ chocolateysource {'chocolatey':
 
 ## Disable the licensed source, it can't be removed
 ## Disabled sources still need all other attributes until
-## https://tickets.puppetlabs.com/browse/MODULES-4449 is resolved
+## https://tickets.puppetlabs.com/browse/MODULES-4449 is resolved.
+## Password is necessary with user, but not ensurable, so it should not
+## matter what it is set to here. If you ever do get into trouble here,
+## the password is your license GUID.
 chocolateysource {'chocolatey.licensed':
   ensure   => disabled,
   priority => '10',
   user     => 'customer',
+  password => '1234',
   require  => File['C:/ProgramData/chocolatey/license/chocolatey.license.xml'],
 }
 
