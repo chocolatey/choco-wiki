@@ -185,8 +185,12 @@ chocolateysource {'chocolatey':
 }
 
 ## Disable the licensed source, it can't be removed
+## Disabled sources still need all other attributes until
+## https://tickets.puppetlabs.com/browse/MODULES-4449 is resolved
 chocolateysource {'chocolatey.licensed':
   ensure   => disabled,
+  priority => '10',
+  user     => 'customer',
   require  => File['C:/ProgramData/chocolatey/license/chocolatey.license.xml'],
 }
 

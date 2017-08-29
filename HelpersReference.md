@@ -1,6 +1,32 @@
 ﻿# PowerShell Functions aka Helpers Reference
 
 <!-- This documentation file is automatically generated from the files at $sourceFunctions using $($sourceLocation)GenerateDocs.ps1. Contributions are welcome at the original location(s). -->
+
+<!-- TOC -->
+
+- [Summary](#summary)
+- [Main Functions](#main-functions)
+- [Error / Success Functions](#error--success-functions)
+- [More Functions](#more-functions)
+  - [Administrative Access Functions](#administrative-access-functions)
+  - [Non-Administrator Safe Functions](#non-administrator-safe-functions)
+- [Complete List (alphabetical order)](#complete-list-alphabetical-order)
+- [Variables](#variables)
+  - [Environment Variables](#environment-variables)
+    - [Advanced Environment Variables](#advanced-environment-variables)
+    - [Set By Options and Configuration](#set-by-options-and-configuration)
+    - [Business Edition Variables](#business-edition-variables)
+    - [Experimental Environment Variables](#experimental-environment-variables)
+    - [Not Useful Or Anti-Pattern If Used](#not-useful-or-anti-pattern-if-used)
+
+<!-- /TOC -->
+
+## Summary
+
+In your Chocolatey packaging, you have the ability to use these functions (and others with Chocolatey's [[PowerShell Extensions|How-To-Create-Extensions]]) to work with all aspects of software management. Keep in mind Chocolatey's automation scripts are just PowerShell, so you can do manage anything you want.
+
+**NOTE**: These scripts are for package scripts, not for use directly in PowerShell. This is in the create packages section, not the using Chocolatey section.
+
 ## Main Functions
 
 These functions call other functions and many times may be the only thing you need in your [[chocolateyInstall.ps1 file|ChocolateyInstallPS1]].
@@ -115,8 +141,8 @@ Chocolatey makes a number of environment variables available (You can access any
 The following are more advanced settings:
 
  * ChocolateyPackageParameters - Parameters to use with packaging, not the same as install arguments (which are passed directly to the native installer). Based on `--package-parameters`. (0.9.8.22+)
- * CHOCOLATEY_VERSION - The version of Choco you normally see. Use if you are 'lighting' things up based on choco version. (0.9.9+) - Otherwise take a dependency on the specific version you need. 
- * ChocolateyForceX86 = If available and set to 'true', then user has requested 32bit version. (0.9.9+) - Automatically handled in built in Choco functions. 
+ * CHOCOLATEY_VERSION - The version of Choco you normally see. Use if you are 'lighting' things up based on choco version. (0.9.9+) - Otherwise take a dependency on the specific version you need.
+ * ChocolateyForceX86 = If available and set to 'true', then user has requested 32bit version. (0.9.9+) - Automatically handled in built in Choco functions.
  * OS_PLATFORM - Like Windows, OSX, Linux. (0.9.9+)
  * OS_VERSION - The version of OS, like 6.1 something something for Windows. (0.9.9+)
  * OS_NAME - The reported name of the OS. (0.9.9+)
@@ -138,9 +164,9 @@ Some environment variables are set based on options that are passed, configurati
 
  * ChocolateyInstallArgumentsSensitive - Encrypted arguments passed from command line `--install-arguments-sensitive` that are not logged anywhere. (0.10.1+ and licensed editions 1.6.0+)
  * ChocolateyPackageParametersSensitive - Package parameters passed from command line `--package-parameters-senstivite` that are not logged anywhere.  (0.10.1+ and licensed editions 1.6.0+)
- * ChocolateyLicensedVersion - What version is the licensed edition on? 
+ * ChocolateyLicensedVersion - What version is the licensed edition on?
  * ChocolateyLicenseType - What edition / type of the licensed edition is installed?
- 
+
 #### Experimental Environment Variables
 The following are experimental or use not recommended:
 
