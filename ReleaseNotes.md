@@ -4,7 +4,7 @@ This covers changes for the "chocolatey" and "chocolatey.lib" packages, which ar
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Licensed Release Notes|ReleaseNotesLicensed]].
 
-## [0.10.8](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.8+is%3Aclosed) (unreleased)
+## [0.10.8](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.8+is%3Aclosed) (August 30, 2017)
 
 With this release, Package Parameters are fully supported from both the user side and the packaging side. Check out [the documentation](https://chocolatey.org/docs/helpers-get-packageparameters) and check out the [walkthrough](https://chocolatey.org/docs/how-to-parse-package-parameters-argument) on how to use package parameters in your packaging. Note if you are pushing packages to the community repository, you must continue to take a dependency on the `chocolatey-core.extension` as a polyfill for older versions until at least six months after a new feature is released.
 
