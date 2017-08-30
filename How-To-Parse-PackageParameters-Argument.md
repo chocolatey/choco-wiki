@@ -86,7 +86,7 @@ For example: `--params "'/Port:82 /AdditionalTools'"`.
 ~~~
 
 <a name="step-3---use-core-community-extension"></a>
-### Step3 - Use Get-PackageParameters
+### Step 3 - Use Get-PackageParameters
 
 This is the recommended way to work with Package Parameters. For consistency and understanding, please only use this method when building packages.
 
