@@ -4,11 +4,13 @@ When installing a Chocolatey Package, it is possible to use a number of argument
 
 Package parameters provide a way for a package consumer to make choices about how they want things installed and configuration of the underlying software.
 
+You can use package parameters to set up arguments to the native installer, but that is typically done from the consumer end with Install Arguments. It does offer a nice way of providing that information for folks.
+
 * [Walkthrough](#walkthrough)
    * [Step 1 - Determine Parameters](#step-1---determine-your-package-parameters)
    * [Step 2 - Add to Package Description](#step-2---add-package-parameters-to-the-description)
-   * [Step 3 - Use `Get-PackageParameters`](#step-3---use-core-community-extension)
-   * [Step 3 (alternative) - Parse Your Own](#step-3-alternative---set-up-your-own-parsing)
+   * [Step 3 - Use `Get-PackageParameters`](#step-3---use-get-packageparameters)
+   * [DEPRECATED - Step 3 (alternative) - Parse Your Own](#step-3-alternative---set-up-your-own-parsing)
    * [Review](#review-set-parameters)
 * [Installing With Package Parameters](#installing-with-package-parameters)
 
@@ -19,6 +21,29 @@ Package parameters provide a way for a package consumer to make choices about ho
 **NOTE:** `Get-PackageParameters` is available now with a dependency on `chocolatey-core.extension`, and in a future version of Chocolatey (see [#312](https://github.com/chocolatey/choco/issues/312)), it will also be one of Chocolatey's built-in functions.
 
 ## Walkthrough
+
+Let's customize a package with a call similar to `choco install <pkg_id> --params "'/LICENSE:value'"``.
+
+### Example
+
+Here's an example of what we can achieve.
+
+~~~powershell
+# command line call: `choco install <pkg_id> --params "'/LICENSE:value'"`
+$pp = Get-PackageParameters
+
+# Read-Host, PromptForChoice, etc are not blocking calls with Chocolatey.
+# Chocolatey has a custom PowerShell host that will time these calls
+# after 30 seconds, allowing headless operation to continue but offer
+# prompts to users to ask questions during installation.
+if (!$pp['LICENSE']) { $pp['LICENSE'] = Read-Host 'License key?' }
+# set a default if not passed
+if (!$pp['LICENSE']) { $pp['LICENSE'] = '1234' }
+# Requires 0.10.8 for Read-Host -AsSecureString
+if (!$pp['Password']) { $pp['Password'] = Read-Host "Enter password for $userName:" -AsSecureString}
+# fail the install/upgrade if not value is not determined
+if (!$pp['Password']) { throw "Package needs parameter 'Password' to install, that must be provided in params or in prompt." }
+~~~
 
 ### Step 1 - Determine your Package Parameters
 One thing you will need is a good idea of what package parameters and defaults for those parameters what you would offer. Let's say the following package parameters can be set:
@@ -60,7 +85,15 @@ For example: `--params "'/Port:82 /AdditionalTools'"`.
      PackageParameters - Parameters to pass to the package. Defaults to unspecified.
 ~~~
 
-### Step 3 - Use Core Community extension
+<a name="step-3---use-core-community-extension"></a>
+### Step3 - Use Get-PackageParameters
+
+This is the recommended way to work with Package Parameters. For consistency and understanding, please only use this method when building packages.
+
+#### Built-In
+Starting in Chocolatey v0.10.8, `Get-PackageParameters` is built into Chocolatey - see the [[`Get-PackageParameters` documentation|HelpersGetPackageParameters]]. If you are using Chocolatey internally, you can use this without needing the community extension (below). If you are pushing packages externally (e.g. the community package repository), you must add the core extension as a polyfill for 6 months after release of Chocolatey v0.10.8. Follow the next section below.
+
+#### Core Community extension
 
 If you want to do this simply, take a dependency on the [core community extension](https://chocolatey.org/packages/chocolatey-core.extension), which already has the above function `Get-PackageParameters` built in.
 
@@ -74,29 +107,32 @@ Open the nuspec back up and add a dependency on `chocolatey-core.extension`. Thi
 
 **NOTE**: The version specified without brackets (`[]`) means this is a minimum version dependency. So in this case, 1.1.0 or newer (`>=1.1.0`). If it was `[1.1.0]`, that would mean exactly version 1.1.0 (`=1.1.0`).
 
+#### Prepare The Code
+
 Now use `Get-PackageParameters` to parse the parameters as it will automatically be added to the functions when Chocolatey adds the `chocolatey-core.extension`.
 
 Let's open and add the following to `tools\chocolateyInstall.ps1`:
 
-
 ~~~powershell
+
 $pp = Get-PackageParameters
 
-if ($pp["Port"] -eq $null -or $pp["Port"] -eq '') { $pp["Port"] = '81' }
-if ($pp["Edition"] -eq $null -or $pp["Edition"] -eq '') { $pp["Edition"] = 'LicenseKey' }
-if ($pp["AdditionalTools"] -ne $null -and $pp["AdditionalTools"] -ne '') { $pp["AdditionalTools"] = 'true' }
-if ($pp["InstallationPath"] -eq $null -or $pp["InstallationPath"] -eq '') { $pp["InstallationPath"] = "$env:SystemDrive\temp" }
+if (!$pp['Port']) { $pp['Port'] = '81' }
+if (!$pp['Edition']) { $pp['Edition'] = 'LicenseKey' }
+# you can also use the values like this:
+if (!$pp.InstallationPath) { $pp.InstallationPath = "$env:SystemDrive\temp" }
 
-$silentArgs = "/S /Port:$($pp["Port"]) /Edition:$($pp["Edition"]) /InstallationPath:$($pp["InstallationPath"])"
-if ($pp["AdditionalTools"] -eq 'true') { $silentArgs += " /Additionaltools" }
+
+$silentArgs = "/S /Port:$($pp['Port']) /Edition:$($pp['Edition']) /InstallationPath:$($pp['InstallationPath'])"
+if ($pp['AdditionalTools'] -eq 'true') { $silentArgs += " /Additionaltools" }
 
 Write-Debug "This would be the Chocolatey Silent Arguments: $silentArgs"
 ~~~
 
 **NOTE**: In the above example, `Get-PackageParameters` will already be available because chocolatey-core.extensions is an extension package. Chocolatey automatically loads up PowerShell modules installed as extensions (so you don't need the Import-Module in your chocolateyInstall.ps1 script). See [[Extensions|How-To-Create-Extensions]].
 
-
-### Step 3 (alternative) - Set up Your Own Parsing
+<a name="step-3-alternative---set-up-your-own-parsing"></a>
+### Step 3 (alternative) - Set up Your Own Parsing [DEPRECATED]
 This _How-To_ focuses on how a package creator can make use of the PackageParameters argument within their package, and how they can parse the string which is passed through into their package from the installation command.
 
 #### Code Sample
