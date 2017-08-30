@@ -243,7 +243,7 @@ To understand this, open Powershell, then install something that updates the PAT
 
 Contrast the two, notice there is a difference (there may be a lot of data to sift through).
 
-When you update the Machine/User environment variables, you would also need to update the Process environment variables as it doesn't not see those changes. Fortunately, with Chocolatey, we have a tool called `refreshenv` that does this for you so you don't need to close and reopen the shell. that can ensure that environment variables are updated in the current shell without needing to close and reopen the shell. If you run that and it doesn't have any effect, see [RefreshEnv has no effect](#refreshenv-has-no-effect).
+When you update the Machine/User environment variables, you would also need to update the Process environment variables as it doesn't not see those changes. Fortunately, with Chocolatey, we have a tool called `refreshenv` that does this for you so you don't need to close and reopen the shell. If you run `refreshenv` and it doesn't have any effect, see [RefreshEnv has no effect](#refreshenv-has-no-effect).
 
 <a id="markdown-refreshenv-has-no-effect" name="refreshenv-has-no-effect"></a>
 ### RefreshEnv has no effect
