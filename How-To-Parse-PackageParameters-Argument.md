@@ -72,7 +72,7 @@ The following package parameters can be set:
  * `/AdditionalTools` - install additional tools
  * `/InstallationPath:` - Where to install the binaries to - defaults to "`$env:SystemDrive\temp`"
 
-To pass parameters, use `--params "''"` (e.g. `choco install <package id> [other options] --params="'/ITEM:value /ITEM2:value2 /FLAG_BOOLEAN'"`).
+To pass parameters, use `--params "''"` (e.g. `choco install packageID [other options] --params="'/ITEM:value /ITEM2:value2 /FLAG_BOOLEAN'"`).
 To have choco remember parameters on upgrade, be sure to set `choco feature enable -n=useRememberedArgumentsForUpgrades`.
     </description>
 ~~~
