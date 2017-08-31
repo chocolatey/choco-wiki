@@ -19,6 +19,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
     * Fix - remove "rel[ease]" next to version when building package id.
     * Fix - remove 'self-installing' when building package id.
  * Fix - Logging - log sync messages directly to log file when using limit output (`-r`).
+ * Fix - Download CDN Cache - If original url was switch to TLS/SSL by choco, the cache check doesn't override for the file on the CDN.
 
 ### IMPROVEMENTS
 
