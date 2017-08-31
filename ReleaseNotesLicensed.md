@@ -26,6 +26,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
  * [Security] Runtime - Allow locking down all Chocolatey use to Administrators only (don't allow non-admins to run choco at all) - added as feature flip (see `choco feature list`).
  * Package Internalizer (Choco Download):
     * Pass multiple package names to download/internalize (`choco download pkg1 pkg2 pkgN`).
+    * Downloaded resources will use download CDN cache if available.
  * Windows Service Management Functions:
     * Allow upgrading services without a restart - pass `-DoNotReinstallService` to `Install-ChocolateyWindowsService`.
  * Package Synchronizer (Choco Sync):
