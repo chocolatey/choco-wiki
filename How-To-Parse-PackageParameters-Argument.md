@@ -64,17 +64,16 @@ Set up your nuspec appropriately:
 Main description here about the software
 
 ### Package Specific
-
 #### Package Parameters
 The following package parameters can be set:
 
- * `/Port` - determines what port to listen on - defaults to "81"
- * `/Edition` - What edition to install - defaults to "LicenseKey"
+ * `/Port:` - determines what port to listen on - defaults to "81"
+ * `/Edition:` - What edition to install - defaults to "LicenseKey"
  * `/AdditionalTools` - install additional tools
- * `/InstallationPath` - Where to install the binaries to - defaults to "`$env:SystemDrive\temp`"
+ * `/InstallationPath:` - Where to install the binaries to - defaults to "`$env:SystemDrive\temp`"
 
-These parameters can be passed to the installer with the use of `--params`.
-For example: `--params "'/Port:82 /AdditionalTools'"`.
+To pass parameters, use `--params "''"` (e.g. `choco install <package id> [other options] --params="'/ITEM:value /ITEM2:value2 /FLAG_BOOLEAN'"`).
+To have choco remember parameters on upgrade, be sure to set `choco feature enable -n=useRememberedArgumentsForUpgrades`.
     </description>
 ~~~
 
