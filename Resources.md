@@ -33,7 +33,7 @@ Table of Contents
 ## Docker
 
 * https://hub.docker.com/r/microsoft/windowsservercore/
-* Linux / Mono - https://hub.docker.com/r/linuturk/mono-choco/ - see [Running Chocolatey on Linux](http://www.onitato.com/running-chocolatey-on-linux.html)
+* Linux / Mono - https://hub.docker.com/r/linuturk/mono-choco/ - see [Running Chocolatey on Linux](http://www.onitato.com/post/running-chocolatey-on-linux/)
 * (Turbo - similar technology to Docker) https://turbo.net/
 
 ## Integrations
