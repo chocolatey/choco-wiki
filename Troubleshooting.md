@@ -230,7 +230,7 @@ This is a generic MSI error code - you probably want to ensure you capture the l
 
 <a id="markdown-already-referencing-a-newer-version-of-packagename" name="already-referencing-a-newer-version-of-packagename"></a>
 ###  Already referencing a newer version of 'packagename'
-So you are attempting to upgrade and you get this strange message. But you know you have a more up to date package than Chocolatey thinks you do, at least in this instance.
+So you are attempting to install or upgrade and you get this strange message. But you know you have a more up to date package than Chocolatey thinks you do, at least in this instance.
 
 This cryptic error typically means there is a stray nupkg somewhere in the structure. There is a tiny bug somewhere and rarely a nupkg will stick around when it should have been removed. Once we can determine where this happens we can fix it, until then we have a way to fix the issue manually.
 
