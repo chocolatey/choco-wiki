@@ -25,6 +25,7 @@ There are some well-known things you may run into when you are using Chocolatey.
   - [I'm seeing Chocolatey / *application* / *tool* using 32 bit to run instead of x64. What is going on?](#im-seeing-chocolatey--application--tool-using-32-bit-to-run-instead-of-x64-what-is-going-on)
   - [A package is broken for me](#a-package-is-broken-for-me)
   - [The package install failed with 1603](#the-package-install-failed-with-1603)
+  - [Already referencing a newer version of 'packagename'](#already-referencing-a-newer-version-of-packagename)
   - [Not recognized as the name of a cmdlet, function, script file, or operable program](#not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
   - [My PATH is not getting updated](#my-path-is-not-getting-updated)
   - [RefreshEnv has no effect](#refreshenv-has-no-effect)
@@ -227,6 +228,18 @@ This is a generic MSI error code - you probably want to ensure you capture the l
 * The installer doesn't allow installing an older version
 * etc - it's a generic error like we said
 
+<a id="markdown-already-referencing-a-newer-version-of-packagename" name="already-referencing-a-newer-version-of-packagename"></a>
+###  Already referencing a newer version of 'packagename'
+So you are attempting to upgrade and you get this strange message. But you know you have a more up to date package than Chocolatey thinks you do, at least in this instance.
+
+This cryptic error typically means there is a stray nupkg somewhere in the structure. There is a tiny bug somewhere and rarely a nupkg will stick around when it should have been removed. Once we can determine where this happens we can fix it, until then we have a way to fix the issue manually.
+
+* Open PowerShell and run the following script:
+* `gci -Path "$env:ChocolateyInstall\lib" -Recurse -Filter "*.nupkg" | %{ $_.FullName }`
+* Look for any nupkg files that should not be there. Typically this is probably going to be a nupkg with a version number in the name in a folder that doesn't have a version number in the name of the folder.
+* Delete the offending nupkg from the folder.
+* Then everything should be back to normal again.
+
 <a id="markdown-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program" name="not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program"></a>
 ### Not recognized as the name of a cmdlet, function, script file, or operable program
 * With Chocolatey (choco) itself? Close and reopen the shell as the install didn't ensure the PATH was updated in the current shell.
@@ -250,5 +263,3 @@ When you update the Machine/User environment variables, you would also need to u
 If you are in cmd.exe, it should just work. In PowerShell, you need to install the Chocolatey PowerShell profile first for the command to work.
 
 Take note of whether it says "refreshing environment variables for ***cmd.exe***" or "refreshing environment variables for ***powershell.exe***". If you are in PowerShell and you see "***cmd.exe***" when you run `refreshenv`, then you need to do some additional work to get things set up. see [Why does choco in{tab} not work for me?](#why-does-choco-intab-not-work-for-me).
-
-
