@@ -43,6 +43,24 @@ if (!$pp['LICENSE']) { $pp['LICENSE'] = '1234' }
 if (!$pp['Password']) { $pp['Password'] = Read-Host "Enter password for $userName:" -AsSecureString}
 # fail the install/upgrade if not value is not determined
 if (!$pp['Password']) { throw "Package needs parameter 'Password' to install, that must be provided in params or in prompt." }
+
+# put the value into a file that you write out every install/upgrade
+@"
+<license>$($pp['LICENSE'])</license>
+"@ | Out-File "$toolsDir\config.xml" -Encoding UTF8 -Force
+
+# put a value into a registry key
+
+# EXAMPLE COMING LATER
+
+# pass the arguments to the installer 
+# (although installer arguments work well for this and 
+# are completely transparent to the package)
+
+# EXAMPLE COMING LATER
+
+#[..snip..]
+
 ~~~
 
 ### Step 1 - Determine your Package Parameters
