@@ -16,7 +16,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
  * Self-Service / Background Mode:
     * Fix - Don't display background services messages when background mode is not configured.
  * Package Reducer:
-    * Fix - Package reducer should fails the install when there is no package information.
+    * Fix - Package reducer fails the install when there is no package information.
 
 ### IMPROVEMENTS
 
