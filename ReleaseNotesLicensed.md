@@ -4,6 +4,25 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.12.3 (September 8, 2017)
+
+### BUG FIXES
+
+ * [Security] Fix - Hide admin only repositories from non-administrators with all Chocolatey commands.
+ * Windows Service Management Functions:
+    * Fix - Empty username causes errors. Will now set to what the configuration of Chocolatey is determining.
+ * Package Internalizer (Choco Download):
+    * Fix - Pass multiple package names to download/internalize (`choco download pkg1 pkg2 pkgN`).
+ * Self-Service / Background Mode:
+    * Fix - Don't display background services messages when background mode is not configured.
+ * Package Reducer:
+    * Fix - Package reducer should fails the install when there is no package information.
+
+### IMPROVEMENTS
+
+ * choco sync is now out of preview.
+
+
 ## 1.12.2 (August 31, 2017)
 
 ### FEATURES
@@ -31,7 +50,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
     * Allow upgrading services without a restart - pass `-DoNotReinstallService` to `Install-ChocolateyWindowsService`.
  * Package Synchronizer (Choco Sync):
     * Specify package name when syncing by id (`--id="'Display Name*'" --package-id=package-id`).
- * installation - Disable install of context menus with `--params "'/NoContextMenu'"`. Currently only new installs (removal on upgrade will come in a future release).
+ * Installation - Disable install of context menus with `--params "'/NoContextMenu'"`. Currently only new installs (removal on upgrade will come in a future release).
  * Package Builder (Choco New):
     * When an MSI has external files, ensure to copy those into the packaging as well. Requires same folder structure that would be used at install time successfully.
  * Package Reducer:
