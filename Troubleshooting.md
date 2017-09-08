@@ -240,6 +240,25 @@ This cryptic error typically means there is a stray nupkg somewhere in the struc
 * Delete the offending nupkg from the folder.
 * Then everything should be back to normal again.
 
+This script may be even more helpful in helping you isolate those stray nupkg files (thank you [ComFreek](https://gist.github.com/ComFreek/87bc3af278c991f729c5135446278ac5)!):
+
+~~~powershell
+# This script automatically filters the suspected candidates which are to be removed.
+
+Get-ChildItem -Path "$env:ChocolateyInstall\lib" -Recurse -Filter "*.nupkg" | Where-Object {
+  # Filter packages with version number
+  $_.Name -match "^.*\.(\d+|\.){2,}\.nupkg"
+} | Where-Object {
+  # whose parent directory does not contain the same version number
+  $_.Directory.BaseName -ne $_.BaseName
+} | % {
+  # Remove -WhatIf after having run this script and having double-checked (!) each file listed in the previous
+  # run if it is really supposed to be removed (check the wiki link for information).
+  Remove-Item $_.FullName -WhatIf
+}
+~~~
+
+
 <a id="markdown-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program" name="not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program"></a>
 ### Not recognized as the name of a cmdlet, function, script file, or operable program
 * With Chocolatey (choco) itself? Close and reopen the shell as the install didn't ensure the PATH was updated in the current shell.
