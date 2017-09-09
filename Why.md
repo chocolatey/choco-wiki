@@ -60,15 +60,7 @@ Yes, yes you can. Chocolatey works in a similar manner to how you would do thing
 
 ![Yes, yes](http://replygif.net/i/208.gif)
 
-Now, Chocolatey ***can*** take over existing installs and be able to handle uninstalls in most cases. ***Can*** is very dependent on packaging and the underlying software installer that is used for the install ([[installer packages|ChocolateyFAQs#what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application]] are the context here).
-
-Let me start by saying that testing how a single package won't give you a warm and fuzzy about how it will work with all packages. Software installers in the wild world of Windows have many completely different ways of going about things, all of which are dependent on those creating the installers, none of which have a consistent standard (except maybe MSI). Welcome to Windows.
-
-Now that we have baselined that - each piece of software out there is a special snowflake, so  each package has to be able to account for differences in the installers.
-
-So when a package takes over the existing install, if the registry snapshot doesn't differ, it won't be able to automatically uninstall it (if you have autoUninstaller turned on, check `choco feature`). If there is no `chocolateyUninstall.ps1` that would uninstall the software, choco won't be able to uninstall it. At some point it will though, choco continues to get better at things. And at some point in the near future it will contain a check to do nothing for an install if a registry key exists (and record that for later uninstall).
-
-The question I need to ask is whether you are worse off by adding choco into the mix? It handles upgrades for you. It brings about some level of consistency and a unifying interface to this madness that is the Windows installer infrastructure.
+Now, Chocolatey ***can*** take over existing installs, but it can only uninstall software if the registry snapshot differs or if the software provides a `chocolateyUninstall.ps1`. At some point in the near future, it will contain a check to do nothing for an install if a registry key exists (and record that for later uninstall).
 
 ### Why not use an existing Windows package manager?
 Believe me, I wanted there to be something existing on Windows that would fit the bill. Package management is not a glorious job. Especially on Windows. It's taking all of the different native installers, archives, and straight executable downloads and making a simple interface for consumers to issue the same install command for all of them. Here are/were my needs:
