@@ -58,6 +58,7 @@ To set Chocolatey in background mode, you need to run the following:
 * You also need to opt in sources in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`). Alternatively, you can allow any configured source to be used for self-service by running the following: `choco feature disable -n useBackgroundServiceWithSelfServiceSourcesOnly` (requires Chocolatey Extension v1.10.0+).
 * If you want self-service to apply only to non-administrators, run `choco feature enable -n useBackgroundServiceWithNonAdministratorsOnly` (requires Chocolatey Extension v1.11.1+).
 * If you want to configure custom commands (not just install/upgrade), use something like `choco config set backgroundServiceAllowedCommands "install,upgrade,pin,sync"` (with the commands you want to allow, requires Chocolatey Extension v1.12.4+). See [commands consideration](#command-customization-consideration) below.
+* For use with Chocolatey GUI, you need Chocolatey Extension v1.12.4+, and at least Chocolatey GUI v0.14.0-unstable0345. If you already have an older version of the GUI installed, please uninstall that first, then run `choco upgrade chocolateygui -y --pre --source https://www.myget.org/F/chocolateygui/` (you will also need at least .NET 4.5.2 installed)
 
 **Note:** In Chocolatey-Agent v0.8.0+, the service will install as a local administrative user `ChocolateyLocalAdmin` by default (and manage the password as well). However you can specify your own user with package parameters (or have it use LocalSystem). Pre `v0.8.0`: This will install Chocolatey Agent as LocalSystem (`SYSTEM`). To change the user, edit the username/password in the services management console on `Chocolatey Agent` properties and restart the service. Currently you will need to do this on upgrade as well.
 
@@ -107,7 +108,7 @@ This makes for happy users and happy admins as they are able to move quicker tow
 #### Self-Service Roadmap:
 
 * Admins will be able to schedule when upgrades occur (maintenance windows).
-* ~~Admins will be able to configure what commands can be run through the background service.~~ completed with Chocolatey Extension v1.12.4.
+* ~~Admins will be able to configure what commands can be run through the background service.~~ Completed with Chocolatey Extension v1.12.4.
 * Admins will have more granular control of what certain users can install.
 
 ### Chocolatey Central Console

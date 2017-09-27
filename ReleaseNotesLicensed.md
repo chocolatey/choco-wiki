@@ -4,6 +4,19 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.12.4 (September 27, 2017)
+
+### BUG FIXES
+
+ * Self-Service / Background Mode:
+    * Fix - Ensure that it configures and works appropriately with Chocolatey API (and the Chocolatey GUI)
+
+### IMPROVEMENTS
+
+ * Self-Service / Background Mode:
+    * Allow commands to be configurable. Covered in more detail at https://chocolatey.org/docs/features-agent-service#setup.
+
+
 ## 1.12.3 (September 8, 2017)
 
 ### BUG FIXES
