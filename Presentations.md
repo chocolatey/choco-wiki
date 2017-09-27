@@ -2,6 +2,10 @@
 * [Podcasts](#podcasts)
 
 ## Presentations
+### 2017
+
+* [Life is like a Box of Chocolate(y)](https://ndcsydney.com/talk/life-is-like-a-box-of-chocolatey/) - [NDC Sydney 2017](https://ndcsydney.com/) - David Gardiner, [August 17, 2017](https://ndcsydney.com/talk/life-is-like-a-box-of-chocolatey/) - [Video](https://www.youtube.com/watch?v=sq2mqeIG2I4)
+
 ### 2016
 * [Easily Manage Software on Windows with Chocolatey](http://www.slideshare.net/ferventcoder/easily-manage-software-on-windows-with-chocolatey-puppetconf-2016) - [PuppetConf 2016](https://2016.puppetconf.com/) - Rob Reynolds, [October 21, 2016](http://sched.co/6fk5) - [Video](https://www.youtube.com/watch?v=K5jq35wezHI)
 
