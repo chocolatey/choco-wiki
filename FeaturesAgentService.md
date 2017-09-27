@@ -10,7 +10,6 @@ The Chocolatey Agent service allows you to go further with your software managem
   - [Requirements](#requirements)
   - [Setup](#setup)
     - [Background Mode Setup](#background-mode-setup)
-    - [Command Customization Consideration](#command-customization-consideration)
   - [Chocolatey Background Service / Self-Service Installer](#chocolatey-background-service--self-service-installer)
     - [Self-Service Roadmap:](#self-service-roadmap)
   - [Chocolatey Central Console](#chocolatey-central-console)
@@ -52,7 +51,7 @@ To install the Chocolatey agent service, you need to install the `chocolatey-age
 
 To set Chocolatey in background mode, you need to run the following:
 
-* `choco upgrade chocolatey-agent <options>` (see the note below for how to customize the user)
+* `choco upgrade chocolatey-agent <options>` (see [agent install options](#chocolatey-agent-install-options))
 * `choco feature disable -n showNonElevatedWarnings` - requires Chocolatey v0.10.4+ to set.
 * `choco feature enable -n useBackgroundService`
 * You also need to opt in sources in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`). Alternatively, you can allow any configured source to be used for self-service by running the following: `choco feature disable -n useBackgroundServiceWithSelfServiceSourcesOnly` (requires Chocolatey Extension v1.10.0+).
@@ -60,10 +59,20 @@ To set Chocolatey in background mode, you need to run the following:
 * If you want to configure custom commands (not just install/upgrade), use something like `choco config set backgroundServiceAllowedCommands "install,upgrade,pin,sync"` (with the commands you want to allow, requires Chocolatey Extension v1.12.4+). See [commands consideration](#command-customization-consideration) below.
 * For use with Chocolatey GUI, you need Chocolatey Extension v1.12.4+, and at least Chocolatey GUI v0.14.0-unstable0345. If you already have an older version of the GUI installed, please uninstall that first, then run `choco upgrade chocolateygui -y --pre --source https://www.myget.org/F/chocolateygui/` (you will also need at least .NET 4.5.2 installed)
 
-**Note:** In Chocolatey-Agent v0.8.0+, the service will install as a local administrative user `ChocolateyLocalAdmin` by default (and manage the password as well). However you can specify your own user with package parameters (or have it use LocalSystem). Pre `v0.8.0`: This will install Chocolatey Agent as LocalSystem (`SYSTEM`). To change the user, edit the username/password in the services management console on `Chocolatey Agent` properties and restart the service. Currently you will need to do this on upgrade as well.
+##### Chocolatey Agent Install Options
+
+Starting with Chocolatey Agent v0.8.0+, the service will install as a local administrative user `ChocolateyLocalAdmin` by default (and manage the password as well). However you can specify your own user with package parameters (or have it use LocalSystem). Using a local administrator account allows for more things to be installed without issues. It also will allow easier shortcuts and other items to be put back on the correct user (the original requestor). You can specify a domain account as well. Prior to `v0.8.0`, Chocolatey Agent would install as LocalSystem (`SYSTEM`) and would require additional customization.
+
+**Package Parameters**:
+
+* `/Username:` - provide username - intead of using the default 'ChocolateyLocalAdmin' user.
+* `/Password:` - optional password for the user.
+* `/EnterPassword` - receive the password at runtime as a secure string
+* `/UseDefaultChocolateyConfigUser` - use the default username from Chocolatey's configuration. This may be LocalSystem.
+* `/NoRestartService` - do not shut down and restart the service. You will need to restart later to take advantage of new service information.
 
 
-#### Command Customization Consideration
+##### Command Customization Consideration
 
 Starting with Chocolatey Licensed Extension v1.12.4, you are allowed to configure what commands can be routed through the background service. Please note that we default to install and upgrade as that is the most secure experience. However you can add uninstall and some other commands as well. Uninstall does have some security considerations as it would allow a non-administrator to remove software that you may have installed, including the background service itself.
 
