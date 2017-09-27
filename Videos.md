@@ -2,13 +2,11 @@
 
 * https://www.pluralsight.com/courses/chocolatey-nuget-automation-pros
 
-## Presentations
-
-## In the community
-
+## Presentations / Conferences
 ### 2017
 
 * WinOps - [WinOps 2017 Rob Reynolds - Modern Software Management on Windows with Chocolatey](https://www.youtube.com/watch?v=UGI_J_nfwj4) - September 21, 2017
+* NDC Sydney - [](https://www.youtube.com/watch?v=sq2mqeIG2I4) - 
 * Inedo - [Chocolatey Package Management with ProGet](https://www.youtube.com/watch?v=BcTYGf7sQ8Q) - June 22, 2017
 * Egee - [Chocolatey - The Windows Package Manager!](https://www.youtube.com/watch?v=eXMTb3qetT0) - June 5, 2017
 
@@ -55,6 +53,8 @@
 * [Chocolatey NuGet - The Power of apt-get for Windows](https://www.youtube.com/watch?v=N-hWOUL8roU) - April 26, 2011
 
 ## Conferences
+
+
 ### 2016
 * PuppetConf 2016 - [Easily Manage Software on Windows with Chocolatey](https://www.youtube.com/watch?v=K5jq35wezHI) - Rob Reynolds, October 21, 2016
 
