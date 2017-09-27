@@ -10,6 +10,7 @@ The Chocolatey Agent service allows you to go further with your software managem
   - [Requirements](#requirements)
   - [Setup](#setup)
     - [Background Mode Setup](#background-mode-setup)
+    - [Command Customization Consideration](#command-customization-consideration)
   - [Chocolatey Background Service / Self-Service Installer](#chocolatey-background-service--self-service-installer)
     - [Self-Service Roadmap:](#self-service-roadmap)
   - [Chocolatey Central Console](#chocolatey-central-console)
@@ -51,13 +52,40 @@ To install the Chocolatey agent service, you need to install the `chocolatey-age
 
 To set Chocolatey in background mode, you need to run the following:
 
-* `choco upgrade chocolatey-agent <options>`
+* `choco upgrade chocolatey-agent <options>` (see the note below for how to customize the user)
 * `choco feature disable -n showNonElevatedWarnings` - requires Chocolatey v0.10.4+ to set.
 * `choco feature enable -n useBackgroundService`
 * You also need to opt in sources in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`). Alternatively, you can allow any configured source to be used for self-service by running the following: `choco feature disable -n useBackgroundServiceWithSelfServiceSourcesOnly` (requires Chocolatey Extension v1.10.0+).
 * If you want self-service to apply only to non-administrators, run `choco feature enable -n useBackgroundServiceWithNonAdministratorsOnly` (requires Chocolatey Extension v1.11.1+).
+* If you want to configure custom commands (not just install/upgrade), use something like `choco config set backgroundServiceAllowedCommands "install,upgrade,pin,sync"` (with the commands you want to allow, requires Chocolatey Extension v1.12.4+). See [commands consideration](#command-customization-consideration) below.
 
-**Note:** This will install Chocolatey Agent as LocalSystem (`SYSTEM`). To change the user, edit the username/password in the services management console on `Chocolatey Agent` properties and restart the service. Currently you will need to do this on upgrade as well.
+**Note:** In Chocolatey-Agent v0.8.0+, the service will install as a local administrative user `ChocolateyLocalAdmin` by default (and manage the password as well). However you can specify your own user with package parameters (or have it use LocalSystem). Pre `v0.8.0`: This will install Chocolatey Agent as LocalSystem (`SYSTEM`). To change the user, edit the username/password in the services management console on `Chocolatey Agent` properties and restart the service. Currently you will need to do this on upgrade as well.
+
+
+#### Command Customization Consideration
+
+Starting with Chocolatey Licensed Extension v1.12.4, you are allowed to configure what commands can be routed through the background service. Please note that we default to install and upgrade as that is the most secure experience. However you can add uninstall and some other commands as well. Uninstall does have some security considerations as it would allow a non-administrator to remove software that you may have installed, including the background service itself.
+
+**Available Commands**:
+
+* info - do not add if you want sources hidden from non-admins
+* list/search - do not add if you want sources hidden from non-admins
+* install
+* upgrade
+* uninstall - keep in mind there may be security implications for this
+* optimize
+* outdated - do not add if you want sources hidden from non-admins
+* pin
+* sync
+
+**Blacklisted Commands**:
+
+* config
+* feature
+* source
+* apikey
+
+Chocolatey does not allow for configuration changing commands to be routed through the background service as that would allow users to be able to change configuration and that could be detrimental. For instance, a user could add a local source with a package they've created that promotes themselves to an administrator (escalation of privilege).
 
 ### Chocolatey Background Service / Self-Service Installer
 
@@ -65,7 +93,7 @@ When an administrator installs the agent, they can configure Chocolatey to use b
 
 Why this is desirable:
 
-* Users do not need to be administrators but are still empowered to install and upgrade software.
+* Users do not need to be administrators but are still empowered to install and upgrade software (functions are configurable with Chocolatey Extension v1.12.4+)
 * Users can only run install and upgrade in an administrative context.
 * Shortcuts, desktop icons, etc created through Chocolatey functions will end up with the proper user.
 * Users can only install approved software based on admin configured sources.
@@ -76,14 +104,13 @@ This makes for happy users and happy admins as they are able to move quicker tow
 
 #### Self-Service Roadmap:
 
-* Chocolatey GUI to detect background mode and adjust raising permissions.
-* Admins will be able to schedule when upgrades occur.
-* Admins will be able to configure what commands can be run through the background service.
+* Admins will be able to schedule when upgrades occur (maintenance windows).
+* ~~Admins will be able to configure what commands can be run through the background service.~~ completed with Chocolatey Extension v1.12.4.
 * Admins will have more granular control of what certain users can install.
 
 ### Chocolatey Central Console
 
-**NOTE:** The console is estimated to be available Q2 2017. All notes here are what we expect, but the standard disclaimer of availability and features apply.
+**NOTE:** The console is estimated to be available by end of 2017. All notes here are what we expect, but the standard disclaimer of availability and features apply.
 
 Chocolatey will have a central core console that will allow you to manage your environments. You will need the Chocolatey Agent installed on all machines you wish to manage centrally.
 
@@ -138,7 +165,7 @@ Background Mode / Self-Service Installer
 - Chocolatey Agent Service validates commands prior to running
 - Output streams as it happens
 - Attempted abuses are logged for further review
-- Background mode only for install / upgrade (configuring commands allowed on roadmap)
+- Background mode only for install / upgrade by default
 - GUI on roadmap
 
 This image shows running `choco install adobereader -y`.
