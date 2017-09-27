@@ -85,7 +85,9 @@ Starting with Chocolatey Licensed Extension v1.12.4, you are allowed to configur
 * source
 * apikey
 
-Chocolatey does not allow for configuration changing commands to be routed through the background service as that would allow users to be able to change configuration and that could be detrimental. For instance, a user could add a local source with a package they've created that promotes themselves to an administrator (escalation of privilege).
+Chocolatey does not allow for configuration changing commands to be routed through the background service as that would allow users to be able to change configuration and that could be detrimental. For instance, a user could add a local source with a package they've created that promotes themselves to an administrator (escalation of privilege). As that constitutes a security issue, we do not allow it.
+
+For the same reason, we do not recommend allowing sources you do not control to be allowed for self-service.
 
 ### Chocolatey Background Service / Self-Service Installer
 
