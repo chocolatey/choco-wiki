@@ -71,6 +71,15 @@ Starting with Chocolatey Agent v0.8.0+, the service will install as a local admi
 * `/UseDefaultChocolateyConfigUser` - use the default username from Chocolatey's configuration. This may be LocalSystem.
 * `/NoRestartService` - do not shut down and restart the service. You will need to restart later to take advantage of new service information.
 
+**Chocolatey Managed Password**
+
+When Chocolatey manages the password for a local administrator, it creates a very complex password:
+
+* It is 32 characters long.
+* It uses uppercase, lowercase, numbers, and symbols to meet very stringent complexity requirements.
+* The password is different for every machine.
+* Due to the way that it is generated, it is completely unguessable.
+* No one at Chocolatey Software could even tell you what the password is for a particular machine.
 
 ##### Command Customization Consideration
 
