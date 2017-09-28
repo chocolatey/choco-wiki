@@ -6,6 +6,7 @@
 ### 2017
 
 * WinOps - [WinOps 2017 Rob Reynolds - Modern Software Management on Windows with Chocolatey](https://www.youtube.com/watch?v=UGI_J_nfwj4) - September 21, 2017
+* WinOps - [WinOps 2017 Connon MacRae - Evolution of Ticketmaster's journey to DevOps (Shout out)](https://www.youtube.com/watch?v=PL0IEhpxNWQ&t=40m2s) - September 21, 2017
 * NDC Sydney - [Life is like a Box of Chocolate(y) - David Gardiner](https://www.youtube.com/watch?v=sq2mqeIG2I4) - August 17, 2017
 * Adelaide IT Pro - [Adelaide IT Pro June 2017 - Life is like a Box of Chocolate(y)](https://www.youtube.com/watch?v=oXutSXVciHs) - David Gardiner, June 2017
 * Inedo - [Chocolatey Package Management with ProGet](https://www.youtube.com/watch?v=BcTYGf7sQ8Q) - June 22, 2017

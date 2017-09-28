@@ -4,6 +4,14 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.12.5 (September 28, 2017)
+
+### BUG FIXES
+
+ * Windows Service Management Functions:
+    * Fix - Do not save created user prior to setting complex password.
+
+
 ## 1.12.4 (September 27, 2017)
 
 ### BUG FIXES
