@@ -57,7 +57,7 @@ To set Chocolatey in background mode, you need to run the following:
 * You also need to opt in sources in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`). Alternatively, you can allow any configured source to be used for self-service by running the following: `choco feature disable -n useBackgroundServiceWithSelfServiceSourcesOnly` (requires Chocolatey Extension v1.10.0+).
 * If you want self-service to apply only to non-administrators, run `choco feature enable -n useBackgroundServiceWithNonAdministratorsOnly` (requires Chocolatey Extension v1.11.1+).
 * If you want to configure custom commands (not just install/upgrade), use something like `choco config set backgroundServiceAllowedCommands "install,upgrade,pin,sync"` (with the commands you want to allow, requires Chocolatey Extension v1.12.4+). See [commands consideration](#command-customization-consideration) below.
-* For use with Chocolatey GUI, you need Chocolatey Extension v1.12.4+, and at least Chocolatey GUI v0.14.0-unstable0345. If you already have an older version of the GUI installed, please uninstall that first, then run `choco upgrade chocolateygui -y --pre --source https://www.myget.org/F/chocolateygui/` (you will also need at least .NET 4.5.2 installed)
+* For use with Chocolatey GUI, you need Chocolatey Extension v1.12.4+, and at least Chocolatey GUI v0.14.0-unstable0345. **Uninstall any version of the GUI you already have installed first**, then run `choco upgrade chocolateygui -y --pre --version 0.14.0-unstable0345 --source https://www.myget.org/F/chocolateygui/ --allow-downgrade` (you will also need at least .NET 4.5.2 installed)
 
 ##### Chocolatey Agent Install Options
 

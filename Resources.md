@@ -43,6 +43,10 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ## Community
 
 ### 2017
+#### September
+
+* http://www.tomsitpro.com/articles/deploy-windows-software-puppet-chocolatey,1-3658.html
+
 #### August
 * http://www.winsysblog.com/2017/08/recompiling-chocolatey-packages.html
 
