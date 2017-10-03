@@ -87,7 +87,7 @@ When Chocolatey manages the password for a local administrator, it creates a ver
 * It uses uppercase, lowercase, numbers, and symbols to meet very stringent complexity requirements.
 * The password is different for every machine.
 * Due to the way that it is generated, it is completely unguessable.
-* No one at Chocolatey Software could even tell you what the password is for a particular machine.
+* No one at Chocolatey Software could even tell you what the password is for a particular machine without local access.
 
 ##### Command Customization Consideration
 
@@ -320,7 +320,7 @@ So you've seen from above that
 * It uses uppercase, lowercase, numbers, and symbols to meet very stringent complexity requirements.
 * The password is different for every machine.
 * Due to the way that it is generated, it is completely unguessable.
-* No one at Chocolatey Software could even tell you what the password is for a particular machine.
+* No one at Chocolatey Software could even tell you what the password is for a particular machine without local access.
 
 Chocolatey uses something unique about each system, along with an encrypted value in the licensed code base to generate base password, then it makes some other changes to ensure that the password meets complexity requirements. We won't give you the full algorithm of how the password is generated as knowing the algorithm would be a security issue - like having a partial picture of a key, you could start working on how to break in. Unlike a picture of a key, even knowing the full algorithm doesn't get you everything you need as you would need local access to each box to determine the password for ***each*** machine.
 
