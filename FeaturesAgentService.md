@@ -62,10 +62,11 @@ To set Chocolatey in background mode, you need to run the following:
 * `choco upgrade chocolatey-agent <options>` (see [agent install options](#chocolatey-agent-install-options))
 * `choco feature disable -n showNonElevatedWarnings` - requires Chocolatey v0.10.4+ to set.
 * `choco feature enable -n useBackgroundService`
-* You also need to opt in sources in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`). Alternatively, you can allow any configured source to be used for self-service by running the following: `choco feature disable -n useBackgroundServiceWithSelfServiceSourcesOnly` (requires Chocolatey Extension v1.10.0+).
-* If you want self-service to apply only to non-administrators, run `choco feature enable -n useBackgroundServiceWithNonAdministratorsOnly` (requires Chocolatey Extension v1.11.1+).
-* If you want to configure custom commands (not just install/upgrade), use something like `choco config set backgroundServiceAllowedCommands "install,upgrade,pin,sync"` (with the commands you want to allow, requires Chocolatey Extension v1.12.4+). See [commands consideration](#command-customization-consideration) below.
-* For use with Chocolatey GUI, you need Chocolatey Extension v1.12.4+, and at least Chocolatey GUI v0.14.0-unstable0345. **Uninstall any version of the GUI you already have installed first**, then run `choco upgrade chocolateygui -y --pre --version 0.14.0-unstable0345 --source https://www.myget.org/F/chocolateygui/ --allow-downgrade` (you will also need at least .NET 4.5.2 installed)
+* You also need to opt in sources in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`).
+    * OPTIONAL (not recommended): Alternatively, you can allow any configured source to be used for self-service by running the following: `choco feature disable -n useBackgroundServiceWithSelfServiceSourcesOnly` (requires Chocolatey Extension v1.10.0+). We do not recommend this as it could be a security finding if you shut it off.
+* OPTIONAL (highly recommended): If you want self-service to apply only to non-administrators, run `choco feature enable -n useBackgroundServiceWithNonAdministratorsOnly` (requires Chocolatey Extension v1.11.1+). Do understand this means that a real non-administrator, not an administrator in a non-elevated UAC context (that scenario will go the normal route and will not go through background mode).
+* OPTIONAL (varied recommendations): If you want to configure custom commands (not just install/upgrade), use something like `choco config set backgroundServiceAllowedCommands "install,upgrade,pin,sync"` (with the commands you want to allow, requires Chocolatey Extension v1.12.4+). See [commands consideration](#command-customization-consideration) below.
+* OPTIONAL (highly recommended): For use with Chocolatey GUI, you need Chocolatey Extension v1.12.4+, and at least Chocolatey GUI v0.14.0-unstable0345. **Uninstall any version of the GUI you already have installed first**, then run `choco upgrade chocolateygui -y --pre --version 0.14.0-unstable0345 --source https://www.myget.org/F/chocolateygui/ --allow-downgrade` (you will also need at least .NET 4.5.2 installed)
 
 ##### Chocolatey Agent Install Options
 
@@ -91,17 +92,17 @@ When Chocolatey manages the password for a local administrator, it creates a ver
 
 ##### Command Customization Consideration
 
-Starting with Chocolatey Licensed Extension v1.12.4, you are allowed to configure what commands can be routed through the background service. Please note that we default to install and upgrade as that is the most secure experience. However you can add uninstall and some other commands as well. Uninstall does have some security considerations as it would allow a non-administrator to remove software that you may have installed, including the background service itself.
+Starting with Chocolatey Licensed Extension v1.12.4, you are allowed to configure what commands can be routed through the background service. Please note that Chocolatey Licensed defaults to `install` and `upgrade` as that is the most secure experience. However you can add uninstall and some other commands as well. Uninstall does have some security considerations as it would allow a non-administrator to remove software that you may have installed, including the background service itself.
 
 **Available Commands**:
 
 * info - do not add if you want sources hidden from non-admins
 * list/search - do not add if you want sources hidden from non-admins
-* install
-* upgrade
+* outdated - do not add if you want sources hidden from non-admins
+* install - default
+* upgrade - default
 * uninstall - keep in mind there may be security implications for this
 * optimize
-* outdated - do not add if you want sources hidden from non-admins
 * pin
 * sync
 
