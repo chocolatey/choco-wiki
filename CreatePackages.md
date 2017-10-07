@@ -288,7 +288,7 @@ Example: In the case of `Bob.exe` you would create a file named `Bob.exe.gui` an
 
 ## Build Your Package
 
-Open a command line in the directory where the nuspec is and type [[cpack|CommandsPack]]. That's it.
+Open a command line in the directory where the nuspec is and type [[`choco pack`|CommandsPack]]. That's it.
 
 ## Testing Your Package
 
