@@ -18,6 +18,7 @@ When deprecating a Chocolatey Package, the following steps should be followed:
 * Update the package **description**: Why is the package being deprecated?
 * Add a **[dependency](http://docs.nuget.org/docs/reference/nuspec-reference#Specifying_Dependencies) on the other package** (if the package is being superseded).
 * **Remove all files** except the `.nuspec` from the Chocolatey Package.
+* Replace `<files>...</files>` section in `.nuspec` with `<files />` tag to prevent any file from being included with the package.
 * **Remove the iconUrl**.
 * **Unlist all versions** from the package gallery, ***except*** the final deprecated version. The final deprecated version is required so that there is an update path to the new package.
 
