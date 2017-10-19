@@ -29,6 +29,7 @@ There are some well-known things you may run into when you are using Chocolatey.
   - [Not recognized as the name of a cmdlet, function, script file, or operable program](#not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
   - [My PATH is not getting updated](#my-path-is-not-getting-updated)
   - [RefreshEnv has no effect](#refreshenv-has-no-effect)
+  - [Options and/or parameters are not handled correctly](#options-andor-parameters-are-not-handled-correctly)
 
 <!-- /TOC -->
 
@@ -282,3 +283,9 @@ When you update the Machine/User environment variables, you would also need to u
 If you are in cmd.exe, it should just work. In PowerShell, you need to install the Chocolatey PowerShell profile first for the command to work.
 
 Take note of whether it says "refreshing environment variables for ***cmd.exe***" or "refreshing environment variables for ***powershell.exe***". If you are in PowerShell and you see "***cmd.exe***" when you run `refreshenv`, then you need to do some additional work to get things set up. see [Why does choco in{tab} not work for me?](#why-does-choco-intab-not-work-for-me).
+
+<a id="markdown-options-andor-parameters-are-not-handled-correctly" name="options-andor-parameters-are-not-handled-correctly"></a>
+### Options and/or parameters are not handled correctly
+This problem is most likely to be seen if cutting and pasting Chocolatey commands from a document, instead of typing them in directly. Some documentation tools (notably Microsoft Word, but there are others) think they know best and automatically convert certain characters. The hyphen (-) character may become an en-dash (&ndash;) or em-dash (&mdash;). Similarly standard quotation marks (&quot;) may be converted into distinct open and close variants (&ldquo; &rdquo;). Visually, the converted characters look very similar to the correct ones, but they are not functionally equivalent. Instead of cutting and pasting, try typing the command manually at the command prompt.
+
+For example, if the hyphen for the `-y` (confirm all prompts) option had been converted into a visually similar character you would get the message  "&ndash;y not installed. The package was not found with the source(s) listed.", and would also be prompted for confirmation before running scripts. Similarly, if you were using the `--params` option to pass parameters to the package, and suffered the same kind of cut and paste error, an attempt might be made to process the parameters string as if it were a package name, potentially resulting in an error like "The given path's format is not supported."
