@@ -2,18 +2,20 @@
 
 * https://www.pluralsight.com/courses/chocolatey-nuget-automation-pros
 
-## Presentations / Conferences
-### 2017
+## 2017
 
+* JFrog Webinar - [Chocolatey + Artifactory = A Sweet Solution for Managing Windows](https://www.youtube.com/watch?v=k5VLMIeMRYE&t=972s) - September 28, 2017
 * WinOps - [WinOps 2017 Dan Sedlacek - Managing Windows @ Facebook](https://www.youtube.com/watch?v=A-3PGmM4gHE) - September 21, 2017
 * WinOps - [WinOps 2017 Rob Reynolds - Modern Software Management on Windows with Chocolatey](https://www.youtube.com/watch?v=UGI_J_nfwj4) - September 21, 2017
 * WinOps - [WinOps 2017 Connon MacRae - Evolution of Ticketmaster's journey to DevOps (Shout out)](https://www.youtube.com/watch?v=PL0IEhpxNWQ&t=40m2s) - September 21, 2017
 * NDC Sydney - [Life is like a Box of Chocolate(y) - David Gardiner](https://www.youtube.com/watch?v=sq2mqeIG2I4) - August 17, 2017
 * Adelaide IT Pro - [Adelaide IT Pro June 2017 - Life is like a Box of Chocolate(y)](https://www.youtube.com/watch?v=oXutSXVciHs) - David Gardiner, June 2017
 * Inedo - [Chocolatey Package Management with ProGet](https://www.youtube.com/watch?v=BcTYGf7sQ8Q) - June 22, 2017
+* TechGumbo - [Chocolatey (Windows Package Manager) Beginners Guide](https://www.youtube.com/watch?v=hfgZYpo5moA) - June 5, 2017
 * Egee - [Chocolatey - The Windows Package Manager!](https://www.youtube.com/watch?v=eXMTb3qetT0) - June 5, 2017
+* John Impallomeni - [Playing with Chocolatey, a package manager for Windows Systems](https://www.youtube.com/watch?v=TzkUr41qBIY) - March 29, 2017
 
-### 2016
+## 2016
 
 * Arrested DevOps - [Microsoft Redux (Shout out)](https://youtu.be/rsnxc1l3Fz8?t=7m29s) - November 15, 2016
 * [A Tale of Two Hierarchies: Group Policy & Puppet (Shout out)](https://youtu.be/mNW9pDZT-8c?t=33m1s) - Matt Stone, PuppetConf 2016
@@ -25,7 +27,7 @@
 * Channel9 Demo of The Day - [It's Virtual Chocolate: A Custom VM Dipped in a Chocolatey Box Starter. Delicious](https://channel9.msdn.com/Shows/demooftheday/chocovm) - BC3Tech and Jerry Nixon - March 3, 2016
 * TekThing.com - [TekThing 57: Chocolatey Package Manager](https://youtu.be/lqOIop83ms8?t=14m34s) - http://www.tekthing.com/blog/2016/2/4/wifi-router-lifespan-ninite-or-chocolatey-package-manager-android-receipt-trackers-die-cfl-bulbs - February 4, 2016
 
-### 2015
+## 2015
 
 * [Installing applications in Windows 8.1 with Chocolatey - JGAITPro (Espanol)](https://www.youtube.com/watch?v=aid3ptjLlIk) - December 14, 2015
 * Arrested DevOps - [Chocolatey Goodness With Rob Reynolds](https://www.arresteddevops.com/chocolatey/) - December 2015
@@ -36,28 +38,28 @@
 * ITPro TV - [What's New Windows 10 - OneGet Package Manager](https://www.youtube.com/watch?v=yDkjf8EOU2Q) - July 15, 2015
 * [Tutorial: Usando o Chocolatey (apt-get/yum para Windows) - Carlos Alberto Castelo Elias Filho (Espanol)](https://www.youtube.com/watch?v=OWgADNDHJzg) - June 29, 2015
 * devGeeK - [MongoDb Tutorial (Shout out)](https://www.youtube.com/watch?v=W-WihPoEbR4&feature=youtu.be&t=48m45s) - June 17, 2015
-* GEEKBLOGTV - [Chocolatey](https://www.youtube.com/watch?v=nH6jRB5kigc) - May 18, 2015
+* GEEKBLOGTV - [Chocolatey - A Windows Package Manager Like Apt-Get](https://www.youtube.com/watch?v=nH6jRB5kigc) - May 18, 2015
 * Docker - [Installing Docker Client for Windows from Chocolatey](https://www.youtube.com/watch?v=l026hqjhLRU) - April 1, 2015
 * [Exploring the new Chocolatey (AptGet for Windows) - Katherine Moss](https://www.youtube.com/watch?v=kbDPMaEkqZY) - Mar 7, 2015
 * PhillyPoSH - [PhillyPoSH 3/5/2015 - Derek Murawsky : Introducing Chocolatey](https://www.youtube.com/watch?v=LqyHyoa_F1c) - March 5, 2015
 * DevOpsLibrary - [DevOpsLibrary Episode 6: Salted Chocolatey Windows](https://www.youtube.com/watch?v=WYxXUQCTVWw) - February 24, 2015
 * NDC Oslo - [DevOps Yourself: Fast-Track Your Windows Development Environment Setup with Chocolatey and Vagrant](https://vimeo.com/131640721) - Justin James
 
-### 2014
+## 2014
 * [How to use Chocolatey - a Simple and Cool Machine Package Manager - 000abcdexxx Google](https://www.youtube.com/watch?v=nh3lPZssp7s) - November 1, 2014
 * [The Chocolatey Experience](https://vimeo.com/108866814) - October 14, 2014
 * [The New Chocolatey](https://www.youtube.com/watch?v=sm_U53sxt2c) - September 29, 2014
 * PuppetConf 2014 - [Plugging Chocolatey into Your Puppet Infrastructure](https://www.youtube.com/watch?v=cZl_wKSciVk) - Rob Reynolds, September 23, 2014
 * FOSDEM 2014 - [Is Distribution-Level Package Management Obsolete?](https://www.youtube.com/watch?v=FENKd8NT9cY&t=28m19s) / [Slides](http://www.slideshare.net/dberkholz/is-distributionlevel-package-management-obsolete/18) - If you go to 24m 56s, Donnie talks about how painful packaging is for folks across different platforms - Feb 11, 2014
 
-### 2013
+## 2013
 * [Creating a Chocolatey Package Part 1 - Katherine Moss](https://www.youtube.com/watch?v=lLJA_OW0LlY) - Dec 22, 2013
 * PuppetConf 2013 - [Puppet on Windows: Now You're Getting Chocolatey](https://www.youtube.com/watch?v=Im30wziOrBs) - Rob Reynolds, August 23, 2013
 * [Chocolatey Introduction - Joe Maddalone](https://www.youtube.com/watch?v=yBk9DuAHNuc) - June 8, 2013
 
-### 2012
+## 2012
 * LifeHacker - [Using the Chocolatey Command Line Package Manager in Windows](https://www.youtube.com/watch?v=ArwT8DtK7Cc) - September 11, 2012
 
-### 2011
+## 2011
 * [Create a Chocolatey NuGet Package](https://www.youtube.com/watch?v=Wt_unjS_SUo) - April 26, 2011
 * [Chocolatey NuGet - The Power of apt-get for Windows](https://www.youtube.com/watch?v=N-hWOUL8roU) - April 26, 2011

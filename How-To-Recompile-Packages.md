@@ -36,7 +36,7 @@ Recompiling is a great way to quickly get your organization up to speed on manag
 See [[Package Internalizer - Automatically Internalize/Recompile Packages|FeaturesAutomaticallyRecompilePackages]].
 
  * Have Chocolatey for Business
- * Call `choco download notepadplusplus.commandline --recompile`, `choco download git.install --recompile --resources-location \\unc\share` or `choco download nodejs.install --recompile --resources-location http://some/internal/url`.
+ * Call `choco download notepadplusplus.commandline --internalize`, `choco download git.install --internalize --resources-location \\unc\share` or `choco download nodejs.install --internalize --resources-location http://some/internal/url --internalize-all-urls`.
  * That's it! It does all of the manual steps below in a fraction of the time.
 
 ## How To Internalize/Recompile An Existing Package Manually
