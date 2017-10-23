@@ -35,13 +35,19 @@ Recompiling is a great way to quickly get your organization up to speed on manag
 
 See [[Package Internalizer - Automatically Internalize/Recompile Packages|FeaturesAutomaticallyRecompilePackages]].
 
- * Have Chocolatey for Business
- * Call `choco download notepadplusplus.commandline --internalize`, `choco download git.install --internalize --resources-location \\unc\share` or `choco download nodejs.install --internalize --resources-location http://some/internal/url --internalize-all-urls`.
+ * Have Chocolatey for Business (or Chocolatey for MSP).
+ * Call a command like the following:
+    * `choco download notepadplusplus.commandline --internalize`
+    * `choco download git.install --internalize --resources-location \\unc\share`
+    * `choco download nodejs.install --internalize --resources-location http://some/internal/url --internalize-all-urls`.
  * That's it! It does all of the manual steps below in a fraction of the time.
+
+Package Internalizer can be hooked up to continuous integration automation or scheduled tasks to really reduce manual work.
+
 
 ## How To Internalize/Recompile An Existing Package Manually
 
-Chocolatey's [community feed](https://chocolatey.org/packages) has quite a few packages but they are geared towards community and use the internet for downloading from official distribution sites. However, they are attractive as they have everything necessary to install a piece of software on your machine. Through the recompiling process, by which you take a community package and bring all of the bits internal and/or embed them into the pacakge, you can completely internalize a package to host on an internal Chocolatey repository. This gives you complete control over a package and removes the aforementioned production trust and control issues.
+Chocolatey's [community feed](https://chocolatey.org/packages) has quite a few packages but they are geared towards community and use the internet for downloading from official distribution sites due to copyright law and a publicly offered repository. However, they are attractive as they have everything necessary to install a piece of software on your machine. Through the internalization process, by which you take a community package and bring all of the bits internal and/or embed them into the pacakge, you can convert an existing package to be 100% offline and reliable and host it on an internal Chocolatey repository. This gives you complete control over a package and removes the aforementioned production trust and control issues.
 
 To make the existing package local, use these steps.
 

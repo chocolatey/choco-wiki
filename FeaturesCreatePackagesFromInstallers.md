@@ -10,7 +10,7 @@ Creating packages is a pretty quick process as compared to manually installing s
 
 Chocolatey for Business is able to inspect an installer and determine silent arguments and complete packaging components for you, saving you hours of time in packaging and maintaining software!
 
-<!-- TOC -->
+<!-- TOC depthTo:5 -->
 
 - [Usage](#usage)
   - [Command Line](#command-line)
@@ -24,6 +24,7 @@ Chocolatey for Business is able to inspect an installer and determine silent arg
 - [FAQ](#faq)
   - [How do I take advantage of Package Builder?](#how-do-i-take-advantage-of-package-builder)
   - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
+  - [Will this become available for lower editions of Chocolatey?](#will-this-become-available-for-lower-editions-of-chocolatey)
   - [How does it work?](#how-does-it-work)
   - [What types of extensions are supported?](#what-types-of-extensions-are-supported)
   - [Will it catch all types of installers?](#will-it-catch-all-types-of-installers)
@@ -95,7 +96,6 @@ Get-ChildItem -Path $path -Recurse | ?{
 ### Package Builder UI
 Not every person is going to love the command line or may not be familiar with the command line and at Chocolatey we realize this. We've spent countless hours talking to customers and with their feedback we're introducing Package Builder UI. This also gives you an opportunity to transition from existing UI tools while taking advantage of powerful Chocolatey concepts!
 
-
 We've prepared a short video to show the power of the UI:
 [![Chocolatey's Package Builder - Package Builder UI](https://cloud.githubusercontent.com/assets/63502/20327926/f54ac81e-ab54-11e6-9cb1-60df170c338e.png)](https://www.youtube.com/watch?v=qJNKR_PEQqY&list=PLfn-TaDnc1us5X-PVlxW8M1h-6mXEXZSG&index=2 "Chocolatey's Package Builder - Package Builder UI")
 
@@ -162,18 +162,20 @@ You must have a [Business edition of Chocolatey](https://chocolatey.org/compare)
 ### I'm a licensed customer, now what?
 When you run `choco new`, you can add `--file` and point Chocolatey at the installer file and let Chocolatey figure out everything for creating a package and the silent arguments and wrap that around the installer.
 
+### Will this become available for lower editions of Chocolatey?
+Package Builder will only be available in C4B (Chocolatey for Business).
+
 ### How does it work?
 It inspects the installer file using a series of rules that helps determine the installer type. From there it builds a package with the information it is able to extract from the installer.
 
 ### What types of extensions are supported?
-
 Package Builder supports `.exe`, `.msi`, `.msu`, `.msp`, `.7z`, and `.zip`.
 
 ### Will it catch all types of installers?
 It is able to detect 12 types of installers currently.
 
 ### Does it always find the silent uninstall arguments?
-In over 90% of the cases it will, but not always. Even with this in mind, it still removes 90% of the packaging work. See the next question on how to handle cases where it can not.
+In over 70% of the cases it will, but not always. Even with this in mind, it still removes 90% of the packaging work. When it can't create a fully unattended softare deployment, it will create a TODO file for you to complete. See the next question on how to handle cases where it can not.
 
 ### This was unable to detect custom installer arguments.
 Unfortunately, some installers out there are just a pain to work with. In the case of custom installers, you may be able to find the silent arguments for install and uninstall by searching online. If you can not find anything, consider unpacking the installer and putting the software binaries directly in the package.

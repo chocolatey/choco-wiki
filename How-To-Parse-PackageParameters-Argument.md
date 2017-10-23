@@ -51,10 +51,14 @@ if (!$pp['Password']) { throw "Package needs parameter 'Password' to install, th
 
 # put a value into a registry key
 
-# EXAMPLE COMING LATER
+$someKey = 'HKLM:\Software\SomeCompany\SomeProduct\Subkey'
+if (!(Test-Path $someKey)) {
+  New-Item -Path $someKey  -Force | Out-Null
+}
+New-ItemProperty $someKey -Name 'LICENSE' -Value $pp['LICENSE'] -Force | Out-Null
 
-# pass the arguments to the installer 
-# (although installer arguments work well for this and 
+# pass the arguments to the installer
+# (although installer arguments work well for this and
 # are completely transparent to the package)
 
 # EXAMPLE COMING LATER
