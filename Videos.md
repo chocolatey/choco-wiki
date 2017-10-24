@@ -5,6 +5,7 @@
 ## 2017
 
 * JFrog Webinar - [Chocolatey + Artifactory = A Sweet Solution for Managing Windows](https://www.youtube.com/watch?v=k5VLMIeMRYE&t=972s) - September 28, 2017
+* PowerShell Day UK - [PSDay.UK - Rob Reynolds - Chocolatey + DSC = Software Automation Sweeter](https://www.youtube.com/watch?v=KZzn_TurdPI) - Septempber 22, 2017
 * WinOps - [WinOps 2017 Dan Sedlacek - Managing Windows @ Facebook](https://www.youtube.com/watch?v=A-3PGmM4gHE) - September 21, 2017
 * WinOps - [WinOps 2017 Rob Reynolds - Modern Software Management on Windows with Chocolatey](https://www.youtube.com/watch?v=UGI_J_nfwj4) - September 21, 2017
 * WinOps - [WinOps 2017 Connon MacRae - Evolution of Ticketmaster's journey to DevOps (Shout out)](https://www.youtube.com/watch?v=PL0IEhpxNWQ&t=40m2s) - September 21, 2017

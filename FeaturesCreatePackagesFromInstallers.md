@@ -33,6 +33,8 @@ Chocolatey for Business is able to inspect an installer and determine silent arg
   - [Does it create auto unattend files?](#does-it-create-auto-unattend-files)
   - [Does it work with zip archive?](#does-it-work-with-zip-archive)
   - [Does this work with keeping the installer on a UNC share or elsewhere yet?](#does-this-work-with-keeping-the-installer-on-a-unc-share-or-elsewhere-yet)
+- [Common Issues and Resolutions](#common-issues-and-resolutions)
+  - [I get "Name is required. Please pass in a name for the new package."](#i-get-name-is-required-please-pass-in-a-name-for-the-new-package)
 
 <!-- /TOC -->
 
@@ -188,3 +190,8 @@ Yes, but somewhat naively. It will generate the packaging to unpack the archive 
 
 ### Does this work with keeping the installer on a UNC share or elsewhere yet?
 Yes, as of Licensed version v1.6.0+. Use `--use-original-location`.
+
+## Common Issues and Resolutions
+
+### I get "Name is required. Please pass in a name for the new package."
+This occurs when you are not running Chocolatey for Business or don't have your client properly licensed. Please see [licensed installation|Installation-Licensed]] for more details.
