@@ -4,6 +4,13 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.12.7 (October 25, 2017)
+
+### BUG FIXES
+
+* Fix - "ERROR: The term 'Invoke-ChocolateyProcessCmdlet' is not recognized as the name of a cmdlet, function, script file, or operable program" on upgrade all
+
+
 ## 1.12.6 (October 24, 2017)
 
 ### BUG FIXES
@@ -14,7 +21,7 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 ### IMPROVEMENTS
 
- * Install-ChocolateyInstallPackage - pass in answer file (`-AnswerFile`) to provide to stdin.
+ * `Install-ChocolateyInstallPackage` - pass in answer file (`-AnswerFile`) to provide to stdin.
 
 
 ## 1.12.5 (September 28, 2017)
