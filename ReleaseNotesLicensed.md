@@ -4,6 +4,13 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.12.8 (October 25, 2017)
+
+### BUG FIXES
+
+ * Fix - "The registered delegate for type IEnumerable threw an exception. Unable to find suitable location for change.exe."
+
+
 ## 1.12.7 (October 25, 2017)
 
 ### BUG FIXES
