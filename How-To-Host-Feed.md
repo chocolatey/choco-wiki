@@ -43,6 +43,7 @@ There are a few types of package repositories, [folder/unc share](#local-folder-
 Some of these options also work from a non-Windows hosting perspective. See [Non-Windows Hosting](#non-windows-hosting).
 
 * File Share\UNC share (below)
+* SCCM Distribution Points (when used as a file share)
 * [[Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]] (supported by Chocolatey Software with your Chocolatey for Business subscription)
 * Sonatype Nexus - [Nexus2](https://books.sonatype.com/nexus-book/reference/nuget-nuget_hosted_repositories.html) / [Nexus3](https://books.sonatype.com/nexus-book/3.0/reference/nuget.html#nuget-hosted)- Sonatype Nexus has a built-in simple server
 * [ProGet](http://inedo.com/proget/overview) - ProGet gives you a ready to go On-Premise option. Enterprise has replication
@@ -87,8 +88,23 @@ Perhaps the easiest to set up and recommended for testing quick and dirty scenar
 * **Big disadvantage**: For a file share there is not a guarantee of package version immutability. Does not do anything to keep from package versions being overwritten. This provides no immutability of a package version and no guarantee that a version of a package installed is the same as the version in the source.
 
 ### Local Folder Share Setup
-No really, it's that easy. Just set your permissions appropriately and put packages in the folder (no subfolders). You are already done.
+No really, it's that easy. Just set your permissions appropriately and put packages in the folder (no subfolders). You are already done. Okay, one additional consideration:
 
+Permissions can be interesting with a file share. If you are using machine accounts like LocalSystem, they may not have access to network resources. However there is a way to handle that in domain environments. You would need to grant access to machines or anonymous access to the share (Everyone Read is likely not enough).
+
+A great read on your options can be found at the following Stack Exchange links:
+
+* https://serverfault.com/q/135867/79259
+* https://serverfault.com/q/41130/79259
+
+A way to do this with LocalSystem:
+
+1. Create a global group on the Domain
+    * add all machines to this group
+1. Add this group to the share permissions with "Read" Access
+1. Add this group to the NTFS permissions with "Read" Access
+
+**Note**:  You'll need to add this group itself and not nest it inside of another one.
 
 ## Simple Server
 There is where the bulk of NuGet OData compatible servers fall (NuGet.Server, Chocolatey.Server, etc). There are simple servers that are very enhanced, which fall into the [Commercial Package Repositories](#commercial-package-repositories) section.
@@ -99,9 +115,10 @@ There is where the bulk of NuGet OData compatible servers fall (NuGet.Server, Ch
 
 ### Known Simple Server Options
 
-* [[Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]]
+* [[Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]] (recommended)
 * NuGet.Server
 * [TeamCity](https://www.jetbrains.com/teamcity/) has built-in Simple Server
+* [Visual Studio Team Services (NuGet v2 endpoints)](https://docs.microsoft.com/en-us/vsts/package/overview) - [Setup](https://docs.microsoft.com/en-us/vsts/package/get-started-nuget) (Remove the part of the url that is /v3/index.json and use /v2 instead) - you may also need to [setup a personal access token](https://docs.microsoft.com/en-us/vsts/accounts/use-personal-access-tokens-to-authenticate).
 * [JNuGet](https://bitbucket.org/aristar/jnuget/wiki/Home)
 * [NuGet.Java.Server](http://blog.jonnyzzz.name/2012/03/nuget-server-in-pure-java.html) ([NuGet Package](https://www.nuget.org/packages/NuGet.Java.Server)) - simple server (same tool used in TeamCity)
 * [PHP NuGet](http://www.kendar.org/?p=/dotnet/phpnuget)

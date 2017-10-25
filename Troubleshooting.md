@@ -30,6 +30,8 @@ There are some well-known things you may run into when you are using Chocolatey.
   - [My PATH is not getting updated](#my-path-is-not-getting-updated)
   - [RefreshEnv has no effect](#refreshenv-has-no-effect)
   - [Options and/or parameters are not handled correctly](#options-andor-parameters-are-not-handled-correctly)
+  - [Chocolatey is selecting an older version of a dependency on upgrade](#chocolatey-is-selecting-an-older-version-of-a-dependency-on-upgrade)
+  - [Chocolatey is attempting to downgrade a package that is a dependency of another package on upgrade](#chocolatey-is-attempting-to-downgrade-a-package-that-is-a-dependency-of-another-package-on-upgrade)
 
 <!-- /TOC -->
 
@@ -291,3 +293,36 @@ Take note of whether it says "refreshing environment variables for ***cmd.exe***
 This problem is most likely to be seen if cutting and pasting Chocolatey commands from a document, instead of typing them in directly. Some documentation tools (notably Microsoft Word, but there are others) think they know best and automatically convert certain characters. The hyphen (-) character may become an en-dash (&ndash;) or em-dash (&mdash;). Similarly standard quotation marks (&quot;) may be converted into distinct open and close variants (&ldquo; &rdquo;). Visually, the converted characters look very similar to the correct ones, but they are not functionally equivalent. Instead of cutting and pasting, try typing the command manually at the command prompt.
 
 For example, if the hyphen for the `-y` (confirm all prompts) option had been converted into a visually similar character you would get the message  "&ndash;y not installed. The package was not found with the source(s) listed.", and would also be prompted for confirmation before running scripts. Similarly, if you were using the `--params` option to pass parameters to the package, and suffered the same kind of cut and paste error, an attempt might be made to process the parameters string as if it were a package name, potentially resulting in an error like "The given path's format is not supported."
+
+<a id="markdown-chocolatey-is-selecting-an-older-version-of-a-dependency-on-upgrade" name="chocolatey-is-selecting-an-older-version-of-a-dependency-on-upgrade"></a>
+### Chocolatey is selecting an older version of a dependency on upgrade
+See next question
+
+<a id="markdown-chocolatey-is-attempting-to-downgrade-a-package-that-is-a-dependency-of-another-package-on-upgrade" name="chocolatey-is-attempting-to-downgrade-a-package-that-is-a-dependency-of-another-package-on-upgrade"></a>
+### Chocolatey is attempting to downgrade a package that is a dependency of another package on upgrade
+There are some possible reasons this happens, sometimes it is due to an existing package restricting the dependency version. Try running the following:
+
+~~~powershell
+$nuspecs = gci $env:ChocolateyInstall\lib -recurse -filter *.nuspec
+
+foreach ($nuspec in $nuspecs) {
+  [xml]$nuspecContent = Get-Content $nuspec.FullName
+
+  $dependencies = $nuspecContent.package.metadata.dependencies.dependency
+  if ($dependencies -ne $null) {
+    Write-Host "$($nuspecContent.package.metadata.id) v$($nuspecContent.package.metadata.version) dependencies:"
+    foreach ($dependency in $dependencies) {
+      $dependencyOperator = ">="
+      if (!$dependency.version) { $dependencyOperator = "" }
+      elseif ($dependency.version.Contains('[')) { $dependencyOperator = "=" }
+      $dependencyVersion = $dependency.version
+      if (!$dependencyVersion) { $dependencyVersion = "{Any Version}"}
+      Write-Host " - $($dependency.id) $dependencyOperator $($dependencyVersion)"
+    }
+  }
+}
+~~~
+
+Inspect the results to see if you have anything restricting the version of your package to an older version.
+
+Also take a look at [Already referencing a newer version of 'packagename'](#already-referencing-a-newer-version-of-packagename).
