@@ -204,7 +204,7 @@ It could be one of a few things:
 * You have a proxy that you need to configure
 * It is being blocked in your organization
 * We broke something (this is the least likely reason)
-* CloudFlare has blocked your IP due to reasons
+* CloudFlare has blocked your IP [due to reasons](https://support.cloudflare.com/hc/en-us/articles/203366080-Why-do-I-see-a-captcha-or-challenge-page-Attention-Required-trying-to-visit-a-site-protected-by-Cloudflare-as-a-site-visitor-)
 * The Chocolatey Community Team may have blocked access due to abuse (1M+ package installs over 30 days) see [[excessive use for details|CommunityPackagesDisclaimer#excessive-use]]
 
 You can use a tool like [Fiddler](http://www.telerik.com/fiddler) (choco install for this would not be helpful in your case) to help determine what is going on.
