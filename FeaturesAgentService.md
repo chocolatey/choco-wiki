@@ -29,6 +29,7 @@ The Chocolatey Agent service allows you to go further with your software managem
   - [What is the purpose of the hash that is used to protect the named pipe?](#what-is-the-purpose-of-the-hash-that-is-used-to-protect-the-named-pipe)
   - [Does the agent service or Chocolatey stop installation from unconfigured sources?](#does-the-agent-service-or-chocolatey-stop-installation-from-unconfigured-sources)
   - [We want to set up the chocolatey agent service to use a domain account that will have local admin on each box. Can we do this?](#we-want-to-set-up-the-chocolatey-agent-service-to-use-a-domain-account-that-will-have-local-admin-on-each-box-can-we-do-this)
+  - [Is the password stored anywhere?](#is-the-password-stored-anywhere)
   - [We are going to use our own account with a rotating password. When we rotate the password for the account that we use for the Chocolatey Agent, what do we need to do?](#we-are-going-to-use-our-own-account-with-a-rotating-password-when-we-rotate-the-password-for-the-account-that-we-use-for-the-chocolatey-agent-what-do-we-need-to-do)
   - [Tell me more about the Chocolatey managed password.](#tell-me-more-about-the-chocolatey-managed-password)
   - [Is the managed password stored or logged anywhere?](#is-the-managed-password-stored-or-logged-anywhere)
@@ -276,7 +277,6 @@ Chocolatey doesn't stop unconfigured sources for install, it lets the agent do s
 The one exception is when someone calls `--run-actual` in their arguments. But there is no escalation of privilege here because they would be running that under their own user context and thus only have the permissions granted to them already.
 
 ### We want to set up the chocolatey agent service to use a domain account that will have local admin on each box. Can we do this?
-
 Yes, absolutely. You will pass those credentials through at install/upgrade time, and you will also want to turn on the feature `useRememberedArgumentsForUpgrades` (see [[configuration|ChocolateyConfiguration#features]]) so that future upgrades will have that information available. The remembered arguments are stored encrypted on the box (that encryption is reversible so you may opt to pass that information each time).
 
 * `/Username:` - provide username - intead of using the default 'ChocolateyLocalAdmin' user.
@@ -285,12 +285,15 @@ Yes, absolutely. You will pass those credentials through at install/upgrade time
 
 You would pass something like `choco install chocolatey-agent -y --params="'/Username:domain\account /EnterPassword'"` to securely pass the password at runtime. You could also run `choco install chocolatey-agent -y --params="'/Username:domain\account'" --package-parameters-sensitive="'/Password:newpassword'"` (or do it as part of `choco upgrade`).
 
-### We are going to use our own account with a rotating password. When we rotate the password for the account that we use for the Chocolatey Agent, what do we need to do?
+### Is the password stored anywhere?
+No, that would reduce the security of the password. It exists in memory long enough to set the value on user and the service and then it is cleared.
 
+There is no storage of the password anywhere other than how Windows stores passwords.
+
+### We are going to use our own account with a rotating password. When we rotate the password for the account that we use for the Chocolatey Agent, what do we need to do?
 Like with any service that uses rotating passwords, you will need to redeploy the service or go into the services management console and update the password. As it is much faster to deploy out that update, you can do something like `choco upgrade chocolatey-agent -y --params="'/Username:domain\account'" --package-parameters-sensitive="'/Password:newpassword'" --force` (the `--force` ensures the code is redeployed).
 
 ### Tell me more about the Chocolatey managed password.
-
 So you've seen from above that
 
 * It is 32 characters long.
@@ -302,27 +305,22 @@ So you've seen from above that
 Chocolatey uses something unique about each system, along with an encrypted value in the licensed code base to generate base password, then it makes some other changes to ensure that the password meets complexity requirements. We won't give you the full algorithm of how the password is generated as knowing the algorithm would be a security issue - like having a partial picture of a key, you could start working on how to break in. Unlike a picture of a key, even knowing the full algorithm doesn't get you everything you need as you would need local access to each box to determine the password for ***each*** machine.
 
 ### Is the managed password stored or logged anywhere?
-
 No, that would reduce the security of the password. It exists in memory long enough to set the value on user and the service and then it is cleared.
 
 There is no storage of the password anywhere other than how Windows stores passwords.
 
 ### Is the managed password the same on every machine?
-
 No, it is different for every machine it is deployed to.
 
 ### How would someone potentially get access to the managed password?
-
 The Chocolatey licensed code base is encrypted, so only people that work at Chocolatey Software would be able to determine the password for a particular box (just that one) ***IF*** they have local access to that box. Even with all of the information and the algorithm, it's still going to take our folks a while to determine the password. That gets them access to one machine. Of course, Chocolatey folks are not going to do this for obvious reasons.
 
 So let's realize this to its full potential - If someone were able to hack the Chocolatey licensed codebase, they would be able to determine the full password algorithm. Then they'd also need to hack into your infrastructure and get local access to every box that they wanted to get the Chocolatey-managed password so they could get admin access to just that box. Taking this out a bit further, it's reasonable to assume that if someone has hacked into your infrastructure, it's highly unlikely they are going to be using a non-administrator account to get local access to a box so they can get the password for an administrator account for just that one box. It's more likely they would would already have a local admin account for the boxes they are attacking, and are likely to seek other attack vectors that are much less sophisticated.
 
 ### Do you rotate the managed password on a schedule?
-
 We are looking to do this in a future release. We may make the schedule configurable.
 
 ### Can I take advantage of Chocolatey managed passwords with my own Windows services?
-
 Yes, absolutely. If you use C4B's PowerShell Windows Services code, you will be able to install services and have Chocolatey manage the password for those as well.
 
 
