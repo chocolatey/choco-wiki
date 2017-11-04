@@ -42,10 +42,14 @@ Installing a licensed edition requires two parts
 
 When you have performed all parts correctly, running `choco` will produce a message like one of the following:
 
-* `Chocolatey v0.10.7 Professional`
-* `Chocolatey v0.10.7 Business`
+* `Chocolatey v0.10.8 Professional`
+* `Chocolatey v0.10.8 Business`
 
-If you do not see the edition next to the name and version, you need to check over your installation procedure again to ensure you've completed it properly. See below.
+Additionally:
+
+* You will not see "Error when attempting to load chocolatey licensed assembly" warning message.
+
+If you do not see the edition next to the name and version without an error, you need to check over your installation procedure again to ensure you've completed it properly. See below.
 
 ## See It In Action
 Here's the whole process for installing your license and installing the licensed code.
@@ -54,7 +58,7 @@ Here's the whole process for installing your license and installing the licensed
 
 ## How Do I Install The Licensed Edition?
 
- 1. Install a recent version of Chocolatey (0.10.7+) - `choco upgrade chocolatey` (due to a tight integration, `chocolatey.extension` may need a newer version than what is listed here).
+ 1. Install a recent version of Chocolatey (0.10.7+) - `choco upgrade chocolatey` (due to a tight integration, `chocolatey.extension` may need a newer version than what is listed here). TRIAL? you need to do more as your license key will not be known by the server. See [Install the Trial Edition](#how-do-i-install-the-trial-edition).
  1. You received a license file in email.
  1. Take that license file and copy it to your Chocolatey install folder `license` subdirectory (you may need to create it first). For most folks that path would be `"C:\ProgramData\chocolatey\license"`. Alternatively, you can put the license in your user profile directory, e.g. `"C:\Users\YourUserName\chocolatey.license.xml"`
 
