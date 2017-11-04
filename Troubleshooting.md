@@ -347,16 +347,20 @@ Also take a look at [Already referencing a newer version of 'packagename'](#alre
 
 * Most Likely: This occurs when you have overridden default sources and/or have not specified enough sources explicitly.
 
-  If you are installing from a local folder, you have likely passed in **an explicit source** (`-s|--source`), which ***overrides all default sources***. So that dependency needs to be either already installed or sitting in one of the sources you explicitly specified. So if you are testing a package you may push to the community repository later, you may want to ensure you specify the source like this: `--source="'.;https://chocolatey.org/api/v2'"`.
+  If you are installing from a local folder, you have likely passed in **an explicit source** (`-s|--source`), which ***overrides all default sources***. So that dependency needs to be either already installed or sitting in one of the sources you explicitly specified.
 
-* Sometimes this occurs when the version or version range being specified for the dependency not being available. Fix: fix the packaging to use the right version range or ensure that their is a package available that meets the version constraints.
-* Also check the package id of the dependency for typos. Fix: Make sure that package id does exist on the source repositories you are using.
-* The dependency is a prerelease. Fix: Make sure you are using `--pre` so that it is discoverable.
+  **Fix:** If you are testing a package you may push to the community repository later, you may want to ensure you specify the source like this: `--source="'.;https://chocolatey.org/api/v2'"`.
+
+* Sometimes this occurs when the version or version range being specified for the dependency not being available. **Fix:** fix the packaging to use the right version range or ensure that their is a package available that meets the version constraints.
+* Also check the package id of the dependency for typos. **Fix:** Make sure that package id does exist on the source repositories you are using.
+* The dependency is a prerelease. **Fix:** Make sure you are using `--pre` so that it is discoverable.
 * You are specifying sources but attempting to install from a path to a nupkg/nuspec.
 
   If you are calling `choco install .\path\to\pkg\name.version.nupkg`, this means the same as explicitly calling `chocho install <name> --version --source="'c:\full\path\to\pkg\'"` (if it is on the 'c:\' drive) as the source. So it doesn't matter if you also explicitly pass source locations, it will not work.
 
   By the way, calling install directly from a nupkg/nuspec can be an anti-pattern. Use it VERY rarely, like not at all if you can help it.
+
+  **Fix:** Stop calling to the nupkg/nuspec. Call `choco install name -s .` instead.
 
 If you have determined all of this is good to go, take a look at what Chocolatey tells you when you run with `-dv --noop` and see how it is setting sources, etc.
 
