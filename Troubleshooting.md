@@ -360,7 +360,7 @@ Also take a look at [Already referencing a newer version of 'packagename'](#alre
 
   By the way, calling install directly from a nupkg/nuspec can be an anti-pattern. Use it VERY rarely, like not at all if you can help it.
 
-  **Fix:** Stop calling to the nupkg/nuspec. Call `choco install name -s .` instead.
+  **Fix:** Stop pointing directly to the nupkg/nuspec. Call `choco install name -s .` instead.
 
 If you have determined all of this is good to go, take a look at what Chocolatey tells you when you run with `-dv --noop` and see how it is setting sources, etc.
 
