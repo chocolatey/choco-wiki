@@ -375,4 +375,6 @@ If you have determined all of this is good to go, take a look at what Chocolatey
 
   A ".nuspec" is part of an uncompiled package. For installation you need to ensure that is compiled. See `choco pack -?`.
 
+* For your next step in troubleshooting, please see [403 unauthorized issues](#im-getting-a-403-unauthorized-issue-when-attempting-to-use-the-community-package-repository).
+
 If you have determined all of this is good to go, take a look at what Chocolatey tells you when you run with `-dv --noop` and see how it is setting sources, etc.
