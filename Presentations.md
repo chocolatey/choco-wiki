@@ -4,6 +4,7 @@
 ## Presentations
 ### 2017
 
+* [Modern Software Management on Windows with Chocolatey and Puppet](https://www.slideshare.net/ferventcoder/modern-software-management-on-windows-with-chocolatey-and-puppet) - [PuppetConf 2017](https://puppetconf.com) - Rob Reynolds, [October 12, 2017](https://puppetconf17.sched.com/event/B4xQ) - [Video](https://www.youtube.com/watch?v=6gQtcoLaMI0)
 * [Chocolatey + DSC = Software Automation Sweeter](https://www.slideshare.net/ferventcoder/chocolatey-dsc-software-automation-sweeter-powershell-day-uk/) - [PowerShell Day UK (PSDay.UK)](https://psday.uk/) - Rob Reynolds, [September 21, 2017](https://psday.uk/#1499890705418-efb95a0a-2abb) - [Video](https://www.youtube.com/watch?v=KZzn_TurdPI)
 * [Life is like a Box of Chocolate(y)](https://ndcsydney.com/talk/life-is-like-a-box-of-chocolatey/) - [NDC Sydney 2017](https://ndcsydney.com/) - David Gardiner, [August 17, 2017](https://ndcsydney.com/talk/life-is-like-a-box-of-chocolatey/) - [Video](https://www.youtube.com/watch?v=sq2mqeIG2I4)
 
