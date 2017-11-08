@@ -107,8 +107,12 @@ With completely offline use of Chocolatey, you want to ensure you remove the def
 1. Then you would run a script similar to the below to address that local install. If it is on a repository somewhere, you will need to enhance the below script to get that file  (the Chocolatey Puppet provider install script shows that).
 
 ~~~powershell
-# based on local file, see above instructions for how you can obtain package
-# from internal repository and download it local
+# use an internal repository to download Chocolatey nupkg to the local path:
+$packageRepo = '<INSERT REPO URL>'
+# uncomment if you want to download the file from a remote OData (HTTP/HTTPS) internal url (such as Artifactory, Nexus, ProGet, or Chocolatey.Server)
+#$searchUrl = ($packageRepo.Trim('/'), 'Packages()?$filter=(Id%20eq%20%27chocolatey%27)%20and%20IsLatestVersion') -join '/'
+
+# UPDATE THIS PATH
 $localChocolateyPackageFilePath = 'c:\packages\chocolatey.0.10.0.nupkg'
 
 $ChocoInstallPath = "$($env:SystemDrive)\ProgramData\Chocolatey\bin"
@@ -118,6 +122,22 @@ $DebugPreference = "Continue";
 # if you really want to see debugging output related to the
 # installation, uncomment the next line
 #$env:ChocolateyEnvironmentDebug = 'true'
+
+function Download-Package {
+param (
+  [string]$packageODataSearchUrl,
+  [string]$file
+ )
+  $downloader = new-object System.Net.WebClient
+  $downloader.Proxy.Credentials=[System.Net.CredentialCache]::DefaultNetworkCredentials;
+
+  Write-Output "Querying latest package from $packageODataSearchUrl"
+  [xml]$pkg = $downloader.DownloadString($packageODataSearchUrl)
+  $packageDownloadUrl = $pkg.feed.entry.content.src
+
+  Write-Output "Downloading $packageDownloadUrl to $file"
+  $downloader.DownloadFile($packageDownloadUrl, $file)
+}
 
 function Install-LocalChocolateyPackage {
 param (
@@ -171,6 +191,11 @@ param (
 
 # Idempotence - do not install Chocolatey if it is already installed
 if (!(Test-Path $ChocoInstallPath)) {
+  # download the package to the local path
+  if ($searchUrl) {
+    Download-Package $searchUrl $localChocolateyPackageFilePath
+  }
+
   # Install Chocolatey
   Install-LocalChocolateyPackage $localChocolateyPackageFilePath
 }
