@@ -4,6 +4,28 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.12.9 (November 10, 2017)
+
+### BUG FIXES
+
+ * Fix: Changes in 1.12.7 restrict some install/upgrade licensed functionality from loading.
+ * Windows Service Management Functions:
+    * Fix - Domain Users should be found by domain context.
+    * Fix - Throw Error if unable to ensure user or administrators membership.
+    * Fix - Domain Users should not attempt to generate password.
+ * Package Synchronizer (Choco Sync):
+    * Fix - syncing new items use "sync" as user name when capturing information for Package Audit.
+ * Package Builder (Choco New):
+    * Fix - additional directories from programs and features not cleared each time.
+
+### IMPROVEMENTS
+
+ * Package Builder (Choco New):
+    * Show Install Arguments in Nuspec with MSI Properties.
+    * Extract icon from Programs and Features.
+    * Extract icon from exe files.
+
+
 ## 1.12.8 (October 25, 2017)
 
 ### BUG FIXES
