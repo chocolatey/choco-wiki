@@ -70,7 +70,7 @@ How the heck does this all work?
 
 ### Installation
 
-1. Chocolatey uses NuGet (NuGet.Core.dll) to retrieve the package from the source. This is typically a nupkg that is stored in a folder, share, or an OData location (HTTP/HTTPS). For more information on sources, please see [[Sources|CommandSources]] and [[Source Repositories|How-To-Host-Feed]].
+1. Chocolatey uses NuGet (NuGet.Core.dll) to retrieve the package from the source. This is typically a nupkg that is stored in a folder, share, or an OData location (HTTP/HTTPS). For more information on sources, please see [[Sources|CommandsSources]] and [[Source Repositories|How-To-Host-Feed]].
 2. The package is installed into `$env:ChocolateyInstall\lib\<pkgId>`. The package install location is not configurable - the package must install here for tracking, upgrade, and uninstall purposes. The software that may be installed later during this process ***is*** configurable. See [Terminology](#terminology) to understand the difference between "package" and "software" as the terms relate to Chocolatey.
 3. Choco determines if it self-contained or has automation scripts - PowerShell scripts (*.ps1 files) and possibly other formats at a later date.
 4. Choco takes a registry snapshot for later comparison.
