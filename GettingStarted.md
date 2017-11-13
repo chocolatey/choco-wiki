@@ -70,13 +70,14 @@ How the heck does this all work?
 
 ### Installation
 
-1. Chocolatey uses Nuget.Core to retrieve the package from the source.
-2. Choco determines if it self-contained or has automation scripts - PowerShell scripts (*.ps1 files), and soon to be open to Scriptcs files in the `0.9.10.x` timeframe (I know, right?!).
-3. Choco takes a registry snapshot for later comparison.
-4. If there are automation scripts, choco will run those. They can contain whatever you need to do, if they are PowerShell you have the full power of Posh (PowerShell), but you should try to ensure they are compatible with Posh v2+.
-5. Choco compares the snapshot and determines uninstaller information and saves that to a .registry file.
-6. Choco snapshots the folder based on all files that are currently in the package directory.
-7. Choco looks for executable files in the package folder and generates shims into the `$env:ChocolateyInstall\bin` folder so those items are available on the path. Those could have been embedded into the package or brought down from somewhere (internet, ftp, file folder share, etc) and placed there.
+1. Chocolatey uses NuGet (NuGet.Core.dll) to retrieve the package from the source. This is typically a nupkg that is stored in a folder, share, or an OData location (HTTP/HTTPS). For more information on sources, please see [[Sources|CommandSources]] and [[Source Repositories|How-To-Host-Feed]].
+2. The package is installed into `$env:ChocolateyInstall\lib\<pkgId>`. The package install location is not configurable - the package must install here for tracking, upgrade, and uninstall purposes. The software that may be installed later during this process ***is*** configurable. See [Terminology](#terminology) to understand the difference between "package" and "software" as the terms relate to Chocolatey.
+3. Choco determines if it self-contained or has automation scripts - PowerShell scripts (*.ps1 files) and possibly other formats at a later date.
+4. Choco takes a registry snapshot for later comparison.
+5. If there are automation scripts, choco will run those. They can contain whatever you need to do, if they are PowerShell you have the full power of Posh (PowerShell), but you should try to ensure they are compatible with Posh v2+ (PowerShell v2 and beyond).
+6. Choco compares the snapshot and determines uninstaller information and saves that to a .registry file.
+7. Choco snapshots the folder based on all files that are currently in the package directory.
+8. Choco looks for executable files in the package folder and generates shims into the `$env:ChocolateyInstall\bin` folder so those items are available on the path. Those could have been embedded into the package or brought down from somewhere (internet, ftp, file folder share, etc) and placed there. If there is a shim ignore file `<exeName>.exe.ignore`, then Chocolatey will not generate a shim in the bin folder.
 
 ### Upgrade
 
