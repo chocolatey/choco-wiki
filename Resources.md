@@ -43,6 +43,10 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ## Community
 
 ### 2017
+#### November
+
+* https://www.computerworld.com/article/3236406/enterprise-applications/get-to-know-the-chocolatey-package-manager-for-windows.html
+
 #### September
 
 * http://www.tomsitpro.com/articles/deploy-windows-software-puppet-chocolatey,1-3658.html

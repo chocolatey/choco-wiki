@@ -22,6 +22,8 @@ Congratulations on your recent purchase of a licensed edition of Chocolatey! If 
   - [Exception of type 'Rhino.Licensing.LicenseNotFoundException' was thrown.](#exception-of-type-rhinolicensinglicensenotfoundexception-was-thrown)
   - [ERROR: The term 'Install-ChocolateyWindowsService' is not recognized as the name of a cmdlet, function, script file, or operable program.](#error-the-term-install-chocolateywindowsservice-is-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
   - [Unable to load licensed version extensions and commands.](#unable-to-load-licensed-version-extensions-and-commands)
+  - [Error when registering components](#error-when-registering-components)
+  - [Access to the path is denied.](#access-to-the-path-is-denied)
 
 <!-- /TOC -->
 
@@ -467,9 +469,9 @@ First steps:
 
 * Try `choco upgrade chocolatey.extension -y`
 
-If that is successful, you are good to go.
+If that is successful, you are good to go. If not, check for other processes locking files/folders in your Chocolatey installation. Please see [Access to the path is denied](#access-to-the-path-is-denied).
 
-If not, the following steps should remedy the situation:
+If neither of these have resolved the issue, the following steps should remedy the situation:
 
 **NOTE**: Running choco in an unlicensed sense will reset/remove all licensed configuration.
 
@@ -480,3 +482,13 @@ If not, the following steps should remedy the situation:
 * Add the license file again - rename the `licensed` folder back to `license`.
 * Run `choco upgrade chocolatey.extension`.
 * Compare the current `chocolatey.config to your backed up `chocolatey.config` and set anything that was reset in this process.
+
+### Error when registering components
+
+You may see `Error when registering components for 'chocolatey.licensed.infrastructure.app.registration.ContainerBinding': Exception has been thrown by the target of an invocation.` This falls into the incompatibility or locking aspect. Please see [Unable to load licensed version extensions and commands](#unable-to-load-licensed-version-extensions-and-commands).
+
+### Access to the path is denied.
+
+You may be attempting to upgrade chocolatey.extension and see that the access to the path `c:\programdata\chocolatey\lib\chocolatey.extension` is denied. If you've verified you are an administrator and can not get into that folder, it's likely the folder was attempted to be deleted, but another process was accessing that folder and is holding a lock on it. You can use Handles (SysInternals) or something like LockHunter to attempt to find out if there is a lock on the folder. If there is, you normally would just need to close the process in question so the folder can be deleted.
+
+Unfortunately, this is likely to cause your install to be unusable until you fix the locking issue.

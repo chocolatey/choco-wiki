@@ -35,6 +35,7 @@ There are some well-known things you may run into when you are using Chocolatey.
   - [Chocolatey is attempting to downgrade a package that is a dependency of another package on upgrade](#chocolatey-is-attempting-to-downgrade-a-package-that-is-a-dependency-of-another-package-on-upgrade)
   - [Package not installed. An error occurred during installation: Unable to resolve dependency](#package-not-installed-an-error-occurred-during-installation-unable-to-resolve-dependency)
   - [Package not installed. The package was not found with the source(s) listed.](#package-not-installed-the-package-was-not-found-with-the-sources-listed)
+  - [Access to the path is denied.](#access-to-the-path-is-denied)
 
 <!-- /TOC -->
 
@@ -378,3 +379,18 @@ If you have determined all of this is good to go, take a look at what Chocolatey
 * For your next step in troubleshooting, please see [403 unauthorized issues](#im-getting-a-403-unauthorized-issue-when-attempting-to-use-the-community-package-repository).
 
 If you have determined all of this is good to go, take a look at what Chocolatey tells you when you run with `-dv --noop` and see how it is setting sources, etc.
+
+<a id="markdown-access-to-the-path-is-denied" name="access-to-the-path-is-denied"></a>
+### Access to the path is denied.
+
+You may be attempting to use Chocolatey or upgrade a package and suddenly you are getting access denied errors starting mid-install/upgrade.
+
+* Run `cmd.exe /c cacls.exe "%ChocolateyInstall%"` and verify you are in one of the accounts that has permission.
+
+  Chocolatey doesn't add any additional locking on files/folders under that (aside from the additional setting in the logs folder for file appending).
+
+* Check to see if the folder has been locked by another process.
+
+  If you've verified you are an administrator and can not get into that folder, it's likely the folder was attempted to be deleted, but another process was accessing that folder and is holding a lock on it. You can use Handles (SysInternals) or something like LockHunter to attempt to find out if there is a lock on the folder. If there is, you normally would just need to close the process in question so the folder can be deleted.
+
+Unfortunately, this is likely to cause your install to be unusable until you fix the issue.
