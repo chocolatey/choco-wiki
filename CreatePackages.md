@@ -177,6 +177,19 @@ No matter how you decide, you are advised to state the default installation dire
 
 If you allow customizing the installation path, then append instructions on how to do that, too.
 
+### Windows environment variables
+Chocolatey installations are advised to be performed while running "as administrator".  Because of this it is important that you understand that some windows environment variables will be pinned to the administrator user and not the installation user in some circumstances.
+
+The issue can occur if a windows "standard user" installs Chocolatey packages on their system.  When the "standard user" runs "as administrator" the resulting powershell window or `cmd` window will define a subset of the environment variables to be relative to the administrator user, the shell is literally running "as administrator".
+
+The known affected enironment variables are:
+- `USERNAME`
+- `USERPROFILE`
+- `APPDATA`
+- `LOCALAPPDATA`
+
+If you want to support the scenario of a "standard user" installing Chocolatey apps to their user `APPDATA` while in an elevated shell it is recommended that you not rely on these environment variables being set to the "standard user" location.
+
 ## Upgrading
 
 Prior to choco version 0.9.10, there is no dedicated automation script for upgrade scenarios. Instead, your [[chocolateyInstall.ps1|ChocolateyInstallPS1]] script should support installing/upgrading on top of any previous versions of your package.
