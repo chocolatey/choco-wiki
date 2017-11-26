@@ -182,7 +182,7 @@ Chocolatey installations are advised to be performed while running "as administr
 
 The issue can occur if a windows "standard user" installs Chocolatey packages on their system.  When the "standard user" runs "as administrator" the resulting powershell window or `cmd` window will define a subset of the environment variables to be relative to the administrator user, the shell is literally running "as administrator".
 
-The known affected enironment variables are:`APPDATA`, `LOCALAPPDATA`, `TEMP`, `TMP`, `USERNAME`, `USERPROFILE`
+The known affected environment variables are: `APPDATA`, `LOCALAPPDATA`, `TEMP`, `TMP`, `USERNAME`, `USERPROFILE`
 
 Example Settings:
 ```
