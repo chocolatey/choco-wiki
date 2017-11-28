@@ -18,6 +18,7 @@ There are some well-known things you may run into when you are using Chocolatey.
   - [ERROR: This package does not support 64 bit architecture.](#error-this-package-does-not-support-64-bit-architecture)
   - ["ERROR: This package does not support 64 bit architecture." when trying to install from a local or included binary.](#error-this-package-does-not-support-64-bit-architecture-when-trying-to-install-from-a-local-or-included-binary)
   - [My package can't find dependencies](#my-package-cant-find-dependencies)
+  - [ERROR: A null key is not allowed in a hash literal.](#error-a-null-key-is-not-allowed-in-a-hash-literal)
 - [Runtime](#runtime)
   - [I can't get the PowerShell tab completion working.](#i-cant-get-the-powershell-tab-completion-working)
   - [Why does choco in{tab} not work for me?](#why-does-choco-intab-not-work-for-me)
@@ -170,6 +171,21 @@ Reference: https://groups.google.com/d/msgid/chocolatey/d11d8eb2-74b3-4c2c-b0bb-
 
 Please see [unable to resolve dependency](#package-not-installed-an-error-occurred-during-installation-unable-to-resolve-dependency).
 
+<a id="markdown-error-a-null-key-is-not-allowed-in-a-hash-literal" name="error-a-null-key-is-not-allowed-in-a-hash-literal"></a>
+### ERROR: A null key is not allowed in a hash literal.
+
+Typically you see this if you accidentally use a variable name on the left side of a hash:
+
+~~~powershell
+$packageArgs = @{
+  packageName   = $env:ChocolateyPackageName
+  $file         = $fileLocation
+}
+~~~
+
+Note the use of `$file` on the left side, which should be just `file`. Once you fix that, things should start working appropriately.
+
+* [Reference](https://stackoverflow.com/q/47438948/18475)
 
 <a id="markdown-runtime" name="runtime"></a>
 ## Runtime

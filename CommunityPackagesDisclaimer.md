@@ -29,6 +29,8 @@ A huge thing in Windows ecosystem is copyright law and how it plays into distrib
 
 You can build a 100% reliable pipeline/workflow within the Chocolatey framework, just not with the community package repository. Building a reliable pipeline is huge. If you are a Windows admin wanting to trust a framework like Chocolatey, you are not going to use the Community Package Repository. Not when your reputation/job is on the line for picking the best options.
 
+**NOTE:** You can also achieve reliability when reusing community packages, as long as you [[internalize|How-To-Recompile-Packages]] them. **Internalizing is not the same thing as caching the nupkg files like Artifactory, Nexus, ProGet, etc can do.**
+
 ### Trust / Control
 Windows admins typically need to do everything internally with no outside internet access. There is quite a bit more hush-hush, non-use of publicly available things without bringing it internal for absolute control and trust. There is a huge (semi-healthy, but maybe even unhealthy) lack of trust for anything reaching out to the internet. I'm not saying this is exclusive to Windows admins, but it is very much the norm. So using the community package repository is a non-starter for these kinds of folks.
 

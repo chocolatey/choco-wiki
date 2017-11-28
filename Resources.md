@@ -45,6 +45,8 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ### 2017
 #### November
 
+* https://www.danclarke.com/getting-more-from-the-cli
+* https://timbeer.com/?p=181
 * https://www.computerworld.com/article/3236406/enterprise-applications/get-to-know-the-chocolatey-package-manager-for-windows.html
 
 #### September
