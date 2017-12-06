@@ -304,6 +304,8 @@ choco install packageName -dv -s .
 
 This will install the package right out of your source. As you find things you may need to fix, using `--force` (`-f`) will remove and reinstall the package from the updated `*.nupkg`. If you are specifically testing `chocolateyBeforeModify.ps1`, you need to be testing upgrade and uninstall scenarios. You need to install a version of the package with this file **first** as before modify is like uninstall, it runs from the installed package, not the package you are installing (like `chocolateyInstall.ps1` does).
 
+**NOTE:** Using Force `--force` (`-f`) should only be done in subsequent testing where you are reinstalling the same package that you've changed and should NOT be used in regular use scenarios. It should definitely not be in scripts.
+
 **NOTE:** If you are using a Semver dash in your package version (such as 1.0.0-beta), you will need to use the `-pre` switch or else you will get *Unable to find package* errors from `choco install`.  You can also specify `-version 1.0.0-beta` to try to install that exact version.
 
 `.` points to the current directory. You can specify multiple directories separated by a semicolon;
@@ -317,14 +319,16 @@ When your `nuspec` specifies dependencies that are not in your source, you shoul
 ~~~
 
 You'll need to append the API path like so:
-`-source "'.;https://chocolatey.org/api/v2/'"` (note the double quotes bookending the apostrophes here, use `%cd%` or `$pwd` if `.` doesn't resolve). See [[passing options with quotes|CommandsReference#how-to-pass-options--switches]]. Also, use `$pwd` if you are in PowerShell.exe. **Note:** If you need to do this, please ensure you run `choco pack` first. This method of passing a source won't work calling a nuspec or nupkg directly as it will override the source passed to the local folder.
+`-source "'.;https://chocolatey.org/api/v2/'"` (note the double quotes bookending the apostrophes here, use `%cd%` in cmd.exe or `$pwd` in Powershell.exe if `.` doesn't resolve). See [[passing options with quotes|CommandsReference#how-to-pass-options--switches]]. **Note:** If you need to do this, please ensure you run `choco pack` first. This method of passing a source won't work calling a nuspec or nupkg directly as it will override the source passed to the local folder.
 
 You can also use the `-debug` switch on `choco install` to provide more information.
 
-**NOTE:** Do not call install with `.nupkg` - pointing to a file explicitly overrides source. You must call your install with the package name, not the nupkg file and location. You've already specified for choco to look in a local source with `-s "'$pwd;https://chocolatey.org/api/v2/'"`. Call `choco install dude -s "'$pwd;https://chocolatey.org/api/v2/'"`, not `choco install .\dude.nupkg -s "'$pwd;https://chocolatey.org/api/v2/'"`.
+**NOTE:** Do not call install with `.nupkg` - pointing to a file explicitly overrides source. You must call your install with the package name, not the nupkg file and location. You've already specified for choco to look in a local source with `-s "'.;https://chocolatey.org/api/v2/'"`. Call `choco install dude -s "'.;https://chocolatey.org/api/v2/'"`, not `choco install .\dude.nupkg -s "'.;https://chocolatey.org/api/v2/'"`.
 
 ### Alternative testing strategy
 You can also type `choco install -fdv path/to/nuspec` and choco will build the nupkg and attempt to install it.
+
+**NOTE:** This is not recommended if you are passing install arguments or package parameters due to some weirdness, and definitely does not work with passed sources as it need to override that with the local folder once it builds the package. Most likely you will want to stick with the recommended strategy.
 
 ## Push Your Package
 
