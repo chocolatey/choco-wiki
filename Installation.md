@@ -100,7 +100,7 @@ With completely offline use of Chocolatey, you want to ensure you remove the def
 1. The first step with offline is to obtain a copy of the Chocolatey Nupkg (nupkg files are just fancy zip files). Go to https://chocolatey.org/packages/chocolatey and find a version you want.
 1. Click on Download to download that version's nupkg file.
 
-   ![download chocolatey.nupkg visual](images/DownloadChocolateyPackage.png)
+  ![download chocolatey.nupkg visual](images/DownloadChocolateyPackage.png)
 
 1. You can also download [the latest version directly](https://chocolatey.org/api/v2/package/chocolatey).
 1. You can put the chocolatey.nupkg on an internal package repository and then address that full path, similar to how you see in the Puppet provider - https://forge.puppet.com/puppetlabs/chocolatey#manage-chocolatey-installation
@@ -114,6 +114,14 @@ $packageRepo = '<INSERT REPO URL>'
 
 # UPDATE THIS PATH
 $localChocolateyPackageFilePath = 'c:\packages\chocolatey.0.10.0.nupkg'
+# Determine unzipping method
+# 7zip is the most compatible, but you need an internally hosted 7za.exe.
+# Make sure the version matches for the arguments as well.
+# Built-in does not work with Server Core, but if you have PowerShell 5
+# it uses Expand-Archive instead of COM
+$unzipMethod = 'builtin'
+#$unzipMethod = '7zip'
+#$7zipUrl = 'https://chocolatey.org/7za.exe' (use this file and change it for internal)
 
 $ChocoInstallPath = "$($env:SystemDrive)\ProgramData\Chocolatey\bin"
 $env:ChocolateyInstall = "$($env:SystemDrive)\ProgramData\Chocolatey"
@@ -161,12 +169,55 @@ param (
   $file = Join-Path $tempDir "chocolatey.zip"
   Copy-Item $chocolateyPackageFilePath $file -Force
 
+
+  $7zaExe = Join-Path $tempDir '7za.exe'
+  if ($unzipMethod -eq '7zip' -and -Not (Test-Path ($7zaExe))) {
+    Write-Output "Downloading 7-Zip commandline tool prior to extraction."
+    # download 7zip
+    Download-File $7zipUrl "$7zaExe"
+  }
+
   # unzip the package
   Write-Output "Extracting $file to $tempDir..."
-  $shellApplication = new-object -com shell.application
-  $zipPackage = $shellApplication.NameSpace($file)
-  $destinationFolder = $shellApplication.NameSpace($tempDir)
-  $destinationFolder.CopyHere($zipPackage.Items(),0x10)
+  if ($unzipMethod -eq '7zip') {
+    $params = "x -o`"$tempDir`" -bd -y `"$file`""
+    # use more robust Process as compared to Start-Process -Wait (which doesn't
+    # wait for the process to finish in PowerShell v3)
+    $process = New-Object System.Diagnostics.Process
+    $process.StartInfo = New-Object System.Diagnostics.ProcessStartInfo($7zaExe, $params)
+    $process.StartInfo.RedirectStandardOutput = $true
+    $process.StartInfo.UseShellExecute = $false
+    $process.StartInfo.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Hidden
+    $process.Start() | Out-Null
+    $process.BeginOutputReadLine()
+    $process.WaitForExit()
+    $exitCode = $process.ExitCode
+    $process.Dispose()
+
+    $errorMessage = "Unable to unzip package using 7zip. Perhaps try setting `$env:chocolateyUseWindowsCompression = 'true' and call install again. Error:"
+    switch ($exitCode) {
+      0 { break }
+      1 { throw "$errorMessage Some files could not be extracted" }
+      2 { throw "$errorMessage 7-Zip encountered a fatal error while extracting the files" }
+      7 { throw "$errorMessage 7-Zip command line error" }
+      8 { throw "$errorMessage 7-Zip out of memory" }
+      255 { throw "$errorMessage Extraction cancelled by the user" }
+      default { throw "$errorMessage 7-Zip signalled an unknown error (code $exitCode)" }
+    }
+  } else {
+    if ($PSVersionTable.PSVersion.Major -lt 5) {
+      try {
+        $shellApplication = new-object -com shell.application
+        $zipPackage = $shellApplication.NameSpace($file)
+        $destinationFolder = $shellApplication.NameSpace($tempDir)
+        $destinationFolder.CopyHere($zipPackage.Items(),0x10)
+      } catch {
+        throw "Unable to unzip package using built-in compression. Set `$env:chocolateyUseWindowsCompression = 'false' and call install again to use 7zip to unzip. Error: `n $_"
+      }
+    } else {
+      Expand-Archive -Path "$file" -DestinationPath "$tempDir" -Force
+    }
+  }
 
   # Call chocolatey install
   Write-Output "Installing chocolatey on this machine"
