@@ -121,7 +121,7 @@ $localChocolateyPackageFilePath = 'c:\packages\chocolatey.0.10.0.nupkg'
 # it uses Expand-Archive instead of COM
 $unzipMethod = 'builtin'
 #$unzipMethod = '7zip'
-#$7zipUrl = 'https://chocolatey.org/7za.exe' (use this file and change it for internal)
+#$7zipUrl = 'https://chocolatey.org/7za.exe' (download this file, host internally, and update this to internal)
 
 $ChocoInstallPath = "$($env:SystemDrive)\ProgramData\Chocolatey\bin"
 $env:ChocolateyInstall = "$($env:SystemDrive)\ProgramData\Chocolatey"
