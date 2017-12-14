@@ -43,28 +43,33 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ## Community
 
 ### 2017
-#### November
+#### December
+* http://www.codepool.biz/chocolatey-manage-package-windows.html
 
+#### November
+* https://mwallner.net/2017/11/28/getting-started-with-chocolatey-4-business-jenkins-ci/ (C4B)
 * https://www.danclarke.com/getting-more-from-the-cli
 * https://timbeer.com/?p=181
 * https://www.computerworld.com/article/3236406/enterprise-applications/get-to-know-the-chocolatey-package-manager-for-windows.html
 
-#### September
+#### October
+* https://winsysblog.com/2017/10/automating-chocolatey-package-internalizing-with-powershell.html (C4B)
 
+#### September
 * http://www.tomsitpro.com/articles/deploy-windows-software-puppet-chocolatey,1-3658.html
 
 #### August
-* http://www.winsysblog.com/2017/08/recompiling-chocolatey-packages.html
+* http://www.winsysblog.com/2017/08/recompiling-chocolatey-packages.html (C4B)
 
 #### July
 * https://baremetalblog.com/2017/07/14/chocolatey-package-manager/
-* https://skatterbrainz.wordpress.com/2017/07/10/deploy-chocolatey-with-a-sccm-1706-script/
+* https://skatterbrainz.wordpress.com/2017/07/10/deploy-chocolatey-with-a-sccm-1706-script/ (SCCM)
 
 #### June
 * https://www.youtube.com/watch?v=eXMTb3qetT0
 
 #### May
-* https://skatterbrainz.wordpress.com/2017/05/19/sccm-and-chocolatey/
+* https://skatterbrainz.wordpress.com/2017/05/19/sccm-and-chocolatey/ (SCCM)
 * http://searchwindowsserver.techtarget.com/tip/Use-Chocolatey-to-automate-software-installations-on-Windows-Server
 * https://4sysops.com/archives/installing-and-removing-programs-with-the-powershell-package-manager
 * https://www.linuxexpres.cz/software/chocolatey-balickovaci-system-pro-windows
@@ -72,7 +77,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 * https://powershell.org/forums/topic/package-management-in-a-dsc-world/
 
 #### April
-* http://www.winsysblog.com/2017/04/importing-hosted-nuget-packages-into.html
+* http://www.winsysblog.com/2017/04/importing-hosted-nuget-packages-into.html (MDT)
 
 #### March
 * http://www.winsysblog.com/2017/03/creating-software-packages-with.html
@@ -96,7 +101,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ### 2016
 
 #### December
-* https://skatterbrainz.wordpress.com/2016/12/19/building-an-sccm-1606-site-server-with-boxstarter-windows-server-2016-sql-server-2016/
+* https://skatterbrainz.wordpress.com/2016/12/19/building-an-sccm-1606-site-server-with-boxstarter-windows-server-2016-sql-server-2016/ (SCCM)
 * https://www.linkedin.com/pulse/simplify-your-windows-os-refresh-chocolatey-install-script-zach-baker
 * http://obfuscurity.com/2016/12/The-Grand-Windows-Laptop-Experiment
 * http://blog.victorsilva.com.uy/chocolatey/
@@ -110,7 +115,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 #### October
 * https://weblog.west-wind.com/posts/2016/Oct/25/Automating-Installation-Builds-and-Chocolatey-Packaging
-* https://rnelson0.com/2016/10/26/puppetconf-2016-wrap-up/ (Mention of Chocolatey presentation in Day 2)
+* https://rnelson0.com/2016/10/26/puppetconf-2016-wrap-up/ (Mention of Chocolatey presentation in Day 2, C4B)
 * https://cloudywindows.com/post/chocolatey-nuget---smooth-and-sweet-for-windows-software-deployment-automation/
 * https://marcinbojko.wordpress.com/2016/10/04/puppet-the-foreman-powershell-dsc-your-system-center-in-a-box/
 
@@ -134,7 +139,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 #### June
 * https://www.youtube.com/watch?v=1OrpZpeEmL0
 * https://puppet.com/blog/package-management-windows-gets-even-better-chocolatey
-* http://blogs.itpro.es/octaviordz/2016/06/04/integrando-chocolatey-a-mdt-2013-e-instalando-aplicaciones-de-forma-desatendida-en-windows-10/
+* http://blogs.itpro.es/octaviordz/2016/06/04/integrando-chocolatey-a-mdt-2013-e-instalando-aplicaciones-de-forma-desatendida-en-windows-10/ (MDT)
 
 #### May
 * http://www.jamessturtevant.com/posts/5-Ways-to-install-git-on-Windows
@@ -156,6 +161,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 * http://tomow.de/general/chocolatey-a-sweet-package-manager-for-windows/
 
 #### February
+* https://ariya.io/2017/02/windows-for-web-development
 * http://csi-windows.com/blog/all/74-powershell/463-getting-chocolatey-package-management-provider-working-on-windows-10
 * https://zimmergren.net/automating-software-installations-with-boxstarter-and-chocolatey/
 * https://www.chef.io/blog/2016/02/12/chef-client-12-7-released/
@@ -200,7 +206,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 * http://www.thebuttonfactory.nl/?p=2648
 
 #### June
-* http://xenappblog.com/2015/how-to-use-chocolatey-with-mdt-2013/
+* http://xenappblog.com/2015/how-to-use-chocolatey-with-mdt-2013/ (MDT)
 * http://xenappblog.com/2015/automation-and-optimization/
 
 #### May

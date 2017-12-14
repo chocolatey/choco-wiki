@@ -10,6 +10,7 @@ Chocolatey for Business is able to automatically download packages and resources
 - [Usage](#usage)
 - [See It In Action](#see-it-in-action)
 - [Options and Switches](#options-and-switches)
+- [Resources](#resources)
 - [FAQ](#faq)
   - [How do I take advantage of this feature?](#how-do-i-take-advantage-of-this-feature)
   - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
@@ -88,6 +89,15 @@ When running `choco download` in the Business editions, pass the following:
 ~~~
 
 See [[download command|CommandsDownload]] for more information.
+
+## Resources
+
+Community posts that include Package Internalizer:
+
+* [Getting Started With Chocolatey 4 Business & Jenkins CI](https://mwallner.net/2017/11/28/getting-started-with-chocolatey-4-business-jenkins-ci/)
+* [Automating Chocolatey package internalizing with PowerShell](https://winsysblog.com/2017/10/automating-chocolatey-package-internalizing-with-powershell.html)
+* [Recompiling Chocolatey packages](https://winsysblog.com/2017/08/recompiling-chocolatey-packages.html)
+* [Using Chocolatey in Corporate Environments - Part 1](https://mwallner.net/2017/06/10/using-chocolatey-in-corporate-environments-part-1/)
 
 ## FAQ
 

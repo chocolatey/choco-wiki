@@ -11,6 +11,8 @@ Congratulations on your recent purchase of a licensed edition of Chocolatey! If 
   - [How Do I Install a Local nupkg File?](#how-do-i-install-a-local-nupkg-file)
   - [How Do I Install The Trial Edition?](#how-do-i-install-the-trial-edition)
     - [Notes on the Trial Version](#notes-on-the-trial-version)
+- [Install Options](#install-options)
+  - [Install Without Context Menus](#install-without-context-menus)
 - [Upgrading](#upgrading)
   - [How Do I Upgrade The Trial Edition?](#how-do-i-upgrade-the-trial-edition)
 - [Installing / Upgrading In Secure Environments / Without Internet Access](#installing--upgrading-in-secure-environments--without-internet-access)
@@ -87,6 +89,10 @@ If you've received a trial license, you will also receive a link to download a r
 In the trial, package authoring features have nag warnings that require someone to manually hit the Enter key a random number of times. Do not attempt to automate Package Internalizer / Package Builder or `choco sync` when using a trial of C4B. Execute those things directly and see how well they work for you.
 
 There are no trial type messages for runtime features unless they need to use Package Builder (like `choco sync` does), which should allow you to test those features with other integration tools.
+
+## Install Options
+### Install Without Context Menus
+As of Chocolatey Licensed Extension v1.12.2, you can install to client machines without the context menus (Right Click). Add the following to your installation : `--params "'/NoContextMenu'"`. Currently there isn't a way to remove context menus if you have already deployed them, but it is on the backlog to add that.
 
 ## Upgrading
 
