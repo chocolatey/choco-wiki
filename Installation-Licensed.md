@@ -102,6 +102,8 @@ To upgrade the licensed edition just run the following code:
 
 Your license automatically adds the licensed source.
 
+**NOTE**: If your license expires or you remove licensing and then run choco, it may remove all of your licensed configuration settings, so be prepared to add those settings again once you have a valid license.
+
 ### How Do I Upgrade The Trial Edition?
 
 You will not be able to upgrade through regular means - please reach back out to the Chocolatey Software folks to get an updated edition (and possibly an extended trial license).
