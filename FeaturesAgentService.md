@@ -135,7 +135,7 @@ However sometimes you work with installers that refuse to be silent. You might g
 * (Silent) Find a portable version of the tool that doesn't run a badly behaved installer. Looked for a zipped up version, you can easily create a Chocolatey package from these.
 * (Silent) Find an alternative that does the same thing, but has silent installers. It's a consideration, but maybe not something you can or are willing to explore. Moving on...
 * (Silent) Use MSI repackaging to produce a completely silent installer. It works by recording everything that happens when you run the install and creates an MSI to do the same. This would need to be done for every version. There are tools out there that can do this, some of which are VERY expensive.
-* (Unattended/Interactive) Use AutoHotKey or AutoIT (or some other tool) to automate the key presses and values being sent to the interfaces This can be brittle, but can typically be quickly implemented.
+* (Unattended/Interactive) Use AutoHotKey or AutoIT (or some other tool) to automate the key presses and values being sent to the interfaces. This can be brittle, but can typically be quickly implemented.
 
 If you must run in the context of working with "unattended", non-silent installations, you need to take the above security consideration into account if you want to be able to manage those installations using the background service.
 
