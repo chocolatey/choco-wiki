@@ -4,6 +4,29 @@ This covers the release notes for the "chocolatey.extension" package, where the 
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
+## 1.12.10 (December 18, 2017)
+
+### FEATURES
+
+ * Run background service interactively - sometimes you install applications that are unattended but cannot be silent.
+
+If you want self-service to interactively manage installations, run `choco feature enable --name=useBackgroundServiceInteractively`. This requires that you use the `ChocolateyLocalAdmin` account with the Chocolatey-managed password as passwords are not stored and the service would need to produce that at runtime. There are some security considerations and why this is not turned on by default. Please see [interactive self-service consideration](https://chocolatey.org/docs/features-agent-service#interactive-self-service-consideration).
+
+### BUG FIXES
+
+ * Windows Service Management Functions:
+    * Fix - Adding user to Administrators no longer fails with "Network path was not found" when there are domain users and local users in the administrators group.
+ * Package Builder (Choco New):
+    * Fix - Create packages from non-admin (instead of access denied error).
+    * Fix - Don't attempt to generate an icon unless a file for that icon exists.
+
+### IMPROVEMENTS
+
+ * Package Builder (Choco New):
+    * Right click create package w/out GUI should pause on error. This allows a user to see any errors instead of closing quickly.
+    * Do not generate template files if not using the default template.
+
+
 ## 1.12.9 (November 10, 2017)
 
 ### BUG FIXES
