@@ -12,6 +12,7 @@ The Chocolatey Agent service allows you to go further with your software managem
     - [Background Mode Setup](#background-mode-setup)
       - [Chocolatey Agent Install Options](#chocolatey-agent-install-options)
       - [Command Customization Consideration](#command-customization-consideration)
+      - [Interactive Self-Service Consideration](#interactive-self-service-consideration)
   - [Chocolatey Background Service / Self-Service Installer](#chocolatey-background-service--self-service-installer)
     - [Self-Service Roadmap:](#self-service-roadmap)
   - [Chocolatey Central Console](#chocolatey-central-console)
@@ -66,13 +67,14 @@ To install the Chocolatey agent service, you need to install the `chocolatey-age
 To set Chocolatey in background mode, you need to run the following:
 
 * `choco upgrade chocolatey-agent <options>` (see [agent install options](#chocolatey-agent-install-options))
-* `choco feature disable -n showNonElevatedWarnings` - requires Chocolatey v0.10.4+ to set.
-* `choco feature enable -n useBackgroundService`
+* `choco feature disable --name=showNonElevatedWarnings` - requires Chocolatey v0.10.4+ to set.
+* `choco feature enable --name=useBackgroundService`
 * You also need to opt in sources in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`).
-    * OPTIONAL (not recommended): Alternatively, you can allow any configured source to be used for self-service by running the following: `choco feature disable -n useBackgroundServiceWithSelfServiceSourcesOnly` (requires Chocolatey Extension v1.10.0+). We do not recommend this as it could be a security finding if you shut it off.
-* OPTIONAL (highly recommended): If you want self-service to apply only to non-administrators, run `choco feature enable -n useBackgroundServiceWithNonAdministratorsOnly` (requires Chocolatey Extension v1.11.1+). Do understand this means that a real non-administrator, not an administrator in a non-elevated UAC context (that scenario will go the normal route and will not go through background mode).
+    * OPTIONAL (not recommended): Alternatively, you can allow any configured source to be used for self-service by running the following: `choco feature disable --name=useBackgroundServiceWithSelfServiceSourcesOnly` (requires Chocolatey Extension v1.10.0+). We do not recommend this as it could be a security finding if you shut it off.
+* OPTIONAL (highly recommended): If you want self-service to apply only to non-administrators, run `choco feature enable --name=useBackgroundServiceWithNonAdministratorsOnly` (requires Chocolatey Extension v1.11.1+). Do understand this means that a real non-administrator, not an administrator in a non-elevated UAC context (that scenario will go the normal route and will not go through background mode).
 * OPTIONAL (varied recommendations): If you want to configure custom commands (not just install/upgrade), use something like `choco config set backgroundServiceAllowedCommands "install,upgrade,pin,sync"` (with the commands you want to allow, requires Chocolatey Extension v1.12.4+). See [commands consideration](#command-customization-consideration) below.
 * OPTIONAL (highly recommended): For use with Chocolatey GUI, you need Chocolatey Extension v1.12.4+, and at least Chocolatey GUI v0.15.0. **Uninstall any version of the GUI you already have installed first**, then run `choco upgrade chocolateygui -y --allow-downgrade` (you will also need at least .NET 4.5.2 installed)
+* OPTIONAL (recommended if you use installers that are not completely silent): If you want self-service to interactively manage installations, run `choco feature enable --name=useBackgroundServiceInteractively` (requires Chocolatey Extension v1.12.10+ and Chocolatey Agent v0.8.2+). This requires that you use the `ChocolateyLocalAdmin` account with the Chocolatey-managed password as passwords are not stored and the service would need to produce that at runtime. There are some security considerations and why this is not turned on by default. Please see [interactive self-service consideration](#interactive-self-service-consideration).
 
 ##### Chocolatey Agent Install Options
 
@@ -125,8 +127,19 @@ Chocolatey does not allow for configuration changing commands to be routed throu
 
 For the same reason, we do not recommend allowing sources you do not control to be allowed for self-service.
 
-### Chocolatey Background Service / Self-Service Installer
+##### Interactive Self-Service Consideration
+When using the self-service with `useBackgroundServiceInteractively`, it is similar to "Run As". Microsoft used to allow Windows services to interact with the desktop but removed the functionality (of "Allow Service to Interact with the Desktop") in Windows Vista and limited all services into what is known as Session 0 isolation. In Session 0, those services can access a desktop, but not the interactive user's desktop (at least it is very, very difficult to do so). Microsoft did this as a security consideration as allowing a privileged account to run executables in a non-user context could provide the potential to allow a non-admin to gain privileges to a system.
 
+However sometimes you work with installers that refuse to be silent. You might get them down to unattended (meanint they still have required input or window pop ups, but they are all handled and automatically closed), but they won't get to silent without a different option. Here are some options from most preferred to least preferred in getting those installers that are not fully silent to work:
+
+* (Silent) Find a portable version of the tool that doesn't run a badly behaved installer. Looked for a zipped up version, you can easily create a Chocolatey package from these.
+* (Silent) Find an alternative that does the same thing, but has silent installers. It's a consideration, but maybe not something you can or are willing to explore. Moving on...
+* (Silent) Use MSI repackaging to produce a completely silent installer. It works by recording everything that happens when you run the install and creates an MSI to do the same. This would need to be done for every version. There are tools out there that can do this, some of which are VERY expensive.
+* (Unattended/Interactive) Use AutoHotKey or AutoIT (or some other tool) to automate the key presses and values being sent to the interfaces This can be brittle, but can typically be quickly implemented.
+
+If you must run in the context of working with "unattended", non-silent installations, you need to take the above security consideration into account if you want to be able to manage those installations using the background service.
+
+### Chocolatey Background Service / Self-Service Installer
 When an administrator installs the agent, they can configure Chocolatey to use background mode so that non-administrators can still perform installations of approved software as configured by an administrator.
 
 Why this is desirable:
