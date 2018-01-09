@@ -211,6 +211,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 #### May
 * http://benpiper.com/2015/05/windows-server-2012-using-puppet-chocolatey/
+* http://typicaltim.com/2015/05/21/creating-a-local-chocolatey-repository/
 
 #### April
 * https://puppet.com/blog/chocolatey-what-it
