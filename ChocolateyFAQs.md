@@ -300,9 +300,9 @@ There is not any official ones from Chocolatey Software. If and when there is, i
 
 The main Chocolatey client (choco.exe) is an executable client that has runs a PowerShell host in proc and has a PowerShell module it loads for those PowerShell automation scripts. Trying to get all of these ideas into a higher PowerShell module could be kind of difficult.
 
-A little history - Chocolatey up until 0.9.9 was provided completely written in PowerShell, with the approach above. We know of no other app/tool that tried this approach when we did, which made the original Chocolatey client a rarity indeed. It paved the way for things like Pester (which we added Mocking to) to flourish.
-
 Even through it was originally written *in* PowerShell, **Chocolatey was NEVER a PowerShell module, it just used PowerShell as a programming language and was meant to be a CLI app.** I bolded this so it might get read twice. ;)
+
+A little history - Chocolatey up until 0.9.9 was provided completely written in PowerShell, with the approach above. We know of no other app/tool that tried this approach when we did, which made the original Chocolatey client a rarity indeed. It paved the way for things like mocking in [Pester](https://github.com/pester/Pester) ([Matt Wrock](https://github.com/mwrock) [added mocking](https://github.com/pester/Pester/compare/b103a3db951f123c485289f02eaa1d6ef686c21b...4178c343a6574a8a9521be8a77006572fc49e311) after [Rob Reynolds](https://github.com/ferventcoder) [determined](https://github.com/chocolatey/chocolatey/commit/5b2887240dfbda86629d6a1a296129f3a561e86a#diff-b61a6d542f9036550ba9c401c80f00ef) [the](https://github.com/chocolatey/chocolatey/commit/cc4aca0dc48840c7113167bd08aeddcaf83f65c0#diff-b61a6d542f9036550ba9c401c80f00ef) [general way](https://github.com/chocolatey/chocolatey/commit/ee883242c962dc886cd1282e4dbe4121d4fcc6cd#diff-b61a6d542f9036550ba9c401c80f00ef) [it works](https://github.com/chocolatey/chocolatey/commit/654703b9d4388eb385776986ce6d0ee53485a146#diff-b61a6d542f9036550ba9c401c80f00ef) in PowerShell back in 2012).
 
 <a id="markdown-does-chocolatey-run-on-macoslinux" name="does-chocolatey-run-on-macoslinux"></a>
 ### Does Chocolatey run on macOS/Linux?
