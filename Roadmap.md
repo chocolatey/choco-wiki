@@ -64,4 +64,4 @@ Others as noted at https://github.com/chocolatey/chocolatey.org/issues.
 
 
 ## Legal
-**Disclaimer:** The information included in this roadmap does not constitute, and should not be construed as, a promise or commitment by Chocolatey Software, Inc (Chocolatey Software) to develop, market, or deliver any particular product, feature, or function. The timing and content of Chocolatey Software future product releases could differ materially from the expectations discussed in this document. Chocolatey Software reserves the right to change it product plans or roadmap at any time. 
+**Disclaimer:** The information included in this roadmap does not constitute, and should not be construed as, a promise or commitment by Chocolatey Software, Inc (Chocolatey Software) to develop, market, or deliver any particular product, feature, or function. The timing and content of Chocolatey Software future product releases could differ materially from the expectations discussed in this document. Chocolatey Software reserves the right to change product plans or roadmap at any time. 

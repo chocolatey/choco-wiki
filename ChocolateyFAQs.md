@@ -310,6 +310,7 @@ Speaking of POSIX environments, ever since we released 0.9.9 back in 2015, we've
 
 In fact we first showed it off at PuppetConf 2014 (prior to the official March 2015 release!) - https://www.youtube.com/watch?v=cZl_wKSciVk
 
+Do we have plans to support fully running on POSIX environments? We've discussed it, but have no official stance on it yet. Keep your eyes on the [[roadmap|Roadmap]]
 
 
 <a id="markdown-troubleshooting" name="troubleshooting"></a>
