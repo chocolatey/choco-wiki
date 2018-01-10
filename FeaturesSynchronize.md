@@ -3,7 +3,7 @@
 Chocolatey maintains its own state of the world, while Windows maintains the state of Programs and Features. If an application is upgraded or uninstalled outside of Chocolatey, such as is the case with Google Chrome and its auto updating utility, Chocolatey doesn't know about the change. The synchronize feature keeps Chocolatey's state in sync with Programs and Features, removing possible system-installed state drift.
 
 * [Automatic Sync (All Licensed Editions)](#automatic-synchronize)
-* [Synchronize Command](#sync-command) (Business edition only until Q3 2017)
+* [Synchronize Command](#sync-command) (currently Business edition only - check https://chocolatey.org/compare#compare for availability)
 * [All Packages in Programs And Features (C4B)](#all-packages-in-programs-and-features)
 
 ---
@@ -92,7 +92,7 @@ Chocolatey tracks applications that it installs, so it is able to keep up with t
 
 ## Sync Command
 
-Starting in 1.9.0 of the licensed extension, sync has been added as a preview feature for organizations to try out. Currently Business edition only, but expected to be in Pro+ in Q3 2017.
+Starting in 1.9.0 of the licensed extension, sync has been added as a preview feature for organizations to try out. Currently Business edition only, but expected to be in Pro+ at some point - check https://chocolatey.org/compare#compare for availability.
 
 Sync looks at all software that is in Programs and Features that is not being managed with Chocolatey packages and brings them under management. This means you can run one command and suddenly, all of the software installed on a machine is under management by Chocolatey!
 
