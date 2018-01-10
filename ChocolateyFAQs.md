@@ -37,6 +37,7 @@
   - [What is the difference between packages no suffix as compared to *.install *.portable?](#what-is-the-difference-between-packages-no-suffix-as-compared-to-install-portable)
   - [When I install a portable app like autohotkey.portable, how is it on my path? Without littering my path?](#when-i-install-a-portable-app-like-autohotkeyportable-how-is-it-on-my-path-without-littering-my-path)
   - [Is there a PowerShell Module for Chocolatey?](#is-there-a-powershell-module-for-chocolatey)
+  - [Does Chocolatey run on macOS/Linux?](#does-chocolatey-run-on-macoslinux)
 - [Troubleshooting](#troubleshooting)
   - [I'm running into some issue with Chocolatey, packaging, or something else.](#im-running-into-some-issue-with-chocolatey-packaging-or-something-else)
 - [Organizational Use](#organizational-use)
@@ -293,16 +294,21 @@ When you install portable apps that have executables in the package, Chocolatey 
 
 When you take an application with a native installer, say like WinDirStat, it is only on your path if the native installer has put it there or the instructions in the Chocolatey package itself has requested for it to be on the path. In this case, this is the “littering” the path concept.
 
-
 <a id="markdown-is-there-a-powershell-module-for-chocolatey" name="is-there-a-powershell-module-for-chocolatey"></a>
 ### Is there a PowerShell Module for Chocolatey?
-Not yet, but when/if there is it will be provided as a binary DLL.
+There is not any official ones from Chocolatey Software. If and when there is, it will be provided as a binary DLL likely.
 
-Chocolatey itself is now a binary with 0.9.9+. This provides the ability to run it on Linux/OSX, which is why it is not by default a PowerShell module (\*nix still doesn't really have PowerShell support). The intention is to have something that has a larger portability - this is why it is not something you can ***only*** use in PowerShell, but rather something you can ***also*** use in PowerShell.
+The main Chocolatey client (choco.exe) is an executable client that has runs a PowerShell host in proc and has a PowerShell module it loads for those PowerShell automation scripts. Trying to get all of these ideas into a higher PowerShell module could be kind of difficult.
 
-**It was NEVER a PowerShell module, it just used PowerShell as a programming language and was meant to be a CLI app.** I bolded this so it might get read twice. ;)
+A little history - Chocolatey up until 0.9.9 was provided completely written in PowerShell, with the approach above. We know of no other app/tool that tried this approach when we did, which made the original Chocolatey client a rarity indeed. It paved the way for things like Pester (which we added Mocking to) to flourish.
 
-Chocolatey up until 0.9.9 was provided completely written in PowerShell, with the approach above. I don't know of any other app that has ever tried that approach, which made the original chocolatey client a rarity indeed.
+Even through it was originally written *in* PowerShell, **Chocolatey was NEVER a PowerShell module, it just used PowerShell as a programming language and was meant to be a CLI app.** I bolded this so it might get read twice. ;)
+
+<a id="markdown-does-chocolatey-run-on-macoslinux" name="does-chocolatey-run-on-macoslinux"></a>
+### Does Chocolatey run on macOS/Linux?
+Speaking of POSIX environments, ever since we released 0.9.9 back in 2015, we've had it running in Mono which allows you to do package maintenance and simple things outside of managing software installations on Linux and macOS environments.
+
+In fact we first showed it off at PuppetConf 2014 (prior to the official March 2015 release!) - https://www.youtube.com/watch?v=cZl_wKSciVk
 
 
 
