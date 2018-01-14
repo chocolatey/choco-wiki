@@ -96,9 +96,9 @@ No really, it's that easy. Just set your permissions appropriately and put packa
 * [Permissions](#local-folder-permissions)
 
 #### Local Folder Or Share Structure
-Chocolatey is built on NuGet v2 currently, and when it is accessing a local file/folder or share, it uses what is has built-into it to do so. That means no subfolders or anything you get with `nuget add`. None of that is going to work, it should just be a flat folder (no subfolders) and nupkg files inside that folder.
+The structure should just be a flat folder or share (no subfolders) with nupkgs inside that folder. You get that when you choco push to that location. No subfolders, no `nuget add` type of setup will work for Chocolatey with those local folders and shares.
 
-When it comes to OData repositories, they can implement faster protocols for searching locally but translate that to the OData format that Chocolatey understands.
+**NOTE:*** If you build a local NuGet folder repository using NuGet.exe v3.4+, where you use `nuget add`, you may find that it doesn't produce the results you might expect when you are using Chocolatey. It creates subfolders and adds those nupkgs in an optimized way for query. That is fine when there is a server like Chocolatey.Server that does that but has a way to translate that to an OData feed. When Chocolatey is querying those local folders and shares, it uses what is built into the Chocolatey client (choco.exe). That is currently a very enhanced version of NuGet v2, so it won't understand that optimized subfolder structure and you may get no results. So keep things simple and flat for those types of repositories.
 
 #### Local Folder Permissions
 Permissions can be interesting with a file share. If you are using machine accounts like LocalSystem, they may not have access to network resources. However there is a way to handle that in domain environments. You would need to grant access to machines or anonymous access to the share (Everyone Read is likely not enough).
