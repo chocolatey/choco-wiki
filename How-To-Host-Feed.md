@@ -11,6 +11,8 @@
   - [Advantages](#advantages)
   - [Disadvantages](#disadvantages)
   - [Local Folder Share Setup](#local-folder-share-setup)
+    - [Local Folder Or Share Structure](#local-folder-or-share-structure)
+    - [Local Folder Permissions](#local-folder-permissions)
 - [Simple Server](#simple-server)
   - [Known Simple Server Options](#known-simple-server-options)
   - [Advantages](#advantages-1)
@@ -88,8 +90,17 @@ Perhaps the easiest to set up and recommended for testing quick and dirty scenar
 * **Big disadvantage**: For a file share there is not a guarantee of package version immutability. Does not do anything to keep from package versions being overwritten. This provides no immutability of a package version and no guarantee that a version of a package installed is the same as the version in the source.
 
 ### Local Folder Share Setup
-No really, it's that easy. Just set your permissions appropriately and put packages in the folder (no subfolders). You are already done. Okay, one additional consideration:
+No really, it's that easy. Just set your permissions appropriately and put packages in the folder (no subfolders). You are already done. Okay, two additional considerations:
 
+* [Folder Structure](#local-folder-or-share-structure)
+* [Permissions](#local-folder-permissions)
+
+#### Local Folder Or Share Structure
+Chocolatey is built on NuGet v2 currently, and when it is accessing a local file/folder or share, it uses what is has built-into it to do so. That means no subfolders or anything you get with `nuget add`. None of that is going to work, it should just be a flat folder (no subfolders) and nupkg files inside that folder.
+
+When it comes to OData repositories, they can implement faster protocols for searching locally but translate that to the OData format that Chocolatey understands.
+
+#### Local Folder Permissions
 Permissions can be interesting with a file share. If you are using machine accounts like LocalSystem, they may not have access to network resources. However there is a way to handle that in domain environments. You would need to grant access to machines or anonymous access to the share (Everyone Read is likely not enough).
 
 A great read on your options can be found at the following Stack Exchange links:
