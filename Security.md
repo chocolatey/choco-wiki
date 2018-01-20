@@ -221,5 +221,7 @@ A non-administrative user should choose to install Chocolatey in a directory som
 
 ## Report Issue
 
-* Report general security issue - please email security [at] realdimensions dot net.
+* Report general security issue - please email security [at] chocolatey dot io.
 * Report package malware/security/other package issue - please use the Report Abuse link directly on the package page on https://chocolatey.org/packages.
+<br />
+<br />
