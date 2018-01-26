@@ -78,6 +78,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 #### April
 * http://www.winsysblog.com/2017/04/importing-hosted-nuget-packages-into.html (MDT)
+* http://www.laurierhodes.info/?q=node/129
 
 #### March
 * http://www.winsysblog.com/2017/03/creating-software-packages-with.html

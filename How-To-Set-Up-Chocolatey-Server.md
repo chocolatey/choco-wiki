@@ -39,7 +39,13 @@ For a simple `include chocolatey_server` it does the following automatically:
  * Ensures permissions for the site are set correctly.
 
 ## Setup Normally
-
+ * If your Windows updates are not up to date, there are two required Windows updates you are going to need (heads up they take awhile)
+    * Install KB2919355 - `choco install KB2919355 -y` - this one or the other Windows update takes a ***very*** long time to install, just be patient
+    * Restart your machine.
+    * Install KB2919355 - `choco install KB2919355 -y` (IIRC this is the one that takes forever...) -
+    * Reboot that machine again
+ * You need at least .NET Framework 4.6. If you don't have that or newer, then run `choco install dotnet4.6.1 -y`
+    * Reboot one more time, thanks Windows!!
  * Install or upgrade the package - `choco upgrade chocolatey.server -y`
  * Ensure IIS is installed. You can try `choco install IIS-WebServer --source windowsfeatures`
  * Ensure that ASP.NET is installed. Try `choco install IIS-ASPNET45 --source windowsfeatures` (Windows Server 2012). Use `IIS-ASPNET` for Windows Server 2008, possibly `IIS-ASPNET46` for Windows Server 2016.
