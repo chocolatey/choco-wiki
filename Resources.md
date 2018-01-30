@@ -42,6 +42,10 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 ## Community
 
+### 2018
+#### January
+* http://frostbyte.us/using-ansible-to-install-a-chocolatey-package-repository/
+
 ### 2017
 #### December
 * http://www.codepool.biz/chocolatey-manage-package-windows.html
