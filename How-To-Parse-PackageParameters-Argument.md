@@ -39,8 +39,9 @@ $pp = Get-PackageParameters
 if (!$pp['LICENSE']) { $pp['LICENSE'] = Read-Host 'License key?' }
 # set a default if not passed
 if (!$pp['LICENSE']) { $pp['LICENSE'] = '1234' }
+if (!$pp['UserName']) { $pp['UserName'] = "$env:UserName" }
 # Requires 0.10.8 for Read-Host -AsSecureString
-if (!$pp['Password']) { $pp['Password'] = Read-Host "Enter password for $userName:" -AsSecureString}
+if (!$pp['Password']) { $pp['Password'] = Read-Host "Enter password for $($pp['UserName']):" -AsSecureString}
 # fail the install/upgrade if not value is not determined
 if (!$pp['Password']) { throw "Package needs parameter 'Password' to install, that must be provided in params or in prompt." }
 
