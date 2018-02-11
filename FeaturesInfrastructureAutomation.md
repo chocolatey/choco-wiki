@@ -118,7 +118,7 @@ PowerShell DSC (Desired State Configuration) has a cChoco module that can manage
 [Read More...](https://bit.ly/choco_dsc)
 
 ## PowerShell PackageManagement
-**NOTE:** Chocolatey has a provider for the built-in package manager on Windows 10/Windows Server 2016. The official provider is still under development at this time and is expected to be complete in early summer 2016.
+**NOTE:** Chocolatey has a prototype provider for the built-in package manager on Windows 10/Windows Server 2016 that was created by Microsoft awhile back. It is not fully functional and it may have security issues. If you want to use Chocolatey with PackageManagement, we recommend using ChocolateyGet, which is a nice bridge until an official one is implemented. No ETA has been defined.
 
 [PowerShell PackageManagement (aka OneGet)](https://github.com/OneGet/oneget) is a package manager ***aggregator*** that depends on the existence of package managers as providers to work, one of which is Chocolatey. For a pretty comprehensive post about what PackageManagement is and what it is not, see the PackageManagement Blog post on [10 things about OneGet that are completely different than you think](https://blogs.technet.microsoft.com/packagemanagement/2015/05/05/10-things-about-oneget-that-are-completely-different-than-you-think/).
 
@@ -141,7 +141,7 @@ Deploy SingleChocolateyPackage {
 [Read More...](http://psdeploy.readthedocs.io/en/latest/Example-Chocolatey-Deployment/)
 
 ## Puppet
-Puppet has a [Supported module](https://forge.puppet.com/supported) coming for Chocolatey, but also has an [Approved module](https://forge.puppet.com/approved) written by the Chocolatey team. The module can manage packages and the install and configuration of Chocolatey itself.
+Puppet has a [Supported module](https://forge.puppet.com/supported) for Chocolatey `puppetlabs/chocolatey`. Note that there is also a `chocolatey/chocolatey` module, the supported module is a drop in replacement for the `chocolatey/chocolatey` module - please use `puppetlabs/chocolatey` as it has full configuration of Chocolatey.
 
 ~~~puppet
 include chocolatey
@@ -155,7 +155,14 @@ package { 'git':
 
 Puppet has some great documentation on getting started with Chocolatey. Be sure to check that out at [Using Windows modules](https://docs.puppet.com/pe/latest/windows_modules.html).
 
-[Read More...](https://bit.ly/choco_puppet)
+The Chocolatey team is most familiar with Puppet and has written some documentation for using Puppet with Chocolatey. Please see
+
+* [Install with Puppet](https://chocolatey.org/install#install-with-puppet)
+* [Chocolatey Licensed Editions Configuration/Setup with Puppet](Installation-Licensed#set-up-licensed-edition-with-puppet)
+
+**Note:** if anyone would be interested in providing documentation similar to the above for other frameworks, we'd accept it as Pull Requests at https://github.com/chocolatey/choco-wiki.
+
+[Read More...](https://forge.puppet.com/puppetlabs/chocolatey)
 
 ## Saltstack
 

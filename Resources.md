@@ -64,6 +64,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 #### August
 * http://www.winsysblog.com/2017/08/recompiling-chocolatey-packages.html (C4B)
+* https://controlaltfail.wordpress.com/2017/08/03/salt-chocolatey-install-totally-offline/
 
 #### July
 * https://baremetalblog.com/2017/07/14/chocolatey-package-manager/
@@ -171,6 +172,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 * https://zimmergren.net/automating-software-installations-with-boxstarter-and-chocolatey/
 * https://www.chef.io/blog/2016/02/12/chef-client-12-7-released/
 * https://puppet.com/blog/chocolatey-using-chocolatey-puppet
+* http://blog.coultard.com/2016/02/salt-control-windows-minion.html
 
 #### January
 * https://puppet.com/blog/chocolatey-creating-your-own-chocolatey-packages
