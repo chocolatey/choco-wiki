@@ -342,7 +342,7 @@ Yes, absolutely. If you use C4B's PowerShell Windows Services code, you will be 
 ### Installs from custom source locations are not allowed in background mode. Please remove custom source and try again using default (configured) package source locations.
 You can not pass custom source arguments to Chocolatey, it will error. You need to set up sources in the Chocolatey configuration and any that are marked as allowed for self-service will be passed by the background service.
 
-**NOTE:** If you have run `choco disable -n useBackgroundServiceWithSelfServiceSourcesOnly`, then all configured sources will be passed by the background service.
+**NOTE:** If you have run `choco feature disable -n useBackgroundServiceWithSelfServiceSourcesOnly`, then all configured sources will be passed by the background service.
 
 ### I'm getting the following: "There are no sources enabled for packages and none were passed as arguments."
 This means you need to opt a source into self-service (new in Chocolatey Extension v1.10).
