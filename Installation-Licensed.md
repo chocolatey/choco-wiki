@@ -62,15 +62,21 @@ Here's the whole process for installing your license and installing the licensed
 
 ## How Do I Install The Licensed Edition?
 
- 1. Install a recent version of Chocolatey (0.10.7+) - `choco upgrade chocolatey` (due to a tight integration, `chocolatey.extension` may need a newer version than what is listed here). TRIAL? you need to do more as your license key will not be known by the server. See [Install the Trial Edition](#how-do-i-install-the-trial-edition).
+ 1. Install a recent version of Chocolatey (0.10.8+) - `choco upgrade chocolatey` (due to a tight integration, `chocolatey.extension` may need a newer version than what is listed here). TRIAL? You need to do more as your license key will not be known by the server. See [Install the Trial Edition](#how-do-i-install-the-trial-edition).
  1. You received a license file in email.
- 1. Take that license file and copy it to your Chocolatey install folder `license` subdirectory (you may need to create it first). For most folks that path would be `"C:\ProgramData\chocolatey\license"`. Alternatively, you can put the license in your user profile directory, e.g. `"C:\Users\YourUserName\chocolatey.license.xml"`
+ 1. Open PowerShell.exe as an administrative shell. You can type Windows Key + X + A (and when that comes up if it is cmd.exe, simply type `powershell` to get into it).
+ 1. In PowerShell, run `New-Item $env:ChocolateyInstall\license -Type Directory -Force` - this creates the license directory. Alternatively, you can put the license in your user profile directory, e.g. `"C:\Users\YourUserName\chocolatey.license.xml"`, however we only recommend you do this for Professional licenses as for other licensing you may need it to be recognized by multiple users.
+ 1. Now place that license file in that license folder. You can do this manually, or you can adapt this PowerShell command - `Copy-Item <c:\path\>chocolatey.license.xml $env:ChocolateyInstall\license\chocolatey.license.xml -Force`. (See image below)
+ 1. Verify the license file is set properly. In PowerShell, run `type $env:ChocolateyInstall\license\chocolatey.license.xml.` If that returns something, it means you are good to go. If not, something is misspelled or misplaced somewhere.
+ 1. Run this command: `choco upgrade chocolatey.extension` (or you can call `install` instead of `upgrade`). You will see an error you can safely ignore.
+ 1. That's it! You are good to go.
 
   ![license](https://cloud.githubusercontent.com/assets/63502/12741281/84a3df8e-c940-11e5-8818-456801728cf5.png)
- 1. Run this command: `choco upgrade chocolatey.extension` (or you can call `install` instead of `upgrade`). You will see an error you can safely ignore.
 
   ![install/upgrade](https://cloud.githubusercontent.com/assets/63502/13052159/e6d1be92-d3c2-11e5-8856-d7580e51e3b6.png)
- 1. That's it! You are good to go.
+
+
+**NOTE**: Folks deploying the license out to many machines typically wrap the above logic into a Chocolatey package, embedding the license into the package. When they renew licenses, they just run an upgrade on the licensed package! Don't take a dependency on the `chocolatey.extension` package (Chocolatey Licensed Extension) as you need the license to be placed first to properly set everything when you install the licensed extension.
 
 ### How Do I Install a Local nupkg File?
 
@@ -78,11 +84,19 @@ See the next section
 
 ### How Do I Install The Trial Edition?
 
-If you've received a trial license, you will also receive a link to download a recent version of the `chocolatey.extension` package. You will not be able to install or upgrade the licensed edition through regular means. Chocolatey may add the licensed source, but your license will not be recognized on the server.
+If you've received a trial license, you will also receive a link to download a recent version of the `chocolatey.extension` package. ***You will not be able to install or upgrade the licensed edition through regular means. Chocolatey may add the licensed source, but your license will not be recognized on the server.***
 
- * Follow all of the instructions above except the `choco upgrade chocolatey.extension` command, that will not work with the trial license as the license will not be recognized by the licensed source.
- * Instead download the `chocolatey.extension` (licensed package) from the provided download link location and remember where you saved it.
- * Now run this command: `choco upgrade chocolatey.extension --pre --source c:\folder\where\downloaded\nupkg\resides` (or you can use `install` instead of `upgrade`). **Note**: Source location is not `--source c:\downloads\chocolatey.extension.1.8.1.nupkg`, it is `--source c:\downloads`.
+ 1. Install a recent version of Chocolatey (0.10.8+) - `choco upgrade chocolatey` (due to a tight integration, `chocolatey.extension` may need a newer version than what is listed here).
+ 1. You received a license file in email. **That email also contains links to download licensed nupkgs.** If you received the license file from another party but not the email, please ask them to forward it over to you as you will need it.
+ 1. Obtain the `chocolatey.license.xml` and download the licensed nupkgs from the locations noted in the trial license email to a local folder. Note this location, you will need it later.
+ 1. Open PowerShell.exe as an administrative shell. You can type Windows Key + X + A (and when that comes up if it is cmd.exe, simply type `powershell` to get into it).
+ 1. In PowerShell, run `New-Item $env:ChocolateyInstall\license -Type Directory -Force` - this creates the license directory. Alternatively, you can put the license in your user profile directory, e.g. `"C:\Users\YourUserName\chocolatey.license.xml"`, however we only recommend you do this for Professional licenses as for other licensing you may need it to be recognized by multiple users.
+ 1. Now place that license file in that license folder. You can do this manually, or you can adapt this PowerShell command - `Copy-Item <c:\path\>chocolatey.license.xml $env:ChocolateyInstall\license\chocolatey.license.xml -Force`. (See image below)
+ 1. Verify the license file is set properly. In PowerShell, run `type $env:ChocolateyInstall\license\chocolatey.license.xml.` If that returns something, it means you are good to go. If not, something is misspelled or misplaced somewhere.
+ 1. Run this command: `choco upgrade chocolatey.extension --pre --source c:\folder\where\downloaded\nupkg\resides` (or you can use `install` instead of `upgrade`). **Note**: Source location is not `--source c:\downloads\chocolatey.extension.1.8.1.nupkg`, it is `--source c:\downloads`. You will see an error you can safely ignore.
+ 1. That's it! You are good to go.
+
+See the difference between the trial install here and [a fully licensed edition](#how-do-i-install-the-licensed-edition) (also see the pictures above).
 
 #### Notes on the Trial Version
 
