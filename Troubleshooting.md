@@ -207,13 +207,13 @@ Once you've looked at your log to determine what it said, here are some followup
 - This could be due to PowerShell Execution Policy settings. Run `Get-ExecutionPolicy` - if it is set to `Restricted` you need to adjust that to something like `RemoteSigned`. See about execution policies (link)
 - If that is fine, then we need to look at your "$profile". Run `type $profile`. Examine the output. You should have something like this in the file:
 
-    ~~~ powershell
-    # Chocolatey profile
-    $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-    if (Test-Path($ChocolateyProfile)) {
-      Import-Module "$ChocolateyProfile"
-    }
-    ~~~
+~~~powershell
+# Chocolatey profile
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
+~~~
 
 - If you don't see that, let's add it. Run `Write-Host $profile` - note the location and open it up in an editor (anything but plain old notepad.exe for the love of..., well your favorite editor).
   - Now let's add that text above to the profile. Save and close the file. Now type `. $profile` to update your current Shell. Give `choco in<tab>` a shot again. If it still doesn't work we'll need to examine something a bit more deeply about your environment. Please submit an issue so we can investigate.
