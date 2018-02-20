@@ -83,3 +83,5 @@ Now we've finished the first Exercise and we have those files on our offline mac
 One thing Chocolatey.Server v0.2.3+ contains is an install script much like you see at https://chocolatey.org/install and https://chocolatey.org/install.ps1.
 
 * From a client, open a browser and navigate to the url of the package repository.
+
+**WORK IN PROGRESS, CHECK BACK LATER**
