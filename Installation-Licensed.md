@@ -61,7 +61,7 @@ Here's the whole process for installing your license and installing the licensed
 ![install](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/choco_install_pro.gif)
 
 ## How Do I Install The Licensed Edition?
-Prior to install, see if there are any parameters (like turning off context menus) that you may want to set. See [install options](#install-options).
+**NOTE:** Prior to install, see if there are any parameters (like turning off context menus) that you may want to set. See [install options](#install-options).
 
  1. Install a recent version of Chocolatey (0.10.8+) - `choco upgrade chocolatey` (due to a tight integration, `chocolatey.extension` may need a newer version than what is listed here). TRIAL? You need to do more as your license key will not be known by the server. See [Install the Trial Edition](#how-do-i-install-the-trial-edition).
  1. You received a license file in email.
@@ -87,7 +87,7 @@ See the next section
 
 If you've received a trial license, you will also receive a link to download a recent version of the `chocolatey.extension` package. ***You will not be able to install or upgrade the licensed edition through regular means. Chocolatey may add the licensed source, but your license will not be recognized on the server.***
 
-Prior to install, see if there are any parameters (like turning off context menus) that you may want to set. See [install options](#install-options).
+**NOTE:** Prior to install, see if there are any parameters (like turning off context menus) that you may want to set. See [install options](#install-options).
 
  1. Install a recent version of Chocolatey (0.10.8+) - `choco upgrade chocolatey` (due to a tight integration, `chocolatey.extension` may need a newer version than what is listed here).
  1. You received a license file in email. **That email also contains links to download licensed nupkgs.** If you received the license file from another party but not the email, please ask them to forward it over to you as you will need it.
