@@ -109,7 +109,7 @@ There are no trial type messages for runtime features unless they need to use Pa
 
 ## Install Options
 ### Install Without Context Menus
-As of Chocolatey Licensed Extension v1.12.2, you can install to client machines without the context menus (Right Click). Add the following to your installation : `--params "'/NoContextMenu'"`. Currently there isn't a way to remove context menus if you have already deployed them, but it is on the backlog to add that.
+As of Chocolatey Licensed Extension v1.12.2, you can install to client machines without the context menus (Right Click). Add the following to your installation : `--params="'/NoContextMenu'"`. Currently there isn't a way to remove context menus if you have already deployed them, but it is on the backlog to add that. Example: `choco install chocolatey.extension -y --params="'/NoContextMenu'"`.
 
 ## Upgrading
 
