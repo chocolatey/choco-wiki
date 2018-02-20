@@ -5,7 +5,8 @@
 - [References](#references)
 - [Exercise 0: Prepare for Offline](#exercise-0-prepare-for-offline)
 - [Exercise 1: Set Up Offline Package Repository](#exercise-1-set-up-offline-package-repository)
-- [Exercise 2: Installing Chocolatey From Offline Repository](#exercise-2-installing-chocolatey-from-offline-repository)
+- [Exercise 2: Packages in the Repository](#exercise-2-packages-in-the-repository)
+- [Exercise 3: Installing Chocolatey From Offline Repository](#exercise-3-installing-chocolatey-from-offline-repository)
 
 <!-- /TOC -->
 
@@ -70,7 +71,12 @@ Now we've finished the first Exercise and we have those files on our offline mac
 * You may wish to install an SSL certificate.
 * You may wish to set up authentication to the repository (the SSL certificate is highly recommended to not pass passwords in cleartext).
 
-## Exercise 2: Installing Chocolatey From Offline Repository
+## Exercise 2: Packages in the Repository
+
+* Now we need to simply place the packages we have in `c:\choco-setup\packages` to the packages folder of the website, which is typically at `c:\tools\Chocolatey.Server\App_Data\Packages`.
+* Make sure we have Chocolatey here, as the Chocolatey install script that Chocolatey Server offers is dynamic and we want it to use a local package instead of the Chocolatey package at https://chocolatey.org/.
+
+## Exercise 3: Installing Chocolatey From Offline Repository
 
 One thing Chocolatey.Server v0.2.3+ contains is an install script much like you see at https://chocolatey.org/install and https://chocolatey.org/install.ps1.
 
