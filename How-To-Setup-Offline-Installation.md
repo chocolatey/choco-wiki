@@ -25,7 +25,7 @@
 
 The first thing we need to do is prepare. **NOTE:** This uses Chocolatey.Server, but you can use any of the known options in [[hosting your own package repository|How-To-Host-Feed]].
 
-We need a machine with internet access. To set up Chocolatey for offline installation (air-gapped network if you will), first we need a way to obtain everything.
+We need a Windows machine with internet access. To set up Chocolatey for offline installation (air-gapped network if you will), first we need a way to obtain everything.
 
 So from the machine with internet access:
 
@@ -101,7 +101,7 @@ Write-Warning "Check and adjust script at '$env:SystemDrive\choco-setup\files\Ch
 ~~~
 
 ## Exercise 1: Set Up Chocolatey Installation From a Local Script
-Now that we've finished the first exercise and have those files over on our offline machine, we need to get Chocolatey set up on that machine. This could be a Chocolatey Server, it could be something else.
+Now that we've finished the first exercise and have those files over on our offline Windows machine, we need to get Chocolatey set up on that machine. This could be ultimately be a Chocolatey.Server Repository, or it could be something else. Note: [[Other repository servers don't necessarily require Windows|How-To-Host-Feed]].
 
 * Ensure the folders from the other drive are set in `c:\choco-setup` here on this machine.
 * Open PowerShell.exe as an administrative shell. You can type "Windows Key + X + A" (Windows 8+ - when that comes up if it is cmd.exe, simply type `powershell` to get into it).
@@ -143,7 +143,7 @@ choco upgrade chocolatey.extension -y --pre
 ~~~
 
 ## Exercise 2: Add the Offline Package Repository
-This is a continuation of the previous exercise - if we are setting up an internal repository on that offline machine, this is how we'll do it. We are going to set up the Chocolatey.Server (but you could set up something else here like Nexus, Artifactory Pro, or ProGet). Pick one of the following paths:
+This is a continuation of the previous exercise - if we are setting up an internal repository on that offline Windows machine, this is how we'll do it. We are going to set up the Chocolatey.Server (but you could set up something else here like Nexus, Artifactory Pro, or ProGet). Pick one of the following paths:
 
 * [Set up Chocolatey.Server](#exercise-2a-set-up-chocolateyserver)
 * [Set up a Different Repository](#exercise-2b-set-up-a-different-repository)
@@ -170,7 +170,7 @@ Write-Warning "Follow the steps at https://chocolatey.org/docs/how-to-set-up-cho
 ~~~
 
 ### Exercise 2B: Set up a Different Repository
-If you are setting up something different than Chocolatey.Server, you may wish to read over [[How To Set Up an Internal Repository|How-To-Host-Feed]]. This will give you options and links to repositories like Artifactory Pro, Nexus, and ProGet.
+If you are setting up something different than Chocolatey.Server, you may wish to read over [[How To Set Up an Internal Repository|How-To-Host-Feed]]. This will give you options and links to repositories like Artifactory Pro, Nexus, and ProGet. **NOTE**: Some repository server options don't require Windows.
 
 **NOTE:** Many repositories have a concept of a proxy repository. Unlike NuGet repositories, you likely ***DO NOT WANT*** a proxied NuGet/Chocolatey repository pointing to the community repository. They only cache packages - ***cached* is not the same concept as *internalized***. To reuse packages from the community repository in a reliable way, you need to [[internalize them|How-To-Recompile-Packages]]. The community repository is subject to distribution rights, which means many packages need to download things from the internet at ***runtime***. That's unreliable and a no go for many organizations. You can use Package Internalizer (as we are seeing above) or [[manually internalize packages|How-To-Recompile-Packages]] you want to use from the community repository. More on [[why (community packages repository notes)|CommunityPackagesDisclaimer]].
 
