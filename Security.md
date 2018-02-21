@@ -142,12 +142,12 @@ Chocolatey.org has a community repository of packages known as the community fee
 
 In October 2014, the community feed had moderation turned on. All community packages (every version of a package) go through a [[rigorous moderation process|Moderation]] prior to any public consumption:
 
-   * All package versions are run through an [automated validation process](https://github.com/chocolatey/package-validator/wiki) to determine quality.
-   * All package versions are run through an [automated verification process](https://github.com/chocolatey/package-verifier/wiki) to determine if they work correctly (install, etc).
-   * All packages versions are run through VirusTotal to determine if there are any flagging items. This includes downloading and unpacking any external resources (See the results on a package page in the Virus section - https://chocolatey.org/packages/chocolatey#virus as an example).
-   * A human [[reviews every package version|Moderation#reviewer--moderator-process]] that is not a [[trusted package|ChocolateyFAQs#what-is-a-trusted-package]]. This process verifies that packages are pulling from official distro sources or checksumming items versus the official distros and checking over scripts for malicious behavior.
-   * We don't require cryptographically signing packages yet, that is a future enhancement
-   * Checksumming is a requirement for non-secure scenarios, but is not yet a requirement in some scenarios, so keep reading the next section.
+ * All package versions are run through an [automated validation process](https://github.com/chocolatey/package-validator/wiki) to determine quality.
+ * All package versions are run through an [automated verification process](https://github.com/chocolatey/package-verifier/wiki) to determine if they work correctly (install, etc).
+ * All packages versions are run through VirusTotal to determine if there are any flagging items. This includes downloading and unpacking any external resources (See the results on a package page in the Virus section - https://chocolatey.org/packages/chocolatey#virus as an example).
+ * A human [[reviews every package version|Moderation#reviewer--moderator-process]] that is not a [[trusted package|ChocolateyFAQs#what-is-a-trusted-package]]. This process verifies that packages are pulling from official distro sources or checksumming items versus the official distros and checking over scripts for malicious behavior.
+ * We don't require cryptographically signing packages yet, that is a future enhancement
+ * Checksumming is a requirement for non-secure scenarios, but is not yet a requirement in some scenarios, so keep reading the next section.
 
 #### Downloading Internet Resources Can Still Be An Issue
 With all of that said, you may want to ensure you build trust with each package as the software is coming from somewhere on the internet sometimes and moderators only validate that the package gets the software from those official distribution points, not necessarily the software itself. While VirusTotal provides a bit more of a validation against the binaries, if the maintainer is not using checksums in the package (checksums are required if the package downloads from non-secure locations), there isn't a guarantee that the software vendor did not pull a switch on the binary (the remote distribution source). If you are concerned about that you should look to Pro or Business (next section).
