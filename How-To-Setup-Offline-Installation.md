@@ -261,6 +261,7 @@ Write-Output "Setting install and uninstall scripts..."
 `$toolsDir              = "`$(Split-Path -parent `$MyInvocation.MyCommand.Definition)"
 `$licenseFile           = "`$toolsDir\chocolatey.license.xml"
 
+New-Item "$env:ChocolateyInstall\license" -ItemType Directory -Force
 Copy-Item -Path `$licenseFile  -Destination `$env:ChocolateyInstall\license\chocolatey.license.xml -Force
 Write-Output "The license has been installed."
 "@ | Out-File -FilePath "$licensePackageFolder\tools\chocolateyInstall.ps1" -Encoding UTF8 -Force
