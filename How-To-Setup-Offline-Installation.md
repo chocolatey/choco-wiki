@@ -100,6 +100,18 @@ choco upgrade chocolatey.extension -y --pre
 # TRIAL: Place nupkgs into the "$env:SystemDrive\choco-setup\packages" directory (add a script here to do so)
 # TRIAL: Run this instead: choco upgrade chocolatey.extension --pre --source c:\choco-setup\packages
 
+# Set Configuration
+choco config set cacheLocation $env:ALLUSERSPROFILE\choco-cache
+choco config set commandExecutionTimeoutSeconds 14400
+# Add other items you would configure here
+# https://chocolatey.org/docs/chocolatey-configuration
+
+# Set Licensed Configuration
+choco feature enable --name="'internalizeAppendUseOriginalLocation'"
+choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
+# Add other items you would configure here
+# https://chocolatey.org/docs/chocolatey-configuration
+
 # Download and internalize packages.
 choco download chocolatey chocolatey.server dotnet4.6.1 chocolateygui --internalize --output-directory="'$env:SystemDrive\choco-setup\packages'" --source="'https://chocolatey.org/api/v2/'"
 # TRIAL: skip this next step
@@ -147,9 +159,24 @@ Write-Host "You can ignore the red text in the output above, as it is more of a 
 # Install Chocolatey Licensed Extension
 choco upgrade chocolatey.extension -y --pre
 
+# Set Configuration
+choco config set cacheLocation $env:ALLUSERSPROFILE\choco-cache
+choco config set commandExecutionTimeoutSeconds 14400
+# Add other items you would configure here
+# https://chocolatey.org/docs/chocolatey-configuration
+
+# Set Licensed Configuration
+choco feature enable --name="'internalizeAppendUseOriginalLocation'"
+choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
+# Add other items you would configure here
+# https://chocolatey.org/docs/chocolatey-configuration
+
 # Are we installing the Chocolatey Agent Service?
 # https://chocolatey.org/docs/features-agent-service#setup
 # choco upgrade chocolatey-agent -y --pre
+#choco feature disable --name="'showNonElevatedWarnings'"
+#choco feature enable --name="'useBackgroundService'"
+#choco feature enable --name="'useBackgroundServiceWithNonAdministratorsOnly'"
 ~~~
 
 ## Exercise 2: Set Up An Offline Package Repository
@@ -335,14 +362,24 @@ Write-Host "You can ignore the red text in the output above, as it is more of a 
 # Install Chocolatey Licensed Extension
 choco upgrade chocolatey.extension -y --pre
 
-# Set configuration
-choco config set cacheLocation "c:\ProgramData\choco-cache"
-#TODO: Add more items here
+# Set Configuration
+choco config set cacheLocation $env:ALLUSERSPROFILE\choco-cache
+choco config set commandExecutionTimeoutSeconds 14400
+# Add other items you would configure here
+# https://chocolatey.org/docs/chocolatey-configuration
+
+# Set Licensed Configuration
+choco feature enable --name="'internalizeAppendUseOriginalLocation'"
+choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
+# Add other items you would configure here
+# https://chocolatey.org/docs/chocolatey-configuration
 
 # Are we installing the Chocolatey Agent Service?
 # https://chocolatey.org/docs/features-agent-service#setup
 # choco upgrade chocolatey-agent -y --pre
-
+#choco feature disable --name="'showNonElevatedWarnings'"
+#choco feature enable --name="'useBackgroundService'"
+#choco feature enable --name="'useBackgroundServiceWithNonAdministratorsOnly'"
 ~~~
 
 ### Exercise 5B: Installing Chocolatey On Clients with Infrastructure Management Tools

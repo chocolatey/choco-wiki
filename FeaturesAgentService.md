@@ -84,8 +84,8 @@ This carries our typical recommendations, but you could adjust from above.
 # note that best practice in scripts is choco upgrade and -y
 choco upgrade chocolatey-agent -y
 choco feature disable --name="'showNonElevatedWarnings'"
-choco feature enable --name=useBackgroundService
-choco feature enable --name=useBackgroundServiceWithNonAdministratorsOnly
+choco feature enable --name="'useBackgroundService'"
+choco feature enable --name="'useBackgroundServiceWithNonAdministratorsOnly'"
 ~~~
 
 > Best practices in scripts are noted here:
