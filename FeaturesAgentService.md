@@ -76,6 +76,24 @@ To set Chocolatey in background mode, you need to run the following:
 * OPTIONAL (highly recommended): For use with Chocolatey GUI, you need Chocolatey Extension v1.12.4+, and at least Chocolatey GUI v0.15.0. **Uninstall any version of the GUI you already have installed first**, then run `choco upgrade chocolateygui -y --allow-downgrade` (you will also need at least .NET 4.5.2 installed)
 * DOES NOT WORK WITH UAC, DO NOT USE UNTIL [FIX IS ANNOUNCED](https://groups.google.com/group/chocolatey-announce)! OPTIONAL (recommended if you use installers that are not completely silent): If you want self-service to interactively manage installations, run `choco feature enable --name=useBackgroundServiceInteractively` (requires Chocolatey Extension v1.12.10+). This requires that you use the `ChocolateyLocalAdmin` account with the Chocolatey-managed password as passwords are not stored and the service would need to produce that at runtime. There are some security considerations and why this is not turned on by default. Please see [interactive self-service consideration](#interactive-self-service-consideration).
 
+An example script:
+
+This carries our typical recommendations, but you could adjust from above.
+
+~~~powershell
+# note that best practice in scripts is choco upgrade and -y
+choco upgrade chocolatey-agent -y
+choco feature disable --name="'showNonElevatedWarnings'"
+choco feature enable --name=useBackgroundService
+choco feature enable --name=useBackgroundServiceWithNonAdministratorsOnly
+~~~
+
+> Best practices in scripts are noted here:
+> * Use `upgrade` instead of `install` - upgrade is more making the script reusable when newer versions are available.
+> * Always use `-y` to ensure nothing stops and prompts for more than 30 seconds.
+> * When using options prefer a longer name (`--name` versus the short `-n`) to make the scripts more self-documenting
+> * When using options that have a value passed, add an `=` between and surround the value with `"''"` (`--name="'value'"`). This ensures that the argument is not split between different versions/editions of Chocolatey. This also ensures that values like `.` and `\\` are not escaped by PowerShell.
+
 ##### Chocolatey Agent Install Options
 
 Starting with Chocolatey Agent v0.8.0+, the service will install as a local administrative user `ChocolateyLocalAdmin` by default (and manage the password as well). However you can specify your own user with package parameters (or have it use `LocalSystem`). Using a local administrator account allows for more things to be installed without issues. It also will allow easier shortcuts and other items to be put back on the correct user (the original requestor). You can specify a domain account as well. Prior to `v0.8.0`, Chocolatey Agent would install as LocalSystem (`SYSTEM`) and would require additional customization.

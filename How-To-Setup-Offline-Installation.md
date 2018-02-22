@@ -1,18 +1,28 @@
 # How To Set Up Fully Offline Installation
 
+**WORK IN PROGRESS, KEEP CHECKING BACK**
+---
+
 <!-- TOC -->
 
+- [Summary](#summary)
 - [References](#references)
-- [Exercise 0: Prepare for Offline](#exercise-0-prepare-for-offline)
-- [Exercise 1: Set Up Chocolatey Installation From a Local Script](#exercise-1-set-up-chocolatey-installation-from-a-local-script)
-- [Exercise 2: Add the Offline Package Repository](#exercise-2-add-the-offline-package-repository)
-  - [Exercise 2A: Set up Chocolatey.Server](#exercise-2a-set-up-chocolateyserver)
-  - [Exercise 2B: Set up a Different Repository](#exercise-2b-set-up-a-different-repository)
-- [Exercise 2: Packages in the Repository](#exercise-2-packages-in-the-repository)
-- [Exercise 3: Installing Chocolatey From Offline Repository](#exercise-3-installing-chocolatey-from-offline-repository)
+- [Exercise 0: Prepare For Offline](#exercise-0-prepare-for-offline)
+- [Exercise 1: Set Up Chocolatey Installation From A Local Script](#exercise-1-set-up-chocolatey-installation-from-a-local-script)
+- [Exercise 2: Set Up An Offline Package Repository](#exercise-2-set-up-an-offline-package-repository)
+  - [Exercise 2A: Set Up Chocolatey.Server](#exercise-2a-set-up-chocolateyserver)
+  - [Exercise 2B: Set Up A Different Repository](#exercise-2b-set-up-a-different-repository)
+- [Exercise 3: Add Packages To The Repository](#exercise-3-add-packages-to-the-repository)
+- [Exercise 4: Installing Chocolatey On Client Machines Directly](#exercise-4-installing-chocolatey-on-client-machines-directly)
+  - [Exercise 4A: Installing Chocolatey On Clients With Chocolatey.Server](#exercise-4a-installing-chocolatey-on-clients-with-chocolateyserver)
+  - [Exercise 5: Installing Chocolatey On Clients with Infrastructure Management Tools](#exercise-5-installing-chocolatey-on-clients-with-infrastructure-management-tools)
 
 <!-- /TOC -->
 
+## Summary
+This walkthrough is intended to give you the ability to get Chocolatey set up in an environment where there is no internet. One of the most difficult things tends to be gathering everything you need and no access to get those things, so you would need to be doubly sure you have everything prior to moving over. Fortunately this walkthrough will assist with that scenario.
+
+You can also adapt this walkthrough for when you want to have a set of steps to get everything downloaded and set up an internal server.
 
 ## References
 
@@ -21,7 +31,7 @@
 * [[Host Your Own Package Server|How-To-Host-Feed]]
 * [[Set up Chocolatey Server|How-To-Set-Up-Chocolatey-Server]]
 
-## Exercise 0: Prepare for Offline
+## Exercise 0: Prepare For Offline
 
 The first thing we need to do is prepare. **NOTE:** This uses Chocolatey.Server, but you can use any of the known options in [[hosting your own package repository|How-To-Host-Feed]].
 
@@ -73,7 +83,7 @@ New-Item -Path "$env:SystemDrive\choco-setup" -ItemType Directory -Force
 New-Item -Path "$env:SystemDrive\choco-setup\files" -ItemType Directory -Force
 New-Item -Path "$env:SystemDrive\choco-setup\packages" -ItemType Directory -Force
 
-# Installing Chocolatey
+# Install Chocolatey
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 # Add license to setup and to local install
@@ -100,7 +110,7 @@ $installScript | Out-File -FilePath "$env:SystemDrive\choco-setup\files\Chocolat
 Write-Warning "Check and adjust script at '$env:SystemDrive\choco-setup\files\ChocolateyLocalInstall.ps1' to ensure it points to the right version of Chocolatey in the choco-setup\packages folder."
 ~~~
 
-## Exercise 1: Set Up Chocolatey Installation From a Local Script
+## Exercise 1: Set Up Chocolatey Installation From A Local Script
 Now that we've finished the first exercise and have those files over on our offline Windows machine, we need to get Chocolatey set up on that machine. This could be ultimately be a Chocolatey.Server Repository, or it could be something else. Note: [[Other repository servers don't necessarily require Windows|How-To-Host-Feed]].
 
 * Ensure the folders from the other drive are set in `c:\choco-setup` here on this machine.
@@ -119,7 +129,7 @@ Now that we've finished the first exercise and have those files over on our offl
 # Ensure we can run everything
 Set-ExecutionPolicy Bypass -Scope Process -Force;
 
-# Installing Chocolatey
+# Install Chocolatey
 & $env:SystemDrive\choco-setup\files\ChocolateyLocalInstall.ps1
 
 # Sources - Remove community repository and add a local folder source
@@ -142,13 +152,13 @@ choco upgrade chocolatey.extension -y --pre
 # choco upgrade chocolatey-agent -y --pre
 ~~~
 
-## Exercise 2: Add the Offline Package Repository
+## Exercise 2: Set Up An Offline Package Repository
 This is a continuation of the previous exercise - if we are setting up an internal repository on that offline Windows machine, this is how we'll do it. We are going to set up the Chocolatey.Server (but you could set up something else here like Nexus, Artifactory Pro, or ProGet). Pick one of the following paths:
 
 * [Set up Chocolatey.Server](#exercise-2a-set-up-chocolateyserver)
 * [Set up a Different Repository](#exercise-2b-set-up-a-different-repository)
 
-### Exercise 2A: Set up Chocolatey.Server
+### Exercise 2A: Set Up Chocolatey.Server
 Since we put the items on this machine in the previous exercise, we can just pick up where we left off.
 
 * Follow the steps at https://chocolatey.org/docs/how-to-set-up-chocolatey-server#setup-normally
@@ -160,7 +170,7 @@ Since we put the items on this machine in the previous exercise, we can just pic
 
 ~~~powershell
 # Ensure we can run everything
-Set-ExecutionPolicy Bypass -Scope Process -Force;
+Set-ExecutionPolicy Bypass -Scope Process -Force
 
 # Install Chocolatey.Server
 choco upgrade chocolatey.server -y --pre
@@ -169,14 +179,15 @@ Write-Warning "Follow the steps at https://chocolatey.org/docs/how-to-set-up-cho
 # more may be added later
 ~~~
 
-### Exercise 2B: Set up a Different Repository
+### Exercise 2B: Set Up A Different Repository
 If you are setting up something different than Chocolatey.Server, you may wish to read over [[How To Set Up an Internal Repository|How-To-Host-Feed]]. This will give you options and links to repositories like Artifactory Pro, Nexus, and ProGet. **NOTE**: Some repository server options don't require Windows.
 
 **NOTE:** Many repositories have a concept of a proxy repository. Unlike NuGet repositories, you likely ***DO NOT WANT*** a proxied NuGet/Chocolatey repository pointing to the community repository. They only cache packages - ***cached* is not the same concept as *internalized***. To reuse packages from the community repository in a reliable way, you need to [[internalize them|How-To-Recompile-Packages]]. The community repository is subject to distribution rights, which means many packages need to download things from the internet at ***runtime***. That's unreliable and a no go for many organizations. You can use Package Internalizer (as we are seeing above) or [[manually internalize packages|How-To-Recompile-Packages]] you want to use from the community repository. More on [[why (community packages repository notes)|CommunityPackagesDisclaimer]].
 
-## Exercise 2: Packages in the Repository
+## Exercise 3: Add Packages To The Repository
 
 * Now we need to get the packages we have in `c:\choco-setup\packages` to the package repository. With Chocolatey.Server, we can cheat a little and simply copy the nupkg files to `$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Packages`.
+* In Chocolatey.Server v0.2.3 we can also put the license on the repository and download it with scripts. So we'll copy the license from `c:\choco-setup\files` to `$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Download`. If the folder doesn't exist, then you need to upgrade to a newer version of Chocolatey.Server.
 
 **NOTE:** We'll put Chocolatey here, and use this location of Chocolatey for all further client installations. If we are using Chocolatey.Server, we'll have an install.ps1 that it serves that is dynamic and will use a local chocolatey.nupkg if we have one in the repository (it will use the Chocolatey package at https://chocolatey.org/ otherwise, which we won't want).
 
@@ -189,17 +200,62 @@ Set-ExecutionPolicy Bypass -Scope Process -Force;
 
 # Copy the packages to the Chocolatey.Server repo folder
 Copy-Item "$env:SystemDrive\choco-setup\packages\*" -Destination "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Packages\" -Force -Recurse
+
+# Copy the license to the Chocolatey.Server repo (for v0.2.3+ downloads)
+New-Item "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Downloads" -Type Directory -Force
+Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" -Destination "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Downloads\chocolatey.license.xml" -Force -Recurse
 ~~~
 
-For other things, just loop over the nupkg files and call `choco push`
+For other things, just loop over the nupkg files and call `choco push`.
 
-## Exercise 3: Installing Chocolatey From Offline Repository
+## Exercise 4: Installing Chocolatey On Client Machines Directly
+This is where things get quite a bit easier.
 
-One thing Chocolatey.Server v0.2.3+ contains is an install script much like you see at https://chocolatey.org/install and https://chocolatey.org/install.ps1.
+### Exercise 4A: Installing Chocolatey On Clients With Chocolatey.Server
 
-* From a client, open a browser and navigate to the url of the package repository.
+Starting with Chocolatey.Server v0.2.3, you get a similar experience where you just open an Administrative PowerShell.exe and follow the instructions like you see at https://chocolatey.org/install. This ease of install is very beneficial when setting up client machines directly.
 
+* From the client, open a browser and navigate to the url of the package repository you just set up.
+* On that page it will contain instructions on how to install. Follow those instructions and that will set up the client.
 
-**WORK IN PROGRESS, CHECK BACK LATER**
+~~~powershell
+$baseUrl = "http://localhost"
+
+# Ensure we can run everything
+Set-ExecutionPolicy Bypass -Scope Process -Force;
+
+# Install Chocolatey
+iex ((New-Object System.Net.WebClient).DownloadString("$baseUrl/install.ps1"))
+
+# Sources - Remove community repository and add a local folder source
+choco source remove --name="'chocolatey'"
+choco source add --name="'internal_server'" --source="'$baseUrl/chocolatey'"
+
+# Add license to setup and to local install
+New-Item $env:ChocolateyInstall\license -Type Directory -Force
+#TODO: Need a way to get the license file
+#won't work until v0.2.3 or further out
+#iwr -UseBasicParsing -Uri "$baseUrl/downloads/chocolatey.license.xml" -UseDefaultCredentials | Out-File -FilePath "$env:ChocolateyInstall\license\chocolatey.license.xml" -Encoding UTF8 -Force
+
+# Sources - Disable licensed source
+choco source disable --name="'chocolatey.licensed'"
+Write-Host "You can ignore the red text in the output above, as it is more of a warning until we have chocolatey.extension installed"
+
+# Install Chocolatey Licensed Extension
+choco upgrade chocolatey.extension -y --pre
+
+# Set configuration
+choco config set cacheLocation "c:\ProgramData\choco-cache"
+#TODO: Add more items here
+
+# Are we installing the Chocolatey Agent Service?
+# https://chocolatey.org/docs/features-agent-service#setup
+# choco upgrade chocolatey-agent -y --pre
+
+~~~
+
+### Exercise 5: Installing Chocolatey On Clients with Infrastructure Management Tools
+
+**WORK IN PROGRESS, KEEP CHECKING BACK**
 ---
 

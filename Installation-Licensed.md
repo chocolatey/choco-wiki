@@ -76,6 +76,7 @@ Here's the whole process for installing your license and installing the licensed
 
   ![install/upgrade](https://cloud.githubusercontent.com/assets/63502/13052159/e6d1be92-d3c2-11e5-8856-d7580e51e3b6.png)
 
+**NOTE**: Also note that order is ***very*** important here. You need license file placed, then chocolatey.extension, then any other licensed components. Expect issues if you don't follow this order exactly.
 
 **NOTE**: Folks deploying the license out to many machines typically wrap the above logic into a Chocolatey package, embedding the license into the package. When they renew licenses, they just run an upgrade on the licensed package! Don't take a dependency on the `chocolatey.extension` package (Chocolatey Licensed Extension) as you need the license to be placed first to properly set everything when you install the licensed extension.
 
@@ -98,6 +99,9 @@ If you've received a trial license, you will also receive a link to download a r
  1. Verify the license file is set properly. In PowerShell, run `type $env:ChocolateyInstall\license\chocolatey.license.xml.` If that returns something, it means you are good to go. If not, something is misspelled or misplaced somewhere.
  1. Run this command: `choco upgrade chocolatey.extension --pre --source c:\folder\where\downloaded\nupkg\resides` (or you can use `install` instead of `upgrade`). **Note**: Source location is not `--source c:\downloads\chocolatey.extension.1.8.1.nupkg`, it is `--source c:\downloads`. You will see an error you can safely ignore.
  1. That's it! You are good to go.
+
+**NOTE**: Also note that order is ***very*** important here. You need license file placed, then chocolatey.extension, then any other licensed components. Expect issues if you don't follow this order exactly.
+
 
 See the difference between the trial install here and [a fully licensed edition](#how-do-i-install-the-licensed-edition) (also see the pictures above).
 

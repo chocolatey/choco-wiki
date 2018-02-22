@@ -43,6 +43,9 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ## Community
 
 ### 2018
+#### February
+* https://blog.ipswitch.com/setting-up-an-internal-chocolatey-package-repository
+
 #### January
 * http://frostbyte.us/using-ansible-to-install-a-chocolatey-package-repository/
 
