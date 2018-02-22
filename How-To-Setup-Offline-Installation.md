@@ -12,10 +12,11 @@
 - [Exercise 2: Set Up An Offline Package Repository](#exercise-2-set-up-an-offline-package-repository)
   - [Exercise 2A: Set Up Chocolatey.Server](#exercise-2a-set-up-chocolateyserver)
   - [Exercise 2B: Set Up A Different Repository](#exercise-2b-set-up-a-different-repository)
-- [Exercise 3: Add Packages To The Repository](#exercise-3-add-packages-to-the-repository)
-- [Exercise 4: Installing Chocolatey On Client Machines Directly](#exercise-4-installing-chocolatey-on-client-machines-directly)
-  - [Exercise 4A: Installing Chocolatey On Clients With Chocolatey.Server](#exercise-4a-installing-chocolatey-on-clients-with-chocolateyserver)
-  - [Exercise 5: Installing Chocolatey On Clients with Infrastructure Management Tools](#exercise-5-installing-chocolatey-on-clients-with-infrastructure-management-tools)
+- [Exercise 3: Create a Package For the License](#exercise-3-create-a-package-for-the-license)
+- [Exercise 4: Add Packages To The Repository](#exercise-4-add-packages-to-the-repository)
+- [Exercise 5: Installing Chocolatey On Client Machines](#exercise-5-installing-chocolatey-on-client-machines)
+  - [Exercise 5A: Installing Chocolatey On Clients Directly Using PowerShell](#exercise-5a-installing-chocolatey-on-clients-directly-using-powershell)
+  - [Exercise 5B: Installing Chocolatey On Clients with Infrastructure Management Tools](#exercise-5b-installing-chocolatey-on-clients-with-infrastructure-management-tools)
 
 <!-- /TOC -->
 
@@ -48,7 +49,7 @@ So from the machine with internet access:
 * Now run `Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))` (this will get Chocolatey installed and it is what you see at https://chocolatey.org/install). It also makes choco available in that current shell.
 * C4B / MSP / TRIAL: Obtain the `chocolatey.license.xml` from the email sent from the Chocolatey team and save the license file to `c:\choco-setup\files` so we can use it here and on the offline machines.
 * TRIAL: grab a copy of the two nupkgs from the email. If you don't have that email with the download links, request it from whoever provided you the trial license. Save those two packages to `c:\choco-setup\packages`.
-* C4B / MSP / TRIAL: Run this command `New-Item $env:ChocolateyInstall\license -Type Directory -Force` - this creates the license directory.
+* C4B / MSP / TRIAL: Run this command `New-Item $env:ChocolateyInstall\license -ItemType Directory -Force` - this creates the license directory.
 * C4B / MSP / TRIAL: Copy the license file ("chocolatey.license.xml") into that folder that was just created. Run `Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" $env:ChocolateyInstall\license\chocolatey.license.xml -Force`.
 * C4B / MSP / TRIAL: Verify the license is recognized - run choco. You should see something like "Chocolatey v0.10.8 Business". You may also see an error about installing something. Ignore that for now.
 * C4B / MSP: Run `choco upgrade chocolatey.extension -y` (it will have what looks like an error, but that is fine, it is considered a warning and will clear up as soon as this package finishes installing)
@@ -87,7 +88,7 @@ New-Item -Path "$env:SystemDrive\choco-setup\packages" -ItemType Directory -Forc
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 # Add license to setup and to local install
-New-Item $env:ChocolateyInstall\license -Type Directory -Force
+New-Item $env:ChocolateyInstall\license -ItemType Directory -Force
 Write-Host "Please add chocolatey.license.xml to '$env:SystemDrive\choco-setup\files'."
 Write-Host 'Once you do so, press any key to continue...';
 $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
@@ -118,12 +119,11 @@ Now that we've finished the first exercise and have those files over on our offl
 * Type `& $env:SystemDrive\choco-setup\files\ChocolateyLocalInstall.ps1` and press enter. This should install Chocolatey if you have everything set up correctly from the first set of instructions.
 * Run `choco source remove --name="'chocolatey'"`. This removes the default Chocolatey source.
 * Run `choco source add --name="'setup'" --source="'$env:SystemDrive\choco-setup\packages'"`
-* C4B / MSP / TRIAL: Run this command `New-Item $env:ChocolateyInstall\license -Type Directory -Force` - this creates the license directory.
+* C4B / MSP / TRIAL: Run this command `New-Item $env:ChocolateyInstall\license -ItemType Directory -Force` - this creates the license directory.
 * C4B / MSP / TRIAL: Copy the license file ("chocolatey.license.xml") into that folder that was just created. Run `Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" $env:ChocolateyInstall\license\chocolatey.license.xml -Force`.
 * C4B / MSP / TRIAL: Run `choco source disable --name="'chocolatey.licensed'"` (it will have what looks like an error, but is a warning that clears up after the next command)
 * C4B / MSP / TRIAL: Run `choco upgrade chocolatey.extension -y --pre` (it will have what looks like an error, but that is fine, it is considered a warning and will clear up as soon as this package finishes installing)
 * C4B / MSP / TRIAL: Are we installing the [optional Chocolatey Agent Service as well](https://chocolatey.org/docs/features-agent-service#setup)? If so, run `choco upgrade chocolatey-agent -y --pre`
-
 
 ~~~powershell
 # Ensure we can run everything
@@ -137,8 +137,8 @@ choco source remove --name="'chocolatey'"
 choco source add --name="'local'" --source="'$env:SystemDrive\choco-setup\packages'"
 
 # Add license to setup and to local install
-New-Item $env:ChocolateyInstall\license -Type Directory -Force
-Copy-Item $env:SystemDrive\choco-setup\files\chocolatey.license.xml $env:ChocolateyInstall\license\chocolatey.license.xml -Force
+New-Item "$env:ChocolateyInstall\license" -ItemType Directory -Force
+Copy-Item -Path "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" -Destination "$env:ChocolateyInstall\license\chocolatey.license.xml" -Force
 
 # Sources - Disable licensed source
 choco source disable --name="'chocolatey.licensed'"
@@ -184,7 +184,100 @@ If you are setting up something different than Chocolatey.Server, you may wish t
 
 **NOTE:** Many repositories have a concept of a proxy repository. Unlike NuGet repositories, you likely ***DO NOT WANT*** a proxied NuGet/Chocolatey repository pointing to the community repository. They only cache packages - ***cached* is not the same concept as *internalized***. To reuse packages from the community repository in a reliable way, you need to [[internalize them|How-To-Recompile-Packages]]. The community repository is subject to distribution rights, which means many packages need to download things from the internet at ***runtime***. That's unreliable and a no go for many organizations. You can use Package Internalizer (as we are seeing above) or [[manually internalize packages|How-To-Recompile-Packages]] you want to use from the community repository. More on [[why (community packages repository notes)|CommunityPackagesDisclaimer]].
 
-## Exercise 3: Add Packages To The Repository
+## Exercise 3: Create a Package For the License
+To make things easier for deployments, let's create a package for the license file. We are going to grab the currently installed license to do this, but you could use the one in `c:\choco-setup\files`.
+
+Save this script and run it on a machine where you've installed the license.
+
+~~~powershell
+# Ensure we can run everything
+Set-ExecutionPolicy Bypass -Scope Process -Force
+
+$licenseLocation = "$env:ChocolateyInstall\license\chocolatey.license.xml"
+$packagingFolder = "$env:SystemDrive\choco-setup\packaging"
+$packagesFolder = "$env:SystemDrive\choco-setup\packages"
+$packageId = "chocolatey-license"
+$licensePackageFolder = "$packagingFolder\$packageId"
+$licensePackageNuspec = "$licensePackageFolder\$packageId.nuspec"
+
+# Ensure the packaging folder exists
+New-Item $packagingFolder -ItemType Directory -Force | Out-Null
+New-Item $packagesFolder -ItemType Directory -Force | Out-Null
+
+# Create a new package
+Write-Output "Generating packaging at '$packagingFolder'"
+choco new $packageId --output-directory=$packagingFolder | Out-Null
+
+# Remove unnecessary files
+Write-Output "Cleaning up packaging content..."
+Remove-Item -Path "$licensePackageFolder\_TODO.txt" -Force -ErrorAction Ignore
+Remove-Item -Path "$licensePackageFolder\ReadMe.md" -Force -ErrorAction Ignore
+Remove-Item -Path "$licensePackageFolder\tools\chocolateyBeforeModify.ps1" -Force -ErrorAction Ignore
+Remove-Item -Path "$licensePackageFolder\tools\LICENSE.txt" -Force -ErrorAction Ignore
+Remove-Item -Path "$licensePackageFolder\tools\VERIFICATION.txt" -Force -ErrorAction Ignore
+
+# Set the installation script
+Write-Output "Setting install and uninstall scripts..."
+@"
+`$ErrorActionPreference = 'Stop'
+`$toolsDir              = "`$(Split-Path -parent `$MyInvocation.MyCommand.Definition)"
+`$licenseFile           = "`$toolsDir\chocolatey.license.xml"
+
+Copy-Item -Path `$licenseFile  -Destination `$env:ChocolateyInstall\license\chocolatey.license.xml -Force
+Write-Output "The license has been installed."
+"@ | Out-File -FilePath "$licensePackageFolder\tools\chocolateyInstall.ps1" -Encoding UTF8 -Force
+
+# Set the uninstall script
+@"
+Remove-Item -Path "`$env:ChocolateyInstall\license\chocolatey.license.xml" -Force
+Write-Output "The license has been removed."
+"@ | Out-File -FilePath "$licensePackageFolder\tools\chocolateyUninstall.ps1" -Encoding UTF8 -Force
+
+# Copy the license to the package directory
+Write-Output "Copying license to package from '$licenseLocation'..."
+Copy-Item -Path $licenseLocation  -Destination "$licensePackageFolder\tools\chocolatey.license.xml" -Force
+
+# Set the nuspec
+Write-Output "Setting nuspec..."
+@"
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>chocolatey-license</id>
+    <version>1.0.0</version>
+    <!--<owners>__REPLACE_YOUR_NAME__</owners>-->
+    <title>Chocolatey License</title>
+    <authors>__REPLACE_AUTHORS_OF_SOFTWARE_COMMA_SEPARATED__</authors>
+    <tags>chocolatey license</tags>
+    <summary>Installs the Chocolatey commercial license file.</summary>
+    <description>This package ensures installation of the Chocolatey commercial license file.
+
+This should be installed internally prior to installing other packages, directly after Chocolatey is installed and prior to installing `chocolatey.extension` and `chocolatey-agent`.
+
+The order for scripting is this:
+* chocolatey
+* chocolatey-license
+* chocolatey.extension
+* chocolatey-agent
+
+If items are installed in any other order, it could have strange effects or fail.
+	</description>
+    <!-- <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes> -->
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
+"@  | Out-File -FilePath "$licensePackageNuspec" -Encoding UTF8 -Force
+
+# Package up everything
+Write-Output "Creating a package"
+choco pack $licensePackageNuspec --output-directory=$packagesFolder
+
+Write-Output "Package has been created and is ready at $packagesFolder"
+~~~
+
+## Exercise 4: Add Packages To The Repository
 
 * Now we need to get the packages we have in `c:\choco-setup\packages` to the package repository. With Chocolatey.Server, we can cheat a little and simply copy the nupkg files to `$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Packages`.
 * In Chocolatey.Server v0.2.3 we can also put the license on the repository and download it with scripts. So we'll copy the license from `c:\choco-setup\files` to `$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Download`. If the folder doesn't exist, then you need to upgrade to a newer version of Chocolatey.Server.
@@ -202,16 +295,16 @@ Set-ExecutionPolicy Bypass -Scope Process -Force;
 Copy-Item "$env:SystemDrive\choco-setup\packages\*" -Destination "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Packages\" -Force -Recurse
 
 # Copy the license to the Chocolatey.Server repo (for v0.2.3+ downloads)
-New-Item "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Downloads" -Type Directory -Force
+New-Item "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Downloads" -ItemType Directory -Force
 Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" -Destination "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Downloads\chocolatey.license.xml" -Force -Recurse
 ~~~
 
 For other things, just loop over the nupkg files and call `choco push`.
 
-## Exercise 4: Installing Chocolatey On Client Machines Directly
-This is where things get quite a bit easier.
+## Exercise 5: Installing Chocolatey On Client Machines
+This is where things get quite a bit easier. We now have an internal server we can use.
 
-### Exercise 4A: Installing Chocolatey On Clients With Chocolatey.Server
+### Exercise 5A: Installing Chocolatey On Clients Directly Using PowerShell
 
 Starting with Chocolatey.Server v0.2.3, you get a similar experience where you just open an Administrative PowerShell.exe and follow the instructions like you see at https://chocolatey.org/install. This ease of install is very beneficial when setting up client machines directly.
 
@@ -225,17 +318,21 @@ $baseUrl = "http://localhost"
 Set-ExecutionPolicy Bypass -Scope Process -Force;
 
 # Install Chocolatey
+# This is for use with Chocolatey.Server only:
 iex ((New-Object System.Net.WebClient).DownloadString("$baseUrl/install.ps1"))
+# You'll need to also use the script you used for local installs to get Chocolatey installed.
 
-# Sources - Remove community repository and add a local folder source
+# Sources - Remove community repository
 choco source remove --name="'chocolatey'"
-choco source add --name="'internal_server'" --source="'$baseUrl/chocolatey'"
+
+# Sources - Add your internal repositories
+# This is Chocolatey.Server specific:
+choco source add --name="'internal_server'" --source="'$baseUrl/chocolatey'" --priority="'1'"
+# Add other sources here
+
 
 # Add license to setup and to local install
-New-Item $env:ChocolateyInstall\license -Type Directory -Force
-#TODO: Need a way to get the license file
-#won't work until v0.2.3 or further out
-#iwr -UseBasicParsing -Uri "$baseUrl/downloads/chocolatey.license.xml" -UseDefaultCredentials | Out-File -FilePath "$env:ChocolateyInstall\license\chocolatey.license.xml" -Encoding UTF8 -Force
+choco upgrade chocolatey-license -y
 
 # Sources - Disable licensed source
 choco source disable --name="'chocolatey.licensed'"
@@ -254,7 +351,10 @@ choco config set cacheLocation "c:\ProgramData\choco-cache"
 
 ~~~
 
-### Exercise 5: Installing Chocolatey On Clients with Infrastructure Management Tools
+### Exercise 5B: Installing Chocolatey On Clients with Infrastructure Management Tools
+This is likely to vary somewhat wildly based on what you have set up. We recommend choosing a tool and then looking at what is available.
+
+We have documentation for Puppet at https://chocolatey.org/docs/installation-licensed#set-up-licensed-edition-with-puppet, with some great examples. What you would do to make that work with Ansible, Chef, Salt, or PowerShell DSC would be similar. All of the different options are covered at [[Infrastructure Management Integration|FeaturesInfrastructureAutomation]].
 
 **WORK IN PROGRESS, KEEP CHECKING BACK**
 ---
