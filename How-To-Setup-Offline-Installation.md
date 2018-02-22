@@ -201,20 +201,14 @@ $licensePackageFolder = "$packagingFolder\$packageId"
 $licensePackageNuspec = "$licensePackageFolder\$packageId.nuspec"
 
 # Ensure the packaging folder exists
+Write-Output "Generating package/packaging folders at '$packagingFolder'"
 New-Item $packagingFolder -ItemType Directory -Force | Out-Null
 New-Item $packagesFolder -ItemType Directory -Force | Out-Null
 
 # Create a new package
-Write-Output "Generating packaging at '$packagingFolder'"
-choco new $packageId --output-directory=$packagingFolder | Out-Null
-
-# Remove unnecessary files
-Write-Output "Cleaning up packaging content..."
-Remove-Item -Path "$licensePackageFolder\_TODO.txt" -Force -ErrorAction Ignore
-Remove-Item -Path "$licensePackageFolder\ReadMe.md" -Force -ErrorAction Ignore
-Remove-Item -Path "$licensePackageFolder\tools\chocolateyBeforeModify.ps1" -Force -ErrorAction Ignore
-Remove-Item -Path "$licensePackageFolder\tools\LICENSE.txt" -Force -ErrorAction Ignore
-Remove-Item -Path "$licensePackageFolder\tools\VERIFICATION.txt" -Force -ErrorAction Ignore
+Write-Output "Creating package named  '$packageId'"
+New-Item $licensePackageFolder -ItemType Directory -Force | Out-Null
+New-Item "$licensePackageFolder\tools" -ItemType Directory -Force | Out-Null
 
 # Set the installation script
 Write-Output "Setting install and uninstall scripts..."
