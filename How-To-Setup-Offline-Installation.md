@@ -77,7 +77,7 @@ Here is a handy script you can use for MSP/C4B (FOSS, adjust appropriately):
 
 ~~~powershell
 # Ensure we can run everything
-Set-ExecutionPolicy Bypass -Scope Process -Force;
+Set-ExecutionPolicy Bypass -Scope Process -Force
 
 # Setting up directories for values
 New-Item -Path "$env:SystemDrive\choco-setup" -ItemType Directory -Force
@@ -87,6 +87,9 @@ New-Item -Path "$env:SystemDrive\choco-setup\packages" -ItemType Directory -Forc
 # Install Chocolatey
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
+# Are you military, government, or for some other reason have FIPS compliance turned on?
+#choco feature enable --name="'useFipsCompliantChecksums'"
+
 # Add license to setup and to local install
 New-Item $env:ChocolateyInstall\license -ItemType Directory -Force
 Write-Host "Please add chocolatey.license.xml to '$env:SystemDrive\choco-setup\files'."
@@ -95,7 +98,6 @@ $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
 Copy-Item $env:SystemDrive\choco-setup\files\chocolatey.license.xml $env:ChocolateyInstall\license\chocolatey.license.xml -Force
 
 # Install Chocolatey Licensed Extension
-#  BEST PRACTICE: We always call choco upgrade and -y with scripts. We also spell out most options.
 choco upgrade chocolatey.extension -y --pre
 # TRIAL: Place nupkgs into the "$env:SystemDrive\choco-setup\packages" directory (add a script here to do so)
 # TRIAL: Run this instead: choco upgrade chocolatey.extension --pre --source c:\choco-setup\packages
@@ -103,14 +105,23 @@ choco upgrade chocolatey.extension -y --pre
 # Set Configuration
 choco config set cacheLocation $env:ALLUSERSPROFILE\choco-cache
 choco config set commandExecutionTimeoutSeconds 14400
-# Add other items you would configure here
+#TODO: Add other items you would configure here
 # https://chocolatey.org/docs/chocolatey-configuration
 
 # Set Licensed Configuration
 choco feature enable --name="'internalizeAppendUseOriginalLocation'"
 choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
-# Add other items you would configure here
+#TODO: Add other items you would configure here
 # https://chocolatey.org/docs/chocolatey-configuration
+
+#TODO: Are we installing the Chocolatey Agent Service?
+# https://chocolatey.org/docs/features-agent-service#setup
+# choco upgrade chocolatey-agent -y --pre
+#choco feature disable --name="'showNonElevatedWarnings'"
+#choco feature enable --name="'useBackgroundService'"
+#choco feature enable --name="'useBackgroundServiceWithNonAdministratorsOnly'"
+#TODO: Check out other options and features to set at the url above.
+#TODO: Also make sure you set your sources to allow for self-service
 
 # Download and internalize packages.
 choco download chocolatey chocolatey.server dotnet4.6.1 chocolateygui --internalize --output-directory="'$env:SystemDrive\choco-setup\packages'" --source="'https://chocolatey.org/api/v2/'"
@@ -139,10 +150,13 @@ Now that we've finished the first exercise and have those files over on our offl
 
 ~~~powershell
 # Ensure we can run everything
-Set-ExecutionPolicy Bypass -Scope Process -Force;
+Set-ExecutionPolicy Bypass -Scope Process -Force
 
 # Install Chocolatey
 & $env:SystemDrive\choco-setup\files\ChocolateyLocalInstall.ps1
+
+# Are you military, government, or for some other reason have FIPS compliance turned on?
+#choco feature enable --name="'useFipsCompliantChecksums'"
 
 # Sources - Remove community repository and add a local folder source
 choco source remove --name="'chocolatey'"
@@ -162,21 +176,24 @@ choco upgrade chocolatey.extension -y --pre
 # Set Configuration
 choco config set cacheLocation $env:ALLUSERSPROFILE\choco-cache
 choco config set commandExecutionTimeoutSeconds 14400
-# Add other items you would configure here
+#TODO: Add other items you would configure here
 # https://chocolatey.org/docs/chocolatey-configuration
 
 # Set Licensed Configuration
 choco feature enable --name="'internalizeAppendUseOriginalLocation'"
 choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
-# Add other items you would configure here
+#TODO: Add other items you would configure here
 # https://chocolatey.org/docs/chocolatey-configuration
 
-# Are we installing the Chocolatey Agent Service?
+
+#TODO: Are we installing the Chocolatey Agent Service?
 # https://chocolatey.org/docs/features-agent-service#setup
 # choco upgrade chocolatey-agent -y --pre
 #choco feature disable --name="'showNonElevatedWarnings'"
 #choco feature enable --name="'useBackgroundService'"
 #choco feature enable --name="'useBackgroundServiceWithNonAdministratorsOnly'"
+#TODO: Check out other options and features to set at the url above.
+#TODO: Also make sure you set your sources to allow for self-service
 ~~~
 
 ## Exercise 2: Set Up An Offline Package Repository
@@ -310,7 +327,7 @@ Here is a script for Chocolatey.Server:
 
 ~~~powershell
 # Ensure we can run everything
-Set-ExecutionPolicy Bypass -Scope Process -Force;
+Set-ExecutionPolicy Bypass -Scope Process -Force
 
 # Copy the packages to the Chocolatey.Server repo folder
 Copy-Item "$env:SystemDrive\choco-setup\packages\*" -Destination "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Packages\" -Force -Recurse
@@ -343,14 +360,16 @@ Set-ExecutionPolicy Bypass -Scope Process -Force;
 iex ((New-Object System.Net.WebClient).DownloadString("$baseUrl/install.ps1"))
 # You'll need to also use the script you used for local installs to get Chocolatey installed.
 
+# Are you military, government, or for some other reason have FIPS compliance turned on?
+#choco feature enable --name="'useFipsCompliantChecksums'"
+
 # Sources - Remove community repository
 choco source remove --name="'chocolatey'"
 
 # Sources - Add your internal repositories
 # This is Chocolatey.Server specific:
 choco source add --name="'internal_server'" --source="'$baseUrl/chocolatey'" --priority="'1'"
-# Add other sources here
-
+#TODO: Add other sources here
 
 # Add license to setup and to local install
 choco upgrade chocolatey-license -y
@@ -365,21 +384,23 @@ choco upgrade chocolatey.extension -y --pre
 # Set Configuration
 choco config set cacheLocation $env:ALLUSERSPROFILE\choco-cache
 choco config set commandExecutionTimeoutSeconds 14400
-# Add other items you would configure here
+#TODO: Add other items you would configure here
 # https://chocolatey.org/docs/chocolatey-configuration
 
 # Set Licensed Configuration
 choco feature enable --name="'internalizeAppendUseOriginalLocation'"
 choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
-# Add other items you would configure here
+#TODO: Add other items you would configure here
 # https://chocolatey.org/docs/chocolatey-configuration
 
-# Are we installing the Chocolatey Agent Service?
+#TODO: Are we installing the Chocolatey Agent Service?
 # https://chocolatey.org/docs/features-agent-service#setup
 # choco upgrade chocolatey-agent -y --pre
 #choco feature disable --name="'showNonElevatedWarnings'"
 #choco feature enable --name="'useBackgroundService'"
 #choco feature enable --name="'useBackgroundServiceWithNonAdministratorsOnly'"
+#TODO: Check out other options and features to set at the url above.
+#TODO: Also make sure you set your sources to allow for self-service
 ~~~
 
 ### Exercise 5B: Installing Chocolatey On Clients with Infrastructure Management Tools
