@@ -37,6 +37,7 @@
 * TechGumbo - [Chocolatey (Windows Package Manager) Beginners Guide](https://www.youtube.com/watch?v=hfgZYpo5moA) - June 5, 2017
 * Egee - [Chocolatey - The Windows Package Manager!](https://www.youtube.com/watch?v=eXMTb3qetT0) - June 5, 2017
 * John Impallomeni - [Playing with Chocolatey, a package manager for Windows Systems](https://www.youtube.com/watch?v=TzkUr41qBIY) - March 29, 2017
+* Channel 9 - dotnetFlix - [Maintain consistent machine configurations using PowerShell DSC and Chocolatey](https://channel9.msdn.com/Series/dotnetflix/Maintain-consistent-machine-configurations-using-PowerShell-DSC-and-Chocolatey) - January 2017
 
 ### 2016
 
