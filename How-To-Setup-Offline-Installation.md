@@ -388,7 +388,10 @@ Starting with Chocolatey.Server v0.2.3, you get a similar experience where you j
 1. C4B / MSP / TRIAL: Are we installing the [optional Chocolatey Agent Service as well](https://chocolatey.org/docs/features-agent-service#setup)? If so, run `choco upgrade chocolatey-agent -y --pre` and then follow the link for other settings you will need to configure.
 
 ~~~powershell
+# This is a base url and should not include the "/chocolatey" (for Chocolatey.Server) or any url path to a NuGet/Chocolatey Packages API
 $baseUrl = "http://localhost"
+# this is the sub path, it will combine the above with this in the script $baseUrl/$repositoryUrlPath
+$repositoryUrlPath = "chocolatey"
 
 # Ensure we can run everything
 Set-ExecutionPolicy Bypass -Scope Process -Force;
@@ -417,7 +420,7 @@ choco source remove --name="'chocolatey'"
 
 # Sources - Add your internal repositories
 # This is Chocolatey.Server specific (add other options like auth/allow self service as needed - https://chocolatey.org/docs/commands-source):
-choco source add --name="'internal_server'" --source="'$baseUrl/chocolatey'" --priority="'1'"
+choco source add --name="'internal_server'" --source="'$baseUrl/$repositoryUrlPath'" --priority="'1'" --bypass-proxy
 #TODO: Add other sources here
 
 # Add license to setup and to local install
