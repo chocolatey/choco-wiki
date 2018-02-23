@@ -370,7 +370,9 @@ This is where things get quite a bit easier. We now have an internal server we c
 
 Starting with Chocolatey.Server v0.2.3, you get a similar experience where you just open an Administrative PowerShell.exe and follow the instructions like you see at https://chocolatey.org/install. This ease of install is very beneficial when setting up client machines directly.
 
-1. From the client, open a browser and navigate to the url of the package repository you just set up.
+**NOTE:** Perform the following steps on a different machine, not on the machine where you've already set up Chocolatey or a repository.
+
+1. From the client machine (not the same machine you just set up the repository on), open a browser and navigate to the url of the package repository you just set up.
 1. On that page it will contain instructions on how to install. Follow those instructions and that will set up the client (Chocolatey.Server v0.2.2+ ONLY).
 1. If you don't have that, you will need to use the local script pointed to download from the bare nupkg url that is available for chocolatey.nupkg.
 1. Open PowerShell.exe as an administrative shell. You can type "Windows Key + X + A" (Windows 8+ - when that comes up if it is cmd.exe, simply type `powershell` to get into it).
