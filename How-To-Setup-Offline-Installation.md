@@ -376,6 +376,17 @@ $baseUrl = "http://localhost"
 # Ensure we can run everything
 Set-ExecutionPolicy Bypass -Scope Process -Force;
 
+# Reroute TEMP to a local location
+New-Item $env:ALLUSERSPROFILE\choco-cache -ItemType Directory -Force
+$env:TEMP = "$env:ALLUSERSPROFILE\choco-cache"
+
+# Ignore proxies since we are using internal locations
+$env:chocolateyIgnoreProxy = 'true'
+# Set proxy settings if necessary
+#$env:chocolateyProxyLocation = 'https://local/proxy/server'
+#$env:chocolateyProxyUser = 'username'
+#$env:chocolateyProxyPassword = 'password'
+
 # Install Chocolatey
 # This is for use with Chocolatey.Server only:
 iex ((New-Object System.Net.WebClient).DownloadString("$baseUrl/install.ps1"))
