@@ -12,11 +12,12 @@
 - [Exercise 2: Set Up An Offline Package Repository](#exercise-2-set-up-an-offline-package-repository)
   - [Exercise 2A: Set Up Chocolatey.Server](#exercise-2a-set-up-chocolateyserver)
   - [Exercise 2B: Set Up A Different Repository](#exercise-2b-set-up-a-different-repository)
-- [Exercise 3: Create a Package For the License](#exercise-3-create-a-package-for-the-license)
-- [Exercise 4: Add Packages To The Repository](#exercise-4-add-packages-to-the-repository)
-- [Exercise 5: Installing Chocolatey On Client Machines](#exercise-5-installing-chocolatey-on-client-machines)
-  - [Exercise 5A: Installing Chocolatey On Clients Directly Using PowerShell](#exercise-5a-installing-chocolatey-on-clients-directly-using-powershell)
-  - [Exercise 5B: Installing Chocolatey On Clients with Infrastructure Management Tools](#exercise-5b-installing-chocolatey-on-clients-with-infrastructure-management-tools)
+- [Exercise 3: Add Packages To The Repository](#exercise-3-add-packages-to-the-repository)
+- [Exercise 4: Create a Package For the License](#exercise-4-create-a-package-for-the-license)
+- [Exercise 5: Push a Package To The Repository](#exercise-5-push-a-package-to-the-repository)
+- [Exercise 6: Installing Chocolatey On Client Machines](#exercise-6-installing-chocolatey-on-client-machines)
+  - [Exercise 6A: Installing Chocolatey On Clients Directly Using PowerShell](#exercise-6a-installing-chocolatey-on-clients-directly-using-powershell)
+  - [Exercise 6B: Installing Chocolatey On Clients with Infrastructure Management Tools](#exercise-6b-installing-chocolatey-on-clients-with-infrastructure-management-tools)
 
 <!-- /TOC -->
 
@@ -40,38 +41,36 @@ We need a Windows machine with internet access. To set up Chocolatey for offline
 
 So from the machine with internet access:
 
-* Open PowerShell.exe as an administrative shell. You can type "Windows Key + X + A" (Windows 8+ - when that comes up if it is cmd.exe, simply type `powershell` to get into it).
-* Type `cd /` and hit enter.
-* Type `New-Item -Path "$env:SystemDrive\choco-setup" -ItemType Directory -Force` and enter followed by `cd choco-setup` and enter.
-* In `c:\choco-setup`, type `New-Item -Path "$env:SystemDrive\choco-setup\files" -ItemType Directory -Force` and press enter.
-* In `c:\choco-setup`, type `New-Item -Path "$env:SystemDrive\choco-setup\packages" -ItemType Directory -Force` and press enter.
-* Type `cd packages` and press enter
-* Now run `Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))` (this will get Chocolatey installed and it is what you see at https://chocolatey.org/install). It also makes choco available in that current shell.
-* C4B / MSP / TRIAL: Obtain the `chocolatey.license.xml` from the email sent from the Chocolatey team and save the license file to `c:\choco-setup\files` so we can use it here and on the offline machines.
-* TRIAL: grab a copy of the two nupkgs from the email. If you don't have that email with the download links, request it from whoever provided you the trial license. Save those two packages to `c:\choco-setup\packages`.
-* C4B / MSP / TRIAL: Run this command `New-Item $env:ChocolateyInstall\license -ItemType Directory -Force` - this creates the license directory.
-* C4B / MSP / TRIAL: Copy the license file ("chocolatey.license.xml") into that folder that was just created. Run `Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" $env:ChocolateyInstall\license\chocolatey.license.xml -Force`.
-* C4B / MSP / TRIAL: Verify the license is recognized - run choco. You should see something like "Chocolatey v0.10.8 Business". You may also see an error about installing something. Ignore that for now.
-* C4B / MSP: Run `choco upgrade chocolatey.extension -y` (it will have what looks like an error, but that is fine, it is considered a warning and will clear up as soon as this package finishes installing)
-* TRIAL: Run `choco upgrade chocolatey.extension --pre --source c:\choco-setup\packages` (this is where you saved the nupkgs earlier).
-* Download packages (choose one):
-  * C4B / MSP / TRIAL: - Now run the following: `choco download chocolatey chocolatey.server dotnet4.6.1 chocolateygui --internalize`. This is going to take quite awhile.
-  * FOSS only - go download the following packages:
-    * [Chocolatey](https://chocolatey.org/api/v2/package/chocolatey)
-    * [Chocolatey GUI](https://chocolatey.org/api/v2/package/chocolateygui)
-  * FOSS only - download Chocolatey.Server package and dependencies  (internalize noted items with [[manual walkthrough|How-To-Recompile-Packages]]):
-    * [Chocolatey.Server](https://chocolatey.org/api/v2/package/chocolatey.server)
-    * [dotnet4.6](https://chocolatey.org/api/v2/package/DotNet4.6) - internalize manually
-    * [dotnet4.6.1](https://chocolatey.org/api/v2/package/DotNet4.6.1) - internalize manually
-    * [KB2919355](https://chocolatey.org/api/v2/package/KB2919355) - internalize manually
-    * [KB2919442](https://chocolatey.org/api/v2/package/KB2919442) - internalize manually
-* C4B / MSP - Run the following additionally: `choco download chocolatey.extension chocolatey-agent --internalize`. TRIAL - you should already have placed these nupkgs in the folder earlier.
-* Now we should have several packages in `c:\choco-setup\packages`. If not, type `start .` and go copy the files here to that location.
-* Obtain the PowerShell script from https://chocolatey.org/install#completely-offline-install and copy it to `c:\choco-setup\files` as "ChocolateyLocalInstall.ps1". We will need this to install Chocolatey on the airgapped box.
-* Open `c:\choco-setup\files\ChocolateyLocalInstall.ps1` in an editor like Notepad++ or Visual Studio Code (do not use Notepad.exe!!).
-* Change this line `$localChocolateyPackageFilePath = 'c:\packages\chocolatey.0.10.0.nupkg'` to `$localChocolateyPackageFilePath = 'c:\choco-setup\packages\chocolatey.0.10.8.nupkg'` (adjust for the actual path to the Chocolatey package).
-
-Get those files over to that air-gapped network (USB key and sneakernet if you need to).
+1. Open PowerShell.exe as an administrative shell. You can type "Windows Key + X + A" (Windows 8+ - when that comes up if it is cmd.exe, simply type `powershell` to get into it).
+1. Type `cd /` and hit enter.
+1. Type `New-Item -Path "$env:SystemDrive\choco-setup" -ItemType Directory -Force` and enter followed by `cd choco-setup` and enter.
+1. In `c:\choco-setup`, type `New-Item -Path "$env:SystemDrive\choco-setup\files" -ItemType Directory -Force` and press enter.
+1. In `c:\choco-setup`, type `New-Item -Path "$env:SystemDrive\choco-setup\packages" -ItemType Directory -Force` and press enter.
+1. Type `cd packages` and press enter
+1. Now run `Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))` (this will get Chocolatey installed and it is what you see at https://chocolatey.org/install). It also makes choco available in that current shell.
+1. C4B / MSP / TRIAL: Obtain the `chocolatey.license.xml` from the email sent from the Chocolatey team and save the license file to `c:\choco-setup\files` so we can use it here and on the offline machines.
+1. TRIAL: grab a copy of the two nupkgs from the email. If you don't have that email with the download links, request it from whoever provided you the trial license. Save those two packages to `c:\choco-setup\packages`.
+1. C4B / MSP / TRIAL: Run this command `New-Item $env:ChocolateyInstall\license -ItemType Directory -Force` - this creates the license directory.
+1. C4B / MSP / TRIAL: Copy the license file ("chocolatey.license.xml") into that folder that was just created. Run `Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" $env:ChocolateyInstall\license\chocolatey.license.xml -Force`.
+1. C4B / MSP / TRIAL: Verify the license is recognized - run choco. You should see something like "Chocolatey v0.10.8 Business". You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and we can ignore that for now.
+1. C4B / MSP: Run `choco upgrade chocolatey.extension -y`. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and should clear up when this command completes.
+1. TRIAL: Run `choco upgrade chocolatey.extension --pre --source c:\choco-setup\packages` (this is where you saved the nupkgs earlier).
+1. Download packages (choose one):
+    * FOSS only - go download the following packages:
+      * [Chocolatey](https://chocolatey.org/api/v2/package/chocolatey)
+      * [Chocolatey GUI](https://chocolatey.org/api/v2/package/chocolateygui)
+    * FOSS only - download Chocolatey.Server package and dependencies  (internalize noted items with [[manual walkthrough|How-To-Recompile-Packages]]):
+      * [Chocolatey.Server](https://chocolatey.org/api/v2/package/chocolatey.server)
+      * [dotnet4.6](https://chocolatey.org/api/v2/package/DotNet4.6) - internalize manually
+      * [dotnet4.6.1](https://chocolatey.org/api/v2/package/DotNet4.6.1) - internalize manually
+      * [KB2919355](https://chocolatey.org/api/v2/package/KB2919355) - internalize manually
+      * [KB2919442](https://chocolatey.org/api/v2/package/KB2919442) - internalize manually
+1. C4B / MSP - Run the following additionally: `choco download chocolatey.extension chocolatey-agent --internalize`. TRIAL - you should already have placed these nupkgs in the folder earlier.
+1. Now we should have several packages in `c:\choco-setup\packages`. If not, type `start .` and go copy the files here to that location.
+1. Obtain the PowerShell script from https://chocolatey.org/install#completely-offline-install and copy it to `c:\choco-setup\files` as "ChocolateyLocalInstall.ps1". We will need this to install Chocolatey on the airgapped box.
+1. Open `c:\choco-setup\files\ChocolateyLocalInstall.ps1` in an editor like Notepad++ or Visual Studio Code (do not use Notepad.exe!!).
+1. Change this line `$localChocolateyPackageFilePath = 'c:\packages\chocolatey.0.10.0.nupkg'` to `$localChocolateyPackageFilePath = 'c:\choco-setup\packages\chocolatey.0.10.8.nupkg'` (adjust for the actual path to the Chocolatey package).
+1. Get those files over to that air-gapped network (USB key and sneakernet if you need to).
 
 Here is a handy script you can use for MSP/C4B (FOSS, adjust appropriately):
 
@@ -99,6 +98,7 @@ Copy-Item $env:SystemDrive\choco-setup\files\chocolatey.license.xml $env:Chocola
 
 # Install Chocolatey Licensed Extension
 choco upgrade chocolatey.extension -y --pre
+Write-Host "If you see what looks like an error about a missing extension, that is what this step does so it will clear up on next command."
 # TRIAL: Place nupkgs into the "$env:SystemDrive\choco-setup\packages" directory (add a script here to do so)
 # TRIAL: Run this instead: choco upgrade chocolatey.extension --pre --source c:\choco-setup\packages
 
@@ -137,16 +137,16 @@ Write-Warning "Check and adjust script at '$env:SystemDrive\choco-setup\files\Ch
 ## Exercise 1: Set Up Chocolatey Installation From A Local Script
 Now that we've finished the first exercise and have those files over on our offline Windows machine, we need to get Chocolatey set up on that machine. This could be ultimately be a Chocolatey.Server Repository, or it could be something else. Note: [[Other repository servers don't necessarily require Windows|How-To-Host-Feed]].
 
-* Ensure the folders from the other drive are set in `c:\choco-setup` here on this machine.
-* Open PowerShell.exe as an administrative shell. You can type "Windows Key + X + A" (Windows 8+ - when that comes up if it is cmd.exe, simply type `powershell` to get into it).
-* Type `& $env:SystemDrive\choco-setup\files\ChocolateyLocalInstall.ps1` and press enter. This should install Chocolatey if you have everything set up correctly from the first set of instructions.
-* Run `choco source remove --name="'chocolatey'"`. This removes the default Chocolatey source.
-* Run `choco source add --name="'setup'" --source="'$env:SystemDrive\choco-setup\packages'"`
-* C4B / MSP / TRIAL: Run this command `New-Item $env:ChocolateyInstall\license -ItemType Directory -Force` - this creates the license directory.
-* C4B / MSP / TRIAL: Copy the license file ("chocolatey.license.xml") into that folder that was just created. Run `Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" $env:ChocolateyInstall\license\chocolatey.license.xml -Force`.
-* C4B / MSP / TRIAL: Run `choco source disable --name="'chocolatey.licensed'"` (it will have what looks like an error, but is a warning that clears up after the next command)
-* C4B / MSP / TRIAL: Run `choco upgrade chocolatey.extension -y --pre` (it will have what looks like an error, but that is fine, it is considered a warning and will clear up as soon as this package finishes installing)
-* C4B / MSP / TRIAL: Are we installing the [optional Chocolatey Agent Service as well](https://chocolatey.org/docs/features-agent-service#setup)? If so, run `choco upgrade chocolatey-agent -y --pre`
+1. Ensure the folders from the other drive are set in `c:\choco-setup` here on this machine.
+1. Open PowerShell.exe as an administrative shell. You can type "Windows Key + X + A" (Windows 8+ - when that comes up if it is cmd.exe, simply type `powershell` to get into it).
+1. Type `& $env:SystemDrive\choco-setup\files\ChocolateyLocalInstall.ps1` and press enter. This should install Chocolatey if you have everything set up correctly from the first set of instructions.
+1. Run `choco source remove --name="'chocolatey'"`. This removes the default Chocolatey source.
+1. Run `choco source add --name="'setup'" --source="'$env:SystemDrive\choco-setup\packages'"`
+1. C4B / MSP / TRIAL: Run this command `New-Item $env:ChocolateyInstall\license -ItemType Directory -Force` - this creates the license directory.
+1. C4B / MSP / TRIAL: Copy the license file ("chocolatey.license.xml") into that folder that was just created. Run `Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" $env:ChocolateyInstall\license\chocolatey.license.xml -Force`.
+1. C4B / MSP / TRIAL: Run `choco source disable --name="'chocolatey.licensed'"`. When the license is placed, Chocolatey automatically adds the license and we don't want to use that source. Note we can't remove the license because the existence of the license file will have Chocolatey adding it right back - so we just disable it. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and we are going to take care of that in the next step.
+1. C4B / MSP / TRIAL: Run `choco upgrade chocolatey.extension -y --pre`. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and should clear up when this command completes.
+1. C4B / MSP / TRIAL: Are we installing the [optional Chocolatey Agent Service as well](https://chocolatey.org/docs/features-agent-service#setup)? If so, run `choco upgrade chocolatey-agent -y --pre`
 
 ~~~powershell
 # Ensure we can run everything
@@ -205,12 +205,13 @@ This is a continuation of the previous exercise - if we are setting up an intern
 ### Exercise 2A: Set Up Chocolatey.Server
 Since we put the items on this machine in the previous exercise, we can just pick up where we left off.
 
-* Follow the steps at https://chocolatey.org/docs/how-to-set-up-chocolatey-server#setup-normally
-* Follow the steps at https://chocolatey.org/docs/how-to-set-up-chocolatey-server#additional-configuration
-* Open a web browser and navigate to http://localhost. Read over the site and take notes.
-* Change the API key in the web.config file following the instructions at http://localhost.
-* You may wish to install an SSL certificate.
-* You may wish to set up authentication to the repository (the SSL certificate is highly recommended to not pass passwords in cleartext).
+1. Finish Exercise 0/1 on a machine you will set up as a server.
+1. Follow the steps at https://chocolatey.org/docs/how-to-set-up-chocolatey-server#setup-normally
+1. Follow the steps at https://chocolatey.org/docs/how-to-set-up-chocolatey-server#additional-configuration
+1. Open a web browser and navigate to http://localhost. Read over the site and take notes.
+1. Change the API key in the web.config file following the instructions at http://localhost. If localhost doesn't resolve to the site, make sure the bindings include "All Unassigned". This could be a temporary change if you need it to be, but it's important to access this to see additional setup instructions.
+1. You may wish to install an SSL certificate.
+1. You may wish to set up authentication to the repository (the SSL certificate is highly recommended to not pass passwords in cleartext).
 
 ~~~powershell
 # Ensure we can run everything
@@ -228,7 +229,31 @@ If you are setting up something different than Chocolatey.Server, you may wish t
 
 **NOTE:** Many repositories have a concept of a proxy repository. Unlike NuGet repositories, you likely ***DO NOT WANT*** a proxied NuGet/Chocolatey repository pointing to the community repository. They only cache packages - ***cached* is not the same concept as *internalized***. To reuse packages from the community repository in a reliable way, you need to [[internalize them|How-To-Recompile-Packages]]. The community repository is subject to distribution rights, which means many packages need to download things from the internet at ***runtime***. That's unreliable and a no go for many organizations. You can use Package Internalizer (as we are seeing above) or [[manually internalize packages|How-To-Recompile-Packages]] you want to use from the community repository. More on [[why (community packages repository notes)|CommunityPackagesDisclaimer]].
 
-## Exercise 3: Create a Package For the License
+## Exercise 3: Add Packages To The Repository
+
+1. Now we need to get the packages we have in `c:\choco-setup\packages` to the package repository. With Chocolatey.Server, we can cheat a little and simply copy the nupkg files to `$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Packages`.
+1. If we are using a different repository, we just need to run `choco push <nupkg_path> -s http://<url_to_api> -k <apikey>`
+
+**NOTE:** We'll put Chocolatey here, and use this location of Chocolatey for all further client installations. If we are using Chocolatey.Server, we'll have an install.ps1 that it serves that is dynamic and will use a local chocolatey.nupkg if we have one in the repository (it will use the Chocolatey package at https://chocolatey.org/ otherwise, which we won't want).
+
+Here is a script for Chocolatey.Server:
+
+~~~powershell
+# Ensure we can run everything
+Set-ExecutionPolicy Bypass -Scope Process -Force
+
+# Copy the packages to the Chocolatey.Server repo folder
+Copy-Item "$env:SystemDrive\choco-setup\packages\*" -Destination "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Packages\" -Force -Recurse
+
+# Copy the license to the Chocolatey.Server repo (for v0.2.3+ downloads)
+#New-Item "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Downloads" -ItemType Directory -Force
+#Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" -Destination "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Downloads\chocolatey.license.xml" -Force -Recurse
+~~~
+
+For other things, just loop over the nupkg files and call `choco push`.
+
+## Exercise 4: Create a Package For the License
+**NOTE**: This is for C4B / MSP / TRIAL ONLY.
 To make things easier for deployments, let's create a package for the license file. We are going to grab the currently installed license to do this, but you could use the one in `c:\choco-setup\files`.
 
 Save this script and run it on a machine where you've installed the license.
@@ -316,39 +341,33 @@ choco pack $licensePackageNuspec --output-directory=$packagesFolder
 Write-Output "Package has been created and is ready at $packagesFolder"
 ~~~
 
-## Exercise 4: Add Packages To The Repository
+## Exercise 5: Push a Package To The Repository
+We need to ensure the repository is all set up correctly, the best way to test that is to push a package to the repository (and to test installation, which will do in the next exercise).
 
-* Now we need to get the packages we have in `c:\choco-setup\packages` to the package repository. With Chocolatey.Server, we can cheat a little and simply copy the nupkg files to `$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Packages`.
-* In Chocolatey.Server v0.2.3 we can also put the license on the repository and download it with scripts. So we'll copy the license from `c:\choco-setup\files` to `$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Download`. If the folder doesn't exist, then you need to upgrade to a newer version of Chocolatey.Server.
+1. So now we'll take that package we created in the previous exercise and push it to the server.
+1. Open PowerShell.exe (does not need to be admin).
+1. Run `choco push $env:SystemDrive\choco-setup\packages\chocolatey-license.1.0.0.nupkg --source="'http://localhost/chocolatey'" --api-key="'<insert api key>'"` (url is different for different)
+1. If you have not already placed a package with this name/version, it should be successful. If it is not, you need to revisit earlier exercises to determine if you missed a step.
 
-**NOTE:** We'll put Chocolatey here, and use this location of Chocolatey for all further client installations. If we are using Chocolatey.Server, we'll have an install.ps1 that it serves that is dynamic and will use a local chocolatey.nupkg if we have one in the repository (it will use the Chocolatey package at https://chocolatey.org/ otherwise, which we won't want).
+**NOTE**: If you are using open source Chocolatey, you will want to create a test package using `choco new` and use that to push and verify setup.
 
-
-Here is a script for Chocolatey.Server:
-
-~~~powershell
-# Ensure we can run everything
-Set-ExecutionPolicy Bypass -Scope Process -Force
-
-# Copy the packages to the Chocolatey.Server repo folder
-Copy-Item "$env:SystemDrive\choco-setup\packages\*" -Destination "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Packages\" -Force -Recurse
-
-# Copy the license to the Chocolatey.Server repo (for v0.2.3+ downloads)
-New-Item "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Downloads" -ItemType Directory -Force
-Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" -Destination "$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Downloads\chocolatey.license.xml" -Force -Recurse
-~~~
-
-For other things, just loop over the nupkg files and call `choco push`.
-
-## Exercise 5: Installing Chocolatey On Client Machines
+## Exercise 6: Installing Chocolatey On Client Machines
 This is where things get quite a bit easier. We now have an internal server we can use.
 
-### Exercise 5A: Installing Chocolatey On Clients Directly Using PowerShell
+### Exercise 6A: Installing Chocolatey On Clients Directly Using PowerShell
 
 Starting with Chocolatey.Server v0.2.3, you get a similar experience where you just open an Administrative PowerShell.exe and follow the instructions like you see at https://chocolatey.org/install. This ease of install is very beneficial when setting up client machines directly.
 
-* From the client, open a browser and navigate to the url of the package repository you just set up.
-* On that page it will contain instructions on how to install. Follow those instructions and that will set up the client.
+1. From the client, open a browser and navigate to the url of the package repository you just set up.
+1. On that page it will contain instructions on how to install. Follow those instructions and that will set up the client (Chocolatey.Server v0.2.2+ ONLY).
+1. If you don't have that, you will need to use the local script pointed to download from the bare nupkg url that is available for chocolatey.nupkg.
+1. Open PowerShell.exe as an administrative shell. You can type "Windows Key + X + A" (Windows 8+ - when that comes up if it is cmd.exe, simply type `powershell` to get into it).
+1. If you need FIPS compliance, run `choco feature enable --name="'useFipsCompliantChecksums'"`.
+1. Run `choco source remove --name="'chocolatey'"` to remove the default community package repository.
+1. Run `choco source add --name="'internal_server'" --source="'$baseUrl/chocolatey'" --priority="'1'" <other options>`. Other options noted at [[source command|CommandsSource]].
+1. C4B / MSP / TRIAL: Install the license package we've pushed - `choco upgrade chocolatey-license -y`. This may be a place you see an error if things are not configured correctly. If you run into an error, be sure that you have the source added properly with the right permissions (not api key - that is for pushes only).
+1. C4B / MSP / TRIAL: Run `choco source disable --name="'chocolatey.licensed'"`. When the license is placed, Chocolatey automatically adds the license and we don't want to use that source. Note we can't remove the license because the existence of the license file will have Chocolatey adding it right back - so we just disable it. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and we are going to take care of that in the next step.
+1. C4B / MSP / TRIAL: Run `choco upgrade chocolatey.extension -y --pre`. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and should clear up when this command completes.
 
 ~~~powershell
 $baseUrl = "http://localhost"
@@ -368,7 +387,7 @@ iex ((New-Object System.Net.WebClient).DownloadString("$baseUrl/install.ps1"))
 choco source remove --name="'chocolatey'"
 
 # Sources - Add your internal repositories
-# This is Chocolatey.Server specific:
+# This is Chocolatey.Server specific (add other options like auth/allow self service as needed - https://chocolatey.org/docs/commands-source):
 choco source add --name="'internal_server'" --source="'$baseUrl/chocolatey'" --priority="'1'"
 #TODO: Add other sources here
 
@@ -404,11 +423,10 @@ choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
 #TODO: Also make sure you set your sources to allow for self-service
 ~~~
 
-### Exercise 5B: Installing Chocolatey On Clients with Infrastructure Management Tools
+### Exercise 6B: Installing Chocolatey On Clients with Infrastructure Management Tools
 This is likely to vary somewhat wildly based on what you have set up. We recommend choosing a tool and then looking at what is available.
 
 We have documentation for Puppet at https://chocolatey.org/docs/installation-licensed#set-up-licensed-edition-with-puppet, with some great examples. What you would do to make that work with Ansible, Chef, Salt, or PowerShell DSC would be similar. All of the different options are covered at [[Infrastructure Management Integration|FeaturesInfrastructureAutomation]].
 
 **WORK IN PROGRESS, KEEP CHECKING BACK**
 ---
-
