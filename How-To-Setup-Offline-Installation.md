@@ -346,7 +346,8 @@ We need to ensure the repository is all set up correctly, the best way to test t
 
 1. So now we'll take that package we created in the previous exercise and push it to the server.
 1. Open PowerShell.exe (does not need to be admin).
-1. Run `choco push $env:SystemDrive\choco-setup\packages\chocolatey-license.1.0.0.nupkg --source="'http://localhost/chocolatey'" --api-key="'<insert api key>'"` (url is different for different)
+1. Run `choco push $env:SystemDrive\choco-setup\packages\chocolatey-license.1.0.0.nupkg --source="'http://localhost/chocolatey'" --api-key="'<insert api key>'"` (url is different for different source repository types)
+1. If you get an error about insecure channels, "The specified source '' is not secure", and you are all inside an internal network, you can add `--force` to the end of the command above.
 1. If you have not already placed a package with this name/version, it should be successful. If it is not, you need to revisit earlier exercises to determine if you missed a step.
 
 **NOTE**: If you are using open source Chocolatey, you will want to create a test package using `choco new` and use that to push and verify setup.
