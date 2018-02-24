@@ -507,7 +507,7 @@ If you are using Chocolatey.Server, please login to that machine and check https
 ## Exercise 7: Subscribe To Release Announcements
 In a fully internal environment, you need a way to know when new versions have been released and if they affect you so you can update those packages in your environment. Best to have a low traffic announce only type of email list you can join. Fortunately there is - `chocolatey-announce`.
 
-You can do that at [chocolatey-announce](https://groups.google.com/forum/#!forum/chocolatey-announce).
+You can sign up for email delivery of new release announcements at [chocolatey-announce](https://groups.google.com/forum/#!forum/chocolatey-announce).
 
 ## Conclusion
 If you've made it this far, you are ready to be quite successful with Chocolatey and Windows automation in your organization. If you are using open source Chocolatey, from time to time you might check in to see what we've been adding to the [commercial options](https://chocolatey.org/compare#compare). We are building a complete software management solution with Chocolatey for Business, above and beyond the package management that Chocolatey open source does.
