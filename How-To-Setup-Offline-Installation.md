@@ -19,6 +19,7 @@
   - [Exercise 6B: Installing Chocolatey On Clients with Infrastructure Management Tools](#exercise-6b-installing-chocolatey-on-clients-with-infrastructure-management-tools)
 - [Exercise 7: Subscribe To Release Announcements](#exercise-7-subscribe-to-release-announcements)
 - [Conclusion](#conclusion)
+- [Next Steps](#next-steps)
 
 <!-- /TOC -->
 
@@ -509,7 +510,10 @@ In a fully internal environment, you need a way to know when new versions have b
 You can do that at [chocolatey-announce](https://groups.google.com/forum/#!forum/chocolatey-announce).
 
 ## Conclusion
-If you've made it this far, you are ready to be quite successful with Chocolatey and Windows automation in your organization. If you are using open source Chocolatey, from time to time you might check in to see what we've been adding to the [commercial options](https://chocolatey.org/compare#compare). We are building a complete software management solution with Chocolatey for Business, above and beyond the package management that Chocolatey open source does. Now it's time to take the next steps and learn about Chocolatey and packaging itself:
+If you've made it this far, you are ready to be quite successful with Chocolatey and Windows automation in your organization. If you are using open source Chocolatey, from time to time you might check in to see what we've been adding to the [commercial options](https://chocolatey.org/compare#compare). We are building a complete software management solution with Chocolatey for Business, above and beyond the package management that Chocolatey open source does.
+
+## Next Steps
+Now it's time to take the next steps and learn about Chocolatey and packaging itself:
 
 * [Learn How To Build Packages](https://github.com/ferventcoder/chocolatey-workshop)
 * [Learn Basic and Advanced Concepts For Software Management with Chocolatey](https://github.com/ferventcoder/chocolatey-workshop)
