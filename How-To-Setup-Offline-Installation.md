@@ -217,7 +217,7 @@ choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
 ~~~
 
 ## Exercise 2: Set Up A Package Repository
-Now we have a machine where we have Chocolatey installed and configured, and we have the setup files we gathered in Exercise 0. So now we are going to set up a package repository for use for all of our clients - this is where you will push packages and get packages from with your Chocolatey clients.  - if we are setting up an internal repository on that offline Windows machine, this is how we'll do it. Some repositories do not require Windows as part of their setup (Artifactory Pro and Nexus come to mind, but there are others). In choosing what you will use, it's good to read over [[set up a package repository|How-To-Host-Feed]] to learn about the advantages and disadvantages of each. Pick one or more of the following paths:
+Now we have a machine where we have Chocolatey installed and configured, and we have the setup files we gathered in Exercise 0. So now we are going to set up a package repository for use for all of our clients - this is where you will push packages and get packages from with your Chocolatey clients. Some repositories do not require Windows as part of their setup (Artifactory Pro and Nexus come to mind, but there are others). In choosing what you will use, it's good to read over [[set up a package repository|How-To-Host-Feed]] to learn about the advantages and disadvantages of each. Pick one or more of the following paths:
 
 * [Set Up Chocolatey.Server](#exercise-2a-set-up-chocolateyserver)
 * [Set Up A Different Repository](#exercise-2b-set-up-a-different-repository)
