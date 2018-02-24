@@ -1,4 +1,4 @@
-# How To Set Up Chocolatey For Internal Use (Set Up For Organizational Use)
+# How To Set Up Chocolatey For Organizational/Internal Use
 
 <!-- TOC -->
 
@@ -30,6 +30,7 @@ Most organizations need a Chocolatey environment that does not access the intern
 > * Bring all external packages you need in and internalize (not cache) any that download anything at runtime
 > * Configure Chocolatey clients for internal use - config and removal of community package repository source
 > * Create packages with resources embedded in the package - this makes for reliable, repeatable use of Chocolatey (the community repository must download at runtime due to being publicly available which means distribution rights, internal use is not subject to distribution rights)
+> * Do not use the community repository. It is not fully reliable due to a required dependence on the internet at runtime.
 > * Learn when new Chocolatey releases are out - register with the release announcements mailing list
 
 ## References
@@ -38,6 +39,8 @@ Most organizations need a Chocolatey environment that does not access the intern
 * [[Licensed Install|Installation-Licensed]]
 * [[Host Your Own Package Server|How-To-Host-Feed]]
 * [[Set up Chocolatey Server|How-To-Set-Up-Chocolatey-Server]]
+* [Security](https://chocolatey.org/security)
+* [[Community Package Repository Disclaimer|CommunityPackagesDisclaimer]]
 
 ## Exercise 0: Prepare For Internal Use
 The first thing we need to do is prepare. To do that we need a Windows machine with internet access so it can gather everything. If you are setting up into an air gapped network, you will be completing this on one machine, then loading it to a USB or to something else to get it over to the air gapped network (which we'll set up in Exercise 1). Check with your security teams to see if you have other steps that need to be completed prior to taking files from internet sources to the air gapped network.
