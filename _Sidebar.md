@@ -11,6 +11,7 @@
  * [Contributing](https://github.com/chocolatey/choco/blob/master/CONTRIBUTING.md)
  * [[Release Notes|ReleaseNotes]]
  * [[Licensed Release Notes|ReleaseNotesLicensed]]
+ * [[Set Up Fully Internal Chocolatey Deployment (For Organizations)|How-To-Setup-Offline-Installation]]
 
  - [[Chocolatey.org Moderation|Moderation]]
  - [[Chocolatey.org Packages Disclaimer|CommunityPackagesDisclaimer]]
