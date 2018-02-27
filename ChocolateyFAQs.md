@@ -328,7 +328,7 @@ See [[Troubleshooting]]
 <a id="markdown-i-would-like-to-use-chocolatey-in-my-organization-is-the-licensing-friendly" name="i-would-like-to-use-chocolatey-in-my-organization-is-the-licensing-friendly"></a>
 ### I would like to use Chocolatey in my organization, is the licensing friendly?
 
-Yes, it is. Chocolatey carries a FOSS Apache 2.0 license, which is extremely business friendly. You can use Chocolatey and most of it's infrastructure completely free. Chocolatey also has a business edition with features organizations need for better software management . See [Compare](https://chocolatey.org/pricing) for details.
+Yes, it is. Chocolatey carries a FOSS Apache 2.0 license, which is extremely business friendly. You can use Chocolatey and most of its infrastructure completely free. Chocolatey also has a business edition with features organizations need for better software management . See [Compare](https://chocolatey.org/pricing) for details.
 
 <a id="markdown-should-my-organization-depend-on-use-the-community-feed-httpschocolateyorgpackages" name="should-my-organization-depend-on-use-the-community-feed-httpschocolateyorgpackages"></a>
 ### Should my organization depend on (use) the community feed (https://chocolatey.org/packages)?
@@ -438,7 +438,7 @@ Yes we do, take a look at [[videos|Videos]] and [[known posts, presentations, et
 ### Is there a video I can watch to show me Chocolatey in action?
 There is! This is a long video due to slow internet connections, but watch the first 1:30ish minutes and the last 1:30ish minutes and that will give you a general idea. [http://www.youtube.com/watch?v=N-hWOUL8roU](http://www.youtube.com/watch?v=N-hWOUL8roU)
 
-**NOTE:** This video shows dependency chaining, so you are seeing it install 11 applications/tools. It's also 6 years old and there have been many, many improvements since then.
+**NOTE:** This video shows dependency chaining, so you are seeing it install 11 applications/tools. It's also 6+ years old and there have been many, many improvements since then.
 
 
 
@@ -458,7 +458,7 @@ Moderation involves checking a package version for quality (validation) and corr
 Things to note:
 * We have trusted packages, and those packages skip human review/moderation.
 * A maintainer can not moderate his/her own pkgs.
-* You can see if a package has been verified by the green circle next to it's name on the package page. If it is green or red, it will also be a clickable link. To see all packages verified, see https://gist.github.com/choco-bot
+* You can see if a package has been verified by the green circle next to its name on the package page. If it is green or red, it will also be a clickable link. To see all packages verified, see https://gist.github.com/choco-bot
 * Besides trusted packages, a package version is never approved without a moderator clicking approve.
 
 <a id="markdown-how-does-the-moderation-review-process-work" name="how-does-the-moderation-review-process-work"></a>
