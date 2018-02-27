@@ -109,6 +109,7 @@ This can mean a couple of things:
 
 * You missed ensuring the website is using an app pool that is at least .NET 4.0. Check the app pool that your site is using, then ensure that app pool has `32-bit` enabled and the managed runtime version is `v4.0` (or some version of 4).
 * You have made a change to the xml file and it is not valid xml. This typically happens if you put an xml escape character into the password (`&`). To do that you would need to set CData around the value or use a different password. It could also happen if you accidentallly change the xml and it is no longer valid.
+* You are attempting to set up Chocolatey Server next to WSUS Administration website. For an unknown reason, something won't register correctly with Chocolatey Server and its need for ASP.NET 4.6+. So we recommend not putting the Chocolatey Server next to that website. Find a machine with the WSUS administration site.
 
 ### Other error
 
