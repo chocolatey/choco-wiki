@@ -226,6 +226,9 @@ Now we have a machine where we have Chocolatey installed and configured, and we 
 * [Set Up An SCCM Distribution Point As A Chocolatey Source](#exercise-3d-set-up-an-sccm-distribution-point-as-a-chocolatey-source)
 
 ### Exercise 2A: Set Up Chocolatey.Server
+
+**NOTE:** If you have an IIS site for WSUS administration, Chocolatey.Server website will not come up at all, even if everything looks right. We have not yet been able to determine the issue, but believe it is related to ASP.NET 4.6+. Installing all of the required components for Chocolatey.Server may also affect your WSUS admin site. Please seek a different box.
+
 Since we put the items on this machine in the previous exercise, we can just pick up where we left off.
 
 1. Finish Exercise 0/1 on a machine you will set up as a server.

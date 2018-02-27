@@ -3,6 +3,7 @@
 <!-- TOC -->
 
 - [What is Chocolatey.Server?](#what-is-chocolateyserver)
+- [Requirements](#requirements)
 - [Setup with Puppet](#setup-with-puppet)
 - [Setup Normally](#setup-normally)
 - [Additional Configuration](#additional-configuration)
@@ -24,6 +25,15 @@ The [Chocolatey.Server package](https://chocolatey.org/packages/chocolatey.serve
 * Allows packages up to 2GB. Package size can be controlled through [maxAllowedContentLength](https://msdn.microsoft.com/en-us/library/ms689462(v=vs.90).aspx) and [maxRequestLength](https://msdn.microsoft.com/en-us/library/e1f13641(v=vs.100).aspx).
 
 When you install it, it will install the website typically to `c:\tools\chocolatey.server`.
+
+## Requirements
+
+* You need a Windows box with at least 50GB of free space (or where ever you are going to put the packages).
+* 50GB of free space for where ever you will put packages.
+* We recommend at least 8GB RAM, but more if you can.
+* Ability to set up an IIS site and unblock website ports.
+* If you have an IIS site for WSUS administration, Chocolatey.Server website will not come up at all, even if everything looks right. We have not yet been able to determine the issue, but believe it is related to ASP.NET 4.6+. Installing all of the required components for Chocolatey.Server may also affect your WSUS admin site. Please seek a different box.
+* If you can ensure your server is up to date with all of the Windows Updates, you will move through this process quite a bit quicker.
 
 ## Setup with Puppet
 If you are using the Puppet module [chocolatey/chocolatey_server](https://forge.puppet.com/chocolatey/chocolatey_server), it will do all of the additional setup for this package and allow some customization.
