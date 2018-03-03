@@ -3,7 +3,7 @@ Almost all Chocolatey Packages download a file from the internet, and then direc
 
 However, there are times when using a file directly is not an option.  From time to time, it is necessary to use an ISO file within your Chocolatey Package.  In later versions of the Windows Operating System, PowerShell provides the ability to mount this ISO file directly using the ```Mount-DiskImage``` cmdlet.  However, in earlier versions of Windows, this is not possible.
 
-In order to maintain backwards compatibility with older Operating Systems, when using an ISO file, you should use a single method that works everywhere.
+In order to maintain backwards compatibility with older Operating Systems, when using an ISO file, you can use ImDisk Virtual Disk Driver.
 
 ## The Solution
 ImDisk Virtual Disk Driver (imdisk) is a software package that allows an ISO file to be mounted, but more importantly, it works for Windows NT/2000/XP/Vista/7/8/8.1 or Windows Server 2003/2008/2012 (so basically, everything!).  That means that you can use one, common, method, for mounting ISO files when required within your Chocolatey Packages.
@@ -23,6 +23,31 @@ Install-ChocolateyInstallPackage 'WindowsSDK2008' 'exe' '/q' 'w:\Setup.exe'
 
 # Unmount the ISO file when finished
 imdisk -d -m w:
+
+```
+
+If you are using latest versions of Windows Operating Systems, you can use below solution.
+
+## Code Sample
+
+```powershell
+
+# First, download the ISO file from the internet (NOTE: you could equally use a locally stored ISO)
+Get-ChocolateyWebFile 'WindowsSDK2008' "$env:temp\winsdk2008.iso" 'http://download.microsoft.com/download/f/e/6/fe6eb291-e187-4b06-ad78-bb45d066c30f/6.0.6001.18000.367-KRMSDK_EN.iso'
+
+# Next, mount the ISO file, ready for using it's contents
+$iso = Get-Item "$env:temp\winsdk2008.iso"
+
+Mount-DiskImage -ImagePath $iso
+
+#Get the drive letter where iso is mounted
+$driveLetter = (Get-DiskImage $iso | Get-Volume).DriveLetter
+
+# Run commands against the mounted ISO, in this case, run the setup.exe
+Install-ChocolateyInstallPackage 'WindowsSDK2008' 'exe' '/q' "${driveLetter}:\Setup.exe"
+
+# Unmount the ISO file when finished
+Dismount-DiskImage -ImagePath $iso
 
 ```
 
