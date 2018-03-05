@@ -82,7 +82,7 @@ Here's the whole process for installing your license and installing the licensed
 
 **NOTE**: Also note that order is ***very*** important here. You need license file placed, then chocolatey.extension, then any other licensed components. Expect issues if you don't follow this order exactly.
 
-**NOTE**: Folks deploying the license out to many machines typically wrap the above logic into a Chocolatey package, embedding the license into the package. When they renew licenses, they just run an upgrade on the licensed package! Don't take a dependency on the `chocolatey.extension` package (Chocolatey Licensed Extension) as you need the license to be placed first to properly set everything when you install the licensed extension.
+**NOTE**: Folks deploying the license out to many machines typically wrap the above logic into a Chocolatey package, embedding the license into the package. When they renew licenses, they just run an upgrade on the licensed package! Don't take a dependency on the `chocolatey.extension` package (Chocolatey Licensed Extension) as you need the license to be placed first to properly set everything when you install the licensed extension. Refer to [[How To Set Up Chocolatey For Organizational/Internal Use|How-To-Setup-Offline-Installation]] where not only is this covered, but we have a script you can run that will create the license package automagically.
 
 ### How Do I Install a Local nupkg File?
 
