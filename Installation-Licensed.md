@@ -4,6 +4,7 @@ Congratulations on your recent purchase of a licensed edition of Chocolatey! If 
 
 <!-- TOC -->
 
+- [Internal / Organizational Chocolatey Deployments](#internal--organizational-chocolatey-deployments)
 - [Some Administrative Actions](#some-administrative-actions)
 - [How Do I Know When the License is Installed?](#how-do-i-know-when-the-license-is-installed)
 - [See It In Action](#see-it-in-action)
@@ -28,6 +29,9 @@ Congratulations on your recent purchase of a licensed edition of Chocolatey! If 
   - [Access to the path is denied.](#access-to-the-path-is-denied)
 
 <!-- /TOC -->
+
+## Internal / Organizational Chocolatey Deployments
+Refer to [[How To Set Up Chocolatey For Organizational/Internal Use|How-To-Setup-Offline-Installation]] in tandem with this article.
 
 ## Some Administrative Actions
 

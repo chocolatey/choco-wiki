@@ -16,6 +16,8 @@
 
 <!-- /TOC -->
 
+**NOTE:** Refer to [[How To Set Up Chocolatey For Organizational/Internal Use|How-To-Setup-Offline-Installation]] in tandem with this article.
+
 ## What is Chocolatey.Server?
 The [Chocolatey.Server package](https://chocolatey.org/packages/chocolatey.server) contains the binaries for a fully ready to go Chocolatey NuGet Server where you can serve packages over HTTP using a NuGet-compatible OData feed.
 
