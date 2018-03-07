@@ -44,7 +44,7 @@ Other items as noted at https://github.com/chocolatey/choco - be sure to check t
 * ~~Package Builder UI (pro edition without the auto detection)~~ - released Q1 2017
 * Possibly a business edition gallery with features specific to business needs.
 
-Others as noted at https://github.com/chocolatey-licensed-issues.
+Others as noted at https://github.com/chocolatey/chocolatey-licensed-issues.
 
 ## Chocolatey.org
 
