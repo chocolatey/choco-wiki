@@ -138,9 +138,9 @@ choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
 #TODO: Also make sure you set your sources to allow for self-service
 
 # Download and internalize packages.
-choco download chocolatey chocolatey.server dotnet4.6.1 chocolateygui --internalize --output-directory="'$env:SystemDrive\choco-setup\packages'" --source="'https://chocolatey.org/api/v2/'"
+choco download chocolatey chocolatey.server dotnet4.6.1 chocolateygui --internalize --output-directory="$env:SystemDrive\choco-setup\packages" --source="'https://chocolatey.org/api/v2/'"
 # TRIAL: skip this next step
-choco download chocolatey.extension chocolatey-agent --internalize --output-directory="'$env:SystemDrive\choco-setup\packages'" --source="'https://licensedpackages.chocolatey.org/api/v2/'" # will fail on trial
+choco download chocolatey.extension chocolatey-agent --internalize --output-directory="$env:SystemDrive\choco-setup\packages" --source="'https://licensedpackages.chocolatey.org/api/v2/'" # will fail on trial
 
 # Download local install script - need at least PowerShell v3
 $installScript = iwr -UseBasicParsing -Uri https://gist.githubusercontent.com/ferventcoder/d0aa1703a7d302fce79e7a4cc13797c0/raw/b1f7bad2441fa6c371b48b8475ef91cecb4d6370/ChocolateyLocalInstall.ps1 -UseDefaultCredentials
@@ -390,7 +390,7 @@ If items are installed in any other order, it could have strange effects or fail
 
 # Package up everything
 Write-Output "Creating a package"
-choco pack $licensePackageNuspec --output-directory=$packagesFolder
+choco pack $licensePackageNuspec --output-directory="$packagesFolder"
 
 Write-Output "Package has been created and is ready at $packagesFolder"
 ~~~
