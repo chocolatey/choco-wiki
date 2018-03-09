@@ -118,6 +118,8 @@ When Chocolatey manages the password for a local administrator, it creates a ver
 * Due to the way that it is generated, it is completely unguessable.
 * No one at Chocolatey Software could even tell you what the password is for a particular machine without local access.
 
+See [FAQ](#faq) below for more discussion on security aspects.
+
 ##### Command Customization Consideration
 
 Starting with Chocolatey Licensed Extension v1.12.4, you are allowed to configure what commands can be routed through the background service. Please note that Chocolatey Licensed defaults to `install` and `upgrade` as that is the most secure experience. However you can add uninstall and some other commands as well. Uninstall does have some security considerations as it would allow a non-administrator to remove software that you may have installed, including the background service itself.
@@ -314,7 +316,19 @@ Yes, absolutely. You will pass those credentials through at install/upgrade time
 * `/Password:` - optional password for the user.
 * `/EnterPassword` - receive the password at runtime as a secure string
 
-You would pass something like `choco install chocolatey-agent -y --params="'/Username:domain\account /EnterPassword'"` to securely pass the password at runtime. You could also run `choco install chocolatey-agent -y --params="'/Username:domain\account'" --package-parameters-sensitive="'/Password:newpassword'"` (or do it as part of `choco upgrade`).
+You would pass something like `choco install chocolatey-agent -y --params="'/Username:domain\account /EnterPassword'"` to securely pass the password at runtime. You could also run `choco install chocolatey-agent -y --params="'/Username:<domain\account>'" --package-parameters-sensitive="'/Password:<password>'"` (or do it as part of `choco upgrade`).
+
+With Puppet, this could look something like:
+
+~~~puppet
+package {'chocolatey-agent':
+  ensure          => latest,
+  install_options => ['-pre','--params="',"'/Username:<domain\account>'", '"','--package-parameters-sensitive="', "'/Password:<password>'", '"'],
+  require         => Chocolateyfeature['useLocalSystemForServiceInstalls'],
+}
+~~~
+
+where `<domain\account>` and `<password>` could be pulled from Hiera or somewhere else. If you have access to the Puppet secrets type, then you can use that here as well.
 
 ### Is the password stored anywhere?
 No, that would reduce the security of the password. It exists in memory long enough to set the value on user and the service and then it is cleared.
