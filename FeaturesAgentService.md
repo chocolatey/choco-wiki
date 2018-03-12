@@ -69,23 +69,26 @@ To set Chocolatey in background mode, you need to run the following:
 * `choco upgrade chocolatey-agent <options>` (see [agent install options](#chocolatey-agent-install-options))
 * `choco feature disable --name=showNonElevatedWarnings` - requires Chocolatey v0.10.4+ to set.
 * `choco feature enable --name=useBackgroundService`
-* You also need to opt in sources in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`).
+* You also need to opt in sources in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`). You can also run `choco source -?` to get the help menu.
     * OPTIONAL (not recommended): Alternatively, you can allow any configured source to be used for self-service by running the following: `choco feature disable --name=useBackgroundServiceWithSelfServiceSourcesOnly` (requires Chocolatey Extension v1.10.0+). We do not recommend this as it could be a security finding if you shut it off.
 * OPTIONAL (highly recommended): If you want self-service to apply only to non-administrators, run `choco feature enable --name=useBackgroundServiceWithNonAdministratorsOnly` (requires Chocolatey Extension v1.11.1+). Do understand this means that a real non-administrator, not an administrator in a non-elevated UAC context (that scenario will go the normal route and will not go through background mode).
 * OPTIONAL (varied recommendations): If you want to configure custom commands (not just install/upgrade), use something like `choco config set backgroundServiceAllowedCommands "install,upgrade,pin,sync"` (with the commands you want to allow, requires Chocolatey Extension v1.12.4+). See [commands consideration](#command-customization-consideration) below.
 * OPTIONAL (highly recommended): For use with Chocolatey GUI, you need Chocolatey Extension v1.12.4+, and at least Chocolatey GUI v0.15.0. **Uninstall any version of the GUI you already have installed first**, then run `choco upgrade chocolateygui -y --allow-downgrade` (you will also need at least .NET 4.5.2 installed)
 * DOES NOT WORK WITH UAC, DO NOT USE UNTIL [FIX IS ANNOUNCED](https://groups.google.com/group/chocolatey-announce)! OPTIONAL (recommended if you use installers that are not completely silent): If you want self-service to interactively manage installations, run `choco feature enable --name=useBackgroundServiceInteractively` (requires Chocolatey Extension v1.12.10+). This requires that you use the `ChocolateyLocalAdmin` account with the Chocolatey-managed password as passwords are not stored and the service would need to produce that at runtime. There are some security considerations and why this is not turned on by default. Please see [interactive self-service consideration](#interactive-self-service-consideration).
 
+**NOTE**: Once you are all setup, please review the [Common Errors and Resolutions](#common-errors-and-resolutions) section so you will be familiar if you run into any issues with working with sources.
+
 An example script:
 
 This carries our typical recommendations, but you could adjust from above.
 
 ~~~powershell
-# note that best practice in scripts is choco upgrade and -y
 choco upgrade chocolatey-agent -y
 choco feature disable --name="'showNonElevatedWarnings'"
 choco feature enable --name="'useBackgroundService'"
 choco feature enable --name="'useBackgroundServiceWithNonAdministratorsOnly'"
+
+# TODO: opt in your sources with --allow-self-service - run choco source -? for details
 ~~~
 
 > Best practices in scripts are noted here:

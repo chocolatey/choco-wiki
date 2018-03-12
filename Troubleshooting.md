@@ -119,7 +119,7 @@ Install-ChocolateyPackage @packageArgs
 
 Typically, when you are installing locally, you likely want to use `Install-ChocolateyInstallPackage` anyway.
 
-Reference: https://groups.google.com/d/msgid/chocolatey/40736df7-7f3f-4be7-929d-1606be0e3a62%40googlegroups.com
+Reference: https://groups.google.com/d/msgid/chocolatey/40736df7-7f3f-4be7-929d-1606be0e3a62%40googlegroups.com (you will need to join the group to see the message)
 
 <a id="markdown-error-this-package-does-not-support-64-bit-architecture" name="error-this-package-does-not-support-64-bit-architecture"></a>
 ### ERROR: This package does not support 64 bit architecture.
@@ -156,7 +156,7 @@ Install-ChocolateyPackage $packageArgs # this is incorrect and will pass the ent
 
 References:
 * https://github.com/majkinetor/au/issues/70
-* https://groups.google.com/d/msgid/chocolatey/5c544e16-e1b2-4249-bad6-4591017df81b%40googlegroups.com
+* https://groups.google.com/d/msgid/chocolatey/5c544e16-e1b2-4249-bad6-4591017df81b%40googlegroups.com (you will need to join the group to see the message)
 * https://github.com/chocolatey/chocolatey-coreteampackages/issues/439 (separate issue)
 
 <a id="markdown-error-this-package-does-not-support-64-bit-architecture-when-trying-to-install-from-a-local-or-included-binary" name="error-this-package-does-not-support-64-bit-architecture-when-trying-to-install-from-a-local-or-included-binary"></a>
@@ -164,7 +164,7 @@ References:
 
 This is similar to the above, the error is the same. In most cases it stems from setting up your package parameters for `Install-ChocolateyInstallPackage` but calling `Install-ChocolateyPackage` instead. Learn the differences at the [[PowerShell function reference|HelpersReference]].
 
-Reference: https://groups.google.com/d/msgid/chocolatey/d11d8eb2-74b3-4c2c-b0bb-d1a1ed3df389%40googlegroups.com
+Reference: https://groups.google.com/d/msgid/chocolatey/d11d8eb2-74b3-4c2c-b0bb-d1a1ed3df389%40googlegroups.com (you will need to join the group to see the message)
 
 <a id="markdown-my-package-cant-find-dependencies" name="my-package-cant-find-dependencies"></a>
 ### My package can't find dependencies
@@ -222,7 +222,7 @@ if (Test-Path($ChocolateyProfile)) {
 ### Microsoft.Powershell_profile.ps1 cannot be loaded. The file is not digitally signed.
 If you are seeing this, your PowerShell execution policy is either `AllSigned` or `Restricted`. You could be seeing this due to the addition of the Chocolatey profile (above question) for tab completion. You need to authenticode sign the PowerShell profile file, rename it, or remove it.
 
-Reference: https://groups.google.com/d/msgid/chocolatey/58ef0ece-5e2a-4c2c-82a8-10e1711bdd3f%40googlegroups.com
+Reference: https://groups.google.com/d/msgid/chocolatey/58ef0ece-5e2a-4c2c-82a8-10e1711bdd3f%40googlegroups.com (you will need to join the group to see the message)
 
 <a id="markdown-im-getting-a-403-unauthorized-issue-when-attempting-to-use-the-community-package-repository" name="im-getting-a-403-unauthorized-issue-when-attempting-to-use-the-community-package-repository"></a>
 ### I'm getting a 403 unauthorized issue when attempting to use the community package repository.
