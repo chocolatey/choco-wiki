@@ -17,6 +17,7 @@ We've also brought in the long desired logging with no colorization. You can set
  * Fix - Get-PackageParameters - Resolve differences between chocolatey.core-extension and built-in method - see [#1490](https://github.com/chocolatey/choco/issues/1490)
  * Fix - Get-PackageParameters - force built-in method to be preferred over chocolatey-core.extension method - see [#1476](https://github.com/chocolatey/choco/issues/1476)
  * Fix - Get-PackageParameters should handle urls - see [#1459](https://github.com/chocolatey/choco/issues/1459)
+ * Fix - Setting output directory with proper quoting can result in "The given path's format is not supported." - see [#1517](https://github.com/chocolatey/choco/issues/1517)
  * Fix - Logging - PowerShell script contents logging should not error if they have contents mistaken for log formatting - see [#1489](https://github.com/chocolatey/choco/issues/1489)
  * Fix - Incorrect documentation for Install-ChocolateyInstallPackage - see [#1416](https://github.com/chocolatey/choco/issues/1416)
  * [API] Fix - Logging - Loggers should always be checked for initialization - see [#1447](https://github.com/chocolatey/choco/issues/1447)
