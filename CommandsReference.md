@@ -33,6 +33,7 @@ This is a listing of all of the different things you can pass to choco.
  * [[sync|CommandsSync]] - synchronizes against system installed software - generates missing packages
  * [[optimize|CommandsOptimize]] - optimizes installation, reducing space usage
 
+
 Please run chocolatey with `choco command -help` for specific help on
  each command.
 
@@ -102,6 +103,10 @@ You can pass options and switches in the following ways:
      Trace - Show trace messaging. Very, very verbose trace messaging. Avoid 
        except when needing super low-level .NET Framework debugging. Available 
        in 0.10.4+.
+
+     --nocolor, --no-color
+     No Color - Do not show colorization in logging output. This overrides 
+       the feature 'logWithoutColor', set to 'False'. Available in 0.10.9+.
 
      --acceptlicense, --accept-license
      AcceptLicense - Accept license dialogs automatically. Reserved for 
