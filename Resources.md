@@ -43,6 +43,9 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ## Community
 
 ### 2018
+#### March
+* https://blog.ipswitch.com/implementing-chocolatey-self-service-for-non-admin-users-1
+
 #### February
 * https://blog.ipswitch.com/setting-up-an-internal-chocolatey-package-repository
 
