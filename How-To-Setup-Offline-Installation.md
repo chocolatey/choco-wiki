@@ -64,7 +64,7 @@ For Chocolatey clients, you will need the following:
 
 #### Chocolatey Components
 
-* Chocolatey CLI aka choco (or choco.exe) is a client (not a Windows service) that provides the core of Chocolatey and the installation store for locally installed packages. This is important as Chocolatey manages packages, not Programs and Features directly - Programs and Features is limited only to software that has "installers" and Chocolatey treats all aspects of Windows software as first class citizens, thus it needs to track things separately.
+* Chocolatey CLI aka choco (or choco.exe) is a client (not a Windows service) that provides the core of Chocolatey and the installation store for locally installed packages. This is important as Chocolatey manages packages, not Programs and Features directly - Programs and Features is limited only to software that has "installers" and Chocolatey treats all aspects of Windows software as first class citizens (zips, scripts, binaries, installers), thus it needs to track and manage those things separately.
 * Chocolatey GUI is an application that runs when a user runs it (also not a Windows Service).
 * Chocolatey Agent (aka chocolatey-agent) is a Windows service available in Chocolatey for Business. It is used for [[Self-Service Installation|FeaturesAgentService]] and Chocolatey Central Management.
 
