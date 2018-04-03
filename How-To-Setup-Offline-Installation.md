@@ -9,7 +9,7 @@
     - [Chocolatey Components](#chocolatey-components)
     - [Space Requirements](#space-requirements)
     - [Memory Requirements](#memory-requirements)
-  - [Chocolatey Repositories](#chocolatey-repositories)
+  - [Chocolatey Repository Servers](#chocolatey-repository-servers)
   - [Chocolatey Central Management](#chocolatey-central-management)
 - [Exercise 0: Prepare For Internal Use](#exercise-0-prepare-for-internal-use)
 - [Exercise 1: Set Up Chocolatey Installation On A Machine Without Internet Access](#exercise-1-set-up-chocolatey-installation-on-a-machine-without-internet-access)
@@ -84,7 +84,7 @@ For Chocolatey clients, you will need the following:
 
 **RECOMMENDATION**: At least 2GB of RAM at a bare minimum, but recommend at least 8GB for managing installations.
 
-### Chocolatey Repositories
+### Chocolatey Repository Servers
 
 Unforunately it's harder to make recommendations here as it is really dependent on the repository that you choose and what requirements they have. It varies from a Windows deployment to Linux deployed repositories, from Java-based, to .NET-based, to PHP, and Rust-based repositories. The requirements vary wildly, plus you may use those repositories that address multiple types of packages and would need to figure out the space available for that.
 
