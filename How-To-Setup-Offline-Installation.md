@@ -4,6 +4,13 @@
 
 - [Summary](#summary)
 - [References](#references)
+- [Requirements](#requirements)
+  - [Chocolatey Clients](#chocolatey-clients)
+    - [Chocolatey Components](#chocolatey-components)
+    - [Space Requirements](#space-requirements)
+    - [Memory Requirements](#memory-requirements)
+  - [Chocolatey Repositories](#chocolatey-repositories)
+    - [Chocolatey Central Management](#chocolatey-central-management)
 - [Exercise 0: Prepare For Internal Use](#exercise-0-prepare-for-internal-use)
 - [Exercise 1: Set Up Chocolatey Installation On A Machine Without Internet Access](#exercise-1-set-up-chocolatey-installation-on-a-machine-without-internet-access)
 - [Exercise 2: Set Up A Package Repository](#exercise-2-set-up-a-package-repository)
@@ -42,6 +49,50 @@ Most organizations need a Chocolatey environment that does not access the intern
 * [[Set up Chocolatey Server|How-To-Set-Up-Chocolatey-Server]]
 * [Security](https://chocolatey.org/security)
 * [[Community Package Repository Disclaimer|CommunityPackagesDisclaimer]]
+
+## Requirements
+
+### Chocolatey Clients
+
+With Chocolatey clients, we ensure that Chocolatey is going to run with low memory footprints because you will have all aspects of things you will need to manage and different space and memory available across all of those clients. Chocolatey has a very wide reach into where it can be installed.
+
+For Chocolatey clients, you will need the following:
+
+* Windows 7+/Windows 2003+ (Server Core also, but not Windows Nano Server)
+* Windows PowerShell v2+ (not PowerShell Core)
+* .NET Framework 4.x+
+
+#### Chocolatey Components
+
+* Chocolatey CLI aka choco (or choco.exe) is a client (not a Windows service) that provides the core of Chocolatey and the installation store for locally installed packages. This is important as Chocolatey manages packages, not Programs and Features directly - Programs and Features is limited only to software that has "installers" and Chocolatey treats all aspects of Windows software as first class citizens, thus it needs to track things separately.
+* Chocolatey GUI is an application that runs when a user runs it (also not a Windows Service).
+* Chocolatey Agent (aka chocolatey-agent) is a Windows service available in Chocolatey for Business. It is used for [[Self-Service Installation|FeaturesAgentService]] and Chocolatey Central Management.
+
+#### Space Requirements
+
+* Chocolatey CLI has an impact of 15 MB on default install plus the space the installed packages use up.
+* Chocolatey GUI takes up another 50-100 MB of space on default installation.
+* Chocolatey Agent (aka chocolatey-agent) is a Windows service available in Chocolatey for Business - it has an impact of about 10 MB.
+
+**RECOMMENDATION**: We recommend enough free space for the applications you will install plus another 1 GB for allowing Chocolatey to process that. You will want to turn on Package Reducer (commercial editions) if you have it to really reduce the impact of embedded packages, which bring reliability but also increase footprint (unless you have Package Reducer). If you don't have Package Reducer and you are embedding binaries into nupkgs, you will need 3 times the space of what you are installing unless you explicitly clean up the extracted installers/zips in your automated scripts - then you will need 2x the space when considering the nupkg will still contain embedded binaries (and the nupkg must stick around). Unfortunately, this is going to be a calculation to understand exact space requirements and it really depends on what you will install.
+
+#### Memory Requirements
+
+* Chocolatey CLI only runs when called. It falls into managed memory thus can work in environments with low amounts of memory provided that they have enough memory available to manage software installations.
+* Chocolatey GUI only runs when the application is open and is also in managed memory. It can work on systems with low amounts of memory.
+* Chocolatey Agent (aka chocolatey-agent) - it is always running but has a very low footprint unless it is processing something.
+
+**RECOMMENDATION**: At least 2GB of RAM at a bare minimum, but recommend at least 8GB for managing installations.
+
+### Chocolatey Repositories
+
+Unforunately it's harder to make recommendations here as it is really dependent on the repository that you choose and what requirements they have. It varies from a Windows deployment to Linux deployed repositories, from Java-based, to .NET-based, to PHP, and Rust-based repositories. The requirements vary wildly, plus you may use those repositories that address multiple types of packages and would need to figure out the space available for that.
+
+**SPACE RECOMMENDATION**: Have enough space for 10x the size of the installers and other software you will store. This will allow for some default growth. We would recommend 100 GB at a minimum.
+
+#### Chocolatey Central Management
+
+Requirements coming soon. Just imagine normal recommendations for an ASP.NET IIS deployment, a SQL Server back end, and 1+ Windows Services (depending on scale).
 
 ## Exercise 0: Prepare For Internal Use
 The first thing we need to do is prepare. To do that we need a Windows machine with internet access so it can gather everything. If you are setting up into an air gapped network, you will be completing this on one machine, then loading it to a USB or to something else to get it over to the air gapped network (which we'll set up in Exercise 1). Check with your security teams to see if you have other steps that need to be completed prior to taking files from internet sources to the air gapped network.
