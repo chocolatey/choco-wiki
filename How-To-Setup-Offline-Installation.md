@@ -10,7 +10,7 @@
     - [Space Requirements](#space-requirements)
     - [Memory Requirements](#memory-requirements)
   - [Chocolatey Repositories](#chocolatey-repositories)
-    - [Chocolatey Central Management](#chocolatey-central-management)
+  - [Chocolatey Central Management](#chocolatey-central-management)
 - [Exercise 0: Prepare For Internal Use](#exercise-0-prepare-for-internal-use)
 - [Exercise 1: Set Up Chocolatey Installation On A Machine Without Internet Access](#exercise-1-set-up-chocolatey-installation-on-a-machine-without-internet-access)
 - [Exercise 2: Set Up A Package Repository](#exercise-2-set-up-a-package-repository)
@@ -90,7 +90,7 @@ Unforunately it's harder to make recommendations here as it is really dependent 
 
 **SPACE RECOMMENDATION**: Have enough space for 10x the size of the installers and other software you will store. This will allow for some default growth. We would recommend 100 GB at a minimum.
 
-#### Chocolatey Central Management
+### Chocolatey Central Management
 
 Requirements coming soon. Just imagine normal recommendations for an ASP.NET IIS deployment, a SQL Server back end, and 1+ Windows Services (depending on scale).
 
