@@ -265,24 +265,33 @@ The actual limit for package sizes varies depending on what each server can hand
 Most hosting options have great information on how to set up the package repository. Please see the documentation with each vendor to learn what options are available and how to set up.
 
 ### System Requirements
+
+For commercial options, we've compiled a list of recommended needs for your server repositories. For Chocolatey clients, please see [[client requirements|How-To-Setup-Offline-Installation]]. What you will see below are not the minimum values, you can typically get that at each of the links. These are what we typically recommend for use with Chocolatey. All of these options support High Availability (HA) options as well, so if you need something like that for a geographically diverse enterprise, there are options to meet those needs. Keep in mind pricing of each of these goes up based on your needs.
+
 #### Artifactory Pro
 
 * Windows or Linux Server
 * CPU - 8-16 cores
 * RAM - 16GB+ RAM (12GB of RAM reserved specifically for JVM heap)
 * Storage (HDD) - At least 2-5TB of free space for a local file store of artifacts (you need 3 times the size of artifacts you will store).
+* Chocolatey Repository Type: NuGet
 
-See https://www.jfrog.com/confluence/display/RTF/System+Requirements for more details
+See https://www.jfrog.com/confluence/display/RTF/System+Requirements for more details.
+
+**PRICING**: Starts at $2,950/year (for Artifactory Pro). No free option for Chocolatey/NuGet type packages - https://jfrog.com/pricing/.
 
 #### Artifactory Enterprise with High Availability
 
-* Network: High Speed LAN (all Artifactory Servers must be on same LAN for syncing purposes)
-* Storage: NFS, AWS S3, Google Cloud Storage, or Local File System - Recommend NFS with 3 times the total size of what you will store (and a backup SAN) - 2-5TB+ space.
+* Artifactory Cluster Server (Each): Windows or Linux Server with 8-16 cores (CPU), 16GB+ RAM (12GB of RAM reserved specifically for JVM heap), and probably at least 100GB of free space (as the artifacts are stored over on the NFS). This is similar to Artifactory Pro section above.
+* Network: High Speed LAN (all Artifactory Servers must be on same LAN for syncing purposes).
+* Shared Storage: NFS, AWS S3, Google Cloud Storage, or Local File System - Recommend NFS with 3 times the total size of what you will store (and a backup SAN) - 2-5TB+ space.
 * Database: You must use an external database (one between all nodes), and it must be VERY powerful. Pretty much the highest specs you can configure on a Windows machine if you use SQL Server. It must support the max number of connections possible from all Artifactory cluster nodes in your system. 16+ cores (CPU), 64GB+ RAM, 5TB+, etc
 * Load Balancer: Assume powerful - this will be software-based (such as nginx or HAProxy) or an appliance (such as F5 or Citrix).
-* Artifactory Cluster Server (Each): Windows or Linux Server with 8-16 cores (CPU), 16GB+ RAM (12GB of RAM reserved specifically for JVM heap), and probably at least 100GB of free space (as the artifacts are stored over on the NFS). This is similar to Artifactory Pro section above.
+* May or may not support cross-datacenter replication.
 
 See https://www.jfrog.com/confluence/display/RTF/Artifactory+High+Availability for more details.
+
+**PRICING**: Starts at $29,500/year (for Artifactory Enterprise) - https://jfrog.com/pricing/.
 
 #### Sonatype Nexus Repository Manager 2
 
@@ -290,8 +299,11 @@ See https://www.jfrog.com/confluence/display/RTF/Artifactory+High+Availability f
 * CPU - 2-4 cores (Recommend 4+)
 * RAM - 16GB+ (4GB of RAM reserved specifically for JRE)
 * Storage (HDD) - At least 2-5TB of free space for a local file store of artifacts. [How much space do you need?](https://blog.sonatype.com/2012/01/sizing-nexus-how-much-space-do-you-need/)
+* Chocolatey Repository Type: NuGet
 
 See https://help.sonatype.com/repomanager2/system-requirements for more details.
+
+**PRICING**: Starts at free (for Sonatype Nexus Repository Manager) - https://www.sonatype.com/nexus-product-pricing.
 
 #### Sonatype Nexus Repository Manager 3
 
@@ -299,12 +311,23 @@ See https://help.sonatype.com/repomanager2/system-requirements for more details.
 * CPU - 4 cores (Recommend more)
 * RAM - 16GB+ (4GB of RAM reserved specifically for JRE)
 * Storage (HDD) - At least 2-5TB of free space for a local file store of artifacts. [How much space do you need?](https://blog.sonatype.com/2012/01/sizing-nexus-how-much-space-do-you-need/)
+* Chocolatey Repository Type: NuGet
 
 See https://help.sonatype.com/repomanager3/system-requirements for more details.
 
+**PRICING**: Starts at free (for Sonatype Nexus Repository Manager) - https://www.sonatype.com/nexus-product-pricing.
+
 #### Sonatype Nexus Repository Manager 3 High Availability
 
-See https://help.sonatype.com/repomanager3/high-availability-introduction for details. It is very light on requirements, so assume similar to Artifactory's setup, minus a need for an external database.
+* 3 Node Cluster of Nexus Repository Manager Pro (NXRM Pro) instances (see Nexus 3 above for requirements).
+* Network: High Speed LAN (all NXRM Pro Servers must be on same LAN for syncing purposes).
+* Shared Storage: Appliance-based (such as NAS), or software-based (such as SMB). This will be shared across all Servers, so they will need to be able to read and write to it at high speed. Recommend appliance-based (NAS) with 3 times the total size of what you will store (and a backup) - 2-5TB+ space.
+* Load Balancer: Assume powerful - this will be software-based (such as nginx or HAProxy) or an appliance (such as F5 or Citrix).
+* Does not support cross-datacenter replication - only supports single datacenter.
+
+See https://help.sonatype.com/repomanager3/high-availability-introduction for details. It is very light on requirements, so assume similar to Artifactory's HA setup, minus a need for an external database.
+
+**PRICING**: Please see https://www.sonatype.com/nexus-product-pricing and contact Sonatype as it is not clear. You need at least 3 NXRM (Nexus Repository Manager) Pro licenses. There may be additional costs.
 
 #### ProGet
 
@@ -313,17 +336,23 @@ See https://help.sonatype.com/repomanager3/high-availability-introduction for de
 * RAM - 8GB+
 * Storage (HDD) - We recommend 2-5TB of free space for a local file store of artifacts (default install needs 20GB).
 * Database: SQL Server. Assume high specs for SQL Server, pretty much the highest specs you can configure on a Windows machine. 16+ cores (CPU), 64GB+ RAM, 5TB+, etc
+* Chocolatey Repository Type: Chocolatey or NuGet
 
 See https://inedo.com/support/documentation/proget/installation/installation-guide for more details. There is a Linux installation guide for Docker containers, however we don't recommend it for production use - https://inedo.com/support/documentation/proget/installation/installation-guide/linux-docker.
 
+**PRICING**: Starts at free (for ProGet) - https://inedo.com/proget/pricing.
+
 #### ProGet Enterprise High Availabilty
 
-* Storage: Appliance-based (such as NAS), or software-based (such as SMB). This will be shared across all Servers, so they will need to be able to read and write to it at high speed. Recommend appliance-based (NAS) with 3 times the total size of what you will store (and a backup) - 2-5TB+ space.
+* ProGet Server (Each): Windows Server with 4+ cores (CPU), 8GB+ RAM, and probably at least 50GB of free space (as the artifacts are stored on shared storage). This is similar to ProGet section above.
+* Shared Storage: Appliance-based (such as NAS), or software-based (such as SMB). This will be shared across all Servers, so they will need to be able to read and write to it at high speed. Recommend appliance-based (NAS) with 3 times the total size of what you will store (and a backup) - 2-5TB+ space.
 * Database: SQL Server with Database Clustering Recommended. Assume high specs for SQL Server, pretty much the highest specs you can configure on a Windows machine. 16+ cores (CPU), 64GB+ RAM, 5TB+, etc
 * Load Balancer: Assume powerful - this will be software-based (such as nginx or HAProxy) or an appliance (such as F5 or Citrix).
-* ProGet Server (Each): Windows Server with 4+ cores (CPU), 8GB+ RAM, and probably at least 50GB of free space (as the artifacts are stored on shared storage). This is similar to ProGet section above.
+* May or may not support cross-datacenter replication.
 
 See https://inedo.com/support/documentation/proget/administration/high-availability for details.
+
+**PRICING**: Starts at $9,995 (for ProGet Enterprise) - https://inedo.com/proget/pricing.
 
 ## Non-Windows Hosting
 If you don't want to host on Windows you have only the following options (from least advanced to most advanced - these options typically also work on Windows):
