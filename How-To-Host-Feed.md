@@ -28,6 +28,14 @@
   - [Advantages](#advantages-3)
   - [Disadvantages](#disadvantages-3)
   - [Commercial Repository Setup](#commercial-repository-setup)
+  - [System Requirements](#system-requirements)
+    - [Artifactory Pro](#artifactory-pro)
+    - [Artifactory Enterprise with High Availability](#artifactory-enterprise-with-high-availability)
+    - [Sonatype Nexus Repository Manager 2](#sonatype-nexus-repository-manager-2)
+    - [Sonatype Nexus Repository Manager 3](#sonatype-nexus-repository-manager-3)
+    - [Sonatype Nexus Repository Manager 3 High Availability](#sonatype-nexus-repository-manager-3-high-availability)
+    - [ProGet](#proget)
+    - [ProGet Enterprise High Availabilty](#proget-enterprise-high-availabilty)
 - [Non-Windows Hosting](#non-windows-hosting)
 
 <!-- /TOC -->
@@ -256,6 +264,67 @@ The actual limit for package sizes varies depending on what each server can hand
 ### Commercial Repository Setup
 Most hosting options have great information on how to set up the package repository. Please see the documentation with each vendor to learn what options are available and how to set up.
 
+### System Requirements
+#### Artifactory Pro
+
+* Windows or Linux Server
+* CPU - 8-16 cores
+* RAM - 16GB+ RAM (12GB of RAM reserved specifically for JVM heap)
+* HDD - At least 2-5TB of free space for a local file store of artifacts (you need 3 times the size of artifacts you will store).
+
+See https://www.jfrog.com/confluence/display/RTF/System+Requirements for more details
+
+
+#### Artifactory Enterprise with High Availability
+
+* Network: High Speed LAN (all Artifactory Servers must be on same LAN for syncing purposes)
+* Storage: NFS, AWS S3, Google Cloud Storage, or Local File System - Recommend NFS with 3 times the total size of what you will store (and a backup SAN) - 2-5 TB+ space.
+* Database: You must use an external database (one between all nodes), and it must be VERY powerful. Pretty much the highest specs you can configure on a Windows machine if you use SQL Server. It must support the max number of connections possible from all Artifactory cluster nodes in your system. 16+ cores (CPU), 64 GB+ RAM, 5 TB+, etc
+* Load Balancer: Assume powerful - this will be software-based (such as nginx or HAProxy) or an appliance (such as F5 or Citrix).
+* Artifactory Cluster Server (Each): Windows or Linux Server with 8-16 cores (CPU), 16 GB+ RAM (12 GB of RAM reserved specifically for JVM heap), and probably at least 100 GB of free space (as the artifacts are stored over on the NFS). This is similar to Artifactory Pro section above.
+
+See https://www.jfrog.com/confluence/display/RTF/Artifactory+High+Availability for more details.
+
+#### Sonatype Nexus Repository Manager 2
+
+* Windows, Mac OSX, or Linux Server
+* CPU - 2-4 cores (Recommend 4+)
+* RAM - 16 GB+ (4 GB of RAM reserved specifically for JRE)
+* HDD - At least 2-5 TB of free space for a local file store of artifacts. [How much space do you need?](https://blog.sonatype.com/2012/01/sizing-nexus-how-much-space-do-you-need/)
+
+See https://help.sonatype.com/repomanager2/system-requirements for more details.
+
+#### Sonatype Nexus Repository Manager 3
+
+* Windows, Mac OSX, or Linux Server
+* CPU - 4 cores (Recommend more)
+* RAM - 16 GB+ (4 GB of RAM reserved specifically for JRE)
+* HDD - At least 2-5 TB of free space for a local file store of artifacts. [How much space do you need?](https://blog.sonatype.com/2012/01/sizing-nexus-how-much-space-do-you-need/)
+
+See https://help.sonatype.com/repomanager3/system-requirements for more details.
+
+#### Sonatype Nexus Repository Manager 3 High Availability
+
+See https://help.sonatype.com/repomanager3/high-availability-introduction for details. It is very light on requirements, so assume similar to Artifactory's setup, minus a need for an external database.
+
+#### ProGet
+
+* Windows Server
+* CPU - 4 cores (Recommend more)
+* RAM - 8 GB+
+* HDD - We recommend 2-5 TB of free space for a local file store of artifacts (default install needs 20 GB).
+* Database: SQL Server. Assume high specs for SQL Server, Pretty much the highest specs you can configure on a Windows machine. 16+ cores (CPU), 64 GB+ RAM, 5 TB+, etc
+
+See https://inedo.com/support/documentation/proget/installation/installation-guide for more details. There is a Linux installation guide for Docker containers, however we don't recommend it for production use - https://inedo.com/support/documentation/proget/installation/installation-guide/linux-docker.
+
+#### ProGet Enterprise High Availabilty
+
+* Storage: Appliance-based (such as NAS), or software-based (such as SMB). This will be shared across all Servers, so they will need to be able to read and write to it at high speed. Recommend appliance-based (NAS) with 3 times the total size of what you will store (and a backup) - 2-5 TB+ space.
+* Database: SQL Server with Database Clustering Recommended. Assume high specs for SQL Server, Pretty much the highest specs you can configure on a Windows machine. 16+ cores (CPU), 64 GB+ RAM, 5 TB+, etc
+* Load Balancer: Assume powerful - this will be software-based (such as nginx or HAProxy) or an appliance (such as F5 or Citrix).
+* ProGet Server (Each): Windows Server with 4+ cores (CPU), 8 GB+ RAM, and probably at least 100 GB of free space (as the artifacts are stored on shared storage). This is similar to ProGet section above.
+
+See https://inedo.com/support/documentation/proget/administration/high-availability for details.
 
 ## Non-Windows Hosting
 If you don't want to host on Windows you have only the following options (from least advanced to most advanced - these options typically also work on Windows):
