@@ -16,7 +16,7 @@
 - [Exercise 1: Set Up Chocolatey Installation On A Machine Without Internet Access](#exercise-1-set-up-chocolatey-installation-on-a-machine-without-internet-access)
 - [Exercise 2: Set Up A Package Repository](#exercise-2-set-up-a-package-repository)
   - [Exercise 2A: Set Up Chocolatey.Server](#exercise-2a-set-up-chocolateyserver)
-    - [Ensure Chocolatey.Server with Configuration Management](#ensure-chocolateyserver-with-configuration-management)
+    - [Ensure Chocolatey.Server with Configuration Managers](#ensure-chocolateyserver-with-configuration-managers)
   - [Exercise 2B: Set Up A Different Repository](#exercise-2b-set-up-a-different-repository)
   - [Exercise 2C: Set Up A File Share Repository](#exercise-2c-set-up-a-file-share-repository)
   - [Exercise 3D: Set Up An SCCM Distribution Point As A Chocolatey Source](#exercise-3d-set-up-an-sccm-distribution-point-as-a-chocolatey-source)
@@ -315,9 +315,7 @@ Write-Warning "Follow the steps at https://chocolatey.org/docs/how-to-set-up-cho
 # more may be added later
 ~~~
 
-
-
-#### Ensure Chocolatey.Server with Configuration Management
+#### Ensure Chocolatey.Server with Configuration Managers
 * Puppet has an automated way of managing a Chocolatey.Server setup (it may not be up to date as of this writing). See https://forge.puppet.com/chocolatey/chocolatey_server.
 * Ansible has a blog post at http://frostbyte.us/using-ansible-to-install-a-chocolatey-package-repository/ with some things we'd love to see wrapped into a module.
 * Chef has a POC at https://github.com/galenemery/chocolatey_server
