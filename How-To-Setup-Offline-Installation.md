@@ -26,7 +26,7 @@
 - [Exercise 6: Installing Chocolatey On Client Machines](#exercise-6-installing-chocolatey-on-client-machines)
   - [Exercise 6A: Installing Chocolatey On Clients Directly Using PowerShell](#exercise-6a-installing-chocolatey-on-clients-directly-using-powershell)
   - [Exercise 6B: Installing Chocolatey On Clients with Infrastructure Management Tools](#exercise-6b-installing-chocolatey-on-clients-with-infrastructure-management-tools)
-  - [Chocolatey Integration Implementation with Common Configuration Managers](#chocolatey-integration-implementation-with-common-configuration-managers)
+    - [Chocolatey Integration Implementation with Configuration Managers](#chocolatey-integration-implementation-with-configuration-managers)
 - [Exercise 7: Subscribe To Release Announcements](#exercise-7-subscribe-to-release-announcements)
 - [Conclusion](#conclusion)
 - [Next Steps](#next-steps)
@@ -568,7 +568,7 @@ We have documentation for Puppet at https://chocolatey.org/docs/installation-lic
 
 If you are using Chocolatey.Server, please login to that machine and check https://localhost for instructions specific to different infrastructure management tools in the admin section.
 
-### Chocolatey Integration Implementation with Common Configuration Managers
+#### Chocolatey Integration Implementation with Configuration Managers
 For common integrations, it's handy to refer to the table below to know what configuration manager to choose. Most of the implementations below are written and managed by the companies behind the product. These implementations are typically open source and each part could be added by community contributions for those familiar with the code implementations. If you are unable to provide code implementations for adding necessary functionality to the integrations, we find it best if you create issues/tickets with those organizations if you are a customer as you will have more leverage into getting them implemented. **NOTE**: If you are a configuration manager company identified in the table and you have implemented anything in the below or you find our information is incorrect, please let us know so we can get it fixed.
 
 |                                         | [Ansible](http://docs.ansible.com/ansible/latest/modules/win_chocolatey_module.html) | [Chef](https://docs.chef.io/resource_chocolatey_package.html) / [Cookbook](https://bit.ly/choco_chef) | [PowerShell DSC](https://www.powershellgallery.com/packages/cChoco/2.3.1.0) | [Puppet](https://forge.puppet.com/puppetlabs/chocolatey) | [Salt](https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.chocolatey.html) |
