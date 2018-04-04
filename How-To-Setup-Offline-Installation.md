@@ -3,6 +3,7 @@
 <!-- TOC -->
 
 - [Summary](#summary)
+- [Notes on This Guide](#notes-on-this-guide)
 - [References](#references)
 - [Requirements](#requirements)
   - [Chocolatey Clients](#chocolatey-clients)
@@ -15,6 +16,7 @@
 - [Exercise 1: Set Up Chocolatey Installation On A Machine Without Internet Access](#exercise-1-set-up-chocolatey-installation-on-a-machine-without-internet-access)
 - [Exercise 2: Set Up A Package Repository](#exercise-2-set-up-a-package-repository)
   - [Exercise 2A: Set Up Chocolatey.Server](#exercise-2a-set-up-chocolateyserver)
+    - [Ensure Chocolatey.Server with Configuration Management](#ensure-chocolateyserver-with-configuration-management)
   - [Exercise 2B: Set Up A Different Repository](#exercise-2b-set-up-a-different-repository)
   - [Exercise 2C: Set Up A File Share Repository](#exercise-2c-set-up-a-file-share-repository)
   - [Exercise 3D: Set Up An SCCM Distribution Point As A Chocolatey Source](#exercise-3d-set-up-an-sccm-distribution-point-as-a-chocolatey-source)
@@ -24,6 +26,7 @@
 - [Exercise 6: Installing Chocolatey On Client Machines](#exercise-6-installing-chocolatey-on-client-machines)
   - [Exercise 6A: Installing Chocolatey On Clients Directly Using PowerShell](#exercise-6a-installing-chocolatey-on-clients-directly-using-powershell)
   - [Exercise 6B: Installing Chocolatey On Clients with Infrastructure Management Tools](#exercise-6b-installing-chocolatey-on-clients-with-infrastructure-management-tools)
+  - [Chocolatey Integration Implementation with Common Configuration Managers](#chocolatey-integration-implementation-with-common-configuration-managers)
 - [Exercise 7: Subscribe To Release Announcements](#exercise-7-subscribe-to-release-announcements)
 - [Conclusion](#conclusion)
 - [Next Steps](#next-steps)
@@ -41,6 +44,11 @@ Most organizations need a Chocolatey environment that does not access the intern
 > * Do not use the community repository. It is not fully reliable due to a required dependence on the internet at runtime.
 > * Learn when new Chocolatey releases are out - register with the release announcements mailing list
 
+## Notes on This Guide
+This guide is pretty much the essential how to guide to having a successful internal Chocolatey deployment. What you will find below are walkthrough steps and scripts (!!) to really help speed up that initial setup. Some (most) of what you will find here is not meant to be automated past what is already here, most are one-time things that need to be performed, so they don't lend themselves well to being automated further than they already are with the scripts here.
+
+That said, Exercises 2 and 6 do lend themselves well to automation with infrastructure management (configuration management) tools. You will find that Puppet likely has the most comprehensive set of ability to fully configure Chocolatey and Chocolatey.Server, with PowerShell DSC coming in there as well. Most configuration management tools do support managing the installation of Chocolatey and software packages, but side step Chocolatey configuration. We think that they should do more there, and we find it's best if you reach out to those folks to ask that they would support those things.
+
 ## References
 
 * [Offline Chocolatey Install](https://chocolatey.org/install#completely-offline-install)
@@ -51,9 +59,7 @@ Most organizations need a Chocolatey environment that does not access the intern
 * [[Community Package Repository Disclaimer|CommunityPackagesDisclaimer]]
 
 ## Requirements
-
 ### Chocolatey Clients
-
 With Chocolatey clients, we ensure that Chocolatey is going to run with low memory footprints because you will have all aspects of things you will need to manage and different space and memory available across all of those clients. Chocolatey has a very wide reach into where it can be installed.
 
 For Chocolatey clients, you will need the following:
@@ -85,13 +91,11 @@ For Chocolatey clients, you will need the following:
 **RECOMMENDATION**: At least 2GB of RAM at a bare minimum, but recommend at least 8GB for managing installations.
 
 ### Chocolatey Repository Servers
-
 Unforunately it's harder to make recommendations here as it is really dependent on the repository that you choose and what requirements they have. It varies from a Windows deployment to Linux deployed repositories, from Java-based, to .NET-based, to PHP, and Rust-based repositories. The requirements vary wildly, plus you may use those repositories that address multiple types of packages and would need to figure out the space available for that.
 
 **SPACE RECOMMENDATION**: Have enough space for 10x the size of the installers and other software you will store. This will allow for some default growth. We would recommend 100 GB at a minimum.
 
 ### Chocolatey Central Management
-
 Requirements coming soon. Just imagine normal recommendations for an ASP.NET IIS deployment, a SQL Server back end, and 1+ Windows Services (depending on scale).
 
 ## Exercise 0: Prepare For Internal Use
@@ -310,6 +314,14 @@ choco upgrade chocolatey.server -y --pre
 Write-Warning "Follow the steps at https://chocolatey.org/docs/how-to-set-up-chocolatey-server#setup-normally and  https://chocolatey.org/docs/how-to-set-up-chocolatey-server#additional-configuration for now."
 # more may be added later
 ~~~
+
+
+
+#### Ensure Chocolatey.Server with Configuration Management
+* Puppet has an automated way of managing a Chocolatey.Server setup (it may not be up to date as of this writing). See https://forge.puppet.com/chocolatey/chocolatey_server.
+* Ansible has a blog post at http://frostbyte.us/using-ansible-to-install-a-chocolatey-package-repository/ with some things we'd love to see wrapped into a module.
+* Chef has a POC at https://github.com/galenemery/chocolatey_server
+* Docker image at - https://github.com/takhyon/docker-chocolatey.server. Disclaimer: This is not a recommendation - we have no affiliation nor have we verified this
 
 ### Exercise 2B: Set Up A Different Repository
 If you are setting up something different than Chocolatey.Server, you may wish to read over [[How To Set Up an Internal Repository|How-To-Host-Feed]]. This will give you options and links to repositories like Artifactory Pro, Nexus, and ProGet. **NOTE**: Some repository server options don't require Windows.
@@ -557,6 +569,21 @@ This is likely to vary somewhat wildly based on what you have set up. We recomme
 We have documentation for Puppet at https://chocolatey.org/docs/installation-licensed#set-up-licensed-edition-with-puppet, with some great examples. What you would do to make that work with Ansible, Chef, Salt, or PowerShell DSC would be similar. All of the different options are covered at [[Infrastructure Management Integration|FeaturesInfrastructureAutomation]].
 
 If you are using Chocolatey.Server, please login to that machine and check https://localhost for instructions specific to different infrastructure management tools in the admin section.
+
+### Chocolatey Integration Implementation with Common Configuration Managers
+For common integrations, it's handy to refer to the table below to know what configuration manager to choose. Most of the implementations below are written and managed by the companies behind the product. These implementations are typically open source and each part could be added by community contributions for those familiar with the code implementations. If you are unable to provide code implementations for adding necessary functionality to the integrations, we find it best if you create issues/tickets with those organizations if you are a customer as you will have more leverage into getting them implemented. **NOTE**: If you are a configuration manager company identified in the table and you have implemented anything in the below or you find our information is incorrect, please let us know so we can get it fixed.
+
+|                                         | [Ansible](http://docs.ansible.com/ansible/latest/modules/win_chocolatey_module.html) | [Chef](https://docs.chef.io/resource_chocolatey_package.html) / [Cookbook](https://bit.ly/choco_chef) | [PowerShell DSC](https://www.powershellgallery.com/packages/cChoco/2.3.1.0) | [Puppet](https://forge.puppet.com/puppetlabs/chocolatey) | [Salt](https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.chocolatey.html) |
+|-----------------------------------------|---------|------|----------------|--------|------|
+| Manage Packages                         | x       | x    | x              | x      | x    |
+| Install Chocolatey                      | x       | x    | x              | x      | x    |
+| Install Chocolatey from internal source |         | x    | x              | x      |      |
+| Manage Sources                          |         |      | x              | x      |      |
+| Manage Source Type (Admin/Self-Service) |         |      |                |        |      |
+| Manage Features                         |         |      | x              | x      |      |
+| Manage Config Settings                  |         |      |                | x      |      |
+
+For most of these, those configuration managers have some sort of exec you could use to manage those additional aspects, but it would be best if they supported all aspects of configuration of Chocolatey as part of the provider implementations.
 
 ## Exercise 7: Subscribe To Release Announcements
 In a fully internal environment, you need a way to know when new versions have been released and if they affect you so you can update those packages in your environment. Best to have a low traffic announce only type of email list you can join. Fortunately there is - `chocolatey-announce`.
