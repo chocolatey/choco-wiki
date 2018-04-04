@@ -322,7 +322,7 @@ See https://inedo.com/support/documentation/proget/installation/installation-gui
 * Storage: Appliance-based (such as NAS), or software-based (such as SMB). This will be shared across all Servers, so they will need to be able to read and write to it at high speed. Recommend appliance-based (NAS) with 3 times the total size of what you will store (and a backup) - 2-5 TB+ space.
 * Database: SQL Server with Database Clustering Recommended. Assume high specs for SQL Server, Pretty much the highest specs you can configure on a Windows machine. 16+ cores (CPU), 64 GB+ RAM, 5 TB+, etc
 * Load Balancer: Assume powerful - this will be software-based (such as nginx or HAProxy) or an appliance (such as F5 or Citrix).
-* ProGet Server (Each): Windows Server with 4+ cores (CPU), 8 GB+ RAM, and probably at least 100 GB of free space (as the artifacts are stored on shared storage). This is similar to ProGet section above.
+* ProGet Server (Each): Windows Server with 4+ cores (CPU), 8 GB+ RAM, and probably at least 50 GB of free space (as the artifacts are stored on shared storage). This is similar to ProGet section above.
 
 See https://inedo.com/support/documentation/proget/administration/high-availability for details.
 
