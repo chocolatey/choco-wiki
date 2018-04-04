@@ -574,7 +574,7 @@ For common integrations, it's handy to refer to the table below to know what con
 |                                         | [Ansible](http://docs.ansible.com/ansible/latest/modules/win_chocolatey_module.html) | [Chef](https://docs.chef.io/resource_chocolatey_package.html) / [Cookbook](https://bit.ly/choco_chef) | [PowerShell DSC](https://www.powershellgallery.com/packages/cChoco/2.3.1.0) | [Puppet](https://forge.puppet.com/puppetlabs/chocolatey) | [Salt](https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.chocolatey.html) |
 |-----------------------------------------|---------|------|----------------|--------|------|
 | Manage Packages                         | x       | x    | x              | x      | x    |
-| Install Chocolatey                      | x       | x    | x              | x      | x    |
+| [Install Chocolatey](Installation)                      | x       | x    | x              | x      | x    |
 | Install Chocolatey from internal source |         | x    | x              | x      |      |
 | Manage Sources                          |         |      | x              | x      |      |
 | Manage Source Type (Admin/Self-Service) |         |      |                |        |      |
