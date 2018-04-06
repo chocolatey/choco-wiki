@@ -4,6 +4,7 @@
 
 - [Summary](#summary)
 - [Notes on This Guide](#notes-on-this-guide)
+  - [Terminology](#terminology)
 - [References](#references)
 - [Requirements](#requirements)
   - [Chocolatey Clients](#chocolatey-clients)
@@ -48,6 +49,19 @@ Most organizations need a Chocolatey environment that does not access the intern
 This guide is pretty much the essential how to guide to having a successful internal Chocolatey deployment. What you will find below are walkthrough steps and scripts (!!) to really help speed up that initial setup. Some (most) of what you will find here is not meant to be automated past what is already here, most are one-time things that need to be performed, so they don't lend themselves well to being automated further than they already are with the scripts here.
 
 That said, Exercises 2 and 6 do lend themselves well to automation with infrastructure management (configuration management) tools. You will find that Puppet likely has the most comprehensive set of ability to fully configure Chocolatey and Chocolatey.Server, with PowerShell DSC coming in there as well. Most configuration management tools do support managing the installation of Chocolatey and software packages, but side step Chocolatey configuration. We think that they should do more there, and we find it's best if you reach out to those folks to ask that they would support those things.
+
+There are some exercises in here that won't apply:
+
+* Exercise 1 almost never applies to most folks as machines they are setting up have some network access.
+* Exercise 4 doesn't apply for open source, as you don't have a license file that you need to deploy. You can skip it.
+
+### Terminology
+
+* FOSS - Chocolatey open source edition
+* C4B - Chocolatey for Business
+* TRIAL - Chocolatey for Business Trial
+* ARCHITECT - Chocolatey Architect Edition
+* MSP - Chocolatey for Managed Service Providers
 
 ## References
 
