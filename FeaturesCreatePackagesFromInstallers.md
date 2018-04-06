@@ -82,6 +82,7 @@ We've prepared a short video going over the concepts:
 Quickly script out creating packages for your entire organization's cache of software, allowing you to completely automate your Windows installations in moments, not months. You can do that with a simple script:
 
 ~~~powershell
+# Path to your installers, will navigate subdirectories
 $path = '\\company.file.server\installers'
 
 # Generate packages over supported types of files
@@ -91,9 +92,17 @@ Get-ChildItem -Path $path -Recurse | ?{
   $supportedTypes.Contains($extension)
   } | %{
   Write-Host "$($_.FullName)"
+  # Run choco new against the installer
   & choco new --file "$($_.FullName)" --build-package --outputdirectory $pwd
 }
 ~~~
+
+As you see this script, it is doing the following:
+* Taking a path to where installers, zips, etc are located (`$path = '\\company.file.server\installers'`)
+* Setting up support types of files to use with Package Builder (`$supportedTypes = @('.exe', '.msi', '.7z', '.zip', '.msu', '.msp')`)
+* Looping over all that it finds in that folder and all subdirectories (`Get-ChildItem -Path $path -Recurse`)
+* Find files that apply (`$supportedTypes.Contains($extension)`)
+* Run choco new, but point it to the full path to the file (`& choco new --file "$($_.FullName)"`), ask it to attempt to build the package (`--build-package`) and have the output in present working directory (` --outputdirectory $pwd`)
 
 ### Package Builder UI
 Not every person is going to love the command line or may not be familiar with the command line and at Chocolatey we realize this. We've spent countless hours talking to customers and with their feedback we're introducing Package Builder UI. This also gives you an opportunity to transition from existing UI tools while taking advantage of powerful Chocolatey concepts!
