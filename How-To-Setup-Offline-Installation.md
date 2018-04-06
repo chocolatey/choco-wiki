@@ -155,7 +155,7 @@ From the machine with internet access:
 1. Change this line `$localChocolateyPackageFilePath = 'c:\packages\chocolatey.0.10.0.nupkg'` to `$localChocolateyPackageFilePath = 'c:\choco-setup\packages\chocolatey.0.10.8.nupkg'` (adjust for the actual path to the Chocolatey package).
 1. Air Gapped Networks: Get those files over to that air gapped network (USB key and sneakernet if you need to).
 
-Here is a handy script you can use for MSP/C4B (FOSS, adjust appropriately):
+Here is a handy script you can use for MSP / C4B / TRIAL (TRIAL you have some adjustments noted). If you are an open source user (FOSS), you might as well go back up to the instructions, there isn't much you are going to be able to take advantage of here. Let's be honest, you will have more work on your hands overall, but that's kind of the spirit of open source (or free versus a commercial solution).
 
 ~~~powershell
 # Ensure we can run everything
