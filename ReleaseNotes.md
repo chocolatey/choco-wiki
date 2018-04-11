@@ -4,7 +4,7 @@ This covers changes for the "chocolatey" and "chocolatey.lib" packages, which ar
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Licensed Release Notes|ReleaseNotesLicensed]].
 
-## [0.10.10](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.10+is%3Aclosed) (April 9, 2018)
+## [0.10.10](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.10+is%3Aclosed) (April 11, 2018)
 ### BUG FIXES
  * Installing chocolatey 0.10.9 results in an exit code of 1 - see [#1529](https://github.com/chocolatey/choco/issues/1529)
  * Proxy bypass list with "*" will return regex quantifier parsing errors - see [#1532](https://github.com/chocolatey/choco/issues/1532)
