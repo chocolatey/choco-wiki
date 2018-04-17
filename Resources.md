@@ -43,6 +43,9 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ## Community
 
 ### 2018
+#### April
+* https://buildazure.com/2018/04/17/using-chocolatey-with-azure-vms/
+
 #### March
 * https://blog.ipswitch.com/implementing-chocolatey-self-service-for-non-admin-users-1
 
