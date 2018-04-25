@@ -26,7 +26,7 @@
 * PuppetConf 2017 - [Modern Software Management on Windows with Chocolatey and Puppet- Rob Reynolds, Chocolatey](https://www.youtube.com/watch?v=6gQtcoLaMI0) - October 12, 2017
 * PuppetConf 2017 - [Inviting Windows to the Puppet Party - Derek Robinson & Chris Kittell, Walmart Stores](https://www.youtube.com/watch?v=lfJX0l1vIzU) - October 11, 2017
 * JFrog Webinar - [Chocolatey + Artifactory = A Sweet Solution for Managing Windows](https://www.youtube.com/watch?v=k5VLMIeMRYE&t=972s) - September 28, 2017
-* PowerShell Day UK - [PSDay.UK - Rob Reynolds - Chocolatey + DSC = Software Automation Sweeter](https://www.youtube.com/watch?v=KZzn_TurdPI) - Septempber 22, 2017
+* PowerShell Day UK - [PSDay.UK - Rob Reynolds - Chocolatey + DSC = Software Automation Sweeter](https://www.youtube.com/watch?v=KZzn_TurdPI) - September 22, 2017
 * PowerShell Day UK - [PSDay.UK - Welcome, Sponsor Introductions and Steven Murawski's Keynote](https://www.youtube.com/watch?v=6drn3CX-L_s) - September 22, 2017
 * WinOps - [WinOps 2017 Dan Sedlacek - Managing Windows @ Facebook](https://www.youtube.com/watch?v=A-3PGmM4gHE) - September 21, 2017
 * WinOps - [WinOps 2017 Rob Reynolds - Modern Software Management on Windows with Chocolatey](https://www.youtube.com/watch?v=UGI_J_nfwj4) - September 21, 2017
