@@ -66,6 +66,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 * https://www.computerworld.com/article/3236406/enterprise-applications/get-to-know-the-chocolatey-package-manager-for-windows.html
 
 #### October
+* http://jkarger.de/2017/10/29/tile-banner-for-chocolateygui/
 * https://winsysblog.com/2017/10/automating-chocolatey-package-internalizing-with-powershell.html (C4B)
 
 #### September

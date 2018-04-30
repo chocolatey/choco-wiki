@@ -2,6 +2,8 @@
 
 <!-- TOC -->
 
+- [What is Chocolatey?](#what-is-chocolatey)
+  - [Already familiar with other package managers?](#already-familiar-with-other-package-managers)
 - [Using Chocolatey](#using-chocolatey)
   - [Overriding default install directory or other advanced install concepts](#overriding-default-install-directory-or-other-advanced-install-concepts)
 - [Terminology](#terminology)
@@ -15,6 +17,45 @@
 - [Where does Chocolatey install packages from?](#where-does-chocolatey-install-packages-from)
 
 <!-- /TOC -->
+
+## What is Chocolatey?
+What is Chocolatey?
+
+Chocolatey is a software management solution unlike any you've ever experienced on Windows. Think of it like this - you create a software deployment package using a little PowerShell, then you can deploy it anywhere you have Windows with everything (like Puppet, SCCM, Altiris, or Connectwise Automate).
+
+Write your deployment once for any software, then deploy it with any solution everywhere you have Windows.
+
+You know those massively complicated, complex, and expensive software management solutions that you typically need to buy more machines and hire consultants to help you configure/maintain? Yeah, that's not us. We believe in simple solutions to complex problems. Software on Windows is already complex enough, we've designed our tools to be able to be simple to use, extremely powerful, flexible to fit nearly any situation, and for scale. And the best part is you can take advantage of our infrastructure and tools without any cost!
+
+
+* **Deploy Anywhere You Have Windows**/**Cloud Ready** (except Nano, sorry little buddy!). Yes, that includes Server.Core and [Windows Docker Containers](). Windows 7+/Windows 2003+ (although, we have been scaling down on 2003. I mean, 2003 is a bit long in the tooth, but some customers are still using it). Requires PowerShell v2+ (not PowerShell 6 yet - you're doing amazing if you are already on this, but give us some time) and Microsoft .NET Framework 4.x. You can deploy on prem, to Azure, AWS, or any cloud provider you might be looking at.
+* **Deploy with Everything** - Anything that can manage endpoints or do remote deployments can either direct Chocolatey through commands, batches, or scripts. Full configuration management solutions like Ansible, Chef, PowerShell DSC, Puppet or Salt typically have providers/modules that allow you to work within their languages to manage both Chocolatey installation/configuration and software.
+* **All Software Is a First Class Citizen.** You know how for most things, they only count the things installed in Add/Remove Programs (Programs and Features)? We count it all, because Windows software is more than just installers (they all have security findings). So deploy your installers, your scripts, zips, runtime binaries, and yes, internal software all with one simple solution.
+* **Packages are Independent and Portable.** When you deploy through multiple systems or want to migrate from one to another, you can take the work you've done with Chocolatey with you. How is that for some major time-savings?
+* **Testable** - When's the last time you tested that deployment script you wrote for SCCM? Write it as a Chocolatey package instead and then you can test your infrastructure to be more comfortable when you push that change out to your constituents.
+* **Completely Offline and Secure** - Chocolatey does come with a default source that is the community repository. Turn that off and set up your own sources (FOR FREE). See our guide on organizatonal use to get started (it even has scripts!).
+* **Create Your Own Deployment Packages** (FOR FREE) and, get this, **use them internally** (FOR FREE).
+* **PowerShell Automation.** You know those little scripts you've been writing for software deployments for years? Welcome to a breath of fresh air, you are going to love Chocolatey!
+* **Manage Dependencies With Ease.** You ever have a very complex, specific installation order? It becomes suddenly very easy when you are using a package manager like Chocolatey. Then you can concentrate on harder problems, like what flavor to add to your coffee today.
+* **Open Source Licensing Is Ready for Business.** We have Apache v2 licensing, no special restrictions need apply.
+* **Commercial Options Add Support + AMAZING Features** - Our top of the line [Chocolatey for Business (C4B) edition](https://chocolatey.org/compare#compare) includes over 20+ features that take Chocolatey to the next level and make it a full software management solution and not just a package manager. Go ahead, right click on an installer and create a fully unattended software deployment in 5 seconds! If you have any issues, our support team is ready and waiting to help you move forward.
+* **Customers Help Define Our Work.** We determine and prioritize our work based on where customers want things to go. We are building a platform, and we are working with you to make it better.
+* **Security Is Our Focus.** Take a stroll through our security page. With everything we design, we focus on scalability, simplicity, and security.
+* **Bridge the Gap.** Have you started to look at moving from those legacy automation systems to something more modern like Ansible, Puppet, or Chef and didn't know where to start? Start shifting the software management over to Chocolatey and taking those existing infrastructure/end point management tools back to just the remote deployment. Then when you are ready, you shift over to those modern automation solutions without needing to rewrite everything! Those Chocolatey packages work in both places!
+
+"But some of the software I manage is extremely complex and difficult to install." You mean like Office, SQL Server, or Oracle? How about MatLab? AutoCAD? All can easily be managed with Chocolatey. Stop torturing yourself, give Chocolatey a shot. Trust us, you'll never go back to those earlier methods. Come into modern software management and automation. It's available, and it's for Windows!!
+
+"I deal with software installers that don't install silently." We have solutions for those badly behaved installers as well, we even have a team of folks that can do that for you for a low cost (provided you have a commerical edition of Chocolatey).
+
+All were saying is, it's time to step out of the dark ages and stop either doing things manually or stop killing yourself trying to do things with those complex systems. Stop powering through extra work at night and go home to see your family in the evening because you look at modern software automation and a tool that uses a lot of common sense. Have confidence in your deployments and get the right information back to fix quickly when things go wrong. Chocolatey has been around for nearly ten years, thousands of companies and hundreds of thousands of people use Chocolatey. Lean on a solution that works.
+
+### Already familiar with other package managers?
+
+Chocolatey is like Dpkg/RPM, but built with Windows in mind (there are differences and limitations). It can also do configuration tasks and anything that you can do with PowerShell.
+
+Chocolatey manages packages (strictly nupkg files) and those packages manage software (could be installers, could be runtime binaries, could be zips or scripts).
+
+> Chocolatey is a software management tool that is also a package manager. It functions fantastically well when the runtime software is all included in the package and it doesn't make use of native installers. However to approach the Windows ecosystem a package manager also needs to know how to manage actual software installations, thus why Chocolatey does that as well. For publicly available packages, copyright keeps from having binaries embedded in packages, so Chocolatey is able to download from distribution points and checksum those binaries.
 
 ## Using Chocolatey
 Now that you have Chocolatey on your machine ([[need to install?|Installation]]), you can run several commands.
