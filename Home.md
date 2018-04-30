@@ -10,7 +10,7 @@
 - [Using Chocolatey](#using-chocolatey)
 - [Packages](#packages)
 - [Walkthroughs / How To Links](#walkthroughs--how-to-links)
-- [RoadMap](#roadmap)
+- [Road Map](#road-map)
   - [Important Reference Links](#important-reference-links)
 - [See It In Action](#see-it-in-action)
 - [Who Are We?](#who-are-we)
@@ -22,7 +22,7 @@ Chocolatey is a software management solution unlike anything else you've ever ex
 
 Whew, that was a mouthful! See [[What is Chocolatey?|GettingStarted]] for a bit more detail into what exactly all of that means.
 
-##Requirements
+## Requirements
  * Windows 7+/Windows 2003+
  * Microsoft .NET Framework 4.x
  * PowerShell 2+
@@ -57,7 +57,7 @@ Whew, that was a mouthful! See [[What is Chocolatey?|GettingStarted]] for a bit 
 * [[Host Your Own Feed|How-To-Host-Feed]]
 * [[Deploy Chocolatey in an Organization|How-To-Setup-Offline-Installation]]
 
-## RoadMap
+## Road Map
 Where are [[we|RoadMap]]? Where are we [[going|RoadMap]]?
 
 ### Important Reference Links
