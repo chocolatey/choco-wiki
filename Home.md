@@ -9,7 +9,7 @@
 - [Information](#information)
 - [Using Chocolatey](#using-chocolatey)
 - [Packages](#packages)
-- [How-To's](#how-tos)
+- [Walkthroughs / How To Links](#walkthroughs--how-to-links)
 - [RoadMap](#roadmap)
   - [Important Reference Links](#important-reference-links)
 - [See It In Action](#see-it-in-action)
@@ -50,11 +50,12 @@ Whew, that was a mouthful! See [[What is Chocolatey?|GettingStarted]] for a bit 
 * [[Package Function and Variable Reference|HelpersReference]]
 * [[Outdated packages? Triage process|PackageTriageProcess]]
 
-## How-To's
+## Walkthroughs / How To Links
 * [[Parse PackageParameters Argument|How-To-Parse-PackageParameters-Argument]]
 * [[Mount an Iso in Chocolatey Package|How-To-Mount-An-Iso-In-Chocolatey-Package]]
 * [[Deprecate a Chocolatey Package|How-To-Deprecate-A-Chocolatey-Package]]
 * [[Host Your Own Feed|How-To-Host-Feed]]
+* [[Deploy Chocolatey in an Organization|How-To-Setup-Offline-Installation]]
 
 ## RoadMap
 Where are [[we|RoadMap]]? Where are we [[going|RoadMap]]?
