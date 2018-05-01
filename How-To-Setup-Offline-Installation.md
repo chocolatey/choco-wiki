@@ -76,6 +76,8 @@ There may be some exercises in here that won't apply:
 * [[Community Package Repository Disclaimer|CommunityPackagesDisclaimer]]
 
 ## Requirements
+Please see  [[Requirements|GettingStarted#requirements]] for the most up to date version of this.
+
 ### Chocolatey Clients
 With Chocolatey clients, we ensure that Chocolatey is going to run with low memory footprints because you will have all aspects of things you will need to manage and different space and memory available across all of those clients. Chocolatey has a very wide reach into where it can be installed.
 

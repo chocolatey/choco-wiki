@@ -18,14 +18,15 @@
 <!-- /TOC -->
 
 ## What is Chocolatey?
-Chocolatey is a software management solution unlike anything else you've ever experienced on Windows. It focuses on simplicity, security, and scalability. You write a software deployment in PowerShell one time for any software (not just installers), then you can deploy it everywhere you have Windows with any solution that can manage systems (configuration management, endpoint management, etc). Manage software on-prem, in cloud, or in Docker containers with Chocolatey.
+Chocolatey is a software management solution unlike anything else you've ever experienced on Windows. It focuses on simplicity, security, and scalability. You write a software deployment in PowerShell once for any software (not just installers), then you can deploy it everywhere you have Windows with any solution that can manage systems (configuration management, endpoint management, etc). Manage software on-prem, in cloud, or in Docker containers with Chocolatey.
 
-Whew, that was a mouthful! See [[What is Chocolatey?|GettingStarted]] for a bit more detail into what exactly all of that means.
+Whew, that was a mouthful! For a bit more detail into what all of that means and more, see [[What is Chocolatey?|GettingStarted#what-is-chocolatey]].
 
 ## Requirements
- * Windows 7+/Windows 2003+
- * Microsoft .NET Framework 4.x
- * PowerShell 2+
+* Windows 7+/Windows 2003+ (Server Core also, but not Windows Nano Server)
+* Windows PowerShell v2+ (not PowerShell Core aka PowerShell 6 yet)
+* .NET Framework 4.x+
+* See [[Requirements|GettingStarted#requirements]]
 
 ## Information
 

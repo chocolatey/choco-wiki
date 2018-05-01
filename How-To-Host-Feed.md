@@ -28,7 +28,7 @@
   - [Advantages](#advantages-3)
   - [Disadvantages](#disadvantages-3)
   - [Commercial Repository Setup](#commercial-repository-setup)
-  - [System Requirements](#system-requirements)
+  - [Commercial Repository System Requirements](#commercial-repository-system-requirements)
     - [Artifactory Pro](#artifactory-pro)
     - [Artifactory Enterprise with High Availability](#artifactory-enterprise-with-high-availability)
     - [Sonatype Nexus Repository Manager 2](#sonatype-nexus-repository-manager-2)
@@ -264,7 +264,7 @@ The actual limit for package sizes varies depending on what each server can hand
 ### Commercial Repository Setup
 Most hosting options have great information on how to set up the package repository. Please see the documentation with each vendor to learn what options are available and how to set up.
 
-### System Requirements
+### Commercial Repository System Requirements
 
 For commercial options, we've compiled a list of recommended needs for your server repositories. For Chocolatey clients, please see [[client requirements|How-To-Setup-Offline-Installation]]. What you will see below are not the minimum values, you can typically get that at each of the links. These are what we typically recommend for use with Chocolatey. All of these options support High Availability (HA) options as well, so if you need something like that for a geographically diverse enterprise, there are options to meet those needs. Keep in mind pricing of each of these goes up based on your needs.
 
