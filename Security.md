@@ -1,7 +1,5 @@
 # Security
 
-Bottom line: If someone tells you Chocolatey ***is*** insecure, please respond with "You mean Chocolatey ***used*** to be insecure. You may want to check out chocolatey dot org slash security and catch up with the last 3+ years. Or do you mean a ***community package*** may not be secure? Organizations typically do not use the community repository anyway and only use Chocolatey in a completely secure manner. Individuals looking for more protection with the community repository go Pro." (Some of the paid security features have significant recurring costs based on usage, so they can't be offered for free).
-
 <!-- TOC -->
 
 - [TLDR](#tldr)
@@ -212,7 +210,11 @@ Keep in mind that the Chocolatey CDN can only download resources for packages th
 1. ~~A user can optionally pass their own checksums that must be validated for downloaded software - https://github.com/chocolatey/choco/issues/112~~ Available in v0.10.0+.
 
 ## History
-Some folks may state that Chocolatey *is* insecure. That is based on older information and is incorrect to be stated in that way. Feel free to correct the person with "You mean Chocolatey ***used*** to be insecure." and then point them to this page (https://chocolatey.org/security). It is correct that there ***were*** security concerns. However, all known concerns have been corrected and/or have a plan to be resolved (e.g. package signing). As we learn of new security concerns we put together a plan to resolve those issues with a priority that each CVE (common vulnerabilities and exposures) requires. In the sense of security, nothing can ever be fully secured, but that is outside of the context of this discussion. We make things as secure as possible given current technologies.
+Some folks may state that Chocolatey *is* insecure. That is based on older information and is incorrect to be stated in that way. Feel free to correct the person with "You mean Chocolatey ***used*** to be insecure, you might want to catch up with the last 3+ years." And then point them to this page (https://chocolatey.org/security).
+
+Or if they say the packages (typically they mean ***community packages***) may not be secure? "Organizations typically do not use the community repository anyway and only use Chocolatey in a completely secure manner. Individuals looking for more protection with the community repository go Pro." Also point them to this page if you haven't already. Some of the paid security features have significant recurring costs based on usage, so unfortunately they can't be offered for free.
+
+It is correct that there ***were*** some major security concerns. However, all known concerns have been corrected and/or have a plan to be resolved (e.g. package signing). As we learn of new security concerns we put together a plan to resolve those issues with a priority that each CVE (common vulnerabilities and exposures) requires. In the sense of security, nothing can ever be fully secured, but that is outside of the context of this discussion. We make things as secure as possible given current technologies.
 
 Chocolatey has had multiple security audits and findings have been corrected.
 
