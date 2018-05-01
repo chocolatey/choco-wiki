@@ -3,6 +3,9 @@
 <!-- TOC -->
 
 - [What is Chocolatey?](#what-is-chocolatey)
+  - [Features](#features)
+  - [Common Thoughts](#common-thoughts)
+  - [Summary](#summary)
   - [Already familiar with other package managers?](#already-familiar-with-other-package-managers)
 - [Requirements](#requirements)
   - [Chocolatey Clients](#chocolatey-clients)
@@ -26,13 +29,13 @@
 <!-- /TOC -->
 
 ## What is Chocolatey?
-What is Chocolatey?
-
 Chocolatey is a software management solution unlike any you've ever experienced on Windows. Think of it like this - you create a software deployment package using a little PowerShell, then you can deploy it anywhere you have Windows with everything (like Puppet, SCCM, Altiris, Connectwise Automate, etc).
 
 > Write your deployment once for any software, then deploy it with any solution everywhere you have Windows.
 
 You know those massively complicated, complex, and expensive software management solutions where you typically need to buy more machines and hire consultants to help you configure/maintain them? Yeah, [that's not us](#requirements). We believe in simple solutions to complex problems. Software on Windows is already complex enough, we've designed our tools to be able to be simple to use, extremely powerful, flexible to fit nearly any situation, to work with your existing infrastructure, and for scale. And the best part is you can take advantage of Chocolatey without any cost (yes, even internally for an organization)!
+
+### Features
 
 * **Deploy Anywhere You Have Windows**/**Cloud Ready** (except Nano, sorry little buddy!). Yes, that includes Server.Core and [Windows Docker Containers](https://github.com/Microsoft/vsts-agent-docker/blob/f870fbf259a803c6a6d902e1c01f631936069d66/windows/servercore/10.0.14393/standard/VS2017/Dockerfile). Windows 7+/Windows 2003+ (although, we have been scaling down on 2003. I mean, 2003 is a bit long in the tooth, but some customers are still using it). Requires PowerShell v2+ (not PowerShell 6 yet - you're doing amazing if you are already on this, but give us some time) and Microsoft .NET Framework 4.x. You can deploy on prem, to Azure, AWS, or any cloud provider you might be looking at.
 * **Deploy with Everything.** Anything that can manage endpoints or do remote deployments can either direct Chocolatey through commands, batches, or scripts. Full configuration management solutions like Ansible, Chef, PowerShell DSC, Puppet or Salt typically have providers/modules that allow you to work within their languages to manage both Chocolatey installation/configuration and software.
@@ -50,10 +53,14 @@ You know those massively complicated, complex, and expensive software management
 * **Bridge the Gap.** Have you started to look at moving from those legacy automation systems to something more modern like Ansible, Puppet, or Chef and didn't know where to start? Start shifting the software management over to Chocolatey and taking those existing infrastructure/end point management tools back to just the remote deployment. Then when you are ready, you shift over to those modern automation solutions without needing to rewrite everything! Those Chocolatey packages work with all systems!
 * **Scale With Ease.** There are massive deployments of Chocolatey, even the open source edition, in large enterprises. Chocolatey is deployed in everything from small startups all the way up to those fortune 500 companies.
 
-**"But some of the software I manage is extremely complex and difficult to install."** You mean like [Office](https://chocolatey.org/packages/Office365ProPlus), [SQL Server](https://github.com/DarwinJS/ChocolateyDesignPatterns/tree/af7896893de95bdd5c3c430a8cf7a1b6aa8f0983/mssqlserver-standard), or Oracle? How about MatLab? AutoCAD? All can be more easily managed with Chocolatey. Stop torturing yourself, give Chocolatey a shot. Trust us, you'll never go back to those earlier methods. Come into modern software management and automation. It's available, and it's for Windows!!
+### Common Thoughts
+**"Some of the software I manage is extremely complex and difficult to install."** You mean like [Office](https://chocolatey.org/packages/Office365ProPlus), [SQL Server](https://github.com/DarwinJS/ChocolateyDesignPatterns/tree/af7896893de95bdd5c3c430a8cf7a1b6aa8f0983/mssqlserver-standard), or Oracle? How about MatLab? AutoCAD? All can be more easily managed with Chocolatey. Stop torturing yourself, give Chocolatey a shot. Trust us, you'll never go back to those earlier methods. Come into modern software management and automation. It's available, and it's for Windows!!
 
-**"I deal with software installers that don't install silently."** We have solutions for those badly behaved installers as well, we even have a team of folks that whip those badly behaved installers into shape for a low cost (provided you are using a commerical edition of Chocolatey).
+**"I deal with software installers that don't install silently."** There are solutions for those badly behaved installers. If your team doesn't have the skillset for something like MSI repackaging, you can lean on our packaging support team that can whip those badly behaved installers into shape for a low cost (provided you are using a commerical edition of Chocolatey).
 
+**"But I'm not a developer, why should I learn PowerShell?"** Okay, time for some serious talk. If you are not learning better automation now, your peers are. They are going to move into this modern automation (DevOps as some might call it) and you might end up asking folks if they "want fries with that?". We are professionals that typically can call for higher salaries - that means we need to continue to provide value for the organizations that employ us. If we are not already familiar, we should learn to work with automation (PowerShell) and some basic foundational concepts of development (like source control). It's not hard, you might find it addictive.
+
+### Summary
 All we're saying is, it's time to step out of the dark ages and stop either doing things manually or stop killing yourself trying to work directly with those complex systems. Rub a little Chocolatey on them, stop powering through extra work at night, and go home to see your family in the evening because you use modern software automation and tools. Have confidence in your deployments and get the right information back to fix quickly when things go wrong. Chocolatey has been around for nearly ten years, thousands of companies and hundreds of thousands of people use it. Lean on a solution that has been proven to work over and over again. It will change your life, it may even get you a raise! You will get more done in the same amount of time, and your employer will take notice. Windows deserves better automation and so do you.
 
 ### Already familiar with other package managers?
