@@ -58,7 +58,7 @@ All we're saying is, it's time to step out of the dark ages and stop either doin
 
 ### Already familiar with other package managers?
 
-Chocolatey is like dpkg (Apt-Get)/RPM, but built with Windows in mind (there are differences and limitations). It can also do configuration tasks and anything that you can do with PowerShell.
+Chocolatey is like dpkg (Apt-Get)/RPM, but built with Windows in mind (there are differences and limitations). It can also do configuration tasks and anything that you can do with PowerShell. Another notable difference, it is really easy to create and maintain packages compared to those older, existing solutions for POSIX.
 
 Chocolatey manages packages (strictly nupkg files) and those packages manage software (could be installers, could be runtime binaries, could be zips or scripts).
 
