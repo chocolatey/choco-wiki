@@ -27,6 +27,7 @@ Congratulations on your recent purchase of a licensed edition of Chocolatey! If 
   - [Unable to load licensed version extensions and commands.](#unable-to-load-licensed-version-extensions-and-commands)
   - [Error when registering components](#error-when-registering-components)
   - [Access to the path is denied.](#access-to-the-path-is-denied)
+  - [No longer able to double click a nuspec to create a package](#no-longer-able-to-double-click-a-nuspec-to-create-a-package)
 
 <!-- /TOC -->
 
@@ -525,3 +526,6 @@ You may see `Error when registering components for 'chocolatey.licensed.infrastr
 You may be attempting to upgrade chocolatey.extension and see that the access to the path `c:\programdata\chocolatey\lib\chocolatey.extension` is denied. If you've verified you are an administrator and can not get into that folder, it's likely the folder was attempted to be deleted, but another process was accessing that folder and is holding a lock on it. You can use Handles (SysInternals) or something like LockHunter to attempt to find out if there is a lock on the folder. If there is, you normally would just need to close the process in question so the folder can be deleted.
 
 Unfortunately, this is likely to cause your install to be unusable until you fix the locking issue.
+
+### No longer able to double click a nuspec to create a package
+In the Windows 10 1803, it may remove the file association. You can simply `choco install chocolatey.extension -y --force` to add it back in.
