@@ -318,7 +318,7 @@ Do we have plans to support fully running on POSIX environments? We've discussed
 
 <a id="markdown-im-running-into-some-issue-with-chocolatey-packaging-or-something-else" name="im-running-into-some-issue-with-chocolatey-packaging-or-something-else"></a>
 ### I'm running into some issue with Chocolatey, packaging, or something else.
-See [[Troubleshooting]]
+See [[Troubleshooting|Troubleshooting]] 
 
 
 
