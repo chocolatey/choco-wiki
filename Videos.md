@@ -4,6 +4,7 @@
 
 - [Training](#training)
 - [Community](#community)
+  - [2018](#2018)
   - [2017](#2017)
   - [2016](#2016)
   - [2015](#2015)
@@ -20,6 +21,10 @@
 * https://www.pluralsight.com/courses/chocolatey-nuget-automation-pros
 
 ## Community
+
+### 2018
+
+* [How to Create an Azure VM with Chocolatey - Frank Boucher](https://youtu.be/X-pTFoLZyX4)
 
 ### 2017
 
