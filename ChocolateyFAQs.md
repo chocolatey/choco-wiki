@@ -56,7 +56,7 @@
   - [What can a Chocolatey Package consist of?](#what-can-a-chocolatey-package-consist-of)
   - [Tell me about packaging](#tell-me-about-packaging)
   - [How do I create packages?](#how-do-i-create-packages)
-  - [I'm created packages with the software contained in the package.](#im-created-packages-with-the-software-contained-in-the-package)
+  - [I'm creating packages with the software contained in the package.](#im-creating-packages-with-the-software-contained-in-the-package)
   - [I'm creating internal or offline packages, what do I need?](#im-creating-internal-or-offline-packages-what-do-i-need)
 - [Videos / Reference](#videos--reference)
   - [Where can I learn more?](#where-can-i-learn-more)
@@ -406,8 +406,8 @@ Chocolatey packages are what we like to think of as just fancy zip files. Zip fi
 ### How do I create packages?
 Try running `choco new test` from a command shell and inspect the output. You will find quite a bit of helpful information and just in time documentation in there.
 
-<a id="markdown-im-created-packages-with-the-software-contained-in-the-package" name="im-created-packages-with-the-software-contained-in-the-package"></a>
-### I'm created packages with the software contained in the package.
+<a id="markdown-im-creating-packages-with-the-software-contained-in-the-package" name="im-creating-packages-with-the-software-contained-in-the-package"></a>
+### I'm creating packages with the software contained in the package.
 Great! This is the most reliable use of Chocolatey, to embed the binaries directly in the package. See the next question for more details.
 
 <a id="markdown-im-creating-internal-or-offline-packages-what-do-i-need" name="im-creating-internal-or-offline-packages-what-do-i-need"></a>
