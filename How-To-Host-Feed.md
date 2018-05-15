@@ -335,7 +335,7 @@ See https://help.sonatype.com/repomanager3/high-availability-introduction for de
 * CPU - 2 cores (4+ cores recommended for large instances)
 * RAM - 4GB+ (8GB recommended for large instances)
 * Storage (HDD) - We recommend 2-5TB of free space for a local file store of artifacts (default install needs 10GB).
-* Database: Database: SQL Server Express or better. Install available during download. Minimum specs 1GB RAM, 6GB disk space, higher specs may be required if creating more than a simple feed repository.
+* Database: Higher specs may be required if creating more than a simple feed repository. Minimum, SQL Server Express 2012, (install available during download) 1GB RAM, 6GB disk space.
 * Chocolatey Repository Type: NuGet or ProGet has a Chocolatey designated feed type
 
 See https://inedo.com/support/documentation/proget/installation/installation-guide for more details. There is a Linux installation guide for Docker containers, however we don't recommend it for production use - https://inedo.com/support/documentation/proget/installation/installation-guide/linux-docker.
