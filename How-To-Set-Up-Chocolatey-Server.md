@@ -10,6 +10,7 @@
   - [Performance](#performance)
     - [Future](#future)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
+  - [Error 404 on Push](#error-404-on-push)
   - [Error 500](#error-500)
   - [Error 500.19 - "The requested page cannot be accessed because the related configuration data for the page is invalid."](#error-50019---the-requested-page-cannot-be-accessed-because-the-related-configuration-data-for-the-page-is-invalid)
   - [Other error](#other-error)
@@ -100,6 +101,9 @@ We are looking to add support for the package source to automatically handle thi
 ## Common Errors and Resolutions
 
 When you are attempting to install the Simple Server, you may run into some errors depending on your configuration. Here are some common ones we've seen that you may get when you browse to the the site.
+
+### Error 404 on Push
+If you can do everything except push packages, it is likely your application pool is set to Classic mode and can't find directories. It needs to be "Integrated". Please change that to Integrated and then recycle the application pool. That should resolve the issue of pushing packages. Reference: https://stackoverflow.com/a/37702935/18475.
 
 ### Error 500
 
