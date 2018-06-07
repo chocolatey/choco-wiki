@@ -5,6 +5,9 @@
 - [Package License Acceptance Terms](#package-license-acceptance-terms)
 - [Waiver of Responsibility](#waiver-of-responsibility)
 - [Distributions](#distributions)
+- [Licensing](#licensing)
+  - [Open Source Edition](#open-source-edition)
+  - [Commercial Editions](#commercial-editions)
 
 <!-- /TOC -->
 
@@ -24,3 +27,13 @@ Most Chocolatey packages on the community feed (https://chocolatey.org/packages 
 Because this is no different than what a human would do, and b/c a human kicks off this process, it's reasonable to determine that there is no violation of distribution rights.
 
 In the cases where you would package the actual software in the package, please ensure you have distribution rights. Any package that is found on the community feed not in compliance will be removed immediately. If you requested special permission to embed the software, make sure a copy of that permission is also in the package. If you are a software vendor that needs to report a violation, please see [[a package is violating distribution rights|PackageTriageProcess#the-package-is-violating-distribution-rights]].
+
+## Licensing
+
+### Open Source Edition
+
+The open source editions are Apache v2 licensed, which makes them friendly for use in organizations. For Choco (Chocolatey Command line tool), please see [LICENSE](https://github.com/chocolatey/choco/blob/master/LICENSE) and [NOTICE](https://github.com/chocolatey/choco/blob/master/NOTICE).
+
+### Commercial Editions
+
+Commercial editions of Chocolatey have different licensing. For Chocolatey for Business, the master software license agreement can be found at https://chocolatey.org/support

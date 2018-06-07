@@ -16,23 +16,23 @@ Heading down a sweet road.
 ## Chocolatey
 
 * Validation on choco pack (subset of the package-validator)
-* Official support for OneGet/PackageManagement - Prioritizing
-* GPG package signing - likely sometime in 2018
+* GPG package signing for traceability  - likely sometime in 2018
 * Authenticode package signing - likely sometime in 2018
 * Validating authenticode - see [#643](https://github.com/chocolatey/choco/issues/643)
 * ~~Not allowing package installs that don't have checksums by default when using non-secure resources like HTTP/FTP - see [#112](https://github.com/chocolatey/choco/issues/112)~~ released in 0.10.0
 * Nuspec enhancements - supported versions of Windows, etc
 * Packaging enhancements - like package version, architecture
 * [Virtual packages](https://github.com/chocolatey/chocolatey/issues/7)
-* WSA Support
-* Windows Nano Support - likely first half of 2018 (switching to .NET Standard/Core) to support running in that environment.
+* WSA / AppX / MSIX Support
+* Windows Nano Support - on hold, waiting for official stance from Microsoft
+* Official support for OneGet/PackageManagement - on hold, waiting on OneGet to support upgrades
 
 Other items as noted at https://github.com/chocolatey/choco - be sure to check the milestone for estimated release version.
 
 ## Licensed Chocolatey
 
 * ~~[[Self-Service Installs (Non-Admins)|FeaturesAgentService]]~~ released in Jan 2017
-* [[Chocolatey Central Console|FeaturesAgentService]]
+* [[Chocolatey Central Management Console|FeaturesAgentService]]
 * ~~Package Throttle - reduce download speeds for low bandwidth areas~~ - released in Q1 2017 (March)
 * Package Modernizer
 * Package Sync command:
