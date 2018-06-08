@@ -10,6 +10,8 @@
   - [Trust / Control](#trust--control)
   - [Distro-provided Repositories](#distro-provided-repositories)
 - [Excessive Use](#excessive-use)
+  - [How To Avoid Excessive Use](#how-to-avoid-excessive-use)
+  - [What To Do When You Are Blocked For Excessive Use](#what-to-do-when-you-are-blocked-for-excessive-use)
 - [Community Provided Packages Are Not Supported](#community-provided-packages-are-not-supported)
 - [Put It Another Way](#put-it-another-way)
 
@@ -46,11 +48,25 @@ However Windows doesn't have a distro-provided repo. Chocolatey Software does no
 
 ***Please note that individuals (even organizations) using the community repository are unlikely to hit excessive use numbers under normal usage scenarios.***
 
-Another aspect to keep in mind is that the community package repository is meant for the community. Perceived abuses of the community package repository that affect it in a detrimental way for the rest of the community will not be allowed. By abusive, it may mean more than **100 installs per hour on average over an internally determined amount of time** - this is not queries, this is **installs, upgrades** where actual package downloads are occurring. Let's say that is 30 days - that would mean 72,000+ package downloads over 30 days. When that is seen, our community team will make attempts to warn folks if we have known contacts (keep in mind it's highly unlikely we will have your contact information), and implement a temporary block to ensure your usage does not affect the community in a detrimental way. Many times this is due to a misconfiguration and can be corrected quickly.
+Another aspect to keep in mind is that the community package repository is meant for the community. Perceived abuses of the community package repository that affect it in a detrimental way for the rest of the community will not be allowed. By abusive, it ***may*** mean more than **100 installs per hour on average over an internally determined amount of time** (it could be more, could be less) - this is not queries, this is **installs, upgrades** where actual package downloads are occurring. Let's say that is 30 days - that would mean 72,000+ package downloads over 30 days. When that is seen, our community team will make attempts to warn folks if we have known contacts (keep in mind it's highly unlikely we will have your contact information), and implement a temporary block to ensure your usage does not affect the community in a detrimental way. Many times this is due to a misconfiguration and can be corrected quickly.
 
-**Blocks are meant to be temporary bans, but require you to act to remedy the situation.**
+**Blocks are meant to be temporary bans, but require you to act to remedy the situation.** If you have been blocked, please see the next sections for corrective actions.
 
-**NOTE**: If you or your organization feels you will need to go over this limit and need whitelisted (or you have found that you have gone over the limit and have been warned/blocked), please reach out at https://chocolatey.org/contact (send message to "Website" in the drop down - you may need to do this from a different IP address) or go to https://gitter.im/chocolatey/choco to contact the community team. As we have limited information, please include your name, email address, phone number, and the IP addresses you believe are blocked so we can contact you and verify if there is a ban. Once you have resolved any issues on your side, we can lift the ban. This will not automatically expire, we do need you to contact us.
+**NOTE**: If you or your organization feels you will need to go over this limit and need whitelisted, please reach out at https://chocolatey.org/contact, choose "Website". As we have limited information, please include your name, email address, phone number, and the IP addresses you believe are blocked so we can contact you and verify if there is a ban. Once you have resolved any issues on your side, we can lift the ban.
+
+### How To Avoid Excessive Use
+To avoid excessive use, please see our [[organizational deployment guide|How-To-Setup-Offline-Installation]]. There are even ways to automate caching / [[internalizing|How-To-Recompile-Packages]] (caching and internalizing are entirely different concepts) packages so you still get a pretty good hands off experience.
+
+If you are not able to take advantage of [[internalizing|How-To-Recompile-Packages]] packages, you can still cache them locally (using package repository solutions like Artifactory, Nexus, ProGet, MyGet, etc), which will reduce your direct usage of the community repository. **NOTE:** Caching doesn't make the packages you are using from the community repository any more reliable, they may still need to download things from the internet at runtime - but it doesn't put you in a worse place than you already are at because. If you want to achieve reliability when reusing community packages, you would need to [[internalize packages|How-To-Recompile-Packages]].
+
+### What To Do When You Are Blocked For Excessive Use
+**NOTE: A block will not automatically expire, you will need to contact our team to resolve the block.**
+
+If you have found that you have gone over the limit and have been warned/blocked, please reach out at https://chocolatey.org/contact (send message to "Website" in the drop down - you may need to do this from a different IP address) or go to https://gitter.im/chocolatey/choco to contact the community team. You can also send an email to community at chocolatey dot io. As we have limited information (only an IP address), please include your name, email address, phone number, and the IP addresses you believe are blocked so we can contact you and verify if there is a block.
+
+See the section above on avoiding excessive use - the expectation is that organizations would not use the community repository directly. As part of addressing any misconfigurations you might have, you will also need to see about addressing the previous section on "How To Avoid Excessive Use".
+
+Once you have resolved any issues on your side, we can lift the block. A block will be reimplemented later if we find excessive use again.
 
 ## Community Provided Packages Are Not Supported
 

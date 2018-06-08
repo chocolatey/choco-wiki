@@ -35,6 +35,8 @@
 <!-- /TOC -->
 
 ## Summary
+This guide is for open source organizational users all the way up to Chocolatey for Business (C4B) customers. You can create and host your own packages with ***any*** edition of Chocolatey, even open source. You can even find good free solutions for package repositories that you either have on-premise which includes private cloud or hosted solutions.
+
 Most organizations need a Chocolatey environment that does not access the internet. Fortunately, Chocolatey is a fully offline solution, we'll just need to remove the default community repository and point it to internal repositories. This walkthrough will provide you everything you need to get setup. We also have steps in this walkthrough that deal with environments that are air gapped (no access to the internet).
 
 > Chocolatey best practices for organizations / internal use:
@@ -59,6 +61,7 @@ There may be some exercises in here that won't apply:
 
 ### Terminology
 
+* Internal - Areas your organization manages - this could be on premise or in a private cloud you manage
 * FOSS - Chocolatey open source edition
 * C4B - Chocolatey for Business
 * TRIAL - Chocolatey for Business Trial
@@ -622,3 +625,4 @@ Now it's time to take the next steps and learn about Chocolatey and packaging it
 * [Learn Basic and Advanced Concepts For Software Management with Chocolatey](https://github.com/ferventcoder/chocolatey-workshop)
 * [Chocolatey Documentation](https://chocolatey.org/docs)
 * [Compare Features In Different Editions](https://chocolatey.org/compare#compare)
+* [[Automate Internalization of Community Packages|FeaturesAutomaticallyRecompilePackages]] - allows you to have same near hands off approach to package/software updates you might have seen before if you were using community repository directly.
