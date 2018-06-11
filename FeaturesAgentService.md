@@ -138,7 +138,7 @@ Starting with Chocolatey Licensed Extension v1.12.4, you are allowed to configur
 * optimize
 * pin
 * sync
-* download - Chocolatey Licensed Extension v1.12.12+.
+* download - Chocolatey Licensed Extension v1.12.12+ - keep in mind if you have shut off a non-admin's ability to run this they still won't be able to without also disabling the `adminOnlyExecutionForDownloadCommand` feature.
 
 **Blacklisted Commands**:
 
