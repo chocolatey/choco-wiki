@@ -138,6 +138,7 @@ Starting with Chocolatey Licensed Extension v1.12.4, you are allowed to configur
 * optimize
 * pin
 * sync
+* download - Chocolatey Licensed Extension v1.12.12+.
 
 **Blacklisted Commands**:
 
