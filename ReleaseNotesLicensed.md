@@ -77,12 +77,12 @@ This covers the release notes for the Chocolatey Licensed Extension (chocolatey.
     * Fix - Output directory option does not remove surrounding quotes
     * Fix - Incorrect version number is used to generate dependent packages when `--version` is passed to internalizer
  * Package Builder UI:
-    * Fix - Generate Button is not enabled for MSP License
+    * Fix - Generate button is not enabled for MSP License
 
 ### IMPROVEMENTS
  * Countdown - Allow turning off warnings with a feature
  * Self-Service / Background Mode:
-    * Hide ChocolateyLocalAdmin user from logon screen
+    * Do not show ChocolateyLocalAdmin user on logon screen
     * Ensure captured password at runtime makes it to the background service
     * Add Package Internalizer (download) to available commands
 
