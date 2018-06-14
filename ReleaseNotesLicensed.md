@@ -16,7 +16,8 @@ This covers the release notes for the Chocolatey Licensed Extension (chocolatey.
 ### BUG FIXES
  * Package Synchronizer (Choco Sync):
     * Fix - Do not sync out packages that were Chocolatey-managed packages
- * Fix - Adding domain user to Administrators fails with "A member could not be added to or removed from the local group because the member does not exist"
+ * Windows Service Management Functions:
+    * Fix - Adding domain user to Administrators fails with "A member could not be added to or removed from the local group because the member does not exist"
  * Fix - Expired Chocolatey License causes error on package installations
  * Fix - Incorrectly setting UserAgent property
  * Package Internalizer (Choco Download):
