@@ -4,59 +4,6 @@ This covers the release notes for the Chocolatey Licensed Extension (chocolatey.
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Open Source Release Notes|ReleaseNotes]].
 
-<!-- TOC depthFrom:2 depthTo:2 -->
-
-- [Known Issues](#known-issues)
-- [1.12.12 (June 12, 2018)](#11212-june-12-2018)
-- [1.12.11 (February 1, 2018)](#11211-february-1-2018)
-- [1.12.10 (December 18, 2017)](#11210-december-18-2017)
-- [1.12.9 (November 10, 2017)](#1129-november-10-2017)
-- [1.12.8 (October 25, 2017)](#1128-october-25-2017)
-- [1.12.7 (October 25, 2017)](#1127-october-25-2017)
-- [1.12.6 (October 24, 2017)](#1126-october-24-2017)
-- [1.12.5 (September 28, 2017)](#1125-september-28-2017)
-- [1.12.4 (September 27, 2017)](#1124-september-27-2017)
-- [1.12.3 (September 8, 2017)](#1123-september-8-2017)
-- [1.12.2 (August 31, 2017)](#1122-august-31-2017)
-- [1.12.1 (July 13, 2017)](#1121-july-13-2017)
-- [1.12.0 (July 10, 2017)](#1120-july-10-2017)
-- [1.11.0 (June 27, 2017)](#1110-june-27-2017)
-- [1.10.0 (June 9, 2017)](#1100-june-9-2017)
-- [1.9.8 (March 25, 2017)](#198-march-25-2017)
-- [1.9.7 (March 20, 2017)](#197-march-20-2017)
-- [1.9.6 (March 3, 2017)](#196-march-3-2017)
-- [1.9.5 (January 31, 2017)](#195-january-31-2017)
-- [1.9.4 (January 19, 2017)](#194-january-19-2017)
-- [1.9.3 (January 17, 2017)](#193-january-17-2017)
-- [1.9.2 (January 17, 2017)](#192-january-17-2017)
-- [1.9.1 (January 16, 2017)](#191-january-16-2017)
-- [1.9.0 (January 15, 2017)](#190-january-15-2017)
-- [1.8.4 (January 5, 2017)](#184-january-5-2017)
-- [1.8.3 (December 21, 2016)](#183-december-21-2016)
-- [1.8.2 (December 12, 2016)](#182-december-12-2016)
-- [1.8.1 (November 27, 2016)](#181-november-27-2016)
-- [1.8.0 (November 16, 2016)](#180-november-16-2016)
-- [1.7.0 (Sep 22, 2016)](#170-sep-22-2016)
-- [1.6.3 (Sep 20, 2016)](#163-sep-20-2016)
-- [1.6.2 (Sep 19, 2016 - pulled)](#162-sep-19-2016---pulled)
-- [1.6.1 (Sep 8, 2016)](#161-sep-8-2016)
-- [1.6.0 (Sep 8, 2016)](#160-sep-8-2016)
-- [1.5.1 (Aug 9, 2016)](#151-aug-9-2016)
-- [1.5.0 (July 21, 2016)](#150-july-21-2016)
-- [1.4.2 (June 20, 2016)](#142-june-20-2016)
-- [1.4.1 (June 14, 2016)](#141-june-14-2016)
-- [1.4.0 (June 13, 2016)](#140-june-13-2016)
-- [1.3.2 (May 28, 2016)](#132-may-28-2016)
-- [1.3.1 (May 9, 2016)](#131-may-9-2016)
-- [1.3.0 (May 2, 2016)](#130-may-2-2016)
-- [1.2.0 (March 14, 2016)](#120-march-14-2016)
-- [1.1.0 (February 12, 2016)](#110-february-12-2016)
-- [1.0.2 (February 5, 2016)](#102-february-5-2016)
-- [1.0.1 (February 2, 2016)](#101-february-2-2016)
-- [1.0.0 (February 1, 2016)](#100-february-1-2016)
-
-<!-- /TOC -->
-
 ## Known Issues
 * We've identified an issue with Self-Service "Interactive" and UAC - we are working on a fix. Please see [#36](https://github.com/chocolatey/chocolatey-licensed-issues/issues/36) and subscribe for details. Until then, do not turn on the interactive feature of self-service or nothing will work.
 * Some issues are listed at https://github.com/chocolatey/chocolatey-licensed-issues
