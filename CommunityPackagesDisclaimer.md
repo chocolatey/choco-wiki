@@ -52,7 +52,7 @@ Another aspect to keep in mind is that the community package repository is meant
 
 **Blocks are meant to be temporary bans, but require you to act to remedy the situation.** If you have been blocked, please see the next sections for corrective actions.
 
-**NOTE**: If you or your organization feels you will need to go over this limit and need whitelisted, please reach out at https://chocolatey.org/contact, choose "Website". As we have limited information, please include your name, email address, phone number, and the IP addresses you believe are blocked so we can contact you and verify if there is a ban. Once you have resolved any issues on your side, we can lift the ban.
+**NOTE**: If you or your organization feels you will need to go over this limit and need whitelisted, please reach out at https://chocolatey.org/contact, choose "Blocked IP Address". As we have limited information, please include your name, email address, phone number, and the IP addresses you believe are blocked so we can contact you and verify if there is a ban. Once you have resolved any issues on your side, we can lift the ban.
 
 ### How To Avoid Excessive Use
 To avoid excessive use, please see our [[organizational deployment guide|How-To-Setup-Offline-Installation]]. There are even ways to automate caching / [[internalizing|How-To-Recompile-Packages]] (caching and internalizing are entirely different concepts) packages so you still get a pretty good hands off experience.
@@ -62,7 +62,7 @@ If you are not able to take advantage of [[internalizing|How-To-Recompile-Packag
 ### What To Do When You Are Blocked For Excessive Use
 **NOTE: A block will not automatically expire, you will need to contact our team to resolve the block.**
 
-If you have found that you have gone over the limit and have been warned/blocked, please reach out at https://chocolatey.org/contact (send message to "Website" in the drop down - you may need to do this from a different IP address) or go to https://gitter.im/chocolatey/choco to contact the community team. You can also send an email to community at chocolatey dot io. As we have limited information (only an IP address), please include your name, email address, phone number, and the IP addresses you believe are blocked so we can contact you and verify if there is a block.
+If you have found that you have gone over the limit and have been warned/blocked, please reach out at https://chocolatey.org/contact (send message to "Blocked IP Address" in the drop down - you may need to do this from a different IP address) or go to https://gitter.im/chocolatey/choco to contact the community team. You can also send an email to community at chocolatey dot io. As we have limited information (only an IP address), please include your name, email address, phone number, and the IP addresses you believe are blocked so we can contact you and verify if there is a block.
 
 See the section above on avoiding excessive use - the expectation is that organizations would not use the community repository directly. As part of addressing any misconfigurations you might have, you will also need to see about addressing the previous section on "How To Avoid Excessive Use".
 

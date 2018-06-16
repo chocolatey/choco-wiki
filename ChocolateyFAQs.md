@@ -318,7 +318,7 @@ Do we have plans to support fully running on POSIX environments? We've discussed
 
 <a id="markdown-im-running-into-some-issue-with-chocolatey-packaging-or-something-else" name="im-running-into-some-issue-with-chocolatey-packaging-or-something-else"></a>
 ### I'm running into some issue with Chocolatey, packaging, or something else.
-See [[Troubleshooting|Troubleshooting]] 
+See [[Troubleshooting|Troubleshooting]]
 
 
 
@@ -366,7 +366,7 @@ That is the short name for Chocolatey for Business.
 
 <a id="markdown-i-have-not-received-my-license" name="i-have-not-received-my-license"></a>
 ### I have not received my license.
-The license email is sent from a support email at chocolatey dot io with an xml file (the license) attachment within 1-3 business days. If it has been 3 business days and you have not received your business license, please reach through the [sales contact](https://chocolatey.org/contact) (or any method you may already have for contacting sales) to get this resolved.
+The license email is sent from a support email at chocolatey dot io with an xml file (the license) attachment within 1-3 business days. If it has been 3 business days and you have not received your business license, please reach through the [sales contact](https://chocolatey.org/contact) (choose "Other") (or any method you may already have for contacting sales) to get this resolved.
 
 Any number of things could have happened:
 
@@ -375,7 +375,6 @@ Any number of things could have happened:
 
 To reduce these kind of occurrences, please make sure you have whitelisted the following email domains:
 
-* `realdimensions.net`
 * `chocolatey.io`
 * `chocolatey.org`
 
