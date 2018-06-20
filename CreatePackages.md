@@ -205,7 +205,7 @@ USERNAME=administrator
 USERPROFILE=C:\Users\administrator
 ```
 
-A simple way around this is to ask the user to set environment variables that can override environment variables.  Or alternatively, instruct your users to set a couple of environment variables in the elevated privileges shell.
+A simple way around this is to ask the user to set environment variables that can override environment variables.  Or alternatively, instruct your users to set the necessary environment variables in the elevated privileges command shell.
 
 Example instructions:
 
