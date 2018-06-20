@@ -178,13 +178,24 @@ No matter how you decide, you are advised to state the default installation dire
 If you allow customizing the installation path, then append instructions on how to do that, too.
 
 ### Windows environment variables
-Chocolatey installations are advised to be performed while running "as administrator".  Because of this it is important that you understand that some windows environment variables will be pinned to the administrator user and not the installation user in some circumstances.
+Chocolatey installations are advised to be performed while running "as administrator".  Because of this it is important that you understand that some windows environment variables will be pinned to the administrator user and not the installation user at least
+one circumstance.
 
-The issue can occur if a windows "standard user" installs Chocolatey packages on their system.  When the "standard user" runs "as administrator" the resulting powershell window or `cmd` window will define a subset of the environment variables to be relative to the administrator user, the shell is literally running "as administrator".
+On many systems there are multiple accounts.  The issue can occur on a system where there is an admin user with an account type of "Administrator", let's call this user **admin**. There is another user with an account type of "Standard User" lets call this second user **user**.
+
+Note: "Administrator" and "Standard User" are the 2 account types that Windows 10 supports.
+
+When **admin** chooses to run a `cmd` shell with elevated privileges by right clicking and selecting "Run as administrator".  **admin** will be warned by "User Access Control" that they are elevating privileges via a dialog that **admin** can dismiss.  The command shell will run the shell with administrator rights from the **admin** account.  All good!
+
+When **user** chooses to run a `cmd` shell by right clicking and selecting "Run as administrator", **user** will be asked to enter the credentials for **admin** account to gain administrator rights.  **user** will need to enter **admin**'s credentials and then the command shell will run the shell with administrator rights from the **admin** account.  Wait... what?
+
+Yes, really.  An elevated command shell for **user** will run as if it is the **admin** user!
+
+That means that when your installer depends on any environment variables to find install locations there is a scenario where the environment variables are from a different user (e.g. **admin**) than the user installing the package.
 
 The known affected environment variables are: `APPDATA`, `LOCALAPPDATA`, `TEMP`, `TMP`, `USERNAME`, `USERPROFILE`
 
-Example Settings:
+Example Settings for a user named "administrator":
 ```
 APPDATA=C:\Users\administrator\AppData\Roaming
 LOCALAPPDATA=C:\Users\administrator\AppData\Local
@@ -194,7 +205,15 @@ USERNAME=administrator
 USERPROFILE=C:\Users\administrator
 ```
 
-If you want to support the scenario of a "standard user" installing Chocolatey apps to their user `APPDATA` while in an elevated shell it is recommended that you not rely on these environment variables being set to the "standard user" location.
+A simple way around this is to ask the user to set environment variables that can override environment variables.  Or alternatively, instruct your users to set a couple of environment variables in the elevated privileges shell.
+
+Example instructions:
+
+>Within the administrator command shell you will need to set 2 environment variables:
+>```
+>set LOCALAPPDATA=C:\Users\<USERNAME>\AppData\Local
+>set USERPROFILE=C:\Users\<USERNAME>
+>```
 
 ## Upgrading
 
