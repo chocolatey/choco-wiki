@@ -9,7 +9,7 @@ If present in a package, the `ChocolateyInstall.ps1` script will be triggered at
 * In an [[Upgrade|CommandsUpgrade]] scenario, the install script for the new package will be run after any `chocolateyBeforeModify.ps1` script associated with the previous version of the package.
 
 ### Example?
-This is what it takes to install [StExBar](https://github.com/ferventcoder/chocolatey-packages/blob/master/automatic/StExBar/tools/chocolateyInstall.ps1):
+This is what it takes to install [StExBar](https://chocolatey.org/packages/stexbar):
 
 ```powershell
 $name   = 'StExBar'
@@ -20,4 +20,4 @@ $silent = '/quiet'
 Install-ChocolateyPackage $name 'msi' $silent $url $url64
 ```
 
-The Install-ChocolateyPackage helper uses the url, msi, and silent args to download and silently install and update stexbar.
+The Install-ChocolateyPackage helper uses the url, msi, and silent args to download and silently install and update StExBar.
