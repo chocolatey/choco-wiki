@@ -49,7 +49,7 @@ Config settings are adjusted using `choco config set --name <nameFromBelow> --va
 * `serviceInstallsDefaultUserPassword` = **''** - The default user password to use for installing services when one is not specified. Defaults to ''. When '', the value will be generated as encrypted hash specific to the machine and will not be known. The feature 'useLocalSystemForServiceInstalls' must be set to 'false' to use this field. Available in business editions v1.12.0+ only.
 
 ### Virus Scanning
-* `virusCheckMinimumPositives` = **'5'** - Minimum numer of scan result positives before flagging a binary as a possible virus. Used when virusScannerType is VirusTotal. Available in 0.9.10+. Licensed editions only. See https://chocolatey.org/docs/features-virus-check
+* `virusCheckMinimumPositives` = **'5'** - Minimum number of scan result positives before flagging a binary as a possible virus. Used when virusScannerType is VirusTotal. Available in 0.9.10+. Licensed editions only. See https://chocolatey.org/docs/features-virus-check
 * `virusScannerType` = **'VirusTotal'** - Virus Scanner Type (Generic or VirusTotal). Defaults to VirusTotal for Pro. Available in 0.9.10+. Licensed editions only. See https://chocolatey.org/docs/features-virus-check
 * `genericVirusScannerPath` = **' '** - The full path to the command line virus scanner executable. Used when virusScannerType is Generic. Available in 0.9.10+. Licensed editions only. See https://chocolatey.org/docs/features-virus-check
 * `genericVirusScannerArgs` = **'[[File]]'** - The arguments to pass to the generic virus scanner. Use [[File]] for the file path placeholder. Used when virusScannerType is Generic. Available in 0.9.10+. Licensed editions only. See https://chocolatey.org/docs/features-virus-check
