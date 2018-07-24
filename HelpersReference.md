@@ -11,6 +11,7 @@
   - [Administrative Access Functions](#administrative-access-functions)
   - [Non-Administrator Safe Functions](#non-administrator-safe-functions)
 - [Complete List (alphabetical order)](#complete-list-alphabetical-order)
+- [Chocolatey for Business Functions](#chocolatey-for-business-functions)
 - [Variables](#variables)
   - [Environment Variables](#environment-variables)
     - [Advanced Environment Variables](#advanced-environment-variables)
@@ -122,6 +123,13 @@ These are the functions from above as one list.
  * [[Write-ChocolateySuccess|HelpersWriteChocolateySuccess]]
  * [[Write-FileUpdateLog|HelpersWriteFileUpdateLog]]
  * [[Write-FunctionCallLogMessage|HelpersWriteFunctionCallLogMessage]]
+
+## Chocolatey for Business Functions
+
+ * [[Install-ChocolateyWindowsService|HelpersInstallChocolateyWindowsService]]
+ * [[Start-ChocolateyWindowsService|HelpersStartChocolateyWindowsService]]
+ * [[Stop-ChocolateyWindowsService|HelpersStopChocolateyWindowsService]]
+ * [[Uninstall-ChocolateyWindowsService|HelpersUninstallChocolateyWindowsService]]
 
 ## Variables
 
