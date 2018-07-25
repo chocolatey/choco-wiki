@@ -2,22 +2,23 @@
 
 **NOTE**: This function requires a Chocolatey for Business License to use.
 
-
-Start-ChocolateyWindowsService [-Name] <string>  [<CommonParameters>]
-
+Starts a Windows Service.
 
 ## Syntax
 
 ~~~powershell
 Start-ChocolateyWindowsService `
-  -Name <string>
+  -Name <string> `
+  [<CommonParameters>]
 ~~~
-
 
 
 ## Aliases
 
 None
+
+## Notes
+Requires Chocolatey for Business.
 
 ## Inputs
 
@@ -35,12 +36,12 @@ The name of the service to start. Will throw an error if it doesn't exist.
 
 Property               | Value
 ---------------------- | ---------------------
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | 0
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | true (ByPropertyName)
- 
+
 
 
 
