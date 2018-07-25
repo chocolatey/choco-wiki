@@ -2,8 +2,10 @@
 
 **NOTE**: This function requires a Chocolatey for Business License to use.
 
-
-Install-ChocolateyWindowsService [-Name] <string> [-ServiceExecutablePath] <string> [[-Username] <string>] [-Password <string>] [-DisplayName <string>] [-Description <string>] [-StartupType <ChocolateyWindowsServiceStartupType>] [-DoNotStartService] [-DoNotReinstallService]  [<CommonParameters>]
+
+
+`Install-ChocolateyWindowsService [-Name] <string> [-ServiceExecutablePath] <string> [[-Username] <string>] [-Password <string>] [-DisplayName <string>] [-Description <string>] [-StartupType <ChocolateyWindowsServiceStartupType>] [-DoNotStartService] [-DoNotReinstallService]  [<CommonParameters>]`
+
 
 
 ## Syntax
