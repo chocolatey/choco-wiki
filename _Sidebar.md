@@ -40,7 +40,7 @@
  - Direct Installer (C4B) - install/upgrade directly from msi / exe installers
  - [[Package Audit (C4B) - know who installed what and when|FeaturesPackageAudit]]
  - Windows Service Management PowerShell Functions (C4B)
- - [[Apply branding to Chocolatey Applications (C4B)|FeaturesBranding]]
+ - [[Branding Chocolatey Applications (C4B)|FeaturesBranding]]
  - In progress, check back for updates!
 
 #### Usage
