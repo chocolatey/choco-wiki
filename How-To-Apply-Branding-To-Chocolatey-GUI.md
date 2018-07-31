@@ -9,7 +9,7 @@ rather than with commands.
 
 While Chocolatey GUI has a number of pieces of functionality, is doesn't have
 everything that is offered by the Chocolatey CLI.  Over time, additional functionality
-will likley be added, but for the time being, the following is possible in
+will likely be added, but for the time being, the following is possible in
 Chocolatey GUI:
 
 * List Chocolatey Packages installed on local machine
@@ -24,7 +24,7 @@ Chocolatey GUI:
 # Branding
 
 We are aware that some of customers want to be able to brand Chocolatey GUI so
-that is "looks" like there own internal applications.  Out of the box, Chocolatey
+that is "looks" like their own internal applications.  Out of the box, Chocolatey
 GUI's main screen looks like this:
 
 ![Chocolatey GUI Main Screen](images/gui/main-screen.png)
@@ -62,7 +62,7 @@ splash screen image to display to the user.
 
 The numbers in the file names are a suggestion as to the width and height of each
 image.  While the images don't have to _exactly_ match these dimensions, it is
-recommended that there are as close as possible to these dimensions.
+recommended that they are as close as possible to these dimensions.
 
 ## Location of branding files
 
@@ -72,14 +72,14 @@ files into one of two specific places.
 ### Default Location
 
 By default, Chocolatey GUI will look for custom branding files in the Chocolatey
-installation directory (normally `c:/programdata/chocoaltey`, and then in a folder
+installation directory (normally `c:/programdata/chocolatey`, and then in a folder
 called `branding/gui`.  i.e. it will look in the following folder:
 
 `c:/programdata/chocolatey/branding/gui`
 
 ### Customer Location
 
-It is possible to use a custom location by firs settings an environment variable
+It is possible to use a custom location by first settings an environment variable
 called `ChocolateyBrandingLocation` to a new location.  For example, if you created
 this environment variable with a value of `c:/temp/branding`, then Chocolatey GUI
 would then expect to find the above asset files in this location:
@@ -88,8 +88,8 @@ would then expect to find the above asset files in this location:
 
 ## ChocolateyGuiBranding.dll
 
-The first time a Business Licensed version fo Chocolatey GUI is executed and there
-are the above asset files in one of the defined locations above, a new file will
+The first time a Business Licensed version of Chocolatey GUI is executed, and there
+are the above asset files in one of the defined locations, a new file will
 be generated in the same location called `ChocolateyGuiBranding.dll`.  The new
 file actually contains all the image files that were created, as they have been
 embedded as resouces within this assembly file.  This approach is used in order to
@@ -111,17 +111,17 @@ entire organisation.
 
 # Branding in action
 
-The below gif shows the default opening of the Chocolatey GUI application when
+The below GIF shows the default opening of the Chocolatey GUI application when
 there is no branding applied.
 
 ![Chocolatey GUI in action](images/gui/in-action.gif)
 
-In this gif, we see branding being applied to the Chocolatey GUI application.
+In this GIF, we see branding being applied to the Chocolatey GUI application.
 
 ![Chocolatey GUI in action with branding](images/gui/in-action-with-branding.gif)
 
 Notice that the splash screen image has been replaced, as well as the logo at the
-top left of the application, as well as the icon in the taskbar.
+top left of the application, and the icon in the taskbar.
 
 # Deploying Branding
 
