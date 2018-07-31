@@ -1,26 +1,3 @@
-# What is Chocolatey GUI?
-
-Chocolatey GUI is a WPF application that allows the installation, uninstallation,
-updating, and searching for Chocolatey Packages.  It is intended as a replacement
-for the Chocolatey CLI for those that prefer interacting with an application,
-rather than with commands.
-
-# What functionality is offered by Chocolatey GUI?
-
-While Chocolatey GUI has a number of pieces of functionality, is doesn't have
-everything that is offered by the Chocolatey CLI.  Over time, additional functionality
-will likely be added, but for the time being, the following is possible in
-Chocolatey GUI:
-
-* List Chocolatey Packages installed on local machine
-* List Chocolatey Packages available for installation from remote sources
-* Install/Uninstall/Update/Pin/Unpin Chocolatey Packages
-* Add/Remove Chocolatey Sources
-* Enable/disable Chocolatey Features
-* Modify Chocolatey configuration values
-* Visual indications provided when installed Chocolatey Packages are out of date
-* List and Tile View of installed/available packages
-
 # Branding
 
 We are aware that some of customers want to be able to brand Chocolatey GUI so
@@ -238,3 +215,26 @@ source as the package that is produced below.
 1. Run the command `choco pack`
 1. Deploy the generated `chocolateygui-branding.nupkg` to the repository that you are using
 1. Install the Chocolatey GUI Branding package
+
+# What is Chocolatey GUI?
+
+Chocolatey GUI is a WPF application that allows the installation, uninstallation,
+updating, and searching for Chocolatey Packages.  It is intended as a replacement
+for the Chocolatey CLI for those that prefer interacting with an application,
+rather than with commands.
+
+# What functionality is offered by Chocolatey GUI?
+
+While Chocolatey GUI has a number of pieces of functionality, is doesn't have
+everything that is offered by the Chocolatey CLI.  Over time, additional functionality
+will likely be added, but for the time being, the following is possible in
+Chocolatey GUI:
+
+* List Chocolatey Packages installed on local machine
+* List Chocolatey Packages available for installation from remote sources
+* Install/Uninstall/Update/Pin/Unpin Chocolatey Packages
+* Add/Remove Chocolatey Sources
+* Enable/disable Chocolatey Features
+* Modify Chocolatey configuration values
+* Visual indications provided when installed Chocolatey Packages are out of date
+* List and Tile View of installed/available packages
