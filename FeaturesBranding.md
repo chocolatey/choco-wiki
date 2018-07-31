@@ -1,4 +1,4 @@
-# Branding
+# Branding (Business Editions Only)
 
 We are aware that some of customers want to be able to brand Chocolatey GUI so
 that is "looks" like their own internal applications.  Out of the box, Chocolatey
