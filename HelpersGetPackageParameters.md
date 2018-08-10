@@ -115,7 +115,7 @@ compatibility with `chocolatey-core.extension`, use `:`.
 
 For example `-Parameters "/ITEM1:value /ITEM2:value with spaces"
 
-NOTE: In 0.10.9+, to maintain compatibility with the prior art of the 
+NOTE: In 0.10.9+, to maintain compatibility with the prior art of the
 chocolatey-core.extension method, quotes and apostrophes surrounding
 parameter values will be removed. When the param is used, those items
 can be added back if desired, but it's most important to ensure that
