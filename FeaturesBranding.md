@@ -116,7 +116,7 @@ source as the package that is produced below.
 1. In this folder, create a `tools` folder
 1. Copy the generated `ChocolateyGuiBranding.dll` into this folder
 1. Copy the following xml into a file called `chocolateygui-branding.nuspec`.
-    ~~~xml
+  ~~~xml
     <?xml version="1.0" encoding="utf-8"?>
     <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
       <metadata>
@@ -136,9 +136,9 @@ source as the package that is produced below.
         <file src="tools\**" target="tools" />
       </files>
     </package>
-    ~~~
+  ~~~
 1. Copy the following PowerShell into a file called `tools\chocolateyInstall.ps1`
-    ~~~powershell
+  ~~~powershell
     $toolsDir                      = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
     $helpersFile                   = Join-Path -Path $toolsDir -ChildPath 'helpers.ps1'
 
@@ -152,9 +152,9 @@ source as the package that is produced below.
     }
 
     Copy-Item -Path $chocolateyGuiBrandingAssembly -Destination $chocolateyGuiBrandingLocation
-    ~~~
+  ~~~
 1. Copy the following PowerShell into a file called `tools\chocolateyuninstall.ps1`
-    ~~~powershell
+  ~~~powershell
     $toolsDir                      = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
     $helpersFile                   = Join-Path -Path $toolsDir -ChildPath 'helpers.ps1'
 
@@ -164,9 +164,9 @@ source as the package that is produced below.
     $chocolateyGuiBrandingAssembly = Join-Path -Path $chocolateyGuiBrandingLocation -ChildPath 'ChocolateyGuiBranding.dll'
 
     Remove-Item -Path $chocolateyGuiBrandingAssembly -Force -ErrorAction Continue | Out-Null
-    ~~~
+  ~~~
 1. Copy the following PowerShell into a file called `tools\helpers.ps1`
-    ~~~powershell
+  ~~~powershell
     function Get-BrandingLocation {
       <#
       .SYNOPSIS
@@ -211,7 +211,7 @@ source as the package that is produced below.
 
         return $brandingLocation
         }
-    ~~~
+  ~~~
 1. Run the command `choco pack`
 1. Deploy the generated `chocolateygui-branding.nupkg` to the repository that you are using
 1. Install the Chocolatey GUI Branding package
