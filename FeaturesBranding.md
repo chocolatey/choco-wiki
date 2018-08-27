@@ -116,27 +116,27 @@ source as the package that is produced below.
 1. In this folder, create a `tools` folder
 1. Copy the generated `ChocolateyGuiBranding.dll` into this folder
 1. Copy the following xml into a file called `chocolateygui-branding.nuspec`.
-  ~~~xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
-      <metadata>
-        <id>chocolateygui-branding</id>
-        <version>0.1.0</version>
-        <title>chocolateygui-branding (Install)</title>
-        <authors>__REPLACE_AUTHORS_OF_SOFTWARE_COMMA_SEPARATED__</authors>
-        <projectUrl>https://_Software_Location_REMOVE_OR_FILL_OUT_</projectUrl>
-        <tags>chocolateygui-branding SPACE_SEPARATED</tags>
-        <summary>__REPLACE__</summary>
-        <description>__REPLACE__MarkDown_Okay </description>
-        <dependencies>
-          <dependency id="chocolateygui" />
-        </dependencies>
-      </metadata>
-      <files>
-        <file src="tools\**" target="tools" />
-      </files>
-    </package>
-  ~~~
+      ~~~xml
+      <?xml version="1.0" encoding="utf-8"?>
+      <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+        <metadata>
+          <id>chocolateygui-branding</id>
+          <version>0.1.0</version>
+          <title>chocolateygui-branding (Install)</title>
+          <authors>__REPLACE_AUTHORS_OF_SOFTWARE_COMMA_SEPARATED__</authors>
+          <projectUrl>https://_Software_Location_REMOVE_OR_FILL_OUT_</projectUrl>
+          <tags>chocolateygui-branding SPACE_SEPARATED</tags>
+          <summary>__REPLACE__</summary>
+          <description>__REPLACE__MarkDown_Okay </description>
+          <dependencies>
+            <dependency id="chocolateygui" />
+          </dependencies>
+        </metadata>
+        <files>
+          <file src="tools\**" target="tools" />
+        </files>
+      </package>
+      ~~~
 1. Copy the following PowerShell into a file called `tools\chocolateyInstall.ps1`
   ~~~powershell
     $toolsDir                      = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
