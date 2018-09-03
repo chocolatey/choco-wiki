@@ -221,7 +221,9 @@ source as the package that is produced below.
 ~~~
 
 `10.` Run the command `choco pack`
+
 `11.` Deploy the generated `chocolateygui-branding.nupkg` to the repository that you are using
+
 `12.` Install the Chocolatey GUI Branding package
 
 # What is Chocolatey GUI?
