@@ -441,13 +441,13 @@ To ensure our automation pipeline works, lets conduct tests.
 Before submitting a new package lets make sure we have no packages in our test or production repositories:
 
 1. To check the test repository, enter this at the command line `choco list --source http://testrepo-srv/chocolatey`. You should get this returned (note that the actual version of Chocolatey you see may be different):
-    ```
+    ```powershell
     PS> choco list --source http://testrepo-srv/chocolatey
     Chocolatey v0.10.11 Business
     0 packages found.
     ```
 1. To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of Chocolatey you see may be different):
-    ```
+    ```powershell
     PS> choco list --source http://prodrepo-srv/chocolatey
     Chocolatey v0.10.11 Business
     0 packages found.
@@ -463,14 +463,14 @@ You can check the progress of the job by click on the flashing blue circle next 
 This Jenkins job will run and then, if it is successful will trigger the job named **Update production repository** which will update the production repository with any new or updated packages in the test repository, in this case the `adobereader` package we just added. To see this:
 
 1. To check the test repository, enter this at the command line `choco list --source http://testrepo-srv/chocolatey`. You should get this returned (note that the actual version of `adobereader` and Chocolatey you see may be different):
-    ```
+    ```powershell
     PS> choco list --source http://testrepo-srv/chocolatey
     Chocolatey v0.10.11 Business
     adobereader 2015.007.20033.02
     1 packages found.
     ```
 1. To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of `adobereader` and Chocolatey you see may be different):
-    ```
+    ```powershell
     PS> choco list --source http://prodrepo-srv/chocolatey
     Chocolatey v0.10.11 Business
     adobereader 2015.007.20033.02
