@@ -1,10 +1,10 @@
 # How To Use Package Internalizer To Create Internal Package Source (Business Editions Only)
 
-# Summary
+## Summary
 
 When running within an organization it is beneficial to use your own, internally controlled, package repository. But that doesn't mean you have to create all packages from scratch. Chocolatey allows you to create packages easily using the [package builder](https://chocolatey.org/docs/features-create-packages-from-installers) but it also allows you to take packages from the Chocolatey Community Repository and recompile them for internal use - this is a process known as [package internalization](https://chocolatey.org/docs/features-automatically-recompile-packages). This guide shows you how to use that within your organization.
 
-# Organizational Requirements
+## Organizational Requirements
 
 When distributing software across your organization you need confidence and control of your package source. We do not recommend an organization use the [Chocolatey Community Repository](https://chocolatey.org "Chocolatey Community Repository") for the following reasons:
 
@@ -17,7 +17,7 @@ When distributing software across your organization you need confidence and cont
 
 For these reasons, we do not recommend that organizations use the Chocolatey Community Repository as a package source and encourage replacing it with your own internal package source.
 
-## Architecture
+### Architecture
 
 Chocolatey recommends you use an architecture that meets the [organizational requirements](#organizational-requirements) as we have shown below.
 
@@ -34,11 +34,11 @@ While it's not explicitly specified the glue that holds all of this together is 
 
 **NOTE:** The Chocolatey Architecture Diagram shows the services separated. But don't mistake the services for servers. All of these services, package internalizer, source control and package repositories can all be run on one server. There is a caveat however. [Chocolatey Server](https://chocolatey.org/docs/how-to-set-up-chocolatey-server) can only run one package source per server, so if you use this with a test and production repository source, as we recommend, you will need to run each on separate servers. This limitation does not apply to [Sonatype Nexus](https://www.sonatype.com/nexus-repository-sonatype), [Artifactory](https://jfrog.com/artifactory/), [ProGet](https://inedo.com/proget) and others.
 
-# Building Your Internal Infrastructure
+## Building Your Internal Infrastructure
 
 Lets build the internal infrastructure to support this process.
 
-## Server Pre-Requisites
+### Server Pre-Requisites
 
 When creating each server follow these steps:
 
@@ -46,13 +46,13 @@ When creating each server follow these steps:
 1. [Install Chocolatey](https://chocolatey.org/install#installing-chocolatey);
 1. Install `baretail`, `notepadplusplus.install` and `7zip` with Chocolatey: `choco install baretail notepadplusplus.install 7zip -y`;
 
-## Internal Package Repositories
+### Internal Package Repositories
 
 For this guide we have chosen to use [Chocolatey Server](https://chocolatey.org/docs/how-to-set-up-chocolatey-server) to host our internal package repository. However as we noted earlier this has the limitation of hosting only one repository per server. For anything more than a simple environment, we recommend you use [Sonatype Nexus](https://www.sonatype.com/nexus-repository-sonatype), [Artifactory Pro](https://jfrog.com/download-artifactory-pro/) or [ProGet](https://inedo.com/proget).
 
 The repositories to setup are for _test_ and _production_ which we will call `testrepo-srv` and `prodrepo-srv`. There are full [instructions for setting up Chocolatey server](https://chocolatey.org/docs/how-to-set-up-chocolatey-server#setup-normally) but to make sure we end up with the same result we list specific instructions here. Follow these instructions for each server, `testrepo-srv` and `prodrepo-srv`:
 
-### Install and Configure Chocolatey Server
+#### Install and Configure Chocolatey Server
 
 Before starting, make sure you install Chocolatey Server on separate servers.
 
@@ -105,13 +105,13 @@ Once this is done for both servers, you will have two repositories:
   * Name: `prodrepo-srv`
   * Push URL: `https://prodrepo-srv/chocolatey`
 
-## Install and Configure Jenkins Server
+### Install and Configure Jenkins Server
 
 [Jenkins](https://jenkins.io/) is a Continuous Integration / Continuous Delivery (often called CI/CD) tool that does the automation required to automatically manage the packages between the test and production repositories.
 
 Jenkins requires several PowerShell scripts to automate the processes. Create a directory on the root of your System Drive (normally `C:\`) called `scripts` and create each script file there.
 
-### Script: `Get-UpdatedPackage.ps1`
+#### Script: `Get-UpdatedPackage.ps1`
 ``` powershell
 [CmdletBinding()]
 Param (
@@ -165,7 +165,7 @@ $localPkgs | ForEach-Object {
 }
 ```
 
-### Script: `Update-ProdRepoFromTest.ps1`
+#### Script: `Update-ProdRepoFromTest.ps1`
 ``` powershell
 [CmdletBinding()]
 Param (
@@ -235,7 +235,7 @@ $pkgs | ForEach-Object {
 
 Note the section above where you should insert the code to test your packages before being pushed to the production repository. This testing should be on an image that is typical for your environment, often called a 'Gold Image'.
 
-### Script: `ConvertTo-ChocoObject.ps1`
+#### Script: `ConvertTo-ChocoObject.ps1`
 ``` powershell
 function ConvertTo-ChocoObject {
     [CmdletBinding()]
@@ -279,7 +279,7 @@ To install and configure Jenkins:
 
 We're now ready to create the jobs to work with the repository.
 
-### Create Jenkins Jobs
+#### Create Jenkins Jobs
 
 To allow us to automatically manage the test and production repository we will create three Jenkins jobs to:
 
@@ -293,7 +293,7 @@ Each job is detailed below. Use those details to create a new job:
 1. Enter the item name, click **Pipeline** and click **OK**;
 1. Complete the details page for each job and click **OK**;
 
-#### Jenkins Job Details: Update Test Repository
+##### Jenkins Job Details: Update Test Repository
 
 Below are the details for the Jenkins job to update the test repository from the Chocolatey Community Repository. This job will check the test repository against the Chocolatey Community Repository and download any updated packages, internalize them and submit them to the test repository. If successful it will then trigger the job named **Update Production Repository**.
 
@@ -334,7 +334,7 @@ Below are the details for the Jenkins job to update the test repository from the
 
 For this guide we will trigger each job manually, however in production you will want to add the **Build Trigger** option **Build periodically** and complete the **Schedule** field.
 
-#### Jenkins Job Details: Internalize Package
+##### Jenkins Job Details: Internalize Package
 
 Below are the details for the Jenkins job to update the test repository from the Chocolatey Community Repository. This job will take a list of packages that you submit to the job, download and internalize those packages and push them to the test repository. Once this has been done it will trigger the job named **Update Production Repository** to test and push them to the production repository.
 
@@ -382,7 +382,7 @@ Below are the details for the Jenkins job to update the test repository from the
         }
         ```
 
-#### Jenkins Job Details: Update Production Repository
+##### Jenkins Job Details: Update Production Repository
 
 Below are the details for the Jenkins job to update the production repository. This job will take any packages that are new or updated in the test repository, test them and, if successful, submit them to the production repository.
 
@@ -429,11 +429,11 @@ Below are the details for the Jenkins job to update the production repository. T
 
 For this guide we will trigger each job manually, however in production you will want to add the **Build Trigger** option **Build periodically** and complete the **Schedule** field.
 
-# Test the Jenkins Automation (Exercises)
+## Test the Jenkins Automation (Exercises)
 
 To ensure our automation pipeline works, lets conduct tests.
 
-## Submit a new package
+### Submit a new package
 
 Before submitting a new package lets make sure we have no packages in our test or production repositories:
 
@@ -474,7 +474,7 @@ This Jenkins job will run and then, if it is successful will trigger the job nam
     1 packages found.
     ```
 
-## Updating a package from the Chocolatey Community Repository
+### Updating a package from the Chocolatey Community Repository
 
 As packages get out of date in your test repository you need to update them from the Chocolatey Community Repository. Before we start let's add an older version of a package.
 
