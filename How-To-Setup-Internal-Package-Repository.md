@@ -98,12 +98,12 @@ Before starting, make sure you install Chocolatey Server on separate servers.
 Once this is done for both servers, you will have two repositories:
 
 1. Test Repository:
-  * Name: `testrepo-srv`
-  * push URL: `https://testrepo-srv/chocolatey`
+    * Name: `testrepo-srv`
+    * push URL: `https://testrepo-srv/chocolatey`
 
 2. Production Repository:
-  * Name: `prodrepo-srv`
-  * Push URL: `https://prodrepo-srv/chocolatey`
+    * Name: `prodrepo-srv`
+    * Push URL: `https://prodrepo-srv/chocolatey`
 
 ### Install and Configure Jenkins Server
 
