@@ -301,39 +301,39 @@ Each job is detailed below. Use those details to create a new job:
 Below are the details for the Jenkins job to update the test repository from the Chocolatey Community Repository. This job will check the test repository against the Chocolatey Community Repository and download any updated packages, internalize them and submit them to the test repository. If successful it will then trigger the job named **Update Production Repository**.
 
 * **General Tab**
-    * _Pipeline Name_: **Update test repository from Chocolatey Community Repository**
-    * _Description_: **Automatically update any out of date packages in the test repository from the Community Repository;.**
-    * _Ticked Options_: **This project is parameterized** and **Do not allow concurrent builds**;
-    * _Parameters_:
-        * _Parameter Type_: **String parameter**
-        * _Name_: **P_LOCAL_REPO_URL**
-        * _Default Value_: **http://testrepo-srv/chocolatey**
-        * _Description_: **Internal test repository.**
+  * _Pipeline Name_: **Update test repository from Chocolatey Community Repository**
+  * _Description_: **Automatically update any out of date packages in the test repository from the Community Repository;.**
+  * _Ticked Options_: **This project is parameterized** and **Do not allow concurrent builds**;
+  * _Parameters_:
+    * _Parameter Type_: **String parameter**
+    * _Name_: **P_LOCAL_REPO_URL**
+    * _Default Value_: **http://testrepo-srv/chocolatey**
+    * _Description_: **Internal test repository.**
 
-        * _Parameter Type_: **String parameter**
-        * _Name_: **P_REMOTE_REPO_URL**
-        * _Default Value_: **https://chocolatey.org/api/v2/**
-        _Description_: **Remote repository containing updated package versions.**
+    * _Parameter Type_: **String parameter**
+    * _Name_: **P_REMOTE_REPO_URL**
+    * _Default Value_: **https://chocolatey.org/api/v2/**
+    * _Description_: **Remote repository containing updated package versions.**
 
-        * _Parameter Type_: **Password parameter**
-        * _Name_: **P_LOCAL_REPO_API_KEY**
-        * _Default Value_: The test repository API Key - if you have not changed this it will be the default;
-        * _Description_: **API key for the internal test repository where updated packages will be pushed.**
+    * _Parameter Type_: **Password parameter**
+    * _Name_: **P_LOCAL_REPO_API_KEY**
+    * _Default Value_: The test repository API Key - if you have not changed this it will be the default;
+    * _Description_: **API key for the internal test repository where updated packages will be pushed.**
 
 * **Pipeline Tab**
-    * _Definition_: **Pipeline script**
-    * _Script_:
-        ``` powershell
-        node {
-            powershell '''
-                Set-Location (Join-Path -Path $env:SystemDrive -ChildPath 'scripts')
-                .\\Get-UpdatedPackage.ps1 -localrepo $env:P_LOCAL_REPO_URL `
-                    -LocalRepoApiKey $env:P_LOCAL_REPO_API_KEY `
-                    -RemoteRepo $env:P_REMOTE_REPO_URL `
-                    -Verbose
-                '''
-        }
-        ```
+  * _Definition_: **Pipeline script**
+  * _Script_:
+      ``` powershell
+      node {
+          powershell '''
+              Set-Location (Join-Path -Path $env:SystemDrive -ChildPath 'scripts')
+              .\\Get-UpdatedPackage.ps1 -localrepo $env:P_LOCAL_REPO_URL `
+                  -LocalRepoApiKey $env:P_LOCAL_REPO_API_KEY `
+                  -RemoteRepo $env:P_REMOTE_REPO_URL `
+                  -Verbose
+              '''
+      }
+      ```
 
 For this guide we will trigger each job manually, however in production you will want to add the **Build Trigger** option **Build periodically** and complete the **Schedule** field.
 
