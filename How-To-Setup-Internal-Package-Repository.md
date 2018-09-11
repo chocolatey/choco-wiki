@@ -443,7 +443,7 @@ Before submitting a new package lets make sure we have no packages in our test o
     Chocolatey v0.10.11 Business
     0 packages found.
     ```
-1. To check the test repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of Chocolatey you see may be different):
+1. To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of Chocolatey you see may be different):
     ```
     PS> choco list --source http://prodrepo-srv/chocolatey
     Chocolatey v0.10.11 Business
@@ -466,7 +466,7 @@ This Jenkins job will run and then, if it is successful will trigger the job nam
     adobereader 2015.007.20033.02
     1 packages found.
     ```
-1. To check the test repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of `adobereader` and Chocolatey you see may be different):
+1. To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of `adobereader` and Chocolatey you see may be different):
     ```
     PS> choco list --source http://prodrepo-srv/chocolatey
     Chocolatey v0.10.11 Business
