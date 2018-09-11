@@ -115,6 +115,7 @@
  - [[Deprecate a Package|How-To-Deprecate-A-Chocolatey-Package]]
  - [[Host Your Own Package Repository Server|How-To-Host-Feed]]
  - [[Set up the Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]]
+ - [[Set up Internal Package Repository|How-To-Setup-Internal-Package-Repository]]
 
 #### Use Cases
 
