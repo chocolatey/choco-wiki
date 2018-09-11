@@ -107,7 +107,7 @@
  - [[Request Package|PackageTriageProcess]]
  - [[Maintain Packages for My Software|PackageTriageProcess#i-want-to-take-overhelp-with-package-maintenance-for-my-software]]
  - [[Become a Maintainer|PackageTriageProcess]]
- - [[Take Over Package Maintenance Exclusively|PackageMantainerHandover]]
+ - [[Take Over Package Maintenance Exclusively|PackageMaintainerHandover]]
  - [[Parse Package Parameters|How-To-Parse-PackageParameters-Argument]]
  - [[Mount Iso|How-To-Mount-An-Iso-In-Chocolatey-Package]]
  - [[Create Custom Package Templates|How-To-Create-Custom-Package-Templates]]
