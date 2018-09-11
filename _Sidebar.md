@@ -117,7 +117,7 @@
  - [[Host Your Own Package Repository Server|How-To-Host-Feed]]
  - [[How to set up the Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]]
  - [[How to set up Chocolatey for internal/organizational use|How-To-Setup-Offline-Installation]]
- - [[Set up Internal Package Repository|How-To-Setup-Internal-Package-Repository]]
+ - [[How To Use Package Internalizer To Create Internal Package Source (Business Editions Only)|How-To-Setup-Internal-Package-Repository]]
 
 #### Use Cases
 
