@@ -60,37 +60,38 @@ Before starting, make sure you install Chocolatey Server on separate servers.
 1. Install `chocolatey.server` using Chocolatey: `choco install chocolatey.server -y`;
 1. To configure Chocolatey Server, run the following PowerShell code (see the comments in the code for more information):
 
-    ~~~powershell
-    # Step by step instructions here https://chocolatey.org/docs/how-to-set-up-chocolatey-server#setup-normally
-    # Import the right modules
-    Import-Module WebAdministration
-    # Disable or remove the Default website
-    Get-Website -Name 'Default Web Site' | Stop-Website
-    Set-ItemProperty "IIS:\Sites\Default Web Site" serverAutoStart False    # disables website
+```powershell
+  # Step by step instructions here https://chocolatey.org/docs/how-to-set-up-chocolatey-server#setup-normally
+  # Import the right modules
+  Import-Module WebAdministration
+  # Disable or remove the Default website
+  Get-Website -Name 'Default Web Site' | Stop-Website
+  Set-ItemProperty "IIS:\Sites\Default Web Site" serverAutoStart False    # disables website
 
-    # Set up an app pool for Chocolatey.Server. Ensure 32-bit is enabled and the managed runtime version is v4.0 (or some version of 4). Ensure it is "Integrated" and not "Classic".
-    New-WebAppPool -Name $appPoolName -Force
-    Set-ItemProperty IIS:\AppPools\$appPoolName enable32BitAppOnWin64 True       # Ensure 32-bit is enabled
-    Set-ItemProperty IIS:\AppPools\$appPoolName managedRuntimeVersion v4.0       # managed runtime version is v4.0
-    Set-ItemProperty IIS:\AppPools\$appPoolName managedPipelineMode Integrated   # Ensure it is "Integrated" and not "Classic"
-    Restart-WebAppPool -Name $appPoolName   # likely not needed ... but just in case
+  # Set up an app pool for Chocolatey.Server. Ensure 32-bit is enabled and the managed runtime version is v4.0 (or some version of 4). Ensure it is "Integrated" and not "Classic".
+  New-WebAppPool -Name $appPoolName -Force
+  Set-ItemProperty IIS:\AppPools\$appPoolName enable32BitAppOnWin64 True       # Ensure 32-bit is enabled
+  Set-ItemProperty IIS:\AppPools\$appPoolName managedRuntimeVersion v4.0       # managed runtime version is v4.0
+  Set-ItemProperty IIS:\AppPools\$appPoolName managedPipelineMode Integrated   # Ensure it is "Integrated" and not "Classic"
+  Restart-WebAppPool -Name $appPoolName   # likely not needed ... but just in case
 
-    # Set up an IIS website pointed to the install location and set it to use the app pool.
-    New-Website -Name $siteName -ApplicationPool $appPoolName -PhysicalPath $sitePath
+  # Set up an IIS website pointed to the install location and set it to use the app pool.
+  New-Website -Name $siteName -ApplicationPool $appPoolName -PhysicalPath $sitePath
 
-    # Add permissions to c:\tools\chocolatey.server:
-    'IIS_IUSRS', 'IUSR', "IIS APPPOOL\$appPoolName" | ForEach-Object {
-        $obj = New-AclObject -SamAccountName $_ -Permission 'ReadAndExecute' -Inheritance 'ContainerInherit','ObjectInherit'
-        Add-Acl -Path $sitePath -AceObject $obj
-    }
+  # Add permissions to c:\tools\chocolatey.server:
+  'IIS_IUSRS', 'IUSR', "IIS APPPOOL\$appPoolName" | ForEach-Object {
+      $obj = New-AclObject -SamAccountName $_ -Permission 'ReadAndExecute' -Inheritance 'ContainerInherit','ObjectInherit'
+      Add-Acl -Path $sitePath -AceObject $obj
+  }
 
-    # Add the permissions to the App_Data subfolder:
-    $appdataPath = Join-Path -Path $sitePath -ChildPath 'App_Data'
-    'IIS_IUSRS', "IIS APPPOOL\$appPoolName" | ForEach-Object {
-        $obj = New-AclObject -SamAccountName $_ -Permission 'Modify' -Inheritance 'ContainerInherit', 'ObjectInherit'
-        Add-Acl -Path $appdataPath -AceObject $obj
-    }
-    ~~~
+  # Add the permissions to the App_Data subfolder:
+  $appdataPath = Join-Path -Path $sitePath -ChildPath 'App_Data'
+  'IIS_IUSRS', "IIS APPPOOL\$appPoolName" | ForEach-Object {
+      $obj = New-AclObject -SamAccountName $_ -Permission 'Modify' -Inheritance 'ContainerInherit', 'ObjectInherit'
+      Add-Acl -Path $appdataPath -AceObject $obj
+  }
+```
+
 1. We shouldn't need to reboot the server but let's do it so we know everything is ready to go;
 1. From the server, open the browser and visit `https://<SERVER NAME>/chocolatey` - you will see some instructions but you need to note the password near the bottom. As this is a test environment we don't need to change this however **for a production environment you will the instructions to change the password**;
 1. Finally test the Chocolatey Server is working. From the server use the command `choco list --source https://<SERVER NAME>/chocolatey` (eg. if you were doing this from the test repository server you would use the command `choco list --source https://testrepo-srv/chocolatey`);
@@ -114,125 +115,125 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
 #### Script: `Get-UpdatedPackage.ps1`
 
 ```powershell
-[CmdletBinding()]
-Param (
-    [Parameter(Mandatory)]
-    [string]
-    $LocalRepo,
+  [CmdletBinding()]
+  Param (
+      [Parameter(Mandatory)]
+      [string]
+      $LocalRepo,
 
-    [Parameter(Mandatory)]
-    [string]
-    $LocalRepoApiKey,
+      [Parameter(Mandatory)]
+      [string]
+      $LocalRepoApiKey,
 
-    [Parameter(Mandatory)]
-    [string]
-    $RemoteRepo
-)
+      [Parameter(Mandatory)]
+      [string]
+      $RemoteRepo
+  )
 
-. .\ConvertTo-ChocoObject.ps1
+  . .\ConvertTo-ChocoObject.ps1
 
-Write-Verbose "Getting list of local packages from '$LocalRepo'."
-$localPkgs = choco list --source $LocalRepo | Select-Object -Skip 1 | Select-Object -SkipLast 1 | ConvertTo-ChocoObject
-Write-Verbose "Retrieved list of $(($localPkgs).count) packages from '$Localrepo'."
+  Write-Verbose "Getting list of local packages from '$LocalRepo'."
+  $localPkgs = choco list --source $LocalRepo | Select-Object -Skip 1 | Select-Object -SkipLast 1 | ConvertTo-ChocoObject
+  Write-Verbose "Retrieved list of $(($localPkgs).count) packages from '$Localrepo'."
 
-$localPkgs | ForEach-Object {
-    Write-Verbose "Getting remote package information for '$($_.name)'."
-    $remotePkg = choco list $_.name --source $RemoteRepo --exact | Select-Object -Skip 1 | Select-Object -SkipLast 1 | ConvertTo-ChocoObject
-    if ([version]($remotePkg.version) -gt ([version]$_.version)) {
-        Write-Verbose "Package '$($_.name)' has a remote version of '$($remotePkg.version)' which is later than the local version '$($_.version)'."
-        Write-Verbose "Internalizing package '$($_.name)' with version '$($remotePkg.version)'."
-        $tempPath = Join-Path -Path $env:TEMP -ChildPath ([GUID]::NewGuid()).GUID
-        choco download $_.name --no-progress --internalize --force --internalize-all-urls --append-use-original-location --output-directory=$tempPath --source=$RemoteRepo
+  $localPkgs | ForEach-Object {
+      Write-Verbose "Getting remote package information for '$($_.name)'."
+      $remotePkg = choco list $_.name --source $RemoteRepo --exact | Select-Object -Skip 1 | Select-Object -SkipLast 1 | ConvertTo-ChocoObject
+      if ([version]($remotePkg.version) -gt ([version]$_.version)) {
+          Write-Verbose "Package '$($_.name)' has a remote version of '$($remotePkg.version)' which is later than the local version '$($_.version)'."
+          Write-Verbose "Internalizing package '$($_.name)' with version '$($remotePkg.version)'."
+          $tempPath = Join-Path -Path $env:TEMP -ChildPath ([GUID]::NewGuid()).GUID
+          choco download $_.name --no-progress --internalize --force --internalize-all-urls --append-use-original-location --output-directory=$tempPath --source=$RemoteRepo
 
-        if ($LASTEXITCODE -eq 0) {
-            Write-Verbose "Pushing package '$($_.name)' to local repository '$LocalRepo'."
-            (Get-Item -Path (Join-Path -Path $tempPath -ChildPath "*.nupkg")).fullname | ForEach-Object {
-                choco push $_ --source $LocalRepo --api-key $LocalRepoApiKey --force
-                if ($LASTEXITCODE -eq 0) {
-                    Write-Verbose "Package '$_' pushed to '$LocalRepo'."
-                }
-                else {
-                    Write-Verbose "Package '$_' could not be pushed to '$LocalRepo'.`nThis could be because it already exists in the repository at a higher version and can be mostly ignored. Check error logs."
-                }
-            }
-        }
-        else {
-            Write-Verbose "Failed to download package '$($_.name)'"
-        }
-    }
-    else {
-        Write-Verbose "Package '$($_.name)' has a remote version of '$($remotePkg.version)' which is not later than the local version '$($_.version)'."
-    }
-}
+          if ($LASTEXITCODE -eq 0) {
+              Write-Verbose "Pushing package '$($_.name)' to local repository '$LocalRepo'."
+              (Get-Item -Path (Join-Path -Path $tempPath -ChildPath "*.nupkg")).fullname | ForEach-Object {
+                  choco push $_ --source $LocalRepo --api-key $LocalRepoApiKey --force
+                  if ($LASTEXITCODE -eq 0) {
+                      Write-Verbose "Package '$_' pushed to '$LocalRepo'."
+                  }
+                  else {
+                      Write-Verbose "Package '$_' could not be pushed to '$LocalRepo'.`nThis could be because it already exists in the repository at a higher version and can be mostly ignored. Check error logs."
+                  }
+              }
+          }
+          else {
+              Write-Verbose "Failed to download package '$($_.name)'"
+          }
+      }
+      else {
+          Write-Verbose "Package '$($_.name)' has a remote version of '$($remotePkg.version)' which is not later than the local version '$($_.version)'."
+      }
+  }
 ```
 
 #### Script: `Update-ProdRepoFromTest.ps1`
 
 ```powershell
-[CmdletBinding()]
-Param (
-    [Parameter(Mandatory)]
-    [string]
-    $ProdRepo,
+  [CmdletBinding()]
+  Param (
+      [Parameter(Mandatory)]
+      [string]
+      $ProdRepo,
 
-    [Parameter(Mandatory)]
-    [string]
-    $ProdRepoApiKey,
+      [Parameter(Mandatory)]
+      [string]
+      $ProdRepoApiKey,
 
-    [Parameter(Mandatory)]
-    [string]
-    $TestRepo
-)
+      [Parameter(Mandatory)]
+      [string]
+      $TestRepo
+  )
 
-. .\ConvertTo-ChocoObject.ps1
+  . .\ConvertTo-ChocoObject.ps1
 
-# get all of the packages from the test repo
-$testPkgs = choco list --source $TestRepo | Select-Object -Skip 1 | Select-Object -SkipLast 1 | ConvertTo-ChocoObject
-$prodPkgs = choco list --source $ProdRepo | Select-Object -Skip 1 | Select-Object -SkipLast 1 | ConvertTo-ChocoObject
-$tempPath = Join-Path -Path $env:TEMP -ChildPath ([GUID]::NewGuid()).GUID
-if ($null -eq $testPkgs) {
-    Write-Verbose "Test repository appears to be empty. Nothing to push to production."
-}
-elseif ($null -eq $prodPkgs) {
-    $pkgs = $testPkgs
-}
-else {
-    $pkgs = Compare-Object -ReferenceObject $testpkgs -DifferenceObject $prodpkgs -Property name, version | Where-object SideIndicator -eq '<='
-}
+  # get all of the packages from the test repo
+  $testPkgs = choco list --source $TestRepo | Select-Object -Skip 1 | Select-Object -SkipLast 1 | ConvertTo-ChocoObject
+  $prodPkgs = choco list --source $ProdRepo | Select-Object -Skip 1 | Select-Object -SkipLast 1 | ConvertTo-ChocoObject
+  $tempPath = Join-Path -Path $env:TEMP -ChildPath ([GUID]::NewGuid()).GUID
+  if ($null -eq $testPkgs) {
+      Write-Verbose "Test repository appears to be empty. Nothing to push to production."
+  }
+  elseif ($null -eq $prodPkgs) {
+      $pkgs = $testPkgs
+  }
+  else {
+      $pkgs = Compare-Object -ReferenceObject $testpkgs -DifferenceObject $prodpkgs -Property name, version | Where-object SideIndicator -eq '<='
+  }
 
-$pkgs | ForEach-Object {
-    Write-Verbose "Downloading package '$($_.name)' to '$tempPath'."
-    choco download $_.name --no-progress --output-directory=$tempPath --source=$TestRepo
+  $pkgs | ForEach-Object {
+      Write-Verbose "Downloading package '$($_.name)' to '$tempPath'."
+      choco download $_.name --no-progress --output-directory=$tempPath --source=$TestRepo
 
-    if ($LASTEXITCODE -eq 0) {
-        $pkgPath = (Get-Item -Path (Join-Path -Path $tempPath -ChildPath '*.nupkg')).FullName
+      if ($LASTEXITCODE -eq 0) {
+          $pkgPath = (Get-Item -Path (Join-Path -Path $tempPath -ChildPath '*.nupkg')).FullName
 
-        # #######################
-        # INSERT CODE HERE TO TEST YOUR PACKAGE
-        # #######################
+          # #######################
+          # INSERT CODE HERE TO TEST YOUR PACKAGE
+          # #######################
 
-        # If package testing is successful ...
-        if ($LASTEXITCODE -eq 0) {
-            Write-Verbose "Pushing downloaded package '$(Split-Path -Path $pkgPath -Leaf)' to production repository '$ProdRepo'."
-            choco push $pkgPath --source=$ProdRepo --api-key=$ProdRepoApiKey --force
+          # If package testing is successful ...
+          if ($LASTEXITCODE -eq 0) {
+              Write-Verbose "Pushing downloaded package '$(Split-Path -Path $pkgPath -Leaf)' to production repository '$ProdRepo'."
+              choco push $pkgPath --source=$ProdRepo --api-key=$ProdRepoApiKey --force
 
-            if ($LASTEXITCODE -eq 0) {
-                Write-Verbose "Pushed package successfully."
-            }
-            else {
-                Write-Verbose "Could not push package."
-            }
-        }
-        else {
-            Write-Verbose "Package testing failed."
-        }
+              if ($LASTEXITCODE -eq 0) {
+                  Write-Verbose "Pushed package successfully."
+              }
+              else {
+                  Write-Verbose "Could not push package."
+              }
+          }
+          else {
+              Write-Verbose "Package testing failed."
+          }
 
-        Remove-Item -Path $pkgPath -Force
-    }
-    else {
-        Write-Verbose "Could not download package."
-    }
-}
+          Remove-Item -Path $pkgPath -Force
+      }
+      else {
+          Write-Verbose "Could not download package."
+      }
+  }
 ```
 
 Note the section above where you should insert the code to test your packages before being pushed to the production repository. This testing should be on an image that is typical for your environment, often called a 'Gold Image'.
@@ -240,22 +241,22 @@ Note the section above where you should insert the code to test your packages be
 #### Script: `ConvertTo-ChocoObject.ps1`
 
 ```powershell
-function ConvertTo-ChocoObject {
-    [CmdletBinding()]
-    Param (
-        [Parameter(ValueFromPipeline)]
-        [string]$InputObject
-    )
+  function ConvertTo-ChocoObject {
+      [CmdletBinding()]
+      Param (
+          [Parameter(ValueFromPipeline)]
+          [string]$InputObject
+      )
 
-    Process {
-        # format of the 'choco list' output is:
-        # <PACKAGE NAME> <VERSION> (ie. adobereader 2015.6.7)
-        if (-not [string]::IsNullOrEmpty($InputObject)) {
-            $props = $_.split(' ')
-            New-Object -TypeName psobject -Property @{ name = $props[0]; version = $props[1] }
-        }
-    }
-}
+      Process {
+          # format of the 'choco list' output is:
+          # <PACKAGE NAME> <VERSION> (ie. adobereader 2015.6.7)
+          if (-not [string]::IsNullOrEmpty($InputObject)) {
+              $props = $_.split(' ')
+              New-Object -TypeName psobject -Property @{ name = $props[0]; version = $props[1] }
+          }
+      }
+  }
 ```
 
 To install and configure Jenkins:
@@ -324,17 +325,17 @@ Below are the details for the Jenkins job to update the test repository from the
   * _Definition_: **Pipeline script**
   * _Script_:
 
-      ```powershell
-      node {
-          powershell '''
-              Set-Location (Join-Path -Path $env:SystemDrive -ChildPath 'scripts')
-              .\\Get-UpdatedPackage.ps1 -localrepo $env:P_LOCAL_REPO_URL `
-                  -LocalRepoApiKey $env:P_LOCAL_REPO_API_KEY `
-                  -RemoteRepo $env:P_REMOTE_REPO_URL `
-                  -Verbose
-              '''
-      }
-      ```
+```powershell
+  node {
+      powershell '''
+          Set-Location (Join-Path -Path $env:SystemDrive -ChildPath 'scripts')
+          .\\Get-UpdatedPackage.ps1 -localrepo $env:P_LOCAL_REPO_URL `
+              -LocalRepoApiKey $env:P_LOCAL_REPO_API_KEY `
+              -RemoteRepo $env:P_REMOTE_REPO_URL `
+              -Verbose
+      '''
+  }
+```
 
 For this guide we will trigger each job manually, however in production you will want to add the **Build Trigger** option **Build periodically** and complete the **Schedule** field.
 
@@ -366,26 +367,26 @@ Below are the details for the Jenkins job to update the test repository from the
   * _Definition_: **Pipeline script**
   * _Script_:
 
-      ```powershell
-      node {
-          powershell '''
-              $temp = Join-Path -Path $env:TEMP -ChildPath ([GUID]::NewGuid()).Guid
-              $null = New-Item -Path $temp -ItemType Directory
-              Write-Output "Created temporary directory '$temp'."
-              ($env:P_PKG_LIST).split(';') | ForEach-Object {
-                  choco download $_ --no-progress --internalize --force --internalize-all-urls --append-use-original-location --output-directory=$temp --source='https://chocolatey.org/api/v2/'
-                  if ($LASTEXITCODE -eq 0) {
-                      $package = (Get-Item -Path (Join-Path -Path $temp -ChildPath "$_*.nupkg")).fullname
-                      choco push $package --source "$($env:P_DST_URL)" --api-key "$($env:P_API_KEY)" --force
-                  }
-                  else {
-                      Write-Output "Failed to download package '$_'"
-                  }
+```powershell
+  node {
+      powershell '''
+          $temp = Join-Path -Path $env:TEMP -ChildPath ([GUID]::NewGuid()).Guid
+          $null = New-Item -Path $temp -ItemType Directory
+          Write-Output "Created temporary directory '$temp'."
+          ($env:P_PKG_LIST).split(';') | ForEach-Object {
+              choco download $_ --no-progress --internalize --force --internalize-all-urls --append-use-original-location --output-directory=$temp --source='https://chocolatey.org/api/v2/'
+              if ($LASTEXITCODE -eq 0) {
+                  $package = (Get-Item -Path (Join-Path -Path $temp -ChildPath "$_*.nupkg")).fullname
+                  choco push $package --source "$($env:P_DST_URL)" --api-key "$($env:P_API_KEY)" --force
               }
-              Remove-Item -Path $temp -Force -Recurse
-          '''
-      }
-      ```
+              else {
+                  Write-Output "Failed to download package '$_'"
+              }
+          }
+          Remove-Item -Path $temp -Force -Recurse
+      '''
+  }
+```
 
 ##### Jenkins Job Details: Update Production Repository
 
@@ -420,18 +421,18 @@ Below are the details for the Jenkins job to update the production repository. T
   * _Definition_: **Pipeline script**
   * _Script_:
 
-      ```powershell
-      node {
-          powershell '''
-              Set-Location (Join-Path -Path $env:SystemDrive -ChildPath 'scripts')
-              .\\Update-ProdRepoFromTest.ps1 `
-              -ProdRepo $env:P_PROD_REPO_URL `
-              -ProdRepoApiKey $env:P_PROD_REPO_API_KEY `
-              -TestRepo $env:P_TEST_REPO_URL `
-              -Verbose
+```powershell
+  node {
+      powershell '''
+          Set-Location (Join-Path -Path $env:SystemDrive -ChildPath 'scripts')
+          .\\Update-ProdRepoFromTest.ps1 `
+          -ProdRepo $env:P_PROD_REPO_URL `
+          -ProdRepoApiKey $env:P_PROD_REPO_API_KEY `
+          -TestRepo $env:P_TEST_REPO_URL `
+          -Verbose
       '''
-      }
-      ```
+  }
+```
 
 For this guide we will trigger each job manually, however in production you will want to add the **Build Trigger** option **Build periodically** and complete the **Schedule** field.
 
@@ -445,19 +446,19 @@ Before submitting a new package lets make sure we have no packages in our test o
 
 1. To check the test repository, enter this at the command line `choco list --source http://testrepo-srv/chocolatey`. You should get this returned (note that the actual version of Chocolatey you see may be different):
 
-    ```powershell
-    PS> choco list --source http://testrepo-srv/chocolatey
-    Chocolatey v0.10.11 Business
-    0 packages found.
-    ```
+```powershell
+  PS> choco list --source http://testrepo-srv/chocolatey
+  Chocolatey v0.10.11 Business
+  0 packages found.
+```
 
 1. To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of Chocolatey you see may be different):
 
-    ```powershell
-    PS> choco list --source http://prodrepo-srv/chocolatey
-    Chocolatey v0.10.11 Business
-    0 packages found.
-    ```
+```powershell
+  PS> choco list --source http://prodrepo-srv/chocolatey
+  Chocolatey v0.10.11 Business
+  0 packages found.
+```
 
 Follow these steps to add a new package:
 
@@ -470,21 +471,21 @@ This Jenkins job will run and then, if it is successful will trigger the job nam
 
 1. To check the test repository, enter this at the command line `choco list --source http://testrepo-srv/chocolatey`. You should get this returned (note that the actual version of `adobereader` and Chocolatey you see may be different):
 
-    ```powershell
-    PS> choco list --source http://testrepo-srv/chocolatey
-    Chocolatey v0.10.11 Business
-    adobereader 2015.007.20033.02
-    1 packages found.
-    ```
+```powershell
+  PS> choco list --source http://testrepo-srv/chocolatey
+  Chocolatey v0.10.11 Business
+  adobereader 2015.007.20033.02
+  1 packages found.
+```
 
 1. To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of `adobereader` and Chocolatey you see may be different):
 
-    ```powershell
-    PS> choco list --source http://prodrepo-srv/chocolatey
-    Chocolatey v0.10.11 Business
-    adobereader 2015.007.20033.02
-    1 packages found.
-    ```
+```powershell
+  PS> choco list --source http://prodrepo-srv/chocolatey
+  Chocolatey v0.10.11 Business
+  adobereader 2015.007.20033.02
+  1 packages found.
+```
 
 ### Updating a package from the Chocolatey Community Repository
 
@@ -495,31 +496,33 @@ As packages get out of date in your test repository you need to update them from
 1. Go back to Jenkins and run the job **Update production repository** with default parameters. This will test the `putty.install` package and push it to the production repository.
 1. Go to the command line and run `choco list --source http://prodrepo-srv/chocolatey` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list):
 
-    ```powershell
-    PS> choco list --source http://prodrepo-srv/chocolatey
-    Chocolatey v0.10.11 Business
-    adobereader 2015.007.20033.02
-    putty.install 0.70
-    2 packages found.
-    ```
+```powershell
+  PS> choco list --source http://prodrepo-srv/chocolatey
+  Chocolatey v0.10.11 Business
+  adobereader 2015.007.20033.02
+  putty.install 0.70
+  2 packages found.
+```
+
 1. Go back to Jenkins and run the job **Update test repository from Chocolatey Community Repository**. This will check the test repository against the Chocolatey Community Repository and update out `putty.install` package;
 1. Go to the command line and run `choco list --source http://testrepo-srv/chocolatey --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different):
 
-    ```powershell
-    PS> choco list --source http://testrepo-srv/chocolatey
-    Chocolatey v0.10.11 Business
-    adobereader 2015.007.20033.02
-    putty.install 0.70.0.20171219
-    putty.install 0.70
-    3 packages found.
-    ```
+```powershell
+  PS> choco list --source http://testrepo-srv/chocolatey
+  Chocolatey v0.10.11 Business
+  adobereader 2015.007.20033.02
+  putty.install 0.70.0.20171219
+  putty.install 0.70
+  3 packages found.
+```
+
 1. As the Jenkins job **Update test repository from Chocolatey Community Repository** we ran earlier triggers the job **Update production repository**, the `putty.install` package will be automatically tested and pushed to the production repository. To check this, run the following on the command line `choco list --source http://prodrepo-srv/chocolatey --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different)
 
-    ```powershell
-    PS> choco list --source http://prodrepo-srv/chocolatey
-    Chocolatey v0.10.11 Business
-    adobereader 2015.007.20033.02
-    putty.install 0.70.0.20171219
-    putty.install 0.70
-    3 packages found.
-    ```
+```powershell
+  PS> choco list --source http://prodrepo-srv/chocolatey
+  Chocolatey v0.10.11 Business
+  adobereader 2015.007.20033.02
+  putty.install 0.70.0.20171219
+  putty.install 0.70
+  3 packages found.
+```
