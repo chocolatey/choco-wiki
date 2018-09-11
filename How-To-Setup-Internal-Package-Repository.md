@@ -112,6 +112,7 @@ Once this is done for both servers, you will have two repositories:
 Jenkins requires several PowerShell scripts to automate the processes. Create a directory on the root of your System Drive (normally `C:\`) called `scripts` and create each script file there.
 
 #### Script: `Get-UpdatedPackage.ps1`
+
 ``` powershell
 [CmdletBinding()]
 Param (
