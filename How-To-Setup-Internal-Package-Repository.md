@@ -342,93 +342,93 @@ For this guide we will trigger each job manually, however in production you will
 Below are the details for the Jenkins job to update the test repository from the Chocolatey Community Repository. This job will take a list of packages that you submit to the job, download and internalize those packages and push them to the test repository. Once this has been done it will trigger the job named **Update Production Repository** to test and push them to the production repository.
 
 * **General Tab**
-    * _Pipeline Name_: **Internalize packages from the Community Repository**
-    * _Description_: **Add new packages for internalizing from the Community Respository;.**
-    * _Ticked Options_: **This project is parameterized** and **Do not allow concurrent builds**;
-    * _Parameters_:
-        * _Parameter Type_: **String parameter**
-        * _Name_: **P_PKG_LIST**
-        * _Default Value_: **<leave blank>**
-        * _Description_: **List of Chocolatey packages to be internalized (semicolon separated)**
+  * _Pipeline Name_: **Internalize packages from the Community Repository**
+  * _Description_: **Add new packages for internalizing from the Community Respository;.**
+  * _Ticked Options_: **This project is parameterized** and **Do not allow concurrent builds**;
+  * _Parameters_:
+    * _Parameter Type_: **String parameter**
+    * _Name_: **P_PKG_LIST**
+    * _Default Value_: **<leave blank>**
+    * _Description_: **List of Chocolatey packages to be internalized (semicolon separated)**
 
-        * _Parameter Type_: **String parameter**
-        * _Name_: **P_DST_URL**
-        * _Default Value_: **http://testrepo-srv/chocolatey**
-        _Description_: **Internal package repository URL.**
+    * _Parameter Type_: **String parameter**
+    * _Name_: **P_DST_URL**
+    * _Default Value_: **http://testrepo-srv/chocolatey**
+    * _Description_: **Internal package repository URL.**
 
-        * _Parameter Type_: **Password parameter**
-        * _Name_: **P_API_KEY**
-        * _Default Value_: The test repository API Key - if you have not changed this it will be the default;
-        * _Description_: **API key for the internal test repository.**
+    * _Parameter Type_: **Password parameter**
+    * _Name_: **P_API_KEY**
+    * _Default Value_: The test repository API Key - if you have not changed this it will be the default;
+    * _Description_: **API key for the internal test repository.**
 
 * **Pipeline Tab**
-    * _Definition_: **Pipeline script**
-    * _Script_:
-        ``` powershell
-        node {
-            powershell '''
-                $temp = Join-Path -Path $env:TEMP -ChildPath ([GUID]::NewGuid()).Guid
-                $null = New-Item -Path $temp -ItemType Directory
-                Write-Output "Created temporary directory '$temp'."
-                ($env:P_PKG_LIST).split(';') | ForEach-Object {
-                    choco download $_ --no-progress --internalize --force --internalize-all-urls --append-use-original-location --output-directory=$temp --source='https://chocolatey.org/api/v2/'
-                    if ($LASTEXITCODE -eq 0) {
-                        $package = (Get-Item -Path (Join-Path -Path $temp -ChildPath "$_*.nupkg")).fullname
-                        choco push $package --source "$($env:P_DST_URL)" --api-key "$($env:P_API_KEY)" --force
-                    }
-                    else {
-                        Write-Output "Failed to download package '$_'"
-                    }
-                }
-                Remove-Item -Path $temp -Force -Recurse
-            '''
-        }
-        ```
+  * _Definition_: **Pipeline script**
+  * _Script_:
+      ``` powershell
+      node {
+          powershell '''
+              $temp = Join-Path -Path $env:TEMP -ChildPath ([GUID]::NewGuid()).Guid
+              $null = New-Item -Path $temp -ItemType Directory
+              Write-Output "Created temporary directory '$temp'."
+              ($env:P_PKG_LIST).split(';') | ForEach-Object {
+                  choco download $_ --no-progress --internalize --force --internalize-all-urls --append-use-original-location --output-directory=$temp --source='https://chocolatey.org/api/v2/'
+                  if ($LASTEXITCODE -eq 0) {
+                      $package = (Get-Item -Path (Join-Path -Path $temp -ChildPath "$_*.nupkg")).fullname
+                      choco push $package --source "$($env:P_DST_URL)" --api-key "$($env:P_API_KEY)" --force
+                  }
+                  else {
+                      Write-Output "Failed to download package '$_'"
+                  }
+              }
+              Remove-Item -Path $temp -Force -Recurse
+          '''
+      }
+      ```
 
 ##### Jenkins Job Details: Update Production Repository
 
 Below are the details for the Jenkins job to update the production repository. This job will take any packages that are new or updated in the test repository, test them and, if successful, submit them to the production repository.
 
 * **General Tab**
-    * _Pipeline Name_: **Update production repository**
-    * _Description_: **Determine new packages on the Test repository, test and submit them to the Production repository.**
-    * _Ticked Options_: **This project is parameterized** and **Do not allow concurrent builds**;
-    * _Parameters_:
-        * _Parameter Type_: **String parameter**
-        * _Name_: **P_PROD_REPO_URL**
-        * _Default Value_: **http://prodrepo-srv/chocolatey**
-        * _Description_: **URL to the production repository.**
+  * _Pipeline Name_: **Update production repository**
+  * _Description_: **Determine new packages on the Test repository, test and submit them to the Production repository.**
+  * _Ticked Options_: **This project is parameterized** and **Do not allow concurrent builds**;
+  * _Parameters_:
+    * _Parameter Type_: **String parameter**
+    * _Name_: **P_PROD_REPO_URL**
+    * _Default Value_: **http://prodrepo-srv/chocolatey**
+    * _Description_: **URL to the production repository.**
 
-        * _Parameter Type_: **Password parameter**
-        * _Name_: **P_PROD_REPO_API_KEY**
-        * _Default Value_: The test repository API Key - if you have not changed this it will be the default;
-        * _Description_: **API key for the production repository.**
+    * _Parameter Type_: **Password parameter**
+    * _Name_: **P_PROD_REPO_API_KEY**
+    * _Default Value_: The test repository API Key - if you have not changed this it will be the default;
+    * _Description_: **API key for the production repository.**
 
-        * _Parameter Type_: **String parameter**
-        * _Name_: **P_TEST_REPO_URL**
-        * _Default Value_: **http://testrepo-srv/chocolatey**
-        _Description_: **URL for the test repository.**
+    * _Parameter Type_: **String parameter**
+    * _Name_: **P_TEST_REPO_URL**
+    * _Default Value_: **http://testrepo-srv/chocolatey**
+    * _Description_: **URL for the test repository.**
 
 * **Build Triggers**
-    * _Options_: **Build after other projects are built**
-    * _Projects to watch_: **Internalize packages from the Community Repository** and **Update test repository from Chocolatey Community Repository**
-    * _Project Options_: **Trigger only if build is stable**
+  * _Options_: **Build after other projects are built**
+  * _Projects to watch_: **Internalize packages from the Community Repository** and **Update test repository from Chocolatey Community Repository**
+  * _Project Options_: **Trigger only if build is stable**
 
 * **Pipeline Tab**
-    * _Definition_: **Pipeline script**
-    * _Script_:
-        ``` powershell
-        node {
-            powershell '''
-                Set-Location (Join-Path -Path $env:SystemDrive -ChildPath 'scripts')
-                .\\Update-ProdRepoFromTest.ps1 `
-                -ProdRepo $env:P_PROD_REPO_URL `
-                -ProdRepoApiKey $env:P_PROD_REPO_API_KEY `
-                -TestRepo $env:P_TEST_REPO_URL `
-                -Verbose
-        '''
-        }
-        ```
+  * _Definition_: **Pipeline script**
+  * _Script_:
+      ``` powershell
+      node {
+          powershell '''
+              Set-Location (Join-Path -Path $env:SystemDrive -ChildPath 'scripts')
+              .\\Update-ProdRepoFromTest.ps1 `
+              -ProdRepo $env:P_PROD_REPO_URL `
+              -ProdRepoApiKey $env:P_PROD_REPO_API_KEY `
+              -TestRepo $env:P_TEST_REPO_URL `
+              -Verbose
+      '''
+      }
+      ```
 
 For this guide we will trigger each job manually, however in production you will want to add the **Build Trigger** option **Build periodically** and complete the **Schedule** field.
 
