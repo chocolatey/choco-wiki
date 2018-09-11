@@ -113,11 +113,11 @@
  - [[Create Custom Package Templates|How-To-Create-Custom-Package-Templates]]
  - [[Extend Chocolatey With PowerShell Modules (extensions)|How-To-Create-Extensions]]
  - [[Deprecate a Package|How-To-Deprecate-A-Chocolatey-Package]]
- - [[How to install licensed edition|Installation-Licensed]]
+ - [[Install licensed edition|Installation-Licensed]]
  - [[Host Your Own Package Repository Server|How-To-Host-Feed]]
- - [[How to set up the Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]]
- - [[How to set up Chocolatey for internal/organizational use|How-To-Setup-Offline-Installation]]
- - [[How To Use Package Internalizer To Create Internal Package Source (Business Editions Only)|How-To-Setup-Internal-Package-Repository]]
+ - [[Set up the Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]]
+ - [[Set up Chocolatey for internal/organizational use|How-To-Setup-Offline-Installation]]
+ - [[Use Package Internalizer To Create Internal Package Source (Business Editions Only)|How-To-Setup-Internal-Package-Repository]]
 
 #### Use Cases
 
