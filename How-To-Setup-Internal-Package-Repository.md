@@ -50,7 +50,7 @@ When creating each server follow these steps:
 
 For this guide we have chosen to use [Chocolatey Server](https://chocolatey.org/docs/how-to-set-up-chocolatey-server) to host our internal package repository. However as we noted earlier this has the limitation of hosting only one repository per server. For anything more than a simple environment, we recommend you use [Sonatype Nexus](https://www.sonatype.com/nexus-repository-sonatype), [Artifactory Pro](https://jfrog.com/download-artifactory-pro/) or [ProGet](https://inedo.com/proget).
 
-The repositories to setup are for _test_ and _production_ which we will call `testrepo-srv` and `prodrepo-srv`. There are full [instructions for setting up Chocolatey server]((https://chocolatey.org/docs/how-to-set-up-chocolatey-server#setup-normally) but to make sure we end up with the same result we list specific instructions here. Follow these instructions for each server, `testrepo-srv` and `prodrepo-srv`:
+The repositories to setup are for _test_ and _production_ which we will call `testrepo-srv` and `prodrepo-srv`. There are full [instructions for setting up Chocolatey server](https://chocolatey.org/docs/how-to-set-up-chocolatey-server#setup-normally) but to make sure we end up with the same result we list specific instructions here. Follow these instructions for each server, `testrepo-srv` and `prodrepo-srv`:
 
 ### Install and Configure Chocolatey Server
 
