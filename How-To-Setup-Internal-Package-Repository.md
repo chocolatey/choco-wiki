@@ -167,6 +167,7 @@ $localPkgs | ForEach-Object {
 ```
 
 #### Script: `Update-ProdRepoFromTest.ps1`
+
 ``` powershell
 [CmdletBinding()]
 Param (
@@ -237,6 +238,7 @@ $pkgs | ForEach-Object {
 Note the section above where you should insert the code to test your packages before being pushed to the production repository. This testing should be on an image that is typical for your environment, often called a 'Gold Image'.
 
 #### Script: `ConvertTo-ChocoObject.ps1`
+
 ``` powershell
 function ConvertTo-ChocoObject {
     [CmdletBinding()]
