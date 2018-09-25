@@ -40,6 +40,7 @@
  - Direct Installer (C4B) - install/upgrade directly from msi / exe installers
  - [[Package Audit (C4B) - know who installed what and when|FeaturesPackageAudit]]
  - Windows Service Management PowerShell Functions (C4B)
+ - [[Branding Chocolatey Applications (C4B)|FeaturesBranding]]
  - In progress, check back for updates!
 
 #### Usage
@@ -114,7 +115,6 @@
  - [[Deprecate a Package|How-To-Deprecate-A-Chocolatey-Package]]
  - [[Host Your Own Package Repository Server|How-To-Host-Feed]]
  - [[Set up the Chocolatey.Server|How-To-Set-Up-Chocolatey-Server]]
- - [[Apply branding to Chocolatey GUI|How-To-Apply-Branding-To-Chocolatey-GUI]]
 
 #### Use Cases
 
