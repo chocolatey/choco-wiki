@@ -200,9 +200,9 @@ To direct Chocolatey package installs, you can still write GPOs to ensure this.
 
 ## Otter
 
-Otter has an [open source Chocolatey extension](https://github.com/Inedo/inedox-chocolatey) that allows installing and uninstalling packages, specifying package versions, and package sources.
+Otter has an [open source Chocolatey extension](https://github.com/Inedo/inedox-chocolatey) that allows installing and uninstalling packages, specifying package versions, chocolatey sources, chocolatey features, and installing chocolatey istelf.
 
-Otter also keeps an inventory of Chocolatey packages installed on a server.
+Otter also keeps an inventory of Chocolatey packages installed on any or all servers.
 
 ~~~otter
 Chocolatey::Ensure-Package
@@ -210,6 +210,25 @@ Chocolatey::Ensure-Package
     Name: 7zip.install,
     Version: 18.5,
     Source: https://packages/api/v2
+);
+
+Chocolatey::Ensure-Installed
+(
+    Version: latest,
+    Source: https://chocolatey.org/api/v2
+);
+
+Chocolatey::Ensure-Source
+(
+    Name: Internal,
+    Url: https://proget.local/chocolatey,
+    Credential: DomainCred
+);
+
+Chocolatey::Ensure-Feature
+(
+    Feature: checksumFiles,
+    Enabled: false
 );
 ~~~
 
