@@ -209,13 +209,13 @@ Chocolatey::Ensure-Package
 (
     Name: 7zip.install,
     Version: 18.5,
-    Source: https://packages/api/v2
+    Source: https://proget.local/chocolatey
 );
 
 Chocolatey::Ensure-Installed
 (
     Version: latest,
-    Source: https://chocolatey.org/api/v2
+    Source: https://proget.local/chocolatey
 );
 
 Chocolatey::Ensure-Source
