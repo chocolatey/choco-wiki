@@ -57,8 +57,7 @@ The repositories to setup are for _test_ and _production_ which we will call `te
 Before starting, make sure you install Chocolatey Server on separate servers.
 
 1. [Create a server and ensure you have the pre-requisites](#server-pre-requisites) before continuing.
-1. Install `chocolatey.server` using Chocolatey: `choco install chocolatey.server -y`;
-1. To configure Chocolatey Server, run the following PowerShell code (see the comments in the code for more information):
+1. To install and configure Chocolatey Server, run the following PowerShell code (see the comments in the code for more information) in an **elevated Administrator session**:
 
 ```powershell
   # Step by step instructions here https://chocolatey.org/docs/how-to-set-up-chocolatey-server#setup-normally
@@ -93,8 +92,8 @@ Before starting, make sure you install Chocolatey Server on separate servers.
 ```
 
 `4.` We shouldn't need to reboot the server but let's do it so we know everything is ready to go;
-`5.` From the server, open the browser and visit `https://<SERVER NAME>/chocolatey` - you will see some instructions but you need to note the password near the bottom. As this is a test environment we don't need to change this however **for a production environment you will the instructions to change the password**;
-`6.` Finally test the Chocolatey Server is working. From the server use the command `choco list --source https://<SERVER NAME>/chocolatey` (eg. if you were doing this from the test repository server you would use the command `choco list --source https://testrepo-srv/chocolatey`);
+`5.` From the server, open the browser and visit `https://localhost` - you will see some instructions but you need to note the password near the bottom. As this is a test environment we don't need to change this however **for a production environment follow the instructions to change the password**;
+`6.` Finally test the Chocolatey Server is working. From the server use the command `choco list --source http://localhost/chocolatey`;
 
 Once this is done for both servers, you will have two repositories:
 
@@ -109,6 +108,28 @@ Once this is done for both servers, you will have two repositories:
 ### Install and Configure Jenkins Server
 
 [Jenkins](https://jenkins.io/) is a Continuous Integration / Continuous Delivery (often called CI/CD) tool that does the automation required to automatically manage the packages between the test and production repositories.
+
+To install and configure Jenkins:
+
+1. [Create a server and ensure you have the pre-requisites](#server-pre-requisites) before continuing.
+1. Install Jenkins using Chocolatey: `choco install jenkins -y`
+1. Once Jenkins is installed it will open a web browser and take you to the configuration web page (if it does not open for any reason, open the web browser and browse to `http://localhost:8080`
+    * The first page will refresh once Jenkins is installed. If it does not click `ENABLE AUTO REFRESH` in the top left hand corner;
+    * Unlock Jenkins by following the instructions on the page (you need to open the file it specifies, with Notepad), finding the password and pasting it into the box and click **Continue**;
+    * For this guide, click **Install Suggested Plugins** and wait for them to install;
+    * On the _Create First Admin_ page, click **Continue as admin**;
+    * On the _Instance Configuration_ page, click **Save and Finish**;
+    * On the _Jenkins is ready!_ page, click **Start using Jenkins**;
+1. As the code we will be running in the Jenkins jobs is PowerShell, we need to add the PowerShell plugin.
+    * On the home page, click **Manage Jenkins**
+    * Click **Manage Plugins**;
+    ![Jenkins PowerShell Plugin](images/internalizer/jenkins-ps-plugin.png)
+    * Click the **Available** tab;
+    * In the _Filter_ box type `PowerShell`;
+    * Tick the _PowerShell_ plugin and click **Install without Restart**;
+    * Click **Go back to the top page**;
+1. Copy your Chocolatey Business license to `ProgramData\chocolatey\license` in the root of the system drive;
+1. Run the command `choco install chocolatey.extension -y`;
 
 Jenkins requires several PowerShell scripts to automate the processes. Create a directory on the root of your System Drive (normally `C:\`) called `scripts` and create each script file there.
 
@@ -259,39 +280,17 @@ Note the section above where you should insert the code to test your packages be
   }
 ```
 
-To install and configure Jenkins:
-
-1. [Create a server and ensure you have the pre-requisites](#server-pre-requisites) before continuing.
-1. Install Jenkins using Chocolatey: `choco install jenkins -y`
-1. Once Jenkins is installed it will open a web browser and take you to the configuration web page (if it does not open for any reason, open the web browser and browse to `http://localhost:8080`
-    * The first page will refresh once Jenkins is installed. If it does not click `ENABLE AUTO REFRESH` in the top left hand corner;
-    * Unlock Jenkins by following the instructions on the next page, finding the password and pasting it into the box and click **Continue**;
-    * For this guide, click **Install Suggested Plugins** and wait for them to install;
-    * On the _Create First Admin_ page, click **Continue as admin**;
-    * On the _Instance Configuration_ page, click **Save and Finish**;
-    * On the _Jenkins is ready!_ page, click **Start using Jenkins**;
-1. As the code we will be running in the Jenkins jobs is PowerShell, we need to add the PowerShell plugin.
-    * On the home page, click **Manage Jenkins**
-    * Click **Manage Plugins**;
-    ![Jenkins PowerShell Plugin](images/internalizer/jenkins-ps-plugin.png)
-    * Click the **Available** tab;
-    * In the _Filter_ box type `PowerShell`;
-    * Tick the _PowerShell_ plugin and click **Install without Restart**;
-    * Click **Go back to the top page**;
-1. Copy your Chocolatey Business license to `ProgramData\chocolatey\license` in the root of the system drive;
-1. Run the command `choco install chocolatey.extension -y`;
-
 We're now ready to create the jobs to work with the repository.
 
 #### Create Jenkins Jobs
 
 To allow us to automatically manage the test and production repository we will create three Jenkins jobs to:
 
-* To automatically update any out of date packages in the test repository from the Community Repository;
+* Automatically update any out-of-date packages in the test repository from the Community Repository;
 * Allow us to download a package from the Community Repository and submit it to our test repository;
 * To automatically determine which packages are new or updated on the test repository, test them and submit them to the production repository;
 
-Each job is detailed below. Use those details to create a new job:
+Each job is detailed below. Use these details to create a new job:
 
 1. From the Jenkins home page, click **New Item**;
 1. Enter the item name, click **Pipeline** and click **OK**;
@@ -302,19 +301,22 @@ Each job is detailed below. Use those details to create a new job:
 Below are the details for the Jenkins job to update the test repository from the Chocolatey Community Repository. This job will check the test repository against the Chocolatey Community Repository and download any updated packages, internalize them and submit them to the test repository. If successful it will then trigger the job named **Update Production Repository**.
 
 * **General Tab**
-  * _Pipeline Name_: **Update test repository from Chocolatey Community Repository**
-  * _Description_: **Automatically update any out of date packages in the test repository from the Community Repository;.**
+  * _Item Name_: **Update test repository from Chocolatey Community Repository**
+  * _Project Type_: **Pipeline**
+  * _Description_: **Automatically update any out of date packages in the test repository from the Community Repository.**
   * _Ticked Options_: **This project is parameterized** and **Do not allow concurrent builds**;
   * _Parameters_:
     * _Parameter Type_: **String parameter**
     * _Name_: **P_LOCAL_REPO_URL**
-    * _Default Value_: **http://testrepo-srv/chocolatey**
+    * _Default Value_: http://testrepo-srv/chocolatey
     * _Description_: **Internal test repository.**
+    * _Options_: Tick **Trim the string**
 
     * _Parameter Type_: **String parameter**
     * _Name_: **P_REMOTE_REPO_URL**
-    * _Default Value_: **https://chocolatey.org/api/v2/**
+    * _Default Value_: https://chocolatey.org/api/v2/
     * _Description_: **Remote repository containing updated package versions.**
+    * _Options_: Tick **Trim the string**
 
     * _Parameter Type_: **Password parameter**
     * _Name_: **P_LOCAL_REPO_API_KEY**
@@ -329,7 +331,7 @@ Below are the details for the Jenkins job to update the test repository from the
   node {
       powershell '''
           Set-Location (Join-Path -Path $env:SystemDrive -ChildPath 'scripts')
-          .\\Get-UpdatedPackage.ps1 -localrepo $env:P_LOCAL_REPO_URL `
+          .\\Get-UpdatedPackage.ps1 -LocalRepo $env:P_LOCAL_REPO_URL `
               -LocalRepoApiKey $env:P_LOCAL_REPO_API_KEY `
               -RemoteRepo $env:P_REMOTE_REPO_URL `
               -Verbose
@@ -339,24 +341,29 @@ Below are the details for the Jenkins job to update the test repository from the
 
 For this guide we will trigger each job manually, however in production you will want to add the **Build Trigger** option **Build periodically** and complete the **Schedule** field.
 
+Click **Save** once complete and then click **Back to Dashboard**.
+
 ##### Jenkins Job Details: Internalize Package
 
 Below are the details for the Jenkins job to update the test repository from the Chocolatey Community Repository. This job will take a list of packages that you submit to the job, download and internalize those packages and push them to the test repository. Once this has been done it will trigger the job named **Update Production Repository** to test and push them to the production repository.
 
 * **General Tab**
-  * _Pipeline Name_: **Internalize packages from the Community Repository**
-  * _Description_: **Add new packages for internalizing from the Community Respository;.**
+  * _Item Name_: **Internalize packages from the Community Repository**
+  * _Project Type_: **Pipeline**
+  * _Description_: **Add new packages for internalizing from the Community Repository.**
   * _Ticked Options_: **This project is parameterized** and **Do not allow concurrent builds**;
   * _Parameters_:
     * _Parameter Type_: **String parameter**
     * _Name_: **P_PKG_LIST**
-    * _Default Value_: **<leave blank>**
-    * _Description_: **List of Chocolatey packages to be internalized (semicolon separated)**
+    * _Default Value_: **&lt;leave blank&gt;**
+    * _Description_: **List of Chocolatey packages to be internalized (semicolon separated).**
+    * _Options_: Tick **Trim the string**
 
     * _Parameter Type_: **String parameter**
     * _Name_: **P_DST_URL**
-    * _Default Value_: **http://testrepo-srv/chocolatey**
+    * _Default Value_: http://testrepo-srv/chocolatey
     * _Description_: **Internal package repository URL.**
+    * _Options_: Tick **Trim the string**
 
     * _Parameter Type_: **Password parameter**
     * _Name_: **P_API_KEY**
@@ -388,19 +395,23 @@ Below are the details for the Jenkins job to update the test repository from the
   }
 ```
 
+Click **Save** once complete and then click **Back to Dashboard**.
+
 ##### Jenkins Job Details: Update Production Repository
 
 Below are the details for the Jenkins job to update the production repository. This job will take any packages that are new or updated in the test repository, test them and, if successful, submit them to the production repository.
 
 * **General Tab**
-  * _Pipeline Name_: **Update production repository**
+  * _Item Name_: **Update production repository**
+  * _Project Type_: **Pipeline**
   * _Description_: **Determine new packages on the Test repository, test and submit them to the Production repository.**
   * _Ticked Options_: **This project is parameterized** and **Do not allow concurrent builds**;
   * _Parameters_:
     * _Parameter Type_: **String parameter**
     * _Name_: **P_PROD_REPO_URL**
-    * _Default Value_: **http://prodrepo-srv/chocolatey**
+    * _Default Value_: http://prodrepo-srv/chocolatey
     * _Description_: **URL to the production repository.**
+    * _Options_: Tick **Trim the string**
 
     * _Parameter Type_: **Password parameter**
     * _Name_: **P_PROD_REPO_API_KEY**
@@ -409,8 +420,9 @@ Below are the details for the Jenkins job to update the production repository. T
 
     * _Parameter Type_: **String parameter**
     * _Name_: **P_TEST_REPO_URL**
-    * _Default Value_: **http://testrepo-srv/chocolatey**
+    * _Default Value_: http://testrepo-srv/chocolatey
     * _Description_: **URL for the test repository.**
+    * _Options_: Tick **Trim the string**
 
 * **Build Triggers**
   * _Options_: **Build after other projects are built**
@@ -426,15 +438,17 @@ Below are the details for the Jenkins job to update the production repository. T
       powershell '''
           Set-Location (Join-Path -Path $env:SystemDrive -ChildPath 'scripts')
           .\\Update-ProdRepoFromTest.ps1 `
-          -ProdRepo $env:P_PROD_REPO_URL `
-          -ProdRepoApiKey $env:P_PROD_REPO_API_KEY `
-          -TestRepo $env:P_TEST_REPO_URL `
-          -Verbose
+              -ProdRepo $env:P_PROD_REPO_URL `
+              -ProdRepoApiKey $env:P_PROD_REPO_API_KEY `
+              -TestRepo $env:P_TEST_REPO_URL `
+              -Verbose
       '''
   }
 ```
 
 For this guide we will trigger each job manually, however in production you will want to add the **Build Trigger** option **Build periodically** and complete the **Schedule** field.
+
+Click **Save** once complete and then click **Back to Dashboard**.
 
 ## Test the Jenkins Automation (Exercises)
 
@@ -442,17 +456,17 @@ To ensure our automation pipeline works, lets conduct tests.
 
 ### Submit a new package
 
-Before submitting a new package lets make sure we have no packages in our test or production repositories:
+Before submitting a new package lets make sure we have no packages in our test or production repositories (all of these commands are run on the Jenkins server):
 
 1. To check the test repository, enter this at the command line `choco list --source http://testrepo-srv/chocolatey`. You should get this returned (note that the actual version of Chocolatey you see may be different):
 
-```powershell
+``` powershell
   PS> choco list --source http://testrepo-srv/chocolatey
   Chocolatey v0.10.11 Business
   0 packages found.
 ```
 
-`2.` To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of Chocolatey you see may be different):
+`2`. To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of Chocolatey you see may be different):
 
 ```powershell
   PS> choco list --source http://prodrepo-srv/chocolatey
@@ -465,7 +479,7 @@ Follow these steps to add a new package:
 1. On the Jenkins homepage, click the little drop down arrow to the right of the **Internalize packages from the Community Repository** job and click **Build with Parameters**;
 1. In the parameters page enter `adobereader` in the **P_PKG_LIST** and click the **Build** button;
 
-You can check the progress of the job by click on the flashing blue circle next to the job number.
+You can check the progress of the job by click on the **Last build (#..** link under _Permalinks_ on that page and see the output by clicking on **Console Output** on the right hand side of that page;
 
 This Jenkins job will run and then, if it is successful will trigger the job named **Update production repository** which will update the production repository with any new or updated packages in the test repository, in this case the `adobereader` package we just added. To see this:
 
@@ -492,7 +506,7 @@ This Jenkins job will run and then, if it is successful will trigger the job nam
 As packages get out of date in your test repository you need to update them from the Chocolatey Community Repository. Before we start let's add an older version of a package.
 
 1. Download and internalize the `putty.install` package to the current directory by entering this on the command line: `choco download putty.install --version 0.70 --internalize --force --internalize-all-urls --append-use-original-location --output-directory . --source https://chocolatey.org/api/v2/`;
-1. Submit the internalized package to the test repository by entering this on the command line: `cpush putty.install.0.70.nupkg --source http://testrepo-srv/chocolatey --api-key chocolateyrocks -force`
+1. Submit the internalized package to the test repository by entering this on the command line: `choco push putty.install.0.70.nupkg --source http://testrepo-srv/chocolatey --api-key chocolateyrocks -force`
 1. Go back to Jenkins and run the job **Update production repository** with default parameters. This will test the `putty.install` package and push it to the production repository.
 1. Go to the command line and run `choco list --source http://prodrepo-srv/chocolatey` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list):
 
@@ -504,7 +518,7 @@ As packages get out of date in your test repository you need to update them from
   2 packages found.
 ```
 
-`5.` Go back to Jenkins and run the job **Update test repository from Chocolatey Community Repository**. This will check the test repository against the Chocolatey Community Repository and update out `putty.install` package;
+`5.` Go back to Jenkins and run the job **Update test repository from Chocolatey Community Repository** with default parameters. This will check the test repository against the Chocolatey Community Repository and update the `putty.install` package;
 `6.` Go to the command line and run `choco list --source http://testrepo-srv/chocolatey --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different):
 
 ```powershell
