@@ -60,6 +60,48 @@ Before starting, make sure you install Chocolatey Server on separate servers.
 1. To install and configure Chocolatey Server, run the following PowerShell code (see the comments in the code for more information) in an **elevated Administrator session**:
 
 ```powershell
+  $siteName = 'ChocolateyServer'
+  $appPoolName = 'ChocolateyServerAppPool'
+  $sitePath = 'c:\tools\chocolatey.server'
+
+  function Add-Acl {
+      [CmdletBinding()]
+      Param (
+          [string]$Path,
+          [System.Security.AccessControl.FileSystemAccessRule]$AceObject
+      )
+
+      Write-Verbose "Retrieving existing ACL from $Path"
+      $objACL = Get-ACL -Path $Path
+      $objACL.AddAccessRule($AceObject)
+      Write-Verbose "Setting ACL on $Path"
+      Set-ACL -Path $Path -AclObject $objACL
+  }
+
+  function New-AclObject {
+      [CmdletBinding()]
+      Param (
+          [string]$SamAccountName,
+          [System.Security.AccessControl.FileSystemRights]$Permission,
+          [System.Security.AccessControl.AccessControlType]$AccessControl = 'Allow',
+          [System.Security.AccessControl.InheritanceFlags]$Inheritance = 'None',
+          [System.Security.AccessControl.PropagationFlags]$Propagation = 'None'
+      )
+
+      New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule($SamAccountName, $Permission, $Inheritance, $Propagation, $AccessControl)
+  }
+
+  if ($null -eq (Get-Command -Name 'choco.exe' -ErrorAction SilentlyContinue)) {
+      Write-Warning "Chocolatey not installed. Cannot install standard packages."
+      Exit 1
+  }
+  # Install Chocolatey.Server prereqs
+  choco install IIS-WebServer --source windowsfeatures
+  choco install IIS-ASPNET45 --source windowsfeatures
+
+  # Install Chocolatey.Server
+  choco upgrade chocolatey.server -y
+
   # Step by step instructions here https://chocolatey.org/docs/how-to-set-up-chocolatey-server#setup-normally
   # Import the right modules
   Import-Module WebAdministration
