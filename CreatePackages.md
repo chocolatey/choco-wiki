@@ -263,6 +263,8 @@ If there is an icon which is suitable for your package, you can specify it in th
 * **PNG is the preferred format** for raster package icons. Avoid ICO, GIF and JPEG graphics.
 * Good sources for package icons are the official desktop icons of the corresponding application you want to make a package of. The icons can be extracted from the app executables using tools like [BeCyIconGrabber](https://chocolatey.org/packages/becyicongrabber). Remember to take the icon with 128&nbsp;px or more and save it as PNG file.
 
+The icon shown on the Chocolatey.org package page is saved, and served, locally to mitigate against cross scripting attacks and to prevent getting _non HTTPS assets_ errors on the website. Sometimes the page loads faster than the image can be served and the default image gets cached and as a result the new package icon may not be shown until you clear the browser cache for Chocolatey.org and wait 3 hours before reloading the page.
+
 <a name="how-do-i-exclude-executables-from-getting-batch-redirects"></a>
 ## How do I exclude executables from getting shims?
 If you have executables in the package or brought into the package folder during PowerShell run and you want to exclude them you need to create an empty file named exactly like (**case sensitive**) the executable with `.ignore` suffixed on the end in the same directory where the executable is or will be.
