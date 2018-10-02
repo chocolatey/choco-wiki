@@ -11,13 +11,13 @@ With most of these tools, the interface you would interact with Chocolatey would
 - [Boxstarter](#boxstarter)
 - [Chef](#chef)
 - [Octopus Deploy](#octopus-deploy)
+- [Otter](#otter)
 - [PowerShell DSC](#powershell-dsc)
 - [PowerShell PackageManagement](#powershell-packagemanagement)
 - [PSDeploy](#psdeploy)
 - [Puppet](#puppet)
 - [Saltstack](#saltstack)
 - [System Center Configuration Manager](#system-center-configuration-manager)
-- [Otter](#otter)
 
 <!-- /TOC -->
 
