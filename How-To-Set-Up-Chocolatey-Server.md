@@ -4,6 +4,7 @@
 
 - [What is Chocolatey.Server?](#what-is-chocolateyserver)
 - [Requirements](#requirements)
+- [Setup with Ansible](#setup-with-ansible)
 - [Setup with Puppet](#setup-with-puppet)
 - [Setup Normally](#setup-normally)
 - [Setup with PowerShell Script](#setup-with-powershell-script)
@@ -38,6 +39,18 @@ When you install it, it will install the website typically to `c:\tools\chocolat
 * Ability to set up an IIS site and unblock website ports.
 * If you have an IIS site for WSUS administration, Chocolatey.Server website will not come up at all, even if everything looks right. We have not yet been able to determine the issue, but believe it is related to ASP.NET 4.6+. Installing all of the required components for Chocolatey.Server may also affect your WSUS admin site. Please seek a different box.
 * If you can ensure your server is up to date with all of the Windows Updates, you will move through this process quite a bit quicker.
+
+Setup with Ansible
+If you are using Ansible, you can use the [win_chocolatey_server](https://galaxy.ansible.com/jborean93/win_chocolatey_server) role to set up an Chocolatey.Server instance on a host running Windows Server 2008 R2 or newer.
+
+This Ansible role allows you to configure the following:
+
+* The API token required to push packages
+* Multiple credentials that can be used for basic authentication
+* The location to install Chocolatey.Server to
+* Binding settings for the Chocolatey.Server website such as the http and https port as well as the https certificate thumpbrint
+* Generate a self-signed certificate alongside a https binding if a CA is not available
+* Automatically install the Chocolatey nupkg from a path or a URL
 
 ## Setup with Puppet
 If you are using the Puppet module [chocolatey/chocolatey_server](https://forge.puppet.com/chocolatey/chocolatey_server), it will do all of the additional setup for this package and allow some customization.
