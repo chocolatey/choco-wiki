@@ -116,6 +116,42 @@ Octopus is a friendly deployment automation tool for .NET developers. It integra
 
 [Read more...](https://octopus.com/)
 
+## Otter
+
+Otter has an [open source Chocolatey extension](https://github.com/Inedo/inedox-chocolatey) that allows installing and uninstalling packages, specifying package versions, chocolatey sources, chocolatey features, and installing chocolatey istelf.
+
+Otter also keeps an inventory of Chocolatey packages installed on any or all servers.
+
+~~~otter
+Chocolatey::Ensure-Package
+(
+    Name: 7zip.install,
+    Version: 18.5,
+    Source: https://proget.local/chocolatey
+);
+
+Chocolatey::Ensure-Installed
+(
+    Version: latest,
+    Source: https://proget.local/chocolatey
+);
+
+Chocolatey::Ensure-Source
+(
+    Name: Internal,
+    Url: https://proget.local/chocolatey,
+    Credential: DomainCred
+);
+
+Chocolatey::Ensure-Feature
+(
+    Feature: checksumFiles,
+    Enabled: false
+);
+~~~
+
+[Read More...](https://inedo.com/den/otter/chocolatey)
+
 ## PowerShell DSC
 
 PowerShell DSC (Desired State Configuration) has a cChoco module that can manage both packages and the installation of Chocolatey itself.
@@ -197,40 +233,4 @@ salt '*' chocolatey.install git
 Chocolatey integrates with SCCM by handling the software management, and pointing to [distribution points](https://technet.microsoft.com/en-us/library/bb680614.aspx) as the source for packages. This allows folks to get packages and larger binaries out to their network without constraints and still take advantage of Chocolatey's fantastic abilities!
 
 To direct Chocolatey package installs, you can still write GPOs to ensure this.
-
-## Otter
-
-Otter has an [open source Chocolatey extension](https://github.com/Inedo/inedox-chocolatey) that allows installing and uninstalling packages, specifying package versions, chocolatey sources, chocolatey features, and installing chocolatey istelf.
-
-Otter also keeps an inventory of Chocolatey packages installed on any or all servers.
-
-~~~otter
-Chocolatey::Ensure-Package
-(
-    Name: 7zip.install,
-    Version: 18.5,
-    Source: https://proget.local/chocolatey
-);
-
-Chocolatey::Ensure-Installed
-(
-    Version: latest,
-    Source: https://proget.local/chocolatey
-);
-
-Chocolatey::Ensure-Source
-(
-    Name: Internal,
-    Url: https://proget.local/chocolatey,
-    Credential: DomainCred
-);
-
-Chocolatey::Ensure-Feature
-(
-    Feature: checksumFiles,
-    Enabled: false
-);
-~~~
-
-[Read More...](https://inedo.com/den/otter/chocolatey)
 
