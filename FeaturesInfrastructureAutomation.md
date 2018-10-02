@@ -30,11 +30,11 @@ For common integrations, it's handy to refer to the table below to know what con
 |-----------------------------------------|---------|------|----------------|--------|------|------|
 | Manage Packages                         | x       | x    | x              | x      | x    |x     |
 | [Install Chocolatey](Installation)      | x       | x    | x              | x      | x    |x     |
-| Install Chocolatey from internal source |         | x    | x              | x      |      |x     |
-| [Manage Sources](CommandsSource)        |         |      | x              | x      |      |x     |
-| Manage Source Type (Admin/Self-Service) |         |      |                |        |      |      |
-| [Manage Features](CommandsFeature)      |         |      | x              | x      |      |x     |
-| [Manage Config Settings](CommandsConfig)|         |      |                | x      |      |      |
+| Install Chocolatey from internal source | x       | x    | x              | x      |      |x     |
+| [Manage Sources](CommandsSource)        | x       |      | x              | x      |      |x     |
+| Manage Source Type (Admin/Self-Service) | x       |      |                |        |      |      |
+| [Manage Features](CommandsFeature)      | x       |      | x              | x      |      |x     |
+| [Manage Config Settings](CommandsConfig)| x       |      |                | x      |      |      |
 
 For most of these, those configuration managers have some sort of exec you could use to manage those additional aspects, but it would be best if they supported all aspects of configuration of Chocolatey as part of the provider implementations.
 
