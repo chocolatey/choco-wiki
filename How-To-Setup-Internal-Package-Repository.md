@@ -133,19 +133,19 @@ Before starting, make sure you install Chocolatey Server on separate servers.
   }
 ```
 
-4. We shouldn't need to reboot the server but let's do it so we know everything is ready to go;
-5. From the server, open the browser and visit `https://localhost` - you will see some instructions but you need to note the password near the bottom. As this is a test environment we don't need to change this however **for a production environment follow the instructions to change the password**;
-6. Finally test the Chocolatey Server is working. From the server use the command `choco list --source http://localhost/chocolatey`;
+`4.` We shouldn't need to reboot the server but let's do it so we know everything is ready to go;
+`5.` From the server, open the browser and visit `https://localhost` - you will see some instructions but you need to note the password near the bottom. As this is a test environment we don't need to change this however **for a production environment follow the instructions to change the password**;
+`6.` Finally test the Chocolatey Server is working. From the server use the command `choco list --source http://localhost/chocolatey`;
 
 Once this is done for both servers, you will have two repositories:
 
 1. Test Repository:
-    * Name: `testrepo-srv`
-    * push URL: `https://testrepo-srv/chocolatey`
+  * Name: `testrepo-srv`
+  * push URL: `https://testrepo-srv/chocolatey`
 
-2. Production Repository:
-    * Name: `prodrepo-srv`
-    * Push URL: `https://prodrepo-srv/chocolatey`
+`2.` Production Repository:
+  * Name: `prodrepo-srv`
+  * Push URL: `https://prodrepo-srv/chocolatey`
 
 ### Install and Configure Jenkins Server
 
@@ -156,20 +156,20 @@ To install and configure Jenkins:
 1. [Create a server and ensure you have the pre-requisites](#server-pre-requisites) before continuing.
 1. Install Jenkins using Chocolatey: `choco install jenkins -y`
 1. Once Jenkins is installed it will open a web browser and take you to the configuration web page (if it does not open for any reason, open the web browser and browse to `http://localhost:8080`
-    * The first page will refresh once Jenkins is installed. If it does not click `ENABLE AUTO REFRESH` in the top left hand corner;
-    * Unlock Jenkins by following the instructions on the page (you need to open the file it specifies, with Notepad), finding the password and pasting it into the box and click **Continue**;
-    * For this guide, click **Install Suggested Plugins** and wait for them to install;
-    * On the _Create First Admin_ page, click **Continue as admin**;
-    * On the _Instance Configuration_ page, click **Save and Finish**;
-    * On the _Jenkins is ready!_ page, click **Start using Jenkins**;
+  * The first page will refresh once Jenkins is installed. If it does not click `ENABLE AUTO REFRESH` in the top left hand corner;
+  * Unlock Jenkins by following the instructions on the page (you need to open the file it specifies, with Notepad), finding the password and pasting it into the box and click **Continue**;
+  * For this guide, click **Install Suggested Plugins** and wait for them to install;
+  * On the _Create First Admin_ page, click **Continue as admin**;
+  * On the _Instance Configuration_ page, click **Save and Finish**;
+  * On the _Jenkins is ready!_ page, click **Start using Jenkins**;
 1. As the code we will be running in the Jenkins jobs is PowerShell, we need to add the PowerShell plugin.
-    * On the home page, click **Manage Jenkins**
-    * Click **Manage Plugins**;
-    ![Jenkins PowerShell Plugin](images/internalizer/jenkins-ps-plugin.png)
-    * Click the **Available** tab;
-    * In the _Filter_ box type `PowerShell`;
-    * Tick the _PowerShell_ plugin and click **Install without Restart**;
-    * Click **Go back to the top page**;
+  * On the home page, click **Manage Jenkins**
+  * Click **Manage Plugins**;
+  ![Jenkins PowerShell Plugin](images/internalizer/jenkins-ps-plugin.png)
+  * Click the **Available** tab;
+  * In the _Filter_ box type `PowerShell`;
+  * Tick the _PowerShell_ plugin and click **Install without Restart**;
+  * Click **Go back to the top page**;
 1. Copy your Chocolatey Business license to `ProgramData\chocolatey\license` in the root of the system drive;
 1. Run the command `choco install chocolatey.extension -y`;
 
@@ -508,7 +508,7 @@ Before submitting a new package lets make sure we have no packages in our test o
   0 packages found.
 ```
 
-2. To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of Chocolatey you see may be different):
+`2.` To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of Chocolatey you see may be different):
 
 ```powershell
   PS> choco list --source http://prodrepo-srv/chocolatey
@@ -534,7 +534,7 @@ This Jenkins job will run and then, if it is successful will trigger the job nam
   1 packages found.
 ```
 
-2. To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of `adobereader` and Chocolatey you see may be different):
+`2.` To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of `adobereader` and Chocolatey you see may be different):
 
 ```powershell
   PS> choco list --source http://prodrepo-srv/chocolatey
@@ -560,8 +560,8 @@ As packages get out of date in your test repository you need to update them from
   2 packages found.
 ```
 
-5. Go back to Jenkins and run the job **Update test repository from Chocolatey Community Repository** with default parameters. This will check the test repository against the Chocolatey Community Repository and update the `putty.install` package;
-6. Go to the command line and run `choco list --source http://testrepo-srv/chocolatey --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different):
+`5.` Go back to Jenkins and run the job **Update test repository from Chocolatey Community Repository** with default parameters. This will check the test repository against the Chocolatey Community Repository and update the `putty.install` package;
+`6.` Go to the command line and run `choco list --source http://testrepo-srv/chocolatey --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different):
 
 ```powershell
   PS> choco list --source http://testrepo-srv/chocolatey
@@ -572,7 +572,7 @@ As packages get out of date in your test repository you need to update them from
   3 packages found.
 ```
 
-7. As the Jenkins job **Update test repository from Chocolatey Community Repository** we ran earlier triggers the job **Update production repository**, the `putty.install` package will be automatically tested and pushed to the production repository. To check this, run the following on the command line `choco list --source http://prodrepo-srv/chocolatey --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different)
+`7.` As the Jenkins job **Update test repository from Chocolatey Community Repository** we ran earlier triggers the job **Update production repository**, the `putty.install` package will be automatically tested and pushed to the production repository. To check this, run the following on the command line `choco list --source http://prodrepo-srv/chocolatey --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different)
 
 ```powershell
   PS> choco list --source http://prodrepo-srv/chocolatey
