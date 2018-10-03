@@ -600,15 +600,15 @@ If you are using Chocolatey.Server, please login to that machine and check https
 #### Chocolatey Integration Implementation with Configuration Managers
 For common integrations, it's handy to refer to the table below to know what configuration manager to choose. Most of the implementations below are written and managed by the companies behind the product. These implementations are typically open source and each part could be added by community contributions for those familiar with the code implementations. If you are unable to provide code implementations for adding necessary functionality to the integrations, we find it best if you create issues/tickets with those organizations if you are a customer as you will have more leverage into getting them implemented. **NOTE**: If you are a configuration manager company identified in the table and you have implemented anything in the below or you find our information is incorrect, please let us know so we can get it fixed.
 
-|                                         | [Ansible](https://docs.ansible.com/ansible/latest/modules/win_chocolatey_module.html) | [Chef](https://docs.chef.io/resource_chocolatey_package.html) / [Cookbook](https://supermarket.chef.io/cookbooks/chocolatey/) | [PowerShell DSC](https://www.powershellgallery.com/packages/cChoco/2.3.1.0) | [Puppet](https://forge.puppet.com/puppetlabs/chocolatey) | [Salt](https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.chocolatey.html) |
-|-----------------------------------------|---------|------|----------------|--------|------|
-| Manage Packages                         | x       | x    | x              | x      | x    |
-| [Install Chocolatey](Installation)      | x       | x    | x              | x      | x    |
-| Install Chocolatey from internal source | x       | x    | x              | x      |      |
-| [Manage Sources](CommandsSource)        | x       |      | x              | x      |      |
-| Manage Source Type (Admin/Self-Service) | x       |      |                |        |      |
-| [Manage Features](CommandsFeature)      | x       |      | x              | x      |      |
-| [Manage Config Settings](CommandsConfig)| x       |      |                | x      |      |
+|                                         | [Ansible](https://docs.ansible.com/ansible/latest/modules/win_chocolatey_module.html) | [Chef](https://docs.chef.io/resource_chocolatey_package.html) / [Cookbook](https://supermarket.chef.io/cookbooks/chocolatey/) | [PowerShell DSC](https://www.powershellgallery.com/packages/cChoco/2.3.1.0) | [Puppet](https://forge.puppet.com/puppetlabs/chocolatey) | [Salt](https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.chocolatey.html) | [Otter](https://inedo.com/den/inedox/chocolatey) |
+|-----------------------------------------|---------|------|----------------|--------|------|------|
+| Manage Packages                         | x       | x    | x              | x      | x    | x    |
+| [Install Chocolatey](Installation)      | x       | x    | x              | x      | x    | x    |
+| Install Chocolatey from internal source | x       | x    | x              | x      |      | x    |
+| [Manage Sources](CommandsSource)        | x       |      | x              | x      |      | x    |
+| Manage Source Type (Admin/Self-Service) | x       |      |                |        |      |      |
+| [Manage Features](CommandsFeature)      | x       |      | x              | x      |      | x    |
+| [Manage Config Settings](CommandsConfig)| x       |      |                | x      |      |      |
 
 For most of these, those configuration managers have some sort of exec you could use to manage those additional aspects, but it would be best if they supported all aspects of configuration of Chocolatey as part of the provider implementations.
 
