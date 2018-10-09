@@ -31,7 +31,7 @@ certainly possible to run CCM on a single server.
 ### Pre-Requisites
 
 In order to install CCM, it is assumed that the following applications/software
-are available, either as a single server installation, or spread over multiple
+are installed, either as a single server installation, or spread over multiple
 servers.
 
 1. SQL Server Instance, with administrator access for initial database provision
