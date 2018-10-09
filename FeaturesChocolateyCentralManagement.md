@@ -193,6 +193,10 @@ necessary installation command would look like the following:
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that
 the sensitive information is not leaked out into log files.
 
+**NOTE:** Once installed, when you access the CCM Web Site you will be prompted to provide a username
+and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.
+After you input this, you will be prompted to change the password.
+
 #### Chocolatey Clients
 
 Once CCM has been set up and configured, each machine that you want to report
