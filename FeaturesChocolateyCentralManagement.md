@@ -50,7 +50,7 @@ This package creates the Chocolatey Central Management Database with the followi
 You can override the package defaults using the following parameters:
 
 * `/ConnectionString`
-  * The SQL Server database connection string to be used to connect to the Chocolatey Central Management database. Note that if you pass this parameter you must also pass `/Database` and `/SqlServerInstance`;
+  * The SQL Server database connection string to be used to connect to the Chocolatey Central Management database.
   * **NOTE:** Default Value: Server=&lt;LOCAL COMPUTER DNS NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;
 * `/Database`
   * Name of the SQL Server database to use. Note that if you do not also pass `/ConnectionString`, it will be generated using this parameter value and `/SqlServerInstance` (using defaults for missing parameters);
