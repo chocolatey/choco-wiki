@@ -14,7 +14,7 @@ available sources.
 
 * Chocolatey (`chocolatey` package) v0.10.12+
 * Chocolatey for Business (C4B) Edition
-* Chocolatey Licensed Extension (`chocolatey.extension` package) v1.13.0+
+* Chocolatey Licensed Extension (`chocolatey.extension` package) v2.0.0+
 * Chocolatey Agent Service (`chocolatey-agent` package) v0.9.0+
 * Chocolatey Central Management Database (`chocolatey-management-web` package) v0.1.0+
   * This deploys the CCM database schema to the specified SQL Server instance
