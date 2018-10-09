@@ -63,7 +63,7 @@ You can override the package defaults using the following parameters:
 
 Let's assume that you want to install the Chocolatey Central Management Database
 onto a machine that will access a SQL Server instance called `SQLSERVERCCM`, on
-a domain machine called `MACHINE1` using a specific user name and password
+a domain machine called `MACHINE1` which is part of the domain `ccmtest`, using a specific user name (ccmservice) and password
 combination.  In this scenario, the installation command would look like the
 following:
 
