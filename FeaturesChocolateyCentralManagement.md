@@ -67,7 +67,9 @@ a domain machine called `MACHINE1` using a specific user name and password
 combination.  In this scenario, the installation command would look like the
 following:
 
-`choco install chocolatey-management-database ----package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\\SQLSERVERCCM;Database=ChocolateyManagement;Integrated Security=SSPI;User ID=ccmtest\\ccmservice;Password=Password01;""'"`
+```
+choco install chocolatey-management-database --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\\SQLSERVERCCM;Database=ChocolateyManagement;Integrated Security=SSPI;User ID=ccmtest\\ccmservice;Password=Password01;""'"
+```
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that
 the sensitive information is not leaked out into log files.
