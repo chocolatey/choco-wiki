@@ -74,8 +74,7 @@ choco install chocolatey-management-database --package-parameters-sensitive="'/C
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that
 the sensitive information is not leaked out into log files.
 
-**NOTE:** There is an assumption here that the username and password being used
-here has the necessary permissions in order to create the CCM database in the
+**NOTE:** There is an assumption here that the username and password being used have the necessary permissions in order to create the CCM database in the
 destination SQL Server instance.
 
 #### Chocolatey Central Management Service
