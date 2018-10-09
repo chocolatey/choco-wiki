@@ -19,7 +19,7 @@ available sources.
 * Chocolatey Central Management Database (`chocolatey-management-web` package) v0.1.0+
   * This deploys the CCM database schema to the specified SQL Server instance
 * Chocolatey Central Management Service (`chocolatey-management-service` package) v0.1.0+
-  * This installs the CCM Windows Service, which the Chocolatey Agent Windows Service which is installed on client machines will communicate with.
+  * This installs the CCM Windows Service, which the Chocolatey Agent Windows Service will communicate with.
 * Chocolatey Central Management Web (`chocolatey-management-web` package) v0.1.0+
   * This is the CCM front end website that is the main user interface of the application
 
