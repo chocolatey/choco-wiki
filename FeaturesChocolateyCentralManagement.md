@@ -74,8 +74,7 @@ choco install chocolatey-management-database --package-parameters-sensitive="'/C
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that
 the sensitive information is not leaked out into log files.
 
-**NOTE:** There is an assumption here that the username and password being used have the necessary permissions in order to create the CCM database in the
-destination SQL Server instance.
+**NOTE:** There is an assumption here that the username and password being used have the necessary permissions in order to create the CCM database in the destination SQL Server instance.
 
 #### Chocolatey Central Management Service
 
@@ -83,7 +82,7 @@ This package creates the Chocolatey Central Management Service with the followin
 
 * Service Name:                         **chocolatey-management-service**
 * Service Displayname                   **Chocolatey Management Service**
-* Description:                          **Chocolatey Management Service is a backgound service for Chocolatey.**
+* Description:                          **Chocolatey Management Service is a background service for Chocolatey.**
 * Service Startup:                      **Automatic**
 * Service Username:                     **ChocolateyLocalAdmin**
 * Database Connection String:           **Server=&lt;LOCAL COMPUTER DNS NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
@@ -96,7 +95,7 @@ You can override the package defaults using the following parameters:
 
 * `/Username`
   * Username to install the management service as;
-  * **NOTE:** Default Value: ChocolateyLocalAdmin
+  * **NOTE:** Default Value: **ChocolateyLocalAdmin**
 * `/Password`
   * Password to use for the management service account;
   * **NOTE:** Automatically generated secure password
@@ -114,7 +113,7 @@ You can override the package defaults using the following parameters:
   * **NOTE:** Default Value: **&lt;LOCAL COMPUTER DNS NAME&gt;**
 * `/PortNumber`
   * The port the Chocolatey Management Service will listen on. This will automatically create a rule to open the firewall on this port;
-  * **NOTE:** Default Value 24040
+  * **NOTE:** Default Value **24040**
 * `/CertificateDnsName`
   * The DNS name of the self-signed certificate that is generated if no existing certificate thumbprint is provided using the `/CertificateThumbprint` parameter is provided;
   * **NOTE:** Default Value: **&lt;LOCAL COMPUTER DNS NAME&gt;**
@@ -136,7 +135,9 @@ the CCM Service to use a specific user name and password, as well as alter the
 Port number that the CCM Service will be hosted on.  The necessary installation
 command would look like the following:
 
-`choco install chocolatey-management-service --package-parameters-sensitive="'/PortNumber=24041 /Username=ccmtest\ccmservice /Password=Password01 /ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;Integrated Security=SSPI;User ID=ccmtest\ccmservice;Password=Password01;""'"`
+```
+choco install chocolatey-management-service --package-parameters-sensitive="'/PortNumber=24041 /Username=ccmtest\ccmservice /Password=Password01 /ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;Integrated Security=SSPI;User ID=ccmtest\ccmservice;Password=Password01;""'"
+```
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that
 the sensitive information is not leaked out into log files.
