@@ -100,7 +100,7 @@ You can override the package defaults using the following parameters:
   * Password to use for the management service account;
   * **NOTE:** Automatically generated secure password
 * `/EnterPassword`
-  * Using this parameter prompts for you to enter the password;
+  * This will prompt you to enter the password, during install, for the username (provided via the `/Username` parameter) the management service will run under;
   * **NOTE:** Default Value: Not provided
 * `/ConnectionString`
   * The SQL Server database connection string to be used to connect to the Chocolatey Central Management database;
@@ -149,7 +149,7 @@ This package creates the Chocolatey Central Management Website and Application P
 * IIS Web Application Pool:                 **ChocolateyCentralManagement**
   * enable32BitAppOnWin64:                **True**
   * managedPipelineMode:                  **Integrated**
-  * managedRuntimeVersion:                <blank>
+  * managedRuntimeVersion:                &lt;blank&gt;
   * startMode:                            **AlwaysRunning**
   * processModel.idleTimeout:             **0**
   * recycling.periodicRestart.schedule:   **Disabled**
@@ -180,7 +180,7 @@ You can override the package defaults using the following parameters:
   * The password for the username (provided via the `/Username` parameter) the IIS WebApplicationPool will run under;
   * **NOTE:** Automatically generated secure password
 * `/EnterPassword`
-  * This will prompt you to enter the password for the username (provided via the `/Username` parameter) the IIS WebApplicationPool will run under;
+  * This will prompt you to enter the password, during install, for the username (provided via the `/Username` parameter) the IIS WebApplicationPool will run under;
   * **NOTE:** Default Value: Not provided
 
 ##### Example
@@ -190,7 +190,9 @@ connection string in order to connect to the CCM Database, as well as configure
 the IIS Application Pool to use a specific user name and password.  The
 necessary installation command would look like the following:
 
-`choco install chocolatey-management-web --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;User ID=ccmtest\ccmservice;Password=Password01;"" /Username=ccmwebserver\ccmserviceuser /Password=Password01'"`
+```
+choco install chocolatey-management-web --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;User ID=ccmtest\ccmservice;Password=Password01;"" /Username=ccmwebserver\ccmserviceuser /Password=Password01'"`
+```
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that
 the sensitive information is not leaked out into log files.
@@ -211,11 +213,11 @@ choco feature enable -n useChocolateyCentralManagement
 
 Here, the full URL, including the port number, to where the CCM service was
 installed to is being set, and then the `useChocolateyCentralManagement` feature
-is being enabled.
+is being enabled. In your environment you would replace `https://ccmsrvserver:24041` with the DNS name of your server and the port you set.
 
 **NOTE:** By default, this feature is disabled, and will need to be turned on.
 
-Additional configuration exists for CCM Service, which allows finer grained
+Additional configuration exists for CCM Service, which allows fine grained
 control of how Chocolatey Agent will report into CCM.  For example:
 
 ```powershell
@@ -233,10 +235,8 @@ The Chocolatey Central Management system will only be available in C4B (Chocolat
 
 ### What's the minimum version of the Chocolatey packages I need to use CCM?
 
-Link to above table
-
-### How is it secure?
+See [Requirements](#requirements).
 
 ## Common Errors and Resolutions
 
-Need to put details in here
+As common issues are encountered and resolved, we will list them here.
