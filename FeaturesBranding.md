@@ -20,7 +20,7 @@ to the bottom left corner of the application.
 **NOTE:** Branding of Chocolatey GUI will only available to our Business License
 customers, and requires a special build of Chocolatey GUI.  The version of Chocolatey
 GUI that ships on the Chocolatey Community Repository does not include the
-ability to apply branidng.  If you would like more information about the branded
+ability to apply branding.  If you would like more information about the branded
 version of Chocolatey GUI, please reach out to support via the normal channels.
 
 In order for branding to work, there are a number of image files that are required.
@@ -69,7 +69,7 @@ The first time a Business Licensed version of Chocolatey GUI is executed, and th
 are the above asset files in one of the defined locations, a new file will
 be generated in the same location called `ChocolateyGuiBranding.dll`.  The new
 file actually contains all the image files that were created, as they have been
-embedded as resouces within this assembly file.  This approach is used in order to
+embedded as resources within this assembly file.  This approach is used in order to
 optimize the loading of the assets.  Once this ChocolateyGuiBranding.dll has been
 created, Chocolatey GUI will use it each time the application runs.  The original
 image asset files are actually no longer required, and can be removed.  If at any
