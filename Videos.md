@@ -24,8 +24,9 @@
 
 ### 2018
 
-* Microsoft Build 2018 - [Interview with Rob Reynolds (Chocolatey) and Matt Wrock (Boxstarter) on couch](https://youtu.be/p8q-2d801xU)
-* [How to Create an Azure VM with Chocolatey - Frank Boucher](https://youtu.be/X-pTFoLZyX4)
+* Puppetize Live 2018 - [Chocolatey and DSC Lite - Derek Robinson, Walmart](https://www.youtube.com/watch?v=NEqP7yAt8BM) - October 9, 2018
+* Microsoft Build 2018 - [Interview with Rob Reynolds (Chocolatey) and Matt Wrock (Boxstarter) on couch](https://youtu.be/p8q-2d801xU) - May 11, 2018
+* [How to Create an Azure VM with Chocolatey - Frank Boucher](https://youtu.be/X-pTFoLZyX4) - April 26, 2018
 
 ### 2017
 
