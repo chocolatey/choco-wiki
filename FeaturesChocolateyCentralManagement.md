@@ -86,7 +86,7 @@ This package creates the Chocolatey Central Management Service with the followin
 * Service Startup:                      **Automatic**
 * Service Username:                     **ChocolateyLocalAdmin**
 * Database Connection String:           **Server=&lt;LOCAL COMPUTER DNS NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
-* Service Listening Port:               **24040**
+* Service Listening Port:               **24020**
 * Self-Signed Certificate Domain Name:  **DNS name of the local computer**
 
 ##### Parameters
@@ -113,7 +113,7 @@ You can override the package defaults using the following parameters:
   * **NOTE:** Default Value: **&lt;LOCAL COMPUTER DNS NAME&gt;**
 * `/PortNumber`
   * The port the Chocolatey Management Service will listen on. This will automatically create a rule to open the firewall on this port;
-  * **NOTE:** Default Value **24040**
+  * **NOTE:** Default Value **24020**
 * `/CertificateDnsName`
   * The DNS name of the self-signed certificate that is generated if no existing certificate thumbprint is provided using the `/CertificateThumbprint` parameter is provided;
   * **NOTE:** Default Value: **&lt;LOCAL COMPUTER DNS NAME&gt;**
@@ -136,7 +136,7 @@ Port number that the CCM Service will be hosted on.  The necessary installation
 command would look like the following:
 
 ```
-choco install chocolatey-management-service --package-parameters-sensitive="'/PortNumber=24041 /Username=ccmtest\ccmservice /Password=Password01 /ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;Integrated Security=SSPI;User ID=ccmtest\ccmservice;Password=Password01;""'"
+choco install chocolatey-management-service --package-parameters-sensitive="'/PortNumber=24021 /Username=ccmtest\ccmservice /Password=Password01 /ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;Integrated Security=SSPI;User ID=ccmtest\ccmservice;Password=Password01;""'"
 ```
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that
@@ -207,13 +207,13 @@ Once CCM has been set up and configured, each machine that you want to report
 into CCM will have to be enabled.  This can be done by doing the following:
 
 ```powershell
-choco config set CentralManagementServiceUrl https://ccmsrvserver:24041/ChocolateyManagementService
+choco config set CentralManagementServiceUrl https://ccmsrvserver:24021/ChocolateyManagementService
 choco feature enable -n useChocolateyCentralManagement
 ```
 
 Here, the full URL, including the port number, to where the CCM service was
 installed to is being set, and then the `useChocolateyCentralManagement` feature
-is being enabled. In your environment you would replace `https://ccmsrvserver:24041` with the DNS name of your server and the port you set.
+is being enabled. In your environment you would replace `https://ccmsrvserver:24021` with the DNS name of your server and the port you set.
 
 **NOTE:** By default, this feature is disabled, and will need to be turned on.
 
