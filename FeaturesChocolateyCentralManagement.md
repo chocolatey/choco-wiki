@@ -201,6 +201,46 @@ the sensitive information is not leaked out into log files.
 and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.
 After you input this, you will be prompted to change the password.
 
+#### Chocolatey Configuration for Chocolatey Central Management
+
+The following configuration values, with their default values, are added into the chocolatey.config file after installing Chocolatey Central Management and it's dependent packages.
+
+##### centralManagementReportPackagesTimerIntervalInSeconds
+
+This is the length of time, in seconds, that the Chocolatey Background Agent will wait between each attempt to report into Chocolatey Central Management.
+
+**Default Value:** 1800
+
+##### centralManagementServiceUrl
+
+This is the URL that is used by the Chocolatey Background Agent to report into Chocolatey Central Management, and also by the Chocolatey Central Management Service to register the URL that it is listening for incoming reports on.  
+
+**Default Value:** _blank_
+
+**NOTE:** If left blank, both the Chocolatey Background Agent and the Chocolatey Central Management Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that they are being executed on.
+
+**NOTE:** Due to the fact that both the Chocolatey Background Agent and Chocolatey Central Management Service use this configuration value, if both of these services are located on the same machine, they Chocolatey Background Service on that machine has to report into the Chocolatey Central Management Service on that machine.  It can't report into another instance.
+
+##### centralManagementReceiveTimeoutInSeconds
+
+This is the length of time, in seconds, that a connection to Chocolatey Central Management can remain inactive, during which no application messages are received, before it is dropped.
+
+**Default Value:** 30
+
+##### centralManagementSendTimeoutInSeconds
+
+This is the length of time, in seconds, that a write operation against Chocolatey Central Management has to complete before the transport raises an exception.
+
+**Default Value:** 30
+
+##### centralManagementCertificateValidationMode
+
+This captures the options for determining the validity of the Chocolatey Central Management Service certificate obtained using SSL/TLS negotiation.
+
+**Default Value:** PeerOrChainTrust
+
+**Valid Values:** None, PeerTrust, ChainTrust, PeerOrChainTrust, Custom
+
 #### Chocolatey Clients
 
 Once CCM has been set up and configured, each machine that you want to report
@@ -213,9 +253,11 @@ choco feature enable -n useChocolateyCentralManagement
 
 Here, the full URL, including the port number, to where the CCM service was
 installed to is being set, and then the `useChocolateyCentralManagement` feature
-is being enabled. In your environment you would replace `https://ccmsrvserver:24021` with the DNS name of your server and the port you set.
+is being enabled. In your environment you would replace `https://ccmsrvserver:24021` with the FQDN name of your server and the port you set.
 
 **NOTE:** By default, this feature is disabled, and will need to be turned on.
+
+**NOTE:** If not set, both the Chocolatey Background Agent and the Chocolatey Central Management Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that they are being executed on.
 
 Additional configuration exists for CCM Service, which allows fine grained
 control of how Chocolatey Agent will report into CCM.  For example:
