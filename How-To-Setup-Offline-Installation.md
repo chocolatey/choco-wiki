@@ -255,7 +255,7 @@ Now that we've finished the first exercise and have those files over on our offl
 1. C4B / MSP / TRIAL: Run `choco feature enable --name="'internalizeAppendUseOriginalLocation'"`. This sets Package Internalizer to append `-UseOriginalLocation` to the end of `Install-ChocolateyPackage` to make it behave more like `Install-ChocolateyInstallPackage`. Since the files are local, we won't need it copying them to temp prior to running it.
 1. C4B / MSP / TRIAL: Run `choco feature enable --name="'reduceInstalledPackageSpaceUsage'"` to ensure Package Reducer is turned on.
 1. Set proxy configuration, virus scan configuration, or other configuration as described at [[Chocolatey configuration|ChocolateyConfiguration]].
-1. C4B / MSP / TRIAL: Are we installing the [optional Chocolatey Agent Service as well](https://chocolatey.org/docs/features-agent-service#setup)? If so, run `choco upgrade chocolatey-agent -y --pre` and then follow the link for other settings you will need to configure.
+1. C4B / TRIAL: Are we installing the [optional Chocolatey Agent Service as well](https://chocolatey.org/docs/features-agent-service#setup)? If so, run `choco upgrade chocolatey-agent -y --pre` and then follow the link for other settings you will need to configure.
 
 ~~~powershell
 # Ensure we can run everything
@@ -295,7 +295,7 @@ choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
 # https://chocolatey.org/docs/chocolatey-configuration
 
 
-#TODO: Are we installing the Chocolatey Agent Service?
+#TODO: Are we installing the Chocolatey Agent Service? C4B Only
 # https://chocolatey.org/docs/features-agent-service#setup
 # choco upgrade chocolatey-agent -y --pre
 #choco feature disable --name="'showNonElevatedWarnings'"
