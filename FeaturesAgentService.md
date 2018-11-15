@@ -185,7 +185,7 @@ This makes for happy users and happy admins as they are able to move quicker tow
 
 ### Chocolatey Central Console
 
-**NOTE:** The console is estimated to be available by end of 2017. All notes here are what we expect, but the standard disclaimer of availability and features apply.
+**NOTE:** The console is estimated to be available by end of 2018. All notes here are what we expect, but the standard disclaimer of availability and features apply.
 
 Chocolatey will have a central core console that will allow you to manage your environments. You will need the Chocolatey Agent installed on all machines you wish to manage centrally.
 
