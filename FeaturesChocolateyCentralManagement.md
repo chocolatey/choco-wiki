@@ -28,12 +28,14 @@ available sources.
 While it is envisioned that CCM will be installed across multiple servers, it is
 certainly possible to run CCM on a single server.
 
-Currently, the CCM packages do not provision the SQL Server Database Permissions that are required for the CCM components to function.  It is assumed that the necessary permissions has already been provided.  By default, two users will require read/write permissions to the CCM Database:
+Currently, the CCM packages do not provision the SQL Server Database Permissions that are required for the CCM components to function.  It is assumed that the necessary permissions have already been provided.  By default, two users will require read/write permissions to the CCM Database:
 
 * ChocolateyLocalAdmin - which runs the CCM Windows Service
 * IIS APPPOOL/ChocolateyCentralManagment - which runs the CCM IIS Application Pool
 
 **NOTE:** If either of these users are changed during the installation of either of these components, the database permissions will need to be updated to reflect this.
+
+Or, the required username/password for connecting to the CCM database are added as part of the connection string that is passed into the CCM packages during installation.
 
 ### Pre-Requisites
 
