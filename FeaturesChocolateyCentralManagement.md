@@ -217,7 +217,7 @@ This is the URL that is used by the Chocolatey Background Agent to report into C
 
 **Default Value:** _blank_
 
-**NOTE:** If left blank, both the Chocolatey Background Agent and the Chocolatey Central Management Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that they are being executed on.
+**NOTE:** If left blank, the Chocolatey Central Management Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.
 
 **NOTE:** Due to the fact that both the Chocolatey Background Agent and Chocolatey Central Management Service use this configuration value, if both of these services are located on the same machine, they Chocolatey Background Service on that machine has to report into the Chocolatey Central Management Service on that machine.  It can't report into another instance.
 
