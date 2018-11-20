@@ -257,7 +257,7 @@ is being enabled. In your environment you would replace `https://ccmsrvserver:24
 
 **NOTE:** By default, this feature is disabled, and will need to be turned on.
 
-**NOTE:** If not set, both the Chocolatey Background Agent and the Chocolatey Central Management Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that they are being executed on.
+**NOTE:** If not set, the Chocolatey Central Management Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.
 
 Additional configuration exists for CCM Service, which allows fine grained
 control of how Chocolatey Agent will report into CCM.  For example:
