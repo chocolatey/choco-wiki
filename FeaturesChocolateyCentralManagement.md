@@ -222,7 +222,7 @@ This is the length of time, in seconds, that the Chocolatey Background Agent wil
 
 ##### centralManagementServiceUrl
 
-This is the URL that is used by the Chocolatey Background Agent to report into Chocolatey Central Management, and also by the Chocolatey Central Management Service to register the URL that it is listening for incoming reports on.  
+This is the URL that is used by the Chocolatey Background Agent to report into Chocolatey Central Management, and also by the Chocolatey Central Management Service to register the URL that it is listening for incoming reports on.
 
 **Default Value:** _blank_
 

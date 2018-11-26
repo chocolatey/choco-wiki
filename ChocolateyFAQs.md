@@ -446,7 +446,7 @@ There is! This is a long video due to slow internet connections, but watch the f
 
 <a id="markdown-i-just-took-over-as-the-primary-maintainer-of-a-package-what-do-i-need-to-do" name="i-just-took-over-as-the-primary-maintainer-of-a-package-what-do-i-need-to-do"></a>
 ### I just took over as the primary maintainer of a package. What do I need to do?
-See [[Package Maintainer Handover|PackageMantainerHandover]]
+See [[Package Maintainer Handover|PackageMaintainerHandover]]
 
 <a id="markdown-what-is-moderation" name="what-is-moderation"></a>
 ### What is moderation?
