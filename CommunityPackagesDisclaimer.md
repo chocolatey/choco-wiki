@@ -96,7 +96,7 @@ You will start to see `429 Too Many Requests` if you have triggered the rate lim
 
 **Details:**
 * Package downloads/installations are rate limited at about 20 per minute per IP address.
-* Chocolatey package downloads/installations are rate limited at 5 per minute per IP address.
+* Chocolatey package (chocolatey.nupkg) downloads/installations are rate limited at 5 per minute per IP address.
 
 
 **NOTE:** Rate Limiting defaults are subject to change with or without notice as we find a good happy medium that ensures ease of use and stability for our community.
