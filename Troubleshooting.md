@@ -252,7 +252,7 @@ Once this has been completed, you should have access to install Chocolatey and/o
 <a id="markdown-im-getting-a-429-too-many-requests-issue-when-attempting-to-use-the-community-package-repository" name="im-getting-a-429-too-many-requests-issue-when-attempting-to-use-the-community-package-repository"></a>
 ### I'm getting a 429 too many requests issue when attempting to use the community package repository.
 
-This means your IP address has been flagged for too many requests. Please see [rate limiting for details|CommunityPackagesDisclaimer#rate-limiting]].
+This means your IP address has been flagged for too many requests. Please see [[Rate Limiting|CommunityPackagesDisclaimer#rate-limiting]] for details and actions.
 
 Reference Errors:
 * `Exception calling "DownloadFile" with "2" argument(s): The remote server returned an error: (429) Too Many Requests`
