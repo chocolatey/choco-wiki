@@ -24,6 +24,7 @@ There are some well-known things you may run into when you are using Chocolatey.
   - [Why does choco in{tab} not work for me?](#why-does-choco-intab-not-work-for-me)
   - [Microsoft.Powershell_profile.ps1 cannot be loaded. The file is not digitally signed.](#microsoftpowershell_profileps1-cannot-be-loaded-the-file-is-not-digitally-signed)
   - [I'm getting a 403 unauthorized issue when attempting to use the community package repository.](#im-getting-a-403-unauthorized-issue-when-attempting-to-use-the-community-package-repository)
+  - [I'm getting a 429 too many requests issue when attempting to use the community package repository.](#im-getting-a-429-too-many-requests-issue-when-attempting-to-use-the-community-package-repository)
   - [I'm seeing Chocolatey / *application* / *tool* using 32 bit to run instead of x64. What is going on?](#im-seeing-chocolatey--application--tool-using-32-bit-to-run-instead-of-x64-what-is-going-on)
   - [A package is broken for me](#a-package-is-broken-for-me)
   - [The package install failed with 1603](#the-package-install-failed-with-1603)
@@ -243,10 +244,19 @@ If you determine it is CloudFlare blocking your IP (which is the issue 98% of th
 
 * Go to https://chocolatey.org/contact (NOTE: If you are completely blocked from accessing the site, contact us through [Gitter](https://gitter.im/chocolatey/choco) instead)
 * Select ***Blocked IP Address*** in "Send message to" drop down (this is important to get it routed to the right folks)
-* Let us know what's going on along with your IP address so we can talk about whitelisting options and get you moving forward.
+* **IMPORTANT**: Let us know what's going on along with your IP address so we can talk about whitelisting options and get you moving forward.
 * Oh, and be sure to run some antivirus scans and remove any found malware (and maybe find a better antivirus scanner).
 
 Once this has been completed, you should have access to install Chocolatey and/or packages from the community repository.
+
+<a id="markdown-im-getting-a-429-too-many-requests-issue-when-attempting-to-use-the-community-package-repository" name="im-getting-a-429-too-many-requests-issue-when-attempting-to-use-the-community-package-repository"></a>
+### I'm getting a 429 too many requests issue when attempting to use the community package repository.
+
+This means your IP address has been flagged for too many requests. Please see [rate limiting for details|CommunityPackagesDisclaimer#rate-limiting]].
+
+Reference Errors:
+* `Exception calling "DownloadFile" with "2" argument(s): The remote server returned an error: (429) Too Many Requests`
+* `The remote server returned an error: (429) Too Many Requests. Too Many Requests`
 
 <a id="markdown-im-seeing-chocolatey--application--tool-using-32-bit-to-run-instead-of-x64-what-is-going-on" name="im-seeing-chocolatey--application--tool-using-32-bit-to-run-instead-of-x64-what-is-going-on"></a>
 ### I'm seeing Chocolatey / *application* / *tool* using 32 bit to run instead of x64. What is going on?

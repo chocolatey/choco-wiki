@@ -12,6 +12,9 @@
 - [Excessive Use](#excessive-use)
   - [How To Avoid Excessive Use](#how-to-avoid-excessive-use)
   - [What To Do When You Are Blocked For Excessive Use](#what-to-do-when-you-are-blocked-for-excessive-use)
+  - [Rate Limiting](#rate-limiting)
+  - [What To Do When You Are Rate Limited](#what-to-do-when-you-are-rate-limited)
+    - [Special Requests on Rate Limiting](#special-requests-on-rate-limiting)
 - [Community Provided Packages Are Not Supported](#community-provided-packages-are-not-supported)
 - [Put It Another Way](#put-it-another-way)
 
@@ -48,6 +51,8 @@ However Windows doesn't have a distro-provided repo. Chocolatey Software does no
 
 ***Please note that individuals (even organizations) using the community repository are unlikely to hit excessive use numbers under normal usage scenarios.***
 
+See [rate limiting](#rate-limiting) below if you are seeing 429 errors (too many requests).
+
 Another aspect to keep in mind is that the community package repository is meant for the community. Perceived abuses of the community package repository that affect it in a detrimental way for the rest of the community will not be allowed. By abusive, it ***may*** mean more than **100 installs per hour on average over an internally determined amount of time** (it could be more, could be less) - this is not queries, this is **installs, upgrades** where actual package downloads are occurring. Let's say that is 30 days - that would mean 72,000+ package downloads over 30 days. When that is seen, our community team will make attempts to warn folks if we have known contacts (keep in mind it's highly unlikely we will have your contact information), and implement a temporary block to ensure your usage does not affect the community in a detrimental way. Many times this is due to a misconfiguration and can be corrected quickly.
 
 **Blocks are meant to be temporary bans, but require you to act to remedy the situation.** If you have been blocked, please see the next sections for corrective actions.
@@ -67,6 +72,51 @@ If you have found that you have gone over the limit and have been warned/blocked
 See the section above on avoiding excessive use - the expectation is that organizations would not use the community repository directly. As part of addressing any misconfigurations you might have, you will also need to see about addressing the previous section on "How To Avoid Excessive Use".
 
 Once you have resolved any issues on your side, we can lift the block. A block will be reimplemented later if we find excessive use again.
+
+### Rate Limiting
+As a measure to increase site stability and prevent excessive use, the Chocolatey website uses rate limiting on requests for the community repository. Most folks typically won't hit rate limits unless they are automatically tagged for excessive use. If you do trigger the rate limit, you will see a `(429) Too Many Requests`. When attempting to install Chocolatey you will see the following:
+
+![Exception calling "DownloadFile" with "2" arguments: The remote server returned an error: 429 Too Many Requests](images/cloudflare_ratelimiting_choco_install.png)
+
+It will look like the following using choco.exe:
+
+![The remote server returned an error: 429 Too Many Requests](images/cloudflare_ratelimiting_choco.png)
+
+If you go to a package page and attempt to use the download link in the left menu, you will see the following:
+
+![Error 1015, You are being rate limited](images/cloudflare_ratelimiting.png)
+
+You will start to see `429 Too Many Requests` if you have triggered the rate limit. Currently the rate limit will be in place for one hour. If you trigger it again, it will then be set for another hour.
+
+* Error 1015
+* Cloudflare Ray Id: 47fdeb7e3ea058f7
+
+***NOTE: Please note that individuals using the community repository are unlikely to hit rate limiting under normal usage scenarios.***
+
+
+**Details:**
+* Package downloads/installations are rate limited at about 20 per minute per IP address.
+* Chocolatey package downloads/installations are rate limited at 5 per minute per IP address.
+
+
+**NOTE:** Rate Limiting defaults are subject to change with or without notice as we find a good happy medium that ensures ease of use and stability for our community.
+
+### What To Do When You Are Rate Limited
+**NOTE: A rate limit will automatically expire after an hour, but if you hit the limit again, it will block for another hour.**
+
+If you have found that you have been rate limited, please see [How To Avoid Excessive Use](#how-to-avoid-excessive-use). Implementing best practices for organizational use will limit chances of being rate limited again in the future.
+
+#### Special Requests on Rate Limiting
+If you have special needs and are being rate limited, please reach out to us as in special instances, we can whitelist your IP address for a small period of time. Do the following:
+
+* Go to https://chocolatey.org/contact.
+* Select ***Blocked IP Address*** in "Send message to" drop down (this is important to get it routed to the right folks)
+* **IMPORTANT**: Mention you are being rate limited, include your IP address. Ask our team to look up `Cloudflare Ray Id: 47fdeb7e3ea058f7` and your IP address to verify.
+
+**NOTE: These are subjective, and special requests ONLY. Please ensure you implement best practices so that you are not rate limited.**
+
+See the section above on avoiding excessive use - the expectation is that organizations would not use the community repository directly. As part of addressing any misconfigurations you might have, you will also need to see about addressing the previous section on "How To Avoid Excessive Use".
+
 
 ## Community Provided Packages Are Not Supported
 
