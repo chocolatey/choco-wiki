@@ -65,6 +65,7 @@ Some of these options also work from a non-Windows hosting perspective. See [Non
 * NuGet.Server
 * [NuGet Gallery](https://github.com/NuGet/NuGetGallery/wiki/Hosting-the-NuGet-Gallery-Locally-in-IIS)
 * Chocolatey Gallery
+* Visual Studio Team Services (use NuGet v2 urls)
 
 #### Others
 These are other known servers, but we don't know the quality or compatibility of these frameworks as they relate to Chocolatey packages.
@@ -146,6 +147,7 @@ There is where the bulk of NuGet OData compatible servers fall (NuGet.Server, Ch
 * [Hazel](https://github.com/MPIB/hazel)
 * [LaGet](https://github.com/ikkentim/LaGet)
 * [Klondike](https://github.com/themotleyfool/Klondike)
+* Visual Studio Team Services (use NuGet v2 urls)
 
 If the option you've chosen is not listed, take a look at [known hosting options](#known-hosting-options) and follow the link from there to see what the vendor provides in the way of documentation.
 
