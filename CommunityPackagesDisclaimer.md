@@ -76,7 +76,7 @@ See the section above on avoiding excessive use - the expectation is that organi
 Once you have resolved any issues on your side, we can lift the block. A block will be reimplemented later if we find excessive use again.
 
 ### Rate Limiting
-As a measure to increase site stability and prevent excessive use, the Chocolatey website uses rate limiting on requests for the community repository. Most folks typically won't hit rate limits unless they are automatically tagged for excessive use. If you do trigger the rate limit, you will see a `(429) Too Many Requests`. When attempting to install Chocolatey you will see the following:
+As a measure to increase site stability and prevent excessive use, the Chocolatey website uses rate limiting on requests for the community repository. Rate limiting was introduced in November 2018. Most folks typically won't hit rate limits unless they are automatically tagged for excessive use. If you do trigger the rate limit, you will see a `(429) Too Many Requests`. When attempting to install Chocolatey you will see the following:
 
 ![Exception calling "DownloadFile" with "2" arguments: The remote server returned an error: 429 Too Many Requests](images/cloudflare_ratelimiting_choco_install.png)
 
