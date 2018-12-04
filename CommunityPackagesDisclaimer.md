@@ -60,12 +60,14 @@ Another aspect to keep in mind is that the community package repository is meant
 **NOTE**: If you or your organization feels you will need to go over this limit and need whitelisted, please reach out at https://chocolatey.org/contact, choose "Blocked IP Address". As we have limited information, please include your name, email address, phone number, and the IP addresses you believe are blocked so we can contact you and verify if there is a ban. Once you have resolved any issues on your side, we can lift the ban.
 
 ### How To Avoid Excessive Use
-To avoid excessive use, please see our [[organizational deployment guide|How-To-Setup-Offline-Installation]]. There are even ways to automate caching / [[internalizing|How-To-Recompile-Packages]] (caching and internalizing are entirely different concepts) packages so you still get a pretty good hands off experience.
+To avoid excessive use, please see our [[organizational deployment guide|How-To-Setup-Offline-Installation]]. Installation of Chocolatey itself and everything else should be from your internal repository and not directly from the community package repository. There are even ways to automate caching (see below) / [[internalizing|How-To-Recompile-Packages]] (caching and internalizing are entirely different concepts) packages so you still get a pretty good hands off experience.
 
 If you are not able to take advantage of [[internalizing|How-To-Recompile-Packages]] packages, you can still cache them locally (using package repository solutions like Artifactory, Nexus, ProGet, MyGet, etc), which will reduce your direct usage of the community repository. **NOTE:** Caching doesn't make the packages you are using from the community repository any more reliable, they may still need to download things from the internet at runtime - but it doesn't put you in a worse place than you already are at because you are already using the community repository directly which has issues identified in this document. If you want to achieve reliability when reusing community packages, you would need to [[internalize packages|How-To-Recompile-Packages]].
 
+For caching of packages, something can be quickly implemented in 15-30 minutes to get your organization unblocked (and avoid rate limiting) while you look into implementing the rest of the [[organizational deployment guide|How-To-Setup-Offline-Installation]] (which takes about 1-2 hours). With 15-30 minutes, you can implement a [Proxy Repository](https://help.sonatype.com/repomanager3/.net-package-repositories-with-nuget) including the install of a [Nexus Repository Manager v3](https://chocolatey.org/packages/nexus-repository) (or [NXRM v2](https://chocolatey.org/packages/nexus-oss)) which automatically caches (but does not [[internalize|How-To-Recompile-Packages]]) packages from the community repository (`https://chocolatey.org/api/v2`). This provides the same experience you get in using the community repository now but with more availability and no rate limiting!
+
 ### What To Do When You Are Blocked For Excessive Use
-**NOTE: A block will not automatically expire, you will need to contact our team to resolve the block.**
+**NOTE: A block will not automatically expire, you will need to contact our team to resolve the block.** Rate Limiting on the other hand does automatically expire after one hour. Please see [rate limiting](#rate-limiting) below.
 
 If you have found that you have gone over the limit and have been warned/blocked, please reach out at https://chocolatey.org/contact (send message to "Blocked IP Address" in the drop down - you may need to do this from a different IP address) or go to https://gitter.im/chocolatey/choco to contact the community team. You can also send an email to community at chocolatey dot io. As we have limited information (only an IP address), please include your name, email address, phone number, and the IP addresses you believe are blocked so we can contact you and verify if there is a block.
 
@@ -95,8 +97,8 @@ You will start to see `429 Too Many Requests` if you have triggered the rate lim
 
 
 **Details:**
-* Package downloads/installations are rate limited at about 20 per minute per IP address.
-* Chocolatey package (chocolatey.nupkg) downloads/installations are rate limited at 5 per minute per IP address.
+* Installations/downloads of Chocolatey itself (chocolatey.nupkg) are rate limited at about 5 per minute per IP address - temporary ban expires after 1 hour.
+* All other packages are rate limited at about 20 per minute per IP address - temporary ban expires after 1 hour.
 
 
 **NOTE:** Rate Limiting defaults are subject to change with or without notice as we find a good happy medium that ensures ease of use and stability for our community.
@@ -105,6 +107,9 @@ You will start to see `429 Too Many Requests` if you have triggered the rate lim
 **NOTE: A rate limit will automatically expire after an hour, but if you hit the limit again, it will block for another hour.**
 
 If you have found that you have been rate limited, please see [How To Avoid Excessive Use](#how-to-avoid-excessive-use). Implementing best practices for organizational use will limit chances of being rate limited again in the future.
+
+* Individual users being rate limited should reach out as per the next section and let us know as we are constantly adjusting limits to find a happy medium and need to have as much data to work with as possible. In addition to providing the requested information, make sure to also mention you are "individual use" and provide details on what caused the rate limiting. We may ask you to provide logs for further inspection.
+* Organizational use will be asked to set up best practices for Chocolatey deployments.
 
 #### Special Requests on Rate Limiting
 If you have special needs and are being rate limited, please reach out to us as in special instances, we can whitelist your IP address for a small period of time. Do the following:
