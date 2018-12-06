@@ -194,7 +194,7 @@ How the heck does this all work?
 7. If everything is deleted from the package folder, the folder is also removed.
 
 
-When a package has an exe file, Chocolatey will create a link "shortcut" to the file (called a shim) so that you can run that tool anywhere on the machine. See [[shimming|FeaturesShim]] for more information
+When a package has an exe file, Chocolatey will create a link "shortcut" to the file (called a shim) so that you can run that tool anywhere on the machine. See [[shimming|FeaturesShim]] for more information.
 When a package has a chocolateyInstall.ps1, it will run the script. The instructions in the file can be anything. This is limited only by the .NET framework and PowerShell.
 Most of the Chocolatey packages that take advantage of the PowerShell download an application installer and execute it silently.
 
