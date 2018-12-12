@@ -76,7 +76,7 @@ Requirements represent the minimum quality of a package that is acceptable. When
 * Brand New Packages ***ONLY*** (no approved or existing version in history, prereleases do not count)
   * Package Id naming - if the naming doesn't follow our conventions, it is grounds for rejecting immediately with the suggestion they resubmit with suggested name. Note that they may have had prereleases already, and it's still okay to move forward with the rejected status as long as the name of the name of package hasn't been previously approved. See https://github.com/chocolatey/choco/wiki/CreatePackages#naming-your-package
     * suggest the id split if over 25 chars with no "-" in the id
-    * flag on "."" in name (unless .portable/.install)
+    * flag on "." in name (unless .portable/.install)
 
 #### Guidelines
 Guidelines are strong suggestions that improve the quality of a package version. These are considered something to fix for next time to increase the quality of the package. Over time Guidelines can become Requirements. A package version can be approved without addressing Guideline comments but will reduce the quality of the package.
@@ -202,7 +202,7 @@ Always be explicit that you are waiting on the maintainer to fix and resubmit th
 * Brand New Packages ***ONLY*** (no approved or existing version in history, prereleases do not count)
   * Package Id naming - if the naming doesn't follow our conventions, it is grounds for rejecting immediately with the suggestion they resubmit with suggested name. Note that they may have had prereleases already, and it's still okay to move forward with the rejected status as long as the name of the name of package hasn't been previously approved. See https://github.com/chocolatey/choco/wiki/CreatePackages#naming-your-package
     * suggest the id split if over 25 chars with no "-" in the id
-    * flag on "."" in name (unless .portable/.install)
+    * flag on "." in name (unless .portable/.install)
 
 ##### Guidelines
 If a package is only flagging on guidelines, be sure to move forward on approval (this means no requirements flagged by you or the validator checks).
