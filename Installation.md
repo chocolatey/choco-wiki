@@ -670,7 +670,7 @@ You need to download and unzip the Chocolatey package, then call the PowerShell 
 
 ### Non-Administrative install
 
-**NOTE**: This option should be a last resort and is considered to be a more advanced scenario - most things you do on Windows require administrative rights, especially surrounding software management, so you are going to be limited even in packages you attempt to install. If you are using the [community package repository](https://chocolatey.org/packages), there are over 200 packages you can install from the community repository without administrative permission - see https://chocolatey.org/packages?q=id%3Aportable.
+**NOTE**: This option should be a last resort and is considered to be a more advanced scenario - most things you do on Windows require administrative rights, especially surrounding software management, so you are going to be limited even in packages you attempt to install. If you are using the [community package repository](https://chocolatey.org/packages), there are over 200 packages you can install from the community repository without administrative permission - see https://chocolatey.org/packages?q=id%3Aportable+tag%3Aportable.
 
 1. You must choose a different location than the default (see [Installing to a different location](#installing-to-a-different-location) above). The default is a more secure location that only administrators can update.
 1. Follow that with the command line / PowerShell methods of installation.
