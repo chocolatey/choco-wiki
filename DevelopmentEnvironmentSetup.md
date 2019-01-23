@@ -113,7 +113,7 @@ Error Occurred: $($_.Exception.Message)
 }
 ```
 
-The above is from [DropkicK.Dev](https://github.com/ferventcoder/nugetpackages/blob/master/dropkick.dev/tools/chocolateyInstall.ps1)  
+The above is from [DropkicK.Dev](https://github.com/ferventcoder/chocolatey-packages/blob/master/manual/dropkick.dev/tools/chocolateyInstall.ps1)  
 
 ## Setup A Full Environment Including Visual Studio Express, IIS Express and SQL Server Express (with Management Studio)
 The original [gist](https://gist.github.com/3825023)
