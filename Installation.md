@@ -586,8 +586,8 @@ See [[Installing Chocolatey Behind a Proxy Server|Proxy-Settings-for-Chocolatey#
   * Copy/Move over the items from the old lib/bin directory.
   * Delete your old install directory.
 
-**NOTE**: There is one really important consideration when installing Chocolatey to a non-default location - Chocolatey only locks down the permissions to Admins when installed to the default location.
-If you are installing to another location, you will need to handle this yourself.
+**NOTE**: There is one really important consideration when installing Chocolatey to a non-default location: Chocolatey only locks down the permissions to Admins when installed to the default location `%PROGRAMDATA%\Chocolatey`, which means the same thing as `%SystemDrive%\ProgramData\Chocolatey`.
+If you are installing to another location, you will need to handle this yourself, i. e. restrict write access to Admins in case you so desire.
 This is due to alternative locations could have a range of permissions that should not be changed.
 See [[Why does Chocolatey install where it does|DefaultChocolateyInstallReasoning]] and https://github.com/chocolatey/choco/issues/398 for more details.
 
