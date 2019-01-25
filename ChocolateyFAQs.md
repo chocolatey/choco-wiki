@@ -563,5 +563,5 @@ A typical way of stating the difference is "Developers use NuGet to get 3rd part
 <a id="markdown-how-iswill-chocolatey-be-different-than-apt" name="how-iswill-chocolatey-be-different-than-apt"></a>
 ### How is/will Chocolatey be different than apt?
 
- * Chocolatey does not support the idea of source packages, which are packages that must be built to be used. For someone interested in that, check out https://github.com/coapp.
+ * Chocolatey does not support the idea of source packages, which are packages that must be built to be used. For someone interested in that, check out https://github.com/Microsoft/vcpkg.
  * Library packages are not completely off the plate, but mostly. How would you link the library up to the application/tool?
