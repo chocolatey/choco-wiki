@@ -29,7 +29,7 @@ These have to be named exactly as the following:
 * icon_256x256.ico
 * logo_150_250.png
 * splash_700x302.png
-* splash_975_421.png
+* splash_975x421.png
 * splash_1250x540.png
 
 
