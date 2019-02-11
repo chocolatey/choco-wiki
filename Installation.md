@@ -3,7 +3,7 @@
 
 - [Requirements](#requirements)
 - [Installing Chocolatey](#installing-chocolatey)
-- <a href="#more-install-options" onclick="document.getElementById('div-moreoptions').classList.remove('hide')">More Install Options</a>
+- <a href="#more-install-options" onclick="document.getElementById('div-moreoptions').classList.remove('d-none')">More Install Options</a>
 - [[Installing Licensed Edition|Installation-Licensed]]
 - [Upgrading Chocolatey](#upgrading-chocolatey)
 - [Uninstalling Chocolatey](#uninstalling-chocolatey)
@@ -22,17 +22,17 @@ That's it! All you need is choco.exe (that you get from the installation scripts
 ## Installing Chocolatey
 Chocolatey installs in seconds. You are just a few steps from running choco right now!
 
-1. First, ensure that you are using an ***[administrative shell](http://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)*** - you can also install as a non-admin, check out <a href="#non-administrative-install" onclick="document.getElementById('div-moreoptions').classList.remove('hide')">Non-Administrative Installation</a>.
+1. First, ensure that you are using an ***[administrative shell](http://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)*** - you can also install as a non-admin, check out <a href="#non-administrative-install" onclick="document.getElementById('div-moreoptions').classList.remove('d-none')">Non-Administrative Installation</a>.
 1. Copy the text specific to your command shell - [cmd.exe](#install-with-cmdexe) or [powershell.exe](#install-with-powershellexe).
 1. Paste the copied text into your shell and press Enter.
 1. Wait a few seconds for the command to complete.
 1. If you don't see any errors, you are ready to use Chocolatey! Type `choco` or `choco -?` now, or see [[Getting Started|GettingStarted]] for usage instructions.
 
 **NOTES**:
- * If you are behind a proxy, please see <a href="#installing-behind-a-proxy" onclick="document.getElementById('div-moreoptions').classList.remove('hide')">Installing behind a proxy</a>.
- * Need completely offline solution? See <a href="#completely-offline-install" onclick="document.getElementById('div-moreoptions').classList.remove('hide')">Completely Offline Install</a>.
+ * If you are behind a proxy, please see <a href="#installing-behind-a-proxy" onclick="document.getElementById('div-moreoptions').classList.remove('d-none')">Installing behind a proxy</a>.
+ * Need completely offline solution? See <a href="#completely-offline-install" onclick="document.getElementById('div-moreoptions').classList.remove('d-none')">Completely Offline Install</a>.
  * Installing the licensed edition? See [[install licensed edition|Installation-Licensed]].
- * <a href="#more-install-options" onclick="document.getElementById('div-moreoptions').classList.remove('hide')">More Options</a> / [[Troubleshooting|Troubleshooting]]
+ * <a href="#more-install-options" onclick="document.getElementById('div-moreoptions').classList.remove('d-none')">More Options</a> / [[Troubleshooting|Troubleshooting]]
 
 #### Install with cmd.exe
 Run the following command: <!--remove <button class="icon-clipboard copy-button" data-clipboard-text="@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;"></button> (copy command text) remove-->
@@ -66,7 +66,7 @@ We take security very seriously. <a href="https://chocolatey.org/security">Learn
 
 <p><strong>Troubleshooting? Proxy? Need more options?</strong><br />
 
-<a onclick="if ($(this).text() == 'Less Options') {$('#div-moreoptions').addClass('hide');$(this).text('More Options');} else {$('#div-moreoptions').removeClass('hide');$(this).text('Less Options');}">More Options</a>
+<a onclick="if ($(this).text() == 'Less Options') {$('#div-moreoptions').addClass('d-none');$(this).text('More Options');} else {$('#div-moreoptions').removeClass('d-none');$(this).text('Less Options');}">More Options</a>
 </p>
 
 <div id="div-moreoptions" class="hide">
@@ -824,7 +824,7 @@ See [[uninstall|Uninstallation]].
 ## FAQs
 
 ### I'm having trouble installing Chocolatey
-Make sure you've reviewed <a href="#more-install-options" onclick="document.getElementById('div-moreoptions').classList.remove('hide')">More Install Options</a> and looked over [[Troubleshooting|Troubleshooting]]. If you've done those things, reach out over the mailing list or over the chat (Gitter). The links to those can be found in the open source section of https://chocolatey.org/support.
+Make sure you've reviewed <a href="#more-install-options" onclick="document.getElementById('div-moreoptions').classList.remove('d-none')">More Install Options</a> and looked over [[Troubleshooting|Troubleshooting]]. If you've done those things, reach out over the mailing list or over the chat (Gitter). The links to those can be found in the open source section of https://chocolatey.org/support.
 
 ### I'm getting a 403 attempting to install
 This is addressed in [[Troubleshooting|Troubleshooting]].
@@ -860,7 +860,7 @@ The installation actually ensures a couple of things:
 
 <script language="javascript" type="text/javascript">
   if (window.location.hash) {
-    document.getElementById("div-moreoptions").classList.remove("hide");
+    document.getElementById("div-moreoptions").classList.remove("d-none");
   }
 </script>
 
