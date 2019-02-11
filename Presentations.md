@@ -1,5 +1,11 @@
+<!--remove {{AT}}section SideColumn { remove-->
+<!-- TOC -->
+
 * [Presentations](#presentations)
 * [Podcasts](#podcasts)
+
+<!-- /TOC -->
+<!--remove } remove-->
 
 ## Presentations
 ### 2017

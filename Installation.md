@@ -1,3 +1,6 @@
+<!--remove {{AT}}section SideColumn { remove-->
+<!-- TOC -->
+
 - [Requirements](#requirements)
 - [Installing Chocolatey](#installing-chocolatey)
 - <a href="#more-install-options" onclick="document.getElementById('div-moreoptions').classList.remove('hide')">More Install Options</a>
@@ -5,6 +8,9 @@
 - [Upgrading Chocolatey](#upgrading-chocolatey)
 - [Uninstalling Chocolatey](#uninstalling-chocolatey)
 - [FAQs](#faqs)
+
+<!-- /TOC -->
+<!--remove } remove-->
 
 ## Requirements
 * Windows 7+ / Windows Server 2003+
