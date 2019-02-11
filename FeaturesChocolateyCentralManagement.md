@@ -5,6 +5,7 @@
 - [Usage](#usage)
 - [Requirements](#requirements)
 - [Installation Source](#installation-source)
+  - [Use Specific Version](#use-specific-version)
 - [Setup](#setup)
   - [Pre-Requisites](#pre-requisites)
   - [Package Parameters](#package-parameters)
@@ -54,7 +55,7 @@ Which should output something similar to the following:
 > chocolatey - https://chocolatey.org/api/v2/ | Priority 0|Bypass Proxy - False|Self-Service - False|Admin Only - False.
 > chocolatey.licensed - https://licensedpackages.chocolatey.org/api/v2/ (Authenticated)| Priority 10|Bypass Proxy - False|Self-Service - False|Admin Only - False.
 
-### Note
+### Use Specific Version
 
 During the CCM Beta phase, it is necessary to install the CCM packages using a specific version.  i.e. simply attempting the following:
 
