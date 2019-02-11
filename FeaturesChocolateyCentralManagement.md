@@ -99,8 +99,8 @@ servers.
 
 **NOTE:** The following assumes that you already have IIS and SQL Server installed.  
 
-* IIS requires to be installed on the machine where the `chocolatey-management-web` package will be installed.  
-* SQL Server requires to be installed on the machine where the `chocolatey-management-database` package will be installed.  
+* IIS needs to be installed on the machine where the `chocolatey-management-web` package will be installed.  
+* SQL Server needs to be installed on the machine where the `chocolatey-management-database` package will be installed.  
 
 If this is not the case, then the below commands will result in errors.  
 
