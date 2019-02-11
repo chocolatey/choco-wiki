@@ -8,6 +8,9 @@
   - [Use Specific Version](#use-specific-version)
 - [Setup](#setup)
   - [Pre-Requisites](#pre-requisites)
+  - [Single Server Installation](#single-server-installation)
+  - [Two Server Installation](#two-server-installation)
+  - [Three Server Installation](#three-server-installation)
 - [Package Parameters](#package-parameters)
   - [Chocolatey Central Management Database](#chocolatey-central-management-database)
   - [Chocolatey Central Management Service](#chocolatey-central-management-service)
@@ -89,6 +92,10 @@ servers.
 
 1. SQL Server Instance, with administrator access for initial database provision
 1. Internet Information Services
+
+### Single Server Installation
+### Two Server Installation
+### Three Server Installation
 
 ## Package Parameters
 
