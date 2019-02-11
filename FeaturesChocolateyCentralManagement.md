@@ -13,7 +13,7 @@
   - [Chocolatey Central Management Service](#chocolatey-central-management-service)
   - [Chocolatey Management Web](#chocolatey-management-web)
   - [Chocolatey Configuration for Chocolatey Central Management](#chocolatey-configuration-for-chocolatey-central-management)
-  - [Chocolatey Clients](#chocolatey-clients)
+- [Chocolatey Clients](#chocolatey-clients)
 - [FAQ](#faq)
   - [Will this become available for lower editions of Chocolatey?](#will-this-become-available-for-lower-editions-of-chocolatey)
   - [What's the minimum version of the Chocolatey packages I need to use CCM?](#whats-the-minimum-version-of-the-chocolatey-packages-i-need-to-use-ccm)
