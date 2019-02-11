@@ -54,6 +54,18 @@ Which should output something similar to the following:
 > chocolatey - https://chocolatey.org/api/v2/ | Priority 0|Bypass Proxy - False|Self-Service - False|Admin Only - False.
 > chocolatey.licensed - https://licensedpackages.chocolatey.org/api/v2/ (Authenticated)| Priority 10|Bypass Proxy - False|Self-Service - False|Admin Only - False.
 
+### Note
+
+During the CCM Beta phase, it is necessary to install the CCM packages using a specific version.  i.e. simply attempting the following:
+
+`choco install chocolatey-management-database --pre`
+
+will not work, but rather, a more explicit command such as:
+
+`choco install chocolatey-management-database --version 0.1.0-beta-20181009`
+
+will be required.
+
 ## Setup
 
 While it is envisioned that CCM will be installed across multiple servers, it is
