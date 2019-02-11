@@ -4,6 +4,7 @@
 
 - [Usage](#usage)
 - [Requirements](#requirements)
+- [Installation Source](#installation-source)
 - [Setup](#setup)
   - [Pre-Requisites](#pre-requisites)
   - [Package Parameters](#package-parameters)
@@ -41,6 +42,17 @@ available sources.
   * This installs the CCM Windows Service, which the Chocolatey Agent Windows Service will communicate with.
 * Chocolatey Central Management Web (`chocolatey-management-web` package) v0.1.0+
   * This is the CCM front end website that is the main user interface of the application
+
+## Installation Source
+
+All the packages required to install CCM onto a machine(s) on your environment are located on the `chocolatey.licensed` feed.  This is the same place that you would install the [Chocolatey Agent Service](https://chocolatey.org/docs/features-agent-service) and the Chocolatey Extension from.  The `chocolatey.licensed` source is automatically added to your Chocolatey instance when you install the Chocolatey Extension.  You can verify this by running the following command:
+
+`choco source`
+
+Which should output something similar to the following:
+
+> chocolatey - https://chocolatey.org/api/v2/ | Priority 0|Bypass Proxy - False|Self-Service - False|Admin Only - False.
+> chocolatey.licensed - https://licensedpackages.chocolatey.org/api/v2/ (Authenticated)| Priority 10|Bypass Proxy - False|Self-Service - False|Admin Only - False.
 
 ## Setup
 
