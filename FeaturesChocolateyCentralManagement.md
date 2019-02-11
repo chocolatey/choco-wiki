@@ -8,12 +8,12 @@
   - [Use Specific Version](#use-specific-version)
 - [Setup](#setup)
   - [Pre-Requisites](#pre-requisites)
-  - [Package Parameters](#package-parameters)
-    - [Chocolatey Central Management Database](#chocolatey-central-management-database)
-    - [Chocolatey Central Management Service](#chocolatey-central-management-service)
-    - [Chocolatey Management Web](#chocolatey-management-web)
-    - [Chocolatey Configuration for Chocolatey Central Management](#chocolatey-configuration-for-chocolatey-central-management)
-    - [Chocolatey Clients](#chocolatey-clients)
+- [Package Parameters](#package-parameters)
+  - [Chocolatey Central Management Database](#chocolatey-central-management-database)
+  - [Chocolatey Central Management Service](#chocolatey-central-management-service)
+  - [Chocolatey Management Web](#chocolatey-management-web)
+  - [Chocolatey Configuration for Chocolatey Central Management](#chocolatey-configuration-for-chocolatey-central-management)
+  - [Chocolatey Clients](#chocolatey-clients)
 - [FAQ](#faq)
   - [Will this become available for lower editions of Chocolatey?](#will-this-become-available-for-lower-editions-of-chocolatey)
   - [What's the minimum version of the Chocolatey packages I need to use CCM?](#whats-the-minimum-version-of-the-chocolatey-packages-i-need-to-use-ccm)
@@ -90,15 +90,15 @@ servers.
 1. SQL Server Instance, with administrator access for initial database provision
 1. Internet Information Services
 
-### Package Parameters
+## Package Parameters
 
-#### Chocolatey Central Management Database
+### Chocolatey Central Management Database
 
 This package creates the Chocolatey Central Management Database with the following defaults:
 
 * Database Connection String:   **Server=&lt;LOCAL COMPUTER DNS NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
 
-##### Parameters
+#### Parameters
 
 You can override the package defaults using the following parameters:
 
@@ -112,7 +112,7 @@ You can override the package defaults using the following parameters:
   * Instance name of the SQL Server database to connect to. Note that if you do not also pass `/ConnectionString`, it will be generated using this parameter value and `/Database` (using defaults for missing parameters);
   * **NOTE:** Default Value: **&lt;LOCAL COMPUTER DNS NAME&gt;**
 
-##### Example
+#### Example
 
 Let's assume that you want to install the Chocolatey Central Management Database
 onto a machine that will access a SQL Server instance called `SQLSERVERCCM`, on
@@ -129,7 +129,7 @@ the sensitive information is not leaked out into log files.
 
 **NOTE:** There is an assumption here that the username and password being used have the necessary permissions in order to create the CCM database in the destination SQL Server instance.
 
-#### Chocolatey Central Management Service
+### Chocolatey Central Management Service
 
 This package creates the Chocolatey Central Management Service with the following defaults:
 
@@ -142,7 +142,7 @@ This package creates the Chocolatey Central Management Service with the followin
 * Service Listening Port:               **24020**
 * Self-Signed Certificate Domain Name:  **DNS name of the local computer**
 
-##### Parameters
+#### Parameters
 
 You can override the package defaults using the following parameters:
 
@@ -180,7 +180,7 @@ You can override the package defaults using the following parameters:
   * Explicit request not to reinstall the service
   * **NOTE:** Default Value: Not provided
 
-##### Example
+#### Example
 
 Let's assume that you want to install the CCM Windows Service with a specific
 connection string in order to connect to the CCM Database, as well as configure
@@ -195,7 +195,7 @@ choco install chocolatey-management-service --package-parameters-sensitive="'/Po
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that
 the sensitive information is not leaked out into log files.
 
-#### Chocolatey Management Web
+### Chocolatey Management Web
 
 This package creates the Chocolatey Central Management Website and Application Pool with the following defaults:
 
@@ -213,7 +213,7 @@ This package creates the Chocolatey Central Management Website and Application P
 * SQL Server Instance:                      **&lt;LOCAL COMPUTER DNS NAME&gt;**
 * Connection String:                        **Server=&lt;LOCAL COMPUTER DNS NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
 
-##### Parameters
+#### Parameters
 
 You can override the package defaults using the following parameters:
 
@@ -236,7 +236,7 @@ You can override the package defaults using the following parameters:
   * This will prompt you to enter the password, during install, for the username (provided via the `/Username` parameter) the IIS WebApplicationPool will run under;
   * **NOTE:** Default Value: Not provided
 
-##### Example
+#### Example
 
 Let's assume that you want to install the CCM Web Site with a specific
 connection string in order to connect to the CCM Database, as well as configure
@@ -254,17 +254,17 @@ the sensitive information is not leaked out into log files.
 and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.
 After you input this, you will be prompted to change the password.
 
-#### Chocolatey Configuration for Chocolatey Central Management
+### Chocolatey Configuration for Chocolatey Central Management
 
 The following configuration values, with their default values, are added into the chocolatey.config file after installing Chocolatey Central Management and it's dependent packages.
 
-##### centralManagementReportPackagesTimerIntervalInSeconds
+#### centralManagementReportPackagesTimerIntervalInSeconds
 
 This is the length of time, in seconds, that the Chocolatey Background Agent will wait between each attempt to report into Chocolatey Central Management.
 
 **Default Value:** 1800
 
-##### centralManagementServiceUrl
+#### centralManagementServiceUrl
 
 This is the URL that is used by the Chocolatey Background Agent to report into Chocolatey Central Management, and also by the Chocolatey Central Management Service to register the URL that it is listening for incoming reports on.
 
@@ -274,19 +274,19 @@ This is the URL that is used by the Chocolatey Background Agent to report into C
 
 **NOTE:** Due to the fact that both the Chocolatey Background Agent and Chocolatey Central Management Service use this configuration value, if both of these services are located on the same machine, they Chocolatey Background Service on that machine has to report into the Chocolatey Central Management Service on that machine.  It can't report into another instance.
 
-##### centralManagementReceiveTimeoutInSeconds
+#### centralManagementReceiveTimeoutInSeconds
 
 This is the length of time, in seconds, that a connection to Chocolatey Central Management can remain inactive, during which no application messages are received, before it is dropped.
 
 **Default Value:** 30
 
-##### centralManagementSendTimeoutInSeconds
+#### centralManagementSendTimeoutInSeconds
 
 This is the length of time, in seconds, that a write operation against Chocolatey Central Management has to complete before the transport raises an exception.
 
 **Default Value:** 30
 
-##### centralManagementCertificateValidationMode
+#### centralManagementCertificateValidationMode
 
 This captures the options for determining the validity of the Chocolatey Central Management Service certificate obtained using SSL/TLS negotiation.
 
@@ -294,7 +294,7 @@ This captures the options for determining the validity of the Chocolatey Central
 
 **Valid Values:** None, PeerTrust, ChainTrust, PeerOrChainTrust, Custom
 
-#### Chocolatey Clients
+### Chocolatey Clients
 
 Once CCM has been set up and configured, each machine that you want to report
 into CCM will have to be enabled.  This can be done by doing the following:
