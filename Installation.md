@@ -35,7 +35,7 @@ Chocolatey installs in seconds. You are just a few steps from running choco righ
  * <a href="#more-install-options" onclick="document.getElementById('div-moreoptions').classList.remove('d-none')">More Options</a> / [[Troubleshooting|Troubleshooting]]
 
 #### Install with cmd.exe
-Run the following command: <!--remove <button class="icon-clipboard copy-button" data-clipboard-text="@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;"></button> (copy command text) remove-->
+Run the following command: <!--remove <button class="btn btn-secondary btn-copy font-weight-bold" data-clipboard-text="@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;"><span class="fad fa-clipboard"></span> Copy Command Text</button> remove-->
 
 ~~~sh
 
@@ -47,7 +47,7 @@ Run the following command: <!--remove <button class="icon-clipboard copy-button"
 With PowerShell, there is an additional step. You must ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is not Restricted. We suggest using `Bypass` to bypass the policy to get things installed or `AllSigned` for quite a bit more security.
 
 * Run `Get-ExecutionPolicy`. If it returns `Restricted`, then run `Set-ExecutionPolicy AllSigned` or `Set-ExecutionPolicy Bypass -Scope Process`.
-* Now run the following command: <!--remove <button class="icon-clipboard copy-button" data-clipboard-text="Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"></button> (copy command text) remove-->
+* Now run the following command: <!--remove <button class="btn btn-secondary btn-copy font-weight-bold" data-clipboard-text="Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"><span class="fad fa-clipboard"></span> Copy Command Text</button> remove-->
 
 ~~~powershell
 
@@ -94,7 +94,7 @@ remove-->
 With PowerShell, there is an additional step or two. You must ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is not Restricted. We suggest using `Bypass` to bypass the policy to get things installed or `AllSigned` for quite a bit more security.
 
 * Run `Get-ExecutionPolicy`. If it returns `Restricted`, then run `Set-ExecutionPolicy AllSigned` or `Set-ExecutionPolicy Bypass`.
-* Now run the following command: <!--remove <button class="icon-clipboard copy-button" data-clipboard-text="Set-ExecutionPolicy Bypass -Scope Process -Force; iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"></button> (copy command text) remove-->
+* Now run the following command: <!--remove <button class="btn btn-secondary btn-copy font-weight-bold" data-clipboard-text="Set-ExecutionPolicy Bypass -Scope Process -Force; iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"></span> Copy Command Text</button> remove-->
 
 ~~~powershell
 
@@ -642,7 +642,7 @@ Please see [[installation of licensed edition|Installation-Licensed]].
 ### Installing behind a proxy
 Have a proxy? Try
 
-* Cmd.exe: <!--remove <button class="icon-clipboard copy-button" data-clipboard-text="@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;[System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"></button> (copy command text) remove-->
+* Cmd.exe: <!--remove <button class="btn btn-secondary btn-copy font-weight-bold" data-clipboard-text="@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;[System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"></span> Copy Command Text</button> remove-->
 
 ~~~sh
 
@@ -650,7 +650,7 @@ Have a proxy? Try
 
 ~~~
 
-* PowerShell.exe (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least RemoteSigned): <!--remove <button class="icon-clipboard copy-button" data-clipboard-text="[System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"></button> (copy command text) remove-->
+* PowerShell.exe (Ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is at least RemoteSigned): <!--remove <button class="btn btn-secondary btn-copy font-weight-bold" data-clipboard-text="[System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"></span> Copy Command Text</button> remove-->
 
 ~~~powershell
 
@@ -851,12 +851,6 @@ The installation actually ensures a couple of things:
 
 <!--remove
 <p>&nbsp;</p>
-
-
-<script language="javascript" type="text/javascript" src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.10/dist/clipboard.min.js"></script>
-<script language="javascript" type="text/javascript">
-  new Clipboard('.copy-button');
-</script>
 
 <script language="javascript" type="text/javascript">
   if (window.location.hash) {
