@@ -333,9 +333,9 @@ This is the URL that is used by the Chocolatey Background Agent to report into C
 
 **Default Value:** _blank_
 
-**NOTE:** If left blank, the Chocolatey Central Management Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.
+**NOTE:** If left blank, the Chocolatey Central Management Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.  However, the Chocolatey Agent Service will not be able to report into CCM, if a value is not provided.
 
-**NOTE:** Due to the fact that both the Chocolatey Background Agent and Chocolatey Central Management Service use this configuration value, if both of these services are located on the same machine, they Chocolatey Background Service on that machine has to report into the Chocolatey Central Management Service on that machine.  It can't report into another instance.
+**NOTE:** Due to the fact that both the Chocolatey Background Agent and Chocolatey Central Management Service use this configuration value, if both of these services are located on the same machine, the Chocolatey Background Service on that machine has to report into the Chocolatey Central Management Service on that machine.  It can't report into another instance.
 
 #### centralManagementReceiveTimeoutInSeconds
 
@@ -373,7 +373,7 @@ is being enabled. In your environment you would replace `https://ccmsrvserver:24
 
 **NOTE:** By default, this feature is disabled, and will need to be turned on.
 
-**NOTE:** If not set, the Chocolatey Central Management Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.
+**NOTE:** If not set, the Chocolatey Central Management Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.  However, the Chocolatey Agent Service will not be able to report into CCM, if a value is not provided.
 
 Additional configuration exists for CCM Service, which allows fine grained
 control of how Chocolatey Agent will report into CCM.  For example:
