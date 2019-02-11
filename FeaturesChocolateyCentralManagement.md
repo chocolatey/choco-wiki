@@ -110,6 +110,14 @@ Installing IIS can be completed using the following command:
 choco install IIS-WebServer --source windowsfeatures
 ```
 
+**NOTE:** If installing all the CCM Components on a single machine, some package installs can be skipped as they will have already been done as part of installing other components.
+
+It is recommended that you install the CCM Components in the following order:
+
+* chocolatey-management-database
+* chocolatey-management-service
+* chocolatey-management-web
+
 #### Installing chocolatey-management-database
 
 **NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](https://github.com/chocolatey/choco/wiki/FeaturesChocolateyCentralManagement#chocolatey-central-management-database) before proceeding.
