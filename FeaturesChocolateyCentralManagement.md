@@ -15,7 +15,7 @@
 - [Package Parameters](#package-parameters)
   - [Chocolatey Central Management Database](#chocolatey-central-management-database)
   - [Chocolatey Central Management Service](#chocolatey-central-management-service)
-  - [Chocolatey Management Web](#chocolatey-management-web)
+  - [Chocolatey Central Management Web](#chocolatey-central-management-web)
   - [Chocolatey Configuration for Chocolatey Central Management](#chocolatey-configuration-for-chocolatey-central-management)
 - [Chocolatey Clients](#chocolatey-clients)
 - [FAQ](#faq)
@@ -258,7 +258,7 @@ choco install chocolatey-management-service --package-parameters-sensitive="'/Po
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that
 the sensitive information is not leaked out into log files.
 
-### Chocolatey Management Web
+### Chocolatey Central Management Web
 
 This package creates the Chocolatey Central Management Website and Application Pool with the following defaults:
 
