@@ -80,7 +80,7 @@ Currently, the CCM packages do not provision the SQL Server Database Permissions
 * ChocolateyLocalAdmin - which runs the CCM Windows Service
 * IIS APPPOOL/ChocolateyCentralManagment - which runs the CCM IIS Application Pool
 
-**NOTE:** If either of these users are changed during the installation of either of these components, the database permissions will need to be updated to reflect this.
+**NOTE:** If either of these users are changed during the installation of these components, the database permissions will need to be updated to reflect this.
 
 Or, the required username/password for connecting to the CCM database are added as part of the connection string that is passed into the CCM packages during installation.
 
