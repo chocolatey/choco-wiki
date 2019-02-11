@@ -112,6 +112,10 @@ choco install IIS-WebServer --source windowsfeatures
 
 #### Installing chocolatey-management-database
 
+**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](https://github.com/chocolatey/choco/wiki/FeaturesChocolateyCentralManagement#chocolatey-central-management-database) before proceeding.
+
+In order to successfully install the chocolatey-management-database package onto a machine, the following steps are required:
+
 ```
 choco upgrade chocolatey --version 0.10.12-beta-20181011
 choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
@@ -121,6 +125,12 @@ choco upgrade chocolatey-management-database --version 0.1.0-beta-20181009
 
 #### Installing chocolatey-management-service
 
+**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](https://github.com/chocolatey/choco/wiki/FeaturesChocolateyCentralManagement#chocolatey-central-management-service) before proceeding.
+
+In order to successfully install the chocolatey-management-service package onto a machine, the following steps are required:
+
+**NOTE:** Due to an issue that was identified in the initial release of CCM, the port number parameter is required.
+
 ```
 choco upgrade chocolatey --version 0.10.12-beta-20181011
 choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
@@ -129,6 +139,10 @@ choco upgrade chocolatey-management-service --version 0.1.0-beta-20181009 --para
 ```
 
 #### Installing chocolatey-management-web
+
+**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](https://github.com/chocolatey/choco/wiki/FeaturesChocolateyCentralManagement#chocolatey-central-management-web) before proceeding.
+
+In order to successfully install the chocolatey-management-web package onto a machine, the following steps are required:
 
 ```
 choco upgrade aspnetcore-runtimepackagestore
