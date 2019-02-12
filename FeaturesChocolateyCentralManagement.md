@@ -50,26 +50,25 @@ available sources.
 
 ## Installation Source
 
-All the packages required to install CCM onto a machine(s) on your environment are located on the `chocolatey.licensed` feed.  This is the same place that you would install the [Chocolatey Agent Service](https://chocolatey.org/docs/features-agent-service) and the Chocolatey Extension from.  The `chocolatey.licensed` source is automatically added to your Chocolatey instance when you install the Chocolatey Extension.  You can verify this by running the following command:
+All the packages required to install CCM onto a machine(s) on your environment are located on the `chocolatey.licensed` feed.  This is the same place that you would install the [Chocolatey Agent Service](https://chocolatey.org/docs/features-agent-service) and the [Chocolatey Extension](https://chocolatey.org/docs/installation-licensed) from.
 
-`choco source`
-
-Which should output something similar to the following:
-
-> chocolatey - https://chocolatey.org/api/v2/ | Priority 0|Bypass Proxy - False|Self-Service - False|Admin Only - False.
-> chocolatey.licensed - https://licensedpackages.chocolatey.org/api/v2/ (Authenticated)| Priority 10|Bypass Proxy - False|Self-Service - False|Admin Only - False.
+The `chocolatey.licensed` source is automatically added to your Chocolatey instance when you install the Chocolatey Extension, however, as per the recommended installation best practices, this source is typically [disabled in an organisational context](https://chocolatey.org/docs/installation-licensed#installing-upgrading-in-secure-environments-without-internet-access).  As such, it may be necessary to first download the required nupkg's from the licensed source, and place them into your own internal repository.
 
 ### Use Specific Version
 
-During the CCM Beta phase, it is necessary to install the CCM packages using a specific version.  i.e. simply attempting the following:
+During the CCM Beta phase, it is necessary to install/download the CCM packages using a specific version.  i.e. simply attempting the following:
 
 `choco install chocolatey-management-database --pre`
+`choco download chocolatey-management-database --pre`
 
 will not work, but rather, a more explicit command such as:
 
 `choco install chocolatey-management-database --version 0.1.0-beta-20181009`
+`choco download chocolatey-management-database --version 0.1.0-beta-20181009`
 
 will be required.
+
+**NOTE:** If the `chocolatey.licensed` source is indeed disabled in your environment, it will be necessary to also use `--source https://licensedpackages.chocolatey.org/api/v2/` in the above commands.
 
 ## Setup
 
