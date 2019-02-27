@@ -8,6 +8,7 @@
   - [Use Specific Version](#use-specific-version)
 - [Setup](#setup)
   - [Pre-Requisites](#pre-requisites)
+  - [FQDN Usage](#fqdn-usage)
   - [Install CCM Components](#install-ccm-components)
     - [Installing chocolatey-management-database](#installing-chocolatey-management-database)
     - [Installing chocolatey-management-service](#installing-chocolatey-management-service)
@@ -96,6 +97,8 @@ servers.
 1. SQL Server Instance, with administrator access for initial database provision
 1. Internet Information Services
 1. At least .Net Framework 4.6.1
+
+### FQDN Usage
 
 ### Install CCM Components
 
