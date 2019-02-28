@@ -28,13 +28,7 @@
 
 ## Usage
 
-Chocolatey Central Management (CCM) works in conjunction with the [Chocolatey
-Agent Service](https://chocolatey.org/docs/features-agent-service) to bring full
-details of all Chocolatey controlled machines in your environment into one
-location, which is then accessible by the CCM Website.  The Chocolatey Agent
-Service will regularly report information about what is installed on each
-machine, and whether any of that software is outdated, based on packages in
-available sources.
+Chocolatey Central Management (CCM) works in conjunction with the [Chocolatey Agent Service](https://chocolatey.org/docs/features-agent-service) to bring full details of all Chocolatey controlled machines in your environment into one location, which is then accessible by the CCM Website.  The Chocolatey Agent Service will regularly report information about what is installed on each machine, and whether any of that software is outdated, based on packages in available sources.
 
 ## Requirements
 
@@ -76,8 +70,7 @@ will be required.
 
 ## Setup
 
-While it is envisioned that CCM will be installed across multiple servers, it is
-certainly possible to run CCM on a single server.
+While it is envisioned that CCM will be installed across multiple servers, it is certainly possible to run CCM on a single server.
 
 Currently, the CCM packages do not provision the SQL Server Database Permissions that are required for the CCM components to function.  It is assumed that the necessary permissions have already been provided.  By default, two users will require read/write permissions to the CCM Database:
 
@@ -90,9 +83,7 @@ Or, the required username/password for connecting to the CCM database are added 
 
 ### Pre-Requisites
 
-In order to install CCM, it is assumed that the following applications/software
-are installed, either as a single server installation, or spread over multiple
-servers.
+In order to install CCM, it is assumed that the following applications/software are installed, either as a single server installation, or spread over multiple servers.
 
 1. SQL Server Instance, with administrator access for initial database provision
 1. Internet Information Services
@@ -198,18 +189,13 @@ You can override the package defaults using the following parameters:
 
 #### Example
 
-Let's assume that you want to install the Chocolatey Central Management Database
-onto a machine that will access a SQL Server instance called `SQLSERVERCCM`, on
-a domain machine called `MACHINE1` which is part of the domain `ccmtest`, using a specific user name (ccmservice) and password
-combination.  In this scenario, the installation command would look like the
-following:
+Let's assume that you want to install the Chocolatey Central Management Database onto a machine that will access a SQL Server instance called `SQLSERVERCCM`, on a domain machine called `MACHINE1` which is part of the domain `ccmtest`, using a specific user name (ccmservice) and password combination.  In this scenario, the installation command would look like the following:
 
 ```
 choco install chocolatey-management-database --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;Integrated Security=SSPI;User ID=ccmtest\ccmservice;Password=Password01;""'"
 ```
 
-**NOTE:** This command makes use of `package-parameters-sensitive` to ensure that
-the sensitive information is not leaked out into log files.
+**NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
 
 **NOTE:** There is an assumption here that the username and password being used have the necessary permissions in order to create the CCM database in the destination SQL Server instance.
 
@@ -266,18 +252,13 @@ You can override the package defaults using the following parameters:
 
 #### Example
 
-Let's assume that you want to install the CCM Windows Service with a specific
-connection string in order to connect to the CCM Database, as well as configure
-the CCM Service to use a specific user name and password, as well as alter the
-Port number that the CCM Service will be hosted on.  The necessary installation
-command would look like the following:
+Let's assume that you want to install the CCM Windows Service with a specific connection string in order to connect to the CCM Database, as well as configure the CCM Service to use a specific user name and password, as well as alter the Port number that the CCM Service will be hosted on.  The necessary installation command would look like the following:
 
 ```
 choco install chocolatey-management-service --package-parameters-sensitive="'/PortNumber=24021 /Username=ccmtest\ccmservice /Password=Password01 /ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;Integrated Security=SSPI;User ID=ccmtest\ccmservice;Password=Password01;""'"
 ```
 
-**NOTE:** This command makes use of `package-parameters-sensitive` to ensure that
-the sensitive information is not leaked out into log files.
+**NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
 
 ### Chocolatey Central Management Web
 
@@ -322,21 +303,16 @@ You can override the package defaults using the following parameters:
 
 #### Example
 
-Let's assume that you want to install the CCM Web Site with a specific
-connection string in order to connect to the CCM Database, as well as configure
-the IIS Application Pool to use a specific user name and password.  The
+Let's assume that you want to install the CCM Web Site with a specific connection string in order to connect to the CCM Database, as well as configure the IIS Application Pool to use a specific user name and password.  The
 necessary installation command would look like the following:
 
 ```
 choco install chocolatey-management-web --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;User ID=ccmtest\ccmservice;Password=Password01;"" /Username=ccmwebserver\ccmserviceuser /Password=Password01'"`
 ```
 
-**NOTE:** This command makes use of `package-parameters-sensitive` to ensure that
-the sensitive information is not leaked out into log files.
+**NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
 
-**NOTE:** Once installed, when you access the CCM Web Site you will be prompted to provide a username
-and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.
-After you input this, you will be prompted to change the password.
+**NOTE:** Once installed, when you access the CCM Web Site you will be prompted to provide a username and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.  After you input this, you will be prompted to change the password.
 
 ### Chocolatey Configuration for Chocolatey Central Management
 
@@ -380,24 +356,20 @@ This captures the options for determining the validity of the Chocolatey Central
 
 ### Chocolatey Clients
 
-Once CCM has been set up and configured, each machine that you want to report
-into CCM will have to be enabled.  This can be done by doing the following:
+Once CCM has been set up and configured, each machine that you want to report into CCM will have to be enabled.  This can be done by doing the following:
 
 ```powershell
 choco config set CentralManagementServiceUrl https://ccmsrvserver:24021/ChocolateyManagementService
 choco feature enable -n useChocolateyCentralManagement
 ```
 
-Here, the full URL, including the port number, to where the CCM service was
-installed to is being set, and then the `useChocolateyCentralManagement` feature
-is being enabled. In your environment you would replace `https://ccmsrvserver:24021` with the FQDN name of your server and the port you set.
+Here, the full URL, including the port number, to where the CCM service was installed to is being set, and then the `useChocolateyCentralManagement` feature is being enabled. In your environment you would replace `https://ccmsrvserver:24021` with the FQDN name of your server and the port you set.
 
 **NOTE:** By default, this feature is disabled, and will need to be turned on.
 
 **NOTE:** If not set, the Chocolatey Central Management Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.  However, the Chocolatey Agent Service will not be able to report into CCM, if a value is not provided.
 
-Additional configuration exists for CCM Service, which allows fine grained
-control of how Chocolatey Agent will report into CCM.  For example:
+Additional configuration exists for CCM Service, which allows fine grained control of how Chocolatey Agent will report into CCM.  For example:
 
 ```powershell
 choco config set centralManagementReportPackagesTimerIntervalInSeconds 60
