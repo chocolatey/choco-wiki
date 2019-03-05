@@ -22,7 +22,6 @@ If you have a significant number of Chocolatey packages you manage, you may noti
 - [Optimize Command](#optimize-command)
   - [Usage](#usage-1)
     - [Requirements](#requirements-1)
-    - [Setup](#setup-1)
   - [Examples](#examples)
   - [See It In Action](#see-it-in-action-1)
   - [Options and Switches](#options-and-switches-1)
