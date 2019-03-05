@@ -159,8 +159,6 @@ See the next section, the `choco optimize` command.
 
 ## Optimize Command
 
-**NOTE**: CURRENTLY IN PREVIEW - see [setup](#setup-1) below.
-
 Package Reducer's Package Optimizer is available in all licensed editions starting at Chocolatey Licensed Extension v1.12.0. It is similar to the automatic reduction, except it reduces the size of existing installations.
 
 With Package Optimizer:
@@ -187,12 +185,6 @@ choco optimize [<options/switches>]
 * Chocolatey (`chocolatey` package) v0.10.7+.
 * Chocolatey Licensed Edition
 * Chocolatey Licensed Extension (`chocolatey.extension` package) v1.12.0+.
-
-#### Setup
-
-Optimize is currently in preview. You need to turn it on by enabling the feature  `allowPreviewFeatures`:
-
-* `choco feature enable -n allowPreviewFeatures`
 
 ### Examples
 
@@ -234,7 +226,7 @@ This image shows a display of `choco optimize` reducing space for 34 existing in
 You must have a [licensed edition of Chocolatey](https://chocolatey.org/pricing) (Pro, MSP, or Business) and use the community package repository to install/upgrade packages. Pro is a personal, named license that costs about the price of a lunch outing per month and comes with several other features. Business editions are great for organizations that need to manage the total software management lifecycle. MSP editions are for managed service providers and contain the same features as Pro (minus VirusTotal integration).
 
 #### I'm a licensed customer, now what?
-Once you have set up the `allowPreviewFeatures` feature(s), you can just run `choco optimize`. Couple it with package reducer features to automatically ensure your Chocolatey installation stays very small.
+You can just run `choco optimize`. Couple it with package reducer features to automatically ensure your Chocolatey installation stays very small.
 
 #### How does it work?
 It goes through all existing packages and removes unnecessary installers and zips. It also deflates nupkg files down to 5KB or less.
