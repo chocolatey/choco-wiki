@@ -4,6 +4,11 @@ This covers changes for the "chocolatey" and "chocolatey.lib" packages, which ar
 
 **NOTE**: For licensed versions, refer to both this set of release notes and [[Licensed Release Notes|ReleaseNotesLicensed]].
 
+## [0.10.13](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.13+is%3Aclosed) - (March 15, 2019)
+### BUG FIXES
+ * Fix - Licensed - Licensed code failing when using licensed PowerShell functions - see [#1767](https://github.com/chocolatey/choco/issues/1767)
+
+
 ## [0.10.12](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.12+is%3Aclosed) - (March 14, 2019)
 We are pretty excited to finally share a new Chocolatey release! And this release won't disappoint. Loads of bug fixes, enhanced exit codes for search, list, info and outdated when results are returned versus nothing being returned, and some really nice improvements.
 
@@ -50,7 +55,7 @@ We've listed these as breaking changes as it may affect tools that are integrati
  * [API] Fix - Resolve assemblies globally without locking - see [#1735](https://github.com/chocolatey/choco/issues/1735)
 
 ### IMPROVEMENTS
- * [Security] tools - Update 7z to 18.06  Enhancement  Security - see [#1704](https://github.com/chocolatey/choco/issues/1704)
+ * [Security] tools - Update 7z to 18.06 - see [#1704](https://github.com/chocolatey/choco/issues/1704)
  * [Security] Refreshenv script leaves temporary file behind - see [#1549](https://github.com/chocolatey/choco/issues/1549)
  * Control enhanced exit codes with a feature switch - see [#1758](https://github.com/chocolatey/choco/issues/1758)
  * Logging - better default colors - see [#1131](https://github.com/chocolatey/choco/issues/1131)
