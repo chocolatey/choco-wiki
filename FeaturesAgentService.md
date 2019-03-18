@@ -105,7 +105,7 @@ Starting with Chocolatey Agent v0.8.0+, the service will install as a local admi
 
 **Package Parameters**:
 
-* `/Username:` - provide username - intead of using the default 'ChocolateyLocalAdmin' user.
+* `/Username:` - provide username - instead of using the default 'ChocolateyLocalAdmin' user.
 * `/Password:` - optional password for the user.
 * `/EnterPassword` - receive the password at runtime as a secure string
 * `/UseDefaultChocolateyConfigUser` - use the default username from Chocolatey's configuration. This may be LocalSystem.
@@ -314,7 +314,7 @@ The one exception is when someone calls `--run-actual` in their arguments. But t
 ### We want to set up the chocolatey agent service to use a domain account that will have local admin on each box. Can we do this?
 Yes, absolutely. You will pass those credentials through at install/upgrade time, and you will also want to turn on the feature `useRememberedArgumentsForUpgrades` (see [[configuration|ChocolateyConfiguration#features]]) so that future upgrades will have that information available. The remembered arguments are stored encrypted on the box (that encryption is reversible so you may opt to pass that information each time).
 
-* `/Username:` - provide username - intead of using the default 'ChocolateyLocalAdmin' user.
+* `/Username:` - provide username - instead of using the default 'ChocolateyLocalAdmin' user.
 * `/Password:` - optional password for the user.
 * `/EnterPassword` - receive the password at runtime as a secure string
 
