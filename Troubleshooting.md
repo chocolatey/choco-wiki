@@ -454,10 +454,7 @@ A corrupt .registry file exists at C:\ProgramData\chocolatey\.chocolatey\$applic
 * The following script can be used to remediate this error
 
 ```powershell
-[cmdletBinding(SupportsShouldProcess)]
-    Param()
 
-    process {
 
         $folders = Get-ChildItem "$env:ChocolateyInstall\.chocolatey" -Recurse |
                    Where-Object {$_.Name -match "reg" } |
@@ -475,9 +472,9 @@ A corrupt .registry file exists at C:\ProgramData\chocolatey\.chocolatey\$applic
                 if (Test-Path "$($Folder.DirectoryName)\.registry") {
 
                     Write-Warning -Message "Found a .registry file, can safely delete .bad file"
-                    If($PSCmdlet.ShouldProcess("$($folder.DirectoryName)\.registry.bad")){
+                    
                         Move-Item "$($folder.DirectoryName)\.registry.bad" -Force -Confirm:$false
-                    }
+
                     Write-Warning -Message "Successfully removed $($folder.DirectoryName)\.registry.bad"
 
                 }#inner_if
