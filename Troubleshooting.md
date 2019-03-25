@@ -472,7 +472,7 @@ A corrupt .registry file exists at C:\ProgramData\chocolatey\.chocolatey\$applic
                 if (Test-Path "$($Folder.DirectoryName)\.registry") {
 
                     Write-Warning -Message "Found a .registry file, can safely delete .bad file"
-                    
+
                         Move-Item "$($folder.DirectoryName)\.registry.bad" -Force -Confirm:$false
 
                     Write-Warning -Message "Successfully removed $($folder.DirectoryName)\.registry.bad"
