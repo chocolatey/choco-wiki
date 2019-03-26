@@ -38,6 +38,7 @@ There are some well-known things you may run into when you are using Chocolatey.
   - [Package not installed. An error occurred during installation: Unable to resolve dependency](#package-not-installed-an-error-occurred-during-installation-unable-to-resolve-dependency)
   - [Package not installed. The package was not found with the source(s) listed.](#package-not-installed-the-package-was-not-found-with-the-sources-listed)
   - [Access to the path is denied.](#access-to-the-path-is-denied)
+  - [A corrupt registry file exists.](#a-corrupt-registry-file-exists)
 
 <!-- /TOC -->
 
@@ -429,3 +430,66 @@ You may be attempting to use Chocolatey or upgrade a package and suddenly you ar
   If you've verified you are an administrator and can not get into that folder, it's likely the folder was attempted to be deleted, but another process was accessing that folder and is holding a lock on it. You can use Handles (SysInternals) or something like LockHunter to attempt to find out if there is a lock on the folder. If there is, you normally would just need to close the process in question so the folder can be deleted.
 
 Unfortunately, this is likely to cause your install to be unusable until you fix the issue.
+
+<a id="a-corrupt-registry-file-exists" name="a-corrupt-registry-file-exists"></a>
+### A corrupt registry file exists
+
+You are receiving the following error when running chocolatey commands:
+
+```powershell
+A corrupt .registry file exists at C:\ProgramData\chocolatey\.chocolatey\$application\.registry.bad.
+ Open this file in a text editor, and remove/escape any characters that
+ are regarded as illegal within XML strings not surrounded by CData.
+ These are typically the characters &, `<`, and `>`. Again, this
+ is an XML document, so you will see many < and > characters, so just
+ focus exclusively in the string values not surrounded by CData. Once
+ these have been corrected, rename the .registry.bad file to .registry.
+ Once saved, try running the same Chocolatey command that was just
+ executed, so verify problem is fixed.
+ NOTE: It will not be possible to rename the file in Windows Explorer.
+ Instead, you can use the following PowerShell command:
+ Move-Item .\.registry.bad .\.registry
+ ```
+
+* The following script can be used to remediate this error
+
+```powershell
+
+
+        $folders = Get-ChildItem "$env:ChocolateyInstall\.chocolatey" -Recurse |
+                   Where-Object {$_.Name -match "reg" } |
+                   Select-Object DirectoryName -Unique
+
+
+        foreach ($Folder in $Folders) {
+
+            Write-Warning -Message "Enumerating $($Folder.DirectoryName)"
+
+            if (Test-Path "$($Folder.DirectoryName)\.registry.bad") {
+
+                Write-Warning -Message "Found a .registry.bad file in $($folder.DirectoryName), checking for .registry"
+
+                if (Test-Path "$($Folder.DirectoryName)\.registry") {
+
+                    Write-Warning -Message "Found a .registry file, can safely delete .bad file"
+
+                        Move-Item "$($folder.DirectoryName)\.registry.bad" -Force -Confirm:$false
+
+                    Write-Warning -Message "Successfully removed $($folder.DirectoryName)\.registry.bad"
+
+                }#inner_if
+
+                else {
+
+                    Write-Warning -Message "No .bad file exists in $($folder.DirectoryName), renaming file"
+
+                    Move-Item "$($Folder.DirectoryName)\.registry.bad" "$($Folder.DirectoryName)\.registry"
+
+                }#else
+
+            }#outer_if
+
+        }#foreach
+
+    }#process
+```
