@@ -454,42 +454,36 @@ A corrupt .registry file exists at C:\ProgramData\chocolatey\.chocolatey\$applic
 * The following script can be used to remediate this error
 
 ```powershell
+    $folders = Get-ChildItem "$env:ChocolateyInstall\.chocolatey" -Recurse |
+               Where-Object {$_.Name -match "reg" } |
+               Select-Object DirectoryName -Unique
 
+    foreach ($Folder in $Folders) {
+        Write-Warning -Message "Enumerating $($Folder.DirectoryName)"
 
-        $folders = Get-ChildItem "$env:ChocolateyInstall\.chocolatey" -Recurse |
-                   Where-Object {$_.Name -match "reg" } |
-                   Select-Object DirectoryName -Unique
+        if (Test-Path "$($Folder.DirectoryName)\.registry.bad") {
 
+            Write-Warning -Message "Found a .registry.bad file in $($folder.DirectoryName), checking for .registry"
 
-        foreach ($Folder in $Folders) {
+            if (Test-Path "$($Folder.DirectoryName)\.registry") {
 
-            Write-Warning -Message "Enumerating $($Folder.DirectoryName)"
+                Write-Warning -Message "Found a .registry file, can safely delete .bad file"
 
-            if (Test-Path "$($Folder.DirectoryName)\.registry.bad") {
+                Remove-Item "$($folder.DirectoryName)\.registry.bad" -Force -Confirm:$false
 
-                Write-Warning -Message "Found a .registry.bad file in $($folder.DirectoryName), checking for .registry"
+                Write-Warning -Message "Successfully removed $($folder.DirectoryName)\.registry.bad"
 
-                if (Test-Path "$($Folder.DirectoryName)\.registry") {
+            }#inner_if
 
-                    Write-Warning -Message "Found a .registry file, can safely delete .bad file"
+            else {
 
-                    Remove-Item "$($folder.DirectoryName)\.registry.bad" -Force -Confirm:$false
+                Write-Warning -Message "No .bad file exists in $($folder.DirectoryName), renaming file"
 
-                    Write-Warning -Message "Successfully removed $($folder.DirectoryName)\.registry.bad"
+                Move-Item "$($Folder.DirectoryName)\.registry.bad" "$($Folder.DirectoryName)\.registry"
 
-                }#inner_if
+            }#else
 
-                else {
+        }#outer_if
 
-                    Write-Warning -Message "No .bad file exists in $($folder.DirectoryName), renaming file"
-
-                    Move-Item "$($Folder.DirectoryName)\.registry.bad" "$($Folder.DirectoryName)\.registry"
-
-                }#else
-
-            }#outer_if
-
-        }#foreach
-
-    }#process
+    }#foreach
 ```
