@@ -434,7 +434,7 @@ Unfortunately, this is likely to cause your install to be unusable until you fix
 <a id="a-corrupt-registry-file-exists" name="a-corrupt-registry-file-exists"></a>
 ### A corrupt registry file exists
 
-You are receiving the following error when running chocolatey commands:
+You are receiving the following error when running Chocolatey commands:
 
 ```powershell
 A corrupt .registry file exists at C:\ProgramData\chocolatey\.chocolatey\$application\.registry.bad.
@@ -445,7 +445,7 @@ A corrupt .registry file exists at C:\ProgramData\chocolatey\.chocolatey\$applic
  focus exclusively in the string values not surrounded by CData. Once
  these have been corrected, rename the .registry.bad file to .registry.
  Once saved, try running the same Chocolatey command that was just
- executed, so verify problem is fixed.
+ executed, to verify problem is fixed.
  NOTE: It will not be possible to rename the file in Windows Explorer.
  Instead, you can use the following PowerShell command:
  Move-Item .\.registry.bad .\.registry
