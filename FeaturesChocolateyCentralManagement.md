@@ -171,7 +171,7 @@ choco upgrade chocolatey-management-web --version 0.1.0-beta-20181009
 
 This package creates the Chocolatey Central Management Database with the following defaults:
 
-* Database Connection String:   **Server=&lt;LOCAL COMPUTER DNS NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
+* Database Connection String:   **Server=&lt;LOCAL COMPUTER FQDN NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
 
 #### Parameters
 
@@ -179,13 +179,13 @@ You can override the package defaults using the following parameters:
 
 * `/ConnectionString`
   * The SQL Server database connection string to be used to connect to the Chocolatey Central Management database.
-  * **NOTE:** Default Value: **Server=&lt;LOCAL COMPUTER DNS NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
+  * **NOTE:** Default Value: **Server=&lt;LOCAL COMPUTER FQDN NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
 * `/Database`
   * Name of the SQL Server database to use. Note that if you do not also pass `/ConnectionString`, it will be generated using this parameter value and `/SqlServerInstance` (using defaults for missing parameters);
   * **NOTE:** Default Value: **ChocolateyManagement**
 * `/SqlServerInstance`
   * Instance name of the SQL Server database to connect to. Note that if you do not also pass `/ConnectionString`, it will be generated using this parameter value and `/Database` (using defaults for missing parameters);
-  * **NOTE:** Default Value: **&lt;LOCAL COMPUTER DNS NAME&gt;**
+  * **NOTE:** Default Value: **&lt;LOCAL COMPUTER FQDN NAME&gt;**
 
 #### Example
 
@@ -208,7 +208,7 @@ This package creates the Chocolatey Central Management Service with the followin
 * Description:                          **Chocolatey Management Service is a background service for Chocolatey.**
 * Service Startup:                      **Automatic**
 * Service Username:                     **ChocolateyLocalAdmin**
-* Database Connection String:           **Server=&lt;LOCAL COMPUTER DNS NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
+* Database Connection String:           **Server=&lt;LOCAL COMPUTER FQDN NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
 * Service Listening Port:               **24020**
 * Self-Signed Certificate Domain Name:  **DNS name of the local computer**
 
@@ -227,13 +227,13 @@ You can override the package defaults using the following parameters:
   * **NOTE:** Default Value: Not provided
 * `/ConnectionString`
   * The SQL Server database connection string to be used to connect to the Chocolatey Central Management database;
-  * **NOTE:** Default Value: **Server=&lt;LOCAL COMPUTER DNS NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
+  * **NOTE:** Default Value: **Server=&lt;LOCAL COMPUTER FQDN NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
 * `/Database`
   * Name of the SQL Server database to use. Note that if you do not also pass `/ConnectionString`, it will be generated using this parameter value and `/SqlServerInstance` (using defaults for missing parameters);
   * **NOTE:** Default Value: **ChocolateyManagement**
 * `/SqlServerInstance`
   * Instance name of the SQL Server database to connect to. Note that if you do not also pass `/ConnectionString`, it will be generated using this parameter value and `/Database` (using defaults for missing parameters);
-  * **NOTE:** Default Value: **&lt;LOCAL COMPUTER DNS NAME&gt;**
+  * **NOTE:** Default Value: **&lt;LOCAL COMPUTER FQDN NAME&gt;**
 * `/PortNumber`
   * The port the Chocolatey Management Service will listen on. This will automatically create a rule to open the firewall on this port;
   * **NOTE:** Default Value **24020**
@@ -275,8 +275,8 @@ This package creates the Chocolatey Central Management Website and Application P
 * Website Name:                             **ChocolateyCentralManagement**
   * PortBinding:                          **80**
   * applicationDefaults.preloadEnabled:   **True**
-* SQL Server Instance:                      **&lt;LOCAL COMPUTER DNS NAME&gt;**
-* Connection String:                        **Server=&lt;LOCAL COMPUTER DNS NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
+* SQL Server Instance:                      **&lt;LOCAL COMPUTER FQDN NAME&gt;**
+* Connection String:                        **Server=&lt;LOCAL COMPUTER FQDN NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
 
 #### Parameters
 
@@ -284,13 +284,13 @@ You can override the package defaults using the following parameters:
 
 * `/ConnectionString`
   * The SQL Server database connection string to be used to connect to the Chocolatey Central Management database;
-  * **NOTE:** Default Value: **Server=&lt;LOCAL COMPUTER DNS NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
+  * **NOTE:** Default Value: **Server=&lt;LOCAL COMPUTER FQDN NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
 * `/Database`
   * Name of the SQL Server database to use. Note that if you do not also pass `/ConnectionString`, it will be generated using this parameter value and `/SqlServerInstance` (using defaults for missing parameters);
   * **NOTE:** Default Value: **ChocolateyManagement**
 * `/SqlServerInstance`
   * Instance name of the SQL Server database to connect to. Note that if you do not also pass `/ConnectionString`, it will be generated using this parameter value and `/Database` (using defaults for missing parameters);
-  * **NOTE:** Default Value: **&lt;LOCAL COMPUTER DNS NAME&gt;**
+  * **NOTE:** Default Value: **&lt;LOCAL COMPUTER FQDN NAME&gt;**
 * `/Username`
   * The username that the IIS WebApplicationPool will run under. If this is not provided the pool will run under the default account. Note that if you provide this you must also provide either the `/Password` or `/EnterPassword` parameter;
   * **NOTE:** Default Value: **IIS APPPOOL\ChocolateyCentralManagement**
