@@ -239,9 +239,9 @@ You can override the package defaults using the following parameters:
   * **NOTE:** Default Value **24020**
 * `/CertificateDnsName`
   * The DNS name of the self-signed certificate that is generated if no existing certificate thumbprint is provided using the `/CertificateThumbprint` parameter is provided;
-  * **NOTE:** Default Value: **&lt;LOCAL COMPUTER DNS NAME&gt;**
+  * **NOTE:** Default Value: **&lt;LOCAL COMPUTER FQDN NAME&gt;**
 * `/CertificateThumbprint`
-  * By default the Chocolatey Central Management service uses a self-signed SSL certificate to secure communication with the clients. Use this parameter to provide the thumbprint of a certificate to use instead. **Note that is you use this the certificate must already be in the LocalMachine\TrustedPeople Certificate Store on the Chocolatey Management Service computer**;
+  * By default the Chocolatey Central Management service uses a self-signed SSL certificate to secure communication with the clients. Use this parameter to provide the thumbprint of a certificate to use instead. **Note that if you use this the certificate must already be in the LocalMachine\TrustedPeople Certificate Store on the Chocolatey Management Service computer**;
   * **NOTE:** Default Value: Not applicable as if not provided, a new Self Signed Certificate will be generated
 * `/NoRestartService`
   * Explicit request not to restart the service
