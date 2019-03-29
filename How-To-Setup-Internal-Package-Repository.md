@@ -79,7 +79,7 @@ Before starting, make sure you install Chocolatey Server on separate servers.
 1. [Create a server and ensure you have the pre-requisites](#server-pre-requisites) before continuing.
 1. To install and configure Chocolatey Server, run the following PowerShell code (see the comments in the code for more information) in an **elevated Administrator session**:
 
-```powershell
+~~~powershell
   $siteName = 'ChocolateyServer'
   $appPoolName = 'ChocolateyServerAppPool'
   $sitePath = 'c:\tools\chocolatey.server'
@@ -151,7 +151,7 @@ Before starting, make sure you install Chocolatey Server on separate servers.
       $obj = New-AclObject -SamAccountName $_ -Permission 'Modify' -Inheritance 'ContainerInherit', 'ObjectInherit'
       Add-Acl -Path $appdataPath -AceObject $obj
   }
-```
+~~~
 
 `4.` We shouldn't need to reboot the server but let's do it so we know everything is ready to go;
 `5.` From the server, open the browser and visit `https://localhost` - you will see some instructions but you need to note the password near the bottom. As this is a test environment we don't need to change this however **for a production environment follow the instructions to change the password**;
