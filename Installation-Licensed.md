@@ -286,6 +286,7 @@ package {'chocolatey.extension':
   source          => 'internal_chocolatey',
   install_options => ['-pre'],
   require         => File['C:/ProgramData/chocolatey/license/chocolatey.license.xml'],
+  provider        => chocolatey,
 }
 
 ### Licensed Config Settings
@@ -408,6 +409,7 @@ package {'chocolatey-agent':
   ensure          => latest,
   install_options => ['-pre'],
   require         => Chocolateyfeature['useLocalSystemForServiceInstalls'],
+  provider        => chocolatey,
 }
 ~~~
 
@@ -448,8 +450,9 @@ chocolateyfeature {'useBackgroundService':
 }
 
 package {'dotnet4.5.2':
-  ensure => latest,
-  notify => Reboot['pending_dot_net_install'],
+  ensure   => latest,
+  notify   => Reboot['pending_dot_net_install'],
+  provider => chocolatey,
 }
 
 reboot { 'pending_dot_net_install':
@@ -460,6 +463,7 @@ package {'chocolateygui':
   ensure          => latest,
   install_options => ['-pre'],
   require         => Package['dotnet4.5.2'],
+  provider        => chocolatey,
 }
 ~~~
 
