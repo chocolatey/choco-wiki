@@ -3,6 +3,7 @@
 <!-- TOC -->
 
 - [What is Chocolatey.Server?](#what-is-chocolateyserver)
+- [Links](#links)
 - [Requirements](#requirements)
 - [Setup](#setup)
   - [Setup with Ansible](#setup-with-ansible)
@@ -23,12 +24,15 @@
 **NOTE:** Refer to [[How To Set Up Chocolatey For Organizational/Internal Use|How-To-Setup-Offline-Installation]] in tandem with this article.
 
 ## What is Chocolatey.Server?
-The [Chocolatey.Server package](https://chocolatey.org/packages/chocolatey.server) contains the binaries for a fully ready to go Chocolatey NuGet Server where you can serve packages over HTTP using a NuGet-compatible OData feed.
+The [Chocolatey.Server package](https://chocolatey.org/packages/chocolatey.server) contains the binaries for a fully ready to go Chocolatey NuGet Server where you can serve packages over HTTP using a NuGet-compatible v2 OData Atom Feed. Chocolatey Simple Server (aka Chocolatey Server aka chocolatey.server) is an implementation of a NuGet.Server compiled and ready to go.
 
-[Chocolatey Server](https://chocolatey.org/packages/chocolatey.server) is a simple Nuget.Server that is ready to rock and roll. It has already completed Steps 1-3 of NuGet's [host your own remote feed](https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#creating-remote-feeds). Version 0.1.2 has the following additional adds:
+**NOTE**: This is meant to be a simple implementation and may not have the features to be used in a robust environment where you need multiple repositories with multiple users/API keys. If you are an organization, the recommendation is to evaluate your needs and determine if you instead need a Repository Server like Nexus, Artifactory Pro, or ProGet. See [[hosting your own server|How-To-Host-Feed]] for those options.
 
-* Uses same enhanced NuGet that Chocolatey uses so you can see more information in search if you choose to use those things.
-* Allows packages up to 2GB. Package size can be controlled through [maxAllowedContentLength](https://msdn.microsoft.com/en-us/library/ms689462(v=vs.90).aspx) and [maxRequestLength](https://msdn.microsoft.com/en-us/library/e1f13641(v=vs.100).aspx).
+## Links
+
+* [Package](https://chocolatey.org/packages/chocolatey.server)
+* [Changelog](https://github.com/chocolatey/simple-server/blob/master/CHANGELOG.md)
+* [Source Code](https://github.com/chocolatey/simple-server)
 
 When you install it, it will install the website typically to `c:\tools\chocolatey.server`.
 
