@@ -4,10 +4,11 @@
 
 - [What is Chocolatey.Server?](#what-is-chocolateyserver)
 - [Requirements](#requirements)
-- [Setup with Ansible](#setup-with-ansible)
-- [Setup with Puppet](#setup-with-puppet)
-- [Setup Normally](#setup-normally)
-- [Setup with PowerShell Script](#setup-with-powershell-script)
+- [Setup](#setup)
+  - [Setup with Ansible](#setup-with-ansible)
+  - [Setup with Puppet](#setup-with-puppet)
+  - [Setup Manually](#setup-manually)
+  - [Setup with PowerShell Script](#setup-with-powershell-script)
 - [Additional Configuration](#additional-configuration)
   - [Performance](#performance)
     - [Future](#future)
@@ -40,7 +41,8 @@ When you install it, it will install the website typically to `c:\tools\chocolat
 * If you have an IIS site for WSUS administration, Chocolatey.Server website will not come up at all, even if everything looks right. We have not yet been able to determine the issue, but believe it is related to ASP.NET 4.6+. Installing all of the required components for Chocolatey.Server may also affect your WSUS admin site. Please seek a different box.
 * If you can ensure your server is up to date with all of the Windows Updates, you will move through this process quite a bit quicker.
 
-Setup with Ansible
+## Setup
+### Setup with Ansible
 If you are using Ansible, you can use the [win_chocolatey_server](https://galaxy.ansible.com/jborean93/win_chocolatey_server) role to set up an Chocolatey.Server instance on a host running Windows Server 2008 R2 or newer.
 
 This Ansible role allows you to configure the following:
@@ -52,8 +54,8 @@ This Ansible role allows you to configure the following:
 * Generate a self-signed certificate alongside a https binding if a CA is not available
 * Automatically install the Chocolatey nupkg from a path or a URL
 
-## Setup with Puppet
-If you are using the Puppet module [chocolatey/chocolatey_server](https://forge.puppet.com/chocolatey/chocolatey_server), it will do all of the additional setup for this package and allow some customization.
+### Setup with Puppet
+If you are using the Puppet module [chocolatey/chocolatey_server](https://forge.puppet.com/chocolatey/chocolatey_server), it will do all of the additional setup for this package and allow some customization. **NOTE: For now it may be best to look at the one in GitHub.**
 
 The module works with Windows Server 2008/2012.
 For a simple `include chocolatey_server` it does the following automatically:
@@ -65,7 +67,7 @@ For a simple `include chocolatey_server` it does the following automatically:
  * Ensures the IIS website is setup for chocolatey.server
  * Ensures permissions for the site are set correctly.
 
-## Setup Normally
+### Setup Manually
  * If your Windows updates are not up to date, there are two required Windows updates you are going to need (heads up they take awhile)
     * Install KB2919355 - `choco install KB2919355 -y` - this one or the other Windows update takes a ***very*** long time to install, just be patient
     * Restart your machine.
@@ -87,11 +89,11 @@ For a simple `include chocolatey_server` it does the following automatically:
    * `IIS_IUSRS` - Modify
    * `IIS APPPOOL\<app pool name>` - Modify
 
-## Setup with PowerShell Script
+### Setup with PowerShell Script
 
 To install and configure Chocolatey.Server using PowerShell run the following script in an **elevated administrator session**:
 
-``` powershell
+~~~powershell
 $siteName = 'ChocolateyServer'
 $appPoolName = 'ChocolateyServerAppPool'
 $sitePath = 'c:\tools\chocolatey.server'
@@ -163,7 +165,7 @@ $appdataPath = Join-Path -Path $sitePath -ChildPath 'App_Data'
     $obj = New-AclObject -SamAccountName $_ -Permission 'Modify' -Inheritance 'ContainerInherit', 'ObjectInherit'
     Add-Acl -Path $appdataPath -AceObject $obj
 }
-```
+~~~
 
 ## Additional Configuration
 
