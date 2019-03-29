@@ -90,7 +90,6 @@ If you go to a package page and attempt to use the download link in the left men
 You will start to see `429 Too Many Requests` if you have triggered the rate limit. Currently the rate limit will be in place for one hour. If you trigger it again, it will then be set for another hour.
 
 * Error 1015
-* Cloudflare Ray Id: 47fdeb7e3ea058f7
 
 ***NOTE: Please note that individuals using the community repository are unlikely to hit rate limiting under normal usage scenarios.***
 
@@ -114,7 +113,7 @@ If you have special needs and are being rate limited, please reach out to us as 
 
 * Go to https://chocolatey.org/contact.
 * Select ***Blocked IP Address*** in "Send message to" drop down (this is important to get it routed to the right folks)
-* **IMPORTANT**: Mention you are being rate limited, include your IP address. Ask our team to look up `Cloudflare Ray Id: 47fdeb7e3ea058f7` and your IP address to verify.
+* **IMPORTANT**: Mention you are being rate limited, include your IP address.
 
 **NOTE: These are subjective, and special requests ONLY. Please ensure you implement best practices so that you are not rate limited.**
 
