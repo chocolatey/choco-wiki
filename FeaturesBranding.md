@@ -1,5 +1,15 @@
 # Branding (Business Editions Only)
 
+<!-- TOC -->
+
+- [Requirements for branding](#requirements-for-branding)
+- [Location of branding files](#location-of-branding-files)
+  - [Default Location](#default-location)
+  - [Customer Location](#customer-location)
+- [ChocolateyGuiBranding.dll](#chocolateyguibrandingdll)
+
+<!-- /TOC -->
+
 We are aware that some of customers want to be able to brand Chocolatey GUI so
 that is "looks" like their own internal applications.  Out of the box, Chocolatey
 GUI's main screen looks like this:

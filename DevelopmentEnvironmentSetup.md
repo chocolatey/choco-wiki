@@ -2,6 +2,17 @@
 
 How many of you out there are rake fans? Getting developers to look at your source code can sometimes be an issue. Wouldn't it be nice if it was simple for them to get all set up? What about Ruby DevKit? It would be nice, right?
 
+<!-- TOC -->
+
+- [Set Up A Development Environment Using Chocolatey](#set-up-a-development-environment-using-chocolatey)
+- [Set up From the Source](#set-up-from-the-source)
+  - [setup.ps1:](#setupps1)
+  - [setup.cmd:](#setupcmd)
+- [Getting the Source](#getting-the-source)
+- [Setup A Full Environment Including Visual Studio Express, IIS Express and SQL Server Express (with Management Studio)](#setup-a-full-environment-including-visual-studio-express-iis-express-and-sql-server-express-with-management-studio)
+
+<!-- /TOC -->
+
 ## Set up From the Source
 This does the following:
 
