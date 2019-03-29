@@ -40,7 +40,6 @@ When you install, you will see a message similar to the following when the cache
 ![Pro install with CDN cache](images/choco_install_cached.png)
 
 ## Options and Switches
-
 Global Feature:
 
 * `downloadCache` - Download Cache - use the private download cache if available for a package.

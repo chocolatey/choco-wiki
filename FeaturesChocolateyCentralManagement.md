@@ -53,17 +53,18 @@ The `chocolatey.licensed` source is automatically added to your Chocolatey insta
 
 During the CCM Beta phase, it is necessary to install/download the CCM packages using a specific version.  i.e. simply attempting the following:
 
-```
+~~~
 choco install chocolatey-management-database --pre
 choco download chocolatey-management-database --pre
-```
+~~~
 
 will not work, but rather, a more explicit command such as:
 
-```
+~~~
 choco install chocolatey-management-database --version 0.1.0-beta-20181009
 choco download chocolatey-management-database --version 0.1.0-beta-20181009
-```
+~~~
+
 will be required.
 
 **NOTE:** If the `chocolatey.licensed` source is indeed disabled in your environment, it will be necessary to also use `--source https://licensedpackages.chocolatey.org/api/v2/` in the above commands.
@@ -95,24 +96,24 @@ When installing the CCM Windows Service, the default is to use the Fully Qualifi
 
 If this is not the case, it will be necessary to use the information the installer about the actual name for the machine that is being used.  When using a self signed certificate, this can be specified using the `CertifcateDnsName`, and when using an existing certificate, no additional parameters are required.  In both cases, it will be necessary to also set the `centralManagementServiceUrl` [configuration parameter](https://github.com/chocolatey/choco/wiki/FeaturesChocolateyCentralManagement#centralmanagementserviceurl).  This can be done using the following command:
 
-```
+~~~
 choco config set CentralManagementServiceUrl https://<accessible_name_of_machine>:24020/ChocolateyManagementService
-```
+~~~
 
 ### Install CCM Components
 
-**NOTE:** The following assumes that you already have IIS and SQL Server installed.  
+**NOTE:** The following assumes that you already have IIS and SQL Server installed.
 
-* IIS needs to be installed on the machine where the `chocolatey-management-web` package will be installed.  
-* SQL Server needs to be installed on the machine where the `chocolatey-management-database` package will be installed.  
+* IIS needs to be installed on the machine where the `chocolatey-management-web` package will be installed.
+* SQL Server needs to be installed on the machine where the `chocolatey-management-database` package will be installed.
 
-If this is not the case, then the below commands will result in errors.  
+If this is not the case, then the below commands will result in errors.
 
 Installing IIS can be completed using the following command:
 
-```
+~~~
 choco install IIS-WebServer --source windowsfeatures
-```
+~~~
 
 **NOTE:** If installing all the CCM Components on a single machine, some package installs can be skipped as they will have already been done as part of installing other components.
 
@@ -128,12 +129,12 @@ It is recommended that you install the CCM Components in the following order:
 
 In order to successfully install the chocolatey-management-database package onto a machine, the following steps are required:
 
-```
+~~~
 choco upgrade chocolatey --version 0.10.12-beta-20181011
 choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
 choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
 choco upgrade chocolatey-management-database --version 0.1.0-beta-20181009
-```
+~~~
 
 #### Installing chocolatey-management-service
 
@@ -143,12 +144,12 @@ In order to successfully install the chocolatey-management-service package onto 
 
 **NOTE:** Due to an issue that was identified in the initial release of CCM, the port number parameter is required.
 
-```
+~~~
 choco upgrade chocolatey --version 0.10.12-beta-20181011
 choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
 choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
 choco upgrade chocolatey-management-service --version 0.1.0-beta-20181009 --params="'/PortNumber=24020'"
-```
+~~~
 
 #### Installing chocolatey-management-web
 
@@ -156,14 +157,14 @@ choco upgrade chocolatey-management-service --version 0.1.0-beta-20181009 --para
 
 In order to successfully install the chocolatey-management-web package onto a machine, the following steps are required:
 
-```
+~~~
 choco upgrade aspnetcore-runtimepackagestore
 choco upgrade dotnetcore-windowshosting
 choco upgrade chocolatey --version 0.10.12-beta-20181011
 choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
 choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
 choco upgrade chocolatey-management-web --version 0.1.0-beta-20181009
-```
+~~~
 
 ## Package Parameters
 
@@ -191,9 +192,9 @@ You can override the package defaults using the following parameters:
 
 Let's assume that you want to install the Chocolatey Central Management Database onto a machine that will access a SQL Server instance called `SQLSERVERCCM`, on a domain machine called `MACHINE1` which is part of the domain `ccmtest`, using a specific user name (ccmservice) and password combination.  In this scenario, the installation command would look like the following:
 
-```
+~~~
 choco install chocolatey-management-database --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;Integrated Security=SSPI;User ID=ccmtest\ccmservice;Password=Password01;""'"
-```
+~~~
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
 
@@ -254,9 +255,9 @@ You can override the package defaults using the following parameters:
 
 Let's assume that you want to install the CCM Windows Service with a specific connection string in order to connect to the CCM Database, as well as configure the CCM Service to use a specific user name and password, as well as alter the Port number that the CCM Service will be hosted on.  The necessary installation command would look like the following:
 
-```
+~~~
 choco install chocolatey-management-service --package-parameters-sensitive="'/PortNumber=24021 /Username=ccmtest\ccmservice /Password=Password01 /ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;Integrated Security=SSPI;User ID=ccmtest\ccmservice;Password=Password01;""'"
-```
+~~~
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
 
@@ -306,9 +307,9 @@ You can override the package defaults using the following parameters:
 Let's assume that you want to install the CCM Web Site with a specific connection string in order to connect to the CCM Database, as well as configure the IIS Application Pool to use a specific user name and password.  The
 necessary installation command would look like the following:
 
-```
+~~~
 choco install chocolatey-management-web --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;User ID=ccmtest\ccmservice;Password=Password01;"" /Username=ccmwebserver\ccmserviceuser /Password=Password01'"`
-```
+~~~
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
 
@@ -358,10 +359,10 @@ This captures the options for determining the validity of the Chocolatey Central
 
 Once CCM has been set up and configured, each machine that you want to report into CCM will have to be enabled.  This can be done by doing the following:
 
-```powershell
+~~~powershell
 choco config set CentralManagementServiceUrl https://ccmsrvserver:24021/ChocolateyManagementService
 choco feature enable -n useChocolateyCentralManagement
-```
+~~~
 
 Here, the full URL, including the port number, to where the CCM service was installed to is being set, and then the `useChocolateyCentralManagement` feature is being enabled. In your environment you would replace `https://ccmsrvserver:24021` with the FQDN name of your server and the port you set.
 
@@ -371,12 +372,12 @@ Here, the full URL, including the port number, to where the CCM service was inst
 
 Additional configuration exists for CCM Service, which allows fine grained control of how Chocolatey Agent will report into CCM.  For example:
 
-```powershell
+~~~powershell
 choco config set centralManagementReportPackagesTimerIntervalInSeconds 60
 choco config set centralManagementReceiveTimeoutInSeconds 60
 choco config set centralManagementSendTimeoutInSeconds 60
 choco config set centralManagementCertificateValidationMode "PeerOrChainTrust"
-```
+~~~
 
 ## FAQ
 
@@ -394,6 +395,6 @@ See [Requirements](#requirements).
 
 This error can occur when installing the `chocolatey-management-web` package.  Due to the nested folder structure contained within this package, when extracting to the default cache location, the path can become too long.  This problem is known is occur in the 0.1.0-beta-20181009 release of this package, and it should be corrected in subsequent releases.  As a workaround, adding the following parameters to the install command should allow the installation to complete successfully:
 
-```
+~~~
 --cache-location="'C:\Temp\choco'"
-```
+~~~

@@ -26,13 +26,11 @@ Adding the option or config setting for maximum download rate will slow down the
 A good way to find what you need is to translate from Kbps to bits: [Google Kbps to bps](https://www.google.com/search?q=2+Kb/s+%3D+?+bps) or KB/s (bytes) to bits: [Google KB/s to bps](https://www.google.com/search?q=2+KB/s+%3D+bps).
 
 ### Requirements
-
 * Chocolatey (`chocolatey` package) v0.10.7+.
 * Chocolatey Licensed Edition.
 * Chocolatey Licensed Extension (`chocolatey.extension` package) v1.10.0+.
 
 ## See It In Action
-
 ![Package Throttle downloading a package and resources - - if you are on https://chocolatey.org/docs/features-package-throttle, see commented html below for detailed description of image](images/features/features_package_throttle.png)
 
 <!--
@@ -47,7 +45,6 @@ Package Throttle - Slow Downloads of Packages and Downloaded Resources
 -->
 
 ## Options and Switches
-
 Global Config Setting:
 
  * `maximumDownloadRateBitsPerSecond` - The maximum download rate in bits per second. '0' or empty means no maximum. A number means that will be the maximum download rate in bps. Defaults to ''.

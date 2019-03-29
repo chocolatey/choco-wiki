@@ -48,7 +48,6 @@ There is another psychology aspect to this - Debian/RPM are nearly the ONLY way 
 However Windows doesn't have a distro-provided repo. Chocolatey Software does not support use of the community repo for organizational use that doesn't also benefit the community (providing and maintaining packages). Reliability plays a huge part in that. If something breaks within the context of a package, then Chocolatey gets blamed (even though it is not Chocolatey's fault).
 
 ## Excessive Use
-
 ***Please note that individuals (even organizations) using the community repository are unlikely to hit excessive use numbers under normal usage scenarios.***
 
 See [rate limiting](#rate-limiting) below if you are seeing 429 errors (too many requests).
@@ -94,7 +93,6 @@ You will start to see `429 Too Many Requests` if you have triggered the rate lim
 * Cloudflare Ray Id: 47fdeb7e3ea058f7
 
 ***NOTE: Please note that individuals using the community repository are unlikely to hit rate limiting under normal usage scenarios.***
-
 
 **Details:**
 * Installations/downloads of Chocolatey itself (chocolatey.nupkg) are rate limited at about 5 per minute per IP address - temporary ban expires after 1 hour.
