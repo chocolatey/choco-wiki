@@ -38,6 +38,7 @@ When you install it, it will install the website typically to `c:\tools\chocolat
 
 ## Requirements
 
+* .NET Framework 4.6+.
 * You need a Windows box with at least 50GB of free space (or where ever you are going to put the packages).
 * 50GB of free space for where ever you will put packages.
 * We recommend at least 8GB RAM, but more if you can.
