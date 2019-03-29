@@ -7,6 +7,7 @@
 - [Requirements](#requirements)
 - [Setup](#setup)
   - [Setup with Ansible](#setup-with-ansible)
+  - [Setup with Chef](#setup-with-chef)
   - [Setup with Puppet](#setup-with-puppet)
   - [Setup Manually](#setup-manually)
   - [Setup with PowerShell Script](#setup-with-powershell-script)
@@ -58,6 +59,9 @@ This Ansible role allows you to configure the following:
 * Binding settings for the Chocolatey.Server website such as the http and https port as well as the https certificate thumpbrint
 * Generate a self-signed certificate alongside a https binding if a CA is not available
 * Automatically install the Chocolatey nupkg from a path or a URL
+
+### Setup with Chef
+If you are using Chef, you can use [Galen Emery's POC](https://github.com/galenemery/chocolatey_server) as a starting point to set up a Chocolatey Simple Server.
 
 ### Setup with Puppet
 If you are using the Puppet module [chocolatey/chocolatey_server](https://forge.puppet.com/chocolatey/chocolatey_server), it will do all of the additional setup for this package and allow some customization. **NOTE: For now it may be best to look at the one in GitHub.**
