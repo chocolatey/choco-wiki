@@ -50,6 +50,8 @@ However Windows doesn't have a distro-provided repo. Chocolatey Software does no
 ## Excessive Use
 ***Please note that individuals (even organizations) using the community repository are unlikely to hit excessive use numbers under normal usage scenarios.***
 
+***NOTE: If you do find you have been blocked / rate-limited, having commercial licenses will not have any effect the policies with the community package repository. These policies were put into place to ensure stability and availability for the entire community, not to try to get folks to pay for licensing.***
+
 See [rate limiting](#rate-limiting) below if you are seeing 429 errors (too many requests).
 
 Another aspect to keep in mind is that the community package repository is meant for the community. Perceived abuses of the community package repository that affect it in a detrimental way for the rest of the community will not be allowed. By abusive, it ***may*** mean more than **100 installs per hour on average over an internally determined amount of time** (it could be more, could be less) - this is not queries, this is **installs, upgrades** where actual package downloads are occurring. Let's say that is 30 days - that would mean 72,000+ package downloads over 30 days. When that is seen, our community team will make attempts to warn folks if we have known contacts (keep in mind it's highly unlikely we will have your contact information), and implement a temporary block to ensure your usage does not affect the community in a detrimental way. Many times this is due to a misconfiguration and can be corrected quickly.
@@ -75,6 +77,8 @@ See the section above on avoiding excessive use - the expectation is that organi
 Once you have resolved any issues on your side, we can lift the block. A block will be reimplemented later if we find excessive use again.
 
 ### Rate Limiting
+***NOTE: Purchasing licenses will not have any effect on rate limiting of the community package repository. Please read carefully below to understand why this was put in place and steps you can take to reduce issues if you run into it. HINT: It's not an attempt to get you to pay for commercial editions.***
+
 As a measure to increase site stability and prevent excessive use, the Chocolatey website uses rate limiting on requests for the community repository. Rate limiting was introduced in November 2018. Most folks typically won't hit rate limits unless they are automatically tagged for excessive use. If you do trigger the rate limit, you will see a `(429) Too Many Requests`. When attempting to install Chocolatey you will see the following:
 
 ![Exception calling "DownloadFile" with "2" arguments: The remote server returned an error: 429 Too Many Requests](images/cloudflare_ratelimiting_choco_install.png)
@@ -114,8 +118,9 @@ If you have special needs and are being rate limited, please reach out to us as 
 * Go to https://chocolatey.org/contact.
 * Select ***Blocked IP Address*** in "Send message to" drop down (this is important to get it routed to the right folks)
 * **IMPORTANT**: Mention you are being rate limited, include your IP address.
+* For typical requests, our team will put in a temporary one time 7 day whitelist for you to get things in order (e.g. [implement best practices](#how-to-avoid-excessive-use)).
 
-**NOTE: These are subjective, and special requests ONLY. Please ensure you implement best practices so that you are not rate limited.**
+**NOTE: These are subjective, and special requests ONLY. Please ensure you [implement best practices](#how-to-avoid-excessive-use) so that you are not rate limited.**
 
 See the section above on avoiding excessive use - the expectation is that organizations would not use the community repository directly. As part of addressing any misconfigurations you might have, you will also need to see about addressing the previous section on "How To Avoid Excessive Use".
 
