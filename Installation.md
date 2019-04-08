@@ -841,7 +841,7 @@ The installation actually ensures a couple of things:
 
   PowerShell is a requirement for using Chocolatey, not just for install. It is what drives the package installation process in most cases. Every package can have binaries and/or installation/uninstallation scripts (written in PowerShell). Chocolatey is the framework and each package gets to define how it is installed, upgraded, and uninstalled. It's an extremely flexible framework that has been proven to meet the insanity that is the Windows software installation ecosystem. That flexibility would not be easily achieved without PowerShell.
 
-  We do recognize there are a few organizations that disable PowerShell, so it's very likely in the future our [Business Edition](https://chocolatey.org/pricing#compare) will meet that need. PowerShell is a staple of Windows automation, so it is not the norm for an organization in this day and age to disable PowerShell.
+  We do recognize there are a few organizations that disable PowerShell, so it's very likely in the future our [Business Edition](https://chocolatey.org/compare) will meet that need. PowerShell is a staple of Windows automation, so it is not the norm for an organization in this day and age to disable PowerShell.
 
   Having an install process that uses PowerShell helps you determine quickly if Chocolatey will be able to be used in your environment.
 
