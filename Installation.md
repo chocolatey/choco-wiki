@@ -8,7 +8,7 @@
 
 ## Requirements
 * Windows 7+ / Windows Server 2003+
-* PowerShell v2+
+* PowerShell v2+ (Not PowerShell Core yet though)
 * .NET Framework 4+ (the installation will attempt to install .NET 4.0 if you do not have it installed)
 
 That's it! All you need is choco.exe (that you get from the installation scripts) and you are good to go! No Visual Studio required.
