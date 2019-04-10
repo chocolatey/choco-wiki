@@ -16,6 +16,8 @@ This covers the release notes for the Chocolatey Licensed Extension (chocolatey.
  * Fix - Add alias for old name of Install-AppSettingsJsonFile for compatibility - see [licensed #71](https://github.com/chocolatey/chocolatey-licensed-issues/issues/71)
  * Self-Service / Background Mode:
     * Fix - Incorrect handling in username does not allow Self-Service users to uninstall based on extra character present - see [licensed #73](https://github.com/chocolatey/chocolatey-licensed-issues/issues/73)
+ * Fix - PackageSynchronizer - Show All Packages In Programs and Features Out of Preview
+
 
 ## 2.0.0 (March 14, 2019)
 ### FEATURES
