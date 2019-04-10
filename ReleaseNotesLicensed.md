@@ -9,6 +9,14 @@ This covers the release notes for the Chocolatey Licensed Extension (chocolatey.
 * Some issues are listed at https://github.com/chocolatey/chocolatey-licensed-issues
 * Other issues are held internally, please follow your support routes to learn more.
 
+## 2.0.1 (April 10, 2019)
+### BUG FIXES
+ * Fix - PowerShell - Licensed Install-ChocolateyInstallPackage doesn't work with Install Arguments that have apostrophes in the same way as open source - see [licensed #74](https://github.com/chocolatey/chocolatey-licensed-issues/issues/74)
+ * Fix - Non 7-zip decompression method doesn't appear to work on newer Windows environments
+ * Fix - Add alias for old name of Install-AppSettingsJsonFile for compatibility - see [licensed #71](https://github.com/chocolatey/chocolatey-licensed-issues/issues/71)
+ * Self-Service / Background Mode:
+    * Fix - Incorrect handling in username does not allow Self-Service users to uninstall based on extra character present - see [licensed #73](https://github.com/chocolatey/chocolatey-licensed-issues/issues/73)
+
 ## 2.0.0 (March 14, 2019)
 ### FEATURES
  * Chocolatey Central Management tie in - Brings Central Management client configuration to Chocolatey. Requires Chocolatey v0.10.12 along with Chocolatey Agent v0.9.0 to allow communication with Central Maangement.
