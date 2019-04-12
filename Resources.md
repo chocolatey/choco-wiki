@@ -42,6 +42,10 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 ## Community
 
+### 2019
+#### April
+* https://blog.pauby.com/post/getting-started-with-chocolatey-and-jenkins/ (C4B)
+
 ### 2018
 #### April
 * https://buildazure.com/2018/04/17/using-chocolatey-with-azure-vms/
