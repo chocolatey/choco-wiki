@@ -11,13 +11,13 @@
   - [FQDN Usage](#fqdn-usage)
   - [Install CCM Components](#install-ccm-components)
     - [Installing chocolatey-management-database](#installing-chocolatey-management-database)
-      - [Parameters](#parameters)
+      - [Package Parameters](#package-parameters)
       - [Example](#example)
     - [Installing chocolatey-management-service](#installing-chocolatey-management-service)
-      - [Parameters](#parameters-1)
+      - [Package Parameters](#package-parameters-1)
       - [Example](#example-1)
     - [Installing chocolatey-management-web](#installing-chocolatey-management-web)
-      - [Parameters](#parameters-2)
+      - [Package Parameters](#package-parameters-2)
       - [Example](#example-2)
     - [Complete Installation Script](#complete-installation-script)
 - [Chocolatey Configuration for CCM](#chocolatey-configuration-for-ccm)
@@ -103,7 +103,7 @@ For a list of Database products that support EF Core you can view the Microsoft 
 
 ### FQDN Usage
 
-When installing the CCM Service, the default is to use the Fully Qualified Domain Name (FQDN) of the machine that it is being installed on.  As a result, there is an expectation that the certificate (either the self signed certificate that is created during installation, or the existing certificate which is configured with the [CertifcateThumbprint](#parameters-1) parameter) that is used to secure the transport layer of this service, also uses the same FQDN.
+When installing the CCM Service, the default is to use the Fully Qualified Domain Name (FQDN) of the machine that it is being installed on.  As a result, there is an expectation that the certificate (either the self signed certificate that is created during installation, or the existing certificate which is configured with the [CertifcateThumbprint](#package-parameters-1) parameter) that is used to secure the transport layer of this service, also uses the same FQDN.
 
 If this is not the case, it will be necessary to use the information the installer about the actual name for the machine that is being used.  When using a self signed certificate, this can be specified using the `CertifcateDnsName`, and when using an existing certificate, no additional parameters are required.  In both cases, it will be necessary to also set the `centralManagementServiceUrl` [configuration parameter](#centralmanagementserviceurl).  This can be done using the following command:
 
@@ -121,7 +121,7 @@ The CCM Components should be installed in the following order:
 
 #### Installing chocolatey-management-database
 
-**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#parameters) before proceeding.
+**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#package-parameters) before proceeding.
 
 In order to successfully install the chocolatey-management-database package onto a machine (using all default values), the following steps are required:
 
@@ -132,7 +132,7 @@ choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
 choco upgrade chocolatey-management-database --version 0.1.0-beta-20181009
 ~~~
 
-##### Parameters
+##### Package Parameters
 
 This package creates the CCM Database with the following defaults:
 
@@ -162,7 +162,7 @@ choco upgrade chocolatey-management-database --package-parameters-sensitive="'/C
 
 #### Installing chocolatey-management-service
 
-**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#parameters-1) before proceeding.
+**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#package-parameters-1) before proceeding.
 
 In order to successfully install the chocolatey-management-service package onto a machine (using all default values), the following steps are required:
 
@@ -175,7 +175,7 @@ choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
 choco upgrade chocolatey-management-service --version 0.1.0-beta-20181009 --params="'/PortNumber=24020'"
 ~~~
 
-##### Parameters
+##### Package Parameters
 
 This package creates the CCM Service with the following defaults:
 
@@ -236,7 +236,7 @@ choco upgrade chocolatey-management-service --package-parameters-sensitive="'/Po
 
 #### Installing chocolatey-management-web
 
-**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#parameters-2) before proceeding.
+**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#package-parameters-2) before proceeding.
 
 In order to successfully install the chocolatey-management-web package onto a machine (using all default values), the following steps are required:
 
@@ -251,7 +251,7 @@ choco upgrade chocolatey-management-web --version 0.1.0-beta-20181009
 
 **NOTE:** Once installed, when you access the CCM Website you will be prompted to provide a username and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.  After you input this, you will be prompted to change the password.
 
-##### Parameters
+##### Package Parameters
 
 This package creates the CCM Website and Application Pool with the following defaults:
 
@@ -303,7 +303,7 @@ choco upgrade chocolatey-management-web --package-parameters-sensitive="'/Connec
 
 #### Complete Installation Script
 
-The following is a complete installation script that can be used as an example of how to install all necessary CCM components and configuration on a single machine, using all the default values.  To use values other than the default, see the relevant parameters section for the [chocolatey-management-database](#parameters), [chocolatey-management-service](#parameters-1) and [chocolatey-management-web](#parameters-2) packages.  And refer to the [Chocolatey Configuration](#chocolatey-configuration-for-ccm) for further information about global settings for CCM.
+The following is a complete installation script that can be used as an example of how to install all necessary CCM components and configuration on a single machine, using all the default values.  To use values other than the default, see the relevant parameters section for the [chocolatey-management-database](#package-parameters), [chocolatey-management-service](#package-parameters-1) and [chocolatey-management-web](#package-parameters-2) packages.  And refer to the [Chocolatey Configuration](#chocolatey-configuration-for-ccm) for further information about global settings for CCM.
 
 ~~~
 # Find FDQN for current machine
