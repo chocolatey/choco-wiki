@@ -47,8 +47,8 @@ Chocolatey Central Management (CCM) works in conjunction with the [Chocolatey Ag
 * CCM Database (`chocolatey-management-database` package) v0.1.0+
   * This deploys the CCM database schema to the specified SQL Server instance
 * CCM Service (`chocolatey-management-service` package) v0.1.0+
-  * This installs the CCM Windows Service, which the Chocolatey Agent Windows Service will communicate with.
-* CCM Web (`chocolatey-management-web` package) v0.1.0+
+  * This installs the CCM Service, which the Chocolatey Agent will communicate with.
+* CCM Website (`chocolatey-management-web` package) v0.1.0+
   * This is the CCM front end website that is the main user interface of the application
 
 ## Installation Source
@@ -74,7 +74,7 @@ While it is envisioned that CCM will be installed across multiple servers, it is
 
 Currently, the CCM packages do not provision the SQL Server Database Permissions that are required for the CCM components to function.  It is assumed that the necessary permissions have already been provided.  By default, two users will require read/write permissions to the CCM Database:
 
-* ChocolateyLocalAdmin - which, by default, runs the CCM Windows Service
+* ChocolateyLocalAdmin - which, by default, runs the CCM Service
 * IIS APPPOOL/ChocolateyCentralManagment - which, by default, runs the CCM IIS Application Pool
 
 **NOTE:** If either of these users are changed during the installation of these components, the database permissions will need to be updated to reflect this.
@@ -91,7 +91,7 @@ In order to install CCM, it is assumed that the following applications/software 
 
 ### FQDN Usage
 
-When installing the CCM Windows Service, the default is to use the Fully Qualified Domain Name (FQDN) of the machine that it is being installed on.  As a result, there is an expectation that the certificate (either the self signed certificate that is created during installation, or the existing certificate which is configured with the [CertifcateThumbprint](#parameters-1) parameter)) that is used to secure the transport layer of this service, also uses the same FQDN.
+When installing the CCM Service, the default is to use the Fully Qualified Domain Name (FQDN) of the machine that it is being installed on.  As a result, there is an expectation that the certificate (either the self signed certificate that is created during installation, or the existing certificate which is configured with the [CertifcateThumbprint](#parameters-1) parameter)) that is used to secure the transport layer of this service, also uses the same FQDN.
 
 If this is not the case, it will be necessary to use the information the installer about the actual name for the machine that is being used.  When using a self signed certificate, this can be specified using the `CertifcateDnsName`, and when using an existing certificate, no additional parameters are required.  In both cases, it will be necessary to also set the `centralManagementServiceUrl` [configuration parameter](#centralmanagementserviceurl).  This can be done using the following command:
 
@@ -231,7 +231,7 @@ You can override the package defaults using the following parameters:
 
 ##### Example
 
-Let's assume that you want to install the CCM Windows Service with a specific connection string in order to connect to the CCM Database, as well as configure the CCM Service to use a specific user name and password, as well as alter the Port number that the CCM Service will be hosted on.  The necessary installation command would look like the following:
+Let's assume that you want to install the CCM Service with a specific connection string in order to connect to the CCM Database, as well as configure the CCM Service to use a specific user name and password, as well as alter the Port number that the CCM Service will be hosted on.  The necessary installation command would look like the following:
 
 ~~~
 choco install chocolatey-management-service --package-parameters-sensitive="'/PortNumber=24021 /Username=ccmtest\ccmservice /Password=Password01 /ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;Integrated Security=SSPI;User ID=ccmtest\ccmservice;Password=Password01;""'"
