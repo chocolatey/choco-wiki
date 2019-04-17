@@ -53,6 +53,8 @@ If you are using the [Vagrant build](https://github.com/chocolatey/chocolatey-en
 
 ## Create A Hosted Repository For Chocolatey Packages
 
+We can create a repository using PowerShell or the browser. If you want to use the browser, follow the steps below:
+
 1. Click the **Log In** button in the top right hand corner;
 1. If you have not changed the defaults then see [**Step 1: Change the Administrative Password and Email Address**](https://help.sonatype.com/repomanager3/installation/post-install-checklist) for the defaults. **If the repository will be used in production we strongly recommend you change your username and / or password.**;
 1. Go to **Views/Repositories**;
@@ -64,6 +66,45 @@ If you are using the [Vagrant build](https://github.com/chocolatey/chocolatey-en
   * Click **Save**;
 5. Click the **NuGet** tab on the repository you have just created and note the `Package Source` URL - this will be the URL you need to use as your `--source` parameter and we will call it `<HOSTED REPOSITORY PACKAGE SOURCE URL>` going forward;
   ![NuGet Repository Personal API Key in Nexus](images/nexus/nuget-repository-personal-api-key.png)
+
+If you want to create the repository using the Nexus REST API and PowerShell, follow the steps below:
+
+```powershell
+$json = @{
+    data = @{
+      id           = "test-repo"
+      name         = "Test Repository"
+      provider     = "nuget-proxy"
+      providerRole = "org.sonatype.nexus.proxy.repository.Repository"
+      repoType     = "hosted"
+      repoPolicy   = "MIXED"
+    }
+}
+
+# this is the default username and password for Nexus. Amend if you have changed that.
+# See https://help.sonatype.com/repomanager3/installation/post-install-checklist
+$username = 'admin'
+$password = 'admin123'
+$auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
+
+$params = @{
+    Method      = 'Post'
+    Uri         = 'http://localhost:8081/nexus/service/local/repositories'
+    ContentType = 'application/json'
+    Headers     = @{ Authorization = "Basic $auth" }
+    Body        = ($json | ConvertTo-Json)
+}
+
+# invoke the Nexus API
+$result = Invoke-RestMethod @params
+
+# View the result after invoking the Nexus API
+$result.data
+
+# This will be the URL you need to use as your `--source` parameter and we
+# will call it `<HOSTED REPOSITORY PACKAGE SOURCE URL>` going forward
+$result.data.ContentResourceURI
+```
 
 At this stage we have created the repository. Now let's just check we can use it. Run `choco list --source <HOSTED REPOSITORY PACKAGE SOURCE URL>`.
 
@@ -79,9 +120,9 @@ There are no packages yet in the repository so we are expecting `0 packages foun
 
 ### Create User To Push Packages To The Repository
 
-By default anybody will be able to install / upgrade packages from the repository. However only authenticated users will be able to push packages to the repository. The authentication used is an **API Key**.
+By default anybody will be able to install / upgrade packages from the repository. However only authenticated users will be able to push packages to the repository. The authentication used is an **API Key**. Let's go ahead and create a user with permission to push packages to the repository.
 
-Let's go ahead and create a user with permission to push packages to the repository:
+When creating a user to push packages we can again create it through the browser or using PowerShell. If you want to follow the steps and create it through the browser, follow these steps:
 
 1. **Log In** as the `admin` user (or another user you have created with Administrator privileges);
 1. If you have not changed the defaults then see [**Step 1: Change the Administrative Password and Email Address**](https://help.sonatype.com/repomanager3/installation/post-install-checklist) for the defaults. **If the repository will be used in production we strongly recommend you change your username and / or password.**;
@@ -95,9 +136,52 @@ Let's go ahead and create a user with permission to push packages to the reposit
     * `Repo: All NuGet Repositories (Full Control)` - this access allows the user to push packages to the repository;
   * Click **Save**;
 
+To use PowerShell we will again use the Nexus REST API:
+
+```powershell
+$json = @{
+    data = @{
+      userId       = "push-user"
+      firstName    = "Joe"
+      lastName     = "Bloggs"
+      email        = "joebloggs@example.com"
+      status       = "active"
+      password     = "password"
+      roles        = @{
+        '0' = 'nx-apikey-access'
+        '1' = 'nuget-all-full'
+        '2' = 'ui-basic'
+        '3' = 'ui-repo-browser'
+      }
+    }
+}
+
+# this is the default username and password for Nexus. Amend if you have changed that.
+# See https://help.sonatype.com/repomanager3/installation/post-install-checklist
+$username = 'admin'
+$password = 'admin123'
+$auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
+
+$params = @{
+    Method      = 'Post'
+    Uri         = 'http://localhost:8081/nexus/service/local/users'
+    ContentType = 'application/json'
+    Headers     = @{ Authorization = "Basic $auth" }
+    Body        = ($json | ConvertTo-Json)
+}
+
+# invoke the Nexus API
+$result = Invoke-RestMethod @params
+
+# View the result after invoking the Nexus API
+$result.data
+```
+
 ### Obtain Repository API Key
 
-As we mentioned earlier, a user must authenticate to the repository in order to be able to push packages to it. To do that they need to retrieve their API Key from the repository:
+As we mentioned earlier, a user must authenticate to the repository in order to be able to push packages to it. To do that they need to retrieve their API Key from the repository. We can do that from the browser or by using PowerShell.
+
+Follow these steps if you wish to use the browser:
 
 1. **Log In** as the user who will be pushing packages (created [above](#create-user-to-push-packages-to-the-repository));
 1. Click **Repositories** in the left hand column and then click the repository that the user user will push packages to;
@@ -105,6 +189,33 @@ As we mentioned earlier, a user must authenticate to the repository in order to 
   ![NuGet Repository Personal API Key in Nexus](images/nexus/nuget-repository-personal-api-key.png)
    * Note the URL in `Package Source`. We will need this later to push packages to;
    * Click the **View API Key** button and then note the key show in the `Personal API Key` field and will be called `<API KEY>` going forward;
+
+We can also obtain the API Key using PowerShell. Note that each time you run this code (particularly the `Invoke-RestMethod @params` line, a new API key will be generated and old one will be invalid.
+
+```powershell
+# this is the username and password we set for the user we created above.
+# Amend if you have changed that.
+# See https://help.sonatype.com/repomanager3/installation/post-install-checklist
+$username = 'push-user'
+$password = 'password'
+$auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
+
+$params = @{
+    Method      = 'Post'
+    Uri         = 'http://localhost:8081/nexus/service/apikeys/nuget'
+    ContentType = 'application/json'
+    Headers     = @{ Authorization = "Basic $auth" }
+}
+
+# invoke the Nexus API
+# NOTE: Each time you run this it will generate a new API Key so
+# the old one will be invalid.
+$result = Invoke-RestMethod @params
+
+# View the result after invoking the Nexus API.
+# The result here is the API Key and will be called `<API KEY>` going forward;
+$result
+```
 
 Now we have created a repository, and a user with permissions to push packages to it, let's push a package!
 
@@ -180,7 +291,7 @@ Here we are going to setup a Proxy Repository to allow us to proxy package reque
 
 A proxy repository will allow us to indirectly use the Chocolatey Community Repository as a feed for packages. As the connection goes through the proxy repository URL, Nexus will check whether the package requested is already stored locally. If it is, it will return that package to us directly with no connection being made to the Chocolatey Community Repository. If it doesn't have it, it will download the package from the Chocolatey Community Repository and then store it locally. The next time that package is installed or upgraded it will not have to go back to the Chocolatey Community Repository to retrieve it.
 
-To setup a Proxy Repository:
+To setup a Proxy Repository we can use the browser or use PowerShell and the Nexus REST API. Follow these steps if you wish to use the browser:
 
 1. Click the **Log In** button in the top right hand corner;
 1. If you have not changed the defaults then see [**Step 1: Change the Administrative Password and Email Address**](https://help.sonatype.com/repomanager3/installation/post-install-checklist) for the defaults. **If the repository will be used in production we strongly recommend you change your username and / or password.**;
@@ -193,11 +304,48 @@ To setup a Proxy Repository:
   * **Remote Repository Access** -> **Remote Storage Location** - this should be `https://chocolatey.org/api/v2/`;
   * Click **Save**;
 
-
-
 5. Click the **NuGet** tab on the repository you have just created and note the `Package Source` URL - this will be the URL you need to use as your `--source` parameter and will be called `<PROXY REPOSITORY PACKAGE SOURCE URL>` going forward;
 
     ![NuGet Repository Personal API Key in Nexus](images/nexus/nuget-repository-personal-api-key.png)
+
+To use PowerShell and the Nexus REST API, run this code:
+
+```powershell
+$json = @{
+    data = @{
+      id           = "proxy-repo"
+      name         = "Proxy Repository"
+      provider     = "nuget-proxy"
+      providerRole = "org.sonatype.nexus.proxy.repository.Repository"
+      repoType     = "proxy"
+      repoPolicy   = "MIXED"
+    }
+}
+
+# this is the default username and password for Nexus. Amend if you have changed that.
+# See https://help.sonatype.com/repomanager3/installation/post-install-checklist
+$username = 'admin'
+$password = 'admin123'
+$auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
+
+$params = @{
+    Method      = 'Post'
+    Uri         = 'http://localhost:8081/nexus/service/local/repositories'
+    ContentType = 'application/json'
+    Headers     = @{ Authorization = "Basic $auth" }
+    Body        = ($json | ConvertTo-Json)
+}
+
+# invoke the Nexus API
+$result = Invoke-RestMethod @params
+
+# View the result after invoking the Nexus API
+$result.data
+
+# This will be the URL you need to use as your `--source` parameter and we
+# will call it `<PROXY REPOSITORY PACKAGE SOURCE URL>` going forward
+$result.data.ContentResourceURI
+```
 
 Note that you can't push packages to a Proxy Repository as it doesn't support this.
 
