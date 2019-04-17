@@ -307,9 +307,17 @@ choco upgrade chocolatey-management-web --package-parameters-sensitive="'/Connec
 
 #### Complete Installation Script
 
-The following is a complete installation script that can be used an example of how to install all necessary CCM components and configuration on a single machine, using all the default values.  To use values other than the default, see the relevant parameters section for the [chocolatey-management-database](#parameters), [chocolatey-management-service](#parameters-1) and [chocolatey-management-web](#parameters-2) packages.
+The following is a complete installation script that can be used an example of how to install all necessary CCM components and configuration on a single machine, using all the default values.  To use values other than the default, see the relevant parameters section for the [chocolatey-management-database](#parameters), [chocolatey-management-service](#parameters-1) and [chocolatey-management-web](#parameters-2) packages.  And refer to the [Chocolatey Configuration](#chocolatey-configuration-for-ccm) for further information about global settings for CCM.
 
 ~~~
+# Find FDQN for current machine
+$hostName = [System.Net.Dns]::GetHostName()
+$domainName = [System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties().DomainName
+
+if(-Not $hostName.endswith($domainName)) {
+  $hostName += "." + $domainName
+}
+
 choco upgrade chocolatey --version 0.10.12-beta-20181011
 choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
 choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
@@ -324,9 +332,7 @@ choco upgrade chocolatey-management-web --version 0.1.0-beta-20181009
 
 # CCM Configuration
 choco config set centralManagementReportPackagesTimerIntervalInSeconds 1860
-
-## Here, MACHINE1 should be changed to the FQDN for the machine that the CCM Service is installed on
-choco config set centralManagementServiceUrl "https://MACHINE1:24020/ChocolateyManagementService"
+choco config set centralManagementServiceUrl "https://$($hostname):24020/ChocolateyManagementService"
 choco config set centralManagementReceiveTimeoutInSeconds 60
 choco config set centralManagementSendTimeoutInSeconds 60
 choco config set centralManagementCertificateValidationMode "PeerOrChainTrust"
