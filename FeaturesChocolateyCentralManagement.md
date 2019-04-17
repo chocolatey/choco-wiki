@@ -363,24 +363,17 @@ This captures the options for determining the validity of the Chocolatey Central
 Once CCM has been set up and configured, each machine that you want to report into CCM will have to be enabled.  This can be done by doing the following:
 
 ~~~powershell
-choco config set CentralManagementServiceUrl https://ccmsrvserver:24021/ChocolateyManagementService
+choco config set CentralManagementServiceUrl https://ccmsrvserver:24020/ChocolateyManagementService
 choco feature enable -n useChocolateyCentralManagement
 ~~~
 
-Here, the full URL, including the port number, to where the CCM service was installed to is being set, and then the `useChocolateyCentralManagement` feature is being enabled. In your environment you would replace `https://ccmsrvserver:24021` with the FQDN name of your server and the port you set.
+Here, the full URL, including the port number, to where the CCM service was installed to is being set, and then the `useChocolateyCentralManagement` feature is being enabled. In your environment you would replace `ccmsrvserver:24020` with the FQDN name of your server and the port being used.
 
 **NOTE:** By default, this feature is disabled, and will need to be turned on.
 
-**NOTE:** If not set, the Chocolatey Central Management Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.  However, the Chocolatey Agent Service will not be able to report into CCM, if a value is not provided.
+**NOTE:** If not set, the CCM Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.  However, the Chocolatey Agent Service will not be able to report into CCM, if a value is not provided.
 
-Additional configuration exists for CCM Service, which allows fine grained control of how Chocolatey Agent will report into CCM.  For example:
-
-~~~powershell
-choco config set centralManagementReportPackagesTimerIntervalInSeconds 60
-choco config set centralManagementReceiveTimeoutInSeconds 60
-choco config set centralManagementSendTimeoutInSeconds 60
-choco config set centralManagementCertificateValidationMode "PeerOrChainTrust"
-~~~
+[Additional configuration](#chocolatey-configuration-for-chocolatey-central-management) exists for CCM Service, which allows fine grained control of how Chocolatey Agent will report into CCM.
 
 ## FAQ
 
