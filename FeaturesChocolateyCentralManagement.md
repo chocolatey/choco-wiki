@@ -118,9 +118,9 @@ choco install IIS-WebServer --source windowsfeatures
 
 It is recommended that you install the CCM Components in the following order:
 
-1. chocolatey-management-database
-1. chocolatey-management-service
-1. chocolatey-management-web
+1. [chocolatey-management-database](#installing-chocolatey-management-database)
+1. [chocolatey-management-service](#installing-chocolatey-management-service)
+1. [chocolatey-management-web](#installing-chocolatey-management-web)
 
 #### Installing chocolatey-management-database
 
