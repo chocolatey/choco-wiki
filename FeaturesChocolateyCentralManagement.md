@@ -122,7 +122,7 @@ The CCM Components should be installed in the following order:
 
 #### Installing chocolatey-management-database
 
-**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#chocolatey-central-management-database) before proceeding.
+**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#parameters) before proceeding.
 
 In order to successfully install the chocolatey-management-database package onto a machine (using all default values), the following steps are required:
 
@@ -165,7 +165,7 @@ choco upgrade chocolatey-management-database --package-parameters-sensitive="'/C
 
 #### Installing chocolatey-management-service
 
-**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#chocolatey-central-management-service) before proceeding.
+**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#parameters-1) before proceeding.
 
 In order to successfully install the chocolatey-management-service package onto a machine (using all default values), the following steps are required:
 
@@ -239,7 +239,7 @@ choco upgrade chocolatey-management-service --package-parameters-sensitive="'/Po
 
 #### Installing chocolatey-management-web
 
-**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#chocolatey-central-management-web) before proceeding.
+**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#parameters-2) before proceeding.
 
 In order to successfully install the chocolatey-management-web package onto a machine (using all default values), the following steps are required:
 
