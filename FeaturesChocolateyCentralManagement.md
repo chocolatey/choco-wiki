@@ -318,17 +318,17 @@ choco install chocolatey-management-web --package-parameters-sensitive="'/Connec
 
 **NOTE:** Once installed, when you access the CCM Web Site you will be prompted to provide a username and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.  After you input this, you will be prompted to change the password.
 
-### Chocolatey Configuration for Chocolatey Central Management
+## Chocolatey Configuration for Chocolatey Central Management
 
 The following configuration values, with their default values, are added into the chocolatey.config file after installing Chocolatey Central Management and it's dependent packages.
 
-#### centralManagementReportPackagesTimerIntervalInSeconds
+### centralManagementReportPackagesTimerIntervalInSeconds
 
 This is the length of time, in seconds, that the Chocolatey Background Agent will wait between each attempt to report into Chocolatey Central Management.
 
 **Default Value:** 1800
 
-#### centralManagementServiceUrl
+### centralManagementServiceUrl
 
 This is the URL that is used by the Chocolatey Background Agent to report into Chocolatey Central Management, and also by the Chocolatey Central Management Service to register the URL that it is listening for incoming reports on.
 
@@ -338,19 +338,19 @@ This is the URL that is used by the Chocolatey Background Agent to report into C
 
 **NOTE:** Due to the fact that both the Chocolatey Background Agent and Chocolatey Central Management Service use this configuration value, if both of these services are located on the same machine, the Chocolatey Background Service on that machine has to report into the Chocolatey Central Management Service on that machine.  It can't report into another instance.
 
-#### centralManagementReceiveTimeoutInSeconds
+### centralManagementReceiveTimeoutInSeconds
 
 This is the length of time, in seconds, that a connection to Chocolatey Central Management can remain inactive, during which no application messages are received, before it is dropped.
 
 **Default Value:** 30
 
-#### centralManagementSendTimeoutInSeconds
+### centralManagementSendTimeoutInSeconds
 
 This is the length of time, in seconds, that a write operation against Chocolatey Central Management has to complete before the transport raises an exception.
 
 **Default Value:** 30
 
-#### centralManagementCertificateValidationMode
+### centralManagementCertificateValidationMode
 
 This captures the options for determining the validity of the Chocolatey Central Management Service certificate obtained using SSL/TLS negotiation.
 
@@ -358,7 +358,7 @@ This captures the options for determining the validity of the Chocolatey Central
 
 **Valid Values:** None, PeerTrust, ChainTrust, PeerOrChainTrust, Custom
 
-### Chocolatey Clients
+## Chocolatey Clients
 
 Once CCM has been set up and configured, each machine that you want to report into CCM will have to be enabled.  This can be done by doing the following:
 
