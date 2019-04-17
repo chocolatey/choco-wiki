@@ -27,6 +27,7 @@
   - [centralManagementSendTimeoutInSeconds](#centralmanagementsendtimeoutinseconds)
   - [centralManagementCertificateValidationMode](#centralmanagementcertificatevalidationmode)
 - [Chocolatey Clients](#chocolatey-clients)
+- [See It In Action](#see-it-in-action)
 - [FAQ](#faq)
   - [Will this become available for lower editions of Chocolatey?](#will-this-become-available-for-lower-editions-of-chocolatey)
   - [What's the minimum version of the Chocolatey packages I need to use CCM?](#whats-the-minimum-version-of-the-chocolatey-packages-i-need-to-use-ccm)
@@ -397,6 +398,8 @@ Here, the full URL, including the port number, to where the CCM service was inst
 **NOTE:** If not set, the CCM Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.  However, Chocolatey Agent will not be able to report into CCM, if a value is not provided.
 
 [Additional configuration](#chocolatey-configuration-for-chocolatey-central-management) exists for CCM Service, which allows fine grained control of how Chocolatey Agent will report into CCM.
+
+## See It In Action
 
 ## FAQ
 
