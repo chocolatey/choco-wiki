@@ -126,7 +126,7 @@ The CCM Components should be installed in the following order:
 In order to successfully install the chocolatey-management-database package onto a machine (using all default values), the following steps are required:
 
 ~~~
-choco upgrade chocolatey --version 0.10.12-beta-20181011
+choco upgrade chocolatey --version 0.10.14-beta-20190402
 choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
 choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
 choco upgrade chocolatey-management-database --version 0.1.0-beta-20181009
@@ -169,7 +169,7 @@ In order to successfully install the chocolatey-management-service package onto 
 **NOTE:** Due to an issue that was identified in the initial release of CCM, the port number parameter is required.
 
 ~~~
-choco upgrade chocolatey --version 0.10.12-beta-20181011
+choco upgrade chocolatey --version 0.10.14-beta-20190402
 choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
 choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
 choco upgrade chocolatey-management-service --version 0.1.0-beta-20181009 --params="'/PortNumber=24020'"
@@ -243,7 +243,7 @@ In order to successfully install the chocolatey-management-web package onto a ma
 ~~~
 choco upgrade aspnetcore-runtimepackagestore
 choco upgrade dotnetcore-windowshosting
-choco upgrade chocolatey --version 0.10.12-beta-20181011
+choco upgrade chocolatey --version 0.10.14-beta-20190402
 choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
 choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
 choco upgrade chocolatey-management-web --version 0.1.0-beta-20181009
@@ -314,7 +314,7 @@ if(-Not $hostName.endswith($domainName)) {
   $hostName += "." + $domainName
 }
 
-choco upgrade chocolatey -y --version 0.10.12-beta-20181011
+choco upgrade chocolatey -y --version 0.10.14-beta-20190402
 choco upgrade chocolatey.extension -y --version 2.0.0-beta-20181009
 choco upgrade chocolatey-agent -y --version 0.9.0-beta-20181009
 
