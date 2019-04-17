@@ -303,7 +303,7 @@ choco upgrade chocolatey-management-web --package-parameters-sensitive="'/Connec
 
 #### Complete Installation Script
 
-The following is a complete installation script that can be used an example of how to install all necessary CCM components and configuration on a single machine, using all the default values.  To use values other than the default, see the relevant parameters section for the [chocolatey-management-database](#parameters), [chocolatey-management-service](#parameters-1) and [chocolatey-management-web](#parameters-2) packages.  And refer to the [Chocolatey Configuration](#chocolatey-configuration-for-ccm) for further information about global settings for CCM.
+The following is a complete installation script that can be used as an example of how to install all necessary CCM components and configuration on a single machine, using all the default values.  To use values other than the default, see the relevant parameters section for the [chocolatey-management-database](#parameters), [chocolatey-management-service](#parameters-1) and [chocolatey-management-web](#parameters-2) packages.  And refer to the [Chocolatey Configuration](#chocolatey-configuration-for-ccm) for further information about global settings for CCM.
 
 ~~~
 # Find FDQN for current machine
