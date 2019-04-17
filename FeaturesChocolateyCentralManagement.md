@@ -124,7 +124,7 @@ The CCM Components should be installed in the following order:
 
 **NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#chocolatey-central-management-database) before proceeding.
 
-In order to successfully install the chocolatey-management-database package onto a machine, the following steps are required:
+In order to successfully install the chocolatey-management-database package onto a machine (using all default values), the following steps are required:
 
 ~~~
 choco upgrade chocolatey --version 0.10.12-beta-20181011
@@ -167,7 +167,7 @@ choco upgrade chocolatey-management-database --package-parameters-sensitive="'/C
 
 **NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#chocolatey-central-management-service) before proceeding.
 
-In order to successfully install the chocolatey-management-service package onto a machine, the following steps are required:
+In order to successfully install the chocolatey-management-service package onto a machine (using all default values), the following steps are required:
 
 **NOTE:** Due to an issue that was identified in the initial release of CCM, the port number parameter is required.
 
@@ -241,7 +241,7 @@ choco upgrade chocolatey-management-service --package-parameters-sensitive="'/Po
 
 **NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#chocolatey-central-management-web) before proceeding.
 
-In order to successfully install the chocolatey-management-web package onto a machine, the following steps are required:
+In order to successfully install the chocolatey-management-web package onto a machine (using all default values), the following steps are required:
 
 ~~~
 choco upgrade aspnetcore-runtimepackagestore
