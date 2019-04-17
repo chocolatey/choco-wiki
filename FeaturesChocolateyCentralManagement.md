@@ -113,8 +113,6 @@ choco config set CentralManagementServiceUrl https://<accessible_name_of_machine
 
 ### Install CCM Components
 
-**NOTE:** If installing all the CCM Components on a single machine, some package installs can be skipped as they will have already been done as part of installing other components.
-
 The CCM Components should be installed in the following order:
 
 1. [chocolatey-management-database](#installing-chocolatey-management-database)
@@ -161,8 +159,6 @@ choco upgrade chocolatey-management-database --package-parameters-sensitive="'/C
 ~~~
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
-
-**NOTE:** There is an assumption here that the username and password being used have the necessary permissions in order to create the CCM database in the destination SQL Server instance.
 
 #### Installing chocolatey-management-service
 
