@@ -44,7 +44,7 @@ If you are using the [Vagrant build](https://github.com/chocolatey/chocolatey-en
 1. Install the Nexus software using Chocolatey by running `choco install nexus-oss -y`;
 1. Open a browser and navigate to `https://localhost:8081/nexus` and you will see the default Nexus page.
 1. Click the **Log In** button in the top right hand corner;
-1. If you have not changed the defaults then see **Step 1: Change the Administrative Password and Email Address** https://help.sonatype.com/repomanager3/installation/post-install-checklist for the defaults. **If the repository will be used in production we strongly recommend you change your username and / or password.**;
+1. If you have not changed the defaults then see [**Step 1: Change the Administrative Password and Email Address**](https://help.sonatype.com/repomanager3/installation/post-install-checklist) for the defaults. **If the repository will be used in production we strongly recommend you change your username and / or password.**;
 1. Expand **Administration** on the left hand side and click **Server**;
 1. Scroll down to, and expand, **Security Settings**:
   ![Adding the NuGet API-Key Realm in Nexus](images/nexus/nuget-api-key-realm.png)
@@ -54,7 +54,7 @@ If you are using the [Vagrant build](https://github.com/chocolatey/chocolatey-en
 ## Create A Hosted Repository For Chocolatey Packages
 
 1. Click the **Log In** button in the top right hand corner;
-1. If you have not changed the defaults then see **Step 1: Change the Administrative Password and Email Address** https://help.sonatype.com/repomanager3/installation/post-install-checklist for the defaults. **If the repository will be used in production we strongly recommend you change your username and / or password.**;
+1. If you have not changed the defaults then see [**Step 1: Change the Administrative Password and Email Address**](https://help.sonatype.com/repomanager3/installation/post-install-checklist) for the defaults. **If the repository will be used in production we strongly recommend you change your username and / or password.**;
 1. Go to **Views/Repositories**;
 1. Click **Repositories**, click **Add** -> **Hosted Repository** and complete the details (note if you hover over the `?` at the end of each field it will provide you with help):
   ![Creating a Hosted Repository in Nexus](images/nexus/create-hosted-repository.png)
@@ -84,7 +84,7 @@ By default anybody will be able to install / upgrade packages from the repositor
 Let's go ahead and create a user with permission to push packages to the repository:
 
 1. **Log In** as the `admin` user (or another user you have created with Administrator privileges);
-1. If you have not changed the defaults then see **Step 1: Change the Administrative Password and Email Address** https://help.sonatype.com/repomanager3/installation/post-install-checklist for the defaults. **If the repository will be used in production we strongly recommend you change your username and / or password.**;
+1. If you have not changed the defaults then see [**Step 1: Change the Administrative Password and Email Address**](https://help.sonatype.com/repomanager3/installation/post-install-checklist) for the defaults. **If the repository will be used in production we strongly recommend you change your username and / or password.**;
 1. Go to **Security** -> **Users** and then click the **Add** button and then **Nexus User** (note if you hover over the `?` at the end of each field it will provide you with help):
   ![Create User to Push Packages in Nexus](images/nexus/create-push-user.png)
   * Enter **User ID**, **First Name**, **Last Name** and **Email**;
@@ -183,7 +183,7 @@ A proxy repository will allow us to indirectly use the Chocolatey Community Repo
 To setup a Proxy Repository:
 
 1. Click the **Log In** button in the top right hand corner;
-1. If you have not changed the defaults then see **Step 1: Change the Administrative Password and Email Address** https://help.sonatype.com/repomanager3/installation/post-install-checklist for the defaults. **If the repository will be used in production we strongly recommend you change your username and / or password.**;
+1. If you have not changed the defaults then see [**Step 1: Change the Administrative Password and Email Address**](https://help.sonatype.com/repomanager3/installation/post-install-checklist) for the defaults. **If the repository will be used in production we strongly recommend you change your username and / or password.**;
 1. Go to **Views/Repositories**;
 1. Click **Repositories**, click **Add** -> **Proxy Repository** and complete the details (note if you hover over the `?` at the end of each field it will provide you with help):
   ![NuGet Repository Personal API Key in Nexus](images/nexus/create-proxy-repository.png)
@@ -226,7 +226,7 @@ Chocolatey installed 1/1 packages.
 So we installed the WinSCP package through the Proxy Repository so lets see the packages stored in the repository:
 
 1. Click the **Log In** button in the top right hand corner;
-1. If you have not changed the defaults then see **Step 1: Change the Administrative Password and Email Address** https://help.sonatype.com/repomanager3/installation/post-install-checklist for the defaults. **If the repository will be used in product we strongly recommend you change your username and / or password.**;
+1. If you have not changed the defaults then see [**Step 1: Change the Administrative Password and Email Address**](https://help.sonatype.com/repomanager3/installation/post-install-checklist) for the defaults. **If the repository will be used in product we strongly recommend you change your username and / or password.**;
 1. Go to **Views/Repositories**;
 1. Click **Repositories** then click the **Proxy Repository** you created  [earlier](create-a-proxy-repository-for-chocolatey-community-repository);
 1. Under the **Browse Storage** tab you will see the `winscp.portable` package listed (note if you do not see the package click the **Refresh** button);
