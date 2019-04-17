@@ -314,26 +314,32 @@ if(-Not $hostName.endswith($domainName)) {
   $hostName += "." + $domainName
 }
 
-choco upgrade chocolatey --version 0.10.12-beta-20181011
-choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
-choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
+choco upgrade chocolatey -y --version 0.10.12-beta-20181011
+choco upgrade chocolatey.extension -y --version 2.0.0-beta-20181009
+choco upgrade chocolatey-agent -y --version 0.9.0-beta-20181009
 
-choco upgrade chocolatey-management-database --version 0.1.0-beta-20181009
+choco upgrade chocolatey-management-database -y --version 0.1.0-beta-20181009
 
-choco upgrade chocolatey-management-service --version 0.1.0-beta-20181009 --params="'/PortNumber=24020'"
+choco upgrade chocolatey-management-service -y --version 0.1.0-beta-20181009 --params="'/PortNumber=24020'"
 
-choco upgrade aspnetcore-runtimepackagestore
-choco upgrade dotnetcore-windowshosting
-choco upgrade chocolatey-management-web --version 0.1.0-beta-20181009
+choco upgrade aspnetcore-runtimepackagestore -y
+choco upgrade dotnetcore-windowshosting -y 
+choco upgrade chocolatey-management-web -y --version 0.1.0-beta-20181009
 
 # CCM Configuration
-choco config set centralManagementReportPackagesTimerIntervalInSeconds 1860
-choco config set centralManagementServiceUrl "https://$($hostname):24020/ChocolateyManagementService"
-choco config set centralManagementReceiveTimeoutInSeconds 60
-choco config set centralManagementSendTimeoutInSeconds 60
-choco config set centralManagementCertificateValidationMode "PeerOrChainTrust"
+choco config set --name="'centralManagementReportPackagesTimerIntervalInSeconds'" --value="'1860'"
+choco config set --name="'centralManagementServiceUrl'" --value="'https://$($hostname):24020/ChocolateyManagementService'"
+choco config set --name="'centralManagementReceiveTimeoutInSeconds'" --value="'60'"
+choco config set --name="'centralManagementSendTimeoutInSeconds'" --value="'60'"
+choco config set --name="'centralManagementCertificateValidationMode'" --value="'PeerOrChainTrust'"
 choco feature enable --name="'useChocolateyCentralManagement'"
 ~~~
+
+> Best practices in scripts are noted here:
+> * Use `upgrade` instead of `install` - upgrade is more making the script reusable when newer versions are available.
+> * Always use `-y` to ensure nothing stops and prompts for more than 30 seconds.
+> * When using options prefer a longer name (`--name` versus the short `-n`) to make the scripts more self-documenting
+> * When using options that have a value passed, add an `=` between and surround the value with `"''"` (`--name="'value'"`). This ensures that the argument is not split between different versions/editions of Chocolatey. This also ensures that values like `.` and `\\` are not escaped by PowerShell.
 
 ## Chocolatey Configuration for CCM
 
