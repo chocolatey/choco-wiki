@@ -384,11 +384,11 @@ This captures the options for determining the validity of the CCM Service certif
 Once CCM has been set up and configured, each machine that you want to report into CCM will have to be enabled.  This can be done by doing the following:
 
 ~~~powershell
-choco config set CentralManagementServiceUrl https://ccmsrvserver:24020/ChocolateyManagementService
+choco config set CentralManagementServiceUrl https://MACHINE1:24020/ChocolateyManagementService
 choco feature enable --name="'useChocolateyCentralManagement'"
 ~~~
 
-Here, the full URL, including the port number, to where the CCM service was installed to is being set, and then the `useChocolateyCentralManagement` feature is being enabled. In your environment you would replace `ccmsrvserver:24020` with the FQDN name of your server and the port being used.
+Here, the full URL, including the port number, to where the CCM service was installed to is being set, and then the `useChocolateyCentralManagement` feature is being enabled. In your environment you would replace `MACHINE1:24020` with the FQDN name of your server and the port being used.
 
 **NOTE:** By default, this feature is disabled, and will need to be turned on.
 
