@@ -295,7 +295,7 @@ You can override the package defaults using the following parameters:
 
 ##### Example
 
-Let's assume that you want to install the CCM Web Site with a specific connection string in order to connect to the CCM Database, as well as configure the IIS Application Pool to use a specific user name and password.  The
+Let's assume that you want to install the CCM Website with a specific connection string in order to connect to the CCM Database, as well as configure the IIS Application Pool to use a specific user name and password.  The
 necessary installation command would look like the following:
 
 ~~~
@@ -304,7 +304,7 @@ choco install chocolatey-management-web --package-parameters-sensitive="'/Connec
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
 
-**NOTE:** Once installed, when you access the CCM Web Site you will be prompted to provide a username and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.  After you input this, you will be prompted to change the password.
+**NOTE:** Once installed, when you access the CCM Website you will be prompted to provide a username and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.  After you input this, you will be prompted to change the password.
 
 ## Chocolatey Configuration for CCM
 
