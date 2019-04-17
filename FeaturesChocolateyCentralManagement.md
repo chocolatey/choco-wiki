@@ -139,6 +139,36 @@ choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
 choco upgrade chocolatey-management-database --version 0.1.0-beta-20181009
 ~~~
 
+##### Parameters
+
+This package creates the Chocolatey Central Management Database with the following defaults:
+
+* Database Connection String:   **Server=&lt;LOCAL COMPUTER FQDN NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
+
+You can override the package defaults using the following parameters:
+
+* `/ConnectionString`
+  * The SQL Server database connection string to be used to connect to the Chocolatey Central Management database.
+  * **NOTE:** Default Value: **Server=&lt;LOCAL COMPUTER FQDN NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
+* `/Database`
+  * Name of the SQL Server database to use. Note that if you do not also pass `/ConnectionString`, it will be generated using this parameter value and `/SqlServerInstance` (using defaults for missing parameters);
+  * **NOTE:** Default Value: **ChocolateyManagement**
+* `/SqlServerInstance`
+  * Instance name of the SQL Server database to connect to. Note that if you do not also pass `/ConnectionString`, it will be generated using this parameter value and `/Database` (using defaults for missing parameters);
+  * **NOTE:** Default Value: **&lt;LOCAL COMPUTER FQDN NAME&gt;**
+
+##### Example
+
+Let's assume that you want to install the Chocolatey Central Management Database onto a machine that will access a SQL Server instance called `SQLSERVERCCM`, on a domain machine called `MACHINE1` which is part of the domain `ccmtest`, using a specific user name (ccmservice) and password combination.  In this scenario, the installation command would look like the following:
+
+~~~
+choco install chocolatey-management-database --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;Integrated Security=SSPI;User ID=ccmtest\ccmservice;Password=Password01;""'"
+~~~
+
+**NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
+
+**NOTE:** There is an assumption here that the username and password being used have the necessary permissions in order to create the CCM database in the destination SQL Server instance.
+
 #### Installing chocolatey-management-service
 
 **NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#chocolatey-central-management-service) before proceeding.
@@ -170,38 +200,6 @@ choco upgrade chocolatey-management-web --version 0.1.0-beta-20181009
 ~~~
 
 ## Package Parameters
-
-### Chocolatey Central Management Database
-
-This package creates the Chocolatey Central Management Database with the following defaults:
-
-* Database Connection String:   **Server=&lt;LOCAL COMPUTER FQDN NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
-
-#### Parameters
-
-You can override the package defaults using the following parameters:
-
-* `/ConnectionString`
-  * The SQL Server database connection string to be used to connect to the Chocolatey Central Management database.
-  * **NOTE:** Default Value: **Server=&lt;LOCAL COMPUTER FQDN NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
-* `/Database`
-  * Name of the SQL Server database to use. Note that if you do not also pass `/ConnectionString`, it will be generated using this parameter value and `/SqlServerInstance` (using defaults for missing parameters);
-  * **NOTE:** Default Value: **ChocolateyManagement**
-* `/SqlServerInstance`
-  * Instance name of the SQL Server database to connect to. Note that if you do not also pass `/ConnectionString`, it will be generated using this parameter value and `/Database` (using defaults for missing parameters);
-  * **NOTE:** Default Value: **&lt;LOCAL COMPUTER FQDN NAME&gt;**
-
-#### Example
-
-Let's assume that you want to install the Chocolatey Central Management Database onto a machine that will access a SQL Server instance called `SQLSERVERCCM`, on a domain machine called `MACHINE1` which is part of the domain `ccmtest`, using a specific user name (ccmservice) and password combination.  In this scenario, the installation command would look like the following:
-
-~~~
-choco install chocolatey-management-database --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;Integrated Security=SSPI;User ID=ccmtest\ccmservice;Password=Password01;""'"
-~~~
-
-**NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
-
-**NOTE:** There is an assumption here that the username and password being used have the necessary permissions in order to create the CCM database in the destination SQL Server instance.
 
 ### Chocolatey Central Management Service
 
