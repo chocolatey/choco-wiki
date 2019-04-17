@@ -305,7 +305,31 @@ choco upgrade chocolatey-management-web --package-parameters-sensitive="'/Connec
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
 
-### Complete Installation Script
+#### Complete Installation Script
+
+The following is a complete installation script that can be used an example of how to install all necessary CCM components and configuration on a single machine.
+
+~~~
+choco upgrade chocolatey --version 0.10.12-beta-20181011
+choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
+choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
+
+choco upgrade chocolatey-management-database --version 0.1.0-beta-20181009
+
+choco upgrade chocolatey-management-service --version 0.1.0-beta-20181009 --params="'/PortNumber=24020'"
+
+choco upgrade aspnetcore-runtimepackagestore
+choco upgrade dotnetcore-windowshosting
+choco upgrade chocolatey-management-web --version 0.1.0-beta-20181009
+
+# CCM Configuration
+choco config set centralManagementReportPackagesTimerIntervalInSeconds 1860
+choco config set centralManagementServiceUrl "https://ccmserver:24020/ChocolateyManagementService"
+choco config set centralManagementReceiveTimeoutInSeconds 60
+choco config set centralManagementSendTimeoutInSeconds 60
+choco config set centralManagementCertificateValidationMode "PeerOrChainTrust"
+choco feature enable --name="'useChocolateyCentralManagement'"
+~~~
 
 ## Chocolatey Configuration for CCM
 
