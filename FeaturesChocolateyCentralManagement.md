@@ -59,10 +59,9 @@ The `chocolatey.licensed` source is automatically added to your Chocolatey insta
 
 ### Use Specific Version
 
-During the CCM Beta phase, it is necessary to install/download the CCM packages using a specific version.  For example:
+During the CCM Beta phase, it is necessary to download the CCM packages using a specific version.  For example:
 
 ~~~
-choco install chocolatey-management-database --version 0.1.0-beta-20181009
 choco download chocolatey-management-database --version 0.1.0-beta-20181009
 ~~~
 
