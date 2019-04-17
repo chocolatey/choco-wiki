@@ -83,11 +83,11 @@ Or, the required username/password for connecting to the CCM database are added 
 
 ### Pre-Requisites
 
-In order to install CCM, it is assumed that the following applications/software are installed on all servers that will be used with CCM.
+In order to install CCM, it is assumed that the following applications/software are installed:
 
-* At least .Net Framework 4.6.1
-* IIS needs to be installed on the machine where the `chocolatey-management-web` package will be installed.
-* SQL Server needs to be installed on the machine where the `chocolatey-management-database` package will be installed.
+* At least .Net Framework 4.6.1 on all machines
+* IIS on the machine where the `chocolatey-management-web` package will be installed
+* SQL Server on the machine where the `chocolatey-management-database` package will be installed
 
 IIS can be installed using the following commands:
 
@@ -95,6 +95,10 @@ IIS can be installed using the following commands:
 choco install IIS-WebServer --source windowsfeatures
 choco install IIS-ApplicationInit --source windowsfeatures
 ~~~
+
+We will not provide specific instruction on installing SQL Server. Any database platform that supports Entity Framework (EF) Core is supported, and as such there are too many scenarios to cover in this document.
+
+For a list of Database products that support EF Core you can view the Microsoft Docs page [here](https://docs.microsoft.com/en-us/ef/core/providers/#current-providers)
 
 ### FQDN Usage
 
