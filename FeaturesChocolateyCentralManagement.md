@@ -84,9 +84,9 @@ Or, the required username/password for connecting to the CCM database are added 
 
 In order to install CCM, it is assumed that the following applications/software are installed, either as a single server installation, or spread over multiple servers.
 
-1. SQL Server Instance, with administrator access for initial database provision
-1. Internet Information Services
-1. At least .Net Framework 4.6.1
+1. SQL Server Instance, with administrator access for initial database provision (chocolatey-management-database)
+1. Internet Information Services (chocolatey-management-web)
+1. At least .Net Framework 4.6.1 (chocolatey-management-database, chocolatey-management-service, chocolatey-management-web)
 
 ### FQDN Usage
 
