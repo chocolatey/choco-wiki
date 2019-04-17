@@ -70,7 +70,7 @@ choco install chocolatey-management-database --version 0.1.0-beta-20181009
 choco download chocolatey-management-database --version 0.1.0-beta-20181009
 ~~~
 
-**NOTE:** If the `chocolatey.licensed` source is indeed disabled in your environment, it will be necessary to also use `--source https://licensedpackages.chocolatey.org/api/v2/` in the above commands.
+**NOTE:** If the `chocolatey.licensed` source is disabled in your environment, it will be necessary to also use `--source https://licensedpackages.chocolatey.org/api/v2/` in the above commands.
 
 ## Setup
 
