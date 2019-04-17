@@ -116,7 +116,7 @@ choco install IIS-WebServer --source windowsfeatures
 
 **NOTE:** If installing all the CCM Components on a single machine, some package installs can be skipped as they will have already been done as part of installing other components.
 
-It is recommended that you install the CCM Components in the following order:
+The CCM Components should be installed in the following order:
 
 1. [chocolatey-management-database](#installing-chocolatey-management-database)
 1. [chocolatey-management-service](#installing-chocolatey-management-service)
