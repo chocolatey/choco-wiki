@@ -19,6 +19,7 @@
     - [Installing chocolatey-management-web](#installing-chocolatey-management-web)
       - [Parameters](#parameters-2)
       - [Example](#example-2)
+    - [Complete Installation Script](#complete-installation-script)
 - [Chocolatey Configuration for CCM](#chocolatey-configuration-for-ccm)
   - [centralManagementReportPackagesTimerIntervalInSeconds](#centralmanagementreportpackagestimerintervalinseconds)
   - [centralManagementServiceUrl](#centralmanagementserviceurl)
@@ -303,6 +304,8 @@ choco upgrade chocolatey-management-web --package-parameters-sensitive="'/Connec
 ~~~
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
+
+### Complete Installation Script
 
 ## Chocolatey Configuration for CCM
 
