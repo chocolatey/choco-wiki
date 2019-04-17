@@ -82,11 +82,9 @@ Or, the required username/password for connecting to the CCM database are added 
 
 ### Pre-Requisites
 
-In order to install CCM, it is assumed that the following applications/software are installed, either as a single server installation, or spread over multiple servers.
+In order to install CCM, it is assumed that the following applications/software are installed on all servers that will be used with CCM.
 
-1. SQL Server Instance, with administrator access for initial database provision (chocolatey-management-database)
-1. Internet Information Services (chocolatey-management-web)
-1. At least .Net Framework 4.6.1 (chocolatey-management-database, chocolatey-management-service, chocolatey-management-web)
+* At least .Net Framework 4.6.1
 
 ### FQDN Usage
 
@@ -100,8 +98,6 @@ choco config set CentralManagementServiceUrl https://<accessible_name_of_machine
 
 ### Install CCM Components
 
-**NOTE:** The following assumes that you already have IIS and SQL Server installed.
-
 * IIS needs to be installed on the machine where the `chocolatey-management-web` package will be installed.
 * SQL Server needs to be installed on the machine where the `chocolatey-management-database` package will be installed.
 
@@ -111,6 +107,7 @@ Installing IIS can be completed using the following command:
 
 ~~~
 choco install IIS-WebServer --source windowsfeatures
+choco install IIS-ApplicationInit --source windowsfeatures
 ~~~
 
 **NOTE:** If installing all the CCM Components on a single machine, some package installs can be skipped as they will have already been done as part of installing other components.
@@ -157,7 +154,7 @@ You can override the package defaults using the following parameters:
 Let's assume that you want to install the CCM Database onto a machine that will access a SQL Server instance called `SQLSERVERCCM`, on a domain machine called `MACHINE1` which is part of the domain `ccmtest`, using a specific user name (ccmservice) and password combination.  In this scenario, the installation command would look like the following:
 
 ~~~
-choco install chocolatey-management-database --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;User ID=ccmtest\ccmservice;Password=Password01;""'"
+choco upgrade chocolatey-management-database --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;User ID=ccmtest\ccmservice;Password=Password01;""'"
 ~~~
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
@@ -233,7 +230,7 @@ You can override the package defaults using the following parameters:
 Let's assume that you want to install the CCM Service with a specific connection string in order to connect to the CCM Database, as well as configure the CCM Service to use a specific user name and password, as well as alter the Port number that the CCM Service will be hosted on.  The necessary installation command would look like the following:
 
 ~~~
-choco install chocolatey-management-service --package-parameters-sensitive="'/PortNumber=24021 /Username=ccmtest\ccmservice /Password=Password01 /ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;User ID=ccmtest\ccmservice;Password=Password01;""'"
+choco upgrade chocolatey-management-service --package-parameters-sensitive="'/PortNumber=24021 /Username=ccmtest\ccmservice /Password=Password01 /ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;User ID=ccmtest\ccmservice;Password=Password01;""'"
 ~~~
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
@@ -298,7 +295,7 @@ Let's assume that you want to install the CCM Website with a specific connection
 necessary installation command would look like the following:
 
 ~~~
-choco install chocolatey-management-web --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;User ID=ccmtest\ccmservice;Password=Password01;"" /Username=ccmwebserver\ccmserviceuser /Password=Password01'"`
+choco upgrade chocolatey-management-web --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;User ID=ccmtest\ccmservice;Password=Password01;"" /Username=ccmwebserver\ccmserviceuser /Password=Password01'"`
 ~~~
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
