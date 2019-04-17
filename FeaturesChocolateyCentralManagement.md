@@ -17,10 +17,8 @@
       - [Parameters](#parameters-1)
       - [Example](#example-1)
     - [Installing chocolatey-management-web](#installing-chocolatey-management-web)
-- [Package Parameters](#package-parameters)
-  - [Chocolatey Central Management Web](#chocolatey-central-management-web)
-    - [Parameters](#parameters-2)
-    - [Example](#example-2)
+      - [Parameters](#parameters-2)
+      - [Example](#example-2)
 - [Chocolatey Configuration for Chocolatey Central Management](#chocolatey-configuration-for-chocolatey-central-management)
   - [centralManagementReportPackagesTimerIntervalInSeconds](#centralmanagementreportpackagestimerintervalinseconds)
   - [centralManagementServiceUrl](#centralmanagementserviceurl)
@@ -256,9 +254,7 @@ choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
 choco upgrade chocolatey-management-web --version 0.1.0-beta-20181009
 ~~~
 
-## Package Parameters
-
-### Chocolatey Central Management Web
+##### Parameters
 
 This package creates the Chocolatey Central Management Website and Application Pool with the following defaults:
 
@@ -275,8 +271,6 @@ This package creates the Chocolatey Central Management Website and Application P
   * applicationDefaults.preloadEnabled:   **True**
 * SQL Server Instance:                      **&lt;LOCAL COMPUTER FQDN NAME&gt;**
 * Connection String:                        **Server=&lt;LOCAL COMPUTER FQDN NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
-
-#### Parameters
 
 You can override the package defaults using the following parameters:
 
@@ -299,7 +293,7 @@ You can override the package defaults using the following parameters:
   * This will prompt you to enter the password, during install, for the username (provided via the `/Username` parameter) the IIS WebApplicationPool will run under;
   * **NOTE:** Default Value: Not provided
 
-#### Example
+##### Example
 
 Let's assume that you want to install the CCM Web Site with a specific connection string in order to connect to the CCM Database, as well as configure the IIS Application Pool to use a specific user name and password.  The
 necessary installation command would look like the following:
