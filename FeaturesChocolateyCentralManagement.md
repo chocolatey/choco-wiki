@@ -36,14 +36,14 @@
 
 ## Usage
 
-Chocolatey Central Management (CCM) works in conjunction with the [Chocolatey Agent Service](https://chocolatey.org/docs/features-agent-service) to bring full details of all Chocolatey controlled machines in your environment into one location, which is then accessible by the CCM Website.  The Chocolatey Agent Service will regularly report information about what is installed on each machine, and whether any of that software is outdated, based on packages in available sources.
+Chocolatey Central Management (CCM) works in conjunction with [Chocolatey Agent](https://chocolatey.org/docs/features-agent-service) to bring full details of all Chocolatey controlled machines in your environment into one location, which is then accessible by the CCM Website.  Chocolatey Agent will regularly report information about what is installed on each machine, and whether any of that software is outdated, based on packages in available sources.
 
 ## Requirements
 
 * Chocolatey (`chocolatey` package) v0.10.12+
 * Chocolatey for Business (C4B) Edition
 * Chocolatey Licensed Extension (`chocolatey.extension` package) v2.0.0+
-* Chocolatey Agent Service (`chocolatey-agent` package) v0.9.0+
+* Chocolatey Agent (`chocolatey-agent` package) v0.9.0+
 * CCM Database (`chocolatey-management-database` package) v0.1.0+
   * This deploys the CCM database schema to the specified SQL Server instance
 * CCM Service (`chocolatey-management-service` package) v0.1.0+
@@ -53,7 +53,7 @@ Chocolatey Central Management (CCM) works in conjunction with the [Chocolatey Ag
 
 ## Installation Source
 
-All the packages required to install CCM onto a machine(s) on your environment are located on the `chocolatey.licensed` feed.  This is the same place that you would install the [Chocolatey Agent Service](https://chocolatey.org/docs/features-agent-service) and the [Chocolatey Extension](https://chocolatey.org/docs/installation-licensed) from.
+All the packages required to install CCM onto a machine(s) on your environment are located on the `chocolatey.licensed` feed.  This is the same place that you would install [Chocolatey Agent](https://chocolatey.org/docs/features-agent-service) and the [Chocolatey Extension](https://chocolatey.org/docs/installation-licensed) from.
 
 The `chocolatey.licensed` source is automatically added to your Chocolatey instance when you install the Chocolatey Extension, however, as per the recommended installation best practices, this source is typically [disabled in an organisational context](https://chocolatey.org/docs/installation-licensed#installing-upgrading-in-secure-environments-without-internet-access).  As such, it may be necessary to first download the required nupkg's from the licensed source, and place them into your own internal repository.
 
@@ -322,7 +322,7 @@ This is the URL that is used by the Chocolatey Background Agent to report into C
 
 **Default Value:** _blank_
 
-**NOTE:** If left blank, the CCM Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.  However, the Chocolatey Agent Service will not be able to report into CCM, if a value is not provided.
+**NOTE:** If left blank, the CCM Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.  However, Chocolatey Agent will not be able to report into CCM, if a value is not provided.
 
 **NOTE:** Due to the fact that both the Chocolatey Background Agent and CCM Service use this configuration value, if both of these services are located on the same machine, the Chocolatey Background Service on that machine has to report into the CCM Service on that machine.  It can't report into another instance.
 
@@ -359,7 +359,7 @@ Here, the full URL, including the port number, to where the CCM service was inst
 
 **NOTE:** By default, this feature is disabled, and will need to be turned on.
 
-**NOTE:** If not set, the CCM Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.  However, the Chocolatey Agent Service will not be able to report into CCM, if a value is not provided.
+**NOTE:** If not set, the CCM Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.  However, Chocolatey Agent will not be able to report into CCM, if a value is not provided.
 
 [Additional configuration](#chocolatey-configuration-for-chocolatey-central-management) exists for CCM Service, which allows fine grained control of how Chocolatey Agent will report into CCM.
 
