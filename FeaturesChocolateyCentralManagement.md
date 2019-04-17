@@ -40,7 +40,7 @@ Chocolatey Central Management (CCM) works in conjunction with [Chocolatey Agent]
 
 ## Requirements
 
-* Chocolatey (`chocolatey` package) v0.10.12+
+* Chocolatey (`chocolatey` package) v0.10.14+
 * Chocolatey for Business (C4B) Edition
 * Chocolatey Licensed Extension (`chocolatey.extension` package) v2.0.0+
 * Chocolatey Agent (`chocolatey-agent` package) v0.9.0+
