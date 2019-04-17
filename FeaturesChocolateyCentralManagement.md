@@ -252,6 +252,8 @@ choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
 choco upgrade chocolatey-management-web --version 0.1.0-beta-20181009
 ~~~
 
+**NOTE:** Once installed, when you access the CCM Website you will be prompted to provide a username and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.  After you input this, you will be prompted to change the password.
+
 ##### Parameters
 
 This package creates the CCM Website and Application Pool with the following defaults:
@@ -301,8 +303,6 @@ choco upgrade chocolatey-management-web --package-parameters-sensitive="'/Connec
 ~~~
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
-
-**NOTE:** Once installed, when you access the CCM Website you will be prompted to provide a username and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.  After you input this, you will be prompted to change the password.
 
 ## Chocolatey Configuration for CCM
 
