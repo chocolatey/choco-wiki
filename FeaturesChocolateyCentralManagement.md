@@ -369,6 +369,33 @@ CCM will only be available in Chocolatey for Business (C4B).
 
 See [Requirements](#requirements).
 
+### How can I add SQL Server Permissions through PowerShell
+
+The following script is an example of how to add `db_owner` permissions to a SQL Server Database
+
+**NOTE:** You will need to change `MACHINE1\SQLSERVERCCM` and `ChocolateyManagement` to the actual name of the SQL Server Instance and Database being used, and this script will have to be run by someone who has the correct permissions to the SQL Server Instance.  In addition, change the `$username` variable for each user that requires permission to the database.
+~~~
+$username = 'CCMSERVER\ChocolateyLocalAdmin'
+$database = 'ChocolateyManagement'
+$chocolateyLocalAdminQuery = "
+USE [master]
+CREATE LOGIN [$username] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
+USE [$database]
+CREATE USER [$username] FOR LOGIN [$username]
+USE [$database]
+ALTER ROLE [db_owner] ADD MEMBER [$username]
+"
+
+$Connection = New-Object System.Data.SQLClient.SQLConnection
+$Connection.ConnectionString = "server='MACHINE1\SQLSERVERCCM';database='master';trusted_connection=true;"
+$Connection.Open()
+$Command = New-Object System.Data.SQLClient.SQLCommand
+$Command.CommandText = $chocolateyLocalAdminQuery
+$Command.Connection = $Connection
+$Command.ExecuteNonQuery()
+$Connection.Close()
+~~~
+
 ## Common Errors and Resolutions
 
 ### The specified path, file name, or both are too long
