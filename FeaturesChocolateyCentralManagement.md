@@ -183,24 +183,7 @@ choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
 choco upgrade chocolatey-management-service --version 0.1.0-beta-20181009 --params="'/PortNumber=24020'"
 ~~~
 
-#### Installing chocolatey-management-web
-
-**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#chocolatey-central-management-web) before proceeding.
-
-In order to successfully install the chocolatey-management-web package onto a machine, the following steps are required:
-
-~~~
-choco upgrade aspnetcore-runtimepackagestore
-choco upgrade dotnetcore-windowshosting
-choco upgrade chocolatey --version 0.10.12-beta-20181011
-choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
-choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
-choco upgrade chocolatey-management-web --version 0.1.0-beta-20181009
-~~~
-
-## Package Parameters
-
-### Chocolatey Central Management Service
+##### Parameters
 
 This package creates the Chocolatey Central Management Service with the following defaults:
 
@@ -212,8 +195,6 @@ This package creates the Chocolatey Central Management Service with the followin
 * Database Connection String:           **Server=&lt;LOCAL COMPUTER FQDN NAME&gt;; Database=ChocolateyManagement; Trusted_Connection=True;**
 * Service Listening Port:               **24020**
 * Self-Signed Certificate Domain Name:  **DNS name of the local computer**
-
-#### Parameters
 
 You can override the package defaults using the following parameters:
 
@@ -251,7 +232,7 @@ You can override the package defaults using the following parameters:
   * Explicit request not to reinstall the service
   * **NOTE:** Default Value: Not provided
 
-#### Example
+##### Example
 
 Let's assume that you want to install the CCM Windows Service with a specific connection string in order to connect to the CCM Database, as well as configure the CCM Service to use a specific user name and password, as well as alter the Port number that the CCM Service will be hosted on.  The necessary installation command would look like the following:
 
@@ -260,6 +241,23 @@ choco install chocolatey-management-service --package-parameters-sensitive="'/Po
 ~~~
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
+
+#### Installing chocolatey-management-web
+
+**NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#chocolatey-central-management-web) before proceeding.
+
+In order to successfully install the chocolatey-management-web package onto a machine, the following steps are required:
+
+~~~
+choco upgrade aspnetcore-runtimepackagestore
+choco upgrade dotnetcore-windowshosting
+choco upgrade chocolatey --version 0.10.12-beta-20181011
+choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
+choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
+choco upgrade chocolatey-management-web --version 0.1.0-beta-20181009
+~~~
+
+## Package Parameters
 
 ### Chocolatey Central Management Web
 
