@@ -29,6 +29,7 @@
 - [FAQ](#faq)
   - [Will this become available for lower editions of Chocolatey?](#will-this-become-available-for-lower-editions-of-chocolatey)
   - [What's the minimum version of the Chocolatey packages I need to use CCM?](#whats-the-minimum-version-of-the-chocolatey-packages-i-need-to-use-ccm)
+  - [How can I add SQL Server Permissions through PowerShell](#how-can-i-add-sql-server-permissions-through-powershell)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [The specified path, file name, or both are too long](#the-specified-path-file-name-or-both-are-too-long)
 
@@ -71,7 +72,7 @@ choco download chocolatey-management-database --version 0.1.0-beta-20181009
 
 While it is envisioned that CCM will be installed across multiple servers, it is certainly possible to run CCM on a single server.
 
-Currently, the CCM packages do not provision the SQL Server Database Permissions that are required for the CCM components to function.  It is assumed that the necessary permissions have already been provided.  By default, two users will require read/write permissions to the CCM Database:
+Currently, the CCM packages do not provision the SQL Server Database Permissions that are required for the CCM components to function.  It is assumed that the necessary permissions have already been provided (see the [FAQ](#how-can-i-add-sql-server-permissions-through-powershell) for one method of doing it).  By default, two users will require read/write permissions to the CCM Database:
 
 * ChocolateyLocalAdmin - which, by default, runs the CCM Service
 * IIS APPPOOL/ChocolateyCentralManagment - which, by default, runs the CCM IIS Application Pool
