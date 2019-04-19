@@ -4,8 +4,8 @@
 
 <!-- TOC -->
 
-  - [Package Copy / Package Downloader](#package-copy--package-downloader)
-  - [Package Internalizer](#package-internalizer)
+- [Package Copy / Package Downloader](#package-copy--package-downloader)
+- [Package Internalizer](#package-internalizer)
 - [Usage](#usage)
 - [Examples](#examples)
 - [See It In Action](#see-it-in-action)
@@ -13,13 +13,13 @@
 
 <!-- /TOC -->
 
-### Package Copy / Package Downloader
+## Package Copy / Package Downloader
 
 [Chocolatey Professional](https://chocolatey.org/compare) and up (Pro+) starting in version 1.7.1.
 
 Downloads a package from a source and unpacks it.
 
-### Package Internalizer
+## Package Internalizer
 
 [Chocolatey for Business](https://chocolatey.org/compare) (C4B) starting at licensed version 1.5.0.
 Chocolatey for Managed Service Providers (MSP) starting in 1.12.1.
