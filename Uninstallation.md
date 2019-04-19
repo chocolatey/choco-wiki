@@ -12,6 +12,7 @@ There are some environment variables that need to be adjusted or removed.
 
 * ChocolateyInstall
 * ChocolateyToolsLocation
+* ChocolateyLastPathUpdate
 * PATH (will need updated to remove)
 
 ## Script
@@ -33,7 +34,7 @@ $userPath
 
 Machine PATH:
 $machinePath
-@" | Out-File "C:\PATH_backups_ChocolateyUninstall.txt" -Encoding UTF8 -Force
+"@ | Out-File "C:\PATH_backups_ChocolateyUninstall.txt" -Encoding UTF8 -Force
 
 # WARNING: The next two scripts updating PATH could cause issues after
 # reboot where nothing is found if something goes wrong. In that case,
@@ -41,17 +42,24 @@ $machinePath
 [System.Text.RegularExpressions.Regex]::Replace($userPath, [System.Text.RegularExpressions.Regex]::Escape("$env:ChocolateyInstall\bin") + '(?>;)?', '', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase) | %{[System.Environment]::SetEnvironmentVariable('PATH', $_.Replace(";;",";"), 'User')}
 [System.Text.RegularExpressions.Regex]::Replace($machinePath, [System.Text.RegularExpressions.Regex]::Escape("$env:ChocolateyInstall\bin") + '(?>;)?', '', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase) | %{[System.Environment]::SetEnvironmentVariable('PATH', $_.Replace(";;",";"), 'Machine')}
 
+# Adapt for any services running in subfolders of ChocolateyInstall
+$agentService = Get-Service -Name chocolatey-agent -ErrorAction SilentlyContinue
+if ($agentService -and $agentService.Status -eq 'Running') { $agentService.Stop() }
+# TODO: add other services here
+
+# delete the contents (remove -WhatIf to actually remove)
 Remove-Item -Recurse -Force "$env:ChocolateyInstall" -WhatIf
+
+[System.Environment]::SetEnvironmentVariable("ChocolateyInstall", $null, 'User')
+[System.Environment]::SetEnvironmentVariable("ChocolateyInstall", $null, 'Machine')
+[System.Environment]::SetEnvironmentVariable("ChocolateyLastPathUpdate", $null, 'User')
+[System.Environment]::SetEnvironmentVariable("ChocolateyLastPathUpdate", $null, 'Machine')
 ~~~
 
 If you also intend to delete the tools directory that was managed by Chocolatey, remove both of the `-WhatIf` switches:
 
 ~~~powershell
-if ($env:ChocolateyBinRoot -ne '' -and $env:ChocolateyBinRoot -ne $null) { Remove-Item -Recurse -Force "$env:ChocolateyBinRoot" -WhatIf }
-if ($env:ChocolateyToolsRoot -ne '' -and $env:ChocolateyToolsRoot -ne $null) { Remove-Item -Recurse -Force "$env:ChocolateyToolsRoot" -WhatIf }
-[System.Environment]::SetEnvironmentVariable("ChocolateyBinRoot", $null, 'User')
+if ($env:ChocolateyToolsLocation) { Remove-Item -Recurse -Force "$env:ChocolateyToolsLocation" -WhatIf }
 [System.Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", $null, 'User')
 [System.Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", $null, 'Machine')
-[System.Environment]::SetEnvironmentVariable("ChocolateyInstall", $null, 'User')
-[System.Environment]::SetEnvironmentVariable("ChocolateyInstall", $null, 'Machine')
 ~~~
