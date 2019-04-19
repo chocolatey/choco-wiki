@@ -43,8 +43,14 @@ While probably the most comprehensive, this list may not be fully up-to-date. Th
 
 **Note**: This is still written based on a reviewer reading it, this will get cleaned up more over time to better explain it from a non-reviewer perspective.
 
-### Existing Packages
-This section provides the requirements for packages that have had at least one released version approved or exempted. This includes any packages that existed prior to moderation being turned on (possibly an Unknown status).
+### Define Package Types
+
+There are two types of packages that come through for moderation:
+
+* Existing Packages - this is defined as a package that has had previous package versions approved or exempted.
+
+* New Packages - a new package is defined as a package that has been submitted but has no previously approved or exempted versions. A maintainer that has taken over a package and submitted their first version of that package should also be treated as a new package.
+
 
 #### Requirements
 Requirements represent the minimum quality of a package that is acceptable. When a package version has failed requirements, the package version requires fixing and/or response by the maintainer. Provided a Requirement has flagged correctly, it ***must*** be fixed before the package version can be approved. The exact same version should be uploaded during moderation review.
