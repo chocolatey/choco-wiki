@@ -42,6 +42,10 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 ## Community
 
+### 2019
+#### April
+* https://blog.pauby.com/post/getting-started-with-chocolatey-and-jenkins/ (C4B)
+
 ### 2018
 #### April
 * https://buildazure.com/2018/04/17/using-chocolatey-with-azure-vms/
@@ -60,7 +64,6 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 * http://www.codepool.biz/chocolatey-manage-package-windows.html
 
 #### November
-* https://mwallner.net/2017/11/28/getting-started-with-chocolatey-4-business-jenkins-ci/ (C4B)
 * https://www.danclarke.com/getting-more-from-the-cli
 * https://timbeer.com/?p=181
 * https://www.computerworld.com/article/3236406/enterprise-applications/get-to-know-the-chocolatey-package-manager-for-windows.html
