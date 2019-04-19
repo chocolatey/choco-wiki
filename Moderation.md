@@ -52,8 +52,13 @@ There are two types of packages that come through for moderation:
 * New Packages - a new package is defined as a package that has been submitted but has no previously approved or exempted versions. A maintainer that has taken over a package and submitted their first version of that package should also be treated as a new package.
 
 
-#### Requirements
-Requirements represent the minimum quality of a package that is acceptable. When a package version has failed requirements, the package version requires fixing and/or response by the maintainer. Provided a Requirement has flagged correctly, it ***must*** be fixed before the package version can be approved. The exact same version should be uploaded during moderation review.
+### Package Requirements
+
+Requirements represent the minimum quality of a package that is acceptable. When a package version has failed requirements, the package version requires fixing and / or response by the maintainer. Provided a Requirement has flagged correctly, it ***must*** be fixed before the package version can be approved. The exact same version should be uploaded during moderation review.
+
+This list should be up to date but the Package Validator will be the final arbiter of package rules. If a package fails the Package Validator where, according to the list below it should not, then this list should be updated. However there are some areas where the package Validator cannot make a judgement and that then falls to this list and the moderators to make a call.
+
+* ID [Mandatory: All] - this is the package ID that is used by Chocolatey to identify the package;
 
 * ProjectUrl - it's required for the community feed
 * The authors field (software author/vendor) is not being used for the maintainers field (exception: when the maintainer is also the author)
