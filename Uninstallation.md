@@ -25,6 +25,15 @@ There are no warranties on this script whatsoever, but here is something you can
 If you also intend to delete the Chocolatey directory, remove the `-WhatIf`:
 
 ~~~powershell
+if (!$env:ChocolateyInstall) {
+  Write-Output "The ChocolateyInstall environment variable was not found. `n Chocolatey is not detected as installed. Nothing to do"
+  return
+}
+if (!(Test-Path "$env:ChocolateyInstall")) {
+  Write-Output "Chocolatey installation not detected at '$env:ChocolateyInstall'. `n Nothing to do."
+  return
+}
+
 $userPath = [Microsoft.Win32.Registry]::CurrentUser.OpenSubKey('Environment').GetValue('PATH', '', [Microsoft.Win32.RegistryValueOptions]::DoNotExpandEnvironmentNames).ToString()
 $machinePath = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey('SYSTEM\CurrentControlSet\Control\Session Manager\Environment\').GetValue('PATH', '', [Microsoft.Win32.RegistryValueOptions]::DoNotExpandEnvironmentNames).ToString()
 
@@ -36,11 +45,21 @@ Machine PATH:
 $machinePath
 "@ | Out-File "C:\PATH_backups_ChocolateyUninstall.txt" -Encoding UTF8 -Force
 
-# WARNING: The next two scripts updating PATH could cause issues after
-# reboot where nothing is found if something goes wrong. In that case,
-# look at the backed up files for PATH.
-[System.Text.RegularExpressions.Regex]::Replace($userPath, [System.Text.RegularExpressions.Regex]::Escape("$env:ChocolateyInstall\bin") + '(?>;)?', '', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase) | %{[System.Environment]::SetEnvironmentVariable('PATH', $_.Replace(";;",";"), 'User')}
-[System.Text.RegularExpressions.Regex]::Replace($machinePath, [System.Text.RegularExpressions.Regex]::Escape("$env:ChocolateyInstall\bin") + '(?>;)?', '', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase) | %{[System.Environment]::SetEnvironmentVariable('PATH', $_.Replace(";;",";"), 'Machine')}
+if ($userPath -like "*$env:ChocolateyInstall*") {
+  Write-Output "Chocolatey Install location found in User Path. Removing..."
+  # WARNING: This could cause issues after reboot where nothing is
+  # found if something goes wrong. In that case, look at the backed up
+  # files for PATH.
+  [System.Text.RegularExpressions.Regex]::Replace($userPath, [System.Text.RegularExpressions.Regex]::Escape("$env:ChocolateyInstall\bin") + '(?>;)?', '', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase) | %{[System.Environment]::SetEnvironmentVariable('PATH', $_.Replace(";;",";"), 'User')}
+}
+
+if ($machinePath -like "*$env:ChocolateyInstall*") {
+  Write-Output "Chocolatey Install location found in Machine Path. Removing..."
+  # WARNING: This could cause issues after reboot where nothing is
+  # found if something goes wrong. In that case, look at the backed up
+  # files for PATH.
+  [System.Text.RegularExpressions.Regex]::Replace($machinePath, [System.Text.RegularExpressions.Regex]::Escape("$env:ChocolateyInstall\bin") + '(?>;)?', '', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase) | %{[System.Environment]::SetEnvironmentVariable('PATH', $_.Replace(";;",";"), 'Machine')}
+}
 
 # Adapt for any services running in subfolders of ChocolateyInstall
 $agentService = Get-Service -Name chocolatey-agent -ErrorAction SilentlyContinue
