@@ -26,11 +26,11 @@ If you also intend to delete the Chocolatey directory, remove the `-WhatIf`:
 
 ~~~powershell
 if (!$env:ChocolateyInstall) {
-  Write-Output "The ChocolateyInstall environment variable was not found. `n Chocolatey is not detected as installed. Nothing to do"
+  Write-Warning "The ChocolateyInstall environment variable was not found. `n Chocolatey is not detected as installed. Nothing to do"
   return
 }
 if (!(Test-Path "$env:ChocolateyInstall")) {
-  Write-Output "Chocolatey installation not detected at '$env:ChocolateyInstall'. `n Nothing to do."
+  Write-Warning "Chocolatey installation not detected at '$env:ChocolateyInstall'. `n Nothing to do."
   return
 }
 
