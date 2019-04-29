@@ -9,6 +9,11 @@ This covers the release notes for the Chocolatey Licensed Extension (chocolatey.
 * Some issues are listed at https://github.com/chocolatey/chocolatey-licensed-issues
 * Other issues are held internally, please follow your support routes to learn more.
 
+## 2.0.2 (April 29, 2019)
+### BUG FIXES
+ * Fix - Self-Service: Administrator being subjected to user-limited uninstalls when background service does not apply. See [Licensed #77](https://github.com/chocolatey/chocolatey-licensed-issues/issues/77)
+
+
 ## 2.0.1 (April 10, 2019)
 ### BUG FIXES
  * Fix - PowerShell - Licensed Install-ChocolateyInstallPackage doesn't work with Install Arguments that have apostrophes in the same way as open source - see [licensed #74](https://github.com/chocolatey/chocolatey-licensed-issues/issues/74)
