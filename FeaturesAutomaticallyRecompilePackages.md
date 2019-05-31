@@ -97,7 +97,6 @@ Community posts that include Package Internalizer:
 * [Getting Started With Chocolatey 4 Business & Jenkins CI](https://blog.pauby.com/post/getting-started-with-chocolatey-and-jenkins/)
 * [Automating Chocolatey package internalizing with PowerShell](https://winsysblog.com/2017/10/automating-chocolatey-package-internalizing-with-powershell.html)
 * [Recompiling Chocolatey packages](https://winsysblog.com/2017/08/recompiling-chocolatey-packages.html)
-* [Using Chocolatey in Corporate Environments - Part 1](https://mwallner.net/2017/06/10/using-chocolatey-in-corporate-environments-part-1/)
 
 ## FAQ
 
