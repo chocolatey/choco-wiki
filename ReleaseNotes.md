@@ -2,7 +2,12 @@
 
 This covers changes for the "chocolatey" and "chocolatey.lib" packages, which are available as FOSS.
 
-**NOTE**: For licensed versions, refer to both this set of release notes and [[Licensed Release Notes|ReleaseNotesLicensed]].
+**NOTE**: For commercial editions, please also refer to [[Licensed Release Notes|ReleaseNotesLicensed]].
+
+## [0.10.15](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.15+is%3Aclosed) (June 3, 2019)
+### BUG FIXES
+ * Fix - list/search/info - searching with --exact or info results in Object reference not set to an instance of an object - see [#1837](https://github.com/chocolatey/choco/issues/1837)
+
 
 ## [0.10.14](https://github.com/chocolatey/choco/issues?q=milestone%3A0.10.14+is%3Aclosed) (May 30, 2019)
 ### BUG FIXES
