@@ -52,7 +52,7 @@ Initial preview release
 * Service - Allow modification of configuration settings without the need to restart Windows Service
 
 
-## [0.1.0-beta-20181009](https://gitlab.com/chocolatey/choco-licensed-management-ui/milestones/1) (October 9, 2018)
+## 0.1.0-beta-20181009 (October 9, 2018)
 ### FEATURES
 * [Security] Installation - Provide encryption for all persisted configuration data
 * [Security] Installation - Sign all PowerShell Scripts and assemblies shipped as part of release
