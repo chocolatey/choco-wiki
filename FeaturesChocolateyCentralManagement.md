@@ -1,6 +1,6 @@
 # Chocolatey Central Management (CCM) (Business Editions Only)
 
-<!-- TOC -->
+<!-- TOC depthTo:5 -->
 
 - [Usage](#usage)
 - [Requirements](#requirements)
@@ -10,8 +10,14 @@
   - [FQDN Usage](#fqdn-usage)
   - [Install CCM Components](#install-ccm-components)
     - [Installing chocolatey-management-database](#installing-chocolatey-management-database)
+      - [Package Parameters](#package-parameters)
+      - [Example](#example)
     - [Installing chocolatey-management-service](#installing-chocolatey-management-service)
+      - [Package Parameters](#package-parameters-1)
+      - [Example](#example-1)
     - [Installing chocolatey-management-web](#installing-chocolatey-management-web)
+      - [Package Parameters](#package-parameters-2)
+      - [Example](#example-2)
     - [Complete Installation Script](#complete-installation-script)
 - [Chocolatey Configuration for CCM](#chocolatey-configuration-for-ccm)
   - [centralManagementReportPackagesTimerIntervalInSeconds](#centralmanagementreportpackagestimerintervalinseconds)
