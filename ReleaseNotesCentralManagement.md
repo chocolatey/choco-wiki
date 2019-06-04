@@ -1,6 +1,6 @@
 # Chocolatey Release Notes - Chocolatey Central Management
 ## Summary
-This covers the release notes for the Chocolatey Central Management (`chocolatey-management-database`, `chocolatey-management-web`, and `chocolatey-management-web`) packages, which covers Central Management server-side functionality. For more information, installation options, etc, please refer to [[Chocolatey Central Management||FeaturesChocolateyCentralManagement]].
+This covers the release notes for the Chocolatey Central Management (`chocolatey-management-database`, `chocolatey-management-web`, and `chocolatey-management-web`) packages, which covers Central Management server-side functionality. For more information, installation options, etc, please refer to [[Chocolatey Central Management|FeaturesChocolateyCentralManagement]].
 
 **NOTE**: This package is available to to Chocolatey for Business (C4B) customers only.
 
