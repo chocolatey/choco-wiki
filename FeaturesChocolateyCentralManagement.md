@@ -5,20 +5,13 @@
 - [Usage](#usage)
 - [Requirements](#requirements)
 - [Installation Source](#installation-source)
-  - [Use Specific Version](#use-specific-version)
 - [Setup](#setup)
   - [Pre-Requisites](#pre-requisites)
   - [FQDN Usage](#fqdn-usage)
   - [Install CCM Components](#install-ccm-components)
     - [Installing chocolatey-management-database](#installing-chocolatey-management-database)
-      - [Package Parameters](#package-parameters)
-      - [Example](#example)
     - [Installing chocolatey-management-service](#installing-chocolatey-management-service)
-      - [Package Parameters](#package-parameters-1)
-      - [Example](#example-1)
     - [Installing chocolatey-management-web](#installing-chocolatey-management-web)
-      - [Package Parameters](#package-parameters-2)
-      - [Example](#example-2)
     - [Complete Installation Script](#complete-installation-script)
 - [Chocolatey Configuration for CCM](#chocolatey-configuration-for-ccm)
   - [centralManagementReportPackagesTimerIntervalInSeconds](#centralmanagementreportpackagestimerintervalinseconds)
@@ -32,8 +25,22 @@
   - [Will this become available for lower editions of Chocolatey?](#will-this-become-available-for-lower-editions-of-chocolatey)
   - [What's the minimum version of the Chocolatey packages I need to use CCM?](#whats-the-minimum-version-of-the-chocolatey-packages-i-need-to-use-ccm)
   - [How can I add SQL Server Permissions through PowerShell](#how-can-i-add-sql-server-permissions-through-powershell)
+  - [How can I view what SSL registrations have been made by the installation of chocolatey-management-service](#how-can-i-view-what-ssl-registrations-have-been-made-by-the-installation-of-chocolatey-management-service)
+  - [How can I remove a netsh binding that has been created](#how-can-i-remove-a-netsh-binding-that-has-been-created)
+  - [Can I manually create an SSL binding?](#can-i-manually-create-an-ssl-binding)
+  - [Where can I find all the log files for Chocolatey Central Management](#where-can-i-find-all-the-log-files-for-chocolatey-central-management)
+    - [Website](#website)
+    - [Chocolatey Managment Service](#chocolatey-managment-service)
+    - [Chocolatey Agent Service](#chocolatey-agent-service)
+  - [How can I increase the level of logging for Chocolatey Central Management](#how-can-i-increase-the-level-of-logging-for-chocolatey-central-management)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [The specified path, file name, or both are too long](#the-specified-path-file-name-or-both-are-too-long)
+  - [Chocolatey Agent Service is unable to communicate with Chocolatey Central Management Service](#chocolatey-agent-service-is-unable-to-communicate-with-chocolatey-central-management-service)
+  - [HTTP Error when trying to access Chocolatey Central Management Website](#http-error-when-trying-to-access-chocolatey-central-management-website)
+  - [A parameter cannot be found that matches parameter name KeyUsage](#a-parameter-cannot-be-found-that-matches-parameter-name-keyusage)
+  - [Chocolatey Central Management database package installs without error, but ChocolateyManagement database is not created](#chocolatey-central-management-database-package-installs-without-error-but-chocolateymanagement-database-is-not-created)
+  - [The term 'Install-ChocolateyAppSettingsJsonFile' is not recognized as the name of a cmdlet, function, script file, or operable program.](#the-term-install-chocolateyappsettingsjsonfile-is-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
+  - [Cannot process command because of one or more missing mandatory parameters: FilePath](#cannot-process-command-because-of-one-or-more-missing-mandatory-parameters-filepath)
 
 <!-- /TOC -->
 
@@ -59,16 +66,6 @@ Chocolatey Central Management (CCM) works in conjunction with [Chocolatey Agent]
 All the packages required to install CCM onto a machine(s) on your environment are located on the `chocolatey.licensed` feed.  This is the same place that you would install [Chocolatey Agent](https://chocolatey.org/docs/features-agent-service) and the [Chocolatey Extension](https://chocolatey.org/docs/installation-licensed) from.
 
 The `chocolatey.licensed` source is automatically added to your Chocolatey instance when you install the Chocolatey Extension, however, as per the recommended installation best practices, this source is typically [disabled in an organisational context](https://chocolatey.org/docs/installation-licensed#installing-upgrading-in-secure-environments-without-internet-access).  As such, it may be necessary to first download the required nupkg's from the licensed source, and place them into your own internal repository.
-
-### Use Specific Version
-
-During the CCM Beta phase, it is necessary to download the CCM packages using a specific version.  For example:
-
-~~~
-choco download chocolatey-management-database --version 0.1.0-beta-20181009
-~~~
-
-**NOTE:** If the `chocolatey.licensed` source is disabled in your environment, it will be necessary to also use `--source https://licensedpackages.chocolatey.org/api/v2/` in the above commands.
 
 ## Setup
 
@@ -127,10 +124,10 @@ The CCM Components should be installed in the following order:
 In order to successfully install the chocolatey-management-database package onto a machine (using all default values), the following steps are required:
 
 ~~~
-choco upgrade chocolatey --version 0.10.14-beta-20190402
-choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
-choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
-choco upgrade chocolatey-management-database --version 0.1.0-beta-20181009
+choco upgrade chocolatey --version 0.10.15
+choco upgrade chocolatey.extension --version 2.0.2
+choco upgrade chocolatey-agent --version 0.9.1
+choco upgrade chocolatey-management-database --version 0.1.0
 ~~~
 
 ##### Package Parameters
@@ -170,10 +167,10 @@ In order to successfully install the chocolatey-management-service package onto 
 **NOTE:** Due to an issue that was identified in the initial release of CCM, the port number parameter is required.
 
 ~~~
-choco upgrade chocolatey --version 0.10.14-beta-20190402
-choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
-choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
-choco upgrade chocolatey-management-service --version 0.1.0-beta-20181009 --params="'/PortNumber=24020'"
+choco upgrade chocolatey --version 0.10.15
+choco upgrade chocolatey.extension --version 2.0.2
+choco upgrade chocolatey-agent --version 0.9.1
+choco upgrade chocolatey-management-service --version 0.1.0
 ~~~
 
 ##### Package Parameters
@@ -244,10 +241,10 @@ In order to successfully install the chocolatey-management-web package onto a ma
 ~~~
 choco upgrade aspnetcore-runtimepackagestore
 choco upgrade dotnetcore-windowshosting
-choco upgrade chocolatey --version 0.10.14-beta-20190402
-choco upgrade chocolatey.extension --version 2.0.0-beta-20181009
-choco upgrade chocolatey-agent --version 0.9.0-beta-20181009
-choco upgrade chocolatey-management-web --version 0.1.0-beta-20181009
+choco upgrade chocolatey --version 0.10.15
+choco upgrade chocolatey.extension --version 2.0.2
+choco upgrade chocolatey-agent --version 0.9.1
+choco upgrade chocolatey-management-web --version 0.1.0
 ~~~
 
 **NOTE:** Once installed, when you access the CCM Website you will be prompted to provide a username and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.  After you input this, you will be prompted to change the password.
@@ -315,17 +312,17 @@ if(-Not $hostName.endswith($domainName)) {
   $hostName += "." + $domainName
 }
 
-choco upgrade chocolatey -y --version 0.10.14-beta-20190402
-choco upgrade chocolatey.extension -y --version 2.0.0-beta-20181009
-choco upgrade chocolatey-agent -y --version 0.9.0-beta-20181009
+choco upgrade chocolatey -y --version 0.10.15
+choco upgrade chocolatey.extension -y --version 2.0.2
+choco upgrade chocolatey-agent -y --version 0.9.1
 
-choco upgrade chocolatey-management-database -y --version 0.1.0-beta-20181009
+choco upgrade chocolatey-management-database -y --version 0.1.0
 
-choco upgrade chocolatey-management-service -y --version 0.1.0-beta-20181009 --params="'/PortNumber=24020'"
+choco upgrade chocolatey-management-service -y --version 0.1.0
 
 choco upgrade aspnetcore-runtimepackagestore -y
-choco upgrade dotnetcore-windowshosting -y 
-choco upgrade chocolatey-management-web -y --version 0.1.0-beta-20181009
+choco upgrade dotnetcore-windowshosting -y
+choco upgrade chocolatey-management-web -y --version 0.1.0
 
 # CCM Configuration
 choco config set --name="'centralManagementReportPackagesTimerIntervalInSeconds'" --value="'1860'"
@@ -416,7 +413,8 @@ See [Requirements](#requirements).
 The following script is an example of how to add `db_owner` permissions to a SQL Server Database
 
 **NOTE:** You will need to change `MACHINE1\SQLSERVERCCM` and `ChocolateyManagement` to the actual name of the SQL Server Instance and Database being used, and this script will have to be run by someone who has the correct permissions to the SQL Server Instance.  In addition, change the `$username` variable for each user that requires permission to the database.
-~~~
+
+~~~powershell
 $username = 'CCMSERVER\ChocolateyLocalAdmin'
 $database = 'ChocolateyManagement'
 $chocolateyLocalAdminQuery = "
@@ -438,6 +436,67 @@ $Command.ExecuteNonQuery()
 $Connection.Close()
 ~~~
 
+### How can I view what SSL registrations have been made by the installation of chocolatey-management-service
+
+By default, the installation of the `chocolatey-management-service` package will register a single netsh binding between a self-signed certifcate (created at the point of installation) and port 24020.  This can be verified using the following command:
+
+~~~powershell
+netsh http show sslcert
+~~~
+
+### How can I remove a netsh binding that has been created
+
+If you need to remove a netsh binding, you can do that using the following command:
+
+~~~powershell
+netsh http delete sslcert ipport=0.0.0.0:<port_number>
+~~~
+
+**NOTE:** Here `<port_number>` should be replaced with the Port Number that has been registered
+
+### Can I manually create an SSL binding?
+
+If required, it is possible to manually create a netsh binding.  This is done using the following command:
+
+~~~powershell
+netsh http add sslcert ipport=0.0.0.0:<port_number> certhash=<certificate_thumbprint> appid={<random_guid>}
+~~~
+
+**NOTE:** Here, `<port_number>` should be replaced with the Port Number to be used for the registration.  `<certifcate_thumbprint>` should be replaced with the thumbprint for the certificate that is to be used for the registration.  `<random_guid>` should be replaced with a random guid in the following format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
+
+### Where can I find all the log files for Chocolatey Central Management
+
+Due to the fact that Chocolatey Central Management is made up of a number of components, there are a few places that log files exist, and you may be asked for these when engaging with support.
+
+#### Website
+
+Log file is located at `C:\tools\chocolatey-management-web\App_Data\Logs\Logs.txt`
+
+#### Chocolatey Managment Service
+
+Log file is located at `C:\ProgramData\chocolatey\lib\chocolatey.management.service\tools\service\logs\chocolatey.service.host.log`
+
+#### Chocolatey Agent Service
+
+Log file is located at `C:\ProgramData\chocolatey\lib\chocolatey-agent\tools\service\logs\chocolatey-agent.log`
+
+### How can I increase the level of logging for Chocolatey Central Management
+
+This can be done by changing the level value, which should be currently INFO, to use DEBUG, as per the following:
+
+~~~
+<root>
+  <level value="DEBUG" />
+  <appender-ref ref="ColoredConsoleAppender" />
+  <appender-ref ref="RollingLogFileAppender" />
+</root>
+~~~
+
+In the following files:
+
+* C:\ProgramData\chocolatey\lib\chocolatey.management.service\tools\service\chocolatey.console.service.host.exe.config
+* C:\ProgramData\chocolatey\lib\chocolatey-agent\tools\service\chocolatey-agent.exe.config
+
 ## Common Errors and Resolutions
 
 ### The specified path, file name, or both are too long
@@ -447,3 +506,77 @@ This error can occur when installing the `chocolatey-management-web` package.  D
 ~~~
 --cache-location="'C:\Temp\choco'"
 ~~~
+
+### Chocolatey Agent Service is unable to communicate with Chocolatey Central Management Service
+
+There is a known issue with the beta release of Chocolatey Central Management where an inconsistent Port Number is used between these two services.  One used 24020 and the other used 24040.  The correct default Port Number is 24020, and this is used in the 0.1.0 release of Chocolatey Central Management.  If required, the Port Number can be explicitly set during the installation of the Chocolatey Central Management packages using the following option when installing `chocolatey-management-service`:
+
+~~~powershell
+--params="'/PortNumber=24020'"
+~~~
+
+### HTTP Error when trying to access Chocolatey Central Management Website
+
+When you try to access the Chocolatey Central Management Website (by default, this is hosted on http://localhost), errors messages similar to the following may be returned:
+
+`HTTP Error 500.19 - Internal Server Error`
+
+These errors happen very early in the application execution, and as a result, are not logged to the standard log location.  It is possible to increase the logging that is performed by the ASP.NET Worker Process, so that additional information about the error can be found.  Follow these steps to enable that additional logging:
+
+1. In Windows Explorer, navigate to the `c:/tools/chocolatey-management-web` folder
+1. Find the `web.config` file and open this in a text editor
+1. Locate the `stdoutLogEnabled` attribute, which will be set to false by default
+1. Change this to true, and save the file
+1. Check to see if there is a running process called `ChocolateySoftware.ChocolateyManagement.Web.Mvc.exe`.  If there is, stop it.
+1. Attempt to access the website again.  An additional log file will be created in the `App_Data\Logs\stdout` folder
+1. Review this log for additional error information
+1. Ensure that you set the `stdoutLogEnabled` attribute back to false
+
+In these situations, we have found that incorrect database connection strings are typically the root cause of the problem.
+
+### A parameter cannot be found that matches parameter name KeyUsage
+
+This is known issue with the beta release of Chocolatey Central Management regarding the creation of a Self Signed Certificate.  You may see the error:
+
+`A parameter cannot be found that matches parameter name KeyUsage`
+
+This happens when installing Chocolatey Central Management on a machine that has PowerShell 4 or earlier.  This is corrected in the 0.1.0 release of Chocolatey Central Management.
+
+To work around this issue, you can use the following script to manually create a Self Signed Certificate, which will then be used to continue the installation:
+
+~~~powershell
+$hostName = [System.Net.Dns]::GetHostName()
+$domainName = [System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties().DomainName
+
+if(-Not $hostName.endswith($domainName)) {
+  $hostName += "." + $domainName
+}
+
+$certificateDnsName = $hostName
+
+$newCert = New-SelfSignedCertificate -CertStoreLocation cert:\LocalMachine\My -DnsName $certificateDnsName
+
+# move the certificate to 'TrustedPeople'
+$certPath = Get-ChildItem -Path 'Cert:\\LocalMachine\\My' | Where-Object subject -like "*$certificateDnsName"
+$null = Move-Item -Path $certPath.PsPath -Destination 'Cert:\\LocalMachine\\TrustedPeople'
+~~~
+
+### Chocolatey Central Management database package installs without error, but ChocolateyManagement database is not created
+
+In the beta version of the Chocolatey Central Management database package, if there was an error during the creation of the database, no exit code was used.  As a result, the package could state that it was installed correctly, but the database would not have been created.  This has been corrected in the 0.1.0 release of Chocolatey Central Management.
+
+When this occurs, the problem is typically the connection string being used to connect to the database.  The advice is to verify that the connecting string is valid, and attempt the installation again.
+
+### The term 'Install-ChocolateyAppSettingsJsonFile' is not recognized as the name of a cmdlet, function, script file, or operable program.
+
+In the beta version of Chocolatey.Extension, there was a Cmdlet named Install-ChocolateyAppSettingsJsonFile and this was used in the 0.1.0-beta-20181009 release of the Chocolatey Central Management components. In the final released version of the Chocolatey.Extension, this was renamed to Install-AppSettingsJsonFile.
+
+As a result, the Chocolatey Central Management beta no longer works with the released version of Chocolatey.Extension. This will be corrected once the next release of the Chocoaltey Central Management components is completed.
+
+### Cannot process command because of one or more missing mandatory parameters: FilePath
+
+During the creation of Chocolatey Central Management, some additional PowerShell cmdlets were created, and these are installed as part of the Chocolatey Extension package.  These cmdlets went through a number of iterations, and as a result, different combinations of Chocolatey Central Management packages were incompatible with the Chocolatey Extension package, resulting in the error:
+
+`Cannot process command becuase of one or more missing mandattory parameters: FilePath`
+
+The guidance in this case is either to pin to the specific version of the Chocolatey Extension package required by the version of Chocolatey Central Management beind used, or, update to the latest versions of all packages, where the situation should be addressed.
