@@ -1,6 +1,6 @@
 # Chocolatey Release Notes - Chocolatey Agent Service
 ## Summary
-This covers the release notes for the Chocolatey Agent Service (`chocolatey-agent`) package, which covers Self-Service and Central Management client functionality. For more information, installation options, etc, please refer to [[Chocolatey Agent Service||FeaturesAgentService]].
+This covers the release notes for the Chocolatey Agent Service (`chocolatey-agent`) package, which covers Self-Service and Central Management client functionality. For more information, installation options, etc, please refer to [[Chocolatey Agent Service|FeaturesAgentService]].
 
 **NOTE**: This package is available to Chocolatey for Business (C4B) customers only.
 
