@@ -39,6 +39,7 @@
     - [Chocolatey Managment Service](#chocolatey-managment-service)
     - [Chocolatey Agent Service](#chocolatey-agent-service)
   - [How can I increase the level of logging for Chocolatey Central Management](#how-can-i-increase-the-level-of-logging-for-chocolatey-central-management)
+  - [Can I install the Chocolatey Central Management Web Site under a Virtual Directory in IIS?](#can-i-install-the-chocolatey-central-management-web-site-under-a-virtual-directory-in-iis)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [The specified path, file name, or both are too long](#the-specified-path-file-name-or-both-are-too-long)
   - [Chocolatey Agent Service is unable to communicate with Chocolatey Central Management Service](#chocolatey-agent-service-is-unable-to-communicate-with-chocolatey-central-management-service)
@@ -502,6 +503,10 @@ In the following files:
 
 * C:\ProgramData\chocolatey\lib\chocolatey.management.service\tools\service\chocolatey.console.service.host.exe.config
 * C:\ProgramData\chocolatey\lib\chocolatey-agent\tools\service\chocolatey-agent.exe.config
+
+### Can I install the Chocolatey Central Management Web Site under a Virtual Directory in IIS?
+
+Currently no.  The Chocolatey Central Management Web Site expects to reside at the site level within IIS.
 
 ## Common Errors and Resolutions
 
