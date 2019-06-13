@@ -317,20 +317,29 @@ if(-Not $hostName.endswith($domainName)) {
   $hostName += "." + $domainName
 }
 
+# Pre-requisites
+# These three packages will be required on any machine that is going to be reporting into CCM
 choco upgrade chocolatey -y --version 0.10.15
 choco upgrade chocolatey.extension -y --version 2.0.2
 choco upgrade chocolatey-agent -y --version 0.9.1
 
+# CCM Database
+# This package is only required on the machine that is going to host the CCM Database
 choco upgrade chocolatey-management-database -y --version 0.1.0
 
+# CCM Service
+# This package is only required on the machine that is going to host the CCM Service
 choco upgrade chocolatey-management-service -y --version 0.1.0
 
+# CCM Website
+# These packages are only required on the machine that is going to host the CCM Web Site
 choco upgrade aspnetcore-runtimepackagestore -y
 choco upgrade dotnetcore-windowshosting -y
 choco upgrade chocolatey-management-web -y --version 0.1.0
 
 # CCM Configuration
-choco config set --name="'centralManagementReportPackagesTimerIntervalInSeconds'" --value="'1860'"
+# These steps are required on any machine that is going to be reporting into CCM
+choco config set --name="'centralManagementReportPackagesTimerIntervalInSeconds'" --value="'1800'"
 choco config set --name="'centralManagementServiceUrl'" --value="'https://$($hostname):24020/ChocolateyManagementService'"
 choco config set --name="'centralManagementReceiveTimeoutInSeconds'" --value="'60'"
 choco config set --name="'centralManagementSendTimeoutInSeconds'" --value="'60'"
