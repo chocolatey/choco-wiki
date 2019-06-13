@@ -371,7 +371,7 @@ This is the URL that is used by the Chocolatey Background Agent to report into C
 
 **NOTE:** If left blank, the CCM Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.  However, Chocolatey Agent will not be able to report into CCM, if a value is not provided.
 
-**NOTE:** Due to the fact that both the Chocolatey Background Agent and CCM Service use this configuration value, if both of these services are located on the same machine, the Chocolatey Background Service on that machine has to report into the CCM Service on that machine.  It can't report into another instance.
+**NOTE:** If the Chocolatey Background Agent is installed on the same machine that has the CCM Service installed, it can only report into that CCM Service.
 
 ### centralManagementReceiveTimeoutInSeconds
 
