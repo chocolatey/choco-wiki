@@ -70,9 +70,9 @@ Chocolatey Central Management (CCM) works in conjunction with [Chocolatey Agent]
 
 ## Installation Source
 
-All the packages required to install CCM onto a machine(s) on your environment are located on the `chocolatey.licensed` feed.  This is the same place that you would install [Chocolatey Agent](https://chocolatey.org/docs/features-agent-service) and the [Chocolatey Extension](https://chocolatey.org/docs/installation-licensed) from.
+All the packages required to install CCM into your environment are located on the `chocolatey.licensed` feed.  This is the same place that you would install [Chocolatey Agent](https://chocolatey.org/docs/features-agent-service) and the [Chocolatey Extension](https://chocolatey.org/docs/installation-licensed) from.
 
-The `chocolatey.licensed` source is automatically added to your Chocolatey instance when you install the Chocolatey Extension, however, as per the recommended installation best practices, this source is typically [disabled in an organisational context](https://chocolatey.org/docs/installation-licensed#installing-upgrading-in-secure-environments-without-internet-access).  As such, it may be necessary to first download the required nupkg's from the licensed source, and place them into your own internal repository.
+The `chocolatey.licensed` source is automatically added to your Chocolatey instance when you install the Chocolatey Extension, however, as per the recommended installation best practices, this source is typically [disabled in an organisational context](https://chocolatey.org/docs/installation-licensed#installing-upgrading-in-secure-environments-without-internet-access).  As such, it may be necessary to first download the required packages from the licensed source, and place them into your own internal repository.
 
 ## Setup
 
@@ -80,8 +80,8 @@ While it is envisioned that CCM will be installed across multiple servers, it is
 
 Currently, the CCM packages do not provision the SQL Server Database Permissions that are required for the CCM components to function.  It is assumed that the necessary permissions have already been provided (see the [FAQ](#how-can-i-add-sql-server-permissions-through-powershell) for one method of doing it).  By default, two users will require read/write permissions to the CCM Database:
 
-* ChocolateyLocalAdmin - which, by default, runs the CCM Service
-* IIS APPPOOL/ChocolateyCentralManagment - which, by default, runs the CCM IIS Application Pool
+* `ChocolateyLocalAdmin` - which, by default, runs the CCM Service
+* `IIS APPPOOL\ChocolateyCentralManagment` - which, by default, runs the CCM IIS Application Pool
 
 **NOTE:** If either of these users are changed during the installation of these components, the database permissions will need to be updated to reflect this.
 
@@ -110,7 +110,7 @@ For a list of Database products that support EF Core you can view the Microsoft 
 
 When installing the CCM Service, the default is to use the Fully Qualified Domain Name (FQDN) of the machine that it is being installed on.  As a result, there is an expectation that the certificate (either the self signed certificate that is created during installation, or the existing certificate which is configured with the [CertifcateThumbprint](#package-parameters-1) parameter) that is used to secure the transport layer of this service, also uses the same FQDN.
 
-If this is not the case, it will be necessary to use the information the installer about the actual name for the machine that is being used.  When using a self signed certificate, this can be specified using the `CertifcateDnsName`, and when using an existing certificate, no additional parameters are required.  In both cases, it will be necessary to also set the `centralManagementServiceUrl` [configuration parameter](#centralmanagementserviceurl).  This can be done using the following command:
+If this is not the case, it will be necessary to provide the information to the package about the actual name for the machine that is being used.  When using a self signed certificate, this can be specified using the `CertifcateDnsName`, and when using an existing certificate, no additional parameters are required.  In both cases, it will be necessary to also set the `centralManagementServiceUrl` [configuration parameter](#centralmanagementserviceurl).  This can be done using the following command:
 
 ~~~
 choco config set CentralManagementServiceUrl https://<accessible_name_of_machine>:24020/ChocolateyManagementService
@@ -171,8 +171,6 @@ choco upgrade chocolatey-management-database --package-parameters-sensitive="'/C
 
 In order to successfully install the chocolatey-management-service package onto a machine (using all default values), the following steps are required:
 
-**NOTE:** Due to an issue that was identified in the initial release of CCM, the port number parameter is required.
-
 ~~~
 choco upgrade chocolatey --version 0.10.15
 choco upgrade chocolatey.extension --version 2.0.2
@@ -185,7 +183,7 @@ choco upgrade chocolatey-management-service --version 0.1.0
 This package creates the CCM Service with the following defaults:
 
 * Service Name:                         **chocolatey-management-service**
-* Service Displayname                   **Chocolatey Management Service**
+* Service Displayname:                  **Chocolatey Management Service**
 * Description:                          **Chocolatey Management Service is a background service for Chocolatey.**
 * Service Startup:                      **Automatic**
 * Service Username:                     **ChocolateyLocalAdmin**
