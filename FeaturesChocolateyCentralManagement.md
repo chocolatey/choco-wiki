@@ -97,7 +97,7 @@ In order to install CCM, it is assumed that the following applications/software 
 
 IIS can be installed using the following commands:
 
-~~~
+~~~powershell
 choco install IIS-WebServer --source windowsfeatures
 choco install IIS-ApplicationInit --source windowsfeatures
 ~~~
@@ -112,7 +112,7 @@ When installing the CCM Service, the default is to use the Fully Qualified Domai
 
 If this is not the case, it will be necessary to provide the information to the package about the actual name for the machine that is being used.  When using a self signed certificate, this can be specified using the `CertifcateDnsName`, and when using an existing certificate, no additional parameters are required.  In both cases, it will be necessary to also set the `centralManagementServiceUrl` [configuration parameter](#centralmanagementserviceurl).  This can be done using the following command:
 
-~~~
+~~~powershell
 choco config set CentralManagementServiceUrl https://<accessible_name_of_machine>:24020/ChocolateyManagementService
 ~~~
 
@@ -130,7 +130,7 @@ The CCM Components should be installed in the following order:
 
 In order to successfully install the chocolatey-management-database package onto a machine (using all default values), the following steps are required:
 
-~~~
+~~~powershell
 choco upgrade chocolatey --version 0.10.15
 choco upgrade chocolatey.extension --version 2.0.2
 choco upgrade chocolatey-agent --version 0.9.1
@@ -159,7 +159,7 @@ You can override the package defaults using the following parameters:
 
 Let's assume that you want to install the CCM Database onto a machine that will access a SQL Server instance called `SQLSERVERCCM`, on a domain machine called `MACHINE1` which is part of the domain `ccmtest`, using a specific user name (ccmservice) and password combination.  In this scenario, the installation command would look like the following:
 
-~~~
+~~~powershell
 choco upgrade chocolatey-management-database --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;User ID=ccmtest\ccmservice;Password=Password01;""'"
 ~~~
 
@@ -171,7 +171,7 @@ choco upgrade chocolatey-management-database --package-parameters-sensitive="'/C
 
 In order to successfully install the chocolatey-management-service package onto a machine (using all default values), the following steps are required:
 
-~~~
+~~~powershell
 choco upgrade chocolatey --version 0.10.15
 choco upgrade chocolatey.extension --version 2.0.2
 choco upgrade chocolatey-agent --version 0.9.1
@@ -231,7 +231,7 @@ You can override the package defaults using the following parameters:
 
 Let's assume that you want to install the CCM Service with a specific connection string in order to connect to the CCM Database, as well as configure the CCM Service to use a specific user name and password, as well as alter the Port number that the CCM Service will be hosted on.  The necessary installation command would look like the following:
 
-~~~
+~~~powershell
 choco upgrade chocolatey-management-service --package-parameters-sensitive="'/PortNumber=24021 /Username=ccmtest\ccmservice /Password=Password01 /ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;User ID=ccmtest\ccmservice;Password=Password01;""'"
 ~~~
 
@@ -243,7 +243,7 @@ choco upgrade chocolatey-management-service --package-parameters-sensitive="'/Po
 
 In order to successfully install the chocolatey-management-web package onto a machine (using all default values), the following steps are required:
 
-~~~
+~~~powershell
 choco upgrade aspnetcore-runtimepackagestore
 choco upgrade dotnetcore-windowshosting
 choco upgrade chocolatey --version 0.10.15
@@ -298,7 +298,7 @@ You can override the package defaults using the following parameters:
 Let's assume that you want to install the CCM Website with a specific connection string in order to connect to the CCM Database, as well as configure the IIS Application Pool to use a specific user name and password.  The
 necessary installation command would look like the following:
 
-~~~
+~~~powershell
 choco upgrade chocolatey-management-web --package-parameters-sensitive="'/ConnectionString=""Server=MACHINE1\SQLSERVERCCM;Database=ChocolateyManagement;User ID=ccmtest\ccmservice;Password=Password01;"" /Username=ccmwebserver\ccmserviceuser /Password=Password01'"`
 ~~~
 
@@ -308,7 +308,7 @@ choco upgrade chocolatey-management-web --package-parameters-sensitive="'/Connec
 
 The following is a complete installation script that can be used as an example of how to install all necessary CCM components and configuration on a single machine, using all the default values.  To use values other than the default, see the relevant parameters section for the [chocolatey-management-database](#package-parameters), [chocolatey-management-service](#package-parameters-1) and [chocolatey-management-web](#package-parameters-2) packages.  And refer to the [Chocolatey Configuration](#chocolatey-configuration-for-ccm) for further information about global settings for CCM.
 
-~~~
+~~~powershell
 # Find FDQN for current machine
 $hostName = [System.Net.Dns]::GetHostName()
 $domainName = [System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties().DomainName
@@ -512,7 +512,7 @@ Currently no.  The Chocolatey Central Management Web Site expects to reside at t
 
 This error can occur when installing the `chocolatey-management-web` package.  Due to the nested folder structure contained within this package, when extracting to the default cache location, the path can become too long.  This problem is known is occur in the 0.1.0-beta-20181009 release of this package, and it should be corrected in subsequent releases.  As a workaround, adding the following parameters to the install command should allow the installation to complete successfully:
 
-~~~
+~~~powershell
 --cache-location="'C:\Temp\choco'"
 ~~~
 
