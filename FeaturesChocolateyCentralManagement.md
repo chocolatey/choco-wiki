@@ -12,12 +12,15 @@
     - [Installing chocolatey-management-database](#installing-chocolatey-management-database)
       - [Package Parameters](#package-parameters)
       - [Example](#example)
+      - [Verify Installation](#verify-installation)
     - [Installing chocolatey-management-service](#installing-chocolatey-management-service)
       - [Package Parameters](#package-parameters-1)
       - [Example](#example-1)
+      - [Verify Installation](#verify-installation-1)
     - [Installing chocolatey-management-web](#installing-chocolatey-management-web)
       - [Package Parameters](#package-parameters-2)
       - [Example](#example-2)
+      - [Verify Installation](#verify-installation-2)
     - [Complete Installation Script](#complete-installation-script)
 - [Chocolatey Configuration for CCM](#chocolatey-configuration-for-ccm)
   - [centralManagementReportPackagesTimerIntervalInSeconds](#centralmanagementreportpackagestimerintervalinseconds)
@@ -165,6 +168,13 @@ choco upgrade chocolatey-management-database --package-parameters-sensitive="'/C
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
 
+##### Verify Installation
+
+The purpose of the `chocolatey-management-database` package is to create and deploy the schema for the database that is used by the CCM Service and Website.  This can be verified by using something like SQL Server Managmeent Studio to connect to the SQL Server Instance and:
+
+* check that a database (by default named `ChocolateyManagement`) has been created
+* that a set of tables have been created within this database
+
 #### Installing chocolatey-management-service
 
 **NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#package-parameters-1) before proceeding.
@@ -237,6 +247,13 @@ choco upgrade chocolatey-management-service --package-parameters-sensitive="'/Po
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
 
+##### Verify Installation
+
+The `chocolatey-management-service` is responsible for making a number of changes to your system.  A successful installation of this package can be verified by:
+
+* Open the services snap-in (services.msc) and check for the presence of the `Chocolatey Management Service` which should be in the started state
+* Open the Service log file located at `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service\logs\chocolatey.service.host.log` and verify that there are no recently reported errors
+
 #### Installing chocolatey-management-web
 
 **NOTE:** It is likely that additional package parameters are required which are specific to your environment.  Please carefully review the available [package parameters](#package-parameters-2) before proceeding.
@@ -303,6 +320,14 @@ choco upgrade chocolatey-management-web --package-parameters-sensitive="'/Connec
 ~~~
 
 **NOTE:** This command makes use of `package-parameters-sensitive` to ensure that the sensitive information is not leaked out into log files.
+
+##### Verify Installation
+
+The `chocolatey-management-web` package is responsible for creating and deploying the CCM Website within IIS.  A successful installation of this package can be verified by:
+
+* Opening an internet browser on the machine to the following address `http://localhost` which should result in the login page for CCM being displayed
+* It should be possible to login to the site using the default credentials mentioned in the installation steps
+* Open the Site log file located at `c:\tools\chocolatey-management-web\App_Data\Logs\Logs.txt` and verify that there are no recently reported errors
 
 #### Complete Installation Script
 
@@ -488,7 +513,7 @@ Log file is located at `C:\tools\chocolatey-management-web\App_Data\Logs\Logs.tx
 
 #### Chocolatey Managment Service
 
-Log file is located at `C:\ProgramData\chocolatey\lib\chocolatey.management.service\tools\service\logs\chocolatey.service.host.log`
+Log file is located at `C:\ProgramData\chocolatey\lib\chocolatey-management-service\tools\service\logs\chocolatey.service.host.log`
 
 #### Chocolatey Agent Service
 
