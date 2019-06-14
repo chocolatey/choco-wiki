@@ -1,5 +1,17 @@
 # Chocolatey Central Management (CCM) (Business Editions Only)
 
+CCM provides you insights across your desktop and endpoint environments.
+
+Once installed and configured, you can use CCM to:
+
+* bring reporting to the Organizational level
+* quickly see all software across the Organization and see what needs attention immediately
+* create reports for tracking and auditing purposes
+
+![CCM Overview](images/features/ccm/ccm_overview.jpg)
+
+
+
 <!-- TOC depthTo:6 -->
 
 - [Usage](#usage)
