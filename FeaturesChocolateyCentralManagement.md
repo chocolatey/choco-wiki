@@ -36,7 +36,6 @@ Once installed and configured, you can use CCM to:
       - [Additional Installation Steps](#additional-installation-steps)
         - [SMTP Configuration](#smtp-configuration)
         - [appsettings.json configuration](#appsettingsjson-configuration)
-    - [Complete Installation Script](#complete-installation-script)
 - [Chocolatey Configuration for CCM](#chocolatey-configuration-for-ccm)
   - [centralManagementReportPackagesTimerIntervalInSeconds](#centralmanagementreportpackagestimerintervalinseconds)
   - [centralManagementServiceUrl](#centralmanagementserviceurl)
@@ -44,6 +43,7 @@ Once installed and configured, you can use CCM to:
   - [centralManagementSendTimeoutInSeconds](#centralmanagementsendtimeoutinseconds)
   - [centralManagementCertificateValidationMode](#centralmanagementcertificatevalidationmode)
 - [Chocolatey Clients](#chocolatey-clients)
+- [Complete Installation Script](#complete-installation-script)
 - [FAQ](#faq)
   - [Will this become available for lower editions of Chocolatey?](#will-this-become-available-for-lower-editions-of-chocolatey)
   - [What's the minimum version of the Chocolatey packages I need to use CCM?](#whats-the-minimum-version-of-the-chocolatey-packages-i-need-to-use-ccm)
@@ -394,55 +394,6 @@ Get-Process -Name "ChocolateySoftware.ChocolateyManagement.Web.Mvc" -ErrorAction
 
 And then try accessing the website again.  Any emails that are then sent from CCM should then contain valid links back to the site.
 
-#### Complete Installation Script
-
-The following is a complete installation script that can be used as an example of how to install all necessary CCM components and configuration on a single machine, using all the default values.  To use values other than the default, see the relevant parameters section for the [chocolatey-management-database](#package-parameters), [chocolatey-management-service](#package-parameters-1) and [chocolatey-management-web](#package-parameters-2) packages.  And refer to the [Chocolatey Configuration](#chocolatey-configuration-for-ccm) for further information about global settings for CCM.
-
-~~~powershell
-# Find FDQN for current machine
-$hostName = [System.Net.Dns]::GetHostName()
-$domainName = [System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties().DomainName
-
-if(-Not $hostName.endswith($domainName)) {
-  $hostName += "." + $domainName
-}
-
-# Pre-requisites
-# These three packages will be required on any machine that is going to be reporting into CCM
-choco upgrade chocolatey -y --version 0.10.15
-choco upgrade chocolatey.extension -y --version 2.0.2
-choco upgrade chocolatey-agent -y --version 0.9.1
-
-# CCM Database
-# This package is only required on the machine that is going to host the CCM Database
-choco upgrade chocolatey-management-database -y --version 0.1.0
-
-# CCM Service
-# This package is only required on the machine that is going to host the CCM Service
-choco upgrade chocolatey-management-service -y --version 0.1.0
-
-# CCM Website
-# These packages are only required on the machine that is going to host the CCM Web Site
-choco upgrade aspnetcore-runtimepackagestore -y
-choco upgrade dotnetcore-windowshosting -y
-choco upgrade chocolatey-management-web -y --version 0.1.0
-
-# CCM Configuration
-# These steps are required on any machine that is going to be reporting into CCM
-choco config set --name="'centralManagementReportPackagesTimerIntervalInSeconds'" --value="'1800'"
-choco config set --name="'centralManagementServiceUrl'" --value="'https://$($hostname):24020/ChocolateyManagementService'"
-choco config set --name="'centralManagementReceiveTimeoutInSeconds'" --value="'60'"
-choco config set --name="'centralManagementSendTimeoutInSeconds'" --value="'60'"
-choco config set --name="'centralManagementCertificateValidationMode'" --value="'PeerOrChainTrust'"
-choco feature enable --name="'useChocolateyCentralManagement'"
-~~~
-
-> Best practices in scripts are noted here:
-> * Use `upgrade` instead of `install` - upgrade is more making the script reusable when newer versions are available.
-> * Always use `-y` to ensure nothing stops and prompts for more than 30 seconds.
-> * When using options prefer a longer name (`--name` versus the short `-n`) to make the scripts more self-documenting
-> * When using options that have a value passed, add an `=` between and surround the value with `"''"` (`--name="'value'"`). This ensures that the argument is not split between different versions/editions of Chocolatey. This also ensures that values like `.` and `\\` are not escaped by PowerShell.
-
 ## Chocolatey Configuration for CCM
 
 The following configuration values, with their default values, are added into the chocolatey.config file after installing CCM and it's dependent packages.
@@ -499,6 +450,58 @@ Here, the full URL, including the port number, to where the CCM service was inst
 **NOTE:** If not set, the CCM Service will construct a URL based on the default Port number which is 24020, and the FQDN of the machine that the service is being executed on.  However, Chocolatey Agent will not be able to report into CCM, if a value is not provided.
 
 [Additional configuration](#chocolatey-configuration-for-chocolatey-central-management) exists for CCM Service, which allows fine grained control of how Chocolatey Agent will report into CCM.
+
+## Complete Installation Script
+
+The following is a complete installation script that can be used as an **example** (which should be modified to fit with your environment before executing) of how to install all necessary CCM components and configuration on a **single machine**, using all the **default values**.
+
+To use values other than the default, see the relevant parameters section for the [chocolatey-management-database](#package-parameters), [chocolatey-management-service](#package-parameters-1) and [chocolatey-management-web](#package-parameters-2) packages.  And refer to the [Chocolatey Configuration](#chocolatey-configuration-for-ccm) for further information about global settings for CCM.
+
+~~~powershell
+# Find FDQN for current machine
+$hostName = [System.Net.Dns]::GetHostName()
+$domainName = [System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties().DomainName
+
+if(-Not $hostName.endswith($domainName)) {
+  $hostName += "." + $domainName
+}
+
+# Pre-requisites
+# These three packages will be required on any machine that is going to be reporting into CCM
+choco upgrade chocolatey -y --version 0.10.15
+choco upgrade chocolatey.extension -y --version 2.0.2
+choco upgrade chocolatey-agent -y --version 0.9.1
+
+# CCM Database
+# This package is only required on the machine that is going to host the CCM Database
+choco upgrade chocolatey-management-database -y --version 0.1.0
+
+# CCM Service
+# This package is only required on the machine that is going to host the CCM Service
+choco upgrade chocolatey-management-service -y --version 0.1.0
+
+# CCM Website
+# These packages are only required on the machine that is going to host the CCM Web Site
+choco upgrade aspnetcore-runtimepackagestore -y
+choco upgrade dotnetcore-windowshosting -y
+choco upgrade chocolatey-management-web -y --version 0.1.0
+
+# CCM Configuration
+# These steps are required on any machine that is going to be reporting into CCM
+choco config set --name="'centralManagementReportPackagesTimerIntervalInSeconds'" --value="'1800'"
+choco config set --name="'centralManagementServiceUrl'" --value="'https://$($hostname):24020/ChocolateyManagementService'"
+choco config set --name="'centralManagementReceiveTimeoutInSeconds'" --value="'60'"
+choco config set --name="'centralManagementSendTimeoutInSeconds'" --value="'60'"
+choco config set --name="'centralManagementCertificateValidationMode'" --value="'PeerOrChainTrust'"
+choco feature enable --name="'useChocolateyCentralManagement'"
+~~~
+
+> Best practices in scripts are noted here:
+> * Use `upgrade` instead of `install` - upgrade is more making the script reusable when newer versions are available.
+> * Always use `-y` to ensure nothing stops and prompts for more than 30 seconds.
+> * When using options prefer a longer name (`--name` versus the short `-n`) to make the scripts more self-documenting
+> * When using options that have a value passed, add an `=` between and surround the value with `"''"` (`--name="'value'"`). This ensures that the argument is not split between different versions/editions of Chocolatey. This also ensures that values like `.` and `\\` are not escaped by PowerShell.
+
 
 ## FAQ
 
