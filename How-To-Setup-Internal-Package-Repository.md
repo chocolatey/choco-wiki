@@ -412,9 +412,9 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
       $Path
   )
 
-  # If you want to use another machine to test the install and uninstall with please uncomment the next three lines and addthe correct details.
+  # If you want to use another machine to test the install and uninstall with please uncomment the next three lines and add the correct details.
   # $testMachineName = 'chocotest'             # this should be the name of the computer to use for install / uninstall
-  # $testMachineUsername = 'chocotest\vagrant' # the FULL name of the user to logon to $testMachineName with - note the format 'MACHINE\USER'
+  # $testMachineUsername = 'chocotest\vagrant' # the FULL name of the user to logon to $testMachineName with - note the format 'MACHINE\USER' even if this is a local user account
   # $testMachinePassword = 'password'          # the password to logon to $testMachineName with
 
   Describe "Testing Chocolatey Package $(Split-Path -Path $Path -Leaf)" {
@@ -472,7 +472,9 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
   }# describe
 ```
 
-Note the section above where you should insert the code to test your packages before being pushed to the production repository. This testing should be on an image that is typical for your environment, often called a 'Gold Image'.
+Note the section at the start of this script that allows you to use another machine for testing. The tests require WinRM to be configured correctly. This testing should be on an image that is typical for your environment, often called a 'Gold Image'.
+
+To use it uncomment the lines with variables `$testMachineName`, `$testMachineUsername` and `$testMachinePassword` and add the correct details.
 
 #### Script: `ConvertTo-ChocoObject.ps1`
 
