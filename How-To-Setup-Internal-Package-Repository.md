@@ -511,12 +511,12 @@ Each job is detailed below. Use these details to create a new job:
 1. Enter the item name, click **Pipeline** and click **OK**;
 1. Complete the details page for each job and click **OK**;
 
-##### Jenkins Job Details: Update Test Repository
+##### Jenkins Job Details: Upgrade Outdated Packages in Test Repository
 
-Below are the details for the Jenkins job to update the test repository from the Chocolatey Community Repository. This job will check the test repository against the Chocolatey Community Repository and download any updated packages, internalize them and submit them to the test repository. If successful it will then trigger the job named **Update Production Repository**.
+Below are the details for the Jenkins job to update the test repository from the Chocolatey Community Repository. This job will check the test repository against the Chocolatey Community Repository and download any updated packages, internalize them and submit them to the test repository. If successful it will then trigger the job named **Test Package and Push to Prod Repo**.
 
 * **General Tab**
-  * _Item Name_: **Update test repository from Chocolatey Community Repository**
+  * _Item Name_: **Upgrade Outdated Packages in Test Repository**
   * _Project Type_: **Pipeline**
   * _Description_: **Automatically update any out of date packages in the test repository from the Community Repository.**
   * _Ticked Options_: **This project is parameterized** and **Do not allow concurrent builds**;
@@ -558,12 +558,12 @@ For this guide we will trigger each job manually, however in production you will
 
 Click **Save** once complete and then click **Back to Dashboard**.
 
-##### Jenkins Job Details: Internalize Package
+##### Jenkins Job Details: Internalize Package and Push to Test Repo
 
-Below are the details for the Jenkins job to update the test repository from the Chocolatey Community Repository. This job will take a list of packages that you submit to the job, download and internalize those packages and push them to the test repository. Once this has been done it will trigger the job named **Update Production Repository** to test and push them to the production repository.
+Below are the details for the Jenkins job to update the test repository from the Chocolatey Community Repository. This job will take a list of packages that you submit to the job, download and internalize those packages and push them to the test repository. Once this has been done it will trigger the job named **Test Package and Push to Prod Repo** to test and push them to the production repository.
 
 * **General Tab**
-  * _Item Name_: **Internalize packages from the Community Repository**
+  * _Item Name_: **Internalize Package and Push to Test Repo**
   * _Project Type_: **Pipeline**
   * _Description_: **Add new packages for internalizing from the Community Repository.**
   * _Ticked Options_: **This project is parameterized** and **Do not allow concurrent builds**;
@@ -592,32 +592,34 @@ Below are the details for the Jenkins job to update the test repository from the
 ```powershell
   node {
       powershell '''
-          $temp = Join-Path -Path $env:TEMP -ChildPath ([GUID]::NewGuid()).Guid
-          $null = New-Item -Path $temp -ItemType Directory
-          Write-Output "Created temporary directory '$temp'."
-          ($env:P_PKG_LIST).split(';') | ForEach-Object {
-              choco download $_ --no-progress --internalize --force --internalize-all-urls --append-use-original-location --output-directory=$temp --source='https://chocolatey.org/api/v2/'
-              if ($LASTEXITCODE -eq 0) {
-                  $package = (Get-Item -Path (Join-Path -Path $temp -ChildPath "$_*.nupkg")).fullname
-                  choco push $package --source "$($env:P_DST_URL)" --api-key "$($env:P_API_KEY)" --force
-              }
-              else {
-                  Write-Output "Failed to download package '$_'"
-              }
-          }
-          Remove-Item -Path $temp -Force -Recurse
+        $temp = Join-Path -Path $env:TEMP -ChildPath ([GUID]::NewGuid()).Guid
+        New-Item -Path $temp -ItemType Directory | Out-Null
+        Write-Output &quot;Created temporary directory &apos;$temp&apos;.&quot;
+
+        Set-Location (Join-Path -Path $env:SystemDrive -ChildPath 'scripts')
+        .\\Internalize-ChocoPackage.ps1 `
+            -Name $env:P_PKG_LIST `
+            -OutputDirectory $temp `
+            -Verbose
+
+        if ($LASTEXITCODE -eq 0) {
+            Set-Location $temp
+            Get-ChildItem -Path *.nupkg | ForEach-Object {
+                choco push $_.Name --source=$env:P_DST_URL --apikey=$env:P_API_KEY --limitoutput
+            }
+        }
       '''
   }
 ```
 
 Click **Save** once complete and then click **Back to Dashboard**.
 
-##### Jenkins Job Details: Update Production Repository
+##### Jenkins Job Details: Test Package and Push to Prod Repo
 
 Below are the details for the Jenkins job to update the production repository. This job will take any packages that are new or updated in the test repository, test them and, if successful, submit them to the production repository.
 
 * **General Tab**
-  * _Item Name_: **Update production repository**
+  * _Item Name_: **Test Package and Push to Prod Repo**
   * _Project Type_: **Pipeline**
   * _Description_: **Determine new packages on the Test repository, test and submit them to the Production repository.**
   * _Ticked Options_: **This project is parameterized** and **Do not allow concurrent builds**;
@@ -641,7 +643,7 @@ Below are the details for the Jenkins job to update the production repository. T
 
 * **Build Triggers**
   * _Options_: **Build after other projects are built**
-  * _Projects to watch_: **Internalize packages from the Community Repository** and **Update test repository from Chocolatey Community Repository**
+  * _Projects to watch_: **Internalize Package and Push to Test Repo** and **Upgrade Outdated Packages in Test Repository**
   * _Project Options_: **Trigger only if build is stable**
 
 * **Pipeline Tab**
@@ -691,12 +693,12 @@ Before submitting a new package lets make sure we have no packages in our test o
 
 Follow these steps to add a new package:
 
-1. On the Jenkins homepage, click the little drop down arrow to the right of the **Internalize packages from the Community Repository** job and click **Build with Parameters**;
+1. On the Jenkins homepage, click the little drop down arrow to the right of the **Internalize Package and Push to Test Repo** job and click **Build with Parameters**;
 1. In the parameters page enter `adobereader` in the **P_PKG_LIST** and click the **Build** button;
 
 You can check the progress of the job by click on the **Last build (#..** link under _Permalinks_ on that page and see the output by clicking on **Console Output** on the right hand side of that page;
 
-This Jenkins job will run and then, if it is successful will trigger the job named **Update production repository** which will update the production repository with any new or updated packages in the test repository, in this case the `adobereader` package we just added. To see this:
+This Jenkins job will run and then, if it is successful will trigger the job named **Test Package and Push to Prod Repo** which will update the production repository with any new or updated packages in the test repository, in this case the `adobereader` package we just added. To see this:
 
 1. To check the test repository, enter this at the command line `choco list --source http://testrepo-srv/chocolatey`. You should get this returned (note that the actual version of `adobereader` and Chocolatey you see may be different):
 
@@ -722,7 +724,7 @@ As packages get out of date in your test repository you need to update them from
 
 1. Download and internalize the `putty.install` package to the current directory by entering this on the command line: `choco download putty.install --version 0.70 --internalize --force --internalize-all-urls --append-use-original-location --output-directory . --source https://chocolatey.org/api/v2/`;
 1. Submit the internalized package to the test repository by entering this on the command line: `choco push putty.install.0.70.nupkg --source http://testrepo-srv/chocolatey --api-key chocolateyrocks -force`
-1. Go back to Jenkins and run the job **Update production repository** with default parameters. This will test the `putty.install` package and push it to the production repository.
+1. Go back to Jenkins and run the job **Test Package and Push to Prod Repo** with default parameters. This will test the `putty.install` package and push it to the production repository.
 1. Go to the command line and run `choco list --source http://prodrepo-srv/chocolatey` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list):
 
 ```powershell
@@ -733,7 +735,7 @@ As packages get out of date in your test repository you need to update them from
   2 packages found.
 ```
 
-`5.` Go back to Jenkins and run the job **Update test repository from Chocolatey Community Repository** with default parameters. This will check the test repository against the Chocolatey Community Repository and update the `putty.install` package;
+`5.` Go back to Jenkins and run the job **Upgrade Outdated Packages in Test Repository** with default parameters. This will check the test repository against the Chocolatey Community Repository and update the `putty.install` package;
 `6.` Go to the command line and run `choco list --source http://testrepo-srv/chocolatey --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different):
 
 ```powershell
@@ -745,7 +747,7 @@ As packages get out of date in your test repository you need to update them from
   3 packages found.
 ```
 
-`7.` As the Jenkins job **Update test repository from Chocolatey Community Repository** we ran earlier triggers the job **Update production repository**, the `putty.install` package will be automatically tested and pushed to the production repository. To check this, run the following on the command line `choco list --source http://prodrepo-srv/chocolatey --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different)
+`7.` As the Jenkins job **Upgrade Outdated Packages in Test Repository** we ran earlier triggers the job **Test Package and Push to Prod Repo**, the `putty.install` package will be automatically tested and pushed to the production repository. To check this, run the following on the command line `choco list --source http://prodrepo-srv/chocolatey --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different)
 
 ```powershell
   PS> choco list --source http://prodrepo-srv/chocolatey
