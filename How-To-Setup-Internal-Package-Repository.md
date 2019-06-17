@@ -195,6 +195,64 @@ To install and configure Jenkins:
 
 Jenkins requires several PowerShell scripts to automate the processes. Create a directory on the root of your System Drive (normally `C:\`) called `scripts` and create each script file there.
 
+#### Script: `Internalize-ChocoPackage.ps1`
+
+```powershell
+  [CmdletBinding()]
+  Param (
+      [Parameter(Mandatory)]
+      [string[]]
+      $Name,
+
+      [ValidateScript( { Test-Path $_ })]
+      [string]
+      $OutputDirectory = (Join-Path -Path $env:SystemDrive -ChildPath "jenkins-packages"),
+
+      [Version]
+      $Version,
+
+      [switch]
+      $Force
+  )
+
+  function Test-PackageExist ($Name, $Version, $PackagePath) {
+      if ($Version) {
+          $Name += ".$Version"
+      }
+      else {
+          $Name += ".*"
+      }
+
+      $Name += ".nupkg"
+
+      Test-Path -Path (Join-Path -Path $PackagePath -ChildPath $Name)
+  }
+
+  # start from a clean slate
+  if (Test-Path -Path $OutputDirectory) {
+      Remove-Item -Path $OutputDirectory -Force -Recurse
+  }
+  New-Item -Path $OutputDirectory -ItemType Directory -Force
+
+  # Go through each package name provided and internalize it
+  $params = "--internalize --internalize-all-urls --append-use-original-location --source=""'https://chocolatey.org/api/v2/; https://licensedpackages.chocolatey.org/api/v2/'"" --no-progress --limitoutput"
+  $Name | ForEach-Object {
+      if ($Force.IsPresent -or (-not (Test-PackageExist -Name $_ -Version $Version -PackagePath $OutputDirectory))) {
+          Write-Host "Internalizing package '$_' from the Chocolatey Community Repository." -ForegroundColor Green
+          $cmd = "choco download $_ --output-directory=$OutputDirectory $params "
+          if ($Force.IsPresent) {
+              $cmd += "--force "
+          }
+          Write-Verbose "Running '$cmd'."
+          Invoke-Expression -Command $cmd
+      }
+      else {
+          Write-Warning "Skipping internalizing package '$_' as it already exists in '$OutputDirectory'."
+          Write-Warning "To internalize this package anyway, use the -Force parameter."
+      }
+  }
+```
+
 #### Script: `Get-UpdatedPackage.ps1`
 
 ```powershell
@@ -336,6 +394,82 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
           Write-Verbose "Could not download package."
       }
   }
+```
+
+#### Script: `Test-Package.ps1`
+
+```powershell
+  #Requires -Modules Pester
+  [CmdletBinding()]
+  Param (
+      [string[]]
+      $Name,
+
+      [string]
+      $Source,
+
+      [string]
+      $Path
+  )
+
+  # If you want to use another machine to test the install and uninstall with please uncomment the next three lines and addthe correct details.
+  # $testMachineName = 'chocotest'             # this should be the name of the computer to use for install / uninstall
+  # $testMachineUsername = 'chocotest\vagrant' # the FULL name of the user to logon to $testMachineName with - note the format 'MACHINE\USER'
+  # $testMachinePassword = 'password'          # the password to logon to $testMachineName with
+
+  Describe "Testing Chocolatey Package $(Split-Path -Path $Path -Leaf)" {
+
+      $tempPath = New-Item -Path (Join-Path -Path $env:TEMP -ChildPath ([GUID]::NewGuid()).Guid) -ItemType Directory -ErrorAction Stop
+
+      It "should be a valid .nupkg file format" {
+          $unzipCmd = "7z x -y -bd -bb0 -o$($tempPath.ToString()) $Path"
+          Invoke-Expression -Command $unzipCmd
+
+          $LASTEXITCODE | Should -Be 0
+      }
+
+      # Clear out the unneeded files and folders from the package extraction
+      Remove-Item -Path '[Content_Types].xml' -Force
+      'package', '_rels' | ForEach-Object {
+          Remove-Item -Path (Join-Path -Path $tempPath -ChildPath $_) -Recurse -Force
+      }
+
+      $nuspecFile = Get-ChildItem -Path (Join-Path -Path $tempPath -ChildPath '*.nuspec')
+      It "should contain one .nuspec file" {
+          @($nuspecFile).Count | Should -Be 1
+      }
+
+      It "should have a valid .nuspec file" {
+          { [xml](Get-Content -Path $nuspecFile) } | Should -Not -Throw
+      }
+
+      # to use this you must have set $testMachineName, $testMachineUsername and $testMachinePassword at the start of this script
+      if (Test-Path -Path variable:testMachineName -and (-not [string]::IsNullOrEmpty($testMachineName)) {
+          Context "Testing package $Name" {
+              $password = ConvertTo-SecureString $testMachinePassword -AsPlainText -Force
+              $creds = New-Object System.Management.Automation.PSCredential ($testMachineUsername, $password)
+              $session = New-PSSession -ComputerName $testMachineName -Credential $creds
+
+              it 'should install package without error' {
+                  { Invoke-Command -Session $session -ScriptBlock {
+                      choco install $Using:Name
+                      if ($LASTEXITCODE -ne 0) {
+                          throw "Package install failed"
+                      }
+                  } } | Should -Not -Throw
+              }
+
+              it 'should uninstall without error' {
+                  { Invoke-Command -Session $session -ScriptBlock {
+                      choco.exe uninstall $Using:Name
+                      if ($LASTEXITCODE -ne 0) {
+                          throw "Package uninstall failed"
+                      }
+                  } } | Should -Not -Throw
+              }
+          } #if
+      } #context
+  }# describe
 ```
 
 Note the section above where you should insert the code to test your packages before being pushed to the production repository. This testing should be on an image that is typical for your environment, often called a 'Gold Image'.
