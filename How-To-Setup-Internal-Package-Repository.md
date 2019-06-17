@@ -696,7 +696,7 @@ Follow these steps to add a new package:
 1. On the Jenkins homepage, click the little drop down arrow to the right of the **Internalize Package and Push to Test Repo** job and click **Build with Parameters**;
 1. In the parameters page enter `adobereader` in the **P_PKG_LIST** and click the **Build** button;
 
-You can check the progress of the job by click on the **Last build (#..** link under _Permalinks_ on that page and see the output by clicking on **Console Output** on the right hand side of that page;
+You can check the progress of the job by click on the **Last build link under _Permalinks_ on that page and see the output by clicking on **Console Output** on the right hand side of that page;
 
 This Jenkins job will run and then, if it is successful will trigger the job named **Test Package and Push to Prod Repo** which will update the production repository with any new or updated packages in the test repository, in this case the `adobereader` package we just added. To see this:
 
