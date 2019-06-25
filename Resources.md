@@ -47,9 +47,19 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 * https://blog.gusztavvargadr.me/8-maintaining-chocolatey-packages-with-azure-pipelines-and-cake-build-b66f82ebcfe5
 
 #### April
+* https://www.gep13.co.uk/blog/new-chocolatey-github-organisations
 * https://blog.pauby.com/post/getting-started-with-chocolatey-and-jenkins/ (C4B)
 
+#### January
+* https://www.gep13.co.uk/blog/what-are-all-the-chocolatey-repositories-for
+
 ### 2018
+#### October
+* https://www.gep13.co.uk/blog/chocolatey-error-hashes-do-not-match
+
+#### July
+* https://www.gep13.co.uk/blog/problem-running-chocolatey-test-environment
+
 #### April
 * https://buildazure.com/2018/04/17/using-chocolatey-with-azure-vms/
 
