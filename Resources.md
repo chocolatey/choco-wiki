@@ -43,6 +43,9 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ## Community
 
 ### 2019
+#### June
+* https://blog.gusztavvargadr.me/8-maintaining-chocolatey-packages-with-azure-pipelines-and-cake-build-b66f82ebcfe5
+
 #### April
 * https://blog.pauby.com/post/getting-started-with-chocolatey-and-jenkins/ (C4B)
 
