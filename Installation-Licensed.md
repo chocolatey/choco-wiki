@@ -114,9 +114,7 @@ See the difference between the trial install here and [a fully licensed edition]
 
 #### Notes on the Trial Version
 
-In the trial, package authoring features have nag warnings that require someone to manually hit the Enter key a random number of times. Do not attempt to automate Package Internalizer / Package Builder or `choco sync` when using a trial of C4B. Execute those things directly and see how well they work for you.
-
-There are no trial type messages for runtime features unless they need to use Package Builder (like `choco sync` does), which should allow you to test those features with other integration tools.
+Very little functionality if any is held back. With the movement forward on things like Central Management and GUI branding, those are now available with a trial as well.
 
 ## Install Options
 ### Install Without Context Menus
