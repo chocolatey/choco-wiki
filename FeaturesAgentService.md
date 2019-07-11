@@ -4,13 +4,16 @@
 
 The Chocolatey Agent service allows you to go further with your software management, bringing Chocolatey to desktop users in organizations that have controlled environments. This provides users in controlled environments more empowerment and instant turn around on required software. This frees up IT folks and admins time to spend on making the organization even better.
 
-<!-- TOC depthTo:5 -->
+<!-- TOC depthTo:6 -->
 
 - [Usage](#usage)
   - [Requirements](#requirements)
   - [Setup](#setup)
     - [Background Mode Setup](#background-mode-setup)
       - [Chocolatey Agent Install Options](#chocolatey-agent-install-options)
+        - [Package Parameters](#package-parameters)
+        - [Chocolatey Managed Password](#chocolatey-managed-password)
+      - [Chocolatey Agent Service Windows Account Considerations](#chocolatey-agent-service-windows-account-considerations)
       - [Command Customization Consideration](#command-customization-consideration)
       - [Interactive Self-Service Consideration](#interactive-self-service-consideration)
   - [Chocolatey Background Service / Self-Service Installer](#chocolatey-background-service--self-service-installer)
@@ -103,7 +106,7 @@ Starting with Chocolatey Agent v0.8.0+, the service will install as a local admi
 
 **NOTE:** If you are using file shares for sources, you may want to ensure the account or computer has network access permissions for the file share(s).
 
-**Package Parameters**:
+###### Package Parameters
 
 * `/Username:` - provide username - instead of using the default 'ChocolateyLocalAdmin' user.
 * `/Password:` - optional password for the user.
@@ -111,7 +114,7 @@ Starting with Chocolatey Agent v0.8.0+, the service will install as a local admi
 * `/UseDefaultChocolateyConfigUser` - use the default username from Chocolatey's configuration. This may be LocalSystem.
 * `/NoRestartService` - do not shut down and restart the service. You will need to restart later to take advantage of new service information.
 
-**Chocolatey Managed Password**
+###### Chocolatey Managed Password
 
 When Chocolatey manages the password for a local administrator, it creates a very complex password:
 
@@ -122,6 +125,20 @@ When Chocolatey manages the password for a local administrator, it creates a ver
 * No one at Chocolatey Software could even tell you what the password is for a particular machine without local access.
 
 See [FAQ](#faq) below for more discussion on security aspects.
+
+##### Chocolatey Agent Service Windows Account Considerations
+
+* Windows Account (required, defaults to `ChocolateyLocalAdmin`)
+   * The Chocolatey Agent Service requires ***an*** administrative account, whether that is a domain account or a local account - it just needs to be a local admin (a member of the Administrators group).
+   * The agent service doesn't specifically require the `ChocolateyLocalAdmin` account, any Windows account can be used. The `ChocolateyLocalAdmin` is used as the default if one is not specified.
+   * Upon use of an account during installation, it will make that account a member of the Administrators account.
+   * The account used will also be granted LogonAsService and LogonAsBatch privileges.
+* Managed Password (optional, default)
+   * When the `ChocolateyLocalAdmin` account is used, it generates a managed password that is different on every machine, 32 characters long, meets complexity requirements, and basically very strong.
+   * To determine the managed password, it would take access to the box and someone from Chocolatey Software who has access to the algorithm used to generate the password (more information in the FAQs below).
+* Rotating/Updating Passwords
+   * If a different account with a rotating password is used, the service will need to be updated with the new credentials and restarted soon after changing that password.
+   * The managed password is not currently updated/rotated, but it is something we are looking at how best to implement.
 
 ##### Command Customization Consideration
 
