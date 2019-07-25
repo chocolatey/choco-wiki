@@ -67,6 +67,8 @@ Once installed and configured, you can use CCM to:
   - [Cannot process command because of one or more missing mandatory parameters: FilePath](#cannot-process-command-because-of-one-or-more-missing-mandatory-parameters-filepath)
   - [All attempts to send email from CCM result in an error](#all-attempts-to-send-email-from-ccm-result-in-an-error)
   - [Emails sent from CCM to users has links that contains localhost, rather than actual CCM Server name](#emails-sent-from-ccm-to-users-has-links-that-contains-localhost-rather-than-actual-ccm-server-name)
+  - [The remote server returned an unexpected response: (413) Request Entity Too Large](#the-remote-server-returned-an-unexpected-response-413-request-entity-too-large)
+  - [ERROR: Cannot index into a null array](#error-cannot-index-into-a-null-array)
 
 <!-- /TOC -->
 
@@ -736,3 +738,11 @@ Get-Process -Name "ChocolateySoftware.ChocolateyManagement.Web.Mvc" -ErrorAction
 ~~~
 
 And then try accessing the website again.  Any emails that are then sent from CCM should then contain valid links back to the site.
+
+### The remote server returned an unexpected response: (413) Request Entity Too Large
+
+When reporting a larger number of packages (approximately 200), this error may be reported.  This is due to the size of the information, in bytes, being too large to send between the Chocolatey Agent Service and the Chocolatey Central Management Service.  This has been identified as a [bug](https://github.com/chocolatey/chocolatey-licensed-issues/issues/95), which is due to be corrected in version 0.1.1 of Chocolatey Central Managment
+
+### ERROR: Cannot index into a null array
+
+This error can be reported when installing the Chocolatey Central Management Service.  This can happen depending on the netsh binding that are currently present on the machine that is being installed on.  If for example, you have enabled SNI on a website on the machine that you are installing onto, then this error may occur.  This has been identified as a [bug](https://github.com/chocolatey/chocolatey-licensed-issues/issues/96), which is due to be corrected in version 0.1.1 of Chocolatey Central Management.
