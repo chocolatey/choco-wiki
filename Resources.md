@@ -43,8 +43,16 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 ## Community
 
 ### 2019
+#### July
+* https://techielass.com/automating-azure-vm-with-chef
+* https://winsysblog.com/2019/07/introducing-the-chocolatey-remote-management-powershell-gui.html
+
+
 #### June
 * https://blog.gusztavvargadr.me/8-maintaining-chocolatey-packages-with-azure-pipelines-and-cake-build-b66f82ebcfe5
+
+#### May
+* https://searchenterprisedesktop.techtarget.com/tip/How-to-add-MDT-applications-with-Chocolatey-package-manager
 
 #### April
 * https://www.gep13.co.uk/blog/new-chocolatey-github-organisations
@@ -53,13 +61,26 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 #### January
 * https://www.gep13.co.uk/blog/what-are-all-the-chocolatey-repositories-for
-
+* https://www.tech2tech.fr/chocolatey-votre-gestionnaire-de-paquets-sous-windows/ - **NOTE:** In French
 ### 2018
+#### December
+* https://winsysblog.com/2018/12/using-multiple-package-repositories-with-chocolatey.html
+
+#### September
+* https://winsysblog.com/2018/09/anatomy-of-a-chocolatey-package.html
+
 #### October
 * https://www.gep13.co.uk/blog/chocolatey-error-hashes-do-not-match
 
+#### August
+* https://winsysblog.com/2018/08/installing-chocolatey-packages-remotely-with-powershell.html
+
 #### July
 * https://www.gep13.co.uk/blog/problem-running-chocolatey-test-environment
+* https://winsysblog.com/2018/07/auditing-software-with-chocolatey.html
+
+#### June
+* https://winsysblog.com/2018/06/install-internalized-chocolatey-packages-from-your-offline-repository.html
 
 #### April
 * https://buildazure.com/2018/04/17/using-chocolatey-with-azure-vms/
