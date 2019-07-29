@@ -48,6 +48,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 #### April
 * https://www.gep13.co.uk/blog/new-chocolatey-github-organisations
+* [Build a Chocolatey Package Repository using Azure DevOps Artifacts Feed](https://blog.pauby.com/post/chocolatey-repository-using-azure-devops-artifacts-feed/)
 * https://blog.pauby.com/post/getting-started-with-chocolatey-and-jenkins/ (C4B)
 
 #### January
