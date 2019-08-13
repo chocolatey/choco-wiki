@@ -107,13 +107,12 @@ With completely offline use of Chocolatey, you want to ensure you remove the def
 1. Then you would run a script similar to the below to address that local install. If it is on a repository somewhere, you will need to enhance the below script to get that file  (the Chocolatey Puppet provider install script shows that).
 
 ~~~powershell
-# use an internal repository to download Chocolatey nupkg to the local path:
-$packageRepo = '<INSERT REPO URL>'
-# uncomment if you want to download the file from a remote OData (HTTP/HTTPS) internal url (such as Artifactory, Nexus, ProGet, or Chocolatey.Server)
-#$searchUrl = ($packageRepo.Trim('/'), 'Packages()?$filter=(Id%20eq%20%27chocolatey%27)%20and%20IsLatestVersion') -join '/'
+# Download and install Chocolatey nupkg from an OData (HTTP/HTTPS) url such as Artifactory, Nexus, ProGet (all of these are recommended for organizational use), or Chocolatey.Server (great for smaller organizations and POCs)
+# This is where you see the top level API - with xml to Packages - should look nearly the same as https://chocolatey.org/api/v2/
+# If you are using Nexus, always add the trailing slash or it won't work
+# === EDIT HERE ===
+$packageRepo = '<INSERT ODATA REPO URL>'
 
-# UPDATE THIS PATH
-$localChocolateyPackageFilePath = 'c:\packages\chocolatey.0.10.0.nupkg'
 # Determine unzipping method
 # 7zip is the most compatible, but you need an internally hosted 7za.exe.
 # Make sure the version matches for the arguments as well.
@@ -123,19 +122,80 @@ $unzipMethod = 'builtin'
 #$unzipMethod = '7zip'
 #$7zipUrl = 'https://chocolatey.org/7za.exe' (download this file, host internally, and update this to internal)
 
+# === ENVIRONMENT VARIABLES YOU CAN SET ===
+# Prior to running this script, in a PowerShell session, you can set the
+# following environment variables and it will affect the output
+
+# - $env:ChocolateyEnvironmentDebug = 'true' # see output
+# - $env:chocolateyIgnoreProxy = 'true' # ignore proxy
+# - $env:chocolateyProxyLocation = '' # explicit proxy
+# - $env:chocolateyProxyUser = '' # explicit proxy user name (optional)
+# - $env:chocolateyProxyPassword = '' # explicit proxy password (optional)
+
+# === NO NEED TO EDIT ANYTHING BELOW THIS LINE ===
+# Ensure we can run everything
+Set-ExecutionPolicy Bypass -Scope Process -Force;
+
+$searchUrl = ($packageRepo.Trim('/'), 'Packages()?$filter=(Id%20eq%20%27chocolatey%27)%20and%20IsLatestVersion') -join '/'
+
+# Reroute TEMP to a local location
+New-Item $env:ALLUSERSPROFILE\choco-cache -ItemType Directory -Force
+$env:TEMP = "$env:ALLUSERSPROFILE\choco-cache"
+
+$localChocolateyPackageFilePath = Join-Path $env:TEMP 'chocolatey.nupkg'
 $ChocoInstallPath = "$($env:SystemDrive)\ProgramData\Chocolatey\bin"
 $env:ChocolateyInstall = "$($env:SystemDrive)\ProgramData\Chocolatey"
 $env:Path += ";$ChocoInstallPath"
-$DebugPreference = "Continue";
-# if you really want to see debugging output related to the
-# installation, uncomment the next line
-#$env:ChocolateyEnvironmentDebug = 'true'
+$DebugPreference = 'Continue';
+
+# PowerShell v2/3 caches the output stream. Then it throws errors due
+# to the FileStream not being what is expected. Fixes "The OS handle's
+# position is not what FileStream expected. Do not use a handle
+# simultaneously in one FileStream and in Win32 code or another
+# FileStream."
+function Fix-PowerShellOutputRedirectionBug {
+  $poshMajorVerion = $PSVersionTable.PSVersion.Major
+
+  if ($poshMajorVerion -lt 4) {
+    try{
+      # http://www.leeholmes.com/blog/2008/07/30/workaround-the-os-handles-position-is-not-what-filestream-expected/ plus comments
+      $bindingFlags = [Reflection.BindingFlags] "Instance,NonPublic,GetField"
+      $objectRef = $host.GetType().GetField("externalHostRef", $bindingFlags).GetValue($host)
+      $bindingFlags = [Reflection.BindingFlags] "Instance,NonPublic,GetProperty"
+      $consoleHost = $objectRef.GetType().GetProperty("Value", $bindingFlags).GetValue($objectRef, @())
+      [void] $consoleHost.GetType().GetProperty("IsStandardOutputRedirected", $bindingFlags).GetValue($consoleHost, @())
+      $bindingFlags = [Reflection.BindingFlags] "Instance,NonPublic,GetField"
+      $field = $consoleHost.GetType().GetField("standardOutputWriter", $bindingFlags)
+      $field.SetValue($consoleHost, [Console]::Out)
+      [void] $consoleHost.GetType().GetProperty("IsStandardErrorRedirected", $bindingFlags).GetValue($consoleHost, @())
+      $field2 = $consoleHost.GetType().GetField("standardErrorWriter", $bindingFlags)
+      $field2.SetValue($consoleHost, [Console]::Error)
+    } catch {
+      Write-Output 'Unable to apply redirection fix.'
+    }
+  }
+}
+
+Fix-PowerShellOutputRedirectionBug
+
+# Attempt to set highest encryption available for SecurityProtocol.
+# PowerShell will not set this by default (until maybe .NET 4.6.x). This
+# will typically produce a message for PowerShell v2 (just an info
+# message though)
+try {
+  # Set TLS 1.2 (3072), then TLS 1.1 (768), then TLS 1.0 (192), finally SSL 3.0 (48)
+  # Use integers because the enumeration values for TLS 1.2 and TLS 1.1 won't
+  # exist in .NET 4.0, even though they are addressable if .NET 4.5+ is
+  # installed (.NET 4.5 is an in-place upgrade).
+  [System.Net.ServicePointManager]::SecurityProtocol = 3072 -bor 768 -bor 192 -bor 48
+} catch {
+  Write-Output 'Unable to set PowerShell to use TLS 1.2 and TLS 1.1 due to old .NET Framework installed. If you see underlying connection closed or trust errors, you may need to upgrade to .NET Framework 4.5+ and PowerShell v3+.'
+}
 
 function Get-Downloader {
 param (
   [string]$url
  )
-
   $downloader = new-object System.Net.WebClient
 
   $defaultCreds = [System.Net.CredentialCache]::DefaultCredentials
@@ -145,7 +205,7 @@ param (
 
   $ignoreProxy = $env:chocolateyIgnoreProxy
   if ($ignoreProxy -ne $null -and $ignoreProxy -eq 'true') {
-    Write-Debug "Explicitly bypassing proxy due to user environment variable"
+    Write-Debug 'Explicitly bypassing proxy due to user environment variable.'
     $downloader.Proxy = [System.Net.GlobalProxySelection]::GetEmptyWebProxy()
   } else {
     # check if a proxy is required
@@ -167,7 +227,7 @@ param (
       # system proxy (pass through)
       $creds = $defaultCreds
       if ($creds -eq $null) {
-        Write-Debug "Default credentials were null. Attempting backup method"
+        Write-Debug 'Default credentials were null. Attempting backup method'
         $cred = get-credential
         $creds = $cred.GetNetworkCredential();
       }
@@ -188,9 +248,7 @@ param (
   [string]$url,
   [string]$file
  )
-  #Write-Output "Downloading $url to $file"
   $downloader = Get-Downloader $url
-
   $downloader.DownloadFile($url, $file)
 }
 
@@ -209,7 +267,7 @@ param (
   $downloader.DownloadFile($packageDownloadUrl, $file)
 }
 
-function Install-LocalChocolateyPackage {
+function Install-ChocolateyFromPackage {
 param (
   [string]$chocolateyPackageFilePath = ''
 )
@@ -222,9 +280,6 @@ param (
     throw "No file exists at $chocolateyPackageFilePath"
   }
 
-  if ($env:TEMP -eq $null) {
-    $env:TEMP = Join-Path $env:SystemDrive 'temp'
-  }
   $chocTempDir = Join-Path $env:TEMP "chocolatey"
   $tempDir = Join-Path $chocTempDir "chocInstall"
   if (![System.IO.Directory]::Exists($tempDir)) {[System.IO.Directory]::CreateDirectory($tempDir)}
@@ -236,7 +291,7 @@ param (
   if ($unzipMethod -eq '7zip') {
     $7zaExe = Join-Path $tempDir '7za.exe'
     if (-Not (Test-Path ($7zaExe))) {
-      Write-Output "Downloading 7-Zip commandline tool prior to extraction."
+      Write-Output 'Downloading 7-Zip commandline tool prior to extraction.'
       # download 7zip
       Download-File $7zipUrl "$7zaExe"
     }
@@ -280,15 +335,15 @@ param (
     }
   }
 
-  # Call chocolatey install
-  Write-Output "Installing chocolatey on this machine"
+  # Call Chocolatey install
+  Write-Output 'Installing chocolatey on this machine'
   $toolsFolder = Join-Path $tempDir "tools"
   $chocInstallPS1 = Join-Path $toolsFolder "chocolateyInstall.ps1"
 
   & $chocInstallPS1
 
   Write-Output 'Ensuring chocolatey commands are on the path'
-  $chocInstallVariableName = "ChocolateyInstall"
+  $chocInstallVariableName = 'ChocolateyInstall'
   $chocoPath = [Environment]::GetEnvironmentVariable($chocInstallVariableName)
   if ($chocoPath -eq $null -or $chocoPath -eq '') {
     $chocoPath = 'C:\ProgramData\Chocolatey'
@@ -299,18 +354,28 @@ param (
   if ($($env:Path).ToLower().Contains($($chocoExePath).ToLower()) -eq $false) {
     $env:Path = [Environment]::GetEnvironmentVariable('Path',[System.EnvironmentVariableTarget]::Machine);
   }
+
+  Write-Output 'Ensuring chocolatey.nupkg is in the lib folder'
+  $chocoPkgDir = Join-Path $chocoPath 'lib\chocolatey'
+  $nupkg = Join-Path $chocoPkgDir 'chocolatey.nupkg'
+  if (!(Test-Path $nupkg)) {
+    Write-Output 'Copying chocolatey.nupkg is in the lib folder'
+    if (![System.IO.Directory]::Exists($chocoPkgDir)) { [System.IO.Directory]::CreateDirectory($chocoPkgDir); }
+    Copy-Item "$file" "$nupkg" -Force -ErrorAction SilentlyContinue
+  }
 }
 
 # Idempotence - do not install Chocolatey if it is already installed
 if (!(Test-Path $ChocoInstallPath)) {
   # download the package to the local path
-  if ($searchUrl) {
+  if (!(Test-Path $localChocolateyPackageFilePath)) {
     Download-Package $searchUrl $localChocolateyPackageFilePath
   }
 
   # Install Chocolatey
-  Install-LocalChocolateyPackage $localChocolateyPackageFilePath
+  Install-ChocolateyFromPackage $localChocolateyPackageFilePath
 }
+
 ~~~
 
 ### Install with Puppet
