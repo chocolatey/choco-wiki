@@ -306,14 +306,22 @@ choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
 ~~~
 
 ## Exercise 2: Set Up A Package Repository
-Now we have a machine where we have Chocolatey installed and configured, and we have the setup files we gathered in Exercise 0. So now we are going to set up a package repository for use for all of our clients - this is where you will push packages and get packages from with your Chocolatey clients. Some repositories do not require Windows as part of their setup (Artifactory Pro and Nexus come to mind, but there are others). In choosing what you will use, it's good to read over [[set up a package repository|How-To-Host-Feed]] to learn about the advantages and disadvantages of each. Pick one or more of the following paths:
+Now we have a machine where we have Chocolatey installed and configured, and we have the setup files we gathered in Exercise 0. So now we are going to set up a package repository for use for all of our clients - this is where you will push packages and get packages from with your Chocolatey clients. Some repositories do not require Windows as part of their setup (Artifactory Pro and Nexus come to mind, but there are others). In choosing what you will use, it's good to read over [[set up a package repository|How-To-Host-Feed]] to learn about the advantages and disadvantages of each.
+
+Pick one or more of the following paths:
 
 * [Set Up Chocolatey.Server](#exercise-2a-set-up-chocolateyserver)
 * [Set Up A Different Repository](#exercise-2b-set-up-a-different-repository)
 * [Set Up A File Share Repository](#exercise-2c-set-up-a-file-share-repository)
 * [Set Up An SCCM Distribution Point As A Chocolatey Source](#exercise-3d-set-up-an-sccm-distribution-point-as-a-chocolatey-source)
 
+> Recommended Option:
+> * [Set Up A Different Repository](#exercise-2b-set-up-a-different-repository)
+>
+> The current recommendations for most organizational use cases are Artifactory, Nexus, or ProGet. All are quite robust, and two of those options can be used without cost.
+
 ### Exercise 2A: Set Up Chocolatey.Server
+> Not recommended for most organizational use cases. Please look to set up Artifactory, Nexus, or ProGet as they are much more robust (and two do can be used without cost).
 
 **NOTE:** If you have an IIS site for WSUS administration, Chocolatey.Server website will not come up at all, even if everything looks right. We have not yet been able to determine the issue, but believe it is related to ASP.NET 4.6+. Installing all of the required components for Chocolatey.Server may also affect your WSUS admin site. Please seek a different box.
 
@@ -355,11 +363,15 @@ Write-Warning "Follow the steps at https://chocolatey.org/docs/how-to-set-up-cho
 * Docker image at - https://github.com/takhyon/docker-chocolatey.server. Disclaimer: This is not a recommendation - we have no affiliation nor have we verified this
 
 ### Exercise 2B: Set Up A Different Repository
+> Recommended for most organizational use cases
+
 If you are setting up something different than Chocolatey.Server, you may wish to read over [[How To Set Up an Internal Repository|How-To-Host-Feed]]. This will give you options and links to repositories like Artifactory Pro, Nexus, and ProGet. **NOTE**: Some repository server options don't require Windows.
 
 **NOTE:** Many repositories have a concept of a proxy repository. Unlike NuGet repositories, you likely ***DO NOT WANT*** a proxied NuGet/Chocolatey repository pointing to the community repository. They only cache packages - ***cached* is not the same concept as *internalized***. To reuse packages from the community repository in a reliable way, you need to [[internalize them|How-To-Recompile-Packages]]. The community repository is subject to distribution rights, which means many packages need to download things from the internet at ***runtime***. That's unreliable and a no go for many organizations. You can use Package Internalizer (as we are seeing above) or [[manually internalize packages|How-To-Recompile-Packages]] you want to use from the community repository. More on [[why (community packages repository notes)|CommunityPackagesDisclaimer]].
 
 ### Exercise 2C: Set Up A File Share Repository
+> Not recommended for most organizational use cases. Please look to set up Artifactory, Nexus, or ProGet as they are much more robust (and two do can be used without cost). Please see notes below on file share limitations.
+
 Setting up a file share repository is typically quite simple. You put your nupkgs into a flat folder structure (no subfolders currently) and then can access them wherever you can reach the file share. However there are a couple of things to keep in mind and be careful with when it comes to file shares as repositories. File shares can be UNC, DFS, SMB, etc, as long as it supports Windows ACL permissions.
 
 > File Share notes:
@@ -367,7 +379,9 @@ Setting up a file share repository is typically quite simple. You put your nupkg
 > * ACLs control access to read permissions.
 > * Packages go into the share folder, not subfolders (Chocolatey is currently based in NuGet v2, which doesn't allow subfolders)
 > * Be very careful never to overwrite a version of a nupkg, especially if it has been deployed to any clients. See [package immutability](https://chocolatey.org/docs/how-to-host-feed#package-version-immutability)
-> * Bigger-sized packages will slow down queries, so explore a different option when you see that. Migration is easy
+> * Bigger-sized packages will slow down queries, so explore a different option when you see that.
+> * Enough bigger packages will start timing out queries, so if you've hit this it's time to explore a different option.
+> * Migration to other repo formats is easy
 > * Set access properly if you need to connect from local machine accounts, Everyone share access does not give them network permission. See [local share permissions](https://chocolatey.org/docs/how-to-host-feed#local-folder-permissions).
 
 **NOTE:** If you run into issues where Chocolatey can't see the packages, check the last point above.
@@ -375,10 +389,11 @@ Setting up a file share repository is typically quite simple. You put your nupkg
 While setting up a file share is the quickest way to get started, you may find you outgrow it quite quickly. Fortunately migration to another repository is very simple.
 
 ### Exercise 3D: Set Up An SCCM Distribution Point As A Chocolatey Source
+> Not recommended for most organizational use cases. Please look to set up Artifactory, Nexus, or ProGet as they are much more robust (and two do can be used without cost).
+
 We won't go into how to set up a distribution point, as you have places to learn how to set those up. To enable a distribution point, you are going to add a file share to it. Follow the previous exercise.
 
 ## Exercise 3: Add Packages To The Repository
-
 1. Now we need to get the packages we have in `c:\choco-setup\packages` to the package repository. With Chocolatey.Server, we can cheat a little and simply copy the nupkg files to `$env:ChocolateyToolsLocation\Chocolatey.Server\App_Data\Packages`.
 1. If we are using a different repository, we just need to run `choco push <nupkg_path> -s http://<url_to_api> -k <apikey>`
 
