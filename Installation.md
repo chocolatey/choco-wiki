@@ -83,6 +83,8 @@ remove-->
 * [Non-Administrative install](#non-administrative-install)
 
 ### Install from PowerShell v3+
+**NOTE:** The command for installing with PowerShell at the top of the page works for all versions of PowerShell from v2 on. This is provided as an additional note for folks who want a more terse command that is easier to remember.
+
 With PowerShell, there is an additional step or two. You must ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is not Restricted. We suggest using `Bypass` to bypass the policy to get things installed or `AllSigned` for quite a bit more security.
 
 * Run `Get-ExecutionPolicy`. If it returns `Restricted`, then run `Set-ExecutionPolicy AllSigned` or `Set-ExecutionPolicy Bypass`.
@@ -737,11 +739,15 @@ You need to download and unzip the Chocolatey package, then call the PowerShell 
 
 **NOTE**: This option should be a last resort and is considered to be a more advanced scenario - most things you do on Windows require administrative rights, especially surrounding software management, so you are going to be limited even in packages you attempt to install. If you are using the [community package repository](https://chocolatey.org/packages), there are over 200 packages you can install from the community repository without administrative permission - see https://chocolatey.org/packages?q=id%3Aportable+tag%3Aportable.
 
-1. You must choose a different location than the default (see [Installing to a different location](#installing-to-a-different-location) above). The default is a more secure location that only administrators can update.
-1. Follow that with the command line / PowerShell methods of installation.
-1. Here is an example of this.
+You must choose a different location than the default (see [Installing to a different location](#installing-to-a-different-location) above). The default is a more secure location that only administrators can update.
 
-NonAdmin.ps1:
+1. Save the script below as `ChocolateyInstallNonAdmin.ps1`.
+1. Use the script below, determine where you might want Chocolatey installed if it is not to `C:\ProgramData\chocoportable`.
+1. Open PowerShell.exe.
+1. Run the following `Set-ExecutionPolicy Bypass -Scope Process -Force;`
+1. Run `.\ChocolateyInstallNonAdmin.ps1`.
+
+ChocolateyInstallNonAdmin.ps1:
 
 ~~~powershell
 # Set directory for installation - Chocolatey does not lock
@@ -752,14 +758,16 @@ $env:ChocolateyInstall="$InstallDir"
 # If your PowerShell Execution policy is restrictive, you may
 # not be able to get around that. Try setting your session to
 # Bypass.
-Set-ExecutionPolicy Bypass
+Set-ExecutionPolicy Bypass -Scope Process -Force;
 
 # All install options - offline, proxy, etc at
 # https://chocolatey.org/install
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-# PowerShell 3+?
-#iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+~~~
 
+Examples of packages you can install:
+
+~~~powershell
 choco install puppet-agent.portable -y
 choco install ruby.portable -y
 choco install git.commandline -y
