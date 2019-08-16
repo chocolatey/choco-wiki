@@ -115,6 +115,10 @@ With completely offline use of Chocolatey, you want to ensure you remove the def
 # === EDIT HERE ===
 $packageRepo = '<INSERT ODATA REPO URL>'
 
+# If the above $packageRepo repository requires authentication, add the username and password here. Otherwise these leave these as empty strings.
+$repoUsername = ''    # this must be empty is NOT using authentication
+$repoPassword = ''    # this must be empty if NOT using authentication
+
 # Determine unzipping method
 # 7zip is the most compatible, but you need an internally hosted 7za.exe.
 # Make sure the version matches for the arguments as well.
@@ -137,6 +141,12 @@ $unzipMethod = 'builtin'
 # === NO NEED TO EDIT ANYTHING BELOW THIS LINE ===
 # Ensure we can run everything
 Set-ExecutionPolicy Bypass -Scope Process -Force;
+
+# If the repository requires authentication, create the Credential object
+if ((-not [string]::IsNullOrEmpty($repoUsername)) -and (-not [string]::IsNullOrEmpty($repoPassword))) {
+    $securePassword = ConvertTo-SecureString $repoPassword -AsPlainText -Force
+    $repoCreds = New-Object System.Management.Automation.PSCredential ($repoUsername, $securePassword)
+}
 
 $searchUrl = ($packageRepo.Trim('/'), 'Packages()?$filter=(Id%20eq%20%27chocolatey%27)%20and%20IsLatestVersion') -join '/'
 
@@ -201,7 +211,11 @@ param (
   $downloader = new-object System.Net.WebClient
 
   $defaultCreds = [System.Net.CredentialCache]::DefaultCredentials
-  if ($defaultCreds -ne $null) {
+  if (Test-Path -Path variable:repoCreds) {
+    Write-Debug "Using provided repository authentication credentials."
+    $downloader.Credentials = $repoCreds
+  } elseif ($defaultCreds -ne $null) {
+    Write-Debug "Using default repository authentication credentials."
     $downloader.Credentials = $defaultCreds
   }
 
