@@ -2,29 +2,30 @@
 
 <!-- TOC -->
 
-- [What is Chocolatey?](#what-is-chocolatey)
-  - [Features](#features)
-  - [Common Thoughts](#common-thoughts)
-  - [Summary](#summary)
-  - [Already familiar with other package managers?](#already-familiar-with-other-package-managers)
-- [Requirements](#requirements)
-  - [Chocolatey Clients](#chocolatey-clients)
-    - [Chocolatey Components](#chocolatey-components)
-    - [Space Requirements](#space-requirements)
-    - [Memory Requirements](#memory-requirements)
-  - [Chocolatey Repository Servers](#chocolatey-repository-servers)
-  - [Chocolatey Central Management](#chocolatey-central-management)
-- [Using Chocolatey](#using-chocolatey)
-  - [Overriding default install directory or other advanced install concepts](#overriding-default-install-directory-or-other-advanced-install-concepts)
-- [Terminology](#terminology)
-- [What Are Chocolatey Packages?](#what-are-chocolatey-packages)
-- [How does Chocolatey work?](#how-does-chocolatey-work)
-  - [Installation](#installation)
-  - [Upgrade](#upgrade)
-  - [Uninstall](#uninstall)
-- [Where are Chocolatey packages installed to?](#where-are-chocolatey-packages-installed-to)
-- [How does Chocolatey work with Programs and Features? Existing installs?](#how-does-chocolatey-work-with-programs-and-features-existing-installs)
-- [Where does Chocolatey install packages from?](#where-does-chocolatey-install-packages-from)
+- [Getting Started](#getting-started)
+    - [What is Chocolatey?](#what-is-chocolatey)
+        - [Features](#features)
+        - [Common Thoughts](#common-thoughts)
+        - [Summary](#summary)
+        - [Already familiar with other package managers?](#already-familiar-with-other-package-managers)
+    - [Requirements](#requirements)
+        - [Chocolatey Clients](#chocolatey-clients)
+            - [Chocolatey Components](#chocolatey-components)
+            - [Space Requirements](#space-requirements)
+            - [Memory Requirements](#memory-requirements)
+        - [Chocolatey Repository Servers](#chocolatey-repository-servers)
+        - [Chocolatey Central Management](#chocolatey-central-management)
+    - [Using Chocolatey](#using-chocolatey)
+        - [Overriding default install directory or other advanced install concepts](#overriding-default-install-directory-or-other-advanced-install-concepts)
+    - [Terminology](#terminology)
+    - [What Are Chocolatey Packages?](#what-are-chocolatey-packages)
+    - [How does Chocolatey work?](#how-does-chocolatey-work)
+        - [Installation](#installation)
+        - [Upgrade](#upgrade)
+        - [Uninstall](#uninstall)
+    - [Where are Chocolatey packages installed to?](#where-are-chocolatey-packages-installed-to)
+    - [How does Chocolatey work with Programs and Features? Existing installs?](#how-does-chocolatey-work-with-programs-and-features-existing-installs)
+    - [Where does Chocolatey install packages from?](#where-does-chocolatey-install-packages-from)
 
 <!-- /TOC -->
 
@@ -149,7 +150,7 @@ Software and Package are not terms used interchangeably in the Chocolatey commun
 * **Portable Package** - packages that use zip or just contain the runtime software. Usually these packages do not require administrative privileges to install or run. See [[|https://github.com/chocolatey/choco/wiki/ChocolateyFAQs#portable-application-something-that-doesnt-require-a-system-install-to-use]]
 * **Extension Package** - packages that provide extensions to Chocolatey's PowerShell module through additional PowerShell modules.
 * **Template Package** - packages that have packaging templates in them, used in package creation. See [[create your own package templates|How-To-Create-Custom-Package-Templates]].
-* **Metapackage** - packages that only exist to take dependencies on other packages, usually as a way of providing one command to get a complete setup. Some metapackages exist to provide discoverability, such as "git" versus 'git.install." The git package just depends on git.install, so running the install for either package will result in the git software being installed on the machine.
+* **Metapackage** - packages that only exist to take dependencies on other packages, usually as a way of providing one command to get a complete setup. Some metapackages exist to provide discoverability, such as "git" versus 'git.install." The git package just depends on git.install, so running the install for either package will result in the git software being installed on the machine. A walk-through guide to metapackages is available [here](./MetaPackage.md).
 * **Virtual package** - a concept that a package can "provide" some functionality and any package that meets that provides will be considered a dependency met. For example, if you need to take a dependency on a pdf reader, you wouldn't want to take a hard dependency on AdobeReader, but instead you would hope that adobereader provides pdf as well as other packages like SumatraPDF and FoxitReader. Then you could take a dependency on pdf and if any of those packages are installed, the dependency is met. Otherwise an algorithm would determine which one to install. THIS IS NOT IMPLEMENTED AT THIS TIME WITH CHOCOLATEY.
 
 ## What Are Chocolatey Packages?
