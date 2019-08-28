@@ -1,4 +1,4 @@
-<!--remove {{AT}}section SideColumn { remove-->
+<!--remove <div id="RightNav"> remove-->
 <!-- TOC -->
 
 - [Requirements](#requirements)
@@ -10,7 +10,7 @@
 - [FAQs](#faqs)
 
 <!-- /TOC -->
-<!--remove } remove-->
+<!--remove </div> remove-->
 
 ## Requirements
 * Windows 7+ / Windows Server 2003+
