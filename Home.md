@@ -9,7 +9,7 @@
 - [Information](#information)
 - [Using Chocolatey](#using-chocolatey)
 - [Packages](#packages)
-- [Walkthroughs / How To Links](#walkthroughs--how-to-links)
+- [Walkthroughs / How To Links](#walkthroughs-how-to-links)
 - [Road Map](#road-map)
   - [Important Reference Links](#important-reference-links)
 - [See It In Action](#see-it-in-action)
