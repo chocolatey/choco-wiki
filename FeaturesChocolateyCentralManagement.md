@@ -15,6 +15,7 @@ Once installed and configured, you can use CCM to:
 <!-- TOC depthTo:6 -->
 
 - [Usage](#usage)
+- [Roadmap](#roadmap)
 - [Requirements](#requirements)
 - [Installation Source](#installation-source)
 - [Setup](#setup)
@@ -86,6 +87,23 @@ Once installed and configured, you can use CCM to:
 ## Usage
 
 Chocolatey Central Management (CCM) works in conjunction with [Chocolatey Agent](https://chocolatey.org/docs/features-agent-service) to bring full details of all Chocolatey controlled machines in your environment into one location, which is then accessible by the CCM Website.  Chocolatey Agent will regularly report information about what is installed on each machine, and whether any of that software is outdated, based on packages in available sources.
+
+## Roadmap
+
+Chocolatey Central Management will allow:
+
+* Centralized Software Management for your entire organization.
+* ~~Centralized reporting of software.~~ Completed May 2019
+* ~~Know immediately what software is out of date and on what machines.~~ Completed May 2019
+* ~~Know within seconds the entire estate of software and what versions are installed.~~ Completed May 2019
+  * ~~Including zips and archives* that do not show up in Programs and Features~~ Completed May 2019
+  * ~~Including internal software* that does not show up in Programs and Features~~ Completed May 2019
+* Adhoc reporting for a particular machine or set of machines
+* Run arbitrary Chocolatey commands against one or more machines
+* ~~See how many machines you are actively managing in your organization~~ Completed May 2019
+* More...
+
+\* - When deployed through Chocolatey.
 
 ## Requirements
 

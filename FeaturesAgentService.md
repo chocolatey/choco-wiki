@@ -18,9 +18,19 @@ The Chocolatey Agent service allows you to go further with your software managem
       - [Interactive Self-Service Consideration](#interactive-self-service-consideration)
   - [Chocolatey Background Service / Self-Service Installer](#chocolatey-background-service--self-service-installer)
     - [Self-Service Roadmap:](#self-service-roadmap)
-  - [Chocolatey Central Console](#chocolatey-central-console)
-    - [Chocolatey Central Console Roadmap](#chocolatey-central-console-roadmap)
+  - [Chocolatey Central Management](#chocolatey-central-management)
 - [See It In Action](#see-it-in-action)
+- [Scenarios With Self-Service](#scenarios-with-self-service)
+  - [Managing Very Large Installation Media](#managing-very-large-installation-media)
+    - [Option 1 - Binary/Raw Repository](#option-1---binaryraw-repository)
+    - [Option 2 - File Share](#option-2---file-share)
+    - [Option 3 - File Share Managed Outside of Self-Service](#option-3---file-share-managed-outside-of-self-service)
+    - [Recommendation](#recommendation)
+  - [Managing Non-Silent Installers](#managing-non-silent-installers)
+    - [Option 1 - MSI Repackaging](#option-1---msi-repackaging)
+    - [Option 2 - Use Chocolatey Software's Professional Packaging Support Services](#option-2---use-chocolatey-softwares-professional-packaging-support-services)
+    - [Option 3 - Window Automation Scripting](#option-3---window-automation-scripting)
+    - [Recommendation](#recommendation-1)
 - [FAQ](#faq)
   - [How do I take advantage of Chocolatey Agent?](#how-do-i-take-advantage-of-chocolatey-agent)
   - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
@@ -70,14 +80,15 @@ To install the Chocolatey agent service, you need to install the `chocolatey-age
 To set Chocolatey in background mode, you need to run the following:
 
 * `choco upgrade chocolatey-agent <options>` (see [agent install options](#chocolatey-agent-install-options))
-* `choco feature disable --name=showNonElevatedWarnings` - requires Chocolatey v0.10.4+ to set.
-* `choco feature enable --name=useBackgroundService`
+* `choco feature disable --name="'showNonElevatedWarnings'"` - requires Chocolatey v0.10.4+ to set.
+* `choco feature enable --name="'useBackgroundService'"`
 * You also need to opt in sources in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`). You can also run `choco source -?` to get the help menu.
-    * OPTIONAL (not recommended): Alternatively, you can allow any configured source to be used for self-service by running the following: `choco feature disable --name=useBackgroundServiceWithSelfServiceSourcesOnly` (requires Chocolatey Extension v1.10.0+). We do not recommend this as it could be a security finding if you shut it off.
-* OPTIONAL (highly recommended): If you want self-service to apply only to non-administrators, run `choco feature enable --name=useBackgroundServiceWithNonAdministratorsOnly` (requires Chocolatey Extension v1.11.1+). Do understand this means that a real non-administrator, not an administrator in a non-elevated UAC context (that scenario will go the normal route and will not go through background mode).
+    * OPTIONAL (not recommended): Alternatively, you can allow any configured source to be used for self-service by running the following: `choco feature disable --name="'useBackgroundServiceWithSelfServiceSourcesOnly'"` (requires Chocolatey Extension v1.10.0+). We do not recommend this as it could be a security finding if you shut it off.
+* OPTIONAL (highly recommended): If you want self-service to apply only to non-administrators, run `choco feature enable --name="'useBackgroundServiceWithNonAdministratorsOnly'"` (requires Chocolatey Extension v1.11.1+). Do understand this means that a real non-administrator, not an administrator in a non-elevated UAC context (that scenario will go the normal route and will not go through background mode).
 * OPTIONAL (varied recommendations): If you want to configure custom commands (not just install/upgrade), use something like `choco config set backgroundServiceAllowedCommands "install,upgrade,pin,sync"` (with the commands you want to allow, requires Chocolatey Extension v1.12.4+). See [commands consideration](#command-customization-consideration) below.
+* OPTIONAL (highly recommended): If you want to allow non-admins to uninstall packages, you can also restrict down to only the packages they have installed/upgraded. Run `choco feature enable --name="'allowBackgroundServiceUninstallsFromUserInstallsOnly'"` (requires Chocolatey Extension v2.0+).
 * OPTIONAL (highly recommended): For use with Chocolatey GUI, you need Chocolatey Extension v1.12.4+, and at least Chocolatey GUI v0.15.0. **Uninstall any version of the GUI you already have installed first**, then run `choco upgrade chocolateygui -y --allow-downgrade` (you will also need at least .NET 4.5.2 installed)
-* DOES NOT WORK WITH UAC, DO NOT USE UNTIL [FIX IS ANNOUNCED](https://groups.google.com/group/chocolatey-announce)! OPTIONAL (recommended if you use installers that are not completely silent): If you want self-service to interactively manage installations, run `choco feature enable --name=useBackgroundServiceInteractively` (requires Chocolatey Extension v1.12.10+). This requires that you use the `ChocolateyLocalAdmin` account with the Chocolatey-managed password as passwords are not stored and the service would need to produce that at runtime. There are some security considerations and why this is not turned on by default. Please see [interactive self-service consideration](#interactive-self-service-consideration).
+* DOES NOT WORK WITH UAC, DO NOT USE UNTIL [FIX IS ANNOUNCED](https://groups.google.com/group/chocolatey-announce)! OPTIONAL (recommended if you use installers that are not completely silent): If you want self-service to interactively manage installations, run `choco feature enable --name="'useBackgroundServiceInteractively'"` (requires Chocolatey Extension v1.12.10+). This requires that you use the `ChocolateyLocalAdmin` account with the Chocolatey-managed password as passwords are not stored and the service would need to produce that at runtime. There are some security considerations and why this is not turned on by default. Please see [interactive self-service consideration](#interactive-self-service-consideration).
 
 **NOTE**: Once you are all setup, please review the [Common Errors and Resolutions](#common-errors-and-resolutions) section so you will be familiar if you run into any issues with working with sources.
 
@@ -90,6 +101,10 @@ choco upgrade chocolatey-agent -y
 choco feature disable --name="'showNonElevatedWarnings'"
 choco feature enable --name="'useBackgroundService'"
 choco feature enable --name="'useBackgroundServiceWithNonAdministratorsOnly'"
+# allow uninstalls as well:
+#choco config set backgroundServiceAllowedCommands "install,upgrade,uninstall"
+# restrict uninstalls to just packages the user has installed/upgraded (requires Chocolatey Extension v2.0+):
+#choco feature enable --name="'allowBackgroundServiceUninstallsFromUserInstallsOnly'"
 
 # TODO: opt in your sources with --allow-self-service - run choco source -? for details
 ~~~
@@ -200,26 +215,9 @@ This makes for happy users and happy admins as they are able to move quicker tow
 * ~~Admins will be able to configure what commands can be run through the background service.~~ Completed with Chocolatey Extension v1.12.4.
 * Admins will have more granular control of what certain users can install.
 
-### Chocolatey Central Console
+### Chocolatey Central Management
 
-Chocolatey will have a central core console that will allow you to manage your environments. You will need the Chocolatey Agent installed on all machines you wish to manage centrally.
-
-#### Chocolatey Central Console Roadmap
-
-The console will allow:
-
-* Centralized Software Management for your entire organization.
-* Centralized reporting of software.
-* Know immediately what software is out of date and on what machines.
-* Know within seconds the entire estate of software and what versions are installed.
-  * Including zips and archives* that do not show up in Programs and Features
-  * Including internal software* that does not show up in Programs and Features
-* Adhoc reporting for a particular machine or set of machines
-* Run arbitrary Chocolatey commands against one or more machines
-* See how many machines you are actively managing in your organization
-* More...
-
-\* - When deployed through Chocolatey.
+Chocolatey has a centralized reporting and ultimately will also support endpoint management through [Chocolatey Central Management (CCM)](FeaturesChocolateyCentralManagement.md). On machines that will take advantage of CCM, you will need the Chocolatey Agent installed and properly configured to manage them centrally.
 
 ## See It In Action
 
@@ -266,6 +264,129 @@ Now, if a user wants to install from a non-approved source, they are met with th
 ![Not able to install from custom source](images/features/features_non_admin_custom_source_error.png)
 
 This ensures non-admin users can only install from sources that you configure.
+
+## Scenarios With Self-Service
+
+We'll add more scenarios as we come across them from questions, etc. This is meant to address situations you might find yourself in and how best to apply recommendations work through them.
+
+### Managing Very Large Installation Media
+
+If you are managing something like SQL Server, Office, or Autodesk, you may already know you need to split the binaries away from the Chocolatey packaging. Where do you put it and how can you ensure it can be installed with background service?
+
+#### Option 1 - Binary/Raw Repository
+
+You can store big binaries in a raw/binary repository that comes with the following repository servers: Nexus, Artifactory, and ProGet. You could also just put things on a web host that gives bare downloads when accessed.
+
+**Pros:**
+* Very reliable - once files are in the binary/raw repository, moving them around would require being very intentional. Since the binary/raw repository sits directly next to the Chocolatey package repositories, they are going to work well together
+* Low maintenance - you don't need to remember to add new computers to any AD groups.
+* Could be accessed anywhere - aside from open credentials being necessary right now, once that is adjusted in Chocolatey itself, this would allow you to get to the installation media from anywhere in the world if you chose to open it up that way.
+
+**Cons:**
+* Initial setup - it will take a moment to get this setup, but it can be done really fast if you already heeded Chocolatey recommendations on using Nexus, Artifactory, or ProGet for your repository needs.
+* No credentials on binary/raw repository - Chocolatey needs the download to not need credentials currently (or you may want to manage that separately than built in choco functions)
+* Requires a local download - if the installation media is big enough, you may prefer installing from a network share and not want to download the components first to each machine.
+
+#### Option 2 - File Share
+
+You may choose that you want to store files on a network share as that is where you may have a lot of your installation media currently and you don't want to set up.
+
+Just like in the cases of Puppet, Chef, or other things that run under a Windows Service, the account that runs the Chocolatey Agent by default is a local account. So it is not going to have permission to see the file share by default. There are two methods you can employ to handle this situation
+
+To enable this you can pick from one of two different methods:
+
+1. Use a LDAP account for the service - you can always run the service under a different user. See [Agent Install Options](#chocolatey-agent-install-options).
+1. Give the computer read access to the share - If you are on Active Directory, you can add all computers to a global group and give that group read access to the share. This requires being explicit on that with no nesting. See [explicit permissions to allow local accounts access to file shares](#im-having-trouble-seeing-packages-on-a-file-share-source).
+
+**Pros:**
+* Easy setup - you are simply creating a file share
+* Enables network installs - no need to download anything locally.
+
+**Cons:**
+* Not very reliable - If a file gets deleted, renamed, or moved, you now have a broken package you need to go fix. This could happen simply as the files here may be dual-purposed and other folks don't realize they are breaking your packages. You must be diligent in here that you don't mess things up.
+* Can not be used outside of network - if you have clients that need to install packages but are outside your network, they are going to fail.
+* Method 2 Needs Maintenance - every time you add new computers you need to remember to explicitly add them to the AD global group.
+
+
+#### Option 3 - File Share Managed Outside of Self-Service
+
+If you are unable to use one of the two methods to gain access to the file share, your last option is really to manage those packages that have the bigger binaries outside of self-service.
+
+* Make sure you have the feature `useBackgroundServiceWithSelfServiceSourcesOnly` enabled.
+* Create another Chocolatey/NuGet repository and put those non-self-service useable packages in that repository instead.
+* When configuring that source on your machines, don't add the `--allow-self-service` to that repository. That repository is now invisible to self-service.
+
+**Pros:**
+* Same Pros as in Option 2. Additionally:
+* Packages being managed separately will be skipped automatically on upgrade all.
+
+**Cons:**
+* Same Cons as seen in Option 2. Additionally:
+* You must manage installs/upgrades separately.
+* Still can't manage it with other configuration management or endpoint management tools either - most tools, like Puppet, Chef, possible SCCM, are still going to have trouble seeing that file share. Unless of course you have given those Windows services an account that has network share access.
+
+#### Recommendation
+
+When you can, prefer option 1. This gives you the most flexibility. However depending on your needs, you may see a combination of any of the above.
+
+### Managing Non-Silent Installers
+
+Sometimes you come across non-silent installers. These are things that occur that would block an install/upgrade from finishing until there is a user interaction, like a pop-up or opening a browser and directing to a site. And it doesn't matter what you pass for silent arguments, the installer will still present these user interactions.
+
+With Chocolatey, like with other deployment or endpoint management software, you must have the ability to have an installer be completely unattended.
+
+#### Option 1 - MSI Repackaging
+
+The best way to handle installers that do not play nice is called MSI repackaging (records installation and produces an MSI you use instead). That technology has been around for about 20 years and once you have that produced MSI, it will work in all deployment scenarios.
+
+**Pros:**
+* Produced MSI can be used in all automation scenarios - works with any deployment scenario, including those that are run by a Windows service
+* Produced MSI is solid - there are unlikely to be issues with deploying this in any environment.
+* Not much learning required to create MSI - depending on what tool you use for MSI repackaging, it's really easy to do.
+* You can trust produced MSI - you created it, you know nothing is gonna hack your environment with specially crafted scripts in the MSI.
+* Can be done reasonably quickly - it doesn't take a lot of time to run MSI repackaging once you are set up, you might want to use a clean VM with a snapshot you can go back to after each time you complete.
+
+**Cons:**
+* You must repackage for each new version of the software
+* Media is not the same as the original - this is why you will not find examples on the community repository.
+* No examples to look at - read more below.
+
+**NOTE**: Unfortunately you are unlikely to find any packages on the Chocolatey Community Repository that are able to take advantage of MSI repackaging - due to both distribution rights and verification/security. Redistribution of installation media often requires permission - that would include anything that mimics what is done (like the produced MSI). Then verification and security - even if redistribution is allowed, you step into trust and verification of this unknown binary that moderators and the community at large are unlikely to trust.  When you are doing MSI repackaging internally and housing the bits on your internal repo, you can typically more fully trust what you are doing there versus some random maintainer on the internet doing similar.
+
+#### Option 2 - Use Chocolatey Software's Professional Packaging Support Services
+
+When you are customer, you can engage with Chocolatey Software to create the MSI for you for a flat rate fee.
+
+**Pros:**
+* Same Pros as in Option 1. Additionally:
+* Easy - you hand off the media to our team and you get an MSI and Chocolatey package back.
+* Affordable - there is a flat rate fee associated. So you pay the same price whether it takes our team 2 hours or 5 days.
+* Turnaround is fast - depending on the queue, you can have something in your hands in less than two weeks.
+* Built by Chocolatey - these MSIs are produced by our team, so you can trust that it's not someone random out there making these.
+
+**Cons:**
+* Same Cons as in Option 1. Additionally:
+* Turnaround time is 5-10 business days - if you need something in a rush, you may need to complete Option 1.
+* Requires prepayment - you must pay for this in advance.
+* Each version counts as a use - each time you reach out, including having upgrades for a piece of software, counts as an engagement and is subject to the fee.
+
+#### Option 3 - Window Automation Scripting
+
+There are tools like Autohotkey (AHK) and AutoIT that can handle the user interaction for you. The bonus is that you get to use the original installation media and have a script that handles all of the failure points for the non-silent installer.
+
+**Pros:**
+* Uses original installation media - the script clicks the buttons or closes the windows for you
+* Script may work with newer versions - the script may not require any updating whenever newer versions of software come out.
+* Examples may already exist - the community package repository can use this method to automate badly behaved installers b/c the original installation media is being used.
+
+**Cons:**
+* Requires interactive session - will fail as soon as you have a Windows service attempt to run this in a headless operation.
+* Requires learning the automation scripting syntax - if you dislike learning new tools, you will find this an issue.
+* Can be fragile - whenever you have tools that are clicking on buttons for you, depending on how the scripts are written, can still be fragile.
+
+#### Recommendation
+
+MSI repackaging is always preferred. At the end of creating that, you have something that can be deployed silently with any method you prefer to deploy it with.
 
 
 ## FAQ
