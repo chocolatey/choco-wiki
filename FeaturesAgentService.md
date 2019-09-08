@@ -278,34 +278,34 @@ If you are managing something like SQL Server, Office, or Autodesk, you may alre
 You can store big binaries in a raw/binary repository that comes with the following repository servers: Nexus, Artifactory, and ProGet. You could also just put things on a web host that gives bare downloads when accessed.
 
 **Pros:**
-* Very reliable - once files are in the binary/raw repository, moving them around would require being very intentional. Since the binary/raw repository sits directly next to the Chocolatey package repositories, they are going to work well together
+* Very reliable - once files are in the binary/raw repository, moving them around would require being very intentional. Since the binary/raw repository sits directly next to the Chocolatey package repositories, they are going to work well together.
 * Low maintenance - you don't need to remember to add new computers to any AD groups.
 * Could be accessed anywhere - aside from open credentials being necessary right now, once that is adjusted in Chocolatey itself, this would allow you to get to the installation media from anywhere in the world if you chose to open it up that way.
 
 **Cons:**
-* Initial setup - it will take a moment to get this setup, but it can be done really fast if you already heeded Chocolatey recommendations on using Nexus, Artifactory, or ProGet for your repository needs.
-* No credentials on binary/raw repository - Chocolatey needs the download to not need credentials currently (or you may want to manage that separately than built in choco functions)
+* Initial setup - it will take a moment to get this setup, but it can be done really fast if you already followed Chocolatey recommendations on using Nexus, Artifactory, or ProGet for your repository needs.
+* No credentials on binary/raw repository - The Chocolatey built-in functions like `Get-ChocolateyWebFile` don't have the ability to directly pass credentials yet.
 * Requires a local download - if the installation media is big enough, you may prefer installing from a network share and not want to download the components first to each machine.
 
 #### Option 2 - File Share
 
-You may choose that you want to store files on a network share as that is where you may have a lot of your installation media currently and you don't want to set up.
+You may choose that you want to store files on a network share as that is where you may have a lot of your installation media currently and you don't want to set up somewhere else that you would need to duplicate what is already done.
 
-Just like in the cases of Puppet, Chef, or other things that run under a Windows Service, the account that runs the Chocolatey Agent by default is a local account. So it is not going to have permission to see the file share by default. There are two methods you can employ to handle this situation
+Just like in the cases of Puppet, Chef, or other things that run under a Windows Service, the account that runs the Chocolatey Agent by default is a local Windows account. So it is not going to have permission to see a file share by default. There are two methods you can employ to handle this situation.
 
-To enable this you can pick from one of two different methods:
+Pick from one of two different methods:
 
 1. Use a LDAP account for the service - you can always run the service under a different user. See [Agent Install Options](#chocolatey-agent-install-options).
 1. Give the computer read access to the share - If you are on Active Directory, you can add all computers to a global group and give that group read access to the share. This requires being explicit on that with no nesting. See [explicit permissions to allow local accounts access to file shares](#im-having-trouble-seeing-packages-on-a-file-share-source).
 
 **Pros:**
-* Easy setup - you are simply creating a file share
+* Easy setup - you are simply creating a file share.
 * Enables network installs - no need to download anything locally.
 
 **Cons:**
 * Not very reliable - If a file gets deleted, renamed, or moved, you now have a broken package you need to go fix. This could happen simply as the files here may be dual-purposed and other folks don't realize they are breaking your packages. You must be diligent in here that you don't mess things up.
 * Can not be used outside of network - if you have clients that need to install packages but are outside your network, they are going to fail.
-* Method 2 Needs Maintenance - every time you add new computers you need to remember to explicitly add them to the AD global group.
+* Method 2 requires maintenance - every time you add new computers you need to remember to explicitly add them to the AD global group.
 
 
 #### Option 3 - File Share Managed Outside of Self-Service
@@ -314,7 +314,7 @@ If you are unable to use one of the two methods to gain access to the file share
 
 * Make sure you have the feature `useBackgroundServiceWithSelfServiceSourcesOnly` enabled.
 * Create another Chocolatey/NuGet repository and put those non-self-service useable packages in that repository instead.
-* When configuring that source on your machines, don't add the `--allow-self-service` to that repository. That repository is now invisible to self-service.
+* When configuring that source on your machines, don't add the `--allow-self-service` to that repository. That repository is now invisible to self-service and won't be considered whenever referring back to the background service.
 
 **Pros:**
 * Same Pros as in Option 2. Additionally:
@@ -323,24 +323,24 @@ If you are unable to use one of the two methods to gain access to the file share
 **Cons:**
 * Same Cons as seen in Option 2. Additionally:
 * You must manage installs/upgrades separately.
-* Still can't manage it with other configuration management or endpoint management tools either - most tools, like Puppet, Chef, possible SCCM, are still going to have trouble seeing that file share. Unless of course you have given those Windows services an account that has network share access.
+* Still can't manage it with other infrastructure management / endpoint management tools either - most tools, like Puppet, Chef, possibly SCCM, are still going to have trouble seeing that file share. Unless of course you have given those Windows services an account that has network share access.
 
 #### Recommendation
 
-When you can, prefer option 1. This gives you the most flexibility. However depending on your needs, you may see a combination of any of the above.
+When you can, prefer option 1 (Binary/Raw Repository). This gives you the most flexibility. However depending on your needs, you may see a combination of any of the above.
 
 ### Managing Non-Silent Installers
 
 Sometimes you come across non-silent installers. These are things that occur that would block an install/upgrade from finishing until there is a user interaction, like a pop-up or opening a browser and directing to a site. And it doesn't matter what you pass for silent arguments, the installer will still present these user interactions.
 
-With Chocolatey, like with other deployment or endpoint management software, you must have the ability to have an installer be completely unattended.
+With Chocolatey, like with other deployment or endpoint management tools, an installer must be made completely silent/unattended to work in automated deployment scenarios.
 
 #### Option 1 - MSI Repackaging
 
-The best way to handle installers that do not play nice is called MSI repackaging (records installation and produces an MSI you use instead). That technology has been around for about 20 years and once you have that produced MSI, it will work in all deployment scenarios.
+The best way to handle installers that do not play nice is called MSI repackaging (records installation and produces an MSI you use instead). MSI repackaging technology has been around for about 20 years and once you have that produced MSI, it will work in all deployment scenarios.
 
 **Pros:**
-* Produced MSI can be used in all automation scenarios - works with any deployment scenario, including those that are run by a Windows service
+* Produced MSI can be used in all automation scenarios - works with any deployment scenario, including those that are run by a Windows service.
 * Produced MSI is solid - there are unlikely to be issues with deploying this in any environment.
 * Not much learning required to create MSI - depending on what tool you use for MSI repackaging, it's really easy to do.
 * You can trust produced MSI - you created it, you know nothing is gonna hack your environment with specially crafted scripts in the MSI.
@@ -348,10 +348,14 @@ The best way to handle installers that do not play nice is called MSI repackagin
 
 **Cons:**
 * You must repackage for each new version of the software
-* Media is not the same as the original - this is why you will not find examples on the community repository.
+* Media is not the same as the original - what you actually deploy is not the same as the original installation media.
 * No examples to look at - read more below.
+* Produced binaries still subject to distribution rights - however if you are keeping everything internal, you never need to worry about this. You just can't share what you've done on something like the community repository as it is public.
 
-**NOTE**: Unfortunately you are unlikely to find any packages on the Chocolatey Community Repository that are able to take advantage of MSI repackaging - due to both distribution rights and verification/security. Redistribution of installation media often requires permission - that would include anything that mimics what is done (like the produced MSI). Then verification and security - even if redistribution is allowed, you step into trust and verification of this unknown binary that moderators and the community at large are unlikely to trust.  When you are doing MSI repackaging internally and housing the bits on your internal repo, you can typically more fully trust what you are doing there versus some random maintainer on the internet doing similar.
+**NOTE**: Unfortunately you are unlikely to find any packages on the Chocolatey Community Repository that are able to take advantage of MSI repackaging - this is due to both distribution rights and verification/security.
+
+* Redistribution of installation media often requires permission - that would include anything that mimics what is done (like the produced MSI).
+* Then verification and security - even if redistribution is allowed, you step into trust and verification of this unknown binary that moderators and the community at large are unlikely to trust. When you are doing MSI repackaging internally and housing the bits on your internal repo, you can typically more fully trust what you are doing there versus some random maintainer on the internet doing similar.
 
 #### Option 2 - Use Chocolatey Software's Professional Packaging Support Services
 
@@ -362,7 +366,7 @@ When you are customer, you can engage with Chocolatey Software to create the MSI
 * Easy - you hand off the media to our team and you get an MSI and Chocolatey package back.
 * Affordable - there is a flat rate fee associated. So you pay the same price whether it takes our team 2 hours or 5 days.
 * Turnaround is fast - depending on the queue, you can have something in your hands in less than two weeks.
-* Built by Chocolatey - these MSIs are produced by our team, so you can trust that it's not someone random out there making these.
+* Built by Chocolatey - these MSIs are produced by our team, so you can trust that it's not someone random person out there making these.
 
 **Cons:**
 * Same Cons as in Option 1. Additionally:
