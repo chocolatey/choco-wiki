@@ -84,7 +84,7 @@ Guidelines are strong suggestions that improve the quality of a package version.
 * Trial software should include the #trial tag. (will become a requirement in Feb 2016)
 * Software that requires a license should include a tag #license. (will become a requirement in Feb 2016)
 * LicenseUrl is nearly a requirement. The only reason it sits in guidelines is that not all software has a url out there containing its license information. We request that in those cases they point to the url for the FOSS license of the software, if they have an open license.
-* We really want to see the IconUrl being used, and some moderators want to see it being used properly, using the jsDelivr, Staticaly, or Githack  CDN. However it is a guideline, and something to note for a maintainer to fix up next time, not currently. Some software doesn't have a proper icon.
+* We really want to see the IconUrl being used, and some moderators want to see it being used properly, using the jsDelivr, Statically, or Githack  CDN. However it is a guideline, and something to note for a maintainer to fix up next time, not currently. Some software doesn't have a proper icon.
 * Suggest description get really filled out and they take full advantage of the use of markdown.
 * Summary is important, but it doesn't show up on the package page.
 * Tags could always use suggestions to add.
