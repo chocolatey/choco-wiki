@@ -4,6 +4,7 @@ Chocolatey integrates with several infrastructure automation tools!
 
 With most of these tools, the interface you would interact with Chocolatey would be through the tool or through the interfaces of the tool, like in scripts.
 
+<!--remove {{AT}}section SideColumn { remove-->
 <!-- TOC depthTo:2 -->
 
 - [Summary](#summary)
@@ -20,6 +21,7 @@ With most of these tools, the interface you would interact with Chocolatey would
 - [System Center Configuration Manager](#system-center-configuration-manager)
 
 <!-- /TOC -->
+<!--remove } remove-->
 
 ## Summary
 

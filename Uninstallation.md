@@ -22,6 +22,11 @@ There are no warranties on this script whatsoever, but here is something you can
 
 ***WARNING:*** Seriously, this script may destroy your machine and require a rebuild. It may have varied results on different machines in the same environment. Think twice before running this.
 
+<!--remove
+<p class="text-danger"><strong>Click the red button below to reveal the uninstall scripts.</strong></p>
+<button type="button" class="btn btn-danger btn-hide">Yes, I understand the dangers of running these scripts</button>
+<div id="uninstall-scripts" class="d-none">
+-->
 If you also intend to delete the Chocolatey directory, remove the `-WhatIf`:
 
 ~~~powershell
@@ -82,3 +87,6 @@ if ($env:ChocolateyToolsLocation) { Remove-Item -Recurse -Force "$env:Chocolatey
 [System.Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", $null, 'User')
 [System.Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", $null, 'Machine')
 ~~~
+<!--remove
+</div>
+-->

@@ -1,4 +1,6 @@
 Table of Contents
+<!--remove {{AT}}section SideColumn { remove-->
+<!-- TOC -->
 
 * [Courses](#courses)
 * [Labs](#labs)
@@ -9,6 +11,9 @@ Table of Contents
 * [Testimonials](#testimonials)
 * [[Videos|Videos]]
 * [[Presentations|Presentations]]
+
+<!-- /TOC -->
+<!--remove } remove-->
 
 ## Courses
 

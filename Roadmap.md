@@ -1,6 +1,7 @@
 # Roadmap
 Heading down a sweet road.
 
+<!--remove {{AT}}section SideColumn { remove-->
 <!-- TOC -->
 
 - [Chocolatey](#chocolatey)
@@ -10,6 +11,7 @@ Heading down a sweet road.
 - [Legal](#legal)
 
 <!-- /TOC -->
+<!--remove } remove-->
 
 **NOTE:** This is not always going to be updated, one can take a look at the issues list here and in the chocolatey.org repositories.
 

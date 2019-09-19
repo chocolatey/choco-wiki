@@ -350,7 +350,7 @@ Also see the [Licensed Editions](#licensed-editions) section below.
 
 <a id="markdown-what-is-the-difference-between-foss-and-the-licensed-editions" name="what-is-the-difference-between-foss-and-the-licensed-editions"></a>
 ### What is the difference between FOSS and the licensed editions?
-A lot of that is covered in the FAQ on the [pricing](https://chocolatey.org/pricing#faq), but also be sure to check out the [comparison table](https://chocolatey.org/pricing#compare).
+A lot of that is covered in the FAQ on the [pricing](https://chocolatey.org/pricing#faq), but also be sure to check out the [comparison table](https://chocolatey.org/compare).
 
 <a id="markdown-are-the-licensed-editions-costs-annual" name="are-the-licensed-editions-costs-annual"></a>
 ### Are the licensed editions costs annual?
