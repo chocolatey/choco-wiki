@@ -414,7 +414,7 @@ The CCM Site needs to be able to send email for certain actions.  For example, w
 1. In the left hand menu click on `Administration` and then `Settings`
 1. Click on the `Email (SMTP)` tab in the `Settings` screen
 1. Add the SMTP settings for your environment
-1. Click “Save All” to save changes
+1. Click the `Save All` button to save changes
 1. Click the `Send Test Email` button and ensure that an email is received correctly
 
 You should received a notification similar to this:
