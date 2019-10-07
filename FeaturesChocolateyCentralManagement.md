@@ -56,7 +56,7 @@ Once installed and configured, you can use CCM to:
   - [Can I manually create an SSL binding?](#can-i-manually-create-an-ssl-binding)
   - [Where can I find all the log files for Chocolatey Central Management](#where-can-i-find-all-the-log-files-for-chocolatey-central-management)
     - [Website](#website)
-    - [Chocolatey Managment Service](#chocolatey-managment-service)
+    - [Chocolatey Management Service](#chocolatey-management-service)
     - [Chocolatey Agent Service](#chocolatey-agent-service)
   - [How can I increase the level of logging for Chocolatey Central Management](#how-can-i-increase-the-level-of-logging-for-chocolatey-central-management)
   - [Can I install the Chocolatey Central Management Web Site under a Virtual Directory in IIS?](#can-i-install-the-chocolatey-central-management-web-site-under-a-virtual-directory-in-iis)
@@ -217,7 +217,7 @@ choco upgrade chocolatey-management-database --package-parameters-sensitive="'/C
 
 ##### Verify Installation
 
-The purpose of the `chocolatey-management-database` package is to create and deploy the schema for the database that is used by the CCM Service and Website.  This can be verified by using something like SQL Server Managmeent Studio to connect to the SQL Server Instance and:
+The purpose of the `chocolatey-management-database` package is to create and deploy the schema for the database that is used by the CCM Service and Website.  This can be verified by using something like SQL Server Management Studio to connect to the SQL Server Instance and:
 
 * check that a database (by default named `ChocolateyManagement`) has been created
 * that a set of tables have been created within this database
@@ -297,7 +297,7 @@ When Chocolatey manages the password for a local administrator, it creates a ver
 ##### Chocolatey Central Management Service Windows Account Considerations
 
 * Windows Account (required, defaults to `ChocolateyLocalAdmin`)
-  * The Chocolatey Central Managmeent Service requires ***an*** administrative account, whether that is a domain account or a local account - it just needs to be a local admin (a member of the Administrators group).
+  * The Chocolatey Central Management Service requires ***an*** administrative account, whether that is a domain account or a local account - it just needs to be a local admin (a member of the Administrators group).
   * The Chocolatey Central Management Service doesn't specifically require the `ChocolateyLocalAdmin` account, any Windows account can be used. The `ChocolateyLocalAdmin` is used as the default if one is not specified.
   * Upon use of an account during installation, it will make that account a member of the Administrators account.
   * The account used will also be granted LogonAsService and LogonAsBatch privileges.
@@ -333,8 +333,8 @@ The `chocolatey-management-service` is responsible for making a number of change
 In order to successfully install the chocolatey-management-web package onto a machine (using all default values), the following steps are required:
 
 ~~~powershell
-choco upgrade aspnetcore-runtimepackagestore
-choco upgrade dotnetcore-windowshosting
+choco upgrade aspnetcore-runtimepackagestore --version 2.2.7
+choco upgrade dotnetcore-windowshosting --version 2.2.7
 choco upgrade chocolatey --version 0.10.15
 choco upgrade chocolatey.extension --version 2.0.2
 choco upgrade chocolatey-agent --version 0.9.1
@@ -414,9 +414,10 @@ The CCM Site needs to be able to send email for certain actions.  For example, w
 1. In the left hand menu click on `Administration` and then `Settings`
 1. Click on the `Email (SMTP)` tab in the `Settings` screen
 1. Add the SMTP settings for your environment
+1. Click “Save All” to save changes
 1. Click the `Send Test Email` button and ensure that an email is received correctly
 
-You should recieved a notification similar to this:
+You should received a notification similar to this:
 
 ![Test email sent successfully](images/features/ccm/test_email_sent_correctly.png)
 
@@ -424,7 +425,7 @@ You should recieved a notification similar to this:
 
 NOTE: In future versions of CCM, this configuration will likely be automatically applied during installation, and this step will not be required.
 
-There is a requirement within the CCM site to send emails to end users of the application.  For example, when registering a new user, or resetting a password.  To ensure that these emails contain a properly clickalbe link a modification needs to be made to the `appsettings.json` file which is located in the `c:\tools\chocolatey-management-web` folder.
+There is a requirement within the CCM site to send emails to end users of the application.  For example, when registering a new user, or resetting a password.  To ensure that these emails contain a properly clickable link a modification needs to be made to the `appsettings.json` file which is located in the `c:\tools\chocolatey-management-web` folder.
 
 Open this file in a text editor, and add the following entry:
 
@@ -538,8 +539,8 @@ choco upgrade chocolatey-management-service -y --version 0.1.0
 
 # CCM Website
 # These packages are only required on the machine that is going to host the CCM Web Site
-choco upgrade aspnetcore-runtimepackagestore -y
-choco upgrade dotnetcore-windowshosting -y
+choco upgrade aspnetcore-runtimepackagestore -y --version 2.2.7
+choco upgrade dotnetcore-windowshosting -y --version 2.2.7
 choco upgrade chocolatey-management-web -y --version 0.1.0
 
 # CCM Configuration
@@ -599,7 +600,7 @@ $Connection.Close()
 
 ### How can I view what SSL registrations have been made by the installation of chocolatey-management-service
 
-By default, the installation of the `chocolatey-management-service` package will register a single netsh binding between a self-signed certifcate (created at the point of installation) and port 24020.  This can be verified using the following command:
+By default, the installation of the `chocolatey-management-service` package will register a single netsh binding between a self-signed certificate (created at the point of installation) and port 24020.  This can be verified using the following command:
 
 ~~~powershell
 netsh http show sslcert
@@ -633,7 +634,7 @@ Due to the fact that Chocolatey Central Management is made up of a number of com
 
 Log file is located at `C:\tools\chocolatey-management-web\App_Data\Logs\Logs.txt`
 
-#### Chocolatey Managment Service
+#### Chocolatey Management Service
 
 Log file is located at `C:\ProgramData\chocolatey\lib\chocolatey-management-service\tools\service\logs\chocolatey.service.host.log`
 
@@ -792,15 +793,15 @@ When this occurs, the problem is typically the connection string being used to c
 
 In the beta version of Chocolatey.Extension, there was a Cmdlet named Install-ChocolateyAppSettingsJsonFile and this was used in the 0.1.0-beta-20181009 release of the Chocolatey Central Management components. In the final released version of the Chocolatey.Extension, this was renamed to Install-AppSettingsJsonFile.
 
-As a result, the Chocolatey Central Management beta no longer works with the released version of Chocolatey.Extension. This will be corrected once the next release of the Chocoaltey Central Management components is completed.
+As a result, the Chocolatey Central Management beta no longer works with the released version of Chocolatey.Extension. This will be corrected once the next release of the Chocolatey Central Management components is completed.
 
 ### Cannot process command because of one or more missing mandatory parameters: FilePath
 
 During the creation of Chocolatey Central Management, some additional PowerShell cmdlets were created, and these are installed as part of the Chocolatey Extension package.  These cmdlets went through a number of iterations, and as a result, different combinations of Chocolatey Central Management packages were incompatible with the Chocolatey Extension package, resulting in the error:
 
-`Cannot process command becuase of one or more missing mandattory parameters: FilePath`
+`Cannot process command because of one or more missing mandatory parameters: FilePath`
 
-The guidance in this case is either to pin to the specific version of the Chocolatey Extension package required by the version of Chocolatey Central Management beind used, or, update to the latest versions of all packages, where the situation should be addressed.
+The guidance in this case is either to pin to the specific version of the Chocolatey Extension package required by the version of Chocolatey Central Management being used, or, update to the latest versions of all packages, where the situation should be addressed.
 
 ### All attempts to send email from CCM result in an error
 
@@ -851,7 +852,7 @@ And then try accessing the website again.  Any emails that are then sent from CC
 
 ### The remote server returned an unexpected response: (413) Request Entity Too Large
 
-When reporting a larger number of packages (approximately 200), this error may be reported.  This is due to the size of the information, in bytes, being too large to send between the Chocolatey Agent Service and the Chocolatey Central Management Service.  This has been identified as a [bug](https://github.com/chocolatey/chocolatey-licensed-issues/issues/95), which is due to be corrected in version 0.1.1 of Chocolatey Central Managment
+When reporting a larger number of packages (approximately 200), this error may be reported.  This is due to the size of the information, in bytes, being too large to send between the Chocolatey Agent Service and the Chocolatey Central Management Service.  This has been identified as a [bug](https://github.com/chocolatey/chocolatey-licensed-issues/issues/95), which is due to be corrected in version 0.1.1 of Chocolatey Central Management
 
 ### ERROR: Cannot index into a null array
 
