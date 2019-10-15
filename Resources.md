@@ -1,4 +1,3 @@
-Table of Contents
 <!--remove {{AT}}section SideColumn { remove-->
 <!-- TOC -->
 
