@@ -1,4 +1,3 @@
-Table of Contents
 <!--remove {{AT}}section SideColumn { remove-->
 <!-- TOC -->
 
@@ -21,7 +20,9 @@ Table of Contents
 
 ## Labs
 
-* https://github.com/ferventcoder/chocolatey-workshop (Packaging Workshop)
+* Chocolatey Workshop - https://github.com/chocolatey/chocolatey-workshop
+* Chocolatey Workshop - Organizational Use - https://github.com/chocolatey/chocolatey-workshop-organizational-use
+* Chocolatey Workshop - Internalizer - https://github.com/chocolatey/chocolatey-workshop-internalizer
 
 ## Translations
 
