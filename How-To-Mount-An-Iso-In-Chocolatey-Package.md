@@ -23,7 +23,7 @@
 There are times when using an installer file directly is not an option as what you need is contained in an ISO. In later versions of the Windows Operating System (defined in [Mount-DiskImage](#mount-diskimage) below), PowerShell provides the ability to mount this ISO file directly using the `Mount-DiskImage` cmdlet.  However, in earlier versions of Windows, this is not possible. In order to maintain backwards compatibility with older Operating Systems, when using an ISO file, you can use ImDisk Virtual Disk Driver.
 
 ## chocolatey-isomount.extension
-One of the community maintainers has created an extension package to automate the installation of software from inside an ISO file. This extension is based on the [Mount-DiskImage](#mount-diskimage) method below and therefor has the same [Requirements](#requirements).
+One of the community maintainers has created an extension package to automate the installation of software from inside an ISO file. This extension is based on the [Mount-DiskImage](#mount-diskimage) method below and therefore has the same [Requirements](#requirements).
 
 ### Step 1: Get chocolatey-isomount.extension Package
 You will need to take a dependency on the [chocolatey-isomount.extension package](https://chocolatey.org/packages/chocolatey-isomount.extension) If you are using Chocolatey in an organizational context, be sure to cache the chocolatey-isomount.extension package and place it on your internal sources.
