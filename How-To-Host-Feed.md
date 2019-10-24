@@ -64,7 +64,7 @@ Some of these options also work from a non-Windows hosting perspective. See [Non
 * Sonatype Nexus - [Nexus2](https://books.sonatype.com/nexus-book/reference/nuget-nuget_hosted_repositories.html) / [Nexus3](https://books.sonatype.com/nexus-book/3.0/reference/nuget.html#nuget-hosted)- Sonatype Nexus has a built-in simple server
 * [ProGet](http://inedo.com/proget/overview) - ProGet gives you a ready to go On-Premise option. Enterprise has replication
 * [Artifactory Pro](https://www.jfrog.com/artifactory/) - see [Artifactory NuGet Repositories](http://www.jfrog.com/confluence/display/RTF/NuGet+Repositories)
-* [MyGet](https://www.myget.org/) - MyGet has free public and paid for public/private cloud-hosting options if you don't want to handle all of the pain of setup and administration. MyGet offers some stellar options like multi-feed aggregation, mirroring, and source package build services!
+* [MyGet](https://www.myget.org/) - MyGet offers public and private cloud-hosting options if you don't want to handle all of the pain of setup and administration. MyGet offers some stellar options like multi-feed aggregation, mirroring, and source package build services!
 * [TeamCity](https://www.jetbrains.com/teamcity/) has built-in Simple Server
 * NuGet.Server
 * [NuGet Gallery](https://github.com/NuGet/NuGetGallery/wiki/Hosting-the-NuGet-Gallery-Locally-in-IIS)
