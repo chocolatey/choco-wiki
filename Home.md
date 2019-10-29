@@ -2,7 +2,7 @@
 
 ![Chocolatey Logo](https://cdn.rawgit.com/chocolatey/choco/14a627932c78c8baaba6bef5f749ebfa1957d28d/docs/logo/chocolateyicon.gif "Chocolatey")
 
-<!--remove {{AT}}section SideColumn { remove-->
+<!--remove <div id="RightNav"> remove-->
 <!-- TOC -->
 
 - [What is Chocolatey?](#what-is-chocolatey)
@@ -17,7 +17,7 @@
 - [Who Are We?](#who-are-we)
 
 <!-- /TOC -->
-<!--remove } remove-->
+<!--remove </div> remove-->
 
 ## What is Chocolatey?
 Chocolatey is a software management solution unlike anything else you've ever experienced on Windows. It focuses on simplicity, security, and scalability. You write a software deployment in PowerShell once for any software (not just installers), then you can deploy it everywhere you have Windows with any solution that can manage systems (configuration management, endpoint management, etc) and track and manage updates of that software over time. Manage software on-premise, in the "Cloud", or in [Docker containers](https://github.com/Microsoft/vsts-agent-docker/blob/f870fbf259a803c6a6d902e1c01f631936069d66/windows/servercore/10.0.14393/standard/VS2017/Dockerfile) with Chocolatey.

@@ -1,4 +1,4 @@
-<!--remove {{AT}}section SideColumn { remove-->
+<!--remove <div id="RightNav"> remove-->
 <!-- TOC -->
 
 * [Courses](#courses)
@@ -12,7 +12,7 @@
 * [[Presentations|Presentations]]
 
 <!-- /TOC -->
-<!--remove } remove-->
+<!--remove </div> remove-->
 
 ## Courses
 

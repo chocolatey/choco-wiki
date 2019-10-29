@@ -1,6 +1,6 @@
 # How To Internalize/Recompile Packages
 
-<!--remove {{AT}}section SideColumn { remove-->
+<!--remove <div id="RightNav"> remove-->
 <!-- TOC -->
 
 - [What is it? Why?](#what-is-it-why)
@@ -9,7 +9,7 @@
 - [How To Internalize/Recompile An Existing Package Manually](#how-to-internalizerecompile-an-existing-package-manually)
 
 <!-- /TOC -->
-<!--remove } remove-->
+<!--remove </div> remove-->
 
 ## What is it? Why?
 Sometimes creating packages from scratch can be an involved process. Not all software installers are created equal (and not all are easily automated either)! Thankfully there is already a tremendous resource you can use to make the process of getting your software all packaged up even smoother.

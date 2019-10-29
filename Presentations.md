@@ -1,11 +1,11 @@
-<!--remove {{AT}}section SideColumn { remove-->
+<!--remove <div id="RightNav"> remove-->
 <!-- TOC -->
 
 * [Presentations](#presentations)
 * [Podcasts](#podcasts)
 
 <!-- /TOC -->
-<!--remove } remove-->
+<!--remove </div> remove-->
 
 ## Presentations
 ### 2017
