@@ -26,7 +26,7 @@ There are no warranties on this script whatsoever, but here is something you can
 <p class="text-danger"><strong>Click the red button below to reveal the uninstall scripts.</strong></p>
 <button type="button" class="btn btn-danger btn-hide">Yes, I understand the dangers of running these scripts</button>
 <div id="uninstall-scripts" class="d-none">
--->
+remove-->
 If you also intend to delete the Chocolatey directory, remove the `-WhatIf`:
 
 ~~~powershell
@@ -89,4 +89,4 @@ if ($env:ChocolateyToolsLocation) { Remove-Item -Recurse -Force "$env:Chocolatey
 ~~~
 <!--remove
 </div>
--->
+remove-->
