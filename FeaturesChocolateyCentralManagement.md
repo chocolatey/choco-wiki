@@ -131,7 +131,7 @@ While it is envisioned that CCM will be installed across multiple servers, it is
 Currently, the CCM packages do not provision the SQL Server Database Permissions that are required for the CCM components to function.  It is assumed that the necessary permissions have already been provided (see the [FAQ](#how-can-i-add-sql-server-permissions-through-powershell) for one method of doing it).  By default, two users will require read/write permissions to the CCM Database:
 
 * `ChocolateyLocalAdmin` - which, by default, runs the CCM Service
-* `IIS APPPOOL\ChocolateyCentralManagment` - which, by default, runs the CCM IIS Application Pool
+* `IIS APPPOOL\ChocolateyCentralManagement` - which, by default, runs the CCM IIS Application Pool
 
 **NOTE:** If either of these users are changed during the installation of these components, the database permissions will need to be updated to reflect this.
 
