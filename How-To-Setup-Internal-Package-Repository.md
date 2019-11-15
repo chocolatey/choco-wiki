@@ -160,7 +160,7 @@ Before starting, make sure you install Chocolatey Server on separate servers.
 
 `4.` We shouldn't need to reboot the server but let's do it so we know everything is ready to go;
 `5.` From the server, open the browser and visit `https://localhost` - you will see some instructions but you need to note the password near the bottom. As this is a test environment we don't need to change this however **for a production environment follow the instructions to change the password**;
-`6.` Finally test the Chocolatey Server is working. From the server use the command `choco list --source http://localhost/chocolatey`;
+`6.` Finally test the Chocolatey Server is working. From the server use the command `choco list --source="'http://localhost/chocolatey'"`;
 
 Once this is done for both servers, you will have two repositories:
 
@@ -244,7 +244,7 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
   $Name | ForEach-Object {
       if ($Force.IsPresent -or (-not (Test-PackageExist -Name $_ -Version $Version -PackagePath $OutputDirectory))) {
           Write-Host "Internalizing package '$_' from the Chocolatey Community Repository." -ForegroundColor Green
-          $cmd = "choco download $_ --output-directory=$OutputDirectory $params "
+          $cmd = "choco download $_ --output-directory="'$OutputDirectory'" $params "
           if ($Force.IsPresent) {
               $cmd += "--force "
           }
@@ -348,8 +348,8 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
   . .\ConvertTo-ChocoObject.ps1
 
   # get all of the packages from the test repo
-  $testPkgs = choco.exe list --source $TestRepo -r | ConvertTo-ChocoObject
-  $prodPkgs = choco.exe list --source $ProdRepo -r | ConvertTo-ChocoObject
+  $testPkgs = choco.exe list --source="'$TestRepo'" --limit-output | ConvertTo-ChocoObject
+  $prodPkgs = choco.exe list --source="'$ProdRepo'" --limit-output | ConvertTo-ChocoObject
   $tempPath = Join-Path -Path $env:TEMP -ChildPath ([GUID]::NewGuid()).GUID
   if ($null -eq $testPkgs) {
       Write-Verbose "Test repository appears to be empty. Nothing to push to production."
@@ -365,7 +365,7 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
 
   $pkgs | ForEach-Object {
       Write-Verbose "Downloading package '$($_.name)' to '$tempPath'."
-      choco.exe download $_.name --no-progress --output-directory=$tempPath --source=$TestRepo --force --limitoutput
+      choco.exe download $_.name --no-progress --output-directory="'$tempPath'" --source="'$TestRepo'" --force --limit-output
 
       if ($LASTEXITCODE -eq 0) {
           # #######################
@@ -380,7 +380,7 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
           # If package testing is successful ...
           if (-not $failed) {
               Write-Verbose "Pushing downloaded package '$(Split-Path -Path $pkgPath -Leaf)' to production repository '$ProdRepo'."
-              choco.exe push $pkgPath --source=$ProdRepo --api-key=$ProdRepoApiKey --force --limitoutput
+              choco.exe push $pkgPath --source="'$ProdRepo'" --api-key="'$ProdRepoApiKey'" --force --limit-output
 
               if ($LASTEXITCODE -eq 0) {
                   Write-Verbose "Pushed package successfully."
@@ -612,7 +612,7 @@ Below are the details for the Jenkins job to update the test repository from the
         if ($LASTEXITCODE -eq 0) {
             Set-Location $temp
             Get-ChildItem -Path *.nupkg | ForEach-Object {
-                choco push $_.Name --source=$env:P_DST_URL --apikey=$env:P_API_KEY --limitoutput
+                choco push $_.Name --source="'$env:P_DST_URL'" --apikey="'$env:P_API_KEY'" --limit-output
             }
         }
       '''
@@ -682,18 +682,18 @@ To ensure our automation pipeline works, lets conduct tests.
 
 Before submitting a new package lets make sure we have no packages in our test or production repositories (all of these commands are run on the Jenkins server):
 
-1. To check the test repository, enter this at the command line `choco list --source http://testrepo-srv/chocolatey`. You should get this returned (note that the actual version of Chocolatey you see may be different):
+1. To check the test repository, enter this at the command line `choco list --source="'http://testrepo-srv/chocolatey'"`. You should get this returned (note that the actual version of Chocolatey you see may be different):
 
 ``` powershell
-  PS> choco list --source http://testrepo-srv/chocolatey
+  PS> choco list --source="'http://testrepo-srv/chocolatey'"
   Chocolatey v0.10.11 Business
   0 packages found.
 ```
 
-`2.` To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of Chocolatey you see may be different):
+`2.` To check the production repository, enter this at the command line `choco list --source="'http://prodrepo-srv/chocolatey'"`. You should get this returned (note that the actual version of Chocolatey you see may be different):
 
 ```powershell
-  PS> choco list --source http://prodrepo-srv/chocolatey
+  PS> choco list --source="'http://prodrepo-srv/chocolatey'"
   Chocolatey v0.10.11 Business
   0 packages found.
 ```
@@ -707,19 +707,19 @@ You can check the progress of the job by click on the **Last build link under _P
 
 This Jenkins job will run and then, if it is successful will trigger the job named **Test Package and Push to Prod Repo** which will update the production repository with any new or updated packages in the test repository, in this case the `adobereader` package we just added. To see this:
 
-1. To check the test repository, enter this at the command line `choco list --source http://testrepo-srv/chocolatey`. You should get this returned (note that the actual version of `adobereader` and Chocolatey you see may be different):
+1. To check the test repository, enter this at the command line `choco list --source="'http://testrepo-srv/chocolatey'"`. You should get this returned (note that the actual version of `adobereader` and Chocolatey you see may be different):
 
 ```powershell
-  PS> choco list --source http://testrepo-srv/chocolatey
+  PS> choco list --source="'http://testrepo-srv/chocolatey'"
   Chocolatey v0.10.11 Business
   adobereader 2015.007.20033.02
   1 packages found.
 ```
 
-`2.` To check the production repository, enter this at the command line `choco list --source http://prodrepo-srv/chocolatey`. You should get this returned (note that the actual version of `adobereader` and Chocolatey you see may be different):
+`2.` To check the production repository, enter this at the command line `choco list --source="'http://prodrepo-srv/chocolatey'"`. You should get this returned (note that the actual version of `adobereader` and Chocolatey you see may be different):
 
 ```powershell
-  PS> choco list --source http://prodrepo-srv/chocolatey
+  PS> choco list --source="'http://prodrepo-srv/chocolatey'"
   Chocolatey v0.10.11 Business
   adobereader 2015.007.20033.02
   1 packages found.
@@ -729,13 +729,13 @@ This Jenkins job will run and then, if it is successful will trigger the job nam
 
 As packages get out of date in your test repository you need to update them from the Chocolatey Community Repository. Before we start let's add an older version of a package.
 
-1. Download and internalize the `putty.install` package to the current directory by entering this on the command line: `choco download putty.install --version 0.70 --internalize --force --internalize-all-urls --append-use-original-location --output-directory . --source https://chocolatey.org/api/v2/`;
-1. Submit the internalized package to the test repository by entering this on the command line: `choco push putty.install.0.70.nupkg --source http://testrepo-srv/chocolatey --api-key chocolateyrocks -force`
+1. Download and internalize the `putty.install` package to the current directory by entering this on the command line: `choco download putty.install --version 0.70 --internalize --force --internalize-all-urls --append-use-original-location --output-directory . --source="'https://chocolatey.org/api/v2/'"`;
+1. Submit the internalized package to the test repository by entering this on the command line: `choco push putty.install.0.70.nupkg --source="'http://testrepo-srv/chocolatey'" --api-key="'chocolateyrocks'" -force`
 1. Go back to Jenkins and run the job **Test Package and Push to Prod Repo** with default parameters. This will test the `putty.install` package and push it to the production repository.
-1. Go to the command line and run `choco list --source http://prodrepo-srv/chocolatey` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list):
+1. Go to the command line and run `choco list --source="'http://prodrepo-srv/chocolatey'"` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list):
 
 ```powershell
-  PS> choco list --source http://prodrepo-srv/chocolatey
+  PS> choco list --source="'http://prodrepo-srv/chocolatey'"
   Chocolatey v0.10.11 Business
   adobereader 2015.007.20033.02
   putty.install 0.70
@@ -743,10 +743,10 @@ As packages get out of date in your test repository you need to update them from
 ```
 
 `5.` Go back to Jenkins and run the job **Upgrade Outdated Packages in Test Repository** with default parameters. This will check the test repository against the Chocolatey Community Repository and update the `putty.install` package;
-`6.` Go to the command line and run `choco list --source http://testrepo-srv/chocolatey --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different):
+`6.` Go to the command line and run `choco list --source="'http://testrepo-srv/chocolatey'" --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different):
 
 ```powershell
-  PS> choco list --source http://testrepo-srv/chocolatey
+  PS> choco list --source="'http://testrepo-srv/chocolatey'"
   Chocolatey v0.10.11 Business
   adobereader 2015.007.20033.02
   putty.install 0.70.0.20171219
@@ -754,10 +754,10 @@ As packages get out of date in your test repository you need to update them from
   3 packages found.
 ```
 
-`7.` As the Jenkins job **Upgrade Outdated Packages in Test Repository** we ran earlier triggers the job **Test Package and Push to Prod Repo**, the `putty.install` package will be automatically tested and pushed to the production repository. To check this, run the following on the command line `choco list --source http://prodrepo-srv/chocolatey --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different)
+`7.` As the Jenkins job **Upgrade Outdated Packages in Test Repository** we ran earlier triggers the job **Test Package and Push to Prod Repo**, the `putty.install` package will be automatically tested and pushed to the production repository. To check this, run the following on the command line `choco list --source="'http://prodrepo-srv/chocolatey'" --all-versions` and you should see these results (note that if you didn't follow the [exercise above](#submit-a-new-package) then `adobereader` will not be in the list and the latest version of `putty.install` may be different)
 
 ```powershell
-  PS> choco list --source http://prodrepo-srv/chocolatey
+  PS> choco list --source="'http://prodrepo-srv/chocolatey'"
   Chocolatey v0.10.11 Business
   adobereader 2015.007.20033.02
   putty.install 0.70.0.20171219
