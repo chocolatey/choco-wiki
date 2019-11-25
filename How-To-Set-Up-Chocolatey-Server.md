@@ -209,7 +209,7 @@ We are looking to add support for the package source to automatically handle thi
 If you are running the Simple Server next to a WSUS admin-site, you need to change some settings in the IIS-Configuration for making the Simple Server work correctly again.
 This is due to the fact that the WSUS admin-site installation registers two modules in the IIS root configuration, which will be passed down to all other sites running on that IIS instance, including the Chocolatey Simple Server site.
 
-So for making the chocolatey simple server work again you need to disable inheritance for these modules in order to remove them from the chocolatey Simple Server site.  
+To make the Chocolatey Simple Server work again, you will need to disable inheritance for these modules in order to remove them from the Chocolatey Simple Server site.  
 
 *Before making changes to your IIS configuration, read all steps carefully and make sure that you have a backup*  
    
