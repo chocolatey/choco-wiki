@@ -211,7 +211,7 @@ This is due to the fact that the WSUS admin-site installation registers two modu
 
 So for making the chocolatey simple server work again you need to disable inheritance for these modules in order to remove them from the chocolatey Simple Server site.  
 
-*Before making changes to your ISS configuration, read all steps carefully and make sure that you have a backup*  
+*Before making changes to your IIS configuration, read all steps carefully and make sure that you have a backup*  
    
 You can do this either by powershell:
 ``` powershell
@@ -270,4 +270,3 @@ Turn on customErrors under system.web - <customErrors mode="Off" /> - see this g
 Then browse to the site to see if you can gather any more information.
 
 If so, and you are a commercial edition customer, please open a support ticket. If you are using open source Chocolatey, please open a ticket at https://github.com/chocolatey/simple-server/issues.
-
