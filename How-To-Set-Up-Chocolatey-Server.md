@@ -239,7 +239,7 @@ or manual:
   6. Under `Sites` on the left pane click on the site for your Chocolatey Simple Server, most likely `ChocolateyServer`
   7. Again, search for `Modules` on the right pane and doubleclick it
   8. Search for `DynamicCompressionModule`, right-click it and choose `Remove`
-  9. Restart the Simple Server site
+  9. Restart the Chocolatey Simple Server site
 
 The Chocolatey Simple Server should now be able to handle requests correctly again.
    
