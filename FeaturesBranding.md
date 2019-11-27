@@ -5,7 +5,7 @@
 - [Requirements for branding](#requirements-for-branding)
 - [Location of branding files](#location-of-branding-files)
   - [Default Location](#default-location)
-  - [Customer Location](#customer-location)
+  - [Custom Location](#custom-location)
 - [ChocolateyGuiBranding.dll](#chocolateyguibrandingdll)
 
 <!-- /TOC -->
@@ -64,7 +64,7 @@ called `branding/gui`.  i.e. it will look in the following folder:
 
 `c:/programdata/chocolatey/branding/gui`
 
-### Customer Location
+### Custom Location
 
 It is possible to use a custom location by first settings an environment variable
 called `ChocolateyBrandingLocation` to a new location.  For example, if you created
