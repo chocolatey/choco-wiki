@@ -40,7 +40,8 @@ if (-not $env:ChocolateyInstall) {
     Write-Warning $message
     return
 }
-if (-not (Test-Path "$env:ChocolateyInstall")) {
+
+if (-not (Test-Path $env:ChocolateyInstall)) {
     $message = @(
         "No Chocolatey installation detected at '$env:ChocolateyInstall'."
         "Nothing to do."
@@ -52,11 +53,11 @@ if (-not (Test-Path "$env:ChocolateyInstall")) {
 
 $userPath = [Microsoft.Win32.Registry]::CurrentUser.OpenSubKey(
     'Environment'
-).GetValue('PATH', '', 'DoNotExpandEnvironmentNames').ToString()
+).GetValue('PATH', [string]::Empty, 'DoNotExpandEnvironmentNames').ToString()
 
 $machinePath = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey(
     'SYSTEM\CurrentControlSet\Control\Session Manager\Environment\'
-).GetValue('PATH', '', 'DoNotExpandEnvironmentNames').ToString()
+).GetValue('PATH', [string]::Empty, 'DoNotExpandEnvironmentNames').ToString()
 
 $backupPATHs = @(
     "User PATH: $userPath"
@@ -98,7 +99,7 @@ if ($agentService -and $agentService.Status -eq 'Running') {
 }
 # TODO: add other services here
 
-Remove-Item -Recurse -Force "$env:ChocolateyInstall" -WhatIf
+Remove-Item -Path $env:ChocolateyInstall -Recurse -Force -WhatIf
 
 'ChocolateyInstall', 'ChocolateyLastPathUpdate', | ForEach-Object {
     foreach ($scope in 'User', 'Machine') {
@@ -110,8 +111,8 @@ Remove-Item -Recurse -Force "$env:ChocolateyInstall" -WhatIf
 If you also intend to delete the tools directory that was managed by Chocolatey, remove both of the `-WhatIf` switches:
 
 ~~~powershell
-if ($env:ChocolateyToolsLocation) {
-    Remove-Item -Recurse -Force "$env:ChocolateyToolsLocation" -WhatIf
+if ($env:ChocolateyToolsLocation -and (Test-Path $env:ChocolateyToolsLocation)) {
+    Remove-Item -Path $env:ChocolateyToolsLocation -WhatIf -Recurse -Force
 }
 
 foreach ($scope in 'User', 'Machine') {
