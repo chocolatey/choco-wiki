@@ -51,6 +51,12 @@ if (-not (Test-Path $env:ChocolateyInstall)) {
     return
 }
 
+<#
+    Using the .NET registry calls is necessary here in order to preserve environment variables embedded in PATH values;
+    Powershell's registry provider doesn't provide a method of preserving variable references, and we don't want to
+    accidentally overwrite them with absolute path values. Where the registry allows us to see "%SystemRoot%" in a PATH
+    entry, PowerShell's registry provider only sees "C:\Windows", for example.
+#>
 $userPath = [Microsoft.Win32.Registry]::CurrentUser.OpenSubKey(
     'Environment'
 ).GetValue('PATH', [string]::Empty, 'DoNotExpandEnvironmentNames').ToString()
@@ -63,13 +69,17 @@ $backupPATHs = @(
     "User PATH: $userPath"
     "Machine PATH: $machinePath"
 )
-$backupPATHs | Set-Content -Path "C:\PATH_backups_ChocolateyUninstall.txt" -Encoding UTF8 -Force
+$backupFile = "C:\PATH_backups_ChocolateyUninstall.txt"
+$backupPATHs | Set-Content -Path $backupFile -Encoding UTF8 -Force
+
+$warningMessage = @"
+    This could cause issues after reboot where nothing is found if something goes wrong.
+    In that case, look at the backup file for the original PATH values in '$backupFile'.
+"@
 
 if ($userPath -like "*$env:ChocolateyInstall*") {
     Write-Verbose "Chocolatey Install location found in User Path. Removing..."
-    # WARNING: This could cause issues after reboot where nothing is
-    # found if something goes wrong. In that case, look at the backed up
-    # files for PATH.
+    Write-Warning $warningMessage
 
     $newUserPATH = ($userPath -split [System.IO.Path]::PathSeparator).Where{
         $_ -ne "$env:ChocolateyInstall\bin"
@@ -80,9 +90,7 @@ if ($userPath -like "*$env:ChocolateyInstall*") {
 
 if ($machinePath -like "*$env:ChocolateyInstall*") {
     Write-Verbose "Chocolatey Install location found in Machine Path. Removing..."
-    # WARNING: This could cause issues after reboot where nothing is
-    # found if something goes wrong. In that case, look at the backed up
-    # files for PATH.
+    Write-Warning $warningMessage
 
     $newMachinePATH = ($machinePath -split [System.IO.Path]::PathSeparator).Where{
         -not [string]::IsNullOrEmpty($_) -and
@@ -108,7 +116,10 @@ Remove-Item -Path $env:ChocolateyInstall -Recurse -Force -WhatIf
 }
 ~~~
 
-If you also intend to delete the tools directory that was managed by Chocolatey, remove both of the `-WhatIf` switches:
+If you want to completely delete the Chocolatey install directory, be sure to remove the `-WhatIf` switch from the `Remove-Item` call above.
+
+Additionally, the below code will remove the environment variables pointing to the tools directory that was managed by Chocolatey.
+If you want to remove the actual directory from disk, remove the `-WhatIf` switch from the `Remove-Item` call below as well.
 
 ~~~powershell
 if ($env:ChocolateyToolsLocation -and (Test-Path $env:ChocolateyToolsLocation)) {
