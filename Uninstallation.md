@@ -27,7 +27,7 @@ There are no warranties on this script whatsoever, but here is something you can
 <button type="button" class="btn btn-danger btn-hide">Yes, I understand the dangers of running these scripts</button>
 <div id="uninstall-scripts" class="d-none">
 remove-->
-If you also intend to delete the Chocolatey directory, remove the `-WhatIf`:
+If you also intend to delete the Chocolatey directory, remove the `-WhatIf` switch from the `Remove-Item` call near the bottom:
 
 ~~~powershell
 $VerbosePreference = 'Continue'
@@ -115,8 +115,6 @@ Remove-Item -Path $env:ChocolateyInstall -Recurse -Force -WhatIf
     }
 }
 ~~~
-
-If you want to completely delete the Chocolatey install directory, be sure to remove the `-WhatIf` switch from the `Remove-Item` call above.
 
 Additionally, the below code will remove the environment variables pointing to the tools directory that was managed by Chocolatey.
 If you want to remove the actual directory from disk, remove the `-WhatIf` switch from the `Remove-Item` call below as well.
