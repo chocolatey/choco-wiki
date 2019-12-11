@@ -109,7 +109,7 @@ if ($agentService -and $agentService.Status -eq 'Running') {
 
 Remove-Item -Path $env:ChocolateyInstall -Recurse -Force -WhatIf
 
-'ChocolateyInstall', 'ChocolateyLastPathUpdate', | ForEach-Object {
+'ChocolateyInstall', 'ChocolateyLastPathUpdate' | ForEach-Object {
     foreach ($scope in 'User', 'Machine') {
         [Environment]::SetEnvironmentVariable($_, [string]::Empty, $scope)
     }
