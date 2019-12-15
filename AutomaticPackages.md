@@ -49,10 +49,7 @@ AU is brought to you by a Chocolatey community member [Miodrag Milic](https://gi
 
 ### Setup
 
-1. Fork [`chocolatey-packages-template`](https://github.com/chocolatey/chocolatey-packages-template#fork-destination-box) and rename it to something like `chocolatey-packages` (on GitHub - go into Settings, Repository name and rename).
-1. Clone the repo locally.
-1. Head into the setup folder and look for `au_setup.ps1`. Review that file and then run it.
-1. Follow the [README](https://github.com/chocolatey/chocolatey-packages-template/blob/master/setup/README.md) in the setup folder.
+Follow the instructions at the [AU Wiki](https://github.com/majkinetor/au/wiki).
 
 When creating packages, do not use `--auto` as AU doesn't use token replacement for updating packages, it replaces the xml elements and code directly.
 
