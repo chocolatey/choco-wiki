@@ -10,7 +10,6 @@ Automatic packaging is a process that **package maintainers can run on *their ow
   - [Credits](#credits)
   - [Requirements](#requirements)
   - [Setup](#setup)
-  - [Everything Related to AU](#everything-related-to-au)
 - [Chocolatey Package Updater aka chocopkgup [DEPRECATED]](#chocolatey-package-updater-aka-chocopkgup-deprecated)
   - [Licensing](#licensing)
   - [Credits](#credits-1)
@@ -52,10 +51,6 @@ AU is brought to you by a Chocolatey community member [Miodrag Milic](https://gi
 Follow the instructions at the [AU Wiki](https://github.com/majkinetor/au/wiki).
 
 When creating packages, do not use `--auto` as AU doesn't use token replacement for updating packages, it replaces the xml elements and code directly.
-
-### Everything Related to AU
-AU maintains its own documentation at [documentation](https://github.com/majkinetor/au/blob/master/README.md).
-
 
 ## Chocolatey Package Updater aka chocopkgup [DEPRECATED]
 <a name="chocolatey-package-updater-aka-chocopkgup"></a>
