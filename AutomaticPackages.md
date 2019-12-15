@@ -43,7 +43,7 @@ AU is brought to you by a Chocolatey community member [Miodrag Milic](https://gi
 
 ### Requirements
 
-* PowerShell v5+.
+* PowerShell version `5.x`.
 * The [AU module](https://chocolatey.org/packages/au).
 
 ### Setup
