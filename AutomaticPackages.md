@@ -36,7 +36,7 @@ There are currently two methods that can be used to maintain automatic packages:
 
 ## Automatic Updater (AU)
 
-The [Chocolatey Automatic Package Updater Module](https://github.com/majkinetor/au/blob/master/README.md) is a PowerShell module which implements functions that can be used to automate Chocolatey package updates. You can also run everything on AppVeyor so you are not required to schedule updater on your own machine.
+The [Chocolatey Automatic Package Updater Module](https://github.com/majkinetor/au/blob/master/README.md) is a PowerShell module which implements functions that can be used to automate Chocolatey package updates.
 
 ### Credits
 
