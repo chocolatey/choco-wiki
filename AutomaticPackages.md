@@ -8,7 +8,6 @@ Automatic packaging is a process that **package maintainers can run on *their ow
 - [Automatic update methods](#automatic-update-methods)
 - [Automatic Updater (AU)](#automatic-updater-au)
   - [Credits](#credits)
-  - [Requirements](#requirements)
   - [Setup](#setup)
 - [Chocolatey Package Updater aka chocopkgup [DEPRECATED]](#chocolatey-package-updater-aka-chocopkgup-deprecated)
   - [Licensing](#licensing)
@@ -40,11 +39,6 @@ The [Chocolatey Automatic Package Updater Module](https://github.com/majkinetor/
 ### Credits
 
 AU is brought to you by a Chocolatey community member [Miodrag Milic](https://github.com/majkinetor) and it is becoming more awesome all the time.
-
-### Requirements
-
-* PowerShell version `5.x`.
-* The [AU module](https://chocolatey.org/packages/au).
 
 ### Setup
 
