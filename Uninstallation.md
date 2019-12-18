@@ -81,9 +81,10 @@ if ($userPath -like "*$env:ChocolateyInstall*") {
     Write-Verbose "Chocolatey Install location found in User Path. Removing..."
     Write-Warning $warningMessage
 
-    $newUserPATH = ($userPath -split [System.IO.Path]::PathSeparator).Where{
-        $_ -ne "$env:ChocolateyInstall\bin"
-    } -join [System.IO.Path]::PathSeparator
+    $newUserPATH = @(
+        $userPath -split [System.IO.Path]::PathSeparator |
+            Where-Object { $_ -and $_ -ne "$env:ChocolateyInstall\bin" }
+    ) -join [System.IO.Path]::PathSeparator
 
     [Environment]::SetEnvironmentVariable('PATH', $newUserPATH, 'User')
 }
@@ -92,10 +93,10 @@ if ($machinePath -like "*$env:ChocolateyInstall*") {
     Write-Verbose "Chocolatey Install location found in Machine Path. Removing..."
     Write-Warning $warningMessage
 
-    $newMachinePATH = ($machinePath -split [System.IO.Path]::PathSeparator).Where{
-        -not [string]::IsNullOrEmpty($_) -and
-        $_ -ne "$env:ChocolateyInstall\bin"
-    } -join [System.IO.Path]::PathSeparator
+    $newMachinePATH = @(
+        $machinePath -split [System.IO.Path]::PathSeparator |
+            Where-Object { $_ -and $_ -ne "$env:ChocolateyInstall\bin" }
+    ) -join [System.IO.Path]::PathSeparator
 
     [Environment]::SetEnvironmentVariable('PATH', $newMachinePATH, 'Machine')
 }
