@@ -57,13 +57,11 @@ if (-not (Test-Path $env:ChocolateyInstall)) {
     accidentally overwrite them with absolute path values. Where the registry allows us to see "%SystemRoot%" in a PATH
     entry, PowerShell's registry provider only sees "C:\Windows", for example.
 #>
-$userPath = [Microsoft.Win32.Registry]::CurrentUser.OpenSubKey(
-    'Environment'
-).GetValue('PATH', [string]::Empty, 'DoNotExpandEnvironmentNames').ToString()
+$userKey = [Microsoft.Win32.Registry]::CurrentUser.OpenSubKey('Environment')
+$userPath = $userKey.GetValue('PATH', [string]::Empty, 'DoNotExpandEnvironmentNames').ToString()
 
-$machinePath = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey(
-    'SYSTEM\CurrentControlSet\Control\Session Manager\Environment\'
-).GetValue('PATH', [string]::Empty, 'DoNotExpandEnvironmentNames').ToString()
+$machineKey = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey('SYSTEM\ControlSet001\Control\Session Manager\Environment\')
+$machinePath = $machineKey.GetValue('PATH', [string]::Empty, 'DoNotExpandEnvironmentNames').ToString()
 
 $backupPATHs = @(
     "User PATH: $userPath"
@@ -86,7 +84,9 @@ if ($userPath -like "*$env:ChocolateyInstall*") {
             Where-Object { $_ -and $_ -ne "$env:ChocolateyInstall\bin" }
     ) -join [System.IO.Path]::PathSeparator
 
-    [Environment]::SetEnvironmentVariable('PATH', $newUserPATH, 'User')
+    # NEVER use [Environment]::SetEnvironmentVariable() for PATH values; see https://github.com/dotnet/corefx/issues/36449
+    # This issue exists in ALL released versions of .NET and .NET Core as of 12/19/2019
+    $userKey.SetValue('PATH', $newUserPATH, 'ExpandString')
 }
 
 if ($machinePath -like "*$env:ChocolateyInstall*") {
@@ -98,7 +98,9 @@ if ($machinePath -like "*$env:ChocolateyInstall*") {
             Where-Object { $_ -and $_ -ne "$env:ChocolateyInstall\bin" }
     ) -join [System.IO.Path]::PathSeparator
 
-    [Environment]::SetEnvironmentVariable('PATH', $newMachinePATH, 'Machine')
+    # NEVER use [Environment]::SetEnvironmentVariable() for PATH values; see https://github.com/dotnet/corefx/issues/36449
+    # This issue exists in ALL released versions of .NET and .NET Core as of 12/19/2019
+    $machineKey.SetValue('PATH', $newMachinePATH, 'ExpandString')
 }
 
 # Adapt for any services running in subfolders of ChocolateyInstall
@@ -115,6 +117,9 @@ Remove-Item -Path $env:ChocolateyInstall -Recurse -Force -WhatIf
         [Environment]::SetEnvironmentVariable($_, [string]::Empty, $scope)
     }
 }
+
+$machineKey.Close()
+$userKey.Close()
 ~~~
 
 Additionally, the below code will remove the environment variables pointing to the tools directory that was managed by Chocolatey.
