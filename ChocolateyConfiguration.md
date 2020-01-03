@@ -67,7 +67,7 @@ Config settings are adjusted using `choco config set --name="'<nameFromBelow>'" 
 * `centralManagementCertificateValidationMode` = **'PeerOrChainTrust'** - The certificate mode that is used in communication to Chocolatey Central Management.  Available in business editions v2.0.0+ only.
 
 ### Package Throttle
-* `maximumDownloadRateBitsPerSecond` = **' '** - The maximum download rate in bits per second. '0' or empty means no maximum. A number means that will be the maximum download rate in bps. Defaults to ''. Available in licensed editions v1.10+ only. See https://chocolatey.org/docs/features-download-throttle
+* `maximumDownloadRateBitsPerSecond` = **' '** - The maximum download rate in bits per second. '0' or empty means no maximum. A number means that will be the maximum download rate in bps. Defaults to ''. Available in licensed editions v1.10+ only. See https://chocolatey.org/docs/features-package-throttle
 
 ### Windows Services Installation
 * `serviceInstallsDefaultUserName` = **'ChocolateyLocalAdmin'** - The default user name to use for installing services when one is not specified. Defaults to 'ChocolateyLocalAdmin'. The feature 'useLocalSystemForServiceInstalls' must be set to 'false' to use this field. Available in business editions v1.12.0+ only.
