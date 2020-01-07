@@ -58,7 +58,7 @@ Global Config Setting:
        bits per second. '0' or empty means no maximum. A number means that will
        be the maximum download rate in bps. Defaults to config setting of '0'.
        Available in [licensed editions](https://chocolatey.org/compare) v1.10+ only. See https://chocolate-
-       y.org/docs/features-download-throttle
+       y.org/docs/features-package-throttle
 ~~~
 
 ## FAQ

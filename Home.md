@@ -61,7 +61,7 @@ Whew, that was a mouthful! For a bit more detail into what all of that means and
 * [[Deploy Chocolatey in an Organization|How-To-Setup-Offline-Installation]]
 
 ## Road Map
-Where are [[we|RoadMap]]? Where are we [[going|RoadMap]]?
+Where are [[we|Roadmap]]? Where are we [[going|Roadmap]]?
 
 ### Important Reference Links
 

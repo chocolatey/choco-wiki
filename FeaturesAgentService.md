@@ -217,7 +217,7 @@ This makes for happy users and happy admins as they are able to move quicker tow
 
 ### Chocolatey Central Management
 
-Chocolatey has a centralized reporting and ultimately will also support endpoint management through [Chocolatey Central Management (CCM)](FeaturesChocolateyCentralManagement.md). On machines that will take advantage of CCM, you will need the Chocolatey Agent installed and properly configured to manage them centrally.
+Chocolatey has a centralized reporting and ultimately will also support endpoint management through [[Chocolatey Central Management (CCM)|FeaturesChocolateyCentralManagement]]. On machines that will take advantage of CCM, you will need the Chocolatey Agent installed and properly configured to manage them centrally.
 
 ## See It In Action
 
