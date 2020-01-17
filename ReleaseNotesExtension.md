@@ -18,6 +18,20 @@ Please see [[Install the Licensed Edition|InstallationLicensed]] for information
 
 * **NOTE:** We've identified an issue with Self-Service "Interactive" and UAC - we are working on a fix. Please see [#36](https://github.com/chocolatey/chocolatey-licensed-issues/issues/36) and subscribe for details. Until then, do not turn on the interactive feature of self-service or nothing will work.
 
+## 2.0.3 (Unreleased)
+### IMPROVEMENTS
+ * Package Builder UI / Package Upload UI - Authenticode Sign generated assemblies - see [licensed #116](https://github.com/chocolatey/chocolatey-licensed-issues/issues/116)
+ * Package Internalizer (Choco Download) - Find Packages based on Repository Optimizations
+
+### BUG FIXES
+ * Chocolatey Central Management:
+   * Fix - Add configuration parameter for size of message accepted by service - see [licensed #95](https://github.com/chocolatey/chocolatey-licensed-issues/issues/95)
+ * Self-Service / Background Mode:
+   * Fix - Arguments passed to background from GUI should be in same format as from direct choco
+ * Fix - Error when using {} in package parameters or silent args - see [licensed #88](https://github.com/chocolatey/chocolatey-licensed-issues/issues/88)
+ * Package Internalizer (Choco Download):
+   * Fix - Message regarding location of internalized nupkg is wrong when using output directory
+
 ## 2.0.2 (April 29, 2019)
 ### BUG FIXES
  * Fix - Self-Service: Administrator being subjected to user-limited uninstalls when background service does not apply. See [Licensed #77](https://github.com/chocolatey/chocolatey-licensed-issues/issues/77)
