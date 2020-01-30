@@ -12,7 +12,7 @@ This covers the release notes for the Chocolatey Central Management (`chocolatey
 * Please see https://github.com/chocolatey/chocolatey-licensed-issues/labels/CentralManagement
 * Some issues may be held internally, please follow your support routes to learn more.
 
-## 0.1.1 (Unreleased)
+## 0.1.1 (January 30, 2020)
 ### BUG FIXES
 * [Security] Fix - Database - Don't emit Connection String information to log file
 * [Security] Fix - Web - Add missing ability to use Active Directory (LDAP) for authentication
