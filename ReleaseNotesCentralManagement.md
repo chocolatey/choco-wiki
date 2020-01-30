@@ -12,6 +12,36 @@ This covers the release notes for the Chocolatey Central Management (`chocolatey
 * Please see https://github.com/chocolatey/chocolatey-licensed-issues/labels/CentralManagement
 * Some issues may be held internally, please follow your support routes to learn more.
 
+## 0.1.1 (Unreleased)
+### BUG FIXES
+* [Security] Fix - Database - Don't emit Connection String information to log file
+* [Security] Fix - Web - Add missing ability to use Active Directory (LDAP) for authentication
+* Fix - Web - Error on installation 'HTTP Error 500.21 - Internal Server Error Handler "aspNetCore" has a bad module "AspNetCoreModule" in its module list' - see [Licensed #114](https://github.com/chocolatey/chocolatey-licensed-issues/issues/114)
+* Fix - Service - Unable to parse netsh entries that contain hostname:port bindings - see [Licensed #96](https://github.com/chocolatey/chocolatey-licensed-issues/issues/96)
+* Fix - Web - When setting SMTP configuration the SSL checkbox status is being ignored - see [Licensed #87](https://github.com/chocolatey/chocolatey-licensed-issues/issues/87)
+* Fix - Service - "The remote server returned an unexpected response: (413) Request Entity Too Large." - see [Licensed #95](https://github.com/chocolatey/chocolatey-licensed-issues/issues/95)
+* Fix - Service - Unable to install CCM service with less than PowerShell v5 due to error on New-Guid cmdlet
+* Fix - Web - Time discrepancy between Computers and Computer details - see [Licensed #97](https://github.com/chocolatey/chocolatey-licensed-issues/issues/97)
+* Fix - Web - Remove ability to brand sections of CCM for now as it wasn't meant to be there yet and doesn't work
+* Fix - Service - Unable to uninstall chocolatey-management-service due to incorrect name in package uninstall script
+* Fix - Web - License count information is not being displayed correctly (e.g. 90 / n/a) - see [Licensed #80](https://github.com/chocolatey/chocolatey-licensed-issues/issues/80)
+* Fix - Service - IP Address of Computer is not updating - see [Licensed #86](https://github.com/chocolatey/chocolatey-licensed-issues/issues/86)
+* Fix - Web - Unable to upload a profile picture for user
+* Fix - Web - Hovering over tooltips in Internet Explorer causes the page to jump
+* Fix - Web - Clicking the Chocolatey icon in top left hand corner opens new tab
+* Fix - Web - Website Logs are not appearing the in Maintenance Tab
+* Fix - All - Move from DEBUG level reporting by default to INFO level reporting to reduce amount of logging
+* Fix - Web - Improve wording in email templates and ensure consistent naming is used
+
+### IMPROVEMENTS
+* Database - Check whether provided SQL Server connection string actually works prior to starting installation
+* Web - Optimize/Reduce Size of Chocolatey package by removing unnecessary files - see [Licensed #62](https://github.com/chocolatey/chocolatey-licensed-issues/issues/62)
+* All - Show a warning when no package parameters are passed when initially installing CCM packages
+* All - Show a warning during installation when provided SQL Server connection string doesn't provide an explicit user/password to connect with
+* Service - Adjust logs to provide more appropriate information for normal operations
+* Web - Autofocus on new password text box on password change screen
+
+
 ## 0.1.0 (May 22, 2019)
 
 Initial preview release
