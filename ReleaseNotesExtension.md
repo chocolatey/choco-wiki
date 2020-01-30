@@ -18,7 +18,7 @@ Please see [[Install the Licensed Edition|InstallationLicensed]] for information
 
 * **NOTE:** We've identified an issue with Self-Service "Interactive" and UAC - we are working on a fix. Please see [#36](https://github.com/chocolatey/chocolatey-licensed-issues/issues/36) and subscribe for details. Until then, do not turn on the interactive feature of self-service or nothing will work.
 
-## 2.0.3 (Unreleased)
+## 2.0.3 (January 30, 2020)
 ### IMPROVEMENTS
  * Package Builder UI / Package Upload UI - Authenticode Sign generated assemblies - see [licensed #116](https://github.com/chocolatey/chocolatey-licensed-issues/issues/116)
  * Package Internalizer (Choco Download) - Find Packages based on Repository Optimizations
