@@ -13,7 +13,7 @@ This covers the release notes for the Chocolatey Agent Service (`chocolatey-agen
 * Some issues may be held internally, please follow your support routes to learn more.
 
 
-## 0.9.2 (Unreleased)
+## 0.9.2 (January 30, 2020)
 ### IMPROVEMENTS
  * When reporting into CCM, add the URL that is being used in log to aid when debugging issues
 
