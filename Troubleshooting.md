@@ -8,6 +8,7 @@ There are some well-known things you may run into when you are using Chocolatey.
 
 - [General](#general)
 - [Chocolatey Installation](#chocolatey-installation)
+  - [The request was aborted: Could not create SSL/TLS secure channel](#the-request-was-aborted-could-not-create-ssltls-secure-channel)
   - [The underlying connection was closed](#the-underlying-connection-was-closed)
   - [I'm getting a 403 unauthorized issue attempting to install Chocolatey](#im-getting-a-403-unauthorized-issue-attempting-to-install-chocolatey)
   - [I am having trouble with PowerShell to install Chocolatey](#i-am-having-trouble-with-powershell-to-install-chocolatey)
@@ -38,7 +39,7 @@ There are some well-known things you may run into when you are using Chocolatey.
   - [Package not installed. An error occurred during installation: Unable to resolve dependency](#package-not-installed-an-error-occurred-during-installation-unable-to-resolve-dependency)
   - [Package not installed. The package was not found with the source(s) listed.](#package-not-installed-the-package-was-not-found-with-the-sources-listed)
   - [Access to the path is denied.](#access-to-the-path-is-denied)
-  - [A corrupt registry file exists.](#a-corrupt-registry-file-exists)
+  - [A corrupt registry file exists](#a-corrupt-registry-file-exists)
 
 <!-- /TOC -->
 
@@ -51,6 +52,13 @@ Also consider the [[frequently asked questions|ChocolateyFAQs]].
 
 <a id="markdown-chocolatey-installation" name="chocolatey-installation"></a>
 ## Chocolatey Installation
+
+<a id="markdown-the-request-was-aborted-could-not-create-ssltls-secure-channel" name="the-request-was-aborted-could-not-create-ssltls-secure-channel"></a>
+### The request was aborted: Could not create SSL/TLS secure channel
+
+If you see the following: Exception calling "DownloadString" with "1" argument(s): "The request was aborted: Could not create SSL/TLS secure channel." then you are likely running an older machine that needs to be upgraded to be able to use TLS 1.2 at a minimum.
+
+Chocolatey.org now requires TLS 1.2 at a minimum. Please see https://chocolatey.org/blog/remove-support-for-old-tls-versions. The post provides options if you have older clients that need to install Chocolatey.
 
 <a name="the-underlying-connection-was-closed"></a>
 <a id="markdown-the-underlying-connection-was-closed" name="the-underlying-connection-was-closed"></a>
@@ -67,9 +75,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : WebException
 ~~~
 
-It's possible that you are attempting to install from a server that needs to use TLS 1.1 or TLS 1.2.
-
-Please see [[Installing with Restricted TLS|Installation#installing-with-restricted-tls]]
+Chocolatey.org now requires TLS 1.2 at a minimum. Please see https://chocolatey.org/blog/remove-support-for-old-tls-versions. The post provides options if you have older clients that need to install Chocolatey.
 
 <a id="im-getting-a-403-unauthorized-issue-when-attempting-to-install-chocolatey"></a>
 <a id="markdown-im-getting-a-403-unauthorized-issue-attempting-to-install-chocolatey" name="im-getting-a-403-unauthorized-issue-attempting-to-install-chocolatey"></a>
@@ -432,6 +438,7 @@ You may be attempting to use Chocolatey or upgrade a package and suddenly you ar
 Unfortunately, this is likely to cause your install to be unusable until you fix the issue.
 
 <a id="a-corrupt-registry-file-exists" name="a-corrupt-registry-file-exists"></a>
+<a id="markdown-a-corrupt-registry-file-exists" name="a-corrupt-registry-file-exists"></a>
 ### A corrupt registry file exists
 
 You are receiving the following error when running Chocolatey commands:

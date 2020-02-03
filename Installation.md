@@ -3,19 +3,42 @@
 
 - [Requirements](#requirements)
 - [Installing Chocolatey](#installing-chocolatey)
-- <a href="#more-install-options" onclick="document.getElementById('div-moreoptions').classList.remove('d-none')">More Install Options</a>
-- [[Installing Licensed Edition|Installation-Licensed]]
+    - [Install with cmd.exe](#install-with-cmdexe)
+    - [Install with PowerShell.exe](#install-with-powershellexe)
+    - [Additional considerations](#additional-considerations)
+- [More Install Options](#more-install-options)
+  - [Install from PowerShell v3+](#install-from-powershell-v3)
+  - [Completely offline install](#completely-offline-install)
+  - [Install with Puppet](#install-with-puppet)
+  - [Install using PowerShell from cmd.exe](#install-using-powershell-from-cmdexe)
+  - [Install using NuGet Package Manager](#install-using-nuget-package-manager)
+  - [Install using NuGet.exe from PowerShell](#install-using-nugetexe-from-powershell)
+  - [Install downloaded NuGet package from PowerShell](#install-downloaded-nuget-package-from-powershell)
+  - [Install licensed edition](#install-licensed-edition)
+  - [Installing behind a proxy](#installing-behind-a-proxy)
+  - [Installing behind an explicit proxy](#installing-behind-an-explicit-proxy)
+  - [Installing to a different location](#installing-to-a-different-location)
+  - [Installing a particular version of Chocolatey](#installing-a-particular-version-of-chocolatey)
+  - [Use Windows built-in compression instead of downloading 7zip](#use-windows-built-in-compression-instead-of-downloading-7zip)
+  - [Installing with restricted TLS](#installing-with-restricted-tls)
+    - [Option 1 - Host Internally](#option-1---host-internally)
+    - [Option 2 - Updated PowerShell and .NET](#option-2---updated-powershell-and-net)
+    - [Option 3 - Manual](#option-3---manual)
+  - [Non-Administrative install](#non-administrative-install)
 - [Upgrading Chocolatey](#upgrading-chocolatey)
 - [Uninstalling Chocolatey](#uninstalling-chocolatey)
 - [FAQs](#faqs)
+  - [I'm having trouble installing Chocolatey](#im-having-trouble-installing-chocolatey)
+  - [I'm getting a 403 attempting to install](#im-getting-a-403-attempting-to-install)
+  - [Why isn't there an MSI?](#why-isnt-there-an-msi)
 
 <!-- /TOC -->
 <!--remove </div> remove-->
 
 ## Requirements
 * Windows 7+ / Windows Server 2003+
-* PowerShell v2+ (Not PowerShell Core yet though)
-* .NET Framework 4+ (the installation will attempt to install .NET 4.0 if you do not have it installed)
+* PowerShell v2+ (Not PowerShell Core yet though)(minimum is v3 for install from this website due to [TLS 1.2 requirement](https://chocolatey.org/blog/remove-support-for-old-tls-versions))
+* .NET Framework 4+ (the installation will attempt to install .NET 4.0 if you do not have it installed)(minimum is 4.5 for install from this website due to [TLS 1.2 requirement](https://chocolatey.org/blog/remove-support-for-old-tls-versions))
 
 That's it! All you need is choco.exe (that you get from the installation scripts) and you are good to go! No Visual Studio required.
 
@@ -35,11 +58,11 @@ Chocolatey installs in seconds. You are just a few steps from running choco righ
  * <a href="#more-install-options" onclick="document.getElementById('div-moreoptions').classList.remove('d-none')">More Options</a> / [[Troubleshooting|Troubleshooting]]
 
 #### Install with cmd.exe
-Run the following command: <!--remove <button class="btn btn-secondary btn-copy font-weight-bold" data-clipboard-text="@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;"><span class="fas fa-clipboard"></span> Copy Command Text</button> remove-->
+Run the following command: <!--remove <button class="btn btn-secondary btn-copy font-weight-bold" data-clipboard-text="@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot; [System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; && SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;"><span class="fas fa-clipboard"></span> Copy Command Text</button> remove-->
 
 ~~~sh
 
-@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 
 ~~~
 
@@ -47,11 +70,11 @@ Run the following command: <!--remove <button class="btn btn-secondary btn-copy 
 With PowerShell, there is an additional step. You must ensure [Get-ExecutionPolicy](https://go.microsoft.com/fwlink/?LinkID=135170) is not Restricted. We suggest using `Bypass` to bypass the policy to get things installed or `AllSigned` for quite a bit more security.
 
 * Run `Get-ExecutionPolicy`. If it returns `Restricted`, then run `Set-ExecutionPolicy AllSigned` or `Set-ExecutionPolicy Bypass -Scope Process`.
-* Now run the following command: <!--remove <button class="btn btn-secondary btn-copy font-weight-bold" data-clipboard-text="Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"><span class="fas fa-clipboard"></span> Copy Command Text</button> remove-->
+* Now run the following command: <!--remove <button class="btn btn-secondary btn-copy font-weight-bold" data-clipboard-text="Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"><span class="fas fa-clipboard"></span> Copy Command Text</button> remove-->
 
 ~~~powershell
 
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 ~~~
 
@@ -710,7 +733,12 @@ $env:chocolateyUseWindowsCompression = 'true'
 
 ### Installing with restricted TLS
 
-**NOTE:** If your server is restricted to TLS 1.1+, you need to add additional logic to be able to download and install Chocolatey (this is not necessary when running Chocolatey normally as it does this automatically). If this is for organizational use, you should consider hosting the Chocolatey package internally and installing from there. Otherwise, please see this section.
+**NOTE:** Chocolatey.org now requires TLS 1.2 at a minimum. Please see https://chocolatey.org/blog/remove-support-for-old-tls-versions.
+
+**NOTE:** If your server is restricted to TLS 1.1+, you need to add additional logic to be able to download and install Chocolatey (this is not necessary when running Chocolatey normally as it does this automatically).
+
+**NOTE:** If this is for organizational use, you should consider hosting the Chocolatey package internally and installing from there.
+
 
 If you see an error that looks similar to the following:
 
@@ -724,36 +752,50 @@ At line:1 char:1
     + FullyQualifiedErrorId : WebException
 ~~~
 
-It's possible that you are attempting to install from a server that needs to use TLS 1.1 or TLS 1.2 (has restricted the use of TLS 1.0 and SSL v3), you have some options.
+OR:
 
-#### Option 1
-If you have the following:
+~~~sh
+Exception calling "DownloadString" with "1" argument(s): "The request was aborted: Could not create SSL/TLS secure
+channel."
+At line:1 char:51
++ ... ess -Force; iex ((New-Object System.Net.WebClient).DownloadString('ht ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : WebException
+~~~
+
+It's possible that you are attempting to install from a server that needs to use TLS 1.1 or TLS 1.2 (has restricted the use of TLS 1.0 and SSL v3), you have some options. Chocolatey.org now requires TLS 1.2 at a minimum.
+
+#### Option 1 - Host Internally
+If you are an organization, this is your best option and it reduces issues with rate limiting that could occur later.
+
+See https://chocolatey.org/install#organization for details.
+
+
+#### Option 2 - Updated PowerShell and .NET
+Upgrade to the following:
 
 * PowerShell v3+
 * .NET Framework 4.5
 
-You can just run the following instead of just the one-liner to get Chocolatey installed:
-
 ~~~powershell
-$securityProtocolSettingsOriginal = [System.Net.ServicePointManager]::SecurityProtocol
-
 try {
-  # Set TLS 1.2 (3072), then TLS 1.1 (768), then TLS 1.0 (192), finally SSL 3.0 (48)
-  # Use integers because the enumeration values for TLS 1.2 and TLS 1.1 won't
-  # exist in .NET 4.0, even though they are addressable if .NET 4.5+ is
+  # Set TLS 1.2 (3072) as that is the minimum required by Chocolatey.org
+  # Use integers because the enumeration value for TLS 1.2 won't exist
+  # in .NET 4.0, even though they are addressable if .NET 4.5+ is
   # installed (.NET 4.5 is an in-place upgrade).
-  [System.Net.ServicePointManager]::SecurityProtocol = 3072 -bor 768 -bor 192 -bor 48
+  [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 } catch {
-  Write-Warning 'Unable to set PowerShell to use TLS 1.2 and TLS 1.1 due to old .NET Framework installed. If you see underlying connection closed or trust errors, you may need to do one or more of the following: (1) upgrade to .NET Framework 4.5 and PowerShell v3, (2) specify internal Chocolatey package location (set $env:chocolateyDownloadUrl prior to install or host the package internally), (3) use the Download + PowerShell method of install. See https://chocolatey.org/install for all install options.'
+  Write-Warning 'Unable to set PowerShell to use TLS 1.2. This is required for contacting Chocolatey as of 03 FEB 2020. https://chocolatey.org/blog/remove-support-for-old-tls-versions. If you see underlying connection closed or trust errors, you may need to do one or more of the following: (1) upgrade to .NET Framework 4.5+ and PowerShell v3+, (2) Call [System.Net.ServicePointManager]::SecurityProtocol = 3072; in PowerShell prior to attempting installation, (3) specify internal Chocolatey package location (set $env:chocolateyDownloadUrl prior to install or host the package internally), (4) use the Download + PowerShell method of install. See https://chocolatey.org/docs/installation for all install options.'
 }
 
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-
-[System.Net.ServicePointManager]::SecurityProtocol = $securityProtocolSettingsOriginal
 ~~~
 
-#### Option 2
+
+#### Option 3 - Manual
 You need to download and unzip the Chocolatey package, then call the PowerShell install script from there. See the [Download + PowerShell Method](#download--powershell-method) section below.
+
 
 ### Non-Administrative install
 
