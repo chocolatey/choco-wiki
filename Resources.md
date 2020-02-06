@@ -48,11 +48,14 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 ## Community
 
+### 2020
+#### January
+* [Intune + Chocolatey: A Match Made In Heaven](https://www.thelazyadministrator.com/2020/02/05/intune-chocolatey-a-match-made-in-heaven/)
+
 ### 2019
 #### July
 * https://techielass.com/automating-azure-vm-with-chef
 * https://winsysblog.com/2019/07/introducing-the-chocolatey-remote-management-powershell-gui.html
-
 
 #### June
 * https://blog.gusztavvargadr.me/8-maintaining-chocolatey-packages-with-azure-pipelines-and-cake-build-b66f82ebcfe5
@@ -68,6 +71,7 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 #### January
 * https://www.gep13.co.uk/blog/what-are-all-the-chocolatey-repositories-for
 * https://www.tech2tech.fr/chocolatey-votre-gestionnaire-de-paquets-sous-windows/ - **NOTE:** In French
+
 ### 2018
 #### December
 * https://winsysblog.com/2018/12/using-multiple-package-repositories-with-chocolatey.html
@@ -160,7 +164,6 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 * http://www.gep13.co.uk/blog/2016-a-retrospective
 
 ### 2016
-
 #### December
 * https://skatterbrainz.wordpress.com/2016/12/19/building-an-sccm-1606-site-server-with-boxstarter-windows-server-2016-sql-server-2016/ (SCCM)
 * https://www.linkedin.com/pulse/simplify-your-windows-os-refresh-chocolatey-install-script-zach-baker
@@ -401,5 +404,4 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 * https://chrisortman.wordpress.com/2011/04/01/getting-started-with-chocolatey/ (First known public posting about Chocolatey)
 
 ## Testimonials
-
 * https://gitter.im/chocolatey/choco?at=56eabc09618c335373ecb72a
