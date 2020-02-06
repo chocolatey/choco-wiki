@@ -48,6 +48,10 @@ See [[Infrastructure automation|FeaturesInfrastructureAutomation]]
 
 ## Community
 
+### 2020
+#### January
+* [Intune + Chocolatey: A Match Made In Heaven](https://www.thelazyadministrator.com/2020/02/05/intune-chocolatey-a-match-made-in-heaven/)
+
 ### 2019
 #### July
 * https://techielass.com/automating-azure-vm-with-chef
