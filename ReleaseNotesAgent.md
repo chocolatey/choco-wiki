@@ -12,15 +12,22 @@ This covers the release notes for the Chocolatey Agent Service (`chocolatey-agen
 * Please see https://github.com/chocolatey/chocolatey-licensed-issues/labels/AgentService
 * Some issues may be held internally, please follow your support routes to learn more.
 
+## 0.9.3 (March 26, 2020)
+### BUG FIXES
+ * Central Management Reporting:
+    * Fix - Ensure best available TLS is used - see [Licensed #132](https://github.com/chocolatey/chocolatey-licensed-issues/issues/132)
+
 
 ## 0.9.2 (January 30, 2020)
 ### IMPROVEMENTS
  * When reporting into CCM, add the URL that is being used in log to aid when debugging issues
 
+
 ## 0.9.1 (April 30, 2019)
 ### BUG FIXES
  * Self-Service / Background Mode:
     * Fix - Multiple quoted options being parsed incorrectly - see [Licensed #78](https://github.com/chocolatey/chocolatey-licensed-issues/issues/78)
+
 
 ## 0.9.0 (March 18, 2019)
 ### FEATURES
