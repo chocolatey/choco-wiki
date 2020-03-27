@@ -96,87 +96,87 @@ This covers changes for the "chocolateygui" package, which is available as FOSS.
 * Added Chinese language map - see [#634](https://github.com/chocolatey/ChocolateyGUI/pull/634)
 * Fix typo in about page - see [#583](https://github.com/chocolatey/ChocolateyGUI/pull/583)
 
-## [0.16.0]() (February 15, 2018)
+## [0.16.0](https://github.com/chocolatey/ChocolateyGUI/milestone/17?closed=1) (February 15, 2018)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.16.0)
 
-## [0.15.0]() (October 18, 2017)
+## [0.15.0](https://github.com/chocolatey/ChocolateyGUI/milestone/6?closed=1) (October 18, 2017)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.15.0)
 
-## [0.13.2]() (December 14, 2015)
+## [0.13.2](https://github.com/chocolatey/ChocolateyGUI/milestone/14?closed=1) (December 14, 2015)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.13.2)
 
-## [0.13.1]() (March 29, 2015)
+## [0.13.1](https://github.com/chocolatey/ChocolateyGUI/milestone/13?closed=1) (March 29, 2015)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.13.1)
 
-## [0.13.0]() (March 26, 2015)
+## [0.13.0](https://github.com/chocolatey/ChocolateyGUI/milestone/3?closed=1) (March 26, 2015)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.13.0)
 
-## [0.12.4]() (March 12, 2015)
+## [0.12.4](https://github.com/chocolatey/ChocolateyGUI/milestone/10?closed=1) (March 12, 2015)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.12.4)
 
-## [0.12.3]() (March 3, 2015)
+## [0.12.3](https://github.com/chocolatey/ChocolateyGUI/milestone/9?closed=1) (March 3, 2015)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.12.3)
 
-## [0.12.2]() (March 3, 2015)
+## [0.12.2](https://github.com/chocolatey/ChocolateyGUI/milestone/8?closed=1) (March 3, 2015)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.12.2)
 
-## [0.12.1]() (March 2, 2015)
+## [0.12.1](https://github.com/chocolatey/ChocolateyGUI/milestone/7?closed=1) (March 2, 2015)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.12.1)
 
-## [0.12.0]() (February 28, 2015)
+## [0.12.0](https://github.com/chocolatey/ChocolateyGUI/milestone/2?closed=1) (February 28, 2015)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.12.0)
 
-## [0.11.4]() (September 16, 2014)
+## [0.11.4](https://github.com/chocolatey/ChocolateyGUI/milestone/5?closed=1) (September 16, 2014)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.11.4)
 
-## [0.11.3]() (September 16, 2014)
+## 0.11.3 (September 16, 2014)
 
 No release notes available.
 
-## [0.11.2]() (September 16, 2014)
+## [0.11.2](https://github.com/chocolatey/ChocolateyGUI/milestone/4?closed=1) (September 16, 2014)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.11.2)
 
-## [0.11.1]() (February 24, 2013)
+## [0.11.1](https://github.com/chocolatey/ChocolateyGUI/milestone/11?closed=1) (February 24, 2013)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.11.1)
 
-## [0.11.0]() (February 24, 2013)
+## [0.11.0](https://github.com/chocolatey/ChocolateyGUI/milestone/1?closed=1) (February 24, 2013)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.11.0)
 
-## [0.1.4]() (February 10, 2013)
+## 0.1.4 (February 10, 2013)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.1.4)
 
-## [0.1.3]() (February 10, 2013)
+## 0.1.3 (February 10, 2013)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.1.3)
 
-## [0.1.2]() (February 10, 2013)
+## 0.1.2 (February 10, 2013)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.1.2)
 
-## [0.1.1]() (February 10, 2013)
+## 0.1.1 (February 10, 2013)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.1.1)
 
-## [0.1.0]() (February 9, 2013)
+## 0.1.0 (February 9, 2013)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.1.0)
 
-## [0.0.5]() (September 10, 2011)
+## 0.0.5 (September 10, 2011)
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.0.5)
 
