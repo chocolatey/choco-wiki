@@ -180,18 +180,18 @@ Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/re
 
 Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.0.5)
 
-## [0.0.4]() (September 10, 2011)
+## 0.0.4 (September 10, 2011)
 
 No release notes available.
 
-## [0.0.3]() (September 10, 2011)
+## 0.0.3 (September 10, 2011)
 
 No release notes available.
 
-## [0.0.2]() (September 10, 2011)
+## 0.0.2 (September 10, 2011)
 
 No release notes available.
 
-## [0.0.1]() (September 10, 2011)
+## 0.0.1 (September 10, 2011)
 
 No release notes available.
