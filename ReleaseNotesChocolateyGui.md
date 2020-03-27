@@ -142,7 +142,7 @@ Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/re
 
 ## [0.11.3]() (September 16, 2014)
 
-Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.11.3)
+No release notes available.
 
 ## [0.11.2]() (September 16, 2014)
 
@@ -182,16 +182,16 @@ Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/re
 
 ## [0.0.4]() (September 10, 2011)
 
-Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.0.4)
+No release notes available.
 
 ## [0.0.3]() (September 10, 2011)
 
-Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.0.3)
+No release notes available.
 
 ## [0.0.2]() (September 10, 2011)
 
-Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.0.2)
+No release notes available.
 
 ## [0.0.1]() (September 10, 2011)
 
-Release notes can be found [here](https://github.com/chocolatey/ChocolateyGUI/releases/tag/0.0.1)
+No release notes available.
