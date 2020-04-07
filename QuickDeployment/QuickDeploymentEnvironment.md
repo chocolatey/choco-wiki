@@ -20,6 +20,9 @@ The quick deployment environment appliance provides an architecture that contain
 * Chocolatey Central Management
 * Scripts for Internal Deployment
 
+
+*
+
 ## Setup
 
 ### VMDK
