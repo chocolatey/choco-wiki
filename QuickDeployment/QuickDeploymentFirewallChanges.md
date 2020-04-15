@@ -12,7 +12,7 @@
 
 ## External Ports
 
-These are ports that are opened through the corporate firewall, in case users are **not** on VPN and need to install packages from anywhere.
+These are ports that are opened through the corporate firewall, in case users are **not** on VPN and need to install packages from anywhere. **NOTE:** If you plan to allow clients to connect in from outside your network (over the internet), please contact support for the right options as there is more work to be done to limit access to repositories ahead of this change.
 
 * Nexus Web / API - Port 8443
 
