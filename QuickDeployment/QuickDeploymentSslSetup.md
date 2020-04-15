@@ -4,7 +4,7 @@ All services have been protected with Self-Signed SSL certificates and are place
 * If you want to expose this to the internet so clients can connect from outside your network
 * If you change the hostname of this server
 * If you add the QDE to a domain
-* If you would like to use your own SSL/TLS certificates.
+* If you would like to use your own SSL/TLS certificates
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force ; . C:\choco-setup\files\New-SslCertifcates.ps1
