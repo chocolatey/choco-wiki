@@ -2,6 +2,25 @@
 
 This system has been pre-configured as a fully functioning C4B environment.
 
+<!-- TOC -->
+
+- [Create a license package](#create-a-license-package)
+- [Enable Central Management](#enable-central-management)
+- [Server Information](#server-information)
+  - [Nexus Repository](#nexus-repository)
+    - [**Changing the API Key**](#changing-the-api-key)
+    - [Choco apikey Command](#choco-apikey-command)
+  - [Jenkins](#jenkins)
+  - [Chocolatey Central Management](#chocolatey-central-management)
+  - [Firewall ports](#firewall-ports)
+  - [Browser considerations](#browser-considerations)
+  - [SSL Information](#ssl-information)
+- [Client installations](#client-installations)
+- [Licensing this VM](#licensing-this-vm)
+- [Internalization](#internalization)
+
+<!-- /TOC -->
+
 ## Create a license package
 
 ___

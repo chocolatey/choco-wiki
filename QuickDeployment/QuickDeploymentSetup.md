@@ -3,6 +3,24 @@
 This document contains instructions for importing the QuickDeploy appliance/VM, or creating a VM and attaching the QuickDeploy disk image to it.
 You will receive a download link via email for an archive of the VM image. Once you have this downloaded, it will be ready for extraction and import into your environment.
 
+<!-- TOC -->
+
+- [Setup Considerations](#setup-considerations)
+- [Import Virtual Environment](#import-virtual-environment)
+  - [Platform: Hyper-V (Appliance)](#platform-hyper-v-appliance)
+  - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
+  - [Platform: VMware (OVA template)](#platform-vmware-ova-template)
+  - [Platform: VMware (VMDK file)](#platform-vmware-vmdk-file)
+- [Other Considerations for Virtual Environment](#other-considerations-for-virtual-environment)
+- [Virtual Environment Setup](#virtual-environment-setup)
+- [Client Installation](#client-installation)
+- [Database Password Changes](#database-password-changes)
+  - [1. Change the database access credentials](#1-change-the-database-access-credentials)
+  - [2. Reinstall the chocolatey-management-service package](#2-reinstall-the-chocolatey-management-service-package)
+  - [3. Reinstall the chocolatey-management-web package](#3-reinstall-the-chocolatey-management-web-package)
+
+<!-- /TOC -->
+
 ## Setup Considerations
 
 The following are points to keep in mind during initial setup:
@@ -97,8 +115,10 @@ On the desktop of your QDE VM, there is a `Readme.html` file, that will guide yo
 
 To configure a client in your environment run the following in an administrative PowerShell console:
 
+STILL NEEDS CERTFICATE APPROVAL
+
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force ; iex ((New-Object System.Net.WebClient).DownloadString('http://chocoserver:8081/repository/choco-install/ClientInstall.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force ; iex ((New-Object System.Net.WebClient).DownloadString('https://chocoserver:8081/repository/choco-install/ClientInstall.ps1'))
 ```
 
 This script will :

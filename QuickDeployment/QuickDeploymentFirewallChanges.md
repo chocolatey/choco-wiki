@@ -1,4 +1,13 @@
 
+<!-- TOC -->
+
+- [External Ports](#external-ports)
+- [Internal Ports](#internal-ports)
+  - [FAQs](#faqs)
+    - [Can I open up the CCM Service's port to allow machines to report in from anywhere?](#can-i-open-up-the-ccm-services-port-to-allow-machines-to-report-in-from-anywhere)
+
+<!-- /TOC -->
+
 ![Image of CCM Architecture](IMAGE_URL)
 
 ## External Ports
@@ -12,9 +21,9 @@ These are ports that are opened through the corporate firewall, in case users ar
 These are the ports that are already opened on Windows Firewall on the QDE.
 
 * Nexus Web / API - Port 8443
-* CCM Web - Port 443 
+* CCM Web - Port 443
 * Jenkins - 8080
-* CCM Service - 24020 
+* CCM Service - 24020
 
 ### FAQs
 

@@ -1,6 +1,6 @@
 # 1. Chocolatey Quick Deployment Environment (QDE)
 
-## 1.1. Summary 
+## 1.1. Summary
 
 This is an overview on the Chocolatey Quick Deployment Environment (QDE). It provides a single virtual machine appliance to be imported into your hypervisor-of-choice, which contains most of the various components of a Chocolatey organizational solution.
 
@@ -8,17 +8,16 @@ This is an overview on the Chocolatey Quick Deployment Environment (QDE). It pro
 
 <!-- TOC -->
 
-- [1. Chocolatey Quick Deployment Environment (QDE)](#1-chocolatey-quick-deployment-environment-qde)
-    - [1.1. Summary](#11-summary)
-    - [1.2. QDE Components](#12-qde-components)
-    - [1.3. Links](#13-links)
-    - [1.4. Related Articles](#14-related-articles)
-    - [1.4.1. FAQs](#141-faqs)
-        - [1.4.1.1. What does the QDE (Quick Deployment Environment) Include?](#1411-what-does-the-qde-quick-deployment-environment-include)
-        - [1.4.1.2. What do I need to do make this happen in my environment?](#1412-what-do-i-need-to-do-make-this-happen-in-my-environment)
-        - [1.4.1.3. How much time does this save?](#1413-how-much-time-does-this-save)
-        - [1.4.1.4. What if I have a larger environment? (> 1k nodes)](#1414-what-if-i-have-a-larger-environment--1k-nodes)
-        - [1.4.1.5. Can we brag about how fast we were able to get configured?](#1415-can-we-brag-about-how-fast-we-were-able-to-get-configured)
+- [1.1. Summary](#11-summary)
+- [1.2. QDE Components](#12-qde-components)
+- [1.3. Links](#13-links)
+- [1.4. Related Articles](#14-related-articles)
+- [1.4.1. FAQs](#141-faqs)
+  - [1.4.1.1. What does the QDE (Quick Deployment Environment) include?](#1411-what-does-the-qde-quick-deployment-environment-include)
+  - [1.4.1.2. What do I need to do make this happen in my environment?](#1412-what-do-i-need-to-do-make-this-happen-in-my-environment)
+  - [1.4.1.3. How much time does this save?](#1413-how-much-time-does-this-save)
+  - [1.4.1.4. What if I have a larger environment? (> 1k nodes)](#1414-what-if-i-have-a-larger-environment--1k-nodes)
+  - [1.4.1.5. Can we brag about how fast we were able to get configured?](#1415-can-we-brag-about-how-fast-we-were-able-to-get-configured)
 
 <!-- /TOC -->
 
@@ -37,12 +36,14 @@ If you find yourself in need of a more scalable solution, please contact Support
 
 ## 1.3. Links
 
-* [Quick Deployment Environment Setup](QuickDeploymentSetup.md)
+* [Quick Deployment Environment Setup](QuickDeploymentSetup)
 * Setting up proper DNS on QDE (DHCP by default; gonna wanna switch to static)
-* [QDE SSL Setup](QuickDeploymentSslSetup.md)
-* Setting up DNS on clients for accessing (make sure clients 
+* [QDE Desktop ReadMe File](QuickDeploymentDesktopReadme) (included here for convenience)
+* [QDE SSL Setup](QuickDeploymentSslSetup)
+* [QDE Firewall Changes](QuickDeploymentFirewallChanges)
+* Setting up DNS on clients for accessing (make sure clients can access QDE components)
 * Installing the certificate on clients
-* Installing Chocolatey on clients (from QDE)
+* Installing Chocolatey on clients (QDE)
 * Opening up for remote access (for QDE)
 
 ## 1.4. Related Articles
