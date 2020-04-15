@@ -116,7 +116,12 @@ We recommend you use Google Chrome to interact with all Web interfaces for the d
 
 ### SSL Information
 
-All services have been protected with Self-Signed SSL certificates and are placed in the appropriate stores. If you change the hostname of this server, add it to a domain, or otherwise would like to use your own SSL certificates, perform the following:
+All services have been protected with Self-Signed SSL certificates and are placed in the appropriate stores. Under the following situations you would want to run the script that follows:
+* If you want to expose this to the internet so clients can connect from outside your network
+* If you change the hostname of this server
+* If you add the QDE to a domain
+* If you would like to use your own SSL/TLS certificates
+
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force ; . C:\choco-setup\files\New-SslCertifcates.ps1
