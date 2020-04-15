@@ -121,7 +121,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force ; iex ((New-Object System.Net.W
 This script will :
 
 - Install Chocolatey
-- License chocolatey
+- License Chocolatey
 - Install the licensed extension (without the PackageBuilder/Internalizer shims)
 - Install the licensed agent
 - Configure ChocolateyInternal source
