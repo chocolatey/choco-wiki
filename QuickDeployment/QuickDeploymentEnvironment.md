@@ -32,7 +32,7 @@ The QDE appliance provides a unified architecture containing the following compo
 * **Scripts for Internal Deployment** - Various scripts to help you confirgure this solution are included, for your convenience.
 
 > :warning: **WARNING**: This solution targets environments up to about **1000 nodes**.
-If you need a solution for a larger environment, QDE would still be suitable as a proof-of-concept; however, best practices would recommmend a distributed infrastructure, separating each componoent into its own discrete node.
+If you need a solution for a larger environment, QDE would still be suitable as a proof-of-concept; however, best practices would recommmend a distributed infrastructure, separating each component into its own discrete node.
 If you find yourself in need of a more scalable solution, please contact Support and we'll be more than happy to provide guidance for larger solutions.
 
 ## 1.3. Links
