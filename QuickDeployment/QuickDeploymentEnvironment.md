@@ -48,10 +48,14 @@ If you find yourself in need of a more scalable solution, please contact Support
 
 ## 1.4. Related Articles
 
-* [Organizational Deployment Guide](https://github.com/chocolatey/choco/wiki/How-To-Setup-Offline-Installation)
-* [[Client Install|Installation]]
-* [[Chocolatey Commercial Installation|Installation-Licensed]]
-* [[Automate Package Internalization|How-To-Setup-Internal-Package-Repository]]
+A lot of what is done in QDE compresses the work or completely removes the work found in these related articles.
+
+* [Organizational Deployment Guide](How-To-Setup-Offline-Installation)
+* [Client Install](https://chocolatey.org/install#organization)
+* [Chocolatey Commercial Installation](Installation-Licensed)
+* [Automate Package Internalization](How-To-Setup-Internal-Package-Repository)
+
+**NOTE**: If you find that QDE is only good for a POC in your environment as you have thousands of endpoints, you will want to understand how to scale out that infrastructure. The above articles really help address that.
 
 ## 1.4.1. FAQs
 
