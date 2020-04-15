@@ -31,7 +31,7 @@ Resize-VHD -Path C:\path\to\QuickDeploy Environment.vhd -SizeInBytes 100GB
 
 Video Summary:
 
-![QDE Hyper-V Appliance Import](../images/quickdeploy/QDE-hypervapp.gif)
+![QDE Hyper-V Appliance Import](images/quickdeploy/QDE-hypervapp.gif)
 
 ### Platform: Hyper-V (VHD file)
 
@@ -54,7 +54,7 @@ Resize-VHD -Path C:\path\to\QuickDeploy Environment.vhd -SizeInBytes 100GB
 
 Video Summary:
 
-![QDE Hyper-V VHD](../images/quickdeploy/QDE-hyperv.gif)
+![QDE Hyper-V VHD](images/quickdeploy/QDE-hyperv.gif)
 
 ### Platform: VMware (OVA template)
 
@@ -80,7 +80,7 @@ Video Summary:
 
 Video Summary:
 
-![QDE VMware VMDK](../images/quickdeploy/QDE-vmdk.gif)
+![QDE VMware VMDK](images/quickdeploy/QDE-vmdk.gif)
 
 
 ## Other Considerations for Virtual Environment
