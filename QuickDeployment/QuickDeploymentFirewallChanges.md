@@ -12,6 +12,8 @@
 
 ## External Ports
 
+> :warning: **WARNING**: Performing this incorrectly could cause security issues and possibly cause you to be subjected to copyright law/redistribution. Read all of this first. Danger, Will Robinson!
+
 These are ports that are opened through the corporate firewall, in case users are **not** on VPN and need to install packages from anywhere. **NOTE:** You will have needed to done more to secure Nexus and the repositories ahead of this change. See the warning below and contact support if you want to enable clients to connect from the internet and not over VPN.
 
 * Nexus Web / API - Port 8443
