@@ -6,7 +6,7 @@ This system has been pre-configured as a fully functioning C4B environment.
 
 ___
 
-To leverage all of the features of C4B, copy the license file you received via email to C:\ProgramData\chocolatey\license. Make sure the name of the file is exactly "chocolatey.license.xml"
+To leverage all of the features of C4B, copy the license file you received via email to C:\ProgramData\chocolatey\license. Make sure the name of the file is exactly `chocolatey.license.xml`
 
 In Powershell execute:
 
