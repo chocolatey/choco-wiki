@@ -4,7 +4,7 @@
 
 This is an overview on the Chocolatey Quick Deployment Environment (QDE). It provides a single virtual machine appliance to be imported into your hypervisor-of-choice, which contains most of the various components of a Chocolatey organizational solution.
 
-![QDE Architechture](../images/quickdeploy/QDE-architecture.gif)
+![QDE Architechture](images/quickdeploy/QDE-architecture.gif)
 
 <!-- TOC -->
 
