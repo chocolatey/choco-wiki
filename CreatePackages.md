@@ -70,7 +70,7 @@ Is your package unqualified for the Chocolatey feed, but you like to be able to 
 * **Use the UTF-8 character encoding** for the `*.nuspec` and `*.ps1` files. If you don’t respect this rule, some characters are not displayed correctly in the [Gallery on Chocolatey.org](http://chocolatey.org/packages), because the Gallery assumes `UTF-8`.
 * **Byte Order Mark (BOM) is optional for `*.nuspec`.**. A `BOM` is not required but it won't hurt anything if it is found.
 * **PowerShell scripts need to be saved in UTF-8 with `BOM`**. PowerShell is ignoring the standards and needs a `BOM` in order to recognize scripts as `UTF-8`. Otherwise it processes non `ASCII` characters incorrectly.
-* Don’t use the default Windows Editor. While newer versions of Notepad has improved its ability to handle line endings and UTF-8 w/out BOM, it is still behind in capabilities as compared to other editors. Alternatives:
+* Don’t use the default Windows Editor. While newer versions of Notepad have improved its ability to handle line endings and UTF-8 w/out BOM, it is still behind in capabilities as compared to other editors. Alternatives:
     * [Visual Studio Code](https://chocolatey.org/packages/VisualStudioCode)
     * [Notepad++](http://chocolatey.org/packages/notepadplusplus)
     * [Geany](http://chocolatey.org/packages/geany)
