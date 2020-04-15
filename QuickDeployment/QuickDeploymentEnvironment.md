@@ -26,7 +26,7 @@ This is an overview on the Chocolatey Quick Deployment Environment (QDE). It pro
 
 The QDE appliance provides a unified architecture containing the following components:
 
-* **Sonatype Nexus Repository OSS** (pre-configured with repositories) - This is your repository, wher you'll be storing your Chocolatey packages (nupkg files).
+* **Sonatype Nexus Repository OSS** (pre-configured with repositories) - This is your repository, where you'll be storing your Chocolatey packages (nupkg files).
 * **Jenkins** (w/Internalizer Jobs) - This is your automation engine, that lets you run tasks on-demand and on a schedule. It will host the PowerShell scripts to help you auto-internalize packages from the Chocolatey Community Repository
 * **Chocolatey Central Management** - This is your web dashboard for Chocolatey, that will allow you to track and monitor Chocolatey packages on your endpoint clients. You can see what packages are installed where, and whether or not they are out-of-date.
 * **Scripts for Internal Deployment** - Various scripts to help you confirgure this solution are included, for your convenience.
