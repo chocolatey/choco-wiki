@@ -58,7 +58,7 @@ If you change your API key, you will need to change the key in the Jenkins jobs 
 
 #### Choco apikey Command
 
-To help make pushing packages easier, the `choco apikey` command is available. This will store your API key for a specific source as part of chocolatey's configuration. This will be encrypted. To setup, do the following:
+To help make pushing packages easier, the `choco apikey` command is available. This will store your API key for a specific source as part of Chocolatey's configuration. This will be encrypted. To setup, do the following:
 
 ```powershell
 choco apikey add --key="'$YourApiKey'" --source="'https://chocoserver:8443/repository/ChocolateyInternal/'"
