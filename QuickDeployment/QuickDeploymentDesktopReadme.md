@@ -46,7 +46,7 @@ Sources configured in Chocolatey can only read data from their remote endpoints,
 
 #### **Changing the API Key**
 
-You may wish to change the API key before you start using things. To do so, log in to Nexus using the information above, or you rnew credentials if you have already gone through the first run wizard. Once logged in perform the following steps:
+You may wish to change the API key before you start using things. To do so, log in to Nexus using the information above, or your new credentials if you have already gone through the first run wizard. Once logged in perform the following steps:
 
 1. Click on your username in the upper right-hand side of the homepage.
 2. Select "NuGet API Key" from the left-hand navigation window.
