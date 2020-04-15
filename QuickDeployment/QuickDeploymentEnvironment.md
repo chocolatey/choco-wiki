@@ -54,7 +54,7 @@ If you find yourself in need of a more scalable solution, please contact Support
 
 ## 1.4.1. FAQs
 
-### 1.4.1.1. What does the QDE (Quick Deployment Environment) Include?
+### 1.4.1.1. What does the QDE (Quick Deployment Environment) include?
 
 * Repository Server - Nexus (configured w/repositories)
 * Automation Pipelines - Jenkins w/Internalizer Jobs
