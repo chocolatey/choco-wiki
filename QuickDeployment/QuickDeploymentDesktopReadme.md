@@ -59,7 +59,7 @@ ___
 - API Key: [REDACTED]
 
 When you first log in to Nexus, you will immediately be asked you change your password.
-You will then be asked if you'd like to enable Anonymous Access to the repositories. We typically recommend doing this, unless security requirements in your organization stipulate that RBAC controls be in place.
+You will then be asked if you'd like to enable Anonymous Access to the repositories. We typically recommend doing this, unless security requirements in your organization stipulate that RBAC controls be in place. **NOTE**: If you plan to allow clients to connect in from outside your network (over the internet), please contact support for the right options as there is more work to be done to limit access to specific repositories.
 
 Sources configured in Chocolatey can only read data from their remote endpoints, and cannot delete items. If you need to limit the packages people have access to, control this with separate Hosted and Group repositories. Reach out to Chocolatey Support or consult the Nexus documentation for more information.
 
