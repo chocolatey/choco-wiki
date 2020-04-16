@@ -36,22 +36,22 @@ If you find yourself in need of a more scalable solution, please contact Support
 
 ## 1.3. Links
 
-* [Quick Deployment Environment Setup](QuickDeploymentSetup)
+* [[Quick Deployment Environment Setup|QuickDeploymentSetup]]
 * Setting up proper DNS on QDE (DHCP by default; gonna wanna switch to static)
-* [QDE Desktop ReadMe File](QuickDeploymentDesktopReadme) (included here for convenience)
-* [QDE SSL/TLS Setup](QuickDeploymentSslSetup)
-* [QDE Firewall Changes](QuickDeploymentFirewallChanges)
-* [QDE Client Setup](QuickDeploymentClientSetup) (setting up your client machines)
+* [[QDE Desktop ReadMe File|QuickDeploymentDesktopReadme]] (included here for convenience)
+* [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]]
+* [[QDE Firewall Changes|QuickDeploymentFirewallChanges]]
+* [[QDE Client Setup|QuickDeploymentClientSetup]] (setting up your client machines)
 * Opening up for remote access (for QDE)
 
 ## 1.4. Related Articles
 
 A lot of what is done in QDE compresses the work or completely removes the work found in these related articles.
 
-* [Organizational Deployment Guide](How-To-Setup-Offline-Installation)
+* [[Organizational Deployment Guide|How-To-Setup-Offline-Installation]]
 * [Client Install](https://chocolatey.org/install#organization)
-* [Chocolatey Commercial Installation](Installation-Licensed)
-* [Automate Package Internalization](How-To-Setup-Internal-Package-Repository)
+* [[Chocolatey Commercial Installation|Installation-Licensed]]
+* [[Automate Package Internalization|How-To-Setup-Internal-Package-Repository]]
 
 **NOTE**: If you find that QDE is only good for a POC in your environment as you have thousands of endpoints, you will want to understand how to scale out that infrastructure. The above articles really help address that.
 

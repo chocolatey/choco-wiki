@@ -11,4 +11,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force ; . C:\choco-setup\files\New-Ss
 ```
 
 > :warning: **WARNING**: This script will seemingly prompt for input, and have other strange output. This is due to poor Java tooling and console output which cannot be suppressed. Just let things happen, as things are working as expected.
+
+**NOTE**: Please run the above from an administrative PowerShell session.
+
 Once complete, this script will generate new SSL certificates for all services and move them to the appropriate locations and configure the services to use them.

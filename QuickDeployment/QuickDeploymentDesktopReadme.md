@@ -28,6 +28,8 @@ To finish setting up QDE (Quick Deployment Environment), you'll need to work thr
 
 If you run into any issues as you set up your QDE and clients, please reach out to support at [REDACTED] and folks can set up a session to work with you on this.
 
+Also see https://chocolatey.org/docs/quick-deployment-environment.
+
 ## Create a license package
 
 ___

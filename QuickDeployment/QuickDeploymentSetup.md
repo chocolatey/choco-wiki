@@ -115,15 +115,15 @@ On the desktop of your QDE VM, there is a `Readme.html` file, that will guide yo
 
 ## SSL Setup and Considerations
 
-See [QDE SSL/TLS Setup](QuickDeploymentSslSetup).
+See [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]].
 
 ## Firewall Changes
 
-See [QDE Firewall Changes](QuickDeploymentFirewallChanges).
+See [[QDE Firewall Changes|QuickDeploymentFirewallChanges]].
 
 ## Client Installation
 
-See [QDE Client Setup](QuickDeploymentClientSetup).
+See [[QDE Client Setup|QuickDeploymentClientSetup]].
 
 ## Database Password Changes
 
