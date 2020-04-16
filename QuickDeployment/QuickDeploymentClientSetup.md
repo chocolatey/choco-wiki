@@ -27,13 +27,13 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 ```
 
 What does this do?
-* Sets the execution policy for this script run to bypass. It does not affect permanent settings
-* Imports the SSL Certificate from the Quick Deploy Environment
+* Sets the execution policy for this script run to bypass. It does not affect permanent settings.
+* Imports the SSL Certificate from the Quick Deploy Environment.
 * Calls Client setup script from the QDE environment.
 
 > :warning: **WARNING**: If you have changed the host name, this will not work for you. Please reach out to support for options.
 
-The ClientSetup.ps1 script will :
+The ClientSetup.ps1 script will:
 
 - Install Chocolatey
 - License Chocolatey
