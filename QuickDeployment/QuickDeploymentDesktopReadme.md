@@ -180,7 +180,7 @@ This script will :
 
 ___
 
-This VM is running an **UNACTIVATED** Server 2019 Standard Operating System. If you plan to use this box long-term, you _will_ need to apply a license to the VM. If you use a KMS server in your environment, and have it configured on clients via Group Policy, you likely have nothing to do here, but verify.
+This VM is running an **UNACTIVATED** Server 2019 Standard Operating System. If you plan to use this virtual machine long-term, you _will_ need to apply a license to the VM. If you use a KMS server in your environment, and have it configured on clients via Group Policy, you likely have nothing to do here, but verify.
 
 If you rely on Retail or MAK licensing, you will need to apply the license using the following, replacing the x's with your actual product key:
 

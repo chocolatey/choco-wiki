@@ -26,18 +26,18 @@ This is an overview on the Chocolatey Quick Deployment Environment (QDE). It pro
 The QDE appliance provides a unified architecture containing the following components:
 
 * **Sonatype Nexus Repository OSS** (pre-configured with repositories) - This is your repository, where you'll be storing your Chocolatey packages (nupkg files).
-* **Jenkins** (w/Internalizer Jobs) - This is your automation engine, that lets you run tasks on-demand and on a schedule. It will host the PowerShell scripts to help you auto-internalize packages from the Chocolatey Community Repository
+* **Jenkins** (pre-configured with internalizer jobs) - This is your automation engine, that lets you run tasks on-demand and on a schedule. It will host the PowerShell scripts to help you auto-internalize packages from the Chocolatey Community Repository
 * **Chocolatey Central Management** - This is your web dashboard for Chocolatey, that will allow you to track and monitor Chocolatey packages on your endpoint clients. You can see what packages are installed where, and whether or not they are out-of-date.
-* **Scripts for Internal Deployment** - Various scripts to help you confirgure this solution are included, for your convenience.
+* **Scripts for Internal Deployment** - Various scripts to help you configure this solution are included, for your convenience.
 
 > :warning: **WARNING**: This solution targets environments up to about **1000 nodes**.
-If you need a solution for a larger environment, QDE would still be suitable as a proof-of-concept; however, best practices would recommmend a distributed infrastructure, separating each component into its own discrete node.
+If you need a solution for a larger environment, QDE would still be suitable as a proof-of-concept, however, best practices would recommmend a distributed infrastructure, separating each component into its own discrete node.
 If you find yourself in need of a more scalable solution, please contact Support and we'll be more than happy to provide guidance for larger solutions.
 
 ## 1.3. Links
 
 * [[Quick Deployment Environment Setup|QuickDeploymentSetup]]
-* Setting up proper DNS on QDE (DHCP by default; gonna wanna switch to static)
+* Setting up proper DNS on QDE (DHCP by default; you'll want to switch to static)
 * [[QDE Desktop ReadMe File|QuickDeploymentDesktopReadme]] (included here for convenience)
 * [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]]
 * [[QDE Firewall Changes|QuickDeploymentFirewallChanges]]
@@ -59,8 +59,8 @@ A lot of what is done in QDE compresses the work or completely removes the work 
 
 ### 1.5.1. What does the QDE (Quick Deployment Environment) include?
 
-* Repository Server - Nexus (configured w/repositories)
-* Automation Pipelines - Jenkins w/Internalizer Jobs
+* Repository Server - Nexus (pre-configured with repositories)
+* Automation Pipelines - Jenkins (pre-configured with internalizer jobs)
 * Chocolatey Central Management
 * Package Builder / Package Internalizer
 * All the goodness of that sweet, sweet automation in Chocolatey.
