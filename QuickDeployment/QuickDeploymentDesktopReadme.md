@@ -26,7 +26,7 @@ This system has been pre-configured as a fully functioning C4B environment.
 
 To finish setting up QDE (Quick Deployment Environment), you'll need to work through this document and run the different commands you find here. Please note that nearly _all_ the commands need to be run from an administrative context.
 
-If you run into any issues as you set up your QDE and clients, please reach out to support at support@chocolatey.io and folks can set up a session to work with you on this.
+If you run into any issues as you set up your QDE and clients, please reach out to support at [REDACTED] and folks can set up a session to work with you on this.
 
 ## Create a license package
 
