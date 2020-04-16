@@ -39,11 +39,9 @@ If you find yourself in need of a more scalable solution, please contact Support
 * [Quick Deployment Environment Setup](QuickDeploymentSetup)
 * Setting up proper DNS on QDE (DHCP by default; gonna wanna switch to static)
 * [QDE Desktop ReadMe File](QuickDeploymentDesktopReadme) (included here for convenience)
-* [QDE SSL Setup](QuickDeploymentSslSetup)
+* [QDE SSL/TLS Setup](QuickDeploymentSslSetup)
 * [QDE Firewall Changes](QuickDeploymentFirewallChanges)
-* Setting up DNS on clients for accessing (make sure clients can access QDE components)
-* Installing the certificate on clients
-* Installing Chocolatey on clients (QDE)
+* [QDE Client Setup](QuickDeploymentClientSetup) (setting up your client machines)
 * Opening up for remote access (for QDE)
 
 ## 1.4. Related Articles

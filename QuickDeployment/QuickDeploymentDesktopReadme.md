@@ -59,7 +59,7 @@ ___
 - API Key: [REDACTED]
 
 When you first log in to Nexus, you will immediately be asked you change your password.
-You will then be asked if you'd like to enable Anonymous Access to the repositories. We typically recommend doing this, unless security requirements in your organization stipulate that RBAC controls be in place. 
+You will then be asked if you'd like to enable Anonymous Access to the repositories. We typically recommend doing this, unless security requirements in your organization stipulate that RBAC controls be in place.
 
 > :warning: **Warning**: If you plan to allow clients to connect in from outside your network (over the internet), please contact support for the right options as there is more work to be done to limit access to specific repositories.
 
@@ -138,11 +138,16 @@ ___
 
 ___
 
-To configure a client in your environment run the following in an administrative PowerShell console:
-
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force ; iex ((New-Object System.Net.WebClient).DownloadString('https://chocoserver:8443/repository/choco-install/ClientSetup.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/Import-QuickDeployCertificate.ps1')); iex ((New-Object System.Net.WebClient).DownloadString('https://chocoserver:8443/repository/choco-install/ClientSetup.ps1'))
 ```
+
+What does this do?
+* Sets the execution policy for this script run to bypass. It does not affect permanent settings
+* Imports the SSL Certificate from the Quick Deploy Environment
+* Calls Client setup script from the QDE environment.
+
+**NOTE**: If you have changed the host name, this will not work for you. Please reach out to support for options.
 
 This script will :
 

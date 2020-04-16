@@ -13,6 +13,8 @@ You will receive a download link via email for an archive of the VM image. Once 
   - [Platform: VMware (VMDK file)](#platform-vmware-vmdk-file)
 - [Other Considerations for Virtual Environment](#other-considerations-for-virtual-environment)
 - [Virtual Environment Setup](#virtual-environment-setup)
+- [SSL Setup and Considerations](#ssl-setup-and-considerations)
+- [Firewall Changes](#firewall-changes)
 - [Client Installation](#client-installation)
 - [Database Password Changes](#database-password-changes)
   - [1. Change the database access credentials](#1-change-the-database-access-credentials)
@@ -111,28 +113,17 @@ Video Summary:
 
 On the desktop of your QDE VM, there is a `Readme.html` file, that will guide you through the rest of the setup process once you are logged in. A version of this readme file can be found [here](QuickDeploymentDesktopReadme.md)
 
+## SSL Setup and Considerations
+
+See [QDE SSL/TLS Setup](QuickDeploymentSslSetup).
+
+## Firewall Changes
+
+See [QDE Firewall Changes](QuickDeploymentFirewallChanges).
+
 ## Client Installation
 
-To configure a client in your environment run the following in an administrative PowerShell console:
-
-STILL NEEDS CERTFICATE APPROVAL
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force ; iex ((New-Object System.Net.WebClient).DownloadString('https://chocoserver:8081/repository/choco-install/ClientInstall.ps1'))
-```
-
-This script will :
-
-- Install chocolatey from the internal repository
-- License chocolatey
-- Install the licensed extension (without the PackageBuilder/Internalizer shims)
-- Install the licensed agent
-- Configure ChocolateyInternal source
-- Configure Self-Service mode
-- Configure Central Management check-in
-
-[NOTE: How is cert generation/installation handled currently?]
-
+See [QDE Client Setup](QuickDeploymentClientSetup).
 
 ## Database Password Changes
 
