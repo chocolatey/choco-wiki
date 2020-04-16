@@ -6,19 +6,18 @@ This is an overview on the Chocolatey Quick Deployment Environment (QDE). It pro
 
 ![QDE Architechture](images/quickdeploy/QDE-architecture.gif)
 
-<!-- TOC -->
+<!-- TOC depthFrom:2 -->
 
-- [Chocolatey Quick Deployment Environment (QDE)](#chocolatey-quick-deployment-environment-qde)
-    - [Summary](#summary)
-    - [QDE Components](#qde-components)
-    - [Links](#links)
-    - [Related Articles](#related-articles)
-    - [FAQs](#faqs)
-        - [What does the QDE (Quick Deployment Environment) include?](#what-does-the-qde-quick-deployment-environment-include)
-        - [What do I need to do make this happen in my environment?](#what-do-i-need-to-do-make-this-happen-in-my-environment)
-        - [How much time does this save?](#how-much-time-does-this-save)
-        - [What if I have a larger environment? (> 1k nodes)](#what-if-i-have-a-larger-environment--1k-nodes)
-        - [Can we brag about how fast we were able to get configured?](#can-we-brag-about-how-fast-we-were-able-to-get-configured)
+- [Summary](#summary)
+- [QDE Components](#qde-components)
+- [Links](#links)
+- [Related Articles](#related-articles)
+- [FAQs](#faqs)
+  - [What does the QDE (Quick Deployment Environment) include?](#what-does-the-qde-quick-deployment-environment-include)
+  - [What do I need to do make this happen in my environment?](#what-do-i-need-to-do-make-this-happen-in-my-environment)
+  - [How much time does this save?](#how-much-time-does-this-save)
+  - [What if I have a larger environment? (> 1k nodes)](#what-if-i-have-a-larger-environment--1k-nodes)
+  - [Can we brag about how fast we were able to get configured?](#can-we-brag-about-how-fast-we-were-able-to-get-configured)
 
 <!-- /TOC -->
 

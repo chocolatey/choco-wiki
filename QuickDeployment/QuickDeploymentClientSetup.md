@@ -1,11 +1,10 @@
 # Quick Deployment Client Setup
 
-<!-- TOC -->
+<!-- TOC depthFrom:2 -->
 
-- [Quick Deployment Client Setup](#quick-deployment-client-setup)
-    - [Summary](#summary)
-    - [DNS](#dns)
-    - [Client Installation](#client-installation)
+- [Summary](#summary)
+- [DNS](#dns)
+- [Client Installation](#client-installation)
 
 <!-- /TOC -->
 

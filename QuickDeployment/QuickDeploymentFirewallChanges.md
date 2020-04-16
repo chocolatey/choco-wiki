@@ -1,14 +1,12 @@
 
-<!-- TOC -->
+<!-- TOC depthFrom:2 -->
 
 - [External Ports](#external-ports)
 - [Internal Ports](#internal-ports)
-    - [FAQs](#faqs)
-        - [Can I open up the CCM Service's port to allow machines to report in from anywhere?](#can-i-open-up-the-ccm-services-port-to-allow-machines-to-report-in-from-anywhere)
+  - [FAQs](#faqs)
+    - [Can I open up the CCM Service's port to allow machines to report in from anywhere?](#can-i-open-up-the-ccm-services-port-to-allow-machines-to-report-in-from-anywhere)
 
 <!-- /TOC -->
-
-![Image of CCM Architecture](IMAGE_URL)
 
 ## External Ports
 

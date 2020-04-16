@@ -3,22 +3,21 @@
 This document contains instructions for importing the QuickDeploy appliance/VM, or creating a VM and attaching the QuickDeploy disk image to it.
 You will receive a download link via email for an archive of the VM image. Once you have this downloaded, it will be ready for extraction and import into your environment.
 
-<!-- TOC -->
+<!-- TOC depthFrom:2 -->
 
-- [Quick Deployment Environment Setup](#quick-deployment-environment-setup)
-    - [Setup Considerations](#setup-considerations)
-    - [Import Virtual Environment](#import-virtual-environment)
-        - [Platform: Hyper-V (Appliance)](#platform-hyper-v-appliance)
-        - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
-        - [Platform: VMware (OVA template)](#platform-vmware-ova-template)
-        - [Platform: VMware (VMDK file)](#platform-vmware-vmdk-file)
-    - [Other Considerations for Virtual Environment](#other-considerations-for-virtual-environment)
-        - [DNS Settings](#dns-settings)
-    - [Virtual Environment Setup](#virtual-environment-setup)
-    - [SSL Setup and Considerations](#ssl-setup-and-considerations)
-    - [Firewall Changes](#firewall-changes)
-    - [Client Installation](#client-installation)
-    - [Database Password Changes](#database-password-changes)
+- [Setup Considerations](#setup-considerations)
+- [Import Virtual Environment](#import-virtual-environment)
+  - [Platform: Hyper-V (Appliance)](#platform-hyper-v-appliance)
+  - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
+  - [Platform: VMware (OVA template)](#platform-vmware-ova-template)
+  - [Platform: VMware (VMDK file)](#platform-vmware-vmdk-file)
+- [Other Considerations for Virtual Environment](#other-considerations-for-virtual-environment)
+  - [DNS Settings](#dns-settings)
+- [Virtual Environment Setup](#virtual-environment-setup)
+- [SSL Setup and Considerations](#ssl-setup-and-considerations)
+- [Firewall Changes](#firewall-changes)
+- [Client Installation](#client-installation)
+- [Database Password Changes](#database-password-changes)
 
 <!-- /TOC -->
 
