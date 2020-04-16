@@ -14,13 +14,13 @@
 
 > :warning: **WARNING**: Performing this incorrectly could cause security issues and possibly cause you to be subjected to copyright law/redistribution.
 > Read all of this first.
-> Danger, Will Robinson!
+> Danger, Will Robinson! :robot:
 
 These are ports that are opened through the corporate firewall, in case users are **not** on VPN and need to install packages from anywhere.
 **NOTE:** You will have needed to done more to secure Nexus and the repositories ahead of this change.
 See the warning below and contact support if you want to enable clients to connect from the internet and not over VPN.
 
-- Nexus Web / API - Port 8443
+* Nexus Web / API - Port 8443
 
 > :warning: **WARNING**: DO NOT OPEN this port externally until you have locked down your repositories to user/pass access and updated the script in the raw client repository.
 > Please contact support for the right options on how to do this FIRST.
@@ -29,10 +29,10 @@ See the warning below and contact support if you want to enable clients to conne
 
 These are the ports that are already opened on Windows Firewall on the QDE.
 
-- Nexus Web / API - Port 8443
-- CCM Web - Port 443
-- Jenkins - 8080
-- CCM Service - 24020
+* Nexus Web / API - Port 8443
+* CCM Web - Port 443
+* Jenkins - 8080
+* CCM Service - 24020
 
 ### FAQs
 

@@ -2,24 +2,23 @@
 
 This system has been pre-configured as a fully functioning C4B environment.
 
-<!-- TOC -->
+<!-- TOC depthFrom:2 -->
 
-- [Thanks for trying Chocolatey For Business!](#thanks-for-trying-chocolatey-for-business)
-    - [Summary](#summary)
-    - [Create a license package](#create-a-license-package)
-    - [Enable Central Management](#enable-central-management)
-    - [Server Information](#server-information)
-        - [Nexus Repository](#nexus-repository)
-            - [Changing the API Key](#changing-the-api-key)
-            - [Choco apikey Command](#choco-apikey-command)
-        - [Jenkins](#jenkins)
-        - [Chocolatey Central Management](#chocolatey-central-management)
-        - [Firewall ports](#firewall-ports)
-        - [Browser considerations](#browser-considerations)
-        - [SSL Information](#ssl-information)
-    - [Client installations](#client-installations)
-    - [Licensing this VM](#licensing-this-vm)
-    - [Package Internalization](#package-internalization)
+- [Summary](#summary)
+- [Create a license package](#create-a-license-package)
+- [Enable Central Management](#enable-central-management)
+- [Server Information](#server-information)
+- [Nexus Repository](#nexus-repository)
+    - [Changing the API Key](#changing-the-api-key)
+    - [Choco apikey Command](#choco-apikey-command)
+- [Jenkins](#jenkins)
+- [Chocolatey Central Management](#chocolatey-central-management)
+- [Firewall ports](#firewall-ports)
+- [Browser considerations](#browser-considerations)
+- [SSL Information](#ssl-information)
+- [Client installations](#client-installations)
+- [Licensing this VM](#licensing-this-vm)
+- [Package Internalization](#package-internalization)
 
 <!-- /TOC -->
 
@@ -42,8 +41,7 @@ Make sure the name of the file is exactly `chocolatey.license.xml`.
 In an administrative Powershell session, execute the following:
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force
-. 'C:\choco-setup\files\CreateLicensePackage.ps1'
+Set-ExecutionPolicy Bypass -Scope Process -Force; . 'C:\choco-setup\files\CreateLicensePackage.ps1'
 ```
 
 This will create the licensed package at `C:\choco-setup\packages` and push it up to your Nexus repository for use.
@@ -58,8 +56,7 @@ All licensed features are already installed, but will not be functional without 
 Run the following to turn on the Central Management services in an administrative PowerShell session:
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force
-. 'C:\choco-setup\files\EnableCCM.ps1'
+Set-ExecutionPolicy Bypass -Scope Process -Force; . 'C:\choco-setup\files\EnableCCM.ps1'
 ```
 
 ## Server Information
@@ -68,10 +65,10 @@ ___
 
 ### Nexus Repository
 
-- Url: [https://chocoserver:8443](https://chocoserver:8443)
-- Username: admin
-- Password: [REDACTED]
-- API Key: [REDACTED]
+* Url: [https://chocoserver:8443](https://chocoserver:8443)
+* Username: admin
+* Password: [REDACTED]
+* API Key: [REDACTED]
 
 When you first log in to Nexus, you will immediately be asked you change your password.
 You will then be asked if you'd like to enable Anonymous Access to the repositories.
@@ -113,9 +110,9 @@ choco apikey add --key="'$YourApiKey'" --source="'https://chocoserver:8443/repos
 
 ### Jenkins
 
-- Url: [http://chocoserver:8080](http://chocoserver:8080)
-- Username: admin
-- Password: [REDACTED]
+* Url: [http://chocoserver:8080](http://chocoserver:8080)
+* Username: admin
+* Password: [REDACTED]
 
 For using Jenkins, please refer to our documentation here: [https://chocolatey.org/docs/how-to-setup-internal-package-repository](https://chocolatey.org/docs/how-to-setup-internal-package-repository).
 At most, you will need to login to Jenkins, change the password (`By going to People on the Sidebar > Click on admin > Click Configure on the Sidebar, scroll down to change password section`), and enable the pre-configured jobs to run on the schedule of your choosing.
@@ -123,9 +120,9 @@ Our documentation can assist with ensuring this is done correctly.
 
 ### Chocolatey Central Management
 
-- Url: [https://chocoserver](https://chocoserver)
-- Username: ccmadmin
-- Password: 123qwe
+* Url: [https://chocoserver](https://chocoserver)
+* Username: ccmadmin
+* Default Password: 123qwe (You will be prompted to change this on first login)
 
 > :memo: **NOTE**: You will see 2 packages (aspnetcore-runtimepackagestore and dotnetcore-windowshosting) listed as outdated at version 2.2.7.
 > These packages have been pinned to that version, as they are required at that level for the current version of CCM to function correctly.
@@ -134,10 +131,10 @@ Our documentation can assist with ensuring this is done correctly.
 
 To allow access to all services firewall ports have been opened as follows:
 
-- 8443: Nexus WebUI
-- 8081: Jenkins WebUI
-- 443: Central Management WebUI
-- 24020: Central Management Service communications for Agent check-in
+* 8443: Nexus WebUI
+* 8081: Jenkins WebUI
+* 443: Central Management WebUI
+* 24020: Central Management Service communications for Agent check-in
 
 ### Browser considerations
 
@@ -147,13 +144,13 @@ We recommend you use Google Chrome to interact with all Web interfaces for the d
 
 All services have been protected with Self-Signed SSL certificates and are placed in the appropriate stores. Under the following situations you would want to run the script that follows:
 
-- If you want to expose this to the internet so clients can connect from outside your network
-- If you change the hostname of this server
-- If you add the QDE to a domain
-- If you would like to use your own SSL/TLS certificates
+* If you want to expose this to the internet so clients can connect from outside your network
+* If you change the hostname of this server
+* If you add the QDE to a domain
+* If you would like to use your own SSL/TLS certificates
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force ; . C:\choco-setup\files\New-SslCertificates.ps1
+Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1
 ```
 
 **NOTE**: Please run the above from an administrative PowerShell session.
@@ -178,10 +175,10 @@ Set-ExecutionPolicy RemoteSigned -Scope Process -Force; iex ((New-Object System.
 
 What does this do?
 
-- Sets the execution policy for this script run to remote signed scripts. This is only in the scope of this process and not permanent.
-- Imports the SSL Certificate from the Quick Deploy Environment. **NOTE**: This is a signed script that is used to import a certificate. Due to how it works and security considerations, there are very few options allowed.
-- Switches execution policy to bypass for the internal script. This is only in the scope of this process and not permanent.
-- Calls Client setup script from the QDE environment (see below for what it does).
+* Sets the execution policy for this script run to remote signed scripts. This is only in the scope of this process and not permanent.
+* Imports the SSL Certificate from the Quick Deploy Environment. **NOTE**: This is a signed script that is used to import a certificate. Due to how it works and security considerations, there are very few options allowed.
+* Switches execution policy to bypass for the internal script. This is only in the scope of this process and not permanent.
+* Calls Client setup script from the QDE environment (see below for what it does).
 
 > :warning: **WARNING**: If your clients are airgapped, you will need to find a different means to import the QDE Certificate. Please reach out to support for options.
 
@@ -189,13 +186,13 @@ What does this do?
 
 The ClientSetup.ps1 script will :
 
-- Install Chocolatey
-- License Chocolatey
-- Install the licensed extension (without the PackageBuilder/Internalizer shims)
-- Install the licensed agent
-- Configure ChocolateyInternal source
-- Configure Self-Service mode
-- Configure Central Management check-in
+* Install Chocolatey
+* License Chocolatey
+* Install the licensed extension (without the PackageBuilder/Internalizer shims)
+* Install the licensed agent
+* Configure ChocolateyInternal source
+* Configure Self-Service mode
+* Configure Central Management check-in
 
 ## Licensing this VM
 
