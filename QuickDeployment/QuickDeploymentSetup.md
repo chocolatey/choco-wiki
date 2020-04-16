@@ -19,9 +19,6 @@ You will receive a download link via email for an archive of the VM image. Once 
     - [Firewall Changes](#firewall-changes)
     - [Client Installation](#client-installation)
     - [Database Password Changes](#database-password-changes)
-        - [Change the database access credentials](#change-the-database-access-credentials)
-        - [Reinstall the chocolatey-management-service package](#reinstall-the-chocolatey-management-service-package)
-        - [Reinstall the chocolatey-management-web package](#reinstall-the-chocolatey-management-web-package)
 
 <!-- /TOC -->
 
@@ -141,16 +138,15 @@ See [[QDE Client Setup|QuickDeploymentClientSetup]].
 The database credentials are currently pre-set.
 If you would like to change the credentials associated with the database, you will need to follow these steps.
 
-### Change the database access credentials
-
-### Reinstall the chocolatey-management-service package
+1. Change the database access credentials
+2. Reinstall the chocolatey-management-service package
 
 ```powershell
 choco uninstall chocolatey-management-service -y
 choco install chocolatey-management-service -y --package-parameters-sensitive=”’/ConnectionString=””Server=localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password=NewPassword;””’”
 ```
 
-### Reinstall the chocolatey-management-web package
+3. Reinstall the chocolatey-management-web package
 
 ```powershell
 choco uninstall chocolatey-management-web -y
