@@ -154,17 +154,19 @@ ___
 
 This script, like all of the others here would need to be run in an administrative PowerShell context. However, this one is run from your client machines and not the QDE.
 
-
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/Import-QuickDeployCertificate.ps1')); iex ((New-Object System.Net.WebClient).DownloadString('https://chocoserver:8443/repository/choco-install/ClientSetup.ps1'))
+Set-ExecutionPolicy RemoteSigned -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/Import-QuickDeployCertificate.ps1')); Set-ExecutionPolicy RemoteSigned -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocoserver:8443/repository/choco-install/ClientSetup.ps1'))
 ```
 
 What does this do?
-* Sets the execution policy for this script run to bypass. It does not affect permanent settings
-* Imports the SSL Certificate from the Quick Deploy Environment
+* Sets the execution policy for this script run to remote signed scripts. This is only in the scope of this process and not permanent.
+* Imports the SSL Certificate from the Quick Deploy Environment. **NOTE**: This is a signed script that is used to import a certificate. Due to how it works and security considerations, there are very few options allowed.
+* Switches execution policy to bypass for the internal script. This is only in the scope of this process and not permanent.
 * Calls Client setup script from the QDE environment.
 
-**NOTE**: If you have changed the host name, this will not work for you. Please reach out to support for options.
+> :warning: **WARNING**: If your clients are airgapped, you will need to find a different means to import the QDE Certificate. Please reach out to support for options.
+
+> :warning: **WARNING**: If you have changed the host name, this will not work for you. Please reach out to support for options.
 
 This script will :
 
