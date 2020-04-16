@@ -7,7 +7,7 @@ All services have been protected with Self-Signed SSL certificates and are place
 * If you would like to use your own SSL/TLS certificates
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force ; . C:\choco-setup\files\New-SslCertifcates.ps1
+Set-ExecutionPolicy Bypass -Scope Process -Force ; . C:\choco-setup\files\New-SslCertificates.ps1
 ```
 
 > :warning: **WARNING**: This script will seemingly prompt for input, and have other strange output. This is due to poor Java tooling and console output which cannot be suppressed. Just let things happen, as things are working as expected.
