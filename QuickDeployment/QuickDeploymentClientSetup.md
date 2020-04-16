@@ -20,7 +20,7 @@ Typically in your environment, onces you've added QDE, it should be able to star
 
 ## Client Installation
 
-On your client machines, you will be running the following script
+On your client machines, you will be running the following script in an administrative context:
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/Import-QuickDeployCertificate.ps1')); iex ((New-Object System.Net.WebClient).DownloadString('https://chocoserver:8443/repository/choco-install/ClientSetup.ps1'))

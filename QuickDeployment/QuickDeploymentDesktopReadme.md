@@ -4,11 +4,12 @@ This system has been pre-configured as a fully functioning C4B environment.
 
 <!-- TOC -->
 
+- [Summary](#summary)
 - [Create a license package](#create-a-license-package)
 - [Enable Central Management](#enable-central-management)
 - [Server Information](#server-information)
   - [Nexus Repository](#nexus-repository)
-    - [**Changing the API Key**](#changing-the-api-key)
+    - [Changing the API Key](#changing-the-api-key)
     - [Choco apikey Command](#choco-apikey-command)
   - [Jenkins](#jenkins)
   - [Chocolatey Central Management](#chocolatey-central-management)
@@ -17,17 +18,23 @@ This system has been pre-configured as a fully functioning C4B environment.
   - [SSL Information](#ssl-information)
 - [Client installations](#client-installations)
 - [Licensing this VM](#licensing-this-vm)
-- [Internalization](#internalization)
+- [Package Internalization](#package-internalization)
 
 <!-- /TOC -->
+
+## Summary
+
+To finish setting up QDE (Quick Deployment Environment), you'll need to work through this document and run the different commands you find here. Please note that nearly _all_ the commands need to be run from an administrative context.
+
+If you run into any issues as you set up your QDE and clients, please reach out to support at support@chocolatey.io and folks can set up a session to work with you on this.
 
 ## Create a license package
 
 ___
 
-To leverage all of the features of C4B, copy the license file you received via email to C:\ProgramData\chocolatey\license. Make sure the name of the file is exactly `chocolatey.license.xml`
+To leverage all of the features of C4B, copy the license file you received via email to `C:\ProgramData\chocolatey\license`. Make sure the name of the file is exactly `chocolatey.license.xml`.
 
-In Powershell execute:
+In an administrative Powershell session, execute the following:
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force ; . 'C:\choco-setup\files\CreateLicensePackage.ps1'
@@ -41,7 +48,7 @@ ___
 
 **NOTE:** This step should _only_ be completed once the license package has been created in the step above. All licensed features are already installed, just unactivated without a valid license file.
 
-Run the following to turn on the Central Management services.
+Run the following to turn on the Central Management services in an administrative PowerShell session:
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force ; . 'C:\choco-setup\files\EnableCCM.ps1'
@@ -65,7 +72,7 @@ You will then be asked if you'd like to enable Anonymous Access to the repositor
 
 Sources configured in Chocolatey can only read data from their remote endpoints, and cannot delete items. If you need to limit the packages people have access to, control this with separate Hosted and Group repositories. Reach out to Chocolatey Support or consult the Nexus documentation for more information.
 
-#### **Changing the API Key**
+#### Changing the API Key
 
 You may wish to change the API key before you start using things. To do so, log in to Nexus using the information above, or your new credentials if you have already gone through the first run wizard. Once logged in perform the following steps:
 
@@ -84,6 +91,8 @@ To help make pushing packages easier, the `choco apikey` command is available. T
 ```powershell
 choco apikey add --key="'$YourApiKey'" --source="'https://chocoserver:8443/repository/ChocolateyInternal/'"
 ```
+
+**NOTE**: Please run the above from an administrative PowerShell session.
 
 ### Jenkins
 
@@ -129,7 +138,10 @@ All services have been protected with Self-Signed SSL certificates and are place
 Set-ExecutionPolicy Bypass -Scope Process -Force ; . C:\choco-setup\files\New-SslCertificates.ps1
 ```
 
+**NOTE**: Please run the above from an administrative PowerShell session.
+
 > :warning: **WARNING**: This script will seemingly prompt for input, and have other strange output. This is due to poor Java tooling and console output which cannot be suppressed. Just let things happen, as things are working as expected.
+
 Once complete, this script will generate new SSL certificates for all services and move them to the appropriate locations and configure the services to use them.
 
 ___
@@ -137,6 +149,9 @@ ___
 ## Client installations
 
 ___
+
+This script, like all of the others here would need to be run in an administrative PowerShell context. However, this one is run from your client machines and not the QDE.
+
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/Import-QuickDeployCertificate.ps1')); iex ((New-Object System.Net.WebClient).DownloadString('https://chocoserver:8443/repository/choco-install/ClientSetup.ps1'))
@@ -171,7 +186,9 @@ If you rely on Retail or MAK licensing, you will need to apply the license using
 slmgr.vbs /ipk xxxxx-xxxxx-xxxxx-xxxxx
 ```
 
-## Internalization
+**NOTE**: Please run the above from an administrative PowerShell session.
+
+## Package Internalization
 
 ___
 
@@ -184,3 +201,5 @@ Example Usage:
 ```powershell
 . C:\choco-setup\files\Invoke-ChocolateyInternalizer.ps1 -Packages adobereader,vlc,vscode -RepositoryUrl https://chocoserver:8443/repository/ChocolateyTest/ -RemoteRepo https://chocolatey.org/api/v2 -LocalRepoApiKey [REDACTED_API_KEY]
 ```
+
+**NOTE**: Please run the above from an administrative PowerShell session.
