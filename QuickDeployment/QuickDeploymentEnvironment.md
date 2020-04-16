@@ -1,6 +1,6 @@
-# 1. Chocolatey Quick Deployment Environment (QDE)
+# Chocolatey Quick Deployment Environment (QDE)
 
-## 1.1. Summary
+## Summary
 
 This is an overview on the Chocolatey Quick Deployment Environment (QDE). It provides a single virtual machine appliance to be imported into your hypervisor-of-choice, which contains most of the various components of a Chocolatey organizational solution.
 
@@ -8,20 +8,20 @@ This is an overview on the Chocolatey Quick Deployment Environment (QDE). It pro
 
 <!-- TOC -->
 
-- [1.1. Summary](#11-summary)
-- [1.2. QDE Components](#12-qde-components)
-- [1.3. Links](#13-links)
-- [1.4. Related Articles](#14-related-articles)
-- [1.5. FAQs](#15-faqs)
-  - [1.5.1. What does the QDE (Quick Deployment Environment) include?](#151-what-does-the-qde-quick-deployment-environment-include)
-  - [1.5.2. What do I need to do make this happen in my environment?](#152-what-do-i-need-to-do-make-this-happen-in-my-environment)
-  - [1.5.3. How much time does this save?](#153-how-much-time-does-this-save)
-  - [1.5.4. What if I have a larger environment? (> 1k nodes)](#154-what-if-i-have-a-larger-environment--1k-nodes)
-  - [1.5.5. Can we brag about how fast we were able to get configured?](#155-can-we-brag-about-how-fast-we-were-able-to-get-configured)
+- [Summary](#summary)
+- [QDE Components](#qde-components)
+- [Links](#links)
+- [Related Articles](#related-articles)
+- [FAQs](#faqs)
+  - [What does the QDE (Quick Deployment Environment) include?](#what-does-the-qde-quick-deployment-environment-include)
+  - [What do I need to do make this happen in my environment?](#what-do-i-need-to-do-make-this-happen-in-my-environment)
+  - [How much time does this save?](#how-much-time-does-this-save)
+  - [What if I have a larger environment? (> 1k nodes)](#what-if-i-have-a-larger-environment--1k-nodes)
+  - [Can we brag about how fast we were able to get configured?](#can-we-brag-about-how-fast-we-were-able-to-get-configured)
 
 <!-- /TOC -->
 
-## 1.2. QDE Components
+## QDE Components
 
 The QDE appliance provides a unified architecture containing the following components:
 
@@ -34,7 +34,7 @@ The QDE appliance provides a unified architecture containing the following compo
 If you need a solution for a larger environment, QDE would still be suitable as a proof-of-concept, however, best practices would recommmend a distributed infrastructure, separating each component into its own discrete node.
 If you find yourself in need of a more scalable solution, please contact Support and we'll be more than happy to provide guidance for larger solutions.
 
-## 1.3. Links
+## Links
 
 * [[Quick Deployment Environment Setup|QuickDeploymentSetup]]
 * Setting up proper DNS on QDE (DHCP by default; you'll want to switch to static)
@@ -44,7 +44,7 @@ If you find yourself in need of a more scalable solution, please contact Support
 * [[QDE Client Setup|QuickDeploymentClientSetup]] (setting up your client machines)
 * Opening up for remote access (for QDE)
 
-## 1.4. Related Articles
+## Related Articles
 
 A lot of what is done in QDE compresses the work or completely removes the work found in these related articles.
 
@@ -55,9 +55,9 @@ A lot of what is done in QDE compresses the work or completely removes the work 
 
 **NOTE**: If you find that QDE is only good for a POC in your environment as you have thousands of endpoints, you will want to understand how to scale out that infrastructure. The above articles really help address that.
 
-## 1.5. FAQs
+## FAQs
 
-### 1.5.1. What does the QDE (Quick Deployment Environment) include?
+### What does the QDE (Quick Deployment Environment) include?
 
 * Repository Server - Nexus (pre-configured with repositories)
 * Automation Pipelines - Jenkins (pre-configured with internalizer jobs)
@@ -66,20 +66,20 @@ A lot of what is done in QDE compresses the work or completely removes the work 
 * All the goodness of that sweet, sweet automation in Chocolatey.
 * Scripts for Internal Deployment
 
-### 1.5.2. What do I need to do make this happen in my environment?
+### What do I need to do make this happen in my environment?
 
 Fill out the form on [this page](https://chocolatey.org/contact/quick-deployment) and we will reach out with all the necessary information to get you started.
 
-### 1.5.3. How much time does this save?
+### How much time does this save?
 
 Typically, setting up a proper Chocolatey Central Management server and any accompanying infrastructure takes somewhere between 1-5 days, even when you have everything you need to get started. Setting up a new piece of infrastructure can be pretty cumbersome, we know. The QDE contains pretty much everything you need to get started in a single image, all ready to go. At most, it should only take a couple of hours to get everything ready to go from there.
 
-### 1.5.4. What if I have a larger environment? (> 1k nodes)
+### What if I have a larger environment? (> 1k nodes)
 
 While this solution will be great to get a glimpse of what Chocolatey can really do for you, by its nature it isn't the silver bullet for every environment.
 
 If you have a larger environment, we would strongly recommend taking the time to set up the various services on separate hosts to make them easier to manage and ensure they have the necessary resources to handle heavier loads.
 
-### 1.5.5. Can we brag about how fast we were able to get configured?
+### Can we brag about how fast we were able to get configured?
 
 Please do! :-)
