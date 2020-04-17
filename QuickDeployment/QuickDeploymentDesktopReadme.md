@@ -74,7 +74,9 @@ When you first log in to Nexus, you will immediately be asked you change your pa
 You will then be asked if you'd like to enable Anonymous Access to the repositories.
 We typically recommend doing this, unless security requirements in your organization stipulate that RBAC controls be in place.
 
-> :warning: **Warning**: If you plan to allow clients to connect in from outside your network (over the internet), please contact support for the right options.
+> :warning: **Warning**
+>
+> If you plan to allow clients to connect in from outside your network (over the internet), please contact support for the right options.
 > There will be more work you'll need to do to limit access to specific repositories.
 
 Sources configured in Chocolatey can only read data from their remote endpoints, and cannot delete items.
@@ -124,7 +126,9 @@ Our documentation can assist with ensuring this is done correctly.
 * Username: ccmadmin
 * Default Password: 123qwe (You will be prompted to change this on first login)
 
-> :memo: **NOTE**: You will see 2 packages (aspnetcore-runtimepackagestore and dotnetcore-windowshosting) listed as outdated at version 2.2.7.
+> :memo: **NOTE**
+>
+> You will see 2 packages (aspnetcore-runtimepackagestore and dotnetcore-windowshosting) listed as outdated at version 2.2.7.
 > These packages have been pinned to that version, as they are required at that level for the current version of CCM to function correctly.
 
 ### Firewall ports
@@ -155,7 +159,9 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-Ssl
 
 **NOTE**: Please run the above from an administrative PowerShell session.
 
-> :warning: **WARNING**: This script will seemingly prompt for input, and have other strange output.
+> :warning: **WARNING**
+>
+> This script will seemingly prompt for input, and have other strange output.
 > This is due to poor Java tooling and console output which cannot be suppressed.
 > Just let things happen, as things are working as expected.
 
@@ -180,9 +186,10 @@ What does this do?
 * Switches execution policy to bypass for the internal script. This is only in the scope of this process and not permanent.
 * Calls Client setup script from the QDE environment (see below for what it does).
 
-> :warning: **WARNING**: If your clients are airgapped, you will need to find a different means to import the QDE Certificate. Please reach out to support for options.
-
-> :warning: **WARNING**: If you have changed the host name, this will not work for you. Please reach out to support for options.
+> :warning: **WARNING**
+>
+> If your clients are airgapped or you have changed the hostname, you will need to find a different means to import the QDE Certificate.
+> Please reach out to support for options.
 
 The ClientSetup.ps1 script will :
 

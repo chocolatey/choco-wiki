@@ -1,3 +1,4 @@
+# Quick Deployment Environment Firewall Setup
 
 <!-- TOC depthFrom:2 -->
 
@@ -10,7 +11,9 @@
 
 ## External Ports
 
-> :warning: **WARNING**: Performing this incorrectly could cause security issues and possibly cause you to be subjected to copyright law/redistribution.
+> :warning: **WARNING**
+>
+> Performing this incorrectly could cause security issues and possibly cause you to be subjected to copyright law/redistribution.
 > Read all of this first.
 > Danger, Will Robinson! :robot:
 
@@ -20,7 +23,9 @@ See the warning below and contact support if you want to enable clients to conne
 
 * Nexus Web / API - Port 8443
 
-> :warning: **WARNING**: DO NOT OPEN this port externally until you have locked down your repositories to user/pass access and updated the script in the raw client repository.
+> :warning: **WARNING**
+>
+> DO NOT OPEN this port externally until you have locked down your repositories to user/pass access and updated the script in the raw client repository.
 > Please contact support for the right options on how to do this FIRST.
 
 ## Internal Ports

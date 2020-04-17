@@ -30,7 +30,9 @@ The QDE appliance provides a unified architecture containing the following compo
 * **Chocolatey Central Management** - This is your web dashboard for Chocolatey, that will allow you to track and monitor Chocolatey packages on your endpoint clients. You can see what packages are installed where, and whether or not they are out-of-date.
 * **Scripts for Internal Deployment** - Various scripts to help you configure this solution are included, for your convenience.
 
-> :warning: **WARNING**: This solution targets environments up to about **1000 nodes**.
+> :warning: **WARNING**
+>
+> This solution targets environments up to about **1000 nodes**.
 > If you need a solution for a larger environment, QDE would still be suitable as a proof-of-concept, however, best practices would recommend a distributed infrastructure, separating each component into its own discrete node.
 > If you find yourself in need of a more scalable solution, please contact Support and we'll be more than happy to provide guidance for larger solutions.
 
@@ -80,4 +82,4 @@ If you have a larger environment, we would strongly recommend taking the time to
 
 ### Can we brag about how fast we were able to get configured?
 
-Please do! :slightly_smiling:
+Please do! :slightly_smiling_face:

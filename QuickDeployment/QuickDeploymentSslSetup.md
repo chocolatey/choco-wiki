@@ -8,7 +8,9 @@ Under the following situations you would want to run the script that follows:
 * If you add the QDE to a domain.
 * If you would like to use your own SSL/TLS certificates.
 
-> :warning: **WARNING**: This script will seemingly prompt for input, and have other strange output.
+> :warning: **WARNING**
+>
+> This script will seemingly prompt for input, and have other strange output.
 > This is due to poor Java tooling and console output which cannot be suppressed.
 > Just let things happen, as things are working as expected.
 
