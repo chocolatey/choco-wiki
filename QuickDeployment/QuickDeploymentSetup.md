@@ -11,13 +11,15 @@ You will receive a download link via email for an archive of the VM image. Once 
   - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
   - [Platform: VMware (OVA template)](#platform-vmware-ova-template)
   - [Platform: VMware (VMDK file)](#platform-vmware-vmdk-file)
+  - [Platform: Other](#platform-other)
 - [Other Considerations for Virtual Environment](#other-considerations-for-virtual-environment)
   - [DNS Settings](#dns-settings)
 - [Virtual Environment Setup](#virtual-environment-setup)
-- [SSL Setup and Considerations](#ssl-setup-and-considerations)
+  - [Adding License File to QDE](#adding-license-file-to-qde)
+  - [SSL Setup and Considerations](#ssl-setup-and-considerations)
+  - [Database Password Changes](#database-password-changes)
 - [Firewall Changes](#firewall-changes)
 - [Client Installation](#client-installation)
-- [Database Password Changes](#database-password-changes)
 
 <!-- /TOC -->
 
@@ -106,6 +108,10 @@ Video Summary:
 
 ![QDE VMware VMDK](images/quickdeploy/QDE-vmdk.gif)
 
+### Platform: Other
+
+Most likely you are going to download the VMDK file and convert it to your platform. Please reach out to support to see what options are available.
+
 ## Other Considerations for Virtual Environment
 
 ### DNS Settings
@@ -120,19 +126,19 @@ A version of this readme file can be found in the [[Quick Deployment Desktop Rea
 
 > :warning: **WARNING**: If you have an existing corporate environment you will be servicing with the QDE VM, be sure to perform your organization-specific initial configuration **_before_** running setup scripts.
 
-## SSL Setup and Considerations
+### Adding License File to QDE
+In the [[Quick Deployment Desktop Readme|QuickDeploymentDesktopReadme]], it is going to ask you to use the license file. That license file comes from an external location. It is best to copy/paste the file into QDE as a whole file, but you may have needed to set up any kind of extensions available for that.
+
+> :warning: **WARNING**
+>
+> If you find that you need to copy the text and paste the license file text into a new file in QDE, the file format and name is extremely important to get right. If you don't have UTF-8 or there is a space inserted, Chocolatey will consider it invalid.
+> Please contact support if you need help here.
+
+### SSL Setup and Considerations
 
 See [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]].
 
-## Firewall Changes
-
-See [[QDE Firewall Changes|QuickDeploymentFirewallChanges]].
-
-## Client Installation
-
-See [[QDE Client Setup|QuickDeploymentClientSetup]].
-
-## Database Password Changes
+### Database Password Changes
 
 The database credentials are currently pre-set.
 If you would like to change the credentials associated with the database, you will need to follow these steps.
@@ -151,5 +157,15 @@ choco install chocolatey-management-service -y --package-parameters-sensitive=�
 choco uninstall chocolatey-management-web -y
 Choco install chocolatey-management-web -y --package-parameters-sensitive=”’/ConnectionString=””Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password=NewPassword;””’”
 ```
+
+## Firewall Changes
+
+See [[QDE Firewall Changes|QuickDeploymentFirewallChanges]].
+
+## Client Installation
+
+See [[QDE Client Setup|QuickDeploymentClientSetup]].
+
+
 
 [[Quick Deployment Environment|QuickDeploymentEnvironment]]
