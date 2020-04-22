@@ -118,7 +118,7 @@ You will likely need to reconfigure it with a static IP address depending on you
 On the desktop of your QDE VM, there is a `Readme.html` file, that will guide you through the rest of the setup process once you are logged in.
 A version of this readme file can be found in the [[Quick Deployment Desktop Readme|QuickDeploymentDesktopReadme]].
 
-> :warning: **NOTE**: If you have an existing corporate environment you will be servicing with the QDE VM, be sure to perform your organization-specific initial configuration **_before_** running setup scripts.
+> :warning: **WARNING**: If you have an existing corporate environment you will be servicing with the QDE VM, be sure to perform your organization-specific initial configuration **_before_** running setup scripts.
 
 ## SSL Setup and Considerations
 
@@ -151,3 +151,5 @@ choco install chocolatey-management-service -y --package-parameters-sensitive=�
 choco uninstall chocolatey-management-web -y
 Choco install chocolatey-management-web -y --package-parameters-sensitive=”’/ConnectionString=””Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password=NewPassword;””’”
 ```
+
+[[Quick Deployment Environment|QuickDeploymentEnvironment]]

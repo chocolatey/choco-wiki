@@ -43,3 +43,5 @@ These are the ports that are already opened on Windows Firewall on the QDE.
 
 While it is technically possible, we recommend using a VPN connection for client check-ins.
 The CCM service connection is authenticated over SSL, but our best practice recommendation is to secure the connection over a VPN as well.
+
+[[Quick Deployment Environment|QuickDeploymentEnvironment]]

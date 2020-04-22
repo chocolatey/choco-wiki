@@ -10,12 +10,14 @@ This is an overview on the Chocolatey Quick Deployment Environment (QDE). It pro
 
 - [Summary](#summary)
 - [QDE Components](#qde-components)
+- [Getting QDE](#getting-qde)
 - [Links](#links)
 - [Related Articles](#related-articles)
 - [FAQs](#faqs)
   - [What does the QDE (Quick Deployment Environment) include?](#what-does-the-qde-quick-deployment-environment-include)
-  - [What do I need to do make this happen in my environment?](#what-do-i-need-to-do-make-this-happen-in-my-environment)
   - [How much time does this save?](#how-much-time-does-this-save)
+  - [How do I take advantage of QDE?](#how-do-i-take-advantage-of-qde)
+  - [I'm already a C4B customer?](#im-already-a-c4b-customer)
   - [What if I have a larger environment? (> 1k nodes)](#what-if-i-have-a-larger-environment--1k-nodes)
   - [Can we brag about how fast we were able to get configured?](#can-we-brag-about-how-fast-we-were-able-to-get-configured)
 
@@ -36,9 +38,15 @@ The QDE appliance provides a unified architecture containing the following compo
 > If you need a solution for a larger environment, QDE would still be suitable as a proof-of-concept, however, best practices would recommend a distributed infrastructure, separating each component into its own discrete node.
 > If you find yourself in need of a more scalable solution, please contact Support and we'll be more than happy to provide guidance for larger solutions.
 
+## Getting QDE
+
+To get QDE into your environment, please [reach out to us](https://chocolatey.org/contact/quick-deployment) and we can work to get you set up.
+
+> :memo: **NOTE**: A QDE environment is a fully functional Chocolatey for Business (C4B) environment, as such it will require a business or trial license.
+
 ## Links
 
-* [[Quick Deployment Environment Setup|QuickDeploymentSetup]]
+* [[QDE Setup|QuickDeploymentSetup]]
 * [[QDE Desktop ReadMe File|QuickDeploymentDesktopReadme]] (included here for convenience)
 * [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]]
 * [[QDE Firewall Changes|QuickDeploymentFirewallChanges]]
@@ -53,7 +61,7 @@ A lot of what is done in QDE compresses the work or completely removes the work 
 * [[Chocolatey Commercial Installation|Installation-Licensed]]
 * [[Automate Package Internalization|How-To-Setup-Internal-Package-Repository]]
 
-**NOTE**: If you find that QDE is only good for a POC in your environment as you have thousands of endpoints, you will want to understand how to scale out that infrastructure. The above articles really help address that.
+> :memo: **NOTE**: If you find that QDE is only good for a proof-of-concept in your environment due to having thousands of endpoints, you will want to understand how to scale out that infrastructure. The above articles address how that is done.
 
 ## FAQs
 
@@ -66,13 +74,15 @@ A lot of what is done in QDE compresses the work or completely removes the work 
 * All the goodness of that sweet, sweet automation in Chocolatey.
 * Scripts for Internal Deployment
 
-### What do I need to do make this happen in my environment?
-
-Fill out the form on [this page](https://chocolatey.org/contact/quick-deployment) and we will reach out with all the necessary information to get you started.
-
 ### How much time does this save?
 
 Typically, setting up a proper Chocolatey Central Management server and any accompanying infrastructure takes somewhere between 1-5 days, even when you have everything you need to get started. Setting up a new piece of infrastructure can be pretty cumbersome, we know. The QDE contains pretty much everything you need to get started in a single image, all ready to go. At most, it should only take a couple of hours to get everything ready to go from there.
+
+### How do I take advantage of QDE?
+You must have a [Business edition of Chocolatey](https://chocolatey.org/compare) or be on an active trial license. Fill out the [quick deployment request form](https://chocolatey.org/contact/quick-deployment) and we will reach out with all the necessary information to get you started.
+
+### I'm already a C4B customer?
+Fill out the [quick deployment request form](https://chocolatey.org/contact/quick-deployment) and we will reach out with all the necessary information to get you started. Be sure to mention you are already a C4B customer.
 
 ### What if I have a larger environment? (> 1k nodes)
 

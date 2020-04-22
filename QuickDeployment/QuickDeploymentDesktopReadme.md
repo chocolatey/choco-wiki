@@ -50,8 +50,10 @@ This will create the licensed package at `C:\choco-setup\packages` and push it u
 
 ___
 
-**NOTE:** This step should _only_ be completed once the license package has been created in the step above.
-All licensed features are already installed, but will not be functional without a valid license file.
+> :memo: **NOTE**
+>
+> This step should _only_ be completed once the license package has been created in the step above.
+> All licensed features are already installed, but will not be functional without a valid license file.
 
 Run the following to turn on the Central Management services in an administrative PowerShell session:
 
@@ -74,7 +76,7 @@ When you first log in to Nexus, you will immediately be asked you change your pa
 You will then be asked if you'd like to enable Anonymous Access to the repositories.
 We typically recommend doing this, unless security requirements in your organization stipulate that RBAC controls be in place.
 
-> :warning: **Warning**
+> :warning: **WARNING**
 >
 > If you plan to allow clients to connect in from outside your network (over the internet), please contact support for the right options.
 > There will be more work you'll need to do to limit access to specific repositories.
@@ -108,7 +110,7 @@ This will be encrypted. To setup, do the following:
 choco apikey add --key="'$YourApiKey'" --source="'https://chocoserver:8443/repository/ChocolateyInternal/'"
 ```
 
-**NOTE**: Please run the above from an administrative PowerShell session.
+> :memo: **NOTE**: Please run the above from an administrative PowerShell session.
 
 ### Jenkins
 
@@ -157,7 +159,8 @@ All services have been protected with Self-Signed SSL certificates and are place
 Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1
 ```
 
-**NOTE**: Please run the above from an administrative PowerShell session.
+> :memo: **NOTE**: Please run the above from an administrative PowerShell session.
+
 
 > :warning: **WARNING**
 >
@@ -213,7 +216,7 @@ If you rely on Retail or MAK licensing, you will need to apply the license using
 slmgr.vbs /ipk xxxxx-xxxxx-xxxxx-xxxxx
 ```
 
-**NOTE**: Please run the above from an administrative PowerShell session.
+> :memo: **NOTE**: Please run the above from an administrative PowerShell session.
 
 ## Package Internalization
 
@@ -229,4 +232,6 @@ Example Usage:
 . C:\choco-setup\files\Invoke-ChocolateyInternalizer.ps1 -Packages adobereader,vlc,vscode -RepositoryUrl https://chocoserver:8443/repository/ChocolateyTest/ -RemoteRepo https://chocolatey.org/api/v2 -LocalRepoApiKey [REDACTED_API_KEY]
 ```
 
-**NOTE**: Please run the above from an administrative PowerShell session.
+> :memo: **NOTE**: Please run the above from an administrative PowerShell session.
+
+[[Quick Deployment Environment|QuickDeploymentEnvironment]]

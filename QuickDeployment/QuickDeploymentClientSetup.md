@@ -40,7 +40,10 @@ What does this do?
   This is only in the scope of this process and not permanent.
 * Calls Client setup script from the QDE environment (see below for what it does).
 
-> :warning: **WARNING**: If your clients are air-gapped or you have changed the host name, you will need to find a different means to import the QDE Certificate.
+> :warning: **WARNING**
+>
+> If your clients are air-gapped or you have changed the host name, you will need to find a different means to import the QDE Certificate.
+>
 > Please reach out to support for options.
 
 The `ClientSetup.ps1` script will:
@@ -52,3 +55,5 @@ The `ClientSetup.ps1` script will:
 * Configure ChocolateyInternal source
 * Configure Self-Service mode
 * Configure Central Management check-in
+
+[[Quick Deployment Environment|QuickDeploymentEnvironment]]

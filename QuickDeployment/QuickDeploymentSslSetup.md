@@ -14,10 +14,13 @@ Under the following situations you would want to run the script that follows:
 > This is due to poor Java tooling and console output which cannot be suppressed.
 > Just let things happen, as things are working as expected.
 
-**NOTE**: Please run the below from an administrative PowerShell session.
+
+> :memo: **NOTE**: Please run the below from an administrative PowerShell session.
 
 Once complete, this script will generate new SSL certificates for all services and move them to the appropriate locations and configure the services to use them.
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1
 ```
+
+[[Quick Deployment Environment|QuickDeploymentEnvironment]]
