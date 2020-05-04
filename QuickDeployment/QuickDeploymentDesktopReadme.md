@@ -2,23 +2,30 @@
 
 This system has been pre-configured as a fully functioning C4B environment.
 
+> :warning: **WARNING**
+>
+> Please follow these steps in ***exact*** order. These steps build on each other and need to be completed in order.
+
+> :memo: **NOTE**: This is likely more up to date than the ReadMe you will find on the desktop (not including redacted items like credentials). If there are conflicts between the desktop readme and what you see here, use this document.
+
 <!-- TOC depthFrom:2 -->
 
 - [Summary](#summary)
-- [Create a license package](#create-a-license-package)
-- [Enable Central Management](#enable-central-management)
-- [Server Information](#server-information)
+- [Step 0: Complete Prerequisites](#step-0-complete-prerequisites)
+- [Step 1: Create a License Package](#step-1-create-a-license-package)
+- [Step 2: Regenerate SSL Certificates](#step-2-regenerate-ssl-certificates)
+- [Step 3: Enable Central Management](#step-3-enable-central-management)
+- [Step 4: Review Server Information](#step-4-review-server-information)
   - [Nexus Repository](#nexus-repository)
-    - [Changing the API Key](#changing-the-api-key)
-    - [Choco apikey Command](#choco-apikey-command)
   - [Jenkins](#jenkins)
   - [Chocolatey Central Management](#chocolatey-central-management)
   - [Firewall ports](#firewall-ports)
   - [Browser considerations](#browser-considerations)
-  - [SSL Information](#ssl-information)
-- [Client installations](#client-installations)
-- [Licensing this VM](#licensing-this-vm)
-- [Package Internalization](#package-internalization)
+- [Step 5: Change the API Key (Optional, Recommended)](#step-5-change-the-api-key-optional-recommended)
+    - [Choco Apikey Command](#choco-apikey-command)
+- [Step 6: Install and Configure Chocolatey On Clients](#step-6-install-and-configure-chocolatey-on-clients)
+- [Step 7: Turn On Package Internalization](#step-7-turn-on-package-internalization)
+- [Step 8: License the QDE VM](#step-8-license-the-qde-vm)
 
 <!-- /TOC -->
 
@@ -31,9 +38,21 @@ If you run into any issues as you set up your QDE and clients, please reach out 
 
 Additional information can be found in our [Online Documentation](https://chocolatey.org/docs/quick-deployment-environment).
 
-## Create a license package
+* [[QDE Setup|QuickDeploymentSetup]]
+* [[QDE Desktop ReadMe File|QuickDeploymentDesktopReadme]] (online version of the desktop readme, online is most up to date)
+* [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]]
+* [[QDE Firewall Changes|QuickDeploymentFirewallChanges]]
+* [[QDE Client Setup|QuickDeploymentClientSetup]] (setting up your client machines)
 
 ___
+## Step 0: Complete Prerequisites
+
+There are some steps you will have taken before you come to this readme. Please make sure you have taken those steps ahead of time. Please see the [Online Documentation](https://chocolatey.org/docs/quick-deployment-environment) for the most up to date information.
+
+* [[QDE Setup|QuickDeploymentSetup]]
+
+___
+## Step 1: Create a License Package
 
 To leverage all of the features of C4B, copy the license file you received via email to `C:\ProgramData\chocolatey\license`.
 Make sure the name of the file is exactly `chocolatey.license.xml`.
@@ -46,9 +65,27 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; . 'C:\choco-setup\files\Create
 
 This will create the licensed package at `C:\choco-setup\packages` and push it up to your Nexus repository for use.
 
-## Enable Central Management
+___
+## Step 2: Regenerate SSL Certificates
+
+Under almost all circumstances for security purposes, you are going to want to complete this step. We've made it easy for you with a script. Once complete, the script will generate new SSL certificates for all services and move them to the appropriate locations and configure the services to use them. Please see [[SSL/TLS Setup|QuickDeploymentSslSetup]] for more details.
+
+> :memo: **NOTE**: Please run the below from an administrative PowerShell session.
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1
+```
+
+> :warning: **WARNING**
+>
+> This script will seemingly prompt for input, and have other strange output.
+> This is due to poor Java tooling and console output which cannot be suppressed.
+> Just let things happen, as things are working as expected.
+
+Once complete, this script will generate new SSL certificates for all services and move them to the appropriate locations and configure the services to use them.
 
 ___
+## Step 3: Enable Central Management
 
 > :memo: **NOTE**
 >
@@ -61,16 +98,15 @@ Run the following to turn on the Central Management services in an administrativ
 Set-ExecutionPolicy Bypass -Scope Process -Force; . 'C:\choco-setup\files\EnableCCM.ps1'
 ```
 
-## Server Information
-
 ___
+## Step 4: Review Server Information
 
 ### Nexus Repository
 
 * Url: [https://chocoserver:8443](https://chocoserver:8443)
 * Username: admin
-* Password: [REDACTED]
-* API Key: [REDACTED]
+* Password: [REDACTED] (credentials included on desktop readme)
+* API Key: [REDACTED] (credentials included on desktop readme)
 
 When you first log in to Nexus, you will immediately be asked you change your password.
 You will then be asked if you'd like to enable Anonymous Access to the repositories.
@@ -85,38 +121,11 @@ Sources configured in Chocolatey can only read data from their remote endpoints,
 If you need to limit the packages people have access to, control this with separate Hosted and Group repositories.
 Consult the Nexus documentation or reach out to Chocolatey Support for more information.
 
-#### Changing the API Key
-
-You may wish to change the API key before you start using things.
-To do so, log in to Nexus using the information above, or your new credentials if you have already gone through the first run wizard.
-Once logged in perform the following steps:
-
-1. Click on your username in the upper right-hand side of the homepage.
-2. Select "NuGet API Key" from the left-hand navigation window.
-3. Select "Reset API key"
-4. Enter your password
-5. Take note of the new API key
-
-If you change your API key, you will need to change the key in the Jenkins jobs that are pre-configured for you.
-See the next section for information on how to connect to Jenkins.
-
-#### Choco apikey Command
-
-To help make pushing packages easier, the `choco apikey` command is available.
-This will store your API key for a specific source as part of Chocolatey's configuration.
-This will be encrypted. To setup, do the following:
-
-```powershell
-choco apikey add --key="'$YourApiKey'" --source="'https://chocoserver:8443/repository/ChocolateyInternal/'"
-```
-
-> :memo: **NOTE**: Please run the above from an administrative PowerShell session.
-
 ### Jenkins
 
 * Url: [http://chocoserver:8080](http://chocoserver:8080)
 * Username: admin
-* Password: [REDACTED]
+* Password: [REDACTED] (credentials included on desktop readme)
 
 For using Jenkins, please refer to our documentation here: [https://chocolatey.org/docs/how-to-setup-internal-package-repository](https://chocolatey.org/docs/how-to-setup-internal-package-repository).
 At most, you will need to login to Jenkins, change the password (`By going to People on the Sidebar > Click on admin > Click Configure on the Sidebar, scroll down to change password section`), and enable the pre-configured jobs to run on the schedule of your choosing.
@@ -135,7 +144,7 @@ Our documentation can assist with ensuring this is done correctly.
 
 ### Firewall ports
 
-To allow access to all services firewall ports have been opened as follows:
+To allow access to all services firewall ports have been opened on QDE as follows:
 
 * 8443: Nexus WebUI
 * 8081: Jenkins WebUI
@@ -146,35 +155,37 @@ To allow access to all services firewall ports have been opened as follows:
 
 We recommend you use Google Chrome to interact with all Web interfaces for the different services installed. You will find Google Chrome pre-installed in the environment.
 
-### SSL Information
+___
+## Step 5: Change the API Key (Optional, Recommended)
 
-All services have been protected with Self-Signed SSL certificates and are placed in the appropriate stores. Under the following situations you would want to run the script that follows:
+You may wish to change the API key before you start using things.
+To do so, log in to Nexus using the information above, or your new credentials if you have already gone through the first run wizard.
+Once logged in perform the following steps:
 
-* If you want to expose this to the internet so clients can connect from outside your network
-* If you change the hostname of this server
-* If you add the QDE to a domain
-* If you would like to use your own SSL/TLS certificates
+1. Click on your username in the upper right-hand side of the homepage.
+2. Select "NuGet API Key" from the left-hand navigation window.
+3. Select "Reset API key"
+4. Enter your password
+5. Take note of the new API key
+
+If you change your API key, you will need to change the key in the Jenkins jobs that are pre-configured for you.
+See the next section for information on how to connect to Jenkins.
+
+#### Choco Apikey Command
+
+To help make pushing packages easier, the `choco apikey` command is available.
+This will store your API key for a specific source as part of Chocolatey's configuration.
+This will be encrypted. To setup, do the following:
+
+> :memo: **NOTE**: Please run the below from an administrative PowerShell session.
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1
+choco apikey add --key="'$YourApiKey'" --source="'https://chocoserver:8443/repository/ChocolateyInternal/'"
 ```
 
-> :memo: **NOTE**: Please run the above from an administrative PowerShell session.
-
-
-> :warning: **WARNING**
->
-> This script will seemingly prompt for input, and have other strange output.
-> This is due to poor Java tooling and console output which cannot be suppressed.
-> Just let things happen, as things are working as expected.
-
-Once complete, this script will generate new SSL certificates for all services and move them to the appropriate locations and configure the services to use them.
-
 ___
+## Step 6: Install and Configure Chocolatey On Clients
 
-## Client installations
-
-___
 
 This script, like all of the others here would need to be run in an administrative PowerShell context. However, this one is run from your client machines and not the QDE.
 
@@ -194,6 +205,15 @@ What does this do?
 > If your clients are airgapped or you have changed the hostname, you will need to find a different means to import the QDE Certificate.
 > Please reach out to support for options.
 
+> :warning: **WARNING**
+>
+> If the QDE hostname has been changed, the above script most likely will fail
+>
+> You won't be able to use the above script, and you will need to host your own script somewhere that is trusted so that the QDE certificates can be trusted. Please see [[SSL/TLS Setup|QuickDeploymentSslSetup]] for options.
+>
+> Please contact support if you need help here.
+
+
 The ClientSetup.ps1 script will :
 
 * Install Chocolatey
@@ -204,23 +224,8 @@ The ClientSetup.ps1 script will :
 * Configure Self-Service mode
 * Configure Central Management check-in
 
-## Licensing this VM
-
 ___
-
-This VM is running an **UNACTIVATED** Server 2019 Standard Operating System. If you plan to use this virtual machine long-term, you _will_ need to apply a license to the VM. If you use a KMS server in your environment, and have it configured on clients via Group Policy, you likely have nothing to do here, but verify.
-
-If you rely on Retail or MAK licensing, you will need to apply the license using the following, replacing the x's with your actual product key:
-
-```powershell
-slmgr.vbs /ipk xxxxx-xxxxx-xxxxx-xxxxx
-```
-
-> :memo: **NOTE**: Please run the above from an administrative PowerShell session.
-
-## Package Internalization
-
-___
+## Step 7: Turn On Package Internalization
 
 Chocolatey For Business includes the Package Internalizer feature, which takes a package from the Community Repository and rewrites the package to include all the binaries necessary to complete the installation of the application. You'll find in the C:\choco-setup\files directory a script named `Invoke-ChocolateyInternalizer.ps1` to help you with the process of internalizing additional packages into your environment.
 
@@ -233,5 +238,20 @@ Example Usage:
 ```
 
 > :memo: **NOTE**: Please run the above from an administrative PowerShell session.
+
+___
+## Step 8: License the QDE VM
+
+
+This VM is running an **UNACTIVATED** Server 2019 Standard Operating System. If you plan to use this virtual machine long-term, you _will_ need to apply a license to the VM. If you use a KMS server in your environment, and have it configured on clients via Group Policy, you likely have nothing to do here, but verify.
+
+If you rely on Retail or MAK licensing, you will need to apply the license using the following, replacing the x's with your actual product key:
+
+> :memo: **NOTE**: Please run the below from an administrative PowerShell session.
+
+```powershell
+slmgr.vbs /ipk xxxxx-xxxxx-xxxxx-xxxxx
+```
+
 
 [[Quick Deployment Environment|QuickDeploymentEnvironment]]

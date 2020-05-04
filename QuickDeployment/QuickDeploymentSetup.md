@@ -3,27 +3,33 @@
 This document contains instructions for importing the QuickDeploy appliance/VM, or creating a VM and attaching the QuickDeploy disk image to it.
 You will receive a download link via email for an archive of the VM image. Once you have this downloaded, it will be ready for extraction and import into your environment.
 
+> :warning: **WARNING**
+>
+> Please follow these steps in ***exact*** order. These will be very important later when you are trying to use the environment.
+
+
 <!-- TOC depthFrom:2 -->
 
-- [Setup Considerations](#setup-considerations)
-- [Import Virtual Environment](#import-virtual-environment)
+- [Step 0: Setup Considerations](#step-0-setup-considerations)
+- [Step 1: Import Virtual Environment](#step-1-import-virtual-environment)
   - [Platform: Hyper-V (Appliance)](#platform-hyper-v-appliance)
   - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
-  - [Platform: VMware (OVA template)](#platform-vmware-ova-template)
+  - [Platform: VMware (OVF template)](#platform-vmware-ovf-template)
   - [Platform: VMware (VMDK file)](#platform-vmware-vmdk-file)
   - [Platform: Other](#platform-other)
-- [Other Considerations for Virtual Environment](#other-considerations-for-virtual-environment)
-  - [DNS Settings](#dns-settings)
-- [Virtual Environment Setup](#virtual-environment-setup)
-  - [Adding License File to QDE](#adding-license-file-to-qde)
-  - [SSL Setup and Considerations](#ssl-setup-and-considerations)
-  - [Database Password Changes](#database-password-changes)
-- [Firewall Changes](#firewall-changes)
-- [Client Installation](#client-installation)
+- [Step 2: Other Considerations for Virtual Environment](#step-2-other-considerations-for-virtual-environment)
+  - [Step 2.1: DNS Settings](#step-21-dns-settings)
+- [Step 3: Virtual Environment Setup](#step-3-virtual-environment-setup)
+  - [Step 3.1: Add License File to QDE](#step-31-add-license-file-to-qde)
+  - [Step 3.2: Regenerate SSL Certificates](#step-32-regenerate-ssl-certificates)
+  - [Step 3.3: Database Password Changes (Optional)](#step-33-database-password-changes-optional)
+- [Step 4: Firewall Changes](#step-4-firewall-changes)
+- [Step 5: Install and Configure Chocolatey on Clients](#step-5-install-and-configure-chocolatey-on-clients)
 
 <!-- /TOC -->
 
-## Setup Considerations
+___
+## Step 0: Setup Considerations
 
 The following are points to keep in mind during initial setup:
 
@@ -37,7 +43,19 @@ The following are points to keep in mind during initial setup:
 * If you intend to use Nexus outside of your corporate network without the use of a VPN, you will be required to configure RBAC on the repositories housed inside of the repository server.
   This is to ensure that the packages stored on the server are not publicly accessible without authentication.
 
-## Import Virtual Environment
+> :warning: **WARNING**
+>
+> tl;dr: Think long and hard before changing the QDE hostname
+>
+> Renaming the QDE host requires a lot of things and needs to be completed FIRST prior to ANYTHING that is done on the QDE box. It is strongly recommended **NOT** to rename unless you absolutely need to. The most important reason has to do with how a client installs from QDE - it must learn to trust the QDE certificate. Once renamed, the easy option that's provided for you goes away and you will need to provide a hosted solution with an already trusted certificate.
+> You can provide your own certificate that is already trusted on machines as part of the [[SSL/TLS Setup|QuickDeploymentSslSetup]]. Your other option is to host the script to trust the certificate with an already trusted certificate. You will find a template that you will need to edit at `c:\choco_setup_files` (in the QDE) named `Import-ChocoServerCertificate.ps1`.
+>
+> Please contact support if you need help here.
+
+___
+## Step 1: Import Virtual Environment
+
+Chooose one of the following methods for what your hypervisor environment supports.
 
 ### Platform: Hyper-V (Appliance)
 
@@ -82,10 +100,10 @@ Video Summary:
 
 ![QDE Hyper-V VHD](images/quickdeploy/QDE-hyperv.gif)
 
-### Platform: VMware (OVA template)
+### Platform: VMware (OVF template)
 
-1. Download OVA file and unzip it to the directory you wish to store it.
-2. Review instructions for deploying a VM from an OVA file [here](https://docs.vmware.com/en/VMware-vSphere/6.0/com.vmware.vsphere.html.hostclient.doc/GUID-FBEED81C-F9D9-4193-BDCC-CC4A60C20A4E_copy.html).
+1. Download OVF file and unzip it to the directory you wish to store it.
+2. Review instructions for deploying a VM from an OVF file [here](https://docs.vmware.com/en/VMware-vSphere/6.0/com.vmware.vsphere.html.hostclient.doc/GUID-FBEED81C-F9D9-4193-BDCC-CC4A60C20A4E_copy.html).
 3. Adjust settings of newly imported VM to our recommended:
     - 4 vCPUs
     - 8 GB RAM
@@ -112,21 +130,25 @@ Video Summary:
 
 Most likely you are going to download the VMDK file and convert it to your platform. Please reach out to support to see what options are available.
 
-## Other Considerations for Virtual Environment
+___
+## Step 2: Other Considerations for Virtual Environment
 
-### DNS Settings
+### Step 2.1: DNS Settings
 
 The QDE environment is configured by default to use DHCP for easier initial setup.
 You will likely need to reconfigure it with a static IP address depending on your organization's policies.
 
-## Virtual Environment Setup
+___
+## Step 3: Virtual Environment Setup
 
 On the desktop of your QDE VM, there is a `Readme.html` file, that will guide you through the rest of the setup process once you are logged in.
 A version of this readme file can be found in the [[Quick Deployment Desktop Readme|QuickDeploymentDesktopReadme]].
 
+> :memo: **NOTE**: The online version is likely more up to date than the ReadMe you will find on the desktop (not including redacted items like credentials). If there are conflicts between the desktop readme and what you see online, prefer the online version.
+
 > :warning: **WARNING**: If you have an existing corporate environment you will be servicing with the QDE VM, be sure to perform your organization-specific initial configuration **_before_** running setup scripts.
 
-### Adding License File to QDE
+### Step 3.1: Add License File to QDE
 In the [[Quick Deployment Desktop Readme|QuickDeploymentDesktopReadme]], it is going to ask you to use the license file. That license file comes from an external location. It is best to copy/paste the file into QDE as a whole file, but you may have needed to set up any kind of extensions available for that.
 
 > :warning: **WARNING**
@@ -134,11 +156,11 @@ In the [[Quick Deployment Desktop Readme|QuickDeploymentDesktopReadme]], it is g
 > If you find that you need to copy the text and paste the license file text into a new file in QDE, the file format and name is extremely important to get right. If you don't have UTF-8 or there is a space inserted, Chocolatey will consider it invalid.
 > Please contact support if you need help here.
 
-### SSL Setup and Considerations
+### Step 3.2: Regenerate SSL Certificates
 
 See [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]].
 
-### Database Password Changes
+### Step 3.3: Database Password Changes (Optional)
 
 The database credentials are currently pre-set.
 If you would like to change the credentials associated with the database, you will need to follow these steps.
@@ -158,11 +180,13 @@ choco uninstall chocolatey-management-web -y
 Choco install chocolatey-management-web -y --package-parameters-sensitive=”’/ConnectionString=””Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password=NewPassword;””’”
 ```
 
-## Firewall Changes
+___
+## Step 4: Firewall Changes
 
 See [[QDE Firewall Changes|QuickDeploymentFirewallChanges]].
 
-## Client Installation
+___
+## Step 5: Install and Configure Chocolatey on Clients
 
 See [[QDE Client Setup|QuickDeploymentClientSetup]].
 

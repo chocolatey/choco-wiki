@@ -19,7 +19,7 @@ Once you have QDE set up in your environment, you'll need to get clients talking
 ## DNS
 
 Typically in your environment, onces you've added QDE, it should be able to start talking to the QDE.
-In some situations, you may need to add the host name with the IP address to reach your environment.
+In some situations, you may need to add the host name with the IP address to your HOSTS file to reach your environment.
 
 ## Client Installation
 
@@ -45,6 +45,14 @@ What does this do?
 > If your clients are air-gapped or you have changed the host name, you will need to find a different means to import the QDE Certificate.
 >
 > Please reach out to support for options.
+
+> :warning: **WARNING**
+>
+> If the QDE hostname has been changed, the above script most likely will fail
+>
+> You won't be able to use the above script, and you will need to host your own script somewhere that is trusted so that the QDE certificates can be trusted. Please see [[SSL/TLS Setup|QuickDeploymentSslSetup]] for options.
+>
+> Please contact support if you need help here.
 
 The `ClientSetup.ps1` script will:
 
