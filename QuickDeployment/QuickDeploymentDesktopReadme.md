@@ -207,7 +207,7 @@ What does this do?
 
 > :warning: **WARNING**
 >
-> If the QDE hostname has been changed, the above script most likely will fail
+> If the QDE hostname has been changed, the above script most likely will fail.
 >
 > You won't be able to use the above script, and you will need to host your own script somewhere that is trusted so that the QDE certificates can be trusted. Please see [[SSL/TLS Setup|QuickDeploymentSslSetup]] for options.
 >

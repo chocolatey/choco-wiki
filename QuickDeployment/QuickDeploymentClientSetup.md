@@ -42,13 +42,13 @@ What does this do?
 
 > :warning: **WARNING**
 >
-> If your clients are air-gapped or you have changed the host name, you will need to find a different means to import the QDE Certificate.
+> If your clients are air-gapped or you have changed the hostname, you will need to find a different means to import the QDE Certificate.
 >
 > Please reach out to support for options.
 
 > :warning: **WARNING**
 >
-> If the QDE hostname has been changed, the above script most likely will fail
+> If the QDE hostname has been changed, the above script most likely will fail.
 >
 > You won't be able to use the above script, and you will need to host your own script somewhere that is trusted so that the QDE certificates can be trusted. Please see [[SSL/TLS Setup|QuickDeploymentSslSetup]] for options.
 >
