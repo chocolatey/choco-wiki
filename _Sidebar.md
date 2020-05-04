@@ -43,6 +43,14 @@
  - [[Branding Chocolatey Applications (C4B)|FeaturesBranding]]
  - In progress, check back for updates!
 
+#### Quick Deployment Environment
+* [[Quick Deployment Environment|QuickDeploymentEnvironment]]
+* [[QDE Setup|QuickDeploymentSetup]]
+* [[QDE Desktop ReadMe File|QuickDeploymentDesktopReadme]] (online version of the desktop readme, online is most up to date)
+* [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]]
+* [[QDE Firewall Changes|QuickDeploymentFirewallChanges]]
+* [[QDE Client Setup|QuickDeploymentClientSetup]] (setting up your client machines)
+
 #### Usage
 
 [[How does choco work?|GettingStarted#how-does-chocolatey-work]]
