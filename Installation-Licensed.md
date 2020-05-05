@@ -162,7 +162,7 @@ You will not be able to upgrade through regular means - please reach back out to
 
 ### How Do I Upgrade the Trial License File?
 
-The same way you upgrade for the full edition. See [How Do I Upgrade the License File?](#how-do-i-upgrade-the-license-file).
+The same way you upgrade for the full edition. See [How Do I Upgrade the License File?](#how-do-i-upgrade-the-license-file)
 
 
 ## Installing / Upgrading In Secure Environments / Without Internet Access
