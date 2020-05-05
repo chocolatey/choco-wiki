@@ -15,7 +15,10 @@ Congratulations on your recent purchase of a licensed edition of Chocolatey! If 
 - [Install Options](#install-options)
   - [Install Without Context Menus](#install-without-context-menus)
 - [Upgrading](#upgrading)
-  - [How Do I Upgrade The Trial Edition?](#how-do-i-upgrade-the-trial-edition)
+  - [Upgrade the Extension](#upgrade-the-extension)
+  - [How Do I Upgrade the License File?](#how-do-i-upgrade-the-license-file)
+  - [How Do I Upgrade the Trial Edition?](#how-do-i-upgrade-the-trial-edition)
+  - [How Do I Upgrade the Trial License File?](#how-do-i-upgrade-the-trial-license-file)
 - [Installing / Upgrading In Secure Environments / Without Internet Access](#installing--upgrading-in-secure-environments--without-internet-access)
 - [Set Up Licensed Edition With Puppet](#set-up-licensed-edition-with-puppet)
 - [Install the Chocolatey Agent Service](#install-the-chocolatey-agent-service)
@@ -66,7 +69,13 @@ Here's the whole process for installing your license and installing the licensed
 ![install](https://raw.githubusercontent.com/wiki/chocolatey/choco/images/gifs/choco_install_pro.gif)
 
 ## How Do I Install The Licensed Edition?
-**NOTE:** Prior to install, see if there are any parameters (like turning off context menus) that you may want to set. See [install options](#install-options).
+
+> :memo: **NOTE:** Prior to install, see if there are any parameters (like turning off context menus) that you may want to set. See [install options](#install-options).
+
+
+> :warning: **WARNING**
+>
+> Order is ***VERY*** important here. You need license file placed, then `chocolatey.extension`, then any other licensed components. Expect issues if you don't follow this order exactly.
 
  1. Install a recent version of Chocolatey (0.10.8+) - `choco upgrade chocolatey` (due to a tight integration, `chocolatey.extension` may need a newer version than what is listed here). TRIAL? You need to do more as your license key will not be known by the server. See [Install the Trial Edition](#how-do-i-install-the-trial-edition).
  1. You received a license file in email.
@@ -82,19 +91,30 @@ Here's the whole process for installing your license and installing the licensed
 
   ![install/upgrade](https://cloud.githubusercontent.com/assets/63502/13052159/e6d1be92-d3c2-11e5-8856-d7580e51e3b6.png)
 
-**NOTE**: Also note that order is ***very*** important here. You need license file placed, then chocolatey.extension, then any other licensed components. Expect issues if you don't follow this order exactly.
-
-**NOTE**: Folks deploying the license out to many machines typically wrap the above logic into a Chocolatey package, embedding the license into the package. When they renew licenses, they just run an upgrade on the licensed package! Don't take a dependency on the `chocolatey.extension` package (Chocolatey Licensed Extension) as you need the license to be placed first to properly set everything when you install the licensed extension. Refer to [[How To Set Up Chocolatey For Organizational/Internal Use|How-To-Setup-Offline-Installation]] where not only is this covered, but we have a script you can run that will create the license package automagically.
+> :memo: **NOTE**
+>
+> **Organization?**
+> If you are an organization deploying the licensed edition, you may want to review [[the organizational deployment guide|How-To-Setup-Offline-Installation]] in addition to this for options to deploy to more than one machine.
+>
+> When deploying the license file out to many machines it is recommended to wrap the license placement logic into a Chocolatey package, embedding the license into the package. This is super helpful when you [upgrade the license files](#how-do-i-upgrade-the-license-file) later when renewing or purchasing the full edition.
+>
+> Refer to [[How To Set Up Chocolatey For Organizational/Internal Use|How-To-Setup-Offline-Installation]] where we have a script you can run that will create the license package automagically.
 
 ### How Do I Install a Local nupkg File?
 
-See the next section
+See the next section - the logic is quite similar.
 
 ### How Do I Install The Trial Edition?
 
 If you've received a trial license, you will also receive a link to download a recent version of the `chocolatey.extension` package. ***You will not be able to install or upgrade the licensed edition through regular means. Chocolatey may add the licensed source, but your license will not be recognized on the server.***
 
-**NOTE:** Prior to install, see if there are any parameters (like turning off context menus) that you may want to set. See [install options](#install-options).
+> :memo: **NOTE:** Prior to install, see if there are any parameters (like turning off context menus) that you may want to set. See [install options](#install-options).
+
+
+> :warning: **WARNING**
+>
+> Order is ***VERY*** important here. You need license file placed, then `chocolatey.extension`, then any other licensed components. Expect issues if you don't follow this order exactly.
+
 
  1. Install a recent version of Chocolatey (0.10.8+) - `choco upgrade chocolatey` (due to a tight integration, `chocolatey.extension` may need a newer version than what is listed here).
  1. You received a license file in email. **That email also contains links to download licensed nupkgs.** If you received the license file from another party but not the email, please ask them to forward it over to you as you will need it.
@@ -106,8 +126,6 @@ If you've received a trial license, you will also receive a link to download a r
  1. Run this command: `choco upgrade chocolatey.extension --pre --source c:\folder\where\downloaded\nupkg\resides` (or you can use `install` instead of `upgrade`). **Note**: Source location is not `--source c:\downloads\chocolatey.extension.1.8.1.nupkg`, it is `--source c:\downloads`. You will see an error you can safely ignore.
  1. Run this command: `choco`. You should not see any error message logged anymore (like you saw in the previous run asking you to install the licensed extension). If you do see an error message still, you may need to revisit these steps and determine what might have been missed or mistyped.
  1. That's it! You are good to go.
-
-**NOTE**: Also note that order is ***very*** important here. You need license file placed, then chocolatey.extension, then any other licensed components. Expect issues if you don't follow this order exactly.
 
 
 See the difference between the trial install here and [a fully licensed edition](#how-do-i-install-the-licensed-edition) (also see the pictures above).
@@ -122,17 +140,30 @@ As of Chocolatey Licensed Extension v1.12.2, you can install to client machines 
 
 ## Upgrading
 
+### Upgrade the Extension
+
 To upgrade the licensed edition just run the following code:
 
-* `choco upgrade chocolatey.extension`
+* `choco upgrade chocolatey.extension` (plus options like `-y` for scripts)
 
 Your license automatically adds the licensed source.
 
-**NOTE**: If your license expires or you remove licensing and then run choco, it may remove all of your licensed configuration settings, so be prepared to add those settings again once you have a valid license.
+> :warning: **WARNING**
+>
+> If your license expires or you remove licensing and then run choco, it may remove all of your licensed configuration settings, so be prepared to add those settings again once you have a valid license.
 
-### How Do I Upgrade The Trial Edition?
+### How Do I Upgrade the License File?
+
+You would simply place the new license file on top of the existing license file, overwriting it. This can be done in many ways, the recommended way is to create a package for the license itself. See [Create a license for the package](How-To-Setup-Offline-Installation#exercise-4-create-a-package-for-the-license) as part of [[the organizational deployment guide|How-To-Setup-Offline-Installation]].
+
+### How Do I Upgrade the Trial Edition?
 
 You will not be able to upgrade through regular means - please reach back out to the Chocolatey Software folks to get an updated edition (and possibly an extended trial license).
+
+### How Do I Upgrade the Trial License File?
+
+The same way you upgrade for the full edition. See [How Do I Upgrade the License File?](#how-do-i-upgrade-the-license-file).
+
 
 ## Installing / Upgrading In Secure Environments / Without Internet Access
 
@@ -145,7 +176,9 @@ From a machine that will have access to do this you simply run:
 
 You can even script this or add it to a CI job that would automatically make the newer edition available.
 
-**NOTE**: The licensed source that is automatically added can be disabled, but it cannot be removed. So just run `choco source disable -n chocolatey.licensed` to disable it or set that up in your configuration management solution scripts. Some of them, like Puppet, have a resource dedicated strictly to this:
+> :warning: **WARNING**
+>
+> The licensed source that is automatically added can be disabled, but it cannot be removed. So just run `choco source disable -n chocolatey.licensed` to disable it or set that up in your configuration management solution scripts. Some of them, like Puppet, have a resource dedicated strictly to this:
 
 ~~~puppet
 chocolateysource {'chocolatey.licensed':
@@ -511,7 +544,7 @@ If that is successful, you are good to go. If not, check for other processes loc
 
 If neither of these have resolved the issue, the following steps should remedy the situation:
 
-**NOTE**: Running choco in an unlicensed sense will reset/remove all licensed configuration.
+> :warning: **WARNING**: Running choco in an unlicensed sense will reset/remove all licensed configuration.
 
 * Make a backup of the `chocolatey.config` (typically at "C:\ProgramData\chocolatey\config\chocolatey.config").
 * Remove the license file - rename the `license` folder to `licensed` (typically at "C:\ProgramData\chocolatey\license").
