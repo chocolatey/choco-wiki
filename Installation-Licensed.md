@@ -181,8 +181,17 @@ You can even script this or add it to a CI job that would automatically make the
 > The licensed source that is automatically added can be disabled, but it cannot be removed. So just run `choco source disable -n chocolatey.licensed` to disable it or set that up in your configuration management solution scripts. Some of them, like Puppet, have a resource dedicated strictly to this:
 
 ~~~puppet
+## Disable the licensed source, it can't be removed
+## Disabled sources still need all other attributes until
+## https://tickets.puppetlabs.com/browse/MODULES-4449 is resolved.
+## Password is necessary with user, but not ensurable, so it should not
+## matter what it is set to here. If you ever do get into trouble here,
+## the password is your license GUID.
 chocolateysource {'chocolatey.licensed':
   ensure   => disabled,
+  priority => '10',
+  user     => 'customer',
+  password => '1234',
   require  => File['C:/ProgramData/chocolatey/license/chocolatey.license.xml'],
 }
 ~~~
