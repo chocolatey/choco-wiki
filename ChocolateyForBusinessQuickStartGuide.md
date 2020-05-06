@@ -2,7 +2,12 @@
 
 Thank you for choosing Chocolatey as your partner in Windows software automation management. We are excited to help you dive in and successfully implement a deployment of all the necessary components.
 
-> :memo: **NOTE**: This quick-start guide is intended for customers who have recently purchased Chocolatey for Business (C4B), or are evaluating C4B as part of a proof-of-concept. It illustrates only **one** method of setting up your Chocolatey environment, and is by **NO** means exhaustive. Our goal is to get you up-and-running quickly, and testing out the feature set. For a more complete reference of possible scenarios and solutions, please refer to the [[Organizational Deployment Documentation|HowToSetupOfflineInstallation]].
+> :memo: **NOTE**
+>
+> This quick-start guide is intended for customers who have recently purchased Chocolatey for Business (C4B), or are evaluating C4B as part of a proof-of-concept. 
+> It illustrates only **one** method of setting up your Chocolatey environment, and is by **NO** means exhaustive. 
+> Our goal is to get you up-and-running quickly, and testing out the feature set. 
+> For a more complete reference of possible scenarios and solutions, please refer to the [[Organizational Deployment Documentation|HowToSetupOfflineInstallation]].
 
 If you have any questions or would like to discuss more involved implementations, please feel free to reach out to your Chocolatey representative.
 
@@ -135,8 +140,11 @@ As recommended, we will assume you have access to the internet from this server.
     ```powershell
     choco install nexus-repository -y --no-progress
     ```
-    > :warning: **WARNING** 
-    > If you have already installed your Nexus repository, then the above step is not required. This guide assumes you are starting form scratch. It may be easier, if you are following this verbatim and don't have anything in your repository yet, to simply run `choco uninstall nexus-repository -y` and then `choco install nexus-repository -y`. As the next step requires a freshly-installed Nexus repository, with admin passwords not reset, this would be the most compatible approach.
+    > :warning: **WARNING**
+    >
+    > If you have already installed your Nexus repository, then the above step is not required. 
+    > This guide assumes you are starting form scratch. It may be easier, if you are following this verbatim and don't have anything in your repository yet, to simply run `choco uninstall nexus-repository -y` and then `choco install nexus-repository -y`. 
+    > As the next step requires a freshly-installed Nexus repository, with admin passwords not reset, this would be the most compatible approach.
 1.  Download the `chocolatey-nexus-setup` package from the link provided in your trial email, and save it to the `\choco-setup\packages` directory on the Nexus server. From an Administrator PowerShell console, run:
     ```powershell
     choco install chocolatey-nexus-setup --source="'C:\choco-setup\packages'"
