@@ -1,5 +1,16 @@
 # How To Set Up Chocolatey For Organizational/Internal Use
 
+> :memo: **NOTE**
+>
+> As an alternative to this long-form guide, we also have a [[Quick-Start Implementation Guide|ChocolateyForBusinessQuickStartGuide]]. 
+> This is intended for customers who have recently purchased Chocolatey for Business (C4B), or are evaluating C4B as part of a proof-of-concept. 
+> It illustrates only **one** method of setting up your Chocolatey environment, and is by **NO** means exhaustive.
+> Our goal is to get you up-and-running quickly, and testing out the feature set. 
+> For a more complete reference of possible scenarios and solutions, please stick to this guide.
+>
+> Another thing we provide is a [[Quick Deployment Environment|QuickDeploymentEnvironment]] that has already taken care of everything here and also setting up the automation for package internalizer with Jenkins (covered at Automate Package Internalizer). 
+> It, like the quick start implementation, provides a specific solution so you should read over the summary before you decide that is the right implementation for your needs (in about 80%+ of organizational use cases it is the correct solution).
+
 <!-- TOC -->
 
 - [Summary](#summary)
