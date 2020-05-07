@@ -15,7 +15,7 @@ Under the following situations you would want to run the script that follows:
 > Just let things happen, as things are working as expected.
 
 
->:warning: **WARNING**
+> :warning: **WARNING**
 >
 > If you provide your own certificate, it needs to include the private key to allow for export. Nexus requires this.
 
