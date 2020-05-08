@@ -17,6 +17,7 @@
 ## Summary
 Installing CCM takes a little more pre-thought than simply running the package installs.
 
+
 > :memo: **NOTE**
 >
 > Please read through all of this prior to running installation as you could run into issues that require support to help you correct later.
@@ -26,6 +27,9 @@ Installing CCM takes a little more pre-thought than simply running the package i
 >
 > Unless otherwise noted, please follow these steps in ***exact*** order. These steps build on each other and need to be completed in order.
 
+> :memo: **NOTE**
+>
+> If this seems like a lot to set up, you have the ability to get access to the [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]]. It comes preloaded with Central Management and other Chocolatey recommended infrastructure. Please see [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]].
 
 ___
 ## Step 0: Complete Prerequisites
@@ -58,7 +62,7 @@ CCM will not install or take a dependency on a database engine install as there 
 ___
 ## Step 1: Install Central Management Database Package
 
-> :warning: **WARNING**: CCM packages do ***NOT*** install SQL Server. You must take care of that in the prerequisites. Do not even start on central management installs until you have a SQL Server instance up and ready. I repeat,
+> :warning: **WARNING**: CCM packages do ***NOT*** install SQL Server. You must take care of that in the prerequisites. Do not even start on central management installs until you have a SQL Server instance up and ready. I repeat, SQL Server engine must be already installed.
 
 The CCM database package will add or update a database to an existing SQL Server instance.
 
@@ -76,6 +80,12 @@ The difference between a login and a user when it comes to SQL Server accounts h
 * Login (Authentication) - A login is at instance level (the credentials) - https://docs.microsoft.com/en-us/sql/relational-databases/security/authentication-access/create-a-login
 * User (Authorization) - A user is that login being mapped to a database and given roles/privileges (an instance can contain multiple databases) - https://docs.microsoft.com/en-us/sql/relational-databases/security/authentication-access/create-a-database-user
 
+
+Notes:
+* Grant `db_reader` and `db_writer` to the accounts you create for the web and service.
+* You can share the same login for the two accounts, unless your internal best practices dictate using different passwords.
+
+
 ___
 ## Step 3: Install Central Mangement Service Package
 
@@ -86,3 +96,5 @@ ___
 ## Step 4: Install Central Management Web Package
 
 > :warning: **WARNING**: Ensure you have completed installing the database package first on whatever machine the database is on.
+
+> :memo: **NOTE**: At this time we don't recommend opening internet access to CCM web. However, if you choose to, you will want to set up SSL/TLS certificates to ensure communication is encrypted over the internet.
