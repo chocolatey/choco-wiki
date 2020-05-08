@@ -69,7 +69,7 @@ A lot of what is done in QDE compresses the work or completely removes the work 
 
 * Repository Server - Nexus (pre-configured with repositories)
 * Automation Pipelines - Jenkins (pre-configured with internalizer jobs)
-* Chocolatey Central Management
+* [[Chocolatey Central Management|CentralManagement]]
 * Package Builder / Package Internalizer
 * All the goodness of that sweet, sweet automation in Chocolatey.
 * Scripts for Internal Deployment
