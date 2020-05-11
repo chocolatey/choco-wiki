@@ -58,10 +58,10 @@ The following are points to keep in mind during initial setup:
 
 If you rename the QDE Environment, here's a small list of things you'll need to do:
 
-* Update scripts in Nexus that are currently pointed to the default QDE name.
-* Regenerate SSL Certificates
-* Deploy the Nexus SSL Certificate public key to the clients (there is a helper method that is used if the box is not renamed and is limited to that name for security purposes). See `c:\choco_setup_files\Import-ChocoServerCertificate.ps1` for an example of what we mean.
-* There may be more places impacted. Check with support to ensure all is good to go.
+1. Update scripts in Nexus that are currently pointed to the default QDE name.
+1. Regenerate SSL Certificates
+1. Deploy the Nexus SSL Certificate public key to the clients (there is a helper method that is used if the box is not renamed and is limited to that name for security purposes). See `c:\choco_setup_files\Import-ChocoServerCertificate.ps1` for an example of what we mean.
+1. There may be more places impacted. Check with support to ensure all is good to go.
 
 ___
 ## Step 1: Import Virtual Environment
