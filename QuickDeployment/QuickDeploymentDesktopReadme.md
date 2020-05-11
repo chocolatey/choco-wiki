@@ -214,7 +214,7 @@ What does this do?
 > Please contact support if you need help here.
 
 
-The ClientSetup.ps1 script will :
+The ClientSetup.ps1 script will:
 
 * Install Chocolatey
 * License Chocolatey

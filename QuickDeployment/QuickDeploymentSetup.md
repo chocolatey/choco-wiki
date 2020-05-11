@@ -11,6 +11,7 @@ You will receive a download link via email for an archive of the VM image. Once 
 <!-- TOC depthFrom:2 -->
 
 - [Step 0: Setup Considerations](#step-0-setup-considerations)
+  - [Step 0.1: Rename Considerations](#step-01-rename-considerations)
 - [Step 1: Import Virtual Environment](#step-1-import-virtual-environment)
   - [Platform: Hyper-V (Appliance)](#platform-hyper-v-appliance)
   - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
@@ -43,6 +44,9 @@ The following are points to keep in mind during initial setup:
 * If you intend to use Nexus outside of your corporate network without the use of a VPN, you will be required to configure RBAC on the repositories housed inside of the repository server.
   This is to ensure that the packages stored on the server are not publicly accessible without authentication.
 
+
+### Step 0.1: Rename Considerations
+
 > :warning: **WARNING**
 >
 > tl;dr: Think long and hard before changing the QDE hostname
@@ -51,6 +55,13 @@ The following are points to keep in mind during initial setup:
 > You can provide your own certificate that is already trusted on machines as part of the [[SSL/TLS Setup|QuickDeploymentSslSetup]]. Your other option is to host the script to trust the certificate with an already trusted certificate. You will find a template that you will need to edit at `c:\choco_setup_files` (in the QDE) named `Import-ChocoServerCertificate.ps1`.
 >
 > Please contact support if you need help here.
+
+If you rename the QDE Environment, here's a small list of things you'll need to do:
+
+* Update scripts in Nexus that are currently pointed to the default QDE name.
+* Regenerate SSL Certificates
+* Deploy the Nexus SSL Certificate public key to the clients (there is a helper method that is used if the box is not renamed and is limited to that name for security purposes). See `c:\choco_setup_files\Import-ChocoServerCertificate.ps1` for an example of what we mean.
+* There may be more places impacted. Check with support to ensure all is good to go.
 
 ___
 ## Step 1: Import Virtual Environment
