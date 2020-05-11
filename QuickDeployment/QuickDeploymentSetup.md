@@ -11,7 +11,7 @@ You will receive a download link via email for an archive of the VM image. Once 
 <!-- TOC depthFrom:2 -->
 
 - [Step 0: Setup Considerations](#step-0-setup-considerations)
-  - [Step 0.1: Rename Considerations](#step-01-rename-considerations)
+  - [Step 0.1: QDE Rename Considerations](#step-01-qde-rename-considerations)
 - [Step 1: Import Virtual Environment](#step-1-import-virtual-environment)
   - [Platform: Hyper-V (Appliance)](#platform-hyper-v-appliance)
   - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
@@ -45,7 +45,7 @@ The following are points to keep in mind during initial setup:
   This is to ensure that the packages stored on the server are not publicly accessible without authentication.
 
 
-### Step 0.1: Rename Considerations
+### Step 0.1: QDE Rename Considerations
 
 > :warning: **WARNING**
 >
