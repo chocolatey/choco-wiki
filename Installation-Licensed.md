@@ -496,7 +496,7 @@ chocolateyconfig {'backgroundServiceAllowedCommands':
 }
 
 chocolateyfeature {'allowBackgroundServiceUninstallsFromUserInstallsOnly':
-  ensure => enabled,
+  ensure  => enabled,
   require => Package['chocolatey.extension'],
 }
 
