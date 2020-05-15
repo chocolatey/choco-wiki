@@ -91,6 +91,7 @@ ___
 
 > :warning: **WARNING**: Ensure you have completed installing the database package and have set up sql server logins and accounts.
 
+> :memo: **NOTE**: You could be installing several of these if your environment is large enough.
 
 ___
 ## Step 4: Install Central Management Web Package
