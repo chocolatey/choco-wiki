@@ -489,6 +489,18 @@ chocolateyfeature {'useBackgroundService':
   require => Chocolateyfeature['useBackgroundServiceWithNonAdministratorsOnly'],
 }
 
+## Allow Non-Admins to Uninstall Packages
+chocolateyconfig {'backgroundServiceAllowedCommands':
+  value   => 'install,upgrade,uninstall',
+  require => Package['chocolatey.extension'],
+}
+
+chocolateyfeature {'allowBackgroundServiceUninstallsFromUserInstallsOnly':
+  ensure => enabled,
+  require => Package['chocolatey.extension'],
+}
+
+
 ## Add repositories allowed for self-service
 chocolateysource {'repo_for_self_service':
   ensure             => present,
