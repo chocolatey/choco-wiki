@@ -501,7 +501,8 @@ chocolateyfeature {'allowBackgroundServiceUninstallsFromUserInstallsOnly':
 }
 
 
-## Add repositories allowed for self-service
+## Add repositories allowed for self-service - Requires at least v3.20
+# https://forge.puppet.com/puppetlabs/chocolatey/changelog#320---2019-02-19
 chocolateysource {'repo_for_self_service':
   ensure             => present,
   location           => 'http://internal_location/OData/endpoint',
