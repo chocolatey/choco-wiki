@@ -11,19 +11,19 @@ You will receive a download link via email for an archive of the VM image. Once 
 <!-- TOC depthFrom:2 -->
 
 - [Step 0: Setup Considerations](#step-0-setup-considerations)
-  - [Step 0.1: QDE Rename Considerations](#step-01-qde-rename-considerations)
+    - [Step 0.1: QDE Rename Considerations](#step-01-qde-rename-considerations)
 - [Step 1: Import Virtual Environment](#step-1-import-virtual-environment)
-  - [Platform: Hyper-V (Appliance)](#platform-hyper-v-appliance)
-  - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
-  - [Platform: VMware (OVF template)](#platform-vmware-ovf-template)
-  - [Platform: VMware (VMDK file)](#platform-vmware-vmdk-file)
-  - [Platform: Other](#platform-other)
+    - [Platform: Hyper-V (Appliance)](#platform-hyper-v-appliance)
+    - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
+    - [Platform: VMware (VMDK file)](#platform-vmware-vmdk-file)
+    - [Platform: VMware (OVF template)](#platform-vmware-ovf-template)
+    - [Platform: Other](#platform-other)
 - [Step 2: Other Considerations for Virtual Environment](#step-2-other-considerations-for-virtual-environment)
-  - [Step 2.1: DNS Settings](#step-21-dns-settings)
+    - [Step 2.1: DNS Settings](#step-21-dns-settings)
 - [Step 3: Virtual Environment Setup](#step-3-virtual-environment-setup)
-  - [Step 3.1: Add License File to QDE](#step-31-add-license-file-to-qde)
-  - [Step 3.2: Regenerate SSL Certificates](#step-32-regenerate-ssl-certificates)
-  - [Step 3.3: Database Password Changes (Optional)](#step-33-database-password-changes-optional)
+    - [Step 3.1: Add License File to QDE](#step-31-add-license-file-to-qde)
+    - [Step 3.2: Regenerate SSL Certificates](#step-32-regenerate-ssl-certificates)
+    - [Step 3.3: Database Password Changes (Optional)](#step-33-database-password-changes-optional)
 - [Step 4: Firewall Changes](#step-4-firewall-changes)
 - [Step 5: Install and Configure Chocolatey on Clients](#step-5-install-and-configure-chocolatey-on-clients)
 
@@ -111,7 +111,33 @@ Video Summary:
 
 ![QDE Hyper-V VHD](images/quickdeploy/QDE-hyperv.gif)
 
+### Platform: VMware (VMDK file)
+
+1. Download VMDK from provided link, and unzip it to the directory you wish to store it.
+2. For ESX/ESXi, open vSphere and upload the downloaded VMDK to your datastore.
+3. Create a new VM.
+4. When prompted for OS type, choose `Windows Server 2019` (if available), or `Windows Server 2016 or later`.
+5. If prompted for boot firmware, choose `Legacy BIOS` (**not** UEFI).
+6. When asked to create a new disk or attach, delete the default disk, select attach, and browse to the VMDK you uploaded.
+7. Adjust the hardware specifications of the VM. For a performant system, the following are recommended:
+    - 4 vCPUs
+    - 8 GB RAM
+8. Once you click Finish, go back into the `Edit settings` context menu for the VM, and expand the disk you attached to 100GB (double-check in OS, and extend if needed).
+8. Boot up VM, and Install VMware Tools using the console menus (this will require a reboot).
+
+Video Summary:
+
+* VMware ESX/i:
+![QDE VMware VMDK](images/quickdeploy/QDE-vmdk-esx.gif)
+
+* VMware Fusion (Mac OS):
+![QDE VMware VMDK](images/quickdeploy/QDE-vmdk-fusion.gif)
+
 ### Platform: VMware (OVF template)
+
+> :warning: **WARNING**
+>
+> The OVF import method can be tricky. Unless you have the **exact** same network settings as the host where the OVF was exported, you will likely run into failures on attempts to import it. You _could_ workaround this by creating your own VM first, exporting the OVF file, using the Network settings from this file to replace the 2 sections of Network settings in the OVF of QDE, and then attempt to import the OVF for QDE. However, we realize this process is cumbersome, and would **strongly** advise you utilize the VMDK import method above for greatest compatibility. We are working to improve this process, but as of right now, the OVF method is to be used at your own risk.
 
 1. Download OVF file and unzip it to the directory you wish to store it.
 2. Review instructions for deploying a VM from an OVF file [here](https://docs.vmware.com/en/VMware-vSphere/6.0/com.vmware.vsphere.html.hostclient.doc/GUID-FBEED81C-F9D9-4193-BDCC-CC4A60C20A4E_copy.html).
@@ -119,23 +145,6 @@ Video Summary:
     - 4 vCPUs
     - 8 GB RAM
 4. Install VMWare Tools on the VM once booted (this will require a reboot).
-
-### Platform: VMware (VMDK file)
-
-1. Download VMDK from provided link, and unzip it to the directory you wish to store it.
-2. For ESX/ESXi, open vSphere and upload the downloaded VMDK to your datastore.
-3. Create a new VM.
-4. When prompted for OS type, choose Windows Server 2019 (if available), or Windows 10.
-5. If prompted for boot firmware, choose `Legacy BIOS` (**not** UEFI).
-6. When asked to create a new disk or attach, delete the default disk, select attach, and browse to the VMDK you uploaded.
-7. Adjust the hardware specifications of the VM. For a performant system, the following are recommended:
-    - 4 vCPUs
-    - 8 GB RAM
-8. Install VMWare Tools on the VM once booted (this will require a reboot).
-
-Video Summary:
-
-![QDE VMware VMDK](images/quickdeploy/QDE-vmdk.gif)
 
 ### Platform: Other
 
