@@ -93,6 +93,10 @@ ___
 
 > :memo: **NOTE**: You could be installing several of these if your environment is large enough.
 
+> :warning: **WARNING**
+>
+> Timezones are super important here and time synchronization is really important when generating SSL Certificates. You want to make sure you have this correct and good. Otherwise there is a potential edge case you could generate an SSL Certificate that is not yet valid. As the service package could generate an SSL certificate if you don't pass an existing thumbprint, its best to ensure that time synchronization is not an issue with the machine you are installing this on.
+
 ___
 ## Step 4: Install Central Management Web Package
 

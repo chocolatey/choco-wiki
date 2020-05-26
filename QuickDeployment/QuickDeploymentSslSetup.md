@@ -26,6 +26,11 @@ Once complete, this script will generate new SSL certificates for all services a
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1
 ```
+> :warning: **WARNING**
+>
+> Timezones are super important here and time synchronization is really important when generating SSL Certificates. You want to make sure you have this correct and good. Otherwise there is a potential edge case you could generate an SSL Certificate that is not yet valid.
+
+
 
 > :warning: **WARNING**
 >

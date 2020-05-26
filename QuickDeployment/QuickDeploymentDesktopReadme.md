@@ -82,6 +82,10 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-Ssl
 > This is due to poor Java tooling and console output which cannot be suppressed.
 > Just let things happen, as things are working as expected.
 
+> :warning: **WARNING**
+>
+> Timezones are super important here and time synchronization is really important when generating SSL Certificates. You want to make sure you have this correct and good. Otherwise there is a potential edge case you could generate an SSL Certificate that is not yet valid.
+
 Once complete, this script will generate new SSL certificates for all services and move them to the appropriate locations and configure the services to use them.
 
 ___
