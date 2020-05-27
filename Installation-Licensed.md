@@ -136,7 +136,7 @@ Very little functionality if any is held back. With the movement forward on thin
 
 ## Install Options
 ### Install Without Context Menus
-As of Chocolatey Licensed Extension v1.12.2, you can install to client machines without the context menus (Right Click). Add the following to your installation : `--params="'/NoContextMenu'"`. Currently there isn't a way to remove context menus if you have already deployed them, but it is on the backlog to add that. Example: `choco install chocolatey.extension -y --params="'/NoContextMenu'"`.
+As of Chocolatey Licensed Extension v1.12.2, you can install to client machines without the context menus (the "Right Click" menu). Add the following to your installation : `--params="'/NoContextMenu'"`. As of Chocolatey Licensed Extension v2.1.0, you can pass `--params="'/NoContextMenu'"` during upgrade as well to remove context menus if you have previously already deployed them. Example: `choco install chocolatey.extension -y --params="'/NoContextMenu'"`.
 
 ## Upgrading
 
