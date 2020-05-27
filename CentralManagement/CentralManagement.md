@@ -1,9 +1,16 @@
 # Chocolatey Central Mangement (CCM)
 
 > :warning: **WARNING**: This is a Work in Progress. Please check back later
+>
+> Also see [[Chocolatey Central Management in Features|FeaturesChocolateyCentralManagement]].
 
 ## Summary
 This provides an overview on Chocolatey Central Mangement (CCM). It provides both setup and use of CCM with the different aspects.
+
+> :warning: **WARNING**: This is a Work in Progress. Please check back later
+>
+> Also see [[Chocolatey Central Management in Features|FeaturesChocolateyCentralManagement]].
+
 
 <!-- TOC depthFrom:2 -->
 

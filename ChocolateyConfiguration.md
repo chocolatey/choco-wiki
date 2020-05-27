@@ -55,23 +55,31 @@ Config settings are adjusted using `choco config set --name="'<nameFromBelow>'" 
 * `commandExecutionTimeoutSeconds` = **'2700'** - Default timeout for command execution. '0' for infinite (starting in 0.10.4). It is recommended that organizations bump this up to at least 4 hours (14400).
 * `webRequestTimeoutSeconds` = **'45'** - Default timeout for web requests. Available in 0.9.10+.
 
+
 ### Other
 * `containsLegacyPackageInstalls` = **'true'** - Install has packages installed prior to 0.9.9 series.
 
 ## Config Settings - Licensed Edition
 ### Chocolatey Central Management
-* `centralManagementServiceUrl` = **' '** - The URL that should be used to communicate with Chocolatey Central Management. It should look something like https://servicemachineFQDN:24020/ChocolateyCentralManagement.  See https://chocolatey.org/docs/features-chocolatey-central-management#fqdn-usage.  Available in business editions v2.0.0+ only.
+* `centralManagementServiceUrl` = **' '** - The URL that should be used to communicate with Chocolatey Central Management. It should look something like https://servicemachineFQDN:24020/ChocolateyManagementService.  See https://chocolatey.org/docs/features-chocolatey-central-management#fqdn-usage.  Available in business editions v2.0.0+ only.
 * `centralManagementReportPackagesTimerIntervalInSeconds` = **'1800'** - Amount of time, in seconds, between each execution of the background service to report installed and outdated packages to Chocolatey Central Management.  Available in business editions v2.0.0+ only.
 * `centralManagementReceiveTimeoutInSeconds` = **'30'** - The amount of time, in seconds, that the background agent should wait to receive information from Chocolatey Central Management.  Available in business editions v2.0.0+ only.
 * `centralManagementSendTimeoutInSeconds` = **'30'** - The amount of time, in seconds, that the background agent should wait to send information to Chocolatey Central Management.  Available in business editions v2.0.0+ only.
 * `centralManagementCertificateValidationMode` = **'PeerOrChainTrust'** - The certificate mode that is used in communication to Chocolatey Central Management.  Available in business editions v2.0.0+ only.
+* `centralManagementMaxReceiveMessageSizeInBytes` = **'2147483647'** - The size of the permitted message, in bytes, which can be exchanged between the Chocolatey Background Agent and Chocolatey Central Management. Available in business editions v2.0.3+ only.
+* `centralManagementDeploymentCheckTimerIntervalInSeconds` = **'180'** - Amount of time, in seconds, between each execution of the background service to check for a new deployment step from Chocolatey Central Management. Available in business editions v2.1.0+ only.
+* `centralManagementClientCommunicationSaltAdditivePassword` = **' '** - Chocolatey Central Management Client Communication Salt Additive - The salt additive to use in the salt recipe for encrypting and verifying communication from an agent TO an instance of Central Management Service (will need to be set the same on all clients contacting that service AND the instance of the management service itself). When not set a default encryption phrase set by the system will be used. When set the unencrypted value must match exactly with what is set in the configuration for Central Management Service and every client contacting that instance of Central Management Service. Value is not shared over the wire. Because this is a much more involved process, it is recommended only setting this if you are transmitting messages over the internet. Defaults to ''. Needs to be at least 8 characters long if set or it will throw errors and use the default. Available in business editions v2.1.0+ only. Requires Chocolatey Agent v0.10.0+ and Central Management 0.2.0+. IMPORTANT: If this value is set, agents less than v0.10.0 will be unable to contact Central Management to report in.
+* `centralManagementServiceCommunicationSaltAdditivePassword` = **' '** - Chocolatey Central Management Communication Salt Additive - The salt additive to use in the salt recipe for encrypting and verifying communication FROM an instance of Central Management Service to an agent (will need to be set the same on all clients contacting that service AND the instance of the management service itself). When not set a default encryption phrase set by the system will be used. When set the unencrypted value must match exactly with what is set in the configuration for Central Management Service and every client contacting that instance of Central Management Service. Value is not shared over the wire. Because this is a much more involved process, it is recommended only setting this if you are transmitting messages over the internet. Defaults to ''. Needs to be at least 8 characters long if set or it will throw errors and use the default. Available in business editions v2.1.0+ only. Requires Chocolatey Agent v0.10.0+ and Central Management 0.2.0+.
+
 
 ### Package Throttle
 * `maximumDownloadRateBitsPerSecond` = **' '** - The maximum download rate in bits per second. '0' or empty means no maximum. A number means that will be the maximum download rate in bps. Defaults to ''. Available in licensed editions v1.10+ only. See https://chocolatey.org/docs/features-package-throttle
 
+
 ### Windows Services Installation
 * `serviceInstallsDefaultUserName` = **'ChocolateyLocalAdmin'** - The default user name to use for installing services when one is not specified. Defaults to 'ChocolateyLocalAdmin'. The feature 'useLocalSystemForServiceInstalls' must be set to 'false' to use this field. Available in business editions v1.12.0+ only.
 * `serviceInstallsDefaultUserPassword` = **' '** - The default user password to use for installing services when one is not specified. Defaults to ''. When '', the value will be generated as encrypted hash specific to the machine and will not be known. The feature 'useLocalSystemForServiceInstalls' must be set to 'false' to use this field. Available in business editions v1.12.0+ only.
+
 
 ### Self-Service / Background Mode
 * `backgroundServiceAllowedCommands` = **'install,upgrade'** - Background Service Allowed Commands - The different commands that will direct through the background service separated with comma or semi-colon. Supported across all operational commands, not supported with commands that change configuration (config, source, feature, apikey, etc). Defaults to 'install,upgrade'. Available in business editions v1.12.4+ only.
@@ -82,10 +90,13 @@ Config settings are adjusted using `choco config set --name="'<nameFromBelow>'" 
 * `genericVirusScannerPath` = **' '** - The full path to the command line virus scanner executable. Used when virusScannerType is Generic. Available in 0.9.10+. Licensed editions only. See https://chocolatey.org/docs/features-virus-check
 * `genericVirusScannerArgs` = **'[[File]]'** - The arguments to pass to the generic virus scanner. Use [[File]] for the file path placeholder. Used when virusScannerType is Generic. Available in 0.9.10+. Licensed editions only. See https://chocolatey.org/docs/features-virus-check
 * `genericVirusScannerValidExitCodes` = **'0'** - The exit codes for the generic virus scanner when a file is not flagged. Separate with comma, defaults to 0. Used when virusScannerType is Generic. Available in 0.9.10+. Licensed editions only. See https://chocolatey.org/docs/features-virus-check
+* `genericVirusScannerTimeoutInSeconds` = **'120'** - Generic Virus Scanner Timeout In Seconds - The number of seconds to allow the virus scanner to run before timing out. Used when virusScannerType is Generic. Defaults to '120'. Licensed editions v2.1.0+ only. See https://chocolatey.org/docs/features-virus-check
+
 
 ### Timeouts
 * `centralManagementReceiveTimeoutInSeconds` = **'30'** - The amount of time, in seconds, that the background agent should wait to receive information from Chocolatey Central Management.  Available in business editions v2.0.0+ only.
 * `centralManagementSendTimeoutInSeconds` = **'30'** - The amount of time, in seconds, that the background agent should wait to send information to Chocolatey Central Management.  Available in business editions v2.0.0+ only.
+* `genericVirusScannerTimeoutInSeconds` = **'120'** - Generic Virus Scanner Timeout In Seconds - The number of seconds to allow the virus scanner to run before timing out. Used when virusScannerType is Generic. Defaults to '120'. Licensed editions v2.1.0+ only. See https://chocolatey.org/docs/features-virus-check
 
 
 ## Features
@@ -147,6 +158,9 @@ A checkbox means this feature is turned on by default.
 
 ### Chocolatey Central Management
 * [ ] `useChocolateyCentralManagement` - Use Chocolatey Central Management - Lists of installed and outdated packages will be reported to the chosen Chocolatey Central Management server.  Business editions only (version 2.0.0+). See https://chocolatey.org/docs/features-chocolatey-central-management
+* [ ] `useChocolateyCentralManagementDeployments` - Use Chocolatey Central Management Deployments - Centrally managed deployments of packages and scripts can be sent from Chocolatey Central Management.  Business editions only (version 2.1.0+).  See https://chocolatey.org/docs/features-chocolatey-central-management
+
+
 
 ### Package Internalizer
 * [x] `internalizeAppendUseOriginalLocation` - Append UseOriginalLocation with Package Internalizer - When `Install-ChocolateyPackage` is internalized, append the `-UseOriginalLocation` parameter to the function. Business editions (version 1.7.0+) and MSP editions (version 1.12.1+) only. Requires at least Chocolatey v0.10.1 for `Install-ChocolateyPackage` to recognize the switch appropriately. See https://chocolatey.org/docs/features-automatically-recompile-packages

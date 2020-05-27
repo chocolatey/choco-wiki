@@ -1,6 +1,8 @@
 # Chocolatey Central Mangement Setup
 
 > :warning: **WARNING**: This is a Work in Progress. Please check back later
+>
+> Also see [[Chocolatey Central Management in Features|FeaturesChocolateyCentralManagement]].
 
 <!-- TOC depthFrom:2 -->
 
@@ -15,6 +17,11 @@
 <!-- /TOC -->
 
 ## Summary
+
+> :warning: **WARNING**: This is a Work in Progress. Please check back later
+>
+> Also see [[Chocolatey Central Management in Features|FeaturesChocolateyCentralManagement]].
+
 Installing CCM takes a little more pre-thought than simply running the package installs.
 
 
@@ -103,3 +110,7 @@ ___
 > :warning: **WARNING**: Ensure you have completed installing the database package first on whatever machine the database is on.
 
 > :memo: **NOTE**: At this time we don't recommend opening internet access to CCM web. However, if you choose to, you will want to set up SSL/TLS certificates to ensure communication is encrypted over the internet.
+
+
+
+[[Chocolatey Central Management|CentralManagement]]
