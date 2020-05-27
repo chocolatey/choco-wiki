@@ -66,7 +66,7 @@ The Chocolatey Community Repository versus for internal use has different needs.
   * [[Moderation Process|Moderation]]
 
 ## Individuals
-* [Installing Chocolatey for Personal Use](https://chocolatey.org/install)
+* [Installing Chocolatey for Personal Use](https://chocolatey.org/install#individual)
 * [[Getting Started|GettingStarted]]
 * [[Command Reference|CommandsReference]]
 
