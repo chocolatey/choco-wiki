@@ -9,8 +9,9 @@
 - [Requirements](#requirements)
 - [Information](#information)
 - [Using Chocolatey](#using-chocolatey)
-- [Packages](#packages)
-- [Walkthroughs / How To Links](#walkthroughs-how-to-links)
+- [Create Packages](#create-packages)
+- [Individuals](#individuals)
+- [Organizations](#organizations)
 - [Road Map](#road-map)
   - [Important Reference Links](#important-reference-links)
 - [See It In Action](#see-it-in-action)
@@ -20,7 +21,9 @@
 <!--remove </div> remove-->
 
 ## What is Chocolatey?
-Chocolatey is a software management solution unlike anything else you've ever experienced on Windows. It focuses on simplicity, security, and scalability. You write a software deployment in PowerShell once for any software (not just installers), then you can deploy it everywhere you have Windows with any solution that can manage systems (configuration management, endpoint management, etc) and track and manage updates of that software over time. Manage software on-premise, in the "Cloud", or in [Docker containers](https://github.com/Microsoft/vsts-agent-docker/blob/f870fbf259a803c6a6d902e1c01f631936069d66/windows/servercore/10.0.14393/standard/VS2017/Dockerfile) with Chocolatey.
+tl;dr Chocolatey is a software management solution that allows you to manage 100% of your software, anywhere you have Windows, with any endpoint management tool. No other solution (including newly announced solutions) reach this level of management - most only can manage to software in Programs and Features.
+
+Chocolatey is a software management solution unlike anything else you've ever experienced on Windows. It focuses on simplicity, security, and infinite scalability. You write a software deployment in PowerShell once for any software (not just installers), then you can deploy it everywhere you have Windows with any solution that can manage systems (configuration management, endpoint management, etc) and track and manage updates of that software over time. Manage software on-premise, in the "Cloud", or in [Docker containers](https://github.com/Microsoft/vsts-agent-docker/blob/f870fbf259a803c6a6d902e1c01f631936069d66/windows/servercore/10.0.14393/standard/VS2017/Dockerfile) with Chocolatey.
 
 Whew, that was a mouthful! For a bit more detail into what all of that means and more, see [[What is Chocolatey?|GettingStarted#what-is-chocolatey]]
 
@@ -37,6 +40,7 @@ Whew, that was a mouthful! For a bit more detail into what all of that means and
 * [[License Acceptance Terms|Legal#package-license-acceptance-terms]]
 * [[Waiver of Responsibility|Legal#waiver-of-responsibility]]
 * [[Release Notes|ReleaseNotes]]
+* [[Release Notes Commercial|ReleaseNotesLicensed]]
 
 ## Using Chocolatey
 
@@ -47,18 +51,34 @@ Whew, that was a mouthful! For a bit more detail into what all of that means and
 * Use Chocolatey to set up [[source code development environments|DevelopmentEnvironmentSetup]]!
 * What distinction does Chocolatey make between an [[installable and a portable application|ChocolateyFAQs#what-distinction-does-chocolatey-make-between-an-installable-and-a-portable-application]]?
 
-## Packages
-* [[Creating packages|CreatePackages]]
-* Keep in Mind [[Distribution Rights|Legal#distributions-aka-chocolatey-packages]]
-* [[Package Function and Variable Reference|HelpersReference]]
-* [[Outdated packages? Triage process|PackageTriageProcess]]
 
-## Walkthroughs / How To Links
+## Create Packages
+The Chocolatey Community Repository versus for internal use has different needs. Keep that in mind as you read over the _TODO.txt you see when you run `choco new`.
+
+* [[Creating packages|CreatePackages]]
+* [[Package Function and Variable Reference|HelpersReference]]
 * [[Parse PackageParameters Argument|How-To-Parse-PackageParameters-Argument]]
 * [[Mount an Iso in Chocolatey Package|How-To-Mount-An-Iso-In-Chocolatey-Package]]
 * [[Deprecate a Chocolatey Package|How-To-Deprecate-A-Chocolatey-Package]]
+* [Chocolatey Community Repository](https://chocolatey.org/packages)
+  * Keep in Mind [[Distribution Rights|Legal#distributions-aka-chocolatey-packages]]
+  * [[Outdated packages? Triage process|PackageTriageProcess]]
+  * [[Moderation Process|Moderation]]
+
+## Individuals
+* [Installing Chocolatey for Personal Use](https://chocolatey.org/install)
+* [[Getting Started|GettingStarted]]
+* [[Command Reference|CommandsReference]]
+
+## Organizations
+* [Installing Chocolatey For Organizations](https://chocolatey.org/install#organization)
+* [[Quick Deployment Environment|QuickDeploymentEnvironment]]
 * [[Host Your Own Feed|How-To-Host-Feed]]
 * [[Deploy Chocolatey in an Organization|How-To-Setup-Offline-Installation]]
+* [[Creating packages|CreatePackages]]
+  * [[Package Function and Variable Reference|HelpersReference]]
+* [[Getting Started|GettingStarted]]
+* [[Command Reference|CommandsReference]]
 
 ## Road Map
 Where are [[we|Roadmap]]? Where are we [[going|Roadmap]]?
