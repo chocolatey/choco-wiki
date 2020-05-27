@@ -18,11 +18,29 @@ Please see [[Install the Licensed Edition|InstallationLicensed]] for information
 
 * **NOTE:** We've identified an issue with Self-Service "Interactive" and UAC - we are working on a fix. Please see [#36](https://github.com/chocolatey/chocolatey-licensed-issues/issues/36) and subscribe for details. Until then, do not turn on the interactive feature of self-service or nothing will work.
 
-## 2.0.3 (January 30, 2020)
-### IMPROVEMENTS
- * Package Builder UI / Package Upload UI - Authenticode Sign generated assemblies - see [licensed #116](https://github.com/chocolatey/chocolatey-licensed-issues/issues/116)
- * Package Internalizer (Choco Download) - Find Packages based on Repository Optimizations
+## 2.1.0 (unreleased)
+### BUG FIXES
+ * Self-Service / Background Mode:
+    * Fix - List/Search command fails to produce results when going through background service - see [licensed #141](https://github.com/chocolatey/chocolatey-licensed-issues/issues/141)
+    * Fix - Attempts to configure background mode while loading configuration in Chocolatey Agent and Central Management
+ * Virus Check:
+    * Fix - Timeout of 120 seconds is not configurable - see [licensed #136](https://github.com/chocolatey/chocolatey-licensed-issues/issues/136)
+    * Fix - Spaces are not handled properly in file path for generic scanner - see [licensed #135](https://github.com/chocolatey/chocolatey-licensed-issues/issues/135)
+ * Package Builder (Choco New):
+    * Fix - Illegal characters in Support URL cause package not to be created - see [licensed #111](https://github.com/chocolatey/chocolatey-licensed-issues/issues/111)
+ * Package CDN:
+    * Fix - Files on CDN with a '+' in the name are not downloaded - see [licensed #134](https://github.com/chocolatey/chocolatey-licensed-issues/issues/134)
 
+### IMPROVEMENTS
+ * Package Internalizer (Choco Download):
+    * Enhance `--no-progress` to not display download counters - see [licensed #104](https://github.com/chocolatey/chocolatey-licensed-issues/issues/104)
+    * [Security] Files dowloaded and internalized should be run against the virus scanner (if configured) - see [licensed #108](https://github.com/chocolatey/chocolatey-licensed-issues/issues/108)
+ * Disable existing context menus on upgrade when passing `/NoContextMenu` in package parameters
+ * Remove context menus added during installation when uninstalling extension
+ * Central Management Deployments configuration additions
+
+
+## 2.0.3 (January 30, 2020)
 ### BUG FIXES
  * Chocolatey Central Management:
    * Fix - Add configuration parameter for size of message accepted by service - see [licensed #95](https://github.com/chocolatey/chocolatey-licensed-issues/issues/95)
@@ -31,6 +49,11 @@ Please see [[Install the Licensed Edition|InstallationLicensed]] for information
  * Fix - Error when using {} in package parameters or silent args - see [licensed #88](https://github.com/chocolatey/chocolatey-licensed-issues/issues/88)
  * Package Internalizer (Choco Download):
    * Fix - Message regarding location of internalized nupkg is wrong when using output directory
+
+### IMPROVEMENTS
+ * Package Builder UI / Package Upload UI - Authenticode Sign generated assemblies - see [licensed #116](https://github.com/chocolatey/chocolatey-licensed-issues/issues/116)
+ * Package Internalizer (Choco Download) - Find Packages based on Repository Optimizations
+
 
 ## 2.0.2 (April 29, 2019)
 ### BUG FIXES
