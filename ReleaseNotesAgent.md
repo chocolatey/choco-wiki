@@ -12,6 +12,19 @@ This covers the release notes for the Chocolatey Agent Service (`chocolatey-agen
 * Please see https://github.com/chocolatey/chocolatey-licensed-issues/labels/AgentService
 * Some issues may be held internally, please follow your support routes to learn more.
 
+
+## 0.10.0 (unreleased)
+### FEATURES
+ * Execution for Central Management Deployments
+
+### BUG FIXES
+ * Fix - Monitoring chocolatey.config for changes could potentially lock the file from being written to by choco
+ * Fix - Logging - the service stops responding to calls and stops logging after choco configuration file is edited
+
+### IMPROVEMENTS
+ * Logging - Log to the root logs folder of Chocolatey Installation
+
+
 ## 0.9.3 (March 26, 2020)
 ### BUG FIXES
  * Central Management Reporting:
