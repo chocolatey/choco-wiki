@@ -12,6 +12,44 @@ This covers the release notes for the Chocolatey Central Management (`chocolatey
 * Please see https://github.com/chocolatey/chocolatey-licensed-issues/labels/CentralManagement
 * Some issues may be held internally, please follow your support routes to learn more.
 
+## 0.2.0 (unreleased)
+We are excited to bring about managing remote machines with [Central Management Deployments](https://chocolatey.org/blog/announcing-deployments) coming in this release! There are quite a few things we've brought into the initial release and we think you'll agree that it is a powerful, yet easy to use interface. Read [the announcement.](](https://chocolatey.org/blog/announcing-deployments))
+
+### FEATURES
+* [Central Management Deployments](https://chocolatey.org/blog/announcing-deployments):
+  * Create target groups to deploy to
+  * Create a deployment with one or more steps
+  * Each step can target multiple groups, and different groups in each step if desired
+  * Script a Chocolatey package
+  * With additional permissions, run a full PowerShell script instead
+  * Choose how failures in each step are handled
+  * Reorder steps
+  * Control permissions on who can deploy Chocolatey packages and who can run full scripts
+  * See progress on active deployments
+  * View logs for computers that executed a deployment step
+  * Report on completed deployments including exporting to PDF for sharing with executive staff
+
+### BUG FIXES
+* [Security] [REDACTED] - see [licensed #144](https://github.com/chocolatey/chocolatey-licensed-issues/issues/144)
+* Fix - Service - Error on installation when providing existing certificate: Cannot index into a null array - see [licensed #143](https://github.com/chocolatey/chocolatey-licensed-issues/issues/143)
+* Fix - Web - Do not enable recaptcha by default for site registration - see [licensed #128](https://github.com/chocolatey/chocolatey-licensed-issues/issues/128)
+* Fix - Web - Create/Edit Computer and Software modals are not saving changes - see [licensed #125](https://github.com/chocolatey/chocolatey-licensed-issues/issues/125)
+* Fix - Web - Remove default permission to edit software and computers
+* Fix - Web - Restrict What Can Be Created or Edited For Computers and Software
+* Fix - Web - Deleted/Hidden items are still being used for counts for paging purposes in Software
+* Fix - Web - The license count looks clickable at times when it is not clickable
+* Fix - Web - After installation of CCM, doing an iisreset breaks the site
+* Fix - All - Monitoring chocolatey.config for changes could potentially lock the file from being written to by choco
+* Fix - All - Logging - CCM service not responding to calls and stops logging after choco configuration file is edited
+
+### IMPROVEMENTS
+* Web - Allow removing computers as a default permission for ccmadmin role - see [licensed #133](https://github.com/chocolatey/chocolatey-licensed-issues/issues/133)
+* Service - On install/upgrade, write out the FQDN and link to provide to chocolatey agents
+* Logging - Service and DB Migrator should log to the root logs folder of Chocolatey Installation
+* All - Logging - Adjust format to match closer with other Chocolatey log file formats
+* Trial licenses that do not include counts will allow 100 licenses - see [licensed #140](https://github.com/chocolatey/chocolatey-licensed-issues/issues/140)
+
+
 ## 0.1.1 (January 30, 2020)
 ### BUG FIXES
 * [Security] Fix - Database - Don't emit Connection String information to log file
