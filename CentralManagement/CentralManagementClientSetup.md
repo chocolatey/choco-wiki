@@ -27,7 +27,7 @@
 
 ## Setup
 
-First you need Chocolatey Agent installed. As there may be some steps involved with that, please see [[Chocolatey Agent Setup|FeaturesAgentService]].
+First you need Chocolatey Agent installed. As there may be some steps involved with the install of the agent, please see [[Chocolatey Agent Setup|FeaturesAgentService]].
 
 
 At a minimum you need the following items set to be able to have a Chocolatey Agent be "opted-in" for both checking into Central Management and Deployments:
