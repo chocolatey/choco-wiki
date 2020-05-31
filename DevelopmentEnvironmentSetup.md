@@ -1,4 +1,4 @@
-##Set Up A Development Environment Using Chocolatey
+## Set Up A Development Environment Using Chocolatey
 
 How many of you out there are rake fans? Getting developers to look at your source code can sometimes be an issue. Wouldn't it be nice if it was simple for them to get all set up? What about Ruby DevKit? It would be nice, right?
 
