@@ -92,14 +92,14 @@ Chocolatey Central Management (CCM) works in conjunction with [Chocolatey Agent]
 
 Chocolatey Central Management will allow:
 
-* Centralized Software Management for your entire organization.
+* ~~Centralized Software Management for your entire organization.~~ Completed June 2020.
 * ~~Centralized reporting of software.~~ Completed May 2019
 * ~~Know immediately what software is out of date and on what machines.~~ Completed May 2019
 * ~~Know within seconds the entire estate of software and what versions are installed.~~ Completed May 2019
   * ~~Including zips and archives* that do not show up in Programs and Features~~ Completed May 2019
   * ~~Including internal software* that does not show up in Programs and Features~~ Completed May 2019
 * Adhoc reporting for a particular machine or set of machines
-* Run arbitrary Chocolatey commands against one or more machines
+* ~~Run arbitrary Chocolatey commands against one or more machines~~ Completed June 2020.
 * ~~See how many machines you are actively managing in your organization~~ Completed May 2019
 * More...
 
@@ -152,9 +152,7 @@ choco install IIS-WebServer --source windowsfeatures
 choco install IIS-ApplicationInit --source windowsfeatures
 ~~~
 
-We will not provide specific instruction on installing SQL Server. Any database platform that supports Entity Framework (EF) Core is supported, and as such there are too many scenarios to cover in this document.
-
-For a list of Database products that support EF Core you can view the Microsoft Docs page [here](https://docs.microsoft.com/en-us/ef/core/providers/#current-providers)
+> :memo: **NOTE**: We do not provide specific instruction on installing SQL Server.
 
 ### FQDN Usage
 
