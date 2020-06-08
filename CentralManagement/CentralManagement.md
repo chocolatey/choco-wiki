@@ -44,6 +44,9 @@ If you are not a customer yet, you can [reach out for a trial](https://chocolate
 
 ### Setup / Installation
 * [[Central Management Setup|CentralManagementSetup]]
+    * [[Central Management Database Setup|CentralManagementSetupDatabase]]
+    * [[Central Management Service Setup|CentralManagementSetupService]]
+    * [[Central Management Web Setup|CentralManagementSetupWeb]]
 * [[Central Management Client Setup|CentralManagementClientSetup]]
 
 ### Using CCM
