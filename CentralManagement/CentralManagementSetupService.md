@@ -105,12 +105,14 @@ choco install chocolatey-management-service -y --package-parameters="'/Connectio
 
 
 #### Use Local Windows Account to Remote SQL Server
-Scenario 3: you have set up the [[database|CentralManagementSetupDatabase]] to use Windows Authentication (or Mixed Mode Authentication).
+Scenario 3: you have set up the [[database|CentralManagementSetupDatabase]] to use Windows Authentication (or Mixed Mode Authentication). You wish to use a local Windows account to connect to a remote database (on another computer).
 
 > :warning: **WARNING**
 >
 > STOP right here.
 > This is an invalid scenario and will not work. Please look at one of the other options. If you don't have LDAP, you will want to look at [SQL Server Account Authentication](#sql-server-account-authentication) below.
+
+It's worth noting here that `ChocolateyLocalAdmin` on two boxes is NOT the same account, so there is no way for Windows to recognize the account from a different box.
 
 
 ### SQL Server Account Authentication
