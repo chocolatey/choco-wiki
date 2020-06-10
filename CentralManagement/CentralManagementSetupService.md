@@ -2,6 +2,9 @@
 
 <!-- TOC depthFrom:2 depthTo:5 -->
 
+- [Summary](#summary)
+- [Summary](#summary-1)
+- [Step 0: Complete Prerequisites](#step-0-complete-prerequisites)
 - [Step 1: Install Central Management Service Package](#step-1-install-central-management-service-package)
   - [Package Parameters](#package-parameters)
   - [Chocolatey Managed Password](#chocolatey-managed-password)
@@ -19,20 +22,27 @@
 
 <!-- /TOC -->
 
-> :warning: **WARNING**: Ensure you have completed installing the [[database package|CentralManagementSetupDatabase]] and have set up sql server [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
+## Summary
 
 > :memo: **NOTE**: You could be installing several of these if your environment is large enough.
+
+## Summary
+
+____
+## Step 0: Complete Prerequisites
+
+* The [[database|CentralManagementSetupDatabase]] must be setup and available, along with [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
+
+> :warning: **WARNING**: Ensure you have completed installing the [[database package|CentralManagementSetupDatabase]] and have set up sql server [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
+
+___
+## Step 1: Install Central Management Service Package
+
+By default the service will install as a local administrative user `ChocolateyLocalAdmin` (and manage the password as well). However you can specify your own user with package parameters (such as using a domain account). You will need to specify credentials to the database as we'll see in scenarios below.
 
 > :warning: **WARNING**
 >
 > Timezones are super important here and time synchronization is really important when generating SSL Certificates. You want to make sure you have this correct and good. Otherwise there is a potential edge case you could generate an SSL Certificate that is not yet valid. As the service package could generate an SSL certificate if you don't pass an existing thumbprint, its best to ensure that time synchronization is not an issue with the machine you are installing this on.
-
-> :note: **NOTE**
-The installation of this package will assume that a new SSL certificate will need to created and used. This will be generated using the fully-qualified domain name of the system on which you are installing this package. It will also be assumed that port 24020 will be used to facilitate communication between an agent and the management service. The following parameters can be optionally provided to override this default behavior:
-
-## Step 1: Install Central Management Service Package
-
-By default the service will install as a local administrative user `ChocolateyLocalAdmin` (and manage the password as well). However you can specify your own user with package parameters (such as using a domain account). You will need to specify credentials to the database as we'll see in scenarios below.
 
 ### Package Parameters
 Note items with "`:`" mean a value should be provided, items without are simply switches.
@@ -136,9 +146,10 @@ Scenario 5: Split - you are installing the management service(s) on a server, an
 choco install chocolatey-management-service -y --package-parammeters-sensitive="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
 
-
+___
 ## FAQ
 
+___
 ## Common Errors and Resolutions
 
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]

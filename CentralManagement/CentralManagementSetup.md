@@ -81,12 +81,15 @@ ___
 
 Please see [[Central Management Service Setup|CentralManagementSetupService]].
 
+> :memo: **NOTE**: If Step 1 is not succesful, do not move on to this step until you resolve issues with database setup.
+
 ___
 
 ## Step 3: Setup Central Management Website
 
 Please see [[Central Management Web Setup|CentralManagementSetupWeb]].
 
+> :memo: **NOTE**: If Step 1 or 2 is not succesful, do not move on to this step until you resolve issues with previous steps.
 
 
 [[Chocolatey Central Management|CentralManagement]]

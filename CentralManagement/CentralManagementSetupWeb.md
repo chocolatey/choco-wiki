@@ -2,6 +2,8 @@
 
 <!-- TOC depthFrom:2 depthTo:5 -->
 
+- [Summary](#summary)
+- [Step 0: Complete Prerequisites](#step-0-complete-prerequisites)
 - [Step 1: Install Dependencies](#step-1-install-dependencies)
 - [Step 2: Install Central Management Web Package](#step-2-install-central-management-web-package)
   - [Package Parameters](#package-parameters)
@@ -19,6 +21,16 @@
 
 <!-- /TOC -->
 
+## Summary
+
+___
+## Step 0: Complete Prerequisites
+
+* The [[database|CentralManagementSetupDatabase]] must be setup and available, along with [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
+
+> :warning: **WARNING**: Ensure you have completed installing the [[database package|CentralManagementSetupDatabase]] and have set up sql server [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
+
+___
 ## Step 1: Install Dependencies
 
 The CCM Website is built on ASP.Net Core, and as such we need to ensure that it is installed on the server for proper function. Note, that the codebase is currently locked to version `2.2.7` of these packages, and it is critical that you install these right, otherwise you will encounter errors.
@@ -30,9 +42,8 @@ choco install aspnetcore-runtimepackagestore --version 2.2.7 -y
 choco install dotnetcore-windowshosting --version 2.2.7 -y
 ```
 
+___
 ## Step 2: Install Central Management Web Package
-
-> :warning: **WARNING**: Ensure you have completed installing the database package first on whatever machine the database is on.
 
 > :memo: **NOTE**: At this time we don't recommend opening internet access to CCM web. However, if you choose to, you will want to set up SSL/TLS certificates to ensure communication is encrypted over the internet.
 
@@ -108,7 +119,7 @@ Scenario 5: Split - you are installing the management service(s) on a server, an
 choco install chocolatey-management-service -y --package-parammeters-sensitive="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
 
-
+___
 ## Step 3: Set Up Website
 
 Login
@@ -116,9 +127,10 @@ Login
 Head to Administration -> Settings.
 
 
+___
 ## FAQ
 
+___
 ## Common Errors and Resolutions
-
 
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]

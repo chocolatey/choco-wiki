@@ -3,7 +3,11 @@
 <!-- TOC depthFrom:2 depthTo:5 -->
 
 - [Summary](#summary)
-- [Step 1: Install Or Prepare SQL Server](#step-1-install-or-prepare-sql-server)
+- [Step 1: Prepare SQL Server](#step-1-prepare-sql-server)
+  - [Step 1.1: Install SQL Server](#step-11-install-sql-server)
+    - [Install SQL Server Express](#install-sql-server-express)
+  - [Step 1.2: Prepare SQL Server](#step-12-prepare-sql-server)
+    - [Script to Prepare SQL Server Express](#script-to-prepare-sql-server-express)
 - [Step 2: Install Central Management Database Package](#step-2-install-central-management-database-package)
   - [Package Parameters](#package-parameters)
   - [Scenarios](#scenarios)
@@ -20,7 +24,8 @@
 >
 > Unless otherwise noted, please follow these steps in ***exact*** order. These steps build on each other and need to be completed in order.
 
-## Step 1: Install Or Prepare SQL Server
+___
+## Step 1: Prepare SQL Server
 
 > :memo: **NOTE**: While we'd like to support different database engines at some point in the distant future, currently only SQL Server is supported.
 
@@ -37,12 +42,20 @@ CCM will not install or take a dependency on a database engine install as there 
 > * **SQL Server machine security** - ensure the domain accounts being used for the service and web are not local administrators (members of the `BUILTIN\Administrators`) group on the machine that contains the SQL Server instance, or they will have `sysadmin` privileges by default to the SQL Server instance (until removed).
 > * **Central Management Service installation** - You'll need to use an Active Directory (LDAP) account. See the install options for how to pass that through.
 >    * ***!!Security!!*** - As part of installation, an account will be made a member of the `BUILTIN\Administrators` group on the machine where the service is installed. Ensure that is ***not*** the same machine where SQL Server is installed or that account will immediately be a member of the `sysadmin` role by default in SQL Server (until removed).
-> * **Central Management Web installation** - After you finish the installation, you need to go back and change the user the account is running in IIS / Application Pools to an Active Directory account. Then reset the website (the out of band exe as well). **NOTE**: There are no install options for this like there are the service at this time, so you will be doing this by hand or scripting it separately.
+> * **Central Management Web installation** - You'll need to use an Active Directory (LDAP) account. See the install options for how to pass that through to be set with the IIS Application Pool.
 >
 > :memo: Incorrect credentials to the database is 90% of support tickets related to Central Management.
 >
 >Unless you are an expert in hooking things up to SQL Server, its probably best to stick with SQL Server Mixed Mode Authentication.
 > See https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/authentication-in-sql-server
+
+
+### Step 1.1: Install SQL Server
+
+You may need to install SQL Server as part of this. There are all kinds of ways to do that and different SKUs to choose from. If you already have SQL Server implemented and you simply want to add the Chocolatey Management Database to that, you can skip this step (and possibley 1.2 as well).
+
+#### Install SQL Server Express
+You may have other methods for getting SQL Server installed, but if you are looking for a quick way of installing SQL Server Express, you can use the Chocolatey packages we internalized earlier in this process.
 
 The quickest option to get going with the database is to use the Community Repository, or an internalized version of a sql server package from the community repository For SQL Server Express 2019, run the following:
 
@@ -54,6 +67,71 @@ You will also want to have the management tools installed, which can be installe
 
 ```powershell
 choco install sql-server-management-studio -y
+```
+
+### Step 1.2: Prepare SQL Server
+
+In preparing SQL Server, you need to do the following:
+
+* Turn on Named Pipes and TCP Server protocols
+* Ensure the TcpPort is 1433 (or know what it is you need to connect to)
+* Set SQL Server Mixed Mode Authentication
+* Restart SQL Server
+* Open Windows Firewall ports for TCP access (and SQL Server Browswer in most cases)
+
+We've prepared a handy script (that may turn into a package later) to help you ensure you have SQL Server set up properly.
+
+#### Script to Prepare SQL Server Express
+
+The following is a script for SQL Server Express. You may be configuring a default instance. This should be run on the computer that has SQL Server Express installed as it will have the right binaries necessary for accessing SQL Server programmatically
+
+```powershell
+# https://docs.microsoft.com/en-us/sql/tools/configuration-manager/tcp-ip-properties-ip-addresses-tab
+Write-Output "SQL Server: Configuring Remote Acess on SQL Server Express."
+$assemblyList = 'Microsoft.SqlServer.Management.Common', 'Microsoft.SqlServer.Smo', 'Microsoft.SqlServer.SqlWmiManagement', 'Microsoft.SqlServer.SmoExtended'
+
+foreach ($assembly in $assemblyList) {
+  $assembly = [System.Reflection.Assembly]::LoadWithPartialName($assembly)
+}
+
+$wmi = New-Object Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer # connects to localhost by default
+$instance = $wmi.ServerInstances | Where-Object { $_.Name -eq 'SQLEXPRESS' }
+
+$np = $instance.ServerProtocols | Where-Object { $_.Name -eq 'Np' }
+$np.IsEnabled = $true
+$np.Alter()
+
+$tcp = $instance.ServerProtocols | Where-Object { $_.Name -eq 'Tcp' }
+$tcp.IsEnabled = $true
+$tcp.Alter()
+
+$tcpIpAll = $tcp.IpAddresses | Where-Object { $_.Name -eq 'IpAll' }
+
+$tcpDynamicPorts = $tcpIpAll.IpAddressProperties | Where-Object { $_.Name -eq 'TcpDynamicPorts' }
+$tcpDynamicPorts.Value = ""
+$tcp.Alter()
+
+$tcpPort = $tcpIpAll.IpAddressProperties | Where-Object { $_.Name -eq 'TcpPort' }
+$tcpPort.Value = "1433"
+$tcp.Alter()
+
+Write-Output "SQL Server: Setting Mixed Mode Authentication."
+New-ItemProperty 'HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQLServer\' -Name 'LoginMode' -Value 2 -Force
+
+Write-Output "SQL Server: Forcing Restart of Instance."
+Restart-Service -Force 'MSSQL$SQLEXPRESS'
+
+Write-Output "SQL Server: Setting up SQL Server Browser and starting the service."
+Set-Service 'SQLBrowser' -StartupType Automatic
+Start-Service 'SQLBrowser'
+
+Write-Output "Firewall: Enabling SQLServer TCP port 1433."
+netsh advfirewall firewall add rule name="SQL Server 1433" dir=in action=allow protocol=TCP localport=1433 profile=any enable=yes service=any
+#New-NetFirewallRule -DisplayName "Allow inbound TCP Port 1433" –Direction inbound –LocalPort 1433 -Protocol TCP -Action Allow
+
+Write-Output "Firewall: Enabling SQL Server browser UDP port 1434."
+netsh advfirewall firewall add rule name="SQL Server Browser 1434" dir=in action=allow protocol=UDP localport=1434 profile=any enable=yes service=any
+#New-NetFirewallRule -DisplayName "Allow inbound UDP Port 1434" –Direction inbound –LocalPort 1434 -Protocol UDP -Action Allow
 ```
 
 ___
@@ -174,11 +252,13 @@ Add-DatabaseUserAndRoles -Username "$(hostname)\ChocolateyLocalAdmin" -DatabaseR
 Add-DatabaseUserAndRoles -Username "<DomainName>\<Username>" -DatabaseRoles @('db_datareader', 'db_datawriter')
 ```
 
+___
 ## FAQ
 
 ### Can I use MySQL (or PostgreSQL)?
 Unfortunately only SQL Server SKUs work with Chocolatey Central Management at this time. You can use SQL Server Express in smaller shops.
 
+___
 ## Common Errors and Resolutions
 
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]
