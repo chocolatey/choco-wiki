@@ -30,6 +30,8 @@ This provides an overview on Chocolatey Central Mangement (CCM). It provides bot
   - [Using Central Management](#using-central-management)
 - [Related Articles](#related-articles)
 - [FAQs](#faqs)
+  - [Will this become available for lower editions of Chocolatey?](#will-this-become-available-for-lower-editions-of-chocolatey)
+  - [What's the minimum version of the Chocolatey packages I need to use CCM?](#whats-the-minimum-version-of-the-chocolatey-packages-i-need-to-use-ccm)
 
 <!-- /TOC -->
 
@@ -87,3 +89,10 @@ If you are not a customer yet, you can [reach out for a trial](https://chocolate
 * [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]]
 
 ## FAQs
+### Will this become available for lower editions of Chocolatey?
+
+CCM will only be available in Chocolatey for Business (C4B).
+
+### What's the minimum version of the Chocolatey packages I need to use CCM?
+
+See [CCM Components](#ccm-components).

@@ -22,7 +22,14 @@
   - [Step 4.2: SMTP Configuration](#step-42-smtp-configuration)
     - [appsettings.json configuration](#appsettingsjson-configuration)
 - [FAQ](#faq)
+  - [Can I install the Chocolatey Central Management Web Site under a Virtual Directory in IIS?](#can-i-install-the-chocolatey-central-management-web-site-under-a-virtual-directory-in-iis)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
+  - [The specified path, file name, or both are too long](#the-specified-path-file-name-or-both-are-too-long)
+  - [HTTP Error when trying to access Chocolatey Central Management Website](#http-error-when-trying-to-access-chocolatey-central-management-website)
+  - [The term 'Install-ChocolateyAppSettingsJsonFile' is not recognized as the name of a cmdlet, function, script file, or operable program.](#the-term-install-chocolateyappsettingsjsonfile-is-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
+  - [Cannot process command because of one or more missing mandatory parameters: FilePath](#cannot-process-command-because-of-one-or-more-missing-mandatory-parameters-filepath)
+  - [All attempts to send email from CCM result in an error](#all-attempts-to-send-email-from-ccm-result-in-an-error)
+  - [Emails sent from CCM to users has links that contains localhost, rather than actual CCM Server name](#emails-sent-from-ccm-to-users-has-links-that-contains-localhost-rather-than-actual-ccm-server-name)
 
 <!-- /TOC -->
 
@@ -210,8 +217,99 @@ And then try accessing the website again.  Any emails that are then sent from CC
 
 ___
 ## FAQ
+### Can I install the Chocolatey Central Management Web Site under a Virtual Directory in IIS?
+
+Currently no.  The Chocolatey Central Management Web Site expects to reside at the site level within IIS.
 
 ___
 ## Common Errors and Resolutions
+### The specified path, file name, or both are too long
+
+This error can occur when installing the `chocolatey-management-web` package.  Due to the nested folder structure contained within this package, when extracting to the default cache location, the path can become too long.  This problem is known is occur in the 0.1.0-beta-20181009 release of this package, and it should be corrected in subsequent releases.  As a workaround, adding the following parameters to the install command should allow the installation to complete successfully:
+
+~~~powershell
+--cache-location="'C:\Temp\choco'"
+~~~
+
+### HTTP Error when trying to access Chocolatey Central Management Website
+
+When you try to access the Chocolatey Central Management Website (by default, this is hosted on http://localhost), errors messages similar to the following may be returned:
+
+`HTTP Error 500.19 - Internal Server Error`
+
+These errors happen very early in the application execution, and as a result, are not logged to the standard log location.  It is possible to increase the logging that is performed by the ASP.NET Worker Process, so that additional information about the error can be found.  Follow these steps to enable that additional logging:
+
+1. In Windows Explorer, navigate to the `c:/tools/chocolatey-management-web` folder
+1. Find the `web.config` file and open this in a text editor
+1. Locate the `stdoutLogEnabled` attribute, which will be set to false by default
+1. Change this to true, and save the file
+1. Check to see if there is a running process called `ChocolateySoftware.ChocolateyManagement.Web.Mvc.exe`.  If there is, stop it.
+1. Attempt to access the website again.  An additional log file will be created in the `App_Data\Logs\stdout` folder
+1. Review this log for additional error information
+1. Ensure that you set the `stdoutLogEnabled` attribute back to false
+
+In these situations, we have found that incorrect database connection strings are typically the root cause of the problem.
+
+
+### The term 'Install-ChocolateyAppSettingsJsonFile' is not recognized as the name of a cmdlet, function, script file, or operable program.
+
+In the beta version of Chocolatey.Extension, there was a Cmdlet named Install-ChocolateyAppSettingsJsonFile and this was used in the 0.1.0-beta-20181009 release of the Chocolatey Central Management components. In the final released version of the Chocolatey.Extension, this was renamed to Install-AppSettingsJsonFile.
+
+As a result, the Chocolatey Central Management beta no longer works with the released version of Chocolatey.Extension. This will be corrected once the next release of the Chocolatey Central Management components is completed.
+
+### Cannot process command because of one or more missing mandatory parameters: FilePath
+
+During the creation of Chocolatey Central Management, some additional PowerShell cmdlets were created, and these are installed as part of the Chocolatey Extension package.  These cmdlets went through a number of iterations, and as a result, different combinations of Chocolatey Central Management packages were incompatible with the Chocolatey Extension package, resulting in the error:
+
+`Cannot process command because of one or more missing mandatory parameters: FilePath`
+
+The guidance in this case is either to pin to the specific version of the Chocolatey Extension package required by the version of Chocolatey Central Management being used, or, update to the latest versions of all packages, where the situation should be addressed.
+
+### All attempts to send email from CCM result in an error
+
+When any attempt is made by CCM to send an email, an error occurs.  This either results in an HTTP 500 errors similar to the following:
+
+![HTTP 500 error when sending email](images/features/ccm/error_when_sending_email_500.png)
+
+Or an inline error, similar to this:
+
+![Inline error when sending email](images/features/ccm/error_when_sending_email_inline.png)
+
+Checking the log file, an error similar to this is found:
+
+~~~powershell
+ERROR 2019-06-14 00:54:03,491 [55   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLNGIPBBV01R", Request id "0HLNGIPBBV01R:00000001": An unhandled exception was thrown by the application.
+System.Net.Sockets.SocketException (0x80004005): No connection could be made because the target machine actively refused it 127.0.0.1:25
+~~~
+
+This is caused due to the default SMTP configuration being used by CCM, which is incompatible with the environment.  CCM, by default, assumes that there is an available SMTP Server available on the current machine, using port 25.  To fix this, follow the installation steps [above](#smtp-configuration).
+
+### Emails sent from CCM to users has links that contains localhost, rather than actual CCM Server name
+
+There is a requirement within the CCM site to send emails to end users of the application.  For example, when registering a new user, or resetting a password.  When this happens, the email should contain a link back to the CCM Site, which the user can click on to bring up the site in their browser.  However, emails sent from CCM contain links that contain localhost in the address, which means when clicked on, they fail to open correctly.  This can be fixed by making a change to the `appsettings.json` file which is located in the `c:\tools\chocolatey-management-web` folder.
+
+Open this file in a text editor, and add the following entry:
+
+~~~json
+    "App": {
+        "WebSiteRootAddress": "<URL_to_CCM>"
+    }
+~~~
+
+NOTE: When adding this entry, be sure to include a `,` either before or after the entry, depending on where you add it in the file.  i.e. the end result needs to be a properly formatted JSON document.
+
+where `URL_to_CCM` should be the accessible URL to access the CCM Website.  This will typically be the FQDN of the server that is hosting the CCM Web Site, but it will depend on your environments configuration.
+
+The end result should look something like this:
+
+![Modified appsettings.json file](images/features/ccm/updated_appsettingsjson_file.png)
+
+Once this change has been added, save the file, and then run the following to ensure that the process running the CCM Website is stopped:
+
+~~~powershell
+Get-Process -Name "ChocolateySoftware.ChocolateyManagement.Web.Mvc" -ErrorAction SilentlyContinue | Stop-Process -Force -PassThru
+~~~
+
+And then try accessing the website again.  Any emails that are then sent from CCM should then contain valid links back to the site.
 
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]
