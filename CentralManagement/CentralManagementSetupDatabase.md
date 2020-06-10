@@ -1,7 +1,8 @@
 # Chocolatey Central Management Database Setup
 
-<!-- TOC depthFrom:2 -->
+<!-- TOC depthFrom:2 depthTo:5 -->
 
+- [Summary](#summary)
 - [Step 1: Install Or Prepare SQL Server](#step-1-install-or-prepare-sql-server)
 - [Step 2: Install Central Management Database Package](#step-2-install-central-management-database-package)
   - [Package Parameters](#package-parameters)
@@ -12,6 +13,12 @@
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
 
 <!-- /TOC -->
+
+## Summary
+
+> :warning: **WARNING**
+>
+> Unless otherwise noted, please follow these steps in ***exact*** order. These steps build on each other and need to be completed in order.
 
 ## Step 1: Install Or Prepare SQL Server
 

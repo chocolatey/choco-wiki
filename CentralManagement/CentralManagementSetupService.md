@@ -1,19 +1,19 @@
 # Central Mangement Windows Service(s) Setup
 
-<!-- TOC depthFrom:2 -->
+<!-- TOC depthFrom:2 depthTo:5 -->
 
 - [Step 1: Install Central Management Service Package](#step-1-install-central-management-service-package)
   - [Package Parameters](#package-parameters)
   - [Chocolatey Managed Password](#chocolatey-managed-password)
   - [Chocolatey Central Management Service Windows Account Considerations](#chocolatey-central-management-service-windows-account-considerations)
-- [Scenarios](#scenarios)
-  - [SQL Server Windows Authentication](#sql-server-windows-authentication)
-    - [Use Active Directory Domain Account](#use-active-directory-domain-account)
-    - [Use Local Windows Account to Local SQL Server](#use-local-windows-account-to-local-sql-server)
-    - [Use Local Windows Account to Remote SQL Server](#use-local-windows-account-to-remote-sql-server)
-  - [SQL Server Account Authentication](#sql-server-account-authentication)
-    - [Use SQL Server Authentication Locally](#use-sql-server-authentication-locally)
-    - [Use SQL Server Account to Remote SQL Server](#use-sql-server-account-to-remote-sql-server)
+  - [Scenarios](#scenarios)
+    - [SQL Server Windows Authentication](#sql-server-windows-authentication)
+      - [Use Active Directory Domain Account](#use-active-directory-domain-account)
+      - [Use Local Windows Account to Local SQL Server](#use-local-windows-account-to-local-sql-server)
+      - [Use Local Windows Account to Remote SQL Server](#use-local-windows-account-to-remote-sql-server)
+    - [SQL Server Account Authentication](#sql-server-account-authentication)
+      - [Use SQL Server Authentication Locally](#use-sql-server-authentication-locally)
+      - [Use SQL Server Account to Remote SQL Server](#use-sql-server-account-to-remote-sql-server)
 - [FAQ](#faq)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
 
@@ -75,9 +75,9 @@ When Chocolatey manages the password for a local administrator, it creates a ver
 
 Once you have completed the steps necessary to allow Sql access for the user in Step 2, we can install the management service.
 
-## Scenarios
-### SQL Server Windows Authentication
-#### Use Active Directory Domain Account
+### Scenarios
+#### SQL Server Windows Authentication
+##### Use Active Directory Domain Account
 Scenario 1: Active Directory - you have set up the [[database|CentralManagementSetupDatabase]] to use Windows Authentication (or Mixed Mode Authentication).
 
 ```powershell
@@ -86,7 +86,7 @@ choco install chocolatey-management-service -y --package-parameters="'/Connectio
 
 > :memo: **NOTE**: Note the connection string doesn't include credentials. That's because Windows Authentication for SQL Server uses the context of what is running it and why the service itself needs the right user/password.
 
-#### Use Local Windows Account to Local SQL Server
+##### Use Local Windows Account to Local SQL Server
 Scenario 2: Monolithic - you have set up the [[database|CentralManagementSetupDatabase]] to use Windows Authentication (or Mixed Mode Authentication). You wish to use a local Windows account to connect to the local database.
 
 * Specify User:
@@ -104,7 +104,7 @@ choco install chocolatey-management-service -y --package-parameters="'/Connectio
 > :memo: **NOTE**: Note the connection string doesn't include credentials. That's because Windows Authentication for SQL Server uses the context of what is running it and why the service itself needs the right user/password.
 
 
-#### Use Local Windows Account to Remote SQL Server
+##### Use Local Windows Account to Remote SQL Server
 Scenario 3: you have set up the [[database|CentralManagementSetupDatabase]] to use Windows Authentication (or Mixed Mode Authentication). You wish to use a local Windows account to connect to a remote database (on another computer).
 
 > :warning: **WARNING**
@@ -115,8 +115,8 @@ Scenario 3: you have set up the [[database|CentralManagementSetupDatabase]] to u
 It's worth noting here that `ChocolateyLocalAdmin` on two boxes is NOT the same account, so there is no way for Windows to recognize the account from a different box.
 
 
-### SQL Server Account Authentication
-#### Use SQL Server Authentication Locally
+#### SQL Server Account Authentication
+##### Use SQL Server Authentication Locally
 Scenario 4: Monolithic - you are installing the management service on the same machine as a SQL Server Express instance. You likely have a smaller environment where you have up to 1,000 machines. You have set up the [[database|CentralManagementSetupDatabase]] to use Mixed Mode Authentication.
 
 ```powershell
@@ -129,7 +129,7 @@ choco install chocolatey-management-service -y --package-parameters-sensitive="'
 choco install chocolatey-management-service -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
 
-#### Use SQL Server Account to Remote SQL Server
+##### Use SQL Server Account to Remote SQL Server
 Scenario 5: Split - you are installing the management service(s) on a server, and targeting an existing SQL Server instance in your organization. You have set up the [[database|CentralManagementSetupDatabase]] to use Mixed Mode Authentication.
 
 ```powershell

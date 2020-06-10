@@ -1,13 +1,18 @@
 # Central Management Website setup
 
-<!-- TOC depthFrom:2 -->
+<!-- TOC depthFrom:2 depthTo:5 -->
 
 - [Step 1: Install Dependencies](#step-1-install-dependencies)
 - [Step 2: Install Central Management Web Package](#step-2-install-central-management-web-package)
   - [Package Parameters](#package-parameters)
   - [Scenarios](#scenarios)
     - [SQL Server Windows Authentication](#sql-server-windows-authentication)
+      - [Use Active Directory Domain Account](#use-active-directory-domain-account)
+      - [Use Local Windows Account to Local SQL Server](#use-local-windows-account-to-local-sql-server)
+      - [Use Local Windows Account to Remote SQL Server](#use-local-windows-account-to-remote-sql-server)
     - [SQL Server Account Authentication](#sql-server-account-authentication)
+      - [Use SQL Server Authentication Locally](#use-sql-server-authentication-locally)
+      - [Use SQL Server Account to Remote SQL Server](#use-sql-server-account-to-remote-sql-server)
 - [Step 3: Set Up Website](#step-3-set-up-website)
 - [FAQ](#faq)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
@@ -43,7 +48,6 @@ Note items with "`:`" mean a value should be provided, items without are simply 
 
 
 ### Scenarios
-
 #### SQL Server Windows Authentication
 ##### Use Active Directory Domain Account
 Scenario 1: Active Directory - you have set up the [[database|CentralManagementSetupDatabase]] to use Windows Authentication (or Mixed Mode Authentication).

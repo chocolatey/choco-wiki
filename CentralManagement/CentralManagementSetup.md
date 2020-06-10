@@ -4,7 +4,7 @@
 >
 > Also see [[Chocolatey Central Management in Features|FeaturesChocolateyCentralManagement]].
 
-<!-- TOC depthFrom:2 -->
+<!-- TOC depthFrom:2 depthTo:5 -->
 
 - [Summary](#summary)
 - [Step 0: Internalize Packages](#step-0-internalize-packages)
@@ -85,6 +85,8 @@ ___
 
 ## Step 3: Setup Central Management Website
 
-Please see [[Central Management Web Setup|CentralManagementSetupWeb]]
+Please see [[Central Management Web Setup|CentralManagementSetupWeb]].
+
+
 
 [[Chocolatey Central Management|CentralManagement]]
