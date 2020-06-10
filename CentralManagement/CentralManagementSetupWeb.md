@@ -3,10 +3,11 @@
 <!-- TOC depthFrom:2 depthTo:5 -->
 
 - [Summary](#summary)
-- [Step 0: Complete Prerequisites](#step-0-complete-prerequisites)
-- [Step 1: Install Dependencies](#step-1-install-dependencies)
+- [Step 1: Complete Prerequisites](#step-1-complete-prerequisites)
+  - [Script for some prerequisites](#script-for-some-prerequisites)
 - [Step 2: Install Central Management Web Package](#step-2-install-central-management-web-package)
   - [Package Parameters](#package-parameters)
+  - [IIS Settings](#iis-settings)
   - [Scenarios](#scenarios)
     - [SQL Server Windows Authentication](#sql-server-windows-authentication)
       - [Use Active Directory Domain Account](#use-active-directory-domain-account)
@@ -15,7 +16,11 @@
     - [SQL Server Account Authentication](#sql-server-account-authentication)
       - [Use SQL Server Authentication Locally](#use-sql-server-authentication-locally)
       - [Use SQL Server Account to Remote SQL Server](#use-sql-server-account-to-remote-sql-server)
-- [Step 3: Set Up Website](#step-3-set-up-website)
+- [Step 3: Verify Installation](#step-3-verify-installation)
+- [Step 4: Set Up Website](#step-4-set-up-website)
+  - [Step 4.1: Login And Change Default Credentials](#step-41-login-and-change-default-credentials)
+  - [Step 4.2: SMTP Configuration](#step-42-smtp-configuration)
+    - [appsettings.json configuration](#appsettingsjson-configuration)
 - [FAQ](#faq)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
 
@@ -24,18 +29,22 @@
 ## Summary
 
 ___
-## Step 0: Complete Prerequisites
+## Step 1: Complete Prerequisites
 
-* The [[database|CentralManagementSetupDatabase]] must be setup and available, along with [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
-
-> :warning: **WARNING**: Ensure you have completed installing the [[database package|CentralManagementSetupDatabase]] and have set up sql server [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
-
-___
-## Step 1: Install Dependencies
+* > :warning: The [[database|CentralManagementSetupDatabase]] must be setup and available, along with [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
+* Windows Server 2012+
+* PowerShell 3+
+* .NET Framework 4.6.1+
+* IIS Set up and available
+* aspnetcore-runtimepackagestore version 2.2.7
+* dotnetcore-windowshosting version 2.2.7
 
 The CCM Website is built on ASP.Net Core, and as such we need to ensure that it is installed on the server for proper function. Note, that the codebase is currently locked to version `2.2.7` of these packages, and it is critical that you install these right, otherwise you will encounter errors.
 
+### Script for some prerequisites
+
 ```powershell
+choco install dotnet4.6.1 -y
 choco install IIS-WebServer -s windowsfeatures -y
 choco install IIS-ApplicationInit -s windowsfeatures -y
 choco install aspnetcore-runtimepackagestore --version 2.2.7 -y
@@ -57,6 +66,21 @@ Note items with "`:`" mean a value should be provided, items without are simply 
 * `/SqlServerInstance:` - Instance name of the SQL Server database to connect to. Alternative to passing full connection string with `/ConnectionString`. Uses `/Database` (below) to build a connection string. Defaults to `<LOCAL COMPUTER FQDN NAME>`.
 * `/Database:` - Name of the SQL Server database to use. Alternative to passing full connection string with `/ConnectionString`. Uses `/SqlServerInstance` (above) to build a connection string. Defaults to `ChocolateyManagement`.
 
+### IIS Settings
+
+This package creates the CCM Website and Application Pool with the following defaults:
+
+* IIS Web Application Pool:               **ChocolateyCentralManagement**
+  * enable32BitAppOnWin64:                **True**
+  * managedPipelineMode:                  **Integrated**
+  * managedRuntimeVersion:                &lt;blank&gt;
+  * startMode:                            **AlwaysRunning**
+  * processModel.idleTimeout:             **0**
+  * recycling.periodicRestart.schedule:   **Disabled**
+  * recycling.periodicRestart.time:       **0**
+* Website Name:                             **ChocolateyCentralManagement**
+  * PortBinding:                          **80**
+  * applicationDefaults.preloadEnabled:   **True**
 
 ### Scenarios
 #### SQL Server Windows Authentication
@@ -120,12 +144,69 @@ choco install chocolatey-management-service -y --package-parammeters-sensitive="
 ```
 
 ___
-## Step 3: Set Up Website
+## Step 3: Verify Installation
 
-Login
+The `chocolatey-management-web` package is responsible for creating and deploying the CCM Website within IIS.  A successful installation of this package can be verified by:
+
+* Opening an internet browser on the machine to the following address `http://localhost` which should result in the login page for CCM being displayed
+* It should be possible to login to the site using the default credentials mentioned in Step 4 (below).
+* Open the Site log file located at `c:\tools\chocolatey-management-web\App_Data\Logs\ccm-website.log` and verify that there are no recently reported errors. If you are on a version of CCM prior to 0.2.0, the log will be located at `c:\tools\chocolatey-management-web\App_Data\Logs\Logs.txt`.
+
+___
+## Step 4: Set Up Website
+
+### Step 4.1: Login And Change Default Credentials
+When you access the CCM Website you will be prompted to provide a username and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.  After you input this, you will be prompted to change the password.
 
 Head to Administration -> Settings.
 
+### Step 4.2: SMTP Configuration
+
+The CCM Site needs to be able to send email for certain actions.  For example, when a new user is registering with the system, or when sending out forgotten password emails.  Valid SMTP Configuration has to be provided in order for these emails to be sent out.  Follow these steps to configure SMTP for CCM.
+
+1. Open the CCM Site in the browser
+1. Login with the `ccmadmin` user
+1. In the left hand menu click on `Administration` and then `Settings`
+1. Click on the `Email (SMTP)` tab in the `Settings` screen
+1. Add the SMTP settings for your environment
+1. Click the `Save All` button to save changes
+1. Change the email address to go to your email address
+1. Click the `Send Test Email` button and ensure that an email is received correctly
+
+You should received a notification similar to this:
+
+![Test email sent successfully](images/features/ccm/test_email_sent_correctly.png)
+
+#### appsettings.json configuration
+
+**NOTE**: In version 0.2.0+ of CCM, this configuration will likely be automatically applied during installation and will use defaults, but be encrypted. If the value is incorrect, you can simply set it as shown here as encryption is not necessary for this value.
+
+There is a requirement within the CCM site to send emails to end users of the application.  For example, when registering a new user, or resetting a password.  To ensure that these emails contain a properly clickable link a modification needs to be made to the `appsettings.json` file which is located in the `c:\tools\chocolatey-management-web` folder.
+
+Open this file in a text editor, and add the following entry:
+
+~~~json
+    "App": {
+        "WebSiteRootAddress": "<URL_to_CCM>"
+    }
+~~~
+
+* `URL_to_CCM` should be the accessible URL to access the CCM Website.  This will typically be the FQDN of the server that is hosting the CCM Web Site, but it will depend on your environments configuration.
+
+> :memo: **NOTE**: When adding this entry, be sure to include a `,` either before or after the entry, depending on where you add it in the file.  i.e. the end result needs to be a properly formatted JSON document.
+
+
+The end result should look something like this:
+
+![Modified appsettings.json file](images/features/ccm/updated_appsettingsjson_file.png)
+
+Once this change has been added, save the file, and then run the following to ensure that the process running the CCM Website is stopped:
+
+~~~powershell
+Get-Process -Name "ChocolateySoftware.ChocolateyManagement.Web.Mvc" -ErrorAction SilentlyContinue | Stop-Process -Force -PassThru
+~~~
+
+And then try accessing the website again.  Any emails that are then sent from CCM should then contain valid links back to the site.
 
 ___
 ## FAQ

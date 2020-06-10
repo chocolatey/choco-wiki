@@ -5,14 +5,21 @@
 > Also see [[Chocolatey Central Management in Features|FeaturesChocolateyCentralManagement]].
 
 ## Summary
-This provides an overview on Chocolatey Central Mangement (CCM). It provides both setup and use of CCM with the different aspects.
+Chocolatey Central Management (CCM) provides you insights across your desktop and endpoint environments.
 
-> :warning: **WARNING**: This is a Work in Progress. Please check back later
->
-> Also see [[Chocolatey Central Management in Features|FeaturesChocolateyCentralManagement]].
+Once installed and configured, you can use CCM to:
+
+* bring reporting to the Organizational level
+* quickly see all software across the Organization and see what needs attention immediately
+* create reports for tracking and auditing purposes
+* manage endpoints with deployments through groups and collections
+
+![CCM Overview](images/features/ccm/ccm_overview.jpg)
 
 
-<!-- TOC depthFrom:2 -->
+This provides an overview on Chocolatey Central Mangement (CCM). It provides both setup and use of CCM.
+
+<!-- TOC depthFrom:2 depthTo:5 -->
 
 - [Summary](#summary)
 - [CCM Components](#ccm-components)
@@ -20,13 +27,26 @@ This provides an overview on Chocolatey Central Mangement (CCM). It provides bot
 - [Stay Up To Speed](#stay-up-to-speed)
 - [Links](#links)
   - [Setup / Installation](#setup--installation)
-  - [Using CCM](#using-ccm)
+  - [Using Central Management](#using-central-management)
 - [Related Articles](#related-articles)
 - [FAQs](#faqs)
 
 <!-- /TOC -->
 
 ## CCM Components
+
+The following are all of the Chocolatey components required for Central Management to work.
+
+* Chocolatey (`chocolatey` package) v0.10.14+
+* Chocolatey for Business (C4B) Edition.
+* Chocolatey Licensed Extension (`chocolatey.extension` package) v2.0.0+
+* Chocolatey Agent (`chocolatey-agent` package) v0.9.0+
+* CCM Database (`chocolatey-management-database` package) v0.1.0+
+  * This deploys the CCM database schema to a specified SQL Server instance
+* CCM Service (`chocolatey-management-service` package) v0.1.0+
+  * This installs the CCM Service, which the Chocolatey Agent will communicate with.
+* CCM Website (`chocolatey-management-web` package) v0.1.0+
+  * This is the CCM front end website that is the main user interface of the application
 
 ## Getting CCM
 CCM is only available for Chocolatey for Business (C4B) customers. If you are a C4B customer, you can head to the install components section:
@@ -53,7 +73,7 @@ If you are not a customer yet, you can [reach out for a trial](https://chocolate
     * [[Central Management Web Setup|CentralManagementSetupWeb]]
 * [[Central Management Client Setup|CentralManagementClientSetup]]
 
-### Using CCM
+### Using Central Management
 
 * [[CCM Computers|CentralManagementComputers]]
 * [[CCM Software|CentralManagementSoftware]]

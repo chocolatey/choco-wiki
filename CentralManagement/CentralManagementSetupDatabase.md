@@ -3,7 +3,7 @@
 <!-- TOC depthFrom:2 depthTo:5 -->
 
 - [Summary](#summary)
-- [Step 1: Prepare SQL Server](#step-1-prepare-sql-server)
+- [Step 1: Complete Prerequisites](#step-1-complete-prerequisites)
   - [Step 1.1: Install SQL Server](#step-11-install-sql-server)
     - [Install SQL Server Express](#install-sql-server-express)
   - [Step 1.2: Prepare SQL Server](#step-12-prepare-sql-server)
@@ -12,6 +12,7 @@
   - [Package Parameters](#package-parameters)
   - [Scenarios](#scenarios)
 - [Step 3: Set up SQL Server Logins And Access](#step-3-set-up-sql-server-logins-and-access)
+- [Step 4: Verify Installation](#step-4-verify-installation)
 - [FAQ](#faq)
   - [Can I use MySQL (or PostgreSQL)?](#can-i-use-mysql-or-postgresql)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
@@ -25,7 +26,9 @@
 > Unless otherwise noted, please follow these steps in ***exact*** order. These steps build on each other and need to be completed in order.
 
 ___
-## Step 1: Prepare SQL Server
+## Step 1: Complete Prerequisites
+
+* SQL Server
 
 > :memo: **NOTE**: While we'd like to support different database engines at some point in the distant future, currently only SQL Server is supported.
 
@@ -251,6 +254,15 @@ Add-DatabaseUserAndRoles -Username "$(hostname)\ChocolateyLocalAdmin" -DatabaseR
 # Add Active Directory Domain User:
 Add-DatabaseUserAndRoles -Username "<DomainName>\<Username>" -DatabaseRoles @('db_datareader', 'db_datawriter')
 ```
+
+___
+## Step 4: Verify Installation
+
+The purpose of the `chocolatey-management-database` package is to create and deploy the schema for the database that is used by the CCM Service and Website.  This can be verified by using something like SQL Server Management Studio to connect to the SQL Server Instance and:
+
+* Check that a database (by default named `ChocolateyManagement`) has been created
+* That a set of tables have been created within this database
+* That permissions have been set for accounts
 
 ___
 ## FAQ
