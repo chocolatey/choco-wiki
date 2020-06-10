@@ -4,8 +4,11 @@
 
 - [Step 1: Install Or Prepare SQL Server](#step-1-install-or-prepare-sql-server)
 - [Step 2: Install Central Management Database Package](#step-2-install-central-management-database-package)
+  - [Package Parameters](#package-parameters)
+  - [Scenarios](#scenarios)
 - [Step 3: Set up SQL Server Logins And Access](#step-3-set-up-sql-server-logins-and-access)
 - [FAQ](#faq)
+  - [Can I use MySQL (or PostgreSQL)?](#can-i-use-mysql-or-postgresql)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
 
 <!-- /TOC -->
@@ -54,7 +57,18 @@ ___
 
 The CCM database package will add or update a database to an existing SQL Server instance.
 
-When you run this package installation, you will want to do so as integrated security, or with Windows Authentication. When you run the other two package installations, you will want to do so providing a connection string.
+> :memo: **NOTE**: When you run this package installation, you will want to do so as integrated security, or with Windows Authentication. When you run the other two package installations, you will want to do so providing a connection string.
+
+### Package Parameters
+Note items with "`:`" mean a value should be provided, items without are simply switches.
+
+* `/ConnectionString:` - The SQL Server database connection string to be used to connect to the Chocolatey Central Management database. Defaults to default or explicit values for `/SqlServiceInstance` and `/Database`, along with Integrated Security (`Server=<LOCAL COMPUTER FQDN NAME>; Database=ChocolateyManagement; Trusted_Connection=True;`). The account should have `db_owner` access to the database ([database owner](https://docs.microsoft.com/en-us/sql/relational-databases/security/authentication-access/database-level-roles#fixed-database-roles)).
+* `/SqlServerInstance:` - Instance name of the SQL Server database to connect to. Alternative to passing full connection string with `/ConnectionString`. Uses `/Database` (below) to build a connection string. Defaults to `<LOCAL COMPUTER FQDN NAME>`.
+* `/Database:` - Name of the SQL Server database to use. Alternative to passing full connection string with `/ConnectionString`. Uses `/SqlServerInstance` (above) to build a connection string. Defaults to `ChocolateyManagement`.
+* `/SkipDatabasePermissionCheck` - By default, a check will be completed to ensure that the installing user has access to create a new database, based on the provided/computed connection string. If this check isn't required, for example, the database has already been created or permissions will error, this step can be skipped using this parameter. Available with CCM v0.2.0+.
+
+
+### Scenarios
 
 Scenario 1: You are installing the database package on the same machine as a SQL Server Express installation:
 
@@ -90,7 +104,7 @@ Notes:
 ```powershell
 function Add-DatabaseUserAndRoles {
   param(
-   [parameter(Mandatory=$true)][string] $UserName,
+   [parameter(Mandatory=$true)][string] $Username,
    [parameter(Mandatory=$true)][string] $DatabaseName,
    [parameter(Mandatory=$false)][string] $DatabaseServer = 'localhost\SQLEXPRESS',
    [parameter(Mandatory=$false)] $DatabaseRoles = @('db_datareader'),
@@ -107,26 +121,26 @@ function Add-DatabaseUserAndRoles {
 
   $addUserSQLCommand = @"
 USE [master]
-IF EXISTS(SELECT * FROM msdb.sys.syslogins WHERE UPPER([name]) = UPPER('$UserName'))
+IF EXISTS(SELECT * FROM msdb.sys.syslogins WHERE UPPER([name]) = UPPER('$Username'))
   BEGIN
-    DROP LOGIN [$UserName]
+    DROP LOGIN [$Username]
   END
-CREATE LOGIN [$UserName] $LoginOptions WITH DEFAULT_DATABASE=[$DatabaseName]
+CREATE LOGIN [$Username] $LoginOptions WITH DEFAULT_DATABASE=[$DatabaseName]
 
 USE [$DatabaseName]
-IF EXISTS(SELECT * FROM sys.sysusers WHERE UPPER([name]) = UPPER('$UserName'))
+IF EXISTS(SELECT * FROM sys.sysusers WHERE UPPER([name]) = UPPER('$Username'))
   BEGIN
-    DROP USER [$UserName]
+    DROP USER [$Username]
   END
 
-CREATE USER [$UserName] FOR LOGIN [$UserName]
+CREATE USER [$Username] FOR LOGIN [$Username]
 
 "@
 
   foreach ($DatabaseRole in $DatabaseRoles) {
     $addUserSQLCommand += @"
 
-ALTER ROLE [$DatabaseRole] ADD MEMBER [$UserName]
+ALTER ROLE [$DatabaseRole] ADD MEMBER [$Username]
 "@
   }
 
@@ -145,10 +159,18 @@ ALTER ROLE [$DatabaseRole] ADD MEMBER [$UserName]
 
 }
 
-Add-DatabaseUserAndRoles -Username 'ChocoUser' -SqlUserPassword 'Ch0c0R0cks' -CreateSqlUser
+# Add Sql Server Login / User:
+Add-DatabaseUserAndRoles -Username 'ChocoUser' -SqlUserPassword '<SUPER HARD PASSWORD>' -CreateSqlUser -DatabaseRoles @('db_datareader', 'db_datawriter')
+# Add Local Windows User:
+Add-DatabaseUserAndRoles -Username "$(hostname)\ChocolateyLocalAdmin" -DatabaseRoles @('db_datareader', 'db_datawriter')
+# Add Active Directory Domain User:
+Add-DatabaseUserAndRoles -Username "<DomainName>\<Username>" -DatabaseRoles @('db_datareader', 'db_datawriter')
 ```
 
 ## FAQ
+
+### Can I use MySQL (or PostgreSQL)?
+Unfortunately only SQL Server SKUs work with Chocolatey Central Management at this time. You can use SQL Server Express in smaller shops.
 
 ## Common Errors and Resolutions
 

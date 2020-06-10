@@ -24,7 +24,6 @@
 > Also see [[Chocolatey Central Management in Features|FeaturesChocolateyCentralManagement]].
 
 
-
 ## Setup
 
 First you need Chocolatey Agent installed. As there may be some steps involved with the install of the agent, please see [[Chocolatey Agent Setup|FeaturesAgentService]].

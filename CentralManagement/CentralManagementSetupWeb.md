@@ -1,21 +1,22 @@
-# Central Management Web setup
+# Central Management Website setup
 
 <!-- TOC depthFrom:2 -->
 
-- [Step 1: Install Central Management Web Package](#step-1-install-central-management-web-package)
-    - [Dependency Installation](#dependency-installation)
+- [Step 1: Install Dependencies](#step-1-install-dependencies)
+- [Step 2: Install Central Management Web Package](#step-2-install-central-management-web-package)
+  - [Package Parameters](#package-parameters)
+  - [Scenarios](#scenarios)
+    - [SQL Server Windows Authentication](#sql-server-windows-authentication)
+    - [SQL Server Account Authentication](#sql-server-account-authentication)
+- [Step 3: Set Up Website](#step-3-set-up-website)
+- [FAQ](#faq)
+- [Common Errors and Resolutions](#common-errors-and-resolutions)
 
 <!-- /TOC -->
 
-## Step 1: Install Central Management Web Package
+## Step 1: Install Dependencies
 
-> :warning: **WARNING**: Ensure you have completed installing the database package first on whatever machine the database is on.
-
-> :memo: **NOTE**: At this time we don't recommend opening internet access to CCM web. However, if you choose to, you will want to set up SSL/TLS certificates to ensure communication is encrypted over the internet.
-
-### Dependency Installation
-
-The CCM Service and Web packages are built on ASP .Net Core, and as such we need to ensure that it is installed on the server for proper function. Note, that the codebase is currently locked to version `2.2.7` of these packages, and it is critical that you install these right, otherwise you will encounter errors.
+The CCM Website is built on ASP.Net Core, and as such we need to ensure that it is installed on the server for proper function. Note, that the codebase is currently locked to version `2.2.7` of these packages, and it is critical that you install these right, otherwise you will encounter errors.
 
 ```powershell
 choco install IIS-WebServer -s windowsfeatures -y
@@ -24,37 +25,96 @@ choco install aspnetcore-runtimepackagestore --version 2.2.7 -y
 choco install dotnetcore-windowshosting --version 2.2.7 -y
 ```
 
-> :note: **NOTE** In 90% of cases, accepting the defaults this package provides is sufficient, however if you have specific use cases warranting you change anything will the installation the following parameters can be provided:
+## Step 2: Install Central Management Web Package
 
-- `/ConnectionString`
-  - The SQL Server database connection string to be used to connect to the CCM Database;
-  - NOTE: Default Value: Server=<LOCAL COMPUTER FQDN NAME>; Database=ChocolateyManagement; Trusted_Connection=True;
-- `/Database`
-  - Name of the SQL Server database to use. Note that if you do not also pass /ConnectionString, it will be generated using this parameter value and /SqlServerInstance (using defaults for missing parameters);
-  - NOTE: Default Value: ChocolateyManagement
-- `/SqlServerInstance`
-  - Instance name of the SQL Server database to connect to. Note that if you do not also pass /ConnectionString, it will be generated using this parameter value and /Database (using defaults for missing parameters);
-  - NOTE: Default Value: <LOCAL COMPUTER FQDN NAME>
-- `/Username`
-  - The username that the IIS WebApplicationPool will run under. If this is not provided the pool will run under the default account. Note that if you provide this you must also provide either the /Password or /EnterPassword parameter;
-   -NOTE: Default Value: IIS APPPOOL\ChocolateyCentralManagement
-- `/Password`
-  - The password for the username (provided via the /Username parameter) the IIS WebApplicationPool will run under;
-  - NOTE: Automatically generated secure password
-- `/EnterPassword`
-  - This will prompt you to enter the password, during install, for the username (provided via the /Username parameter) the IIS WebApplicationPool will run under;
-  - NOTE: Default Value: Not provided
+> :warning: **WARNING**: Ensure you have completed installing the database package first on whatever machine the database is on.
 
-Scenario 1: You are installing the management web components on the same machine as a SQL Server Express instance
+> :memo: **NOTE**: At this time we don't recommend opening internet access to CCM web. However, if you choose to, you will want to set up SSL/TLS certificates to ensure communication is encrypted over the internet.
 
-```powershell
-choco install chocolatey-management-web -y --package-parameters-sensitive="'/ConnectionString=""Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
-```
+### Package Parameters
+Note items with "`:`" mean a value should be provided, items without are simply switches.
 
-Scenario 2: You are installing the management web components on a server, and targeting an existing SQL Server instance in your organization
+* `/Username:` - Username that the IIS Web Application Pool will run under. Defaults to `IIS APPPOOL\ChocolateyCentralManagement`. If this is specified, you must also specify either `/Password` or `/EnterPassword`.
+* `/Password:` - Password for the user. Defaults to a Windows autogenerated secure password for the IIS AppPool.
+* `/EnterPassword` -  Receive the password at runtime as a secure string. Requires input at runtime whe installing/upgrading the package.
+* `/ConnectionString:` - The SQL Server database connection string to be used to connect to the Chocolatey Central Management database. Defaults to default or explicit values for `/SqlServiceInstance` and `/Database`, along with Integrated Security (`Server=<LOCAL COMPUTER FQDN NAME>; Database=ChocolateyManagement; Trusted_Connection=True;`). The account should have `db_datareader`/`db_datawriter` access to the database ([data reader / data writer](https://docs.microsoft.com/en-us/sql/relational-databases/security/authentication-access/database-level-roles#fixed-database-roles)).
+* `/SqlServerInstance:` - Instance name of the SQL Server database to connect to. Alternative to passing full connection string with `/ConnectionString`. Uses `/Database` (below) to build a connection string. Defaults to `<LOCAL COMPUTER FQDN NAME>`.
+* `/Database:` - Name of the SQL Server database to use. Alternative to passing full connection string with `/ConnectionString`. Uses `/SqlServerInstance` (above) to build a connection string. Defaults to `ChocolateyManagement`.
+
+
+### Scenarios
+
+#### SQL Server Windows Authentication
+##### Use Active Directory Domain Account
+Scenario 1: Active Directory - you have set up the [[database|CentralManagementSetupDatabase]] to use Windows Authentication (or Mixed Mode Authentication).
 
 ```powershell
-choco install chocolatey-management-web -y --package-parammeters-sensitive="'/ConnectionString=""Server=RemoteSqlHost;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+choco install chocolatey-management-web -y --package-parameters="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;Trusted_Connection=True;"" /Username:<DomainAccount>'" --package-parammeters-sensitive="'/Password:<domain account password>'"
 ```
+
+> :memo: **NOTE**: Note the connection string doesn't include credentials. That's because Windows Authentication for SQL Server uses the context of what is running it and why the service itself needs the right user/password. In this case, whatever is running the IIS Application Pool is the user you need to ensure has access to the database.
+
+##### Use Local Windows Account to Local SQL Server
+Scenario 2: Monolithic - you have set up the [[database|CentralManagementSetupDatabase]] to use Windows Authentication (or Mixed Mode Authentication). You wish to use a local Windows account to connect to the local database.
+
+* Specify User:
+
+```powershell
+choco install chocolatey-management-web -y --package-parameters="'/ConnectionString:""Server=<Localhost\SQLEXPRESS>;Database=ChocolateyManagement;Trusted_Connection=True;"" /Username:<LocalWindowsAccount>'" --package-parammeters-sensitive="'/Password:<Local account password>'"
+```
+
+* Default User (`IIS APPPOOL\ChocolateyCentralManagement`)
+
+```powershell
+choco install chocolatey-management-web -y --package-parameters="'/ConnectionString:""Server=<Localhost\SQLEXPRESS>;Database=ChocolateyManagement;Trusted_Connection=True;""'"
+```
+
+> :memo: **NOTE**: Note the connection string doesn't include credentials. That's because Windows Authentication for SQL Server uses the context of what is running it and why the service itself needs the right user/password. Whatever is running the IIS Application Pool is the user you need to ensure is in the database.
+
+
+##### Use Local Windows Account to Remote SQL Server
+Scenario 3: you have set up the [[database|CentralManagementSetupDatabase]] to use Windows Authentication (or Mixed Mode Authentication). You wish to use a local Windows account to connect to a remote database (on another computer).
+
+> :warning: **WARNING**
+>
+> STOP right here.
+> This is an invalid scenario and will not work. Please look at one of the other options. If you don't have LDAP, you will want to look at [SQL Server Account Authentication](#sql-server-account-authentication) below.
+
+It's worth noting here that `ChocolateyLocalAdmin` on two boxes is NOT the same account, so there is no way for Windows to recognize the account from a different box.
+
+
+#### SQL Server Account Authentication
+##### Use SQL Server Authentication Locally
+Scenario 4: Monolithic - you are installing the management service on the same machine as a SQL Server Express instance. You likely have a smaller environment where you have up to 1,000 machines. You have set up the [[database|CentralManagementSetupDatabase]] to use Mixed Mode Authentication.
+
+```powershell
+choco install chocolatey-management-service -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+```
+
+* SQL Server Express:
+
+```powershell
+choco install chocolatey-management-service -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+```
+
+##### Use SQL Server Account to Remote SQL Server
+Scenario 5: Split - you are installing the management service(s) on a server, and targeting an existing SQL Server instance in your organization. You have set up the [[database|CentralManagementSetupDatabase]] to use Mixed Mode Authentication.
+
+```powershell
+choco install chocolatey-management-service -y --package-parammeters-sensitive="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+```
+
+
+## Step 3: Set Up Website
+
+Login
+
+Head to Administration -> Settings.
+
+
+## FAQ
+
+## Common Errors and Resolutions
+
 
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]

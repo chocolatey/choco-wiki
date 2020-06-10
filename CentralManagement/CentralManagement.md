@@ -17,6 +17,7 @@ This provides an overview on Chocolatey Central Mangement (CCM). It provides bot
 - [Summary](#summary)
 - [CCM Components](#ccm-components)
 - [Getting CCM](#getting-ccm)
+- [Stay Up To Speed](#stay-up-to-speed)
 - [Links](#links)
   - [Setup / Installation](#setup--installation)
   - [Using CCM](#using-ccm)
@@ -26,7 +27,6 @@ This provides an overview on Chocolatey Central Mangement (CCM). It provides bot
 <!-- /TOC -->
 
 ## CCM Components
-
 
 ## Getting CCM
 CCM is only available for Chocolatey for Business (C4B) customers. If you are a C4B customer, you can head to the install components section:
@@ -39,6 +39,10 @@ If you are not a customer yet, you can [reach out for a trial](https://chocolate
 > :memo: **NOTE**
 >
 > Trials are limited to organizations. If you are personally wanting to work with CCM and other C4B components, you can purchase a C4B starter pack - see [pricing](https://chocolatey.org/pricing).
+
+## Stay Up To Speed
+* [[Release Notes Central Management|ReleaseNotesCentralManagement]]
+* [Release Announcements Only Mailing List](https://groups.google.com/group/chocolatey-announce)
 
 ## Links
 
