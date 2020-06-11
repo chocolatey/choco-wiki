@@ -79,7 +79,6 @@ If you are not a customer yet, you can [reach out for a trial](https://chocolate
 * [[CCM Deployments|CentralManagementDeployments]]
 * [[CCM Reports|CentralManagementReports]]
 
-
 ## Related Articles
 
 * [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]]

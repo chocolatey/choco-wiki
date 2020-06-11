@@ -22,6 +22,7 @@
       - [Use SQL Server Account to Remote SQL Server](#use-sql-server-account-to-remote-sql-server)
 - [Step 3: Verify Installation](#step-3-verify-installation)
 - [FAQ](#faq)
+  - [How can I increase the level of logging for Chocolatey Central Management?](#how-can-i-increase-the-level-of-logging-for-chocolatey-central-management)
   - [How can I view what SSL registrations have been made by the installation of chocolatey-management-service](#how-can-i-view-what-ssl-registrations-have-been-made-by-the-installation-of-chocolatey-management-service)
   - [How can I remove a netsh binding that has been created](#how-can-i-remove-a-netsh-binding-that-has-been-created)
   - [Can I manually create an SSL binding?](#can-i-manually-create-an-ssl-binding)
@@ -75,10 +76,23 @@ By default the service will install as a local administrative user `ChocolateyLo
 
 When installing the CCM Service, the default is to use the Fully Qualified Domain Name (FQDN) of the machine that it is being installed on.  As a result, there is an expectation that the certificate (either the self signed certificate that is created during installation, or the existing certificate which is configured with the [CertifcateThumbprint](#package-parameters-1) parameter) that is used to secure the transport layer of this service, also uses the same FQDN.
 
+~~~powershell
+# Find FDQN for current machine
+$hostName = [System.Net.Dns]::GetHostName()
+$domainName = [System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties().DomainName
+
+if(-Not $hostName.endswith($domainName)) {
+  $hostName += "." + $domainName
+}
+
+choco config set --name="'centralManagementServiceUrl'" --value="'https://$($hostname):24020/ChocolateyManagementService'"
+~~~
+
+
 If this is not the case, it will be necessary to provide the information to the package about the actual name for the machine that is being used.  When using a self signed certificate, this can be specified using the `CertifcateDnsName`, and when using an existing certificate, no additional parameters are required.  In both cases, it will be necessary to also set the `centralManagementServiceUrl` [configuration parameter](#centralmanagementserviceurl).  This can be done using the following command:
 
 ~~~powershell
-choco config set CentralManagementServiceUrl https://<accessible_name_of_machine>:24020/ChocolateyManagementService
+choco config set --name="'centralManagementServiceUrl'" --value="'https://<accessible_url>:24020/ChocolateyManagementService'"
 ~~~
 
 ### Package Parameters
@@ -144,6 +158,10 @@ Scenario 1: Active Directory - you have set up the [[database|CentralManagementS
 ```powershell
 choco install chocolatey-management-service -y --package-parameters="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;Trusted_Connection=True;"" /Username:<DomainAccount>'" --package-parammeters-sensitive="'/Password:<domain account password>'"
 ```
+> :warning: **WARNING**
+>
+> Please ensure the user `<DomainAccount>` has been given `db_datareader` and `db_datawriter` access to the database. See [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
+
 
 > :memo: **NOTE**: Note the connection string doesn't include credentials. That's because Windows Authentication for SQL Server uses the context of what is running it and why the service itself needs the right user/password.
 
@@ -156,11 +174,19 @@ Scenario 2: Monolithic - you have set up the [[database|CentralManagementSetupDa
 choco install chocolatey-management-service -y --package-parameters="'/ConnectionString:""Server=<Localhost\SQLEXPRESS>;Database=ChocolateyManagement;Trusted_Connection=True;"" /Username:<LocalWindowsAccount>'" --package-parammeters-sensitive="'/Password:<Local account password>'"
 ```
 
+> :warning: **WARNING**
+>
+> Please ensure the user `<LocalWindowsAccount>` has been given `db_datareader` and `db_datawriter` access to the database. See [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
+
 * ChocolateyLocalAdmin User:
 
 ```powershell
 choco install chocolatey-management-service -y --package-parameters="'/ConnectionString:""Server=<Localhost\SQLEXPRESS>;Database=ChocolateyManagement;Trusted_Connection=True;""'"
 ```
+
+> :warning: **WARNING**
+>
+> Please ensure the user `ChocolateyLocalAdmin` has been given `db_datareader` and `db_datawriter` access to the database. See [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
 
 > :memo: **NOTE**: Note the connection string doesn't include credentials. That's because Windows Authentication for SQL Server uses the context of what is running it and why the service itself needs the right user/password.
 
@@ -173,7 +199,7 @@ Scenario 3: you have set up the [[database|CentralManagementSetupDatabase]] to u
 > STOP right here.
 > This is an invalid scenario and will not work. Please look at one of the other options. If you don't have LDAP, you will want to look at [SQL Server Account Authentication](#sql-server-account-authentication) below.
 
-It's worth noting here that `ChocolateyLocalAdmin` on two boxes is NOT the same account, so there is no way for Windows to recognize the account from a different box.
+It's worth noting here that the local Windows user `ChocolateyLocalAdmin` on two boxes is NOT the same account, so there is no way for Windows to recognize the account from a different box.
 
 
 #### SQL Server Account Authentication
@@ -183,6 +209,9 @@ Scenario 4: Monolithic - you are installing the management service on the same m
 ```powershell
 choco install chocolatey-management-service -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
+> :warning: **WARNING**
+>
+> Please ensure the login has been given `db_datareader` and `db_datawriter` access to the database. See [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
 
 * SQL Server Express:
 
@@ -190,12 +219,21 @@ choco install chocolatey-management-service -y --package-parameters-sensitive="'
 choco install chocolatey-management-service -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
 
+> :warning: **WARNING**
+>
+> Please ensure the login has been given `db_datareader` and `db_datawriter` access to the database. See [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
+
+
 ##### Use SQL Server Account to Remote SQL Server
 Scenario 5: Split - you are installing the management service(s) on a server, and targeting an existing SQL Server instance in your organization. You have set up the [[database|CentralManagementSetupDatabase]] to use Mixed Mode Authentication.
 
 ```powershell
 choco install chocolatey-management-service -y --package-parammeters-sensitive="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
+
+> :warning: **WARNING**
+>
+> Please ensure the login has been given `db_datareader` and `db_datawriter` access to the database. See [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
 
 ___
 ## Step 3: Verify Installation
@@ -207,6 +245,24 @@ The `chocolatey-management-service` is responsible for making a number of change
 
 ___
 ## FAQ
+### How can I increase the level of logging for Chocolatey Central Management?
+
+This can be done by changing the level value, which should be currently INFO, to use DEBUG, as per the following:
+
+~~~xml
+<root>
+  <level value="DEBUG" />
+  <appender-ref ref="ColoredConsoleAppender" />
+  <appender-ref ref="RollingLogFileAppender" />
+</root>
+~~~
+
+In the following files:
+
+* `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service\chocolatey-central-management.exe.config`
+* `$env:ChocolateyInstall\lib\chocolatey-agent\tools\service\chocolatey-agent.exe.config`
+
+When the value is changed, the services may also need restarted.
 ### How can I view what SSL registrations have been made by the installation of chocolatey-management-service
 
 By default, the installation of the `chocolatey-management-service` package will register a single netsh binding between a self-signed certificate (created at the point of installation) and port 24020.  This can be verified using the following command:

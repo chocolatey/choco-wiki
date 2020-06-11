@@ -109,11 +109,19 @@ Scenario 2: Monolithic - you have set up the [[database|CentralManagementSetupDa
 choco install chocolatey-management-web -y --package-parameters="'/ConnectionString:""Server=<Localhost\SQLEXPRESS>;Database=ChocolateyManagement;Trusted_Connection=True;"" /Username:<LocalWindowsAccount>'" --package-parammeters-sensitive="'/Password:<Local account password>'"
 ```
 
+> :warning: **WARNING**
+>
+> Please ensure the user `<LocalWindowsAccount>` has been given `db_datareader` and `db_datawriter` access to the database. See [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
+
 * Default User (`IIS APPPOOL\ChocolateyCentralManagement`)
 
 ```powershell
 choco install chocolatey-management-web -y --package-parameters="'/ConnectionString:""Server=<Localhost\SQLEXPRESS>;Database=ChocolateyManagement;Trusted_Connection=True;""'"
 ```
+
+> :warning: **WARNING**
+>
+> Please ensure the user `IIS APPPOOL\ChocolateyCentralManagement` has been given `db_datareader` and `db_datawriter` access to the database. See [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
 
 > :memo: **NOTE**: Note the connection string doesn't include credentials. That's because Windows Authentication for SQL Server uses the context of what is running it and why the service itself needs the right user/password. Whatever is running the IIS Application Pool is the user you need to ensure is in the database.
 
@@ -137,11 +145,19 @@ Scenario 4: Monolithic - you are installing the management service on the same m
 choco install chocolatey-management-service -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
 
+> :warning: **WARNING**
+>
+> Please ensure the login has been given `db_datareader` and `db_datawriter` access to the database. See [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
+
 * SQL Server Express:
 
 ```powershell
 choco install chocolatey-management-service -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
+
+> :warning: **WARNING**
+>
+> Please ensure the login has been given `db_datareader` and `db_datawriter` access to the database. See [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
 
 ##### Use SQL Server Account to Remote SQL Server
 Scenario 5: Split - you are installing the management service(s) on a server, and targeting an existing SQL Server instance in your organization. You have set up the [[database|CentralManagementSetupDatabase]] to use Mixed Mode Authentication.
@@ -150,6 +166,10 @@ Scenario 5: Split - you are installing the management service(s) on a server, an
 choco install chocolatey-management-service -y --package-parammeters-sensitive="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
 
+> :warning: **WARNING**
+>
+> Please ensure the login has been given `db_datareader` and `db_datawriter` access to the database. See [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
+
 ___
 ## Step 3: Verify Installation
 
@@ -157,15 +177,13 @@ The `chocolatey-management-web` package is responsible for creating and deployin
 
 * Opening an internet browser on the machine to the following address `http://localhost` which should result in the login page for CCM being displayed
 * It should be possible to login to the site using the default credentials mentioned in Step 4 (below).
-* Open the Site log file located at `c:\tools\chocolatey-management-web\App_Data\Logs\ccm-website.log` and verify that there are no recently reported errors. If you are on a version of CCM prior to 0.2.0, the log will be located at `c:\tools\chocolatey-management-web\App_Data\Logs\Logs.txt`.
+* Open the website log file located at `c:\tools\chocolatey-management-web\App_Data\Logs\ccm-website.log` and verify that there are no recently reported errors. If you are on a version of CCM prior to 0.2.0, the log will be located at `c:\tools\chocolatey-management-web\App_Data\Logs\Logs.txt`.
 
 ___
 ## Step 4: Set Up Website
 
 ### Step 4.1: Login And Change Default Credentials
 When you access the CCM Website you will be prompted to provide a username and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.  After you input this, you will be prompted to change the password.
-
-Head to Administration -> Settings.
 
 ### Step 4.2: SMTP Configuration
 
