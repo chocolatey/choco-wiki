@@ -1,25 +1,25 @@
 # Chocolatey Agent Service (Business Editions Only)
 
+## Summary
+
 > Empower your users and give your IT folks the precious gift of time to invest into taking your organization to the next level!
 
 The Chocolatey Agent service allows you to go further with your software management, bringing Chocolatey to desktop users in organizations that have controlled environments. This provides users in controlled environments more empowerment and instant turn around on required software. This frees up IT folks and admins time to spend on making the organization even better.
 
+The Chocolatey agent enables multiple features:
+
+* The Background Service, aka Self-Service Anywhere
+* Conmmunication to Chocolatey Central Management (CCM)
+   * Reporting information to CCM
+   * Deployments from CCM (endpoint management tasks)
+
+The Chocolatey Agent can be independently configured to support any or all of these modes of operation independently.
+
 <!-- TOC depthTo:6 -->
 
-- [Usage](#usage)
-  - [Requirements](#requirements)
-  - [Setup](#setup)
-    - [Background Mode Setup](#background-mode-setup)
-      - [Chocolatey Agent Install Options](#chocolatey-agent-install-options)
-        - [Package Parameters](#package-parameters)
-        - [Chocolatey Managed Password](#chocolatey-managed-password)
-      - [Chocolatey Agent Service Windows Account Considerations](#chocolatey-agent-service-windows-account-considerations)
-      - [Command Customization Consideration](#command-customization-consideration)
-      - [Interactive Self-Service Consideration](#interactive-self-service-consideration)
-  - [Chocolatey Background Service / Self-Service Installer](#chocolatey-background-service--self-service-installer)
-    - [Self-Service Roadmap:](#self-service-roadmap)
-  - [Chocolatey Central Management](#chocolatey-central-management)
-- [See It In Action](#see-it-in-action)
+- [Summary](#summary)
+- [Chocolatey Background Service / Self-Service Installer](#chocolatey-background-service--self-service-installer)
+  - [See It In Action](#see-it-in-action)
 - [Scenarios With Self-Service](#scenarios-with-self-service)
   - [Managing Very Large Installation Media](#managing-very-large-installation-media)
     - [Option 1 - Binary/Raw Repository](#option-1---binaryraw-repository)
@@ -31,6 +31,19 @@ The Chocolatey Agent service allows you to go further with your software managem
     - [Option 2 - Use Chocolatey Software's Professional Packaging Support Services](#option-2---use-chocolatey-softwares-professional-packaging-support-services)
     - [Option 3 - Window Automation Scripting](#option-3---window-automation-scripting)
     - [Recommendation](#recommendation-1)
+  - [Chocolatey Central Management](#chocolatey-central-management)
+- [Setup](#setup)
+  - [Requirements](#requirements)
+  - [Chocolatey Agent Install Options](#chocolatey-agent-install-options)
+  - [Package Parameters](#package-parameters)
+  - [Chocolatey Managed Password](#chocolatey-managed-password)
+    - [Chocolatey Agent Service Windows Account Considerations](#chocolatey-agent-service-windows-account-considerations)
+  - [Self-Service Anywhere Setup](#self-service-anywhere-setup)
+  - [Background Mode Setup](#background-mode-setup)
+    - [Command Customization Consideration](#command-customization-consideration)
+    - [Interactive Self-Service Consideration](#interactive-self-service-consideration)
+  - [Chocolatey Central Management Agent Setup](#chocolatey-central-management-agent-setup)
+- [Chocolatey Agent Roadmap](#chocolatey-agent-roadmap)
 - [FAQ](#faq)
   - [How do I take advantage of Chocolatey Agent?](#how-do-i-take-advantage-of-chocolatey-agent)
   - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
@@ -58,144 +71,9 @@ The Chocolatey Agent service allows you to go further with your software managem
 
 <!-- /TOC -->
 
-## Usage
 
-The Chocolatey agent enables two simultaneous modes of operation, one as an agent for a central console (upcoming) and the other as a background service for use in controlled environments. You can configure one or both modes.
-
-### Requirements
-
-* Chocolatey (`chocolatey` package) v0.10.3+ - v0.10.4+ for better compatibility. Chocolatey v0.10.7+ is recommended and required in newer versions.
-* Chocolatey for Business (C4B) Edition
-* Chocolatey Licensed Extension (`chocolatey.extension` package) v1.8.4+. For chocolatey-agent v0.5.0+, licensed extension v1.9.0+. For `chocolatey-agent` v0.7.0+, licensed extension v1.11.0+.
-* Chocolatey Agent Service (`chocolatey-agent` package) - 0.7.0+ is recommended.
-
-For use with Chocolatey GUI, you must be on Chocolatey v0.10.7+, Chocolatey Licensed Extension v1.11.0+, and Chocolatey Agent v0.7.0+.
-
-### Setup
-
-To install the Chocolatey agent service, you need to install the `chocolatey-agent` package. The Chocolatey Agent is only available for business edition customers to install from the licensed source (customers trialling the business edition will also be provided instructions on how to install).
-
-#### Background Mode Setup
-
-To set Chocolatey in background mode, you need to run the following:
-
-* `choco upgrade chocolatey-agent <options>` (see [agent install options](#chocolatey-agent-install-options))
-* `choco feature disable --name="'showNonElevatedWarnings'"` - requires Chocolatey v0.10.4+ to set.
-* `choco feature enable --name="'useBackgroundService'"`
-* You also need to opt in sources in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`). You can also run `choco source -?` to get the help menu.
-    * OPTIONAL (not recommended): Alternatively, you can allow any configured source to be used for self-service by running the following: `choco feature disable --name="'useBackgroundServiceWithSelfServiceSourcesOnly'"` (requires Chocolatey Extension v1.10.0+). We do not recommend this as it could be a security finding if you shut it off.
-* OPTIONAL (highly recommended): If you want self-service to apply only to non-administrators, run `choco feature enable --name="'useBackgroundServiceWithNonAdministratorsOnly'"` (requires Chocolatey Extension v1.11.1+). Do understand this means that a real non-administrator, not an administrator in a non-elevated UAC context (that scenario will go the normal route and will not go through background mode).
-* OPTIONAL (varied recommendations): If you want to configure custom commands (not just install/upgrade), use something like `choco config set backgroundServiceAllowedCommands "install,upgrade,pin,sync"` (with the commands you want to allow, requires Chocolatey Extension v1.12.4+). See [commands consideration](#command-customization-consideration) below.
-* OPTIONAL (highly recommended): If you want to allow non-admins to uninstall packages, you can also restrict down to only the packages they have installed/upgraded. Run `choco feature enable --name="'allowBackgroundServiceUninstallsFromUserInstallsOnly'"` (requires Chocolatey Extension v2.0+).
-* OPTIONAL (highly recommended): For use with Chocolatey GUI, you need Chocolatey Extension v1.12.4+, and at least Chocolatey GUI v0.15.0. **Uninstall any version of the GUI you already have installed first**, then run `choco upgrade chocolateygui -y --allow-downgrade` (you will also need at least .NET 4.5.2 installed)
-* DOES NOT WORK WITH UAC, DO NOT USE UNTIL [FIX IS ANNOUNCED](https://groups.google.com/group/chocolatey-announce)! OPTIONAL (recommended if you use installers that are not completely silent): If you want self-service to interactively manage installations, run `choco feature enable --name="'useBackgroundServiceInteractively'"` (requires Chocolatey Extension v1.12.10+). This requires that you use the `ChocolateyLocalAdmin` account with the Chocolatey-managed password as passwords are not stored and the service would need to produce that at runtime. There are some security considerations and why this is not turned on by default. Please see [interactive self-service consideration](#interactive-self-service-consideration).
-
-**NOTE**: Once you are all setup, please review the [Common Errors and Resolutions](#common-errors-and-resolutions) section so you will be familiar if you run into any issues with working with sources.
-
-An example script:
-
-This carries our typical recommendations, but you could adjust from above.
-
-~~~powershell
-choco upgrade chocolatey-agent -y
-choco feature disable --name="'showNonElevatedWarnings'"
-choco feature enable --name="'useBackgroundService'"
-choco feature enable --name="'useBackgroundServiceWithNonAdministratorsOnly'"
-# allow uninstalls as well:
-#choco config set backgroundServiceAllowedCommands "install,upgrade,uninstall"
-# restrict uninstalls to just packages the user has installed/upgraded (requires Chocolatey Extension v2.0+):
-#choco feature enable --name="'allowBackgroundServiceUninstallsFromUserInstallsOnly'"
-
-# TODO: opt in your sources with --allow-self-service - run choco source -? for details
-~~~
-
-> Best practices in scripts are noted here:
-> * Use `upgrade` instead of `install` - upgrade is more making the script reusable when newer versions are available.
-> * Always use `-y` to ensure nothing stops and prompts for more than 30 seconds.
-> * When using options prefer a longer name (`--name` versus the short `-n`) to make the scripts more self-documenting
-> * When using options that have a value passed, add an `=` between and surround the value with `"''"` (`--name="'value'"`). This ensures that the argument is not split between different versions/editions of Chocolatey. This also ensures that values like `.` and `\\` are not escaped by PowerShell.
-
-##### Chocolatey Agent Install Options
-
-Starting with Chocolatey Agent v0.8.0+, the service will install as a local administrative user `ChocolateyLocalAdmin` by default (and manage the password as well). However you can specify your own user with package parameters (or have it use `LocalSystem`). Using a local administrator account allows for more things to be installed without issues. It also will allow easier shortcuts and other items to be put back on the correct user (the original requestor). You can specify a domain account as well. Prior to `v0.8.0`, Chocolatey Agent would install as LocalSystem (`SYSTEM`) and would require additional customization.
-
-**NOTE:** If you are using file shares for sources, you may want to ensure the account or computer has network access permissions for the file share(s).
-
-###### Package Parameters
-
-* `/Username:` - provide username - instead of using the default 'ChocolateyLocalAdmin' user.
-* `/Password:` - optional password for the user.
-* `/EnterPassword` - receive the password at runtime as a secure string
-* `/UseDefaultChocolateyConfigUser` - use the default username from Chocolatey's configuration. This may be LocalSystem.
-* `/NoRestartService` - do not shut down and restart the service. You will need to restart later to take advantage of new service information.
-
-###### Chocolatey Managed Password
-
-When Chocolatey manages the password for a local administrator, it creates a very complex password:
-
-* It is 32 characters long.
-* It uses uppercase, lowercase, numbers, and symbols to meet very stringent complexity requirements.
-* The password is different for every machine.
-* Due to the way that it is generated, it is completely unguessable.
-* No one at Chocolatey Software could even tell you what the password is for a particular machine without local access.
-
-See [FAQ](#faq) below for more discussion on security aspects.
-
-##### Chocolatey Agent Service Windows Account Considerations
-
-* Windows Account (required, defaults to `ChocolateyLocalAdmin`)
-   * The Chocolatey Agent Service requires ***an*** administrative account, whether that is a domain account or a local account - it just needs to be a local admin (a member of the Administrators group).
-   * The agent service doesn't specifically require the `ChocolateyLocalAdmin` account, any Windows account can be used. The `ChocolateyLocalAdmin` is used as the default if one is not specified.
-   * Upon use of an account during installation, it will make that account a member of the Administrators account.
-   * The account used will also be granted LogonAsService and LogonAsBatch privileges.
-* Managed Password (optional, default)
-   * When the `ChocolateyLocalAdmin` account is used, it generates a managed password that is different on every machine, 32 characters long, meets complexity requirements, and basically very strong.
-   * To determine the managed password, it would take access to the box and someone from Chocolatey Software who has access to the algorithm used to generate the password (more information in the FAQs below).
-* Rotating/Updating Passwords
-   * If a different account with a rotating password is used, the service will need to be updated with the new credentials and restarted soon after changing that password.
-   * The managed password is not currently updated/rotated, but it is something we are looking at how best to implement.
-
-##### Command Customization Consideration
-
-Starting with Chocolatey Licensed Extension v1.12.4, you are allowed to configure what commands can be routed through the background service. Please note that Chocolatey Licensed defaults to `install` and `upgrade` as that is the most secure experience. However you can add uninstall and some other commands as well. Uninstall does have some security considerations as it would allow a non-administrator to remove software that you may have installed, including the background service itself.
-
-**Available Commands**:
-
-* info - do not add if you want sources hidden from non-admins
-* list/search - do not add if you want sources hidden from non-admins
-* outdated - do not add if you want sources hidden from non-admins
-* install - default
-* upgrade - default
-* uninstall - keep in mind there may be security implications for this
-* optimize
-* pin
-* sync
-* download - Chocolatey Licensed Extension v1.12.12+ - keep in mind if you have shut off a non-admin's ability to run this they still won't be able to without also disabling the `adminOnlyExecutionForDownloadCommand` feature.
-
-**Blacklisted Commands**:
-
-* config
-* feature
-* source
-* apikey
-
-Chocolatey does not allow for configuration changing commands to be routed through the background service as that would allow users to be able to change configuration and that could be detrimental. For instance, a user could add a local source with a package they've created that promotes themselves to an administrator (escalation of privilege). As that constitutes a security issue, we do not allow it.
-
-For the same reason, we do not recommend allowing sources you do not control to be allowed for self-service.
-
-##### Interactive Self-Service Consideration
-When using the self-service with `useBackgroundServiceInteractively`, it is similar to "Run As". Microsoft used to allow Windows services to interact with the desktop but removed the functionality (of "Allow Service to Interact with the Desktop") in Windows Vista and limited all services into what is known as Session 0 isolation. In Session 0, those services can access a desktop, but not the interactive user's desktop (at least it is very, very difficult to do so). Microsoft did this as a security consideration as allowing a privileged account to run executables in a non-administrative user context opens the potential to allow a non-admin to gain privileges to a system (known as escalation of privilege). Depending on what is allowed for folks to install, as long as those package installations do not open a command shell and wait for user input, the potential is quite low. However it is something to keep in mind and assess before turning on this feature (and why it is off by default).
-
-However sometimes you work with installers that refuse to be silent. You might get them down to unattended (meaning they still have required input or window pop ups, but they are all handled and automatically closed), but they won't get to silent without a different option. Here are some options from most preferred to least preferred in getting those installers that are not fully silent to work:
-
-* (Silent) Find a portable version of the tool that doesn't run a badly behaved installer. Looked for a zipped up version, you can easily create a Chocolatey package from these.
-* (Silent) Find an alternative that does the same thing, but has silent installers. It's a consideration, but maybe not something you can or are willing to explore. Moving on...
-* (Silent) Use MSI repackaging to produce a completely silent installer. It works by recording everything that happens when you run the install and creates an MSI to do the same. This would need to be done for every version. There are tools out there that can do this, some of which are VERY expensive.
-* (Unattended/Interactive) Use AutoHotKey or AutoIT (or some other tool) to automate the key presses and values being sent to the interfaces. This can be brittle, but can typically be quickly implemented.
-
-If you must run in the context of working with "unattended", non-silent installations, you need to take the above security consideration into account if you want to be able to manage those installations using the background service.
-
-### Chocolatey Background Service / Self-Service Installer
+___
+## Chocolatey Background Service / Self-Service Installer
 When an administrator installs the agent, they can configure Chocolatey to use background mode so that non-administrators can still perform installations of approved software as configured by an administrator.
 
 Why this is desirable:
@@ -209,21 +87,15 @@ Why this is desirable:
 
 This makes for happy users and happy admins as they are able to move quicker towards a better organization.
 
-#### Self-Service Roadmap:
+### See It In Action
 
-* Admins will be able to schedule when upgrades occur (maintenance windows).
-* ~~Admins will be able to configure what commands can be run through the background service.~~ Completed with Chocolatey Extension v1.12.4.
-* Admins will have more granular control of what certain users can install.
+* Chocolatey's Self-Service Installer - Part 1:
 
-### Chocolatey Central Management
+[![Chocolatey's Self-Service Installer - Part 1](images/features/features_selfservice_video1.jpg)](https://www.youtube.com/watch?v=Thw9GpQaZ6M "Chocolatey's Self-Service Installer - Part 1")
 
-Chocolatey has a centralized reporting and ultimately will also support endpoint management through [[Chocolatey Central Management (CCM)|FeaturesChocolateyCentralManagement]]. On machines that will take advantage of CCM, you will need the Chocolatey Agent installed and properly configured to manage them centrally.
+* Chocolatey's Self-Service Installer - Part 2:
 
-## See It In Action
-
-Here's a short 8 minute walkthrough (preview):
-
-[![Chocolatey's Self-Service Install - Background Mode (Preview)](https://cloud.githubusercontent.com/assets/63502/21634430/d8b94416-d21c-11e6-80c6-6a1b6def72fc.png)](https://www.youtube.com/watch?v=6HRmbTQ9wNM "Chocolatey's Self-Service Install - Background Mode (Preview)")
+[![Chocolatey's Self-Service Installer - Part 2](images/features/features_selfservice_video2.jpg)](https://www.youtube.com/watch?v=BnnAwFftUwU "Chocolatey's Self-Service Installer - Part 2")
 
 Consider the following image:
 
@@ -265,6 +137,7 @@ Now, if a user wants to install from a non-approved source, they are met with th
 
 This ensures non-admin users can only install from sources that you configure.
 
+___
 ## Scenarios With Self-Service
 
 We'll add more scenarios as we come across them from questions, etc. This is meant to address situations you might find yourself in and how best to apply recommendations work through them.
@@ -392,7 +265,168 @@ There are tools like Autohotkey (AHK) and AutoIT that can handle the user intera
 
 MSI repackaging is always preferred. At the end of creating that, you have something that can be deployed silently with any method you prefer to deploy it with.
 
+___
+### Chocolatey Central Management
 
+Chocolatey for Business has centralized reporting and supports endpoint management through [[Chocolatey Central Management (CCM)|CentralManagement]]. On machines that will take advantage of CCM, you will need the Chocolatey Agent installed and properly configured to manage them centrally.
+
+For more information on Central Management, please see [[Chocolatey Central Management|CentralManagement]].
+
+___
+## Setup
+
+To install the Chocolatey Agent service, you need to install the `chocolatey-agent` package. The Chocolatey Agent is only available for business edition customers to install from the licensed source (customers trialling the business edition will be provided instructions on how to install).
+
+### Requirements
+
+* Chocolatey (`chocolatey` package) v0.10.3+ - v0.10.4+ for better compatibility. Chocolatey v0.10.7+ is recommended and required in newer versions.
+* Chocolatey for Business (C4B) Edition
+* Chocolatey Licensed Extension (`chocolatey.extension` package) v1.8.4+. For chocolatey-agent v0.5.0+, licensed extension v1.9.0+. For `chocolatey-agent` v0.7.0+, licensed extension v1.11.0+.
+* Chocolatey Agent Service (`chocolatey-agent` package) - 0.7.0+ is recommended.
+
+For use with Chocolatey GUI, you must be on Chocolatey v0.10.7+, Chocolatey Licensed Extension v1.11.0+, and Chocolatey Agent v0.7.0+.
+
+### Chocolatey Agent Install Options
+
+Starting with Chocolatey Agent v0.8.0+, the service will install as a local administrative user `ChocolateyLocalAdmin` by default (and manage the password as well). However you can specify your own user with package parameters (or have it use `LocalSystem`). Using a local administrator account allows for more things to be installed without issues. It also will allow easier shortcuts and other items to be put back on the correct user (the original requestor). You can specify a domain account as well. Prior to `v0.8.0`, Chocolatey Agent would install as LocalSystem (`SYSTEM`) and would require additional customization.
+
+**NOTE:** If you are using file shares for sources, you may want to ensure the account or computer has network access permissions for the file share(s).
+
+### Package Parameters
+Note items with "`:`" mean a value should be provided, items without are simply switches.
+
+* `/Username:` - provide username - instead of using the default 'ChocolateyLocalAdmin' user.
+* `/Password:` - optional password for the user.
+* `/EnterPassword` - receive the password at runtime as a secure string
+* `/UseDefaultChocolateyConfigUser` - use the default username from Chocolatey's configuration. This may be LocalSystem.
+* `/NoRestartService` - do not shut down and restart the service. You will need to restart later to take advantage of new service information.
+
+### Chocolatey Managed Password
+
+When Chocolatey manages the password for a local administrator, it creates a very complex password:
+
+* It is 32 characters long.
+* It uses uppercase, lowercase, numbers, and symbols to meet very stringent complexity requirements.
+* The password is different for every machine.
+* Due to the way that it is generated, it is completely unguessable.
+* No one at Chocolatey Software could even tell you what the password is for a particular machine without local access.
+
+See [FAQ](#faq) below for more discussion on security aspects.
+
+#### Chocolatey Agent Service Windows Account Considerations
+
+* Windows Account (required, defaults to `ChocolateyLocalAdmin`)
+   * The Chocolatey Agent Service requires ***an*** administrative account, whether that is a domain account or a local account - it just needs to be a local admin (a member of the Administrators group).
+   * The agent service doesn't specifically require the `ChocolateyLocalAdmin` account, any Windows account can be used. The `ChocolateyLocalAdmin` is used as the default if one is not specified.
+   * Upon use of an account during installation, it will make that account a member of the Administrators account.
+   * The account used will also be granted LogonAsService and LogonAsBatch privileges.
+* Managed Password (optional, default)
+   * When the `ChocolateyLocalAdmin` account is used, it generates a managed password that is different on every machine, 32 characters long, meets complexity requirements, and basically very strong.
+   * To determine the managed password, it would take access to the box and someone from Chocolatey Software who has access to the algorithm used to generate the password (more information in the FAQs below).
+* Rotating/Updating Passwords
+   * If a different account with a rotating password is used, the service will need to be updated with the new credentials and restarted soon after changing that password.
+   * The managed password is not currently updated/rotated, but it is something we are looking at how best to implement.
+
+___
+### Self-Service Anywhere Setup
+See [Background Mode Setup](#background-mode-setup).
+
+### Background Mode Setup
+
+To set Chocolatey in background mode, you need to run the following:
+
+* `choco upgrade chocolatey-agent <options>` (see [agent install options](#chocolatey-agent-install-options))
+* `choco feature disable --name="'showNonElevatedWarnings'"` - requires Chocolatey v0.10.4+ to set.
+* `choco feature enable --name="'useBackgroundService'"`
+* You also need to opt in sources in for self-service packages. See [[choco source|CommandsSource]] (and `--allow-self-service`). You can also run `choco source -?` to get the help menu.
+    * OPTIONAL (not recommended): Alternatively, you can allow any configured source to be used for self-service by running the following: `choco feature disable --name="'useBackgroundServiceWithSelfServiceSourcesOnly'"` (requires Chocolatey Extension v1.10.0+). We do not recommend this as it could be a security finding if you shut it off.
+* OPTIONAL (highly recommended): If you want self-service to apply only to non-administrators, run `choco feature enable --name="'useBackgroundServiceWithNonAdministratorsOnly'"` (requires Chocolatey Extension v1.11.1+). Do understand this means that a real non-administrator, not an administrator in a non-elevated UAC context (that scenario will go the normal route and will not go through background mode).
+* OPTIONAL (varied recommendations): If you want to configure custom commands (not just install/upgrade), use something like `choco config set backgroundServiceAllowedCommands "install,upgrade,pin,sync"` (with the commands you want to allow, requires Chocolatey Extension v1.12.4+). See [commands consideration](#command-customization-consideration) below.
+* OPTIONAL (highly recommended): If you want to allow non-admins to uninstall packages, you can also restrict down to only the packages they have installed/upgraded. Run `choco feature enable --name="'allowBackgroundServiceUninstallsFromUserInstallsOnly'"` (requires Chocolatey Extension v2.0+).
+* OPTIONAL (highly recommended): For use with Chocolatey GUI, you need Chocolatey Extension v1.12.4+, and at least Chocolatey GUI v0.15.0. **Uninstall any version of the GUI you already have installed first**, then run `choco upgrade chocolateygui -y --allow-downgrade` (you will also need at least .NET 4.5.2 installed)
+* DOES NOT WORK WITH UAC, DO NOT USE UNTIL [FIX IS ANNOUNCED](https://groups.google.com/group/chocolatey-announce)! OPTIONAL (recommended if you use installers that are not completely silent): If you want self-service to interactively manage installations, run `choco feature enable --name="'useBackgroundServiceInteractively'"` (requires Chocolatey Extension v1.12.10+). This requires that you use the `ChocolateyLocalAdmin` account with the Chocolatey-managed password as passwords are not stored and the service would need to produce that at runtime. There are some security considerations and why this is not turned on by default. Please see [interactive self-service consideration](#interactive-self-service-consideration).
+
+**NOTE**: Once you are all setup, please review the [Common Errors and Resolutions](#common-errors-and-resolutions) section so you will be familiar if you run into any issues with working with sources.
+
+An example script:
+
+This carries our typical recommendations, but you could adjust from above.
+
+~~~powershell
+choco upgrade chocolatey-agent -y
+choco feature disable --name="'showNonElevatedWarnings'"
+choco feature enable --name="'useBackgroundService'"
+choco feature enable --name="'useBackgroundServiceWithNonAdministratorsOnly'"
+# allow uninstalls as well:
+#choco config set backgroundServiceAllowedCommands "install,upgrade,uninstall"
+# restrict uninstalls to just packages the user has installed/upgraded (requires Chocolatey Extension v2.0+):
+#choco feature enable --name="'allowBackgroundServiceUninstallsFromUserInstallsOnly'"
+
+# TODO: opt in your sources with --allow-self-service - run choco source -? for details
+~~~
+
+> Best practices in scripts are noted here:
+> * Use `upgrade` instead of `install` - upgrade is more making the script reusable when newer versions are available.
+> * Always use `-y` to ensure nothing stops and prompts for more than 30 seconds.
+> * When using options prefer a longer name (`--name` versus the short `-n`) to make the scripts more self-documenting
+> * When using options that have a value passed, add an `=` between and surround the value with `"''"` (`--name="'value'"`). This ensures that the argument is not split between different versions/editions of Chocolatey. This also ensures that values like `.` and `\\` are not escaped by PowerShell.
+
+#### Command Customization Consideration
+
+Starting with Chocolatey Licensed Extension v1.12.4, you are allowed to configure what commands can be routed through the background service. Please note that Chocolatey Licensed defaults to `install` and `upgrade` as that is the most secure experience. However you can add uninstall and some other commands as well. Uninstall does have some security considerations as it would allow a non-administrator to remove software that you may have installed, including the background service itself.
+
+**Available Commands**:
+
+* info - do not add if you want sources hidden from non-admins
+* list/search - do not add if you want sources hidden from non-admins
+* outdated - do not add if you want sources hidden from non-admins
+* install - default
+* upgrade - default
+* uninstall - keep in mind there may be security implications for this
+* optimize
+* pin
+* sync
+* download - Chocolatey Licensed Extension v1.12.12+ - keep in mind if you have shut off a non-admin's ability to run this they still won't be able to without also disabling the `adminOnlyExecutionForDownloadCommand` feature.
+
+**Blacklisted Commands**:
+
+* config
+* feature
+* source
+* apikey
+
+Chocolatey does not allow for configuration changing commands to be routed through the background service as that would allow users to be able to change configuration and that could be detrimental. For instance, a user could add a local source with a package they've created that promotes themselves to an administrator (escalation of privilege). As that constitutes a security issue, we do not allow it.
+
+For the same reason, we do not recommend allowing sources you do not control to be allowed for self-service.
+
+#### Interactive Self-Service Consideration
+When using the self-service with `useBackgroundServiceInteractively`, it is similar to "Run As". Microsoft used to allow Windows services to interact with the desktop but removed the functionality (of "Allow Service to Interact with the Desktop") in Windows Vista and limited all services into what is known as Session 0 isolation. In Session 0, those services can access a desktop, but not the interactive user's desktop (at least it is very, very difficult to do so). Microsoft did this as a security consideration as allowing a privileged account to run executables in a non-administrative user context opens the potential to allow a non-admin to gain privileges to a system (known as escalation of privilege). Depending on what is allowed for folks to install, as long as those package installations do not open a command shell and wait for user input, the potential is quite low. However it is something to keep in mind and assess before turning on this feature (and why it is off by default).
+
+However sometimes you work with installers that refuse to be silent. You might get them down to unattended (meaning they still have required input or window pop ups, but they are all handled and automatically closed), but they won't get to silent without a different option. Here are some options from most preferred to least preferred in getting those installers that are not fully silent to work:
+
+* (Silent) Find a portable version of the tool that doesn't run a badly behaved installer. Looked for a zipped up version, you can easily create a Chocolatey package from these.
+* (Silent) Find an alternative that does the same thing, but has silent installers. It's a consideration, but maybe not something you can or are willing to explore. Moving on...
+* (Silent) Use MSI repackaging to produce a completely silent installer. It works by recording everything that happens when you run the install and creates an MSI to do the same. This would need to be done for every version. There are tools out there that can do this, some of which are VERY expensive.
+* (Unattended/Interactive) Use AutoHotKey or AutoIT (or some other tool) to automate the key presses and values being sent to the interfaces. This can be brittle, but can typically be quickly implemented.
+
+If you must run in the context of working with "unattended", non-silent installations, you need to take the above security consideration into account if you want to be able to manage those installations using the background service.
+
+___
+### Chocolatey Central Management Agent Setup
+
+Please see [[Central Management Client Setup|CentralManagementClientSetup]] for details.
+
+___
+## Chocolatey Agent Roadmap
+
+* Maintenance Windows: Admins will be able to schedule when upgrades occur.
+* Toast Notifications: Let users know when things are happening, and let users know when upgrades are available for Self-Served applications
+* ~~Self-Service: Admins will be able to configure what commands can be run through the background service.~~ Completed with Chocolatey Extension v1.12.4.
+* Self-Service: Admins will have more granular control of what certain users can install.
+* ~~Report into Central Management~~ - completed May 2019
+* ~~Handle tasks from Central Management Deployments~~ - completed June 2020
+
+___
 ## FAQ
 
 ### How do I take advantage of Chocolatey Agent?
