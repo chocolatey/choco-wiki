@@ -4,6 +4,13 @@ This covers changes for the "chocolateygui" package, which is available as FOSS.
 
 **NOTE**: For commercial editions, please also refer to [[Licensed Release Notes|ReleaseNotesLicensed]].
 
+## [0.17.1](https://github.com/chocolatey/ChocolateyGUI/milestone/20?closed=1) (June 11, 2020)
+
+### BUGS
+
+* Language localization files are missing in 0.17.0  - see [#778](https://github.com/chocolatey/ChocolateyGUI/issues/778)
+* Chocolatey GUI runs as a 32 bit process when running on a 64 bit machine - see [#779](https://github.com/chocolatey/ChocolateyGUI/issues/779)
+
 ## [0.17.0](https://github.com/chocolatey/ChocolateyGUI/milestone/18?closed=1) (March 26, 2020)
 
 ### FEATURES
