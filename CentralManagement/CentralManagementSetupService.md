@@ -8,6 +8,7 @@
 - [Step 2: Install Central Management Service Package](#step-2-install-central-management-service-package)
   - [FQDN Usage](#fqdn-usage)
   - [Package Parameters](#package-parameters)
+  - [Service Settings](#service-settings)
   - [Chocolatey Configuration](#chocolatey-configuration)
   - [Chocolatey Managed Password](#chocolatey-managed-password)
   - [Chocolatey Central Management Service Windows Account Considerations](#chocolatey-central-management-service-windows-account-considerations)
@@ -96,6 +97,15 @@ Note items with "`:`" mean a value should be provided, items without are simply 
 * `/Database:` - Name of the SQL Server database to use. Alternative to passing full connection string with `/ConnectionString`. Uses `/SqlServerInstance` (above) to build a connection string. Defaults to `ChocolateyManagement`.
 
 **NOTE:** If the Chocolatey Agent is installed on the same machine that has the CCM Service installed, it can only report into that CCM Service as they will share a
+
+### Service Settings
+
+* Service Name:                         **chocolatey-management-service**
+* Service Displayname:                  **Chocolatey Management Service**
+* Description:                          **Chocolatey Management Service is a service for Chocolatey**
+* Service Startup:                      **Automatic**
+* Service Username:                     **ChocolateyLocalAdmin** or '`/Username:`'
+
 
 ### Chocolatey Configuration
 

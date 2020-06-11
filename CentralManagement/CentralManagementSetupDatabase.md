@@ -83,7 +83,7 @@ In preparing SQL Server, you need to do the following:
 * Ensure the TcpPort is 1433 (or know what it is you need to connect to)
 * Set SQL Server Mixed Mode Authentication
 * Restart SQL Server
-* Open Windows Firewall ports for TCP access (and SQL Server Browswer in most cases)
+* Open Windows Firewall ports for TCP access (and SQL Server Browser in most cases)
 
 We've prepared a handy script (that may turn into a package later) to help you ensure you have SQL Server set up properly.
 

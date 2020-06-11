@@ -3,6 +3,9 @@
 <!-- TOC depthFrom:2 -->
 
 - [Summary](#summary)
+- [Main Page](#main-page)
+- [Software Details](#software-details)
+- [Related Topics](#related-topics)
 
 <!-- /TOC -->
 
@@ -13,7 +16,7 @@ Software packages can be viewed in the context of the organisation as a whole, o
 
 The main **Software** page can be accessed from the Central Management dashboard via the menu entry in the left-hand sidebar.
 
-![Software menu entry on the CCM dashboard](iamges/software/ccm-software-nav.png)
+![Software menu entry on the CCM dashboard](images/software/ccm-software-nav.png)
 
 ## Main Page
 
