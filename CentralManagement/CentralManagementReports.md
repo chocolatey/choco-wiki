@@ -1,8 +1,6 @@
 # Chocolatey Central Mangement Reports
 
-> :warning: **WARNING**: This is a Work in Progress. Please check back later
->
-> Also see [[Chocolatey Central Management in Features|FeaturesChocolateyCentralManagement]].
+> :warning: **WARNING**: This is a Work in Progress. Please check back later.
 
 <!-- TOC depthFrom:2 -->
 

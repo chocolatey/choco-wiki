@@ -1,9 +1,5 @@
 # Chocolatey Central Mangement Client Setup
 
-> :warning: **WARNING**: This is a Work in Progress. Please check back later
->
-> Also see [[Chocolatey Central Management in Features|FeaturesChocolateyCentralManagement]].
-
 <!-- TOC depthFrom:2 -->
 
 - [Summary](#summary)
@@ -25,10 +21,7 @@
 <!-- /TOC -->
 
 ## Summary
-
-> :warning: **WARNING**: This is a Work in Progress. Please check back later
->
-> Also see [[Chocolatey Central Management in Features|FeaturesChocolateyCentralManagement]].
+This will guide us through getting an agent installed and configured to check into Central Management and to be set up for handling deployment tasks.
 
 ___
 ## Setup
@@ -89,7 +82,7 @@ Yes
 
 ### How can I increase the level of logging for Chocolatey Central Management?
 
-This can be done by changing the level value, which should be currently INFO, to use DEBUG, as per the following:
+This can be done by changing the level value, which should be currently `INFO`, to use `DEBUG`, as per the following:
 
 ~~~xml
 <root>
@@ -112,7 +105,7 @@ ___
 
 You may see messaging like the following in the chocolatey-agent.log:
 
-~~~sh
+```sh
 [INFO ] - Creating secure channel to https://ccmserver:24020/ChocolateyManagementService ahead of CCM check-in...
 [ERROR] - Unable to report computer information to CCM.:
  The message with Action 'http://tempuri.org/IChocolateyManagementService/report_computer_information' cannot be
@@ -120,7 +113,7 @@ You may see messaging like the following in the chocolatey-agent.log:
  contract mismatch (mismatched Actions between sender and receiver) or a binding/security mismatch between the sender
  and the receiver.  Check that sender and receiver have the same contract and the same binding (including security
  requirements, e.g. Message, Transport, None).
-~~~
+```
 
 This is due to having a Chocolatey Agent that is v0.10.0+ versus an older Central Management Service (< v0.2.0). Newer agents are incompatible because they use newer and more secure methods of communication. Please upgrade Central Management to v0.2.0+ at your earliest convenience
 
@@ -132,9 +125,9 @@ This will provide similar messaging as the above. The fix is the same, upgrade C
 
 There is a known issue with the beta release of Chocolatey Central Management where an inconsistent Port Number is used between these two services.  One used 24020 and the other used 24040.  The correct default Port Number is 24020, and this is used in the 0.1.0 release of Chocolatey Central Management.  If required, the Port Number can be explicitly set during the installation of the Chocolatey Central Management packages using the following option when installing `chocolatey-management-service`:
 
-~~~powershell
+```powershell
 --params="'/PortNumber=24020'"
-~~~
+```
 
 ### The remote server returned an unexpected response: (413) Request Entity Too Large
 
