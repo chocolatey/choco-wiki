@@ -97,6 +97,8 @@ If the software is an MSI, the Product Guid is used for managing uninstalls. Gue
 ### See It In Action
 ![auto package creation/synchronize](images/gifs/choco_business_features.gif)
 
+> :memo: **NOTE**: To see all feature videos for Chocolatey for Business, please visit https://chocolatey.org/resources/features#c4b.
+
 ### Options and Switches
 There are none - automatic sync just happens every run.
 
@@ -128,6 +130,8 @@ At 1.9.0, sync is in preview. You need to turn it on by enabling the feature  `a
 ### See it in action
 We've prepared a short video to show sync in action:
 [![Chocolatey's Package Synchronizer - Sync Command](https://cloud.githubusercontent.com/assets/63502/22050108/ade28e5a-dcfd-11e6-8835-afc9f699e400.png)](https://youtu.be/tzSsYHYsjf4 "Chocolatey's Package Synchronizer - Sync Command")
+
+> :memo: **NOTE**: To see all feature videos for Chocolatey for Business, please visit https://chocolatey.org/resources/features#c4b.
 
 In the following image, sync is run on a system that has 18 applications installed and a base Chocolatey for Business install. Note after running sync, all software on the machine is now being managed by Chocolatey.
 

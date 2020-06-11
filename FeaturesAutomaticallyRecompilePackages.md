@@ -46,6 +46,8 @@ This image shows running `choco download --recompile git.install`.
 
 ![automatic recompile](images/gifs/choco_business_features_recompile.gif)
 
+> :memo: **NOTE**: To see all feature videos for Chocolatey for Business, please visit https://chocolatey.org/resources/features#c4b.
+
 ## Options and Switches
 
 When running `choco download` in the Business editions, pass the following:

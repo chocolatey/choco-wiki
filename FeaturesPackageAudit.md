@@ -42,6 +42,8 @@ Shows output as described above.
 
 -->
 
+> :memo: **NOTE**: To see all feature videos for Chocolatey for Business, please visit https://chocolatey.org/resources/features#c4b.
+
 ## Options and Switches
 
 When calling `choco list -lo`:

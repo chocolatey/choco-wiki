@@ -97,6 +97,8 @@ This makes for happy users and happy admins as they are able to move quicker tow
 
 [![Chocolatey's Self-Service Installer - Part 2](images/features/features_selfservice_video2.jpg)](https://www.youtube.com/watch?v=BnnAwFftUwU "Chocolatey's Self-Service Installer - Part 2")
 
+> :memo: **NOTE**: To see all feature videos for Chocolatey for Business, please visit https://chocolatey.org/resources/features#c4b.
+
 Consider the following image:
 
 ![Attempting to install software as non-admin - if you are on https://chocolatey.org/docs/features-agent-service, see commented html below for detailed description of image](images/features/features_non_admin_installer.png)

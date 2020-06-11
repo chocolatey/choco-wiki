@@ -110,6 +110,8 @@ In this GIF, we see branding being applied to the Chocolatey GUI application.
 Notice that the splash screen image has been replaced, as well as the logo at the
 top left of the application, and the icon in the taskbar.
 
+> :memo: **NOTE**: To see all feature videos for Chocolatey for Business, please visit https://chocolatey.org/resources/features#c4b.
+
 # Deploying Branding
 
 What follows is a suggestion on how a branded version of Chocolatey GUI can be
