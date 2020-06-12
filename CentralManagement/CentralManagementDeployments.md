@@ -1,6 +1,8 @@
 # Chocolatey Central Mangement Deployments
 
 > :warning: **WARNING**: This is a Work in Progress. Please check back later.
+>
+> Please see https://chocolatey.org/blog/announcing-deployments for now.
 
 <!-- TOC depthFrom:2 -->
 
