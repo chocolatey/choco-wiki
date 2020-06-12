@@ -26,6 +26,7 @@ ___
 - [Step 2: Setup Central Management Database](#step-2-setup-central-management-database)
 - [Step 3: Setup Central Mangement Windows Service(s)](#step-3-setup-central-mangement-windows-services)
 - [Step 4: Setup Central Management Website](#step-4-setup-central-management-website)
+- [Step 5: Setting up Agent Machines](#step-5-setting-up-agent-machines)
 
 <!-- /TOC -->
 
@@ -100,6 +101,12 @@ ___
 Please see [[Central Management Web Setup|CentralManagementSetupWeb]].
 
 > :memo: **NOTE**: If Step 1 or 2 is not succesful, do not move on to this step until you resolve issues with previous steps.
+
+___
+## Step 5: Setting up Agent Machines
+
+Please see [[Central Management Client Setup|CentralManagementSetupClient]].
+
 
 ___
 [[Chocolatey Central Management|CentralManagement]]

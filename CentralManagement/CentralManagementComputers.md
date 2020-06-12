@@ -19,12 +19,14 @@ ___
 ___
 ## Registering a New Computer
 
-Client computers will show up in Central Management automatically as long as long as these conditions are met for the client computer:
+Client computers (agents) will show up in Central Management automatically as long as long as these conditions are met for the client computer:
 
-1. The `chocolatey`, `chocolatey.extension`, and `chocolatey.agent` packages are installed, alongside a valid Chocolatey for Business license.
+1. The `chocolatey`, `chocolatey.extension`, and `chocolatey-agent` packages are installed, alongside a valid Chocolatey for Business license.
 1. The `useChocolateyCentralManagement` feature is enabled.
-1. The `centralManagementServiceUrl` is set correctly in the chocolatey configuration file (typically to `https://hostname:24020/CentralManagementService`)
+1. The `centralManagementServiceUrl` is set correctly in the chocolatey configuration file (typically to `https://<FQDN_to_CCM_service_host>:24020/ChocolateyManagementService`)
 1. The client has access to the above URL (this may require opening the port in your firewall, etc.) so that it can resolve the SSL certificate necessary to communicate with the CCM service.
+
+Please see [[Central Management Client Setup|CentralManagementSetupClient]] for more details and setup.
 
 ___
 ## Viewing Installed Software on a Computer
@@ -48,7 +50,7 @@ ___
 From the main Computers page in Central Management, locate the computer of interest in the list or by providing a search term in the table filter.
 Select the **:gear: Actions** menu in the corresponding right-hand column, and click **Delete**.
 
-[Deleting a computer in Central Management](images/computers/ccm-computers-delete-menu.png)
+![Deleting a computer in Central Management](images/computers/ccm-computers-delete-menu.png)
 
 You will be prompted to confirm the deletion.
 
@@ -60,6 +62,7 @@ ___
 * [[Chocolatey Central Management|CentralManagement]]
 * [[Central Management - Software|CentralManagementSoftware]]
 * [[Central Management - Groups|CentralManagementGroups]]
+* [[Central Management - Reports|CentralManagementReports]]
 
 ___
 [[Chocolatey Central Management|CentralManagement]]

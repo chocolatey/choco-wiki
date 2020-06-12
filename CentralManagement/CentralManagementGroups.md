@@ -68,7 +68,7 @@ If a Deployment is targeting ineligible groups, the deployment cannot be started
 ## Related Topics
 
 * [[Chocolatey Central Management|CentralManagement]]
-* [[Central Management - Computers|CentralManagementDeployments]]
+* [[Central Management - Deployments|CentralManagementDeployments]]
 * [[Central Management - Computers|CentralManagementComputers]]
 
 ___

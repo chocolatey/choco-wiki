@@ -14,6 +14,7 @@
 * [[Chocolatey Central Management|CentralManagement]]
 * [[Central Management - Groups|CentralManagementGroups]]
 * [[Central Management - Computers|CentralManagementComputers]]
+* [[Central Management - Reports|CentralManagementReports]]
 
 ___
 [[Chocolatey Central Management|CentralManagement]]

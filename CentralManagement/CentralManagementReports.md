@@ -14,7 +14,7 @@
 * [[Chocolatey Central Management|CentralManagement]]
 * [[Central Management - Software|CentralManagementSoftware]]
 * [[Central Management - Computers|CentralManagementComputers]]
-* [[Central Management - Computers|CentralManagementDeployments]]
+* [[Central Management - Deployments|CentralManagementDeployments]]
 
 ___
 [[Chocolatey Central Management|CentralManagement]]
