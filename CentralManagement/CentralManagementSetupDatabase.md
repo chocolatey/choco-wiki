@@ -150,6 +150,12 @@ netsh advfirewall firewall add rule name="SQL Server Browser 1434" dir=in action
 ___
 ## Step 2: Install Central Management Database Package
 
+The Central Management Database package
+
+* will create the `ChocolateyManagement` database if it does not exist
+* Migrates the database code (`DDL/DML`) to bring it up to the current version
+* That's it.
+
 > :warning: **WARNING**: CCM packages do ***NOT*** install SQL Server. You must take care of that in the prerequisites. Do not even start on central management installs until you have a SQL Server instance up and ready. I repeat, SQL Server engine must be already installed.
 
 The CCM database package will add or update a database to an existing SQL Server instance.
@@ -157,13 +163,13 @@ The CCM database package will add or update a database to an existing SQL Server
 > :memo: **NOTE**: When you run this package installation, you will want to do so as integrated security, or with Windows Authentication. When you run the other two package installations, you will want to do so providing a connection string.
 
 ### Package Parameters
-Note items with "`:`" mean a value should be provided, items without are simply switches.
 
 * `/ConnectionString:` - The SQL Server database connection string to be used to connect to the Chocolatey Central Management database. Defaults to default or explicit values for `/SqlServiceInstance` and `/Database`, along with Integrated Security (`Server=<LOCAL COMPUTER FQDN NAME>; Database=ChocolateyManagement; Trusted_Connection=True;`). The account should have `db_owner` access to the database ([database owner](https://docs.microsoft.com/en-us/sql/relational-databases/security/authentication-access/database-level-roles#fixed-database-roles)).
 * `/SqlServerInstance:` - Instance name of the SQL Server database to connect to. Alternative to passing full connection string with `/ConnectionString`. Uses `/Database` (below) to build a connection string. Defaults to `<LOCAL COMPUTER FQDN NAME>`.
 * `/Database:` - Name of the SQL Server database to use. Alternative to passing full connection string with `/ConnectionString`. Uses `/SqlServerInstance` (above) to build a connection string. Defaults to `ChocolateyManagement`.
 * `/SkipDatabasePermissionCheck` - By default, a check will be completed to ensure that the installing user has access to create a new database, based on the provided/computed connection string. If this check isn't required, for example, the database has already been created or permissions will error, this step can be skipped using this parameter. Available with CCM v0.2.0+.
 
+> :memo: **NOTE**: Items suffixed with "`:`" mean a value should be provided, items without are simply switches.
 
 ### Scenarios
 
@@ -193,7 +199,7 @@ The difference between a login and a user when it comes to SQL Server accounts h
 
 Notes:
 
-- Grant `db_reader` and `db_writer` to the accounts you create for the web and service.
+- Grant `db_datareader` and `db_datawriter` to the accounts you create for the web and service.
 - You can share the same login for the two accounts, unless your internal best practices dictate using different passwords.
 
 
@@ -256,11 +262,11 @@ ALTER ROLE [$DatabaseRole] ADD MEMBER [$Username]
 }
 
 # Add Sql Server Login / User:
-Add-DatabaseUserAndRoles -Username 'ChocoUser' -SqlUserPassword '<SUPER HARD PASSWORD>' -CreateSqlUser -DatabaseRoles @('db_datareader', 'db_datawriter')
+Add-DatabaseUserAndRoles -DatabaseName 'ChocolateyManagement' -Username 'ChocoUser' -SqlUserPassword '<SUPER HARD PASSWORD>' -CreateSqlUser  -DatabaseRoles @('db_datareader', 'db_datawriter')
 # Add Local Windows User:
-Add-DatabaseUserAndRoles -Username "$(hostname)\ChocolateyLocalAdmin" -DatabaseRoles @('db_datareader', 'db_datawriter')
+Add-DatabaseUserAndRoles -DatabaseName 'ChocolateyManagement' -Username "$(hostname)\ChocolateyLocalAdmin" -DatabaseRoles @('db_datareader', 'db_datawriter')
 # Add Active Directory Domain User:
-Add-DatabaseUserAndRoles -Username "<DomainName>\<Username>" -DatabaseRoles @('db_datareader', 'db_datawriter')
+Add-DatabaseUserAndRoles -DatabaseName 'ChocolateyManagement' -Username "<DomainName>\<Username>" -DatabaseRoles @('db_datareader', 'db_datawriter')
 ```
 
 ___
