@@ -24,7 +24,7 @@ ___
 ___
 ## Setup
 ### Step 1: Install Chocolatey Agent
-First you need Chocolatey Agent installed. As there may be some steps involved with the install of the agent, please see [[Chocolatey Agent Setup|FeaturesAgentService]].
+First you need Chocolatey Agent installed. As there may be some steps involved with the install of the agent, please see [[Chocolatey Agent Setup|FeaturesAgentService#setup]].
 
 ___
 ### Step 2: Update Configuration
