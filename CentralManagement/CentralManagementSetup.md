@@ -1,18 +1,5 @@
 # Chocolatey Central Mangement Setup
 
-<!-- TOC depthFrom:2 depthTo:5 -->
-
-- [Summary](#summary)
-- [High Level Requirements](#high-level-requirements)
-- [Step 1: Internalize Packages](#step-1-internalize-packages)
-- [Step 2: Setup Central Management Database](#step-2-setup-central-management-database)
-- [Step 3: Setup Central Mangement Windows Service(s)](#step-3-setup-central-mangement-windows-services)
-- [Step 4: Setup Central Management Website](#step-4-setup-central-management-website)
-
-<!-- /TOC -->
-
-## Summary
-
 Installing CCM takes a little more pre-thought than simply running the package installs.
 While it is envisioned that CCM will be installed across multiple servers (split installation), it is certainly possible to run CCM on a single server (monolithic).
 
@@ -31,6 +18,18 @@ When setting up Central Management, currently, the CCM packages do not provision
 >
 > If this seems like a lot to set up, you have the ability to get access to the [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]]. It comes preloaded with Central Management and other Chocolatey recommended infrastructure. Please see [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]].
 
+___
+<!-- TOC depthFrom:2 depthTo:5 -->
+
+- [High Level Requirements](#high-level-requirements)
+- [Step 1: Internalize Packages](#step-1-internalize-packages)
+- [Step 2: Setup Central Management Database](#step-2-setup-central-management-database)
+- [Step 3: Setup Central Mangement Windows Service(s)](#step-3-setup-central-mangement-windows-services)
+- [Step 4: Setup Central Management Website](#step-4-setup-central-management-website)
+
+<!-- /TOC -->
+
+____
 ## High Level Requirements
 Central Management packages require at a minimum:
 
@@ -102,5 +101,5 @@ Please see [[Central Management Web Setup|CentralManagementSetupWeb]].
 
 > :memo: **NOTE**: If Step 1 or 2 is not succesful, do not move on to this step until you resolve issues with previous steps.
 
-
+___
 [[Chocolatey Central Management|CentralManagement]]

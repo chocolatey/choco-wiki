@@ -1,8 +1,19 @@
 # Chocolatey Central Management Database Setup
 
+At the end of this, we should have a fully ready to go SQL Server:
+
+* Installed
+* Configured
+* Database package deployed creating the database
+* Permissions added
+
+> :warning: **WARNING**
+>
+> Unless otherwise noted, please follow these steps in ***exact*** order. These steps build on each other and need to be completed in order.
+
+___
 <!-- TOC depthFrom:2 depthTo:5 -->
 
-- [Summary](#summary)
 - [Step 1: Complete Prerequisites](#step-1-complete-prerequisites)
   - [Step 1.1: Install SQL Server](#step-11-install-sql-server)
     - [Install SQL Server Express](#install-sql-server-express)
@@ -21,19 +32,6 @@
   - [Cannot process command because of one or more missing mandatory parameters: FilePath](#cannot-process-command-because-of-one-or-more-missing-mandatory-parameters-filepath)
 
 <!-- /TOC -->
-
-## Summary
-
-At the end of this, we should have a fully ready to go SQL Server:
-
-* Installed
-* Configured
-* Database package deployed creating the database
-* Permissions added
-
-> :warning: **WARNING**
->
-> Unless otherwise noted, please follow these steps in ***exact*** order. These steps build on each other and need to be completed in order.
 
 ___
 ## Step 1: Complete Prerequisites
@@ -265,8 +263,8 @@ ALTER ROLE [$DatabaseRole] ADD MEMBER [$Username]
 Add-DatabaseUserAndRoles -DatabaseName 'ChocolateyManagement' -Username 'ChocoUser' -SqlUserPassword '<SUPER HARD PASSWORD>' -CreateSqlUser  -DatabaseRoles @('db_datareader', 'db_datawriter')
 # Add Local Windows User:
 Add-DatabaseUserAndRoles -DatabaseName 'ChocolateyManagement' -Username "$(hostname)\ChocolateyLocalAdmin" -DatabaseRoles @('db_datareader', 'db_datawriter')
-# Add Active Directory Domain User:
-Add-DatabaseUserAndRoles -DatabaseName 'ChocolateyManagement' -Username "<DomainName>\<Username>" -DatabaseRoles @('db_datareader', 'db_datawriter')
+# Add Active Directory Domain User to a default instance of SQL Server:
+Add-DatabaseUserAndRoles -DatabaseServer 'localhost' -DatabaseName 'ChocolateyManagement' -Username "<DomainName>\<Username>" -DatabaseRoles @('db_datareader', 'db_datawriter')
 ```
 
 ___
@@ -307,4 +305,5 @@ During the creation of Chocolatey Central Management, some additional PowerShell
 
 The guidance in this case is either to pin to the specific version of the Chocolatey Extension package required by the version of Chocolatey Central Management being used, or, update to the latest versions of all packages, where the situation should be addressed.
 
+___
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]

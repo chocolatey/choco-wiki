@@ -13,11 +13,12 @@ Once installed and configured, you can use CCM to:
 
 This provides an overview on Chocolatey Central Mangement (CCM). It provides both setup and use of CCM.
 
+___
 <!-- TOC depthFrom:2 depthTo:5 -->
 
 - [CCM Components](#ccm-components)
 - [Getting CCM](#getting-ccm)
-- [Stay Up To Speed](#stay-up-to-speed)
+- [Stay Up To Date](#stay-up-to-date)
 - [Links](#links)
   - [Setup / Installation](#setup--installation)
   - [Using Central Management](#using-central-management)
@@ -32,6 +33,7 @@ This provides an overview on Chocolatey Central Mangement (CCM). It provides bot
 
 <!-- /TOC -->
 
+___
 ## CCM Components
 
 The following are all of the Chocolatey components required for Central Management to work.
@@ -47,11 +49,12 @@ The following are all of the Chocolatey components required for Central Manageme
 * CCM Website (`chocolatey-management-web` package) v0.1.0+
   * This is the CCM front end website that is the main user interface of the application
 
+____
 ## Getting CCM
 CCM is only available for Chocolatey for Business (C4B) customers. If you are a C4B customer, you can head to the install components section:
 
 * [[Central Management Setup|CentralManagementSetup]]
-* [[Central Management Client Setup|CentralManagementClientSetup]]
+* [[Central Management Client Setup|CentralManagementSetupClient]]
 
 If you are not a customer yet, you can [reach out for a trial](https://chocolatey.org/contact/trial).
 
@@ -59,10 +62,12 @@ If you are not a customer yet, you can [reach out for a trial](https://chocolate
 >
 > Trials are limited to organizations. If you are personally wanting to work with CCM and other C4B components, you can purchase a C4B starter pack - see [pricing](https://chocolatey.org/pricing).
 
-## Stay Up To Speed
+___
+## Stay Up To Date
 * [[Release Notes Central Management|ReleaseNotesCentralManagement]]
 * [Release Announcements Only Mailing List](https://groups.google.com/group/chocolatey-announce)
 
+___
 ## Links
 
 ### Setup / Installation
@@ -70,7 +75,7 @@ If you are not a customer yet, you can [reach out for a trial](https://chocolate
     * [[Central Management Database Setup|CentralManagementSetupDatabase]]
     * [[Central Management Service Setup|CentralManagementSetupService]]
     * [[Central Management Web Setup|CentralManagementSetupWeb]]
-* [[Central Management Client Setup|CentralManagementClientSetup]]
+* [[Central Management Client Setup|CentralManagementSetupClient]]
 
 ### Using Central Management
 
@@ -80,10 +85,12 @@ If you are not a customer yet, you can [reach out for a trial](https://chocolate
 * [[CCM Deployments|CentralManagementDeployments]]
 * [[CCM Reports|CentralManagementReports]]
 
+___
 ## Related Articles
 
 * [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]]
 
+___
 ## Roadmap
 
 Chocolatey Central Management will allow:
@@ -101,6 +108,7 @@ Chocolatey Central Management will allow:
 
 \* - When deployed through Chocolatey.
 
+____
 ## FAQs
 ### How do I take advantage of Chocolatey Central Management?
 You must have a [Business edition of Chocolatey](https://chocolatey.org/compare). Business editions are great for organizations that need to manage the total software lifecycle.

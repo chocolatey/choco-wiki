@@ -1,17 +1,5 @@
 # Chocolatey Central Management - Groups
 
-<!-- TOC depthFrom:2 -->
-
-- [Summary](#summary)
-- [Creating a Group](#creating-a-group)
-- [Editing a Group](#editing-a-group)
-- [Eligibility for Deployments](#eligibility-for-deployments)
-- [Related Topics](#related-topics)
-
-<!-- /TOC -->
-
-## Summary
-
 Central Management's Groups are the basis on which a given [[Deployment|CentralManagementDeployments]] operates.
 In Central Management, a Group may contain one or more computers and/or other groups.
 Currently, Central Management's groups are entirely self-contained, and cannot be directly mapped from Active Directory groups.
@@ -20,6 +8,16 @@ The **Groups** page can be accessed from the left-hand navigation menu on your C
 If you do not see this menu entry, verify with your administrator whether your Central Management account has the View Groups role assigned..
 
 ![Groups menu entry on the CCM Dashboard](images/groups/ccm-groups-menu.png)
+
+<!-- TOC depthFrom:2 -->
+
+- [Creating a Group](#creating-a-group)
+- [Editing a Group](#editing-a-group)
+- [Deleting a Group](#deleting-a-group)
+- [Eligibility for Deployments](#eligibility-for-deployments)
+- [Related Topics](#related-topics)
+
+<!-- /TOC -->
 
 ## Creating a Group
 
@@ -69,8 +67,9 @@ If a Deployment is targeting ineligible groups, the deployment cannot be started
 
 ## Related Topics
 
+* [[Chocolatey Central Management|CentralManagement]]
+* [[Central Management - Computers|CentralManagementDeployments]]
+* [[Central Management - Computers|CentralManagementComputers]]
+
+___
 [[Chocolatey Central Management|CentralManagement]]
-
-[[Chocolatey Central Management Features|FeaturesChocolateyCentralManagement]
-
-[[Central Management - Computers|CentralManagementComputers]]

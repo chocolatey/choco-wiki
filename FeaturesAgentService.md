@@ -416,7 +416,7 @@ If you must run in the context of working with "unattended", non-silent installa
 ___
 ### Chocolatey Central Management Agent Setup
 
-Please see [[Central Management Client Setup|CentralManagementClientSetup]] for details.
+Please see [[Central Management Client Setup|CentralManagementSetupClient]] for details.
 
 ___
 ## Chocolatey Agent Roadmap

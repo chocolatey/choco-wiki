@@ -1,8 +1,14 @@
-# Central Management Website setup
+# Central Management Website Setup
 
+This is the Central Management website that gives an API and a web layer to centrally manage information about your environment and manage endpoints with deployment tasks.
+
+> :warning: **WARNING**
+>
+> Unless otherwise noted, please follow these steps in ***exact*** order. These steps build on each other and need to be completed in order.
+
+___
 <!-- TOC depthFrom:2 depthTo:5 -->
 
-- [Summary](#summary)
 - [Step 1: Complete Prerequisites](#step-1-complete-prerequisites)
   - [Script for some prerequisites](#script-for-some-prerequisites)
 - [Step 2: Install Central Management Web Package](#step-2-install-central-management-web-package)
@@ -33,8 +39,6 @@
 
 <!-- /TOC -->
 
-## Summary
-
 ___
 ## Step 1: Complete Prerequisites
 
@@ -56,6 +60,10 @@ choco install IIS-WebServer -s windowsfeatures -y
 choco install IIS-ApplicationInit -s windowsfeatures -y
 choco install aspnetcore-runtimepackagestore --version 2.2.7 -y
 choco install dotnetcore-windowshosting --version 2.2.7 -y
+
+choco pin add --name="'aspnetcore-runtimepackagestore'" --version="'2.2.7'" --reason="'Required for CCM website'"
+choco pin add --name="'dotnetcore-windowshosting'" --version="'2.2.7'" --reason="'Required for CCM website'"
+# "reason" only available in commercial editions
 ```
 
 ___
@@ -330,4 +338,5 @@ Get-Process -Name "ChocolateySoftware.ChocolateyManagement.Web.Mvc" -ErrorAction
 
 And then try accessing the website again.  Any emails that are then sent from CCM should then contain valid links back to the site.
 
+___
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]
