@@ -1,8 +1,9 @@
 # Chocolatey Central Mangement Client Setup
+This will guide us through getting an agent installed and configured to check into Central Management and to be set up for handling deployment tasks.
 
+___
 <!-- TOC depthFrom:2 -->
 
-- [Summary](#summary)
 - [Setup](#setup)
   - [Step 1: Install Chocolatey Agent](#step-1-install-chocolatey-agent)
   - [Step 2: Update Configuration](#step-2-update-configuration)
@@ -19,9 +20,6 @@
   - [The remote server returned an unexpected response: (413) Request Entity Too Large](#the-remote-server-returned-an-unexpected-response-413-request-entity-too-large)
 
 <!-- /TOC -->
-
-## Summary
-This will guide us through getting an agent installed and configured to check into Central Management and to be set up for handling deployment tasks.
 
 ___
 ## Setup
@@ -139,5 +137,5 @@ There is a known issue with the beta release of Chocolatey Central Management wh
 
 When reporting a larger number of packages (approximately 200), this error may be reported.  This is due to the size of the information, in bytes, being too large to send between the Chocolatey Agent Service and the Chocolatey Central Management Service.  This has been identified as a [bug](https://github.com/chocolatey/chocolatey-licensed-issues/issues/95), which is due to be corrected in version 0.1.1 of Chocolatey Central Management
 
-
-[[Chocolatey Central Management|CentralManagement]]
+___
+[[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]
