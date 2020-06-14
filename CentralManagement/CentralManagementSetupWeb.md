@@ -27,6 +27,7 @@ ___
   - [Step 4.1: Login And Change Default Credentials](#step-41-login-and-change-default-credentials)
   - [Step 4.2: SMTP Configuration](#step-42-smtp-configuration)
     - [appsettings.json configuration](#appsettingsjson-configuration)
+  - [Step 4.3: Application Settings File](#step-43-application-settings-file)
 - [FAQ](#faq)
   - [Can I install the Chocolatey Central Management Web Site under a Virtual Directory in IIS?](#can-i-install-the-chocolatey-central-management-web-site-under-a-virtual-directory-in-iis)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
@@ -240,6 +241,31 @@ Get-Process -Name "ChocolateySoftware.ChocolateyManagement.Web.Mvc" -ErrorAction
 ~~~
 
 And then try accessing the website again.  Any emails that are then sent from CCM should then contain valid links back to the site.
+
+### Step 4.3: Application Settings File
+
+Some application settings will require you to edit the `appsettings.json` file, which is located in the `c:\tools\chocolatey-management-web` folder.
+
+Here is a copy of items that can be set. They are not required to be encrypted. Any item that is encrypted can be replaced by a non-encrypted value. During package install/upgrade, Chocolatey will encrypt certain settings (even if they were previously plain text).
+
+```json
+{
+  "ConnectionStrings": {
+        "Default": "Server=localhost; Database=ChocolateyManagement; Trusted_Connection=True;"
+  },
+  "App": {
+    "WebSiteRootAddress": "http://<FQDN OR Binding HERE>"
+  },
+  "Recaptcha": {
+    "SiteKey": "<INSERT SITE KEY HERE>",
+    "SecretKey": "<INSERT SECRET KEY HERE>"
+  }
+}
+```
+
+> :warning: **WARNING**:
+>
+> Recaptcha is likely to require a publicly available CCM Web, and we currently have a strong recommendation to ***NOT*** open up the web to the internet. You likely do not want to set this or turn it on inside the Administration -> Settings section. However if you do, you will NEED the items set here in the appsettings.json as well.
 
 ___
 ## FAQ
