@@ -11,19 +11,20 @@ You will receive a download link via email for an archive of the VM image. Once 
 <!-- TOC depthFrom:2 -->
 
 - [Step 0: Setup Considerations](#step-0-setup-considerations)
-    - [Step 0.1: QDE Rename Considerations](#step-01-qde-rename-considerations)
+  - [Step 0.1: QDE Rename Considerations](#step-01-qde-rename-considerations)
 - [Step 1: Import Virtual Environment](#step-1-import-virtual-environment)
-    - [Platform: Hyper-V (Appliance)](#platform-hyper-v-appliance)
-    - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
-    - [Platform: VMware (VMDK file)](#platform-vmware-vmdk-file)
-    - [Platform: VMware (OVF template)](#platform-vmware-ovf-template)
-    - [Platform: Other](#platform-other)
+  - [Platform: Hyper-V (Appliance)](#platform-hyper-v-appliance)
+  - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
+  - [Platform: VMware (VMDK file)](#platform-vmware-vmdk-file)
+  - [Platform: VMware (OVF template)](#platform-vmware-ovf-template)
+  - [Platform: Other](#platform-other)
 - [Step 2: Other Considerations for Virtual Environment](#step-2-other-considerations-for-virtual-environment)
-    - [Step 2.1: DNS Settings](#step-21-dns-settings)
+  - [Step 2.1: DNS Settings](#step-21-dns-settings)
 - [Step 3: Virtual Environment Setup](#step-3-virtual-environment-setup)
-    - [Step 3.1: Add License File to QDE](#step-31-add-license-file-to-qde)
-    - [Step 3.2: Regenerate SSL Certificates](#step-32-regenerate-ssl-certificates)
-    - [Step 3.3: Database Password Changes (Optional)](#step-33-database-password-changes-optional)
+  - [Step 3.1: Expand Disk Size](#step-31-expand-disk-size)
+  - [Step 3.2: Add License File to QDE](#step-32-add-license-file-to-qde)
+  - [Step 3.3: Regenerate SSL Certificates](#step-33-regenerate-ssl-certificates)
+  - [Step 3.4: Database Password Changes (Optional)](#step-34-database-password-changes-optional)
 - [Step 4: Firewall Changes](#step-4-firewall-changes)
 - [Step 5: Install and Configure Chocolatey on Clients](#step-5-install-and-configure-chocolatey-on-clients)
 
@@ -75,6 +76,8 @@ Chooose one of the following methods for what your hypervisor environment suppor
 3. Increase the size of the VHD, for example, to 100GB. Increase to what you feel comfortable with.
 
 ```powershell
+# This only increases the available size of the image
+# You will still need to increase the space for the C drive
 Resize-VHD -Path C:\path\to\QuickDeploy Environment.vhd -SizeInBytes 100GB
 ```
 
@@ -92,6 +95,8 @@ Video Summary:
 2. Increase the size of the VHD, for example to 100GB. Increase to what you feel comfortable with.
 
 ```powershell
+# This only increases the available size of the image
+# You will still need to increase the space for the C drive
 Resize-VHD -Path C:\path\to\QuickDeploy Environment.vhd -SizeInBytes 100GB
 ```
 
@@ -122,7 +127,7 @@ Video Summary:
 7. Adjust the hardware specifications of the VM. For a performant system, the following are recommended:
     - 4 vCPUs
     - 8 GB RAM
-8. Once you click Finish, go back into the `Edit settings` context menu for the VM, and expand the disk you attached to 100GB (double-check in OS, and extend if needed).
+8. Once you click Finish, go back into the `Edit settings` context menu for the VM, and expand the disk you attached to 100GB (double-check in OS, and extend if needed). **NOTE**: likely you will need to allocate the additional space to the C drive.
 8. Boot up VM, and Install VMware Tools using the console menus (this will require a reboot).
 
 Video Summary:
@@ -168,7 +173,17 @@ A version of this readme file can be found in the [[Quick Deployment Desktop Rea
 
 > :warning: **WARNING**: If you have an existing corporate environment you will be servicing with the QDE VM, be sure to perform your organization-specific initial configuration **_before_** running setup scripts.
 
-### Step 3.1: Add License File to QDE
+### Step 3.1: Expand Disk Size
+
+On the machine, please check the size of the C drive. If it needs expanded, expand it to the space you've allocated for the machine.
+
+```powershell
+# This should increase the space available on the C drive.
+Resize-Partition -DriveLetter C -Size ((Get-PartitionSupportedSize -DriveLetter C).SizeMax)
+```
+
+
+### Step 3.2: Add License File to QDE
 In the [[Quick Deployment Desktop Readme|QuickDeploymentDesktopReadme]], it is going to ask you to use the license file. That license file comes from an external location. It is best to copy/paste the file into QDE as a whole file, but you may have needed to set up any kind of extensions available for that.
 
 > :warning: **WARNING**
@@ -176,11 +191,11 @@ In the [[Quick Deployment Desktop Readme|QuickDeploymentDesktopReadme]], it is g
 > If you find that you need to copy the text and paste the license file text into a new file in QDE, the file format and name is extremely important to get right. If you don't have UTF-8 or there is a space inserted, Chocolatey will consider it invalid.
 > Please contact support if you need help here.
 
-### Step 3.2: Regenerate SSL Certificates
+### Step 3.3: Regenerate SSL Certificates
 
 See [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]].
 
-### Step 3.3: Database Password Changes (Optional)
+### Step 3.4: Database Password Changes (Optional)
 
 The database credentials are currently pre-set.
 If you would like to change the credentials associated with the database, you will need to follow these steps.

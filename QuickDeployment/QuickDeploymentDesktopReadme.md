@@ -12,20 +12,21 @@ This system has been pre-configured as a fully functioning C4B environment.
 
 - [Summary](#summary)
 - [Step 0: Complete Prerequisites](#step-0-complete-prerequisites)
-- [Step 1: Create a License Package](#step-1-create-a-license-package)
-- [Step 2: Regenerate SSL Certificates](#step-2-regenerate-ssl-certificates)
-- [Step 3: Enable Central Management](#step-3-enable-central-management)
-- [Step 4: Review Server Information](#step-4-review-server-information)
+- [Step 1: Expand Disk Size](#step-1-expand-disk-size)
+- [Step 2: Create a License Package](#step-2-create-a-license-package)
+- [Step 3: Regenerate SSL Certificates](#step-3-regenerate-ssl-certificates)
+- [Step 4: Enable Central Management](#step-4-enable-central-management)
+- [Step 5: Review Server Information](#step-5-review-server-information)
   - [Nexus Repository](#nexus-repository)
   - [Jenkins](#jenkins)
   - [Chocolatey Central Management](#chocolatey-central-management)
   - [Firewall ports](#firewall-ports)
   - [Browser considerations](#browser-considerations)
-- [Step 5: Change the API Key (Optional, Recommended)](#step-5-change-the-api-key-optional-recommended)
+- [Step 6: Change the API Key (Optional, Recommended)](#step-6-change-the-api-key-optional-recommended)
     - [Choco Apikey Command](#choco-apikey-command)
-- [Step 6: Install and Configure Chocolatey On Clients](#step-6-install-and-configure-chocolatey-on-clients)
-- [Step 7: Turn On Package Internalization](#step-7-turn-on-package-internalization)
-- [Step 8: License the QDE VM](#step-8-license-the-qde-vm)
+- [Step 7: Install and Configure Chocolatey On Clients](#step-7-install-and-configure-chocolatey-on-clients)
+- [Step 8: Turn On Package Internalization](#step-8-turn-on-package-internalization)
+- [Step 9: License the QDE VM](#step-9-license-the-qde-vm)
 
 <!-- /TOC -->
 
@@ -52,7 +53,17 @@ There are some steps you will have taken before you come to this readme. Please 
 * [[QDE Setup|QuickDeploymentSetup]]
 
 ___
-## Step 1: Create a License Package
+## Step 1: Expand Disk Size
+
+On the machine, please check the size of the C drive. If it needs expanded, expand it to the space you've allocated for the machine.
+
+```powershell
+# This should increase the space available on the C drive.
+Resize-Partition -DriveLetter C -Size ((Get-PartitionSupportedSize -DriveLetter C).SizeMax)
+```
+
+___
+## Step 2: Create a License Package
 
 To leverage all of the features of C4B, copy the license file you received via email to `C:\ProgramData\chocolatey\license`.
 Make sure the name of the file is exactly `chocolatey.license.xml`.
@@ -66,7 +77,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; . 'C:\choco-setup\files\Create
 This will create the licensed package at `C:\choco-setup\packages` and push it up to your Nexus repository for use.
 
 ___
-## Step 2: Regenerate SSL Certificates
+## Step 3: Regenerate SSL Certificates
 
 Under almost all circumstances for security purposes, you are going to want to complete this step. We've made it easy for you with a script. Once complete, the script will generate new SSL certificates for all services and move them to the appropriate locations and configure the services to use them. Please see [[SSL/TLS Setup|QuickDeploymentSslSetup]] for more details.
 
@@ -89,7 +100,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-Ssl
 Once complete, this script will generate new SSL certificates for all services and move them to the appropriate locations and configure the services to use them.
 
 ___
-## Step 3: Enable Central Management
+## Step 4: Enable Central Management
 
 > :memo: **NOTE**
 >
@@ -103,7 +114,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; . 'C:\choco-setup\files\Enable
 ```
 
 ___
-## Step 4: Review Server Information
+## Step 5: Review Server Information
 
 ### Nexus Repository
 
@@ -160,7 +171,7 @@ To allow access to all services firewall ports have been opened on QDE as follow
 We recommend you use Google Chrome to interact with all Web interfaces for the different services installed. You will find Google Chrome pre-installed in the environment.
 
 ___
-## Step 5: Change the API Key (Optional, Recommended)
+## Step 6: Change the API Key (Optional, Recommended)
 
 You may wish to change the API key before you start using things.
 To do so, log in to Nexus using the information above, or your new credentials if you have already gone through the first run wizard.
@@ -188,7 +199,7 @@ choco apikey add --key="'$YourApiKey'" --source="'https://chocoserver:8443/repos
 ```
 
 ___
-## Step 6: Install and Configure Chocolatey On Clients
+## Step 7: Install and Configure Chocolatey On Clients
 
 
 This script, like all of the others here would need to be run in an administrative PowerShell context. However, this one is run from your client machines and not the QDE.
@@ -229,7 +240,7 @@ The ClientSetup.ps1 script will:
 * Configure Central Management check-in
 
 ___
-## Step 7: Turn On Package Internalization
+## Step 8: Turn On Package Internalization
 
 Chocolatey For Business includes the Package Internalizer feature, which takes a package from the Community Repository and rewrites the package to include all the binaries necessary to complete the installation of the application. You'll find in the C:\choco-setup\files directory a script named `Invoke-ChocolateyInternalizer.ps1` to help you with the process of internalizing additional packages into your environment.
 
@@ -244,7 +255,7 @@ Example Usage:
 > :memo: **NOTE**: Please run the above from an administrative PowerShell session.
 
 ___
-## Step 8: License the QDE VM
+## Step 9: License the QDE VM
 
 
 This VM is running an **UNACTIVATED** Server 2019 Standard Operating System. If you plan to use this virtual machine long-term, you _will_ need to apply a license to the VM. If you use a KMS server in your environment, and have it configured on clients via Group Policy, you likely have nothing to do here, but verify.
