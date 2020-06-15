@@ -18,7 +18,7 @@ Please see [[Install the Licensed Edition|Installation-Licensed]] for informatio
 
 * **NOTE:** We've identified an issue with Self-Service "Interactive" and UAC - we are working on a fix. Please see [#36](https://github.com/chocolatey/chocolatey-licensed-issues/issues/36) and subscribe for details. Until then, do not turn on the interactive feature of self-service or nothing will work.
 
-## 2.1.0 (unreleased)
+## 2.1.0 (June 15, 2020)
 ### BUG FIXES
  * Self-Service / Background Mode:
     * Fix - List/Search command fails to produce results when going through background service - see [licensed #141](https://github.com/chocolatey/chocolatey-licensed-issues/issues/141)

@@ -20,6 +20,7 @@ This covers the release notes for the Chocolatey Agent Service (`chocolatey-agen
 ### BUG FIXES
  * Fix - Monitoring chocolatey.config for changes could potentially lock the file from being written to by choco
  * Fix - Logging - the service stops responding to calls and stops logging after choco configuration file is edited
+ * Fix - CCM Reporting - Do not report unfound packages as outdated
 
 ### IMPROVEMENTS
  * Logging - Log to the root logs folder of Chocolatey Installation
