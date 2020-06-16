@@ -149,7 +149,8 @@ From the machine with internet access:
 1. C4BTRIAL: grab a copy of the two nupkgs from the email. If you don't have that email with the download links, request it from whoever provided you the trial license. Save those two packages to `c:\choco-setup\packages`.
 1. C4B / MSP / C4BTRIAL: Run this command `New-Item $env:ChocolateyInstall\license -ItemType Directory -Force` - this creates the license directory.
 1. C4B / MSP / C4BTRIAL: Copy the license file ("chocolatey.license.xml") into that folder that was just created. Run `Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" $env:ChocolateyInstall\license\chocolatey.license.xml -Force`.
-1. C4B / MSP / C4BTRIAL: Verify the license is recognized - run choco. You should see something like "Chocolatey v0.10.8 Business". You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and we can ignore that for now.
+1. C4B / MSP / C4BTRIAL: Verify the license is recognized - run `choco`. You should see something like "Chocolatey v0.10.8 Business". You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and we can ignore that for now.
+   > :warning: **WARNING**: It is normal to see an error at this point, the next steps which install the extension resolve this.
 1. C4B / MSP: Run `choco upgrade chocolatey.extension -y`. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and should clear up when this command completes.
 1. C4BTRIAL: Run `choco upgrade chocolatey.extension -y --pre --source c:\choco-setup\packages` (this is where you saved the nupkgs earlier).
 1. Run `choco` - you should no longer see the error about not having chocolatey.extension installed. If you do, please circle back and use copy/paste for instructions as you may have mistyped something.
