@@ -14,8 +14,11 @@ This covers the release notes for the Chocolatey Agent Service (`chocolatey-agen
 
 
 ## 0.10.0 (unreleased)
+> :memo: **NOTE**: Log locations have changed. Please see [[Log File for Chocolatey Agent|FeaturesAgentService#log-file-location-for-chocolatey-agent]] for more information.
+
 ### FEATURES
  * Execution for Central Management Deployments
+
 
 ### BUG FIXES
  * Fix - Monitoring chocolatey.config for changes could potentially lock the file from being written to by choco

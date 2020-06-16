@@ -43,6 +43,7 @@ The Chocolatey Agent can be independently configured to support any or all of th
     - [Command Customization Consideration](#command-customization-consideration)
     - [Interactive Self-Service Consideration](#interactive-self-service-consideration)
   - [Chocolatey Central Management Agent Setup](#chocolatey-central-management-agent-setup)
+  - [Log File Location For Chocolatey Agent](#log-file-location-for-chocolatey-agent)
 - [Chocolatey Agent Roadmap](#chocolatey-agent-roadmap)
 - [FAQ](#faq)
   - [How do I take advantage of Chocolatey Agent?](#how-do-i-take-advantage-of-chocolatey-agent)
@@ -418,6 +419,10 @@ ___
 
 Please see [[Central Management Client Setup|CentralManagementSetupClient]] for details.
 
+
+### Log File Location For Chocolatey Agent
+
+The Chocolatey Agent log file is located at `$env:ChocolateyInstall\logs\chocolatey-agent.log`. If you are on a version of Chocolatey Agent prior to v0.10.0, the log will be located at `$env:ChocolateyInstall\lib\chocolatey-agent\tools\service\logs\chocolatey-agent.log`.
 ___
 ## Chocolatey Agent Roadmap
 
