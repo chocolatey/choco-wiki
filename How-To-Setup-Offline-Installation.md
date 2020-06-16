@@ -2,13 +2,13 @@
 
 > :memo: **NOTE**
 >
-> As an alternative to this long-form guide, we also have a [[Quick-Start Implementation Guide|ChocolateyForBusinessQuickStartGuide]]. 
-> This is intended for customers who have recently purchased Chocolatey for Business (C4B), or are evaluating C4B as part of a proof-of-concept. 
+> As an alternative to this long-form guide, we also have a [[Quick-Start Implementation Guide|ChocolateyForBusinessQuickStartGuide]].
+> This is intended for customers who have recently purchased Chocolatey for Business (C4B), or are evaluating C4B as part of a proof-of-concept.
 > It illustrates only **one** method of setting up your Chocolatey environment, and is by **NO** means exhaustive.
-> Our goal is to get you up-and-running quickly, and testing out the feature set. 
+> Our goal is to get you up-and-running quickly, and testing out the feature set.
 > For a more complete reference of possible scenarios and solutions, please stick to this guide.
 >
-> Another thing we provide is a [[Quick Deployment Environment|QuickDeploymentEnvironment]] that has already taken care of everything here and also setting up the automation for package internalizer with Jenkins (covered at Automate Package Internalizer). 
+> Another thing we provide is a [[Quick Deployment Environment|QuickDeploymentEnvironment]] that has already taken care of everything here and also setting up the automation for package internalizer with Jenkins (covered at Automate Package Internalizer).
 > It, like the quick start implementation, provides a specific solution so you should read over the summary before you decide that is the right implementation for your needs (in about 80%+ of organizational use cases it is the correct solution).
 
 <!-- TOC -->
@@ -41,6 +41,7 @@
     - [Chocolatey Integration Implementation with Configuration Managers](#chocolatey-integration-implementation-with-configuration-managers)
 - [Exercise 7: Subscribe To Release Announcements](#exercise-7-subscribe-to-release-announcements)
 - [Conclusion](#conclusion)
+- [More Architecture Setup](#more-architecture-setup)
 - [Next Steps](#next-steps)
 
 <!-- /TOC -->
@@ -75,7 +76,7 @@ There may be some exercises in here that won't apply:
 * Internal - Areas your organization manages - this could be on premise or in a private cloud you manage
 * FOSS - Chocolatey open source edition
 * C4B - Chocolatey for Business
-* TRIAL - Chocolatey for Business Trial
+* C4BTRIAL - Chocolatey for Business Trial
 * ARCHITECT - Chocolatey Architect Edition
 * MSP - Chocolatey for Managed Service Providers
 * NONADMIN - steps for folks who are not administrators on their machines to perform
@@ -144,22 +145,23 @@ From the machine with internet access:
 1. Type `cd packages` and press enter.
 1. NONADMIN (**only**): We'll need to redirect Chocolatey not to install to the default location. Run `$env:ChocolateyInstall="$env:ProgramData\chocoportable"` and press enter.
 1. Now run `Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))` (this will get Chocolatey installed and it is what you see at https://chocolatey.org/install). It also makes choco available in that current shell. If you run into proxy issues here, please see [[installing Chocolatey behind a proxy server|Proxy-Settings-for-Chocolatey]].
-1. C4B / MSP / TRIAL: Obtain the `chocolatey.license.xml` from the email sent from the Chocolatey team and save the license file to `c:\choco-setup\files` so we can use it here and on the offline machines.
-1. TRIAL: grab a copy of the two nupkgs from the email. If you don't have that email with the download links, request it from whoever provided you the trial license. Save those two packages to `c:\choco-setup\packages`.
-1. C4B / MSP / TRIAL: Run this command `New-Item $env:ChocolateyInstall\license -ItemType Directory -Force` - this creates the license directory.
-1. C4B / MSP / TRIAL: Copy the license file ("chocolatey.license.xml") into that folder that was just created. Run `Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" $env:ChocolateyInstall\license\chocolatey.license.xml -Force`.
-1. C4B / MSP / TRIAL: Verify the license is recognized - run choco. You should see something like "Chocolatey v0.10.8 Business". You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and we can ignore that for now.
+1. C4B / MSP / C4BTRIAL: Obtain the `chocolatey.license.xml` from the email sent from the Chocolatey team and save the license file to `c:\choco-setup\files` so we can use it here and on the offline machines.
+1. C4BTRIAL: grab a copy of the two nupkgs from the email. If you don't have that email with the download links, request it from whoever provided you the trial license. Save those two packages to `c:\choco-setup\packages`.
+1. C4B / MSP / C4BTRIAL: Run this command `New-Item $env:ChocolateyInstall\license -ItemType Directory -Force` - this creates the license directory.
+1. C4B / MSP / C4BTRIAL: Copy the license file ("chocolatey.license.xml") into that folder that was just created. Run `Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" $env:ChocolateyInstall\license\chocolatey.license.xml -Force`.
+1. C4B / MSP / C4BTRIAL: Verify the license is recognized - run choco. You should see something like "Chocolatey v0.10.8 Business". You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and we can ignore that for now.
 1. C4B / MSP: Run `choco upgrade chocolatey.extension -y`. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and should clear up when this command completes.
-1. TRIAL: Run `choco upgrade chocolatey.extension -y --pre --source c:\choco-setup\packages` (this is where you saved the nupkgs earlier).
+1. C4BTRIAL: Run `choco upgrade chocolatey.extension -y --pre --source c:\choco-setup\packages` (this is where you saved the nupkgs earlier).
+1. Run `choco` - you should no longer see the error about not having chocolatey.extension installed. If you do, please circle back and use copy/paste for instructions as you may have mistyped something.
 1. Run `choco config set cacheLocation $env:ALLUSERSPROFILE\choco-cache`. This moves the TEMP location in scripts to use this and makes clean up more deterministic.
 1. Run `choco config set commandExecutionTimeoutSeconds 14400`. This increases the timeout more than the default 45 minutes, you may wish to set it higher.
-1. C4B / MSP / TRIAL: Run `choco feature enable --name="'internalizeAppendUseOriginalLocation'"`. This sets Package Internalizer to append `-UseOriginalLocation` to the end of `Install-ChocolateyPackage` to make it behave more like `Install-ChocolateyInstallPackage`. Since the files are local, we won't need it copying them to temp prior to running it.
-1. C4B / MSP / TRIAL: Run `choco feature enable --name="'reduceInstalledPackageSpaceUsage'"` to ensure Package Reducer is turned on.
+1. C4B / MSP / C4BTRIAL: Run `choco feature enable --name="'internalizeAppendUseOriginalLocation'"`. This sets Package Internalizer to append `-UseOriginalLocation` to the end of `Install-ChocolateyPackage` to make it behave more like `Install-ChocolateyInstallPackage`. Since the files are local, we won't need it copying them to temp prior to running it.
+1. C4B / MSP / C4BTRIAL: Run `choco feature enable --name="'reduceInstalledPackageSpaceUsage'"` to ensure Package Reducer is turned on.
 1. Set proxy configuration, virus scan configuration, or other configuration as described at [[Chocolatey configuration|ChocolateyConfiguration]].
 1. C4B: Are we installing the [optional Chocolatey Agent Service as well](https://chocolatey.org/docs/features-agent-service#setup)? If so, run `choco upgrade chocolatey-agent -y --pre` and then follow the link in the first sentence for other settings you will need to configure.
-1. TRIAL: Are we installing the [optional Chocolatey Agent Service as well](https://chocolatey.org/docs/features-agent-service#setup)? If so, run `choco upgrade chocolatey-agent -y --pre --source c:\choco-setup\packages` (this is where you saved the nupkgs earlier). Then follow the link in the first sentence for other settings you will need to configure.
+1. C4BTRIAL: Are we installing the [optional Chocolatey Agent Service as well](https://chocolatey.org/docs/features-agent-service#setup)? If so, run `choco upgrade chocolatey-agent -y --pre --source c:\choco-setup\packages` (this is where you saved the nupkgs earlier). Then follow the link in the first sentence for other settings you will need to configure.
 1. Download packages (choose one):
-    * C4B / MSP / TRIAL: - Run the following: `choco download chocolatey chocolatey.server dotnet4.6.1 chocolateygui --internalize`. This is going to take quite awhile.
+    * C4B / MSP / C4BTRIAL: - Run the following: `choco download chocolatey chocolatey.server dotnet4.6.1 chocolateygui --internalize`. This is going to take quite awhile.
     * FOSS only - download the following packages:
       * [Chocolatey](https://chocolatey.org/api/v2/package/chocolatey)
       * [Chocolatey GUI](https://chocolatey.org/api/v2/package/chocolateygui)
@@ -169,15 +171,15 @@ From the machine with internet access:
         * [dotnet4.6.1](https://chocolatey.org/api/v2/package/DotNet4.6.1) - [[internalize manually|How-To-Recompile-Packages]]
         * [KB2919355](https://chocolatey.org/api/v2/package/KB2919355) - [[internalize manually|How-To-Recompile-Packages]]
         * [KB2919442](https://chocolatey.org/api/v2/package/KB2919442) - [[internalize manually|How-To-Recompile-Packages]]
-1. C4B - Run the following additionally: `choco download chocolatey.extension chocolatey-agent --internalize`. TRIAL - you should already have placed these nupkgs in the folder earlier.
-1. MSP - Run the following additionally: `choco download chocolatey.extension --internalize`. TRIAL - you should already have placed these nupkgs in the folder earlier.
+1. C4B - Run the following additionally: `choco download chocolatey.extension chocolatey-agent --internalize`. C4BTRIAL - you should already have placed these nupkgs in the folder earlier.
+1. MSP - Run the following additionally: `choco download chocolatey.extension --internalize`. C4BTRIAL - you should already have placed these nupkgs in the folder earlier.
 1. Now we should have several packages in `c:\choco-setup\packages`. If not, type `start .` and go copy the files here to that location.
 1. Obtain the PowerShell script from https://chocolatey.org/install#completely-offline-install and copy it to `c:\choco-setup\files` as "ChocolateyLocalInstall.ps1". We will need this to install Chocolatey on the airgapped box.
 1. Open `c:\choco-setup\files\ChocolateyLocalInstall.ps1` in an editor like Notepad++ or Visual Studio Code (do not use Notepad.exe!!).
 1. Change this line `$localChocolateyPackageFilePath = 'c:\packages\chocolatey.0.10.0.nupkg'` to `$localChocolateyPackageFilePath = 'c:\choco-setup\packages\chocolatey.0.10.8.nupkg'` (adjust for the actual path to the Chocolatey package).
 1. Air Gapped Networks / Machines without Network Access: Get those files over to that air gapped network (USB key and sneakernet if you need to).
 
-Here is a handy script you can use for MSP / C4B / TRIAL (TRIAL you have some adjustments noted). If you are an open source user (FOSS), you might as well go back up to the instructions, there isn't much you are going to be able to take advantage of here. Let's be honest, you will have more work on your hands overall, but that's kind of the spirit of open source (or free versus a commercial solution).
+Here is a handy script you can use for MSP / C4B / C4BTRIAL (C4BTRIAL you have some adjustments noted). If you are an open source user (FOSS), you might as well go back up to the instructions, there isn't much you are going to be able to take advantage of here. Let's be honest, you will have more work on your hands overall, but that's kind of the spirit of open source (or free versus a commercial solution).
 
 ~~~powershell
 # Ensure we can run everything
@@ -206,8 +208,8 @@ Copy-Item $env:SystemDrive\choco-setup\files\chocolatey.license.xml $env:Chocola
 # Install Chocolatey Licensed Extension
 choco upgrade chocolatey.extension -y --pre
 Write-Host "If you see what looks like an error about a missing extension, that is what this step does so it will clear up on next command."
-# TRIAL: Place nupkgs into the "$env:SystemDrive\choco-setup\packages" directory (add a script here to do so)
-# TRIAL: Run this instead: choco upgrade chocolatey.extension --pre --source c:\choco-setup\packages
+# C4BTRIAL: Place nupkgs into the "$env:SystemDrive\choco-setup\packages" directory (add a script here to do so)
+# C4BTRIAL: Run this instead: choco upgrade chocolatey.extension --pre --source c:\choco-setup\packages
 
 # Set Configuration
 choco config set cacheLocation $env:ALLUSERSPROFILE\choco-cache
@@ -232,7 +234,7 @@ choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
 
 # Download and internalize packages.
 choco download chocolatey chocolatey.server dotnet4.6.1 chocolateygui --internalize --output-directory="$env:SystemDrive\choco-setup\packages" --source="'https://chocolatey.org/api/v2/'"
-# TRIAL: skip this next step
+# C4BTRIAL: skip this next step
 # C4B - use this
 choco download chocolatey.extension chocolatey-agent --internalize --output-directory="$env:SystemDrive\choco-setup\packages" --source="'https://licensedpackages.chocolatey.org/api/v2/'" # will fail on trial
 # MSP - use this
@@ -257,16 +259,16 @@ Now that we've finished the first exercise and have those files over on our offl
 1. Type `& $env:SystemDrive\choco-setup\files\ChocolateyLocalInstall.ps1` and press enter. This should install Chocolatey if you have everything set up correctly from the first set of instructions.
 1. Run `choco source remove --name="'chocolatey'"`. This removes the default Chocolatey source.
 1. Run `choco source add --name="'setup'" --source="'$env:SystemDrive\choco-setup\packages'"`
-1. C4B / MSP / TRIAL: Run this command `New-Item $env:ChocolateyInstall\license -ItemType Directory -Force` - this creates the license directory.
-1. C4B / MSP / TRIAL: Copy the license file ("chocolatey.license.xml") into that folder that was just created. Run `Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" $env:ChocolateyInstall\license\chocolatey.license.xml -Force`.
-1. C4B / MSP / TRIAL: Run `choco source disable --name="'chocolatey.licensed'"`. When the license is placed, Chocolatey automatically adds the license and we don't want to use that source. Note we can't remove the license because the existence of the license file will have Chocolatey adding it right back - so we just disable it. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and we are going to take care of that in the next step.
-1. C4B / MSP / TRIAL: Run `choco upgrade chocolatey.extension -y --pre`. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and should clear up when this command completes.
+1. C4B / MSP / C4BTRIAL: Run this command `New-Item $env:ChocolateyInstall\license -ItemType Directory -Force` - this creates the license directory.
+1. C4B / MSP / C4BTRIAL: Copy the license file ("chocolatey.license.xml") into that folder that was just created. Run `Copy-Item "$env:SystemDrive\choco-setup\files\chocolatey.license.xml" $env:ChocolateyInstall\license\chocolatey.license.xml -Force`.
+1. C4B / MSP / C4BTRIAL: Run `choco source disable --name="'chocolatey.licensed'"`. When the license is placed, Chocolatey automatically adds the license and we don't want to use that source. Note we can't remove the license because the existence of the license file will have Chocolatey adding it right back - so we just disable it. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and we are going to take care of that in the next step.
+1. C4B / MSP / C4BTRIAL: Run `choco upgrade chocolatey.extension -y --pre`. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and should clear up when this command completes.
 1. Run `choco config set cacheLocation $env:ALLUSERSPROFILE\choco-cache`. This moves the TEMP location in scripts to use this and makes clean up more deterministic.
 1. Run `choco config set commandExecutionTimeoutSeconds 14400`. This increases the timeout more than the default 45 minutes, you may wish to set it higher.
-1. C4B / MSP / TRIAL: Run `choco feature enable --name="'internalizeAppendUseOriginalLocation'"`. This sets Package Internalizer to append `-UseOriginalLocation` to the end of `Install-ChocolateyPackage` to make it behave more like `Install-ChocolateyInstallPackage`. Since the files are local, we won't need it copying them to temp prior to running it.
-1. C4B / MSP / TRIAL: Run `choco feature enable --name="'reduceInstalledPackageSpaceUsage'"` to ensure Package Reducer is turned on.
+1. C4B / MSP / C4BTRIAL: Run `choco feature enable --name="'internalizeAppendUseOriginalLocation'"`. This sets Package Internalizer to append `-UseOriginalLocation` to the end of `Install-ChocolateyPackage` to make it behave more like `Install-ChocolateyInstallPackage`. Since the files are local, we won't need it copying them to temp prior to running it.
+1. C4B / MSP / C4BTRIAL: Run `choco feature enable --name="'reduceInstalledPackageSpaceUsage'"` to ensure Package Reducer is turned on.
 1. Set proxy configuration, virus scan configuration, or other configuration as described at [[Chocolatey configuration|ChocolateyConfiguration]].
-1. C4B / TRIAL: Are we installing the [optional Chocolatey Agent Service as well](https://chocolatey.org/docs/features-agent-service#setup)? If so, run `choco upgrade chocolatey-agent -y --pre` and then follow the link for other settings you will need to configure.
+1. C4B / C4BTRIAL: Are we installing the [optional Chocolatey Agent Service as well](https://chocolatey.org/docs/features-agent-service#setup)? If so, run `choco upgrade chocolatey-agent -y --pre` and then follow the link for other settings you will need to configure.
 
 ~~~powershell
 # Ensure we can run everything
@@ -427,7 +429,7 @@ Copy-Item "$env:SystemDrive\choco-setup\packages\*" -Destination "$env:Chocolate
 For other things, just loop over the nupkg files and call `choco push`.
 
 ## Exercise 4: Create a Package For the License
-**NOTE**: This is for C4B / MSP / TRIAL ONLY.
+**NOTE**: This is for C4B / MSP / C4BTRIAL ONLY.
 To make things easier for deployments, let's create a package for the license file. We are going to grab the currently installed license to do this, but you could use the one in `c:\choco-setup\files`.
 
 Save this script and run it on a machine where you've installed the license.
@@ -542,15 +544,15 @@ Starting with Chocolatey.Server v0.2.3, you get a similar experience where you j
 1. If you need FIPS compliance, run `choco feature enable --name="'useFipsCompliantChecksums'"`.
 1. Run `choco source remove --name="'chocolatey'"` to remove the default community package repository.
 1. Run `choco source add --name="'internal_server'" --source="'$baseUrl/chocolatey'" --priority="'1'" <other options>`. Other options noted at [[source command|CommandsSource]].
-1. C4B / MSP / TRIAL: Install the license package we've pushed - `choco upgrade chocolatey-license -y`. This may be a place you see an error if things are not configured correctly. If you run into an error, be sure that you have the source added properly with the right permissions (not api key - that is for pushes only).
-1. C4B / MSP / TRIAL: Run `choco source disable --name="'chocolatey.licensed'"`. When the license is placed, Chocolatey automatically adds the license and we don't want to use that source. Note we can't remove the license because the existence of the license file will have Chocolatey adding it right back - so we just disable it. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and we are going to take care of that in the next step.
-1. C4B / MSP / TRIAL: Run `choco upgrade chocolatey.extension -y --pre`. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and should clear up when this command completes.
+1. C4B / MSP / C4BTRIAL: Install the license package we've pushed - `choco upgrade chocolatey-license -y`. This may be a place you see an error if things are not configured correctly. If you run into an error, be sure that you have the source added properly with the right permissions (not api key - that is for pushes only).
+1. C4B / MSP / C4BTRIAL: Run `choco source disable --name="'chocolatey.licensed'"`. When the license is placed, Chocolatey automatically adds the license and we don't want to use that source. Note we can't remove the license because the existence of the license file will have Chocolatey adding it right back - so we just disable it. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and we are going to take care of that in the next step.
+1. C4B / MSP / C4BTRIAL: Run `choco upgrade chocolatey.extension -y --pre`. You will see what looks like an error message about not having chocolatey.extension installed. That's a warning and should clear up when this command completes.
 1. Run `choco config set cacheLocation $env:ALLUSERSPROFILE\choco-cache`. This moves the TEMP location in scripts to use this and makes clean up more deterministic.
 1. Run `choco config set commandExecutionTimeoutSeconds 14400`. This increases the timeout more than the default 45 minutes, you may wish to set it higher.
-1. C4B / MSP / TRIAL: Run `choco feature enable --name="'internalizeAppendUseOriginalLocation'"`. This sets Package Internalizer to append `-UseOriginalLocation` to the end of `Install-ChocolateyPackage` to make it behave more like `Install-ChocolateyInstallPackage`. Since the files are local, we won't need it copying them to temp prior to running it.
-1. C4B / MSP / TRIAL: Run `choco feature enable --name="'reduceInstalledPackageSpaceUsage'"` to ensure Package Reducer is turned on.
+1. C4B / MSP / C4BTRIAL: Run `choco feature enable --name="'internalizeAppendUseOriginalLocation'"`. This sets Package Internalizer to append `-UseOriginalLocation` to the end of `Install-ChocolateyPackage` to make it behave more like `Install-ChocolateyInstallPackage`. Since the files are local, we won't need it copying them to temp prior to running it.
+1. C4B / MSP / C4BTRIAL: Run `choco feature enable --name="'reduceInstalledPackageSpaceUsage'"` to ensure Package Reducer is turned on.
 1. Set proxy configuration, virus scan configuration, or other configuration as described at [[Chocolatey configuration|ChocolateyConfiguration]].
-1. C4B / MSP / TRIAL: Are we installing the [optional Chocolatey Agent Service as well](https://chocolatey.org/docs/features-agent-service#setup)? If so, run `choco upgrade chocolatey-agent -y --pre` and then follow the link for other settings you will need to configure.
+1. C4B / MSP / C4BTRIAL: Are we installing the [optional Chocolatey Agent Service as well](https://chocolatey.org/docs/features-agent-service#setup)? If so, run `choco upgrade chocolatey-agent -y --pre` and then follow the link for other settings you will need to configure.
 
 ~~~powershell
 # This is a base url and should not include the "/chocolatey" (for Chocolatey.Server) or any url path to a NuGet/Chocolatey Packages API
@@ -687,6 +689,12 @@ You can sign up for email delivery of new release announcements at [chocolatey-a
 ## Conclusion
 If you've made it this far, you are ready to be quite successful with Chocolatey and Windows automation in your organization. If you are using open source Chocolatey, from time to time you might check in to see what we've been adding to the [commercial options](https://chocolatey.org/compare#compare). We are building a complete software management solution with Chocolatey for Business, above and beyond the package management that Chocolatey open source does.
 
+## More Architecture Setup
+* [[Setup Central Management|CentralManagementSetup]]
+* [[Automate Internalization of Community Packages|FeaturesAutomaticallyRecompilePackages]] - allows you to have same near hands off approach to package/software updates you might have seen before if you were using community repository directly.
+* [[Quick Deployment Environment|QuickDeploymentEnvironment]]
+
+
 ## Next Steps
 Now it's time to take the next steps and learn about Chocolatey and packaging itself:
 
@@ -694,4 +702,3 @@ Now it's time to take the next steps and learn about Chocolatey and packaging it
 * [Learn Basic and Advanced Concepts For Software Management with Chocolatey](https://github.com/ferventcoder/chocolatey-workshop)
 * [Chocolatey Documentation](https://chocolatey.org/docs)
 * [Compare Features In Different Editions](https://chocolatey.org/compare#compare)
-* [[Automate Internalization of Community Packages|FeaturesAutomaticallyRecompilePackages]] - allows you to have same near hands off approach to package/software updates you might have seen before if you were using community repository directly.
