@@ -286,18 +286,22 @@ ERR_SSL_PROTOCOL_ERROR
 This is due to the fact that Nexus has enforced an HSTS policy on the browser, blocking access to unsecured `http:` addresses. This will be fixed in future versions of QDE. In the interim, you can bypass this limitation with the following steps:
 
 1. Add the following line to the file `C:\ProgramData\sonatype-work\nexus3\etc\nexus.properties`:
+
 ```
 jetty.https.stsMaxAge=-1
 ```
+
 2. Close all instances and tabs of Chrome. Open Chrome again, so that only the one tab is open.
 3. Type `chrome://net-internals/#hsts`  into the address bar to access the network internals page.
 4. In the `Delete domain security policies` section near the bottom of the page, type `CHOCOSERVER` (or the hostname if you changed it) and press the `Delete` button.
 5. In the `Query HSTS/PKP domain` field, type `CHOCOSERVER` (or the hostname if you changed it) , and click the `Query` button to confirm that the output is `Not found` (this means the HSTS settings have been removed).
 6. Close all Chrome browser tabs and windows.
 7. Open up an Administrative PowerShell window, and use the following command to restart the Nexus service:
+
 ```powershell
 Restart-Service nexus
 ```
+
 After the Nexus service has completed restarting, you should now be able to browse to the Jenkins website at `http://chocoserver:8080`.
 
 ### "Server Error" warning when resetting "admin" credential in Nexus
