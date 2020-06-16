@@ -40,6 +40,7 @@ There are some well-known things you may run into when you are using Chocolatey.
   - [Package not installed. The package was not found with the source(s) listed.](#package-not-installed-the-package-was-not-found-with-the-sources-listed)
   - [Access to the path is denied.](#access-to-the-path-is-denied)
   - [A corrupt registry file exists](#a-corrupt-registry-file-exists)
+  - [Powershell output seems to randomly stop](#powershell-output-stops)
 
 <!-- /TOC -->
 
@@ -494,3 +495,14 @@ A corrupt .registry file exists at C:\ProgramData\chocolatey\.chocolatey\$applic
 
     }#foreach
 ```
+
+<a id="markdown-powershell-output-stops" name="powershell-output-stops"></a>
+### Powershell Output Stops
+
+By default powershell has "QuickEdit" mode and "Insert" mode enabled, which leads to the following behavior: if one clicks into a running powershell process, it will halt output until the user presses "Enter" again.
+
+![Screenshot](https://i.stack.imgur.com/k8EVM.jpg)
+
+To disable these options, right-click on the PowerShell-Logo in the top-left of your terminal window, then select 'Properties'.
+
+Source: https://serverfault.com/questions/204150/sometimes-powershell-stops-sending-output-until-i-press-enter-why
