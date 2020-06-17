@@ -93,28 +93,28 @@ As with configuration managers, this is out-of-scope for this document. Generall
 
 1. From an Administrator PowerShell Window, run the following command to install Chocolatey:
 
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-```
+    ```powershell
+    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    ```
 
 1. Download the `chocolatey.license.xml.txt` file that was attached your trial e-mail. Also, download the `chocolatey-c4b-quickstart.nupkg` file from the link in that same email. Save both the files to the administrator workstation, and make note of the **full file path** for the next step.
 1. From an Administrator PowerShell Window, browse to the folder where you copied the above two files. Run the following command to install the `chocolatey-c4b-quickstart` package, making sure to pass the **full file path** to your license file:
 
-```powershell
-choco install chocolatey-c4b-quickstart --source . -y --params "'/LicenseFile:<FULL_PATH_TO_LICENSE_FILE>'"
-```
+    ```powershell
+    choco install chocolatey-c4b-quickstart --source . -y --params "'/LicenseFile:<FULL_PATH_TO_LICENSE_FILE>'"
+    ```
 
-<!--remove {.list-style-type-disc} remove-->
-> :memo: **NOTE**: We have built this package to SIMPLIFY the initial setup greatly; it will perform the following:
-> * Download appropriate ".nupkg" files needed to setup Chocolatey.
-> * Install the license file in the correct directory
-> * Download a script for Offline install of Chocolatey on endpoints
+    <!--remove {.list-style-type-disc} remove-->
+    > :memo: **NOTE**: We have built this package to SIMPLIFY the initial setup greatly; it will perform the following:
+    > * Download appropriate ".nupkg" files needed to setup Chocolatey.
+    > * Install the license file in the correct directory
+    > * Download a script for Offline install of Chocolatey on endpoints
 
 1. From an Administrator PowerShell Window, run the following command to install the `chocolatey.extension` package:
 
-```powershell
-choco install chocolatey.extension -y --source="'C:\choco-setup\packages'"
-```
+    ```powershell
+    choco install chocolatey.extension -y --source="'C:\choco-setup\packages'"
+    ```
 
 ### Repository Server Setup
 
@@ -123,69 +123,69 @@ As recommended, we will assume you have access to the internet from this server.
 1. Copy the entire `C:\choco-setup` directory from the Administrator workstation to the same location on your repository server.
 1. From an Administrator PowerShell Window, run the following command to install Chocolatey:
 
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-```
+    ```powershell
+    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    ```
 
 1. From an Administrator PowerShell Window, run the following command to copy the license into the correct directory:
 
-```powershell
-$null = New-Item $env:ChocolateyInstall\license -ItemType Directory -Force
-Get-ChildItem -Path "C:\choco-setup" -Recurse | Where-Object { $_.Name -match "'chocolatey.license'" } | Copy-Item "'$($_.Fullname)'" "'$env:ChocolateyInstall\chocolatey.license.xml'" -Force
-```
+    ```powershell
+    $null = New-Item $env:ChocolateyInstall\license -ItemType Directory -Force
+    Get-ChildItem -Path "C:\choco-setup" -Recurse | Where-Object { $_.Name -match "'chocolatey.license'" } | Copy-Item "'$($_.Fullname)'" "'$env:ChocolateyInstall\chocolatey.license.xml'" -Force
+    ```
 
 1. From an Administrator PowerShell Window, run the following command to install the `chocolatey.extension` package:
 
-```powershell
-choco install chocolatey.extension -y --source="'C:\choco-setup\packages'"
-```
+    ```powershell
+    choco install chocolatey.extension -y --source="'C:\choco-setup\packages'"
+    ```
 
 1. From an Administrator PowerShell Window, run the following command to install the `nexus-repository` package:
 
-```powershell
-choco install nexus-repository -y --no-progress
-```
+    ```powershell
+    choco install nexus-repository -y --no-progress
+    ```
 
-> :warning: **WARNING**
->
-> If you have already installed your Nexus repository, then the above step is not required. 
-> This guide assumes you are starting form scratch. It may be easier, if you are following this verbatim and don't have anything in your repositoryyet, to simply run `choco uninstall nexus-repository -y` and then `choco install nexus-repository -y`. 
-> As the next step requires a freshly-installed Nexus repository, with admin passwords not reset, this would be the most compatible approach.
+    > :warning: **WARNING**
+    >
+    > If you have already installed your Nexus repository, then the above step is not required. 
+    > This guide assumes you are starting form scratch. It may be easier, if you are following this verbatim and don't have anything in your repositoryyet, to simply run `choco uninstall nexus-repository -y` and then `choco install nexus-repository -y`. 
+    > As the next step requires a freshly-installed Nexus repository, with admin passwords not reset, this would be the most compatible approach.
 
 1.  Download the `chocolatey-nexus-setup` package from the link provided in your trial email, and save it to the `\choco-setup\packages` directory on the Nexus server. From an Administrator PowerShell console, run:
 
-```powershell
-choco install chocolatey-nexus-setup --source="'C:\choco-setup\packages'"
-```
+    ```powershell
+    choco install chocolatey-nexus-setup --source="'C:\choco-setup\packages'"
+    ```
 
-<!--remove {.list-style-type-disc} remove-->
->This package will do the following:
->- Remove unwanted demo repositories
->- Add a "choco-hosted" Nuget repository
->- Add a "choco-install" raw repository
->- Add an "Install.ps1" script to the "choco-install" raw repository
->- Enable the Nuget API key realm
->- Output the API key for the Nexus server (copy this key for a later step)
+    <!--remove {.list-style-type-disc} remove-->
+    >This package will do the following:
+    >- Remove unwanted demo repositories
+    >- Add a "choco-hosted" Nuget repository
+    >- Add a "choco-install" raw repository
+    >- Add an "Install.ps1" script to the "choco-install" raw repository
+    >- Enable the Nuget API key realm
+    >- Output the API key for the Nexus server (copy this key for a later step)
 
 1. Versions of Nexus newer than 3.21 have disabled the ability to run automated scripting by default. However, we'll need this to be enabled in order to automate our repository cleanup and creation.
 From an Administrator PowerShell Window, run the following command to install the enable Nexus scripting, and to restart the Nexus service for the changes to take effect:
 
-```powershell
-Add-Content C:\ProgramData\sonatype-work\nexus3\etc\nexus.properties "nexus.scripts.allowCreation=true"
-Restart-Service -Name nexus
-```
+    ```powershell
+    Add-Content C:\ProgramData\sonatype-work\nexus3\etc\nexus.properties "nexus.scripts.allowCreation=true"
+    Restart-Service -Name nexus
+    ```
 
 1. You will require Google Chrome in order to login to the Nexus web UI (site can appear unresponsive in IE). From an Administrator PowerShell console, run:
 
-```powershell
-choco install googlechrome -y
-```
+    ```powershell
+    choco install googlechrome -y
+    ```
 
 1. The administrative password for the Nexus web UI can be found in the following file:
 
-```cmd
-C:\ProgramData\sonatype-work\nexus3\admin.password
-```
+    ```cmd
+    C:\ProgramData\sonatype-work\nexus3\admin.password
+    ```
 
 Copy this password out of the above file, and use it for the next step.
 
@@ -197,50 +197,50 @@ Copy this password out of the above file, and use it for the next step.
 Run this script in a PowerShell Administrator console, to create the license package.
 1. Ensure the chocolatey nupkg itself is in the C:\choco-setup\packages directory. The following code accomplishes this:
 
-```powershell
-Copy-Item "'$env:ChocolateyInstall\lib\chocolatey\chocolatey.nupkg'" C:\choco-setup\packages
-```
+    ```powershell
+    Copy-Item "'$env:ChocolateyInstall\lib\chocolatey\chocolatey.nupkg'" C:\choco-setup\packages
+    ```
 
 1. Upload all ".nupkg" files from `C:\choco-setup\packages` to Nexus repository using the fully-qualified domain name (FQDN) and apikey of the Nexus server:
 
-```powershell
-Get-ChildItem "'C:\choco-setup\packages\*.nupkg'" |
-Foreach-Object {
-    choco push $_.FullName --source="'http://<_FQDN_OF_REPOSITORY_>:8081/repository/choco-hosted/'" -k="'<_API_KEY_>'" --force
-}
-```
+    ```powershell
+    Get-ChildItem "'C:\choco-setup\packages\*.nupkg'" |
+    Foreach-Object {
+        choco push $_.FullName --source="'http://<_FQDN_OF_REPOSITORY_>:8081/repository/choco-hosted/'" -k="'<_API_KEY_>'" --force
+    }
+    ```
 
 ### Client Nodes
 
 1. Install Chocolatey using the offline `Install.ps1` script from offline repository:
 
- ```powershell
- Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('http://<_FQDN_OF_REPOSITORY_>:8081/repository/choco-install/Install.ps1'))
- ```
+    ```powershell
+    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('http://<_FQDN_OF_REPOSITORY_>:8081/repository/choco-install/Install.ps1'))
+    ```
 
 1. Add the Nexus repository as a Chocolatey source:
 
-```powershell
-choco source add --name="'choco-hosted'" --source="'http://<_FQDN_OF_REPOSITORY_>:8081/repository/choco-hosted/'"
-```
+    ```powershell
+    choco source add --name="'choco-hosted'" --source="'http://<_FQDN_OF_REPOSITORY_>:8081/repository/choco-hosted/'"
+    ```
 
 1. Remove Chocolatey Community Repository as a souce:
 
-```powershell
-choco source remove --name="'chocolatey'"
-```
+    ```powershell
+    choco source remove --name="'chocolatey'"
+    ```
 
 1. Install the `chocolatey-license` package:
 
-```powershell
-choco install chocolatey-license -y
-```
+    ```powershell
+    choco install chocolatey-license -y
+    ```
 
 1. Install the `chocolatey.extension` package:
 
-```powershell
-choco install chocolatey.extension -y
-```
+    ```powershell
+    choco install chocolatey.extension -y
+    ```
 
 ### Central Management Server
 
