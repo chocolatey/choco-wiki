@@ -4,10 +4,10 @@ Chocolatey Central Management (CCM) provides you insights across your desktop an
 
 Once installed and configured, you can use CCM to:
 
-* bring reporting to the Organizational level
-* quickly see all software across the Organization and see what needs attention immediately
-* create reports for tracking and auditing purposes
-* manage endpoints with deployments through groups and collections
+* Bring reporting to the organizational level
+* Quickly see all software across the organization and see what needs attention immediately
+* Create reports for tracking and auditing purposes
+* Manage endpoints with deployments through groups and collections
 
 ![Central Management Logo](images/features/ccm/central-management.png)
 
@@ -30,6 +30,9 @@ ___
   - [Will this become available for lower editions of Chocolatey?](#will-this-become-available-for-lower-editions-of-chocolatey)
   - [What's the minimum version of the Chocolatey packages I need to use CCM?](#whats-the-minimum-version-of-the-chocolatey-packages-i-need-to-use-ccm)
   - [Where can I find all the log files for Chocolatey Central Management](#where-can-i-find-all-the-log-files-for-chocolatey-central-management)
+  - [Where can I find the changelog or release notes for Chocolatey Central Management?](#where-can-i-find-the-changelog-or-release-notes-for-chocolatey-central-management)
+  - [How do I get support?](#how-do-i-get-support)
+  - [How do I set up Chocolatey Central Management?](#how-do-i-set-up-chocolatey-central-management)
 
 <!-- /TOC -->
 
@@ -130,3 +133,15 @@ Chocolatey Central Management is made up of a number of components, so there wil
 * The Chocolatey Central Management Website log file located at `c:\tools\chocolatey-management-web\App_Data\Logs\ccm-website.log`. If you are on a version of CCM prior to 0.2.0, the log will be located at `c:\tools\chocolatey-management-web\App_Data\Logs\Logs.txt`.
 * The Chocolatey Central Management service log file is located at `$env:ChocolateyInstall\logs\ccm-service.log`. If you are on a version of CCM prior to 0.2.0, the log will be located at `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service\logs\chocolatey.service.host.log`.
 * The Chocolatey Agent log file is located at `$env:ChocolateyInstall\logs\chocolatey-agent.log`. If you are on a version of Chocolatey Agent prior to 0.10.0, the log will be located at `$env:ChocolateyInstall\lib\chocolatey-agent\tools\service\logs\chocolatey-agent.log`.
+
+### Where can I find the changelog or release notes for Chocolatey Central Management?
+
+Please see [[Release Notes Central Management|ReleaseNotesCentralManagement]].
+
+### How do I get support?
+
+Please run `choco support` from a licensed edition and follow the instructions.
+
+### How do I set up Chocolatey Central Management?
+
+You can start from a pre-configured environment known as [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]], or see [Setup / Installation](#setup--installation).

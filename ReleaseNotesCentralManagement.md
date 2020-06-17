@@ -12,8 +12,9 @@ This covers the release notes for the Chocolatey Central Management (`chocolatey
 * Please see https://github.com/chocolatey/chocolatey-licensed-issues/labels/CentralManagement
 * Some issues may be held internally, please follow your support routes to learn more.
 
+
 ## 0.2.0 (unreleased)
-We are excited to bring about managing remote machines with [Central Management Deployments](https://chocolatey.org/blog/announcing-deployments) coming in this release! There are quite a few things we've brought into the initial release and we think you'll agree that it is a powerful, yet easy to use interface. Read [the announcement.](](https://chocolatey.org/blog/announcing-deployments))
+Deployments Release - we are excited to bring about managing remote machines with [Central Management Deployments](https://chocolatey.org/blog/announcing-deployments) coming in this release! There are quite a few things we've brought into the initial release and we think you'll agree that it is a powerful, yet easy to use interface. Read [the announcement.](https://chocolatey.org/blog/announcing-deployments). We've also overhauled the documentation to make it understandable and approachable. Please see https://chocolatey.org/docs/central-management.
 
 > :memo: **NOTE**: Log locations have changed. Please see [[Central Management FAQs|CentralManagement#faqs]] for more information.
 
@@ -49,6 +50,8 @@ We are excited to bring about managing remote machines with [Central Management 
 * Service - On install/upgrade, write out the FQDN and link to provide to chocolatey agents
 * Logging - Service and DB Migrator should log to the root logs folder of Chocolatey Installation
 * All - Logging - Adjust format to match closer with other Chocolatey log file formats
+* Service - Set higher encryption when available (TLS 1.2)
+* Database Install - Add `/SkipDatabasePermissionCheck` parameter to skip permissions check - see [licensed #147](https://github.com/chocolatey/chocolatey-licensed-issues/issues/147)
 * Trial licenses that do not include counts will allow 100 licenses - see [licensed #140](https://github.com/chocolatey/chocolatey-licensed-issues/issues/140)
 
 

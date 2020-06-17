@@ -4,10 +4,10 @@ Chocolatey Central Management (CCM) provides you insights across your desktop an
 
 Once installed and configured, you can use CCM to:
 
-* bring reporting to the Organizational level
-* quickly see all software across the Organization and see what needs attention immediately
-* create reports for tracking and auditing purposes
-* manage endpoints with deployments through groups and collections
+* Bring reporting to the organizational level
+* Quickly see all software across the organization and see what needs attention immediately
+* Create reports for tracking and auditing purposes
+* Manage endpoints with deployments through groups and collections
 
 > :information_source:
 >

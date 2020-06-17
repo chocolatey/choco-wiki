@@ -43,7 +43,7 @@ Each package further defines dependencies that they include.
 ___
 ## Step 1: Internalize Packages
 
-The complete installation of CCM requires several packages that are available from the community repository. Let's get them internalized. We will internalize them to a `C:\packages` directory. It is highly recommended that you push the packages to an internal repository before continuing with other steps in this guide. Change the values in the last line of this script to match what you need in your environment.
+The complete installation of CCM requires several packages that are available from the community repository. Let's get them internalized. We will internalize them to a `C:\packages` directory. It is highly recommended that you push the packages to an internal repository before continuing with other steps in this guide. Change the values in the first lines of this script to match what you need in your environment.
 
 ```powershell
 # Remove the < >
