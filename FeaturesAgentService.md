@@ -564,6 +564,7 @@ Write-Information "Removing Machine GUID"
 Remove-Item HKLM:\Software\Chocolatey -Recurse -Force
 ```
 
+Once you've removed this, you'll need to restart the Agent Service to get it regenerated.
 
 ## Common Errors and Resolutions
 

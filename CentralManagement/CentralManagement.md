@@ -161,3 +161,5 @@ Basically you need to go find the machine id at `HKEY_LOCAL_MACHINE\SOFTWARE\Cho
 Write-Information "Removing Machine GUID"
 Remove-Item HKLM:\Software\Chocolatey -Recurse -Force
 ```
+
+Once you've removed this, you'll need to restart the Agent Service to get it regenerated.
