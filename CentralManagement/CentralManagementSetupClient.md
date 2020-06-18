@@ -13,11 +13,13 @@ ___
 - [FAQ](#faq)
   - [Can I run Self-Service and Central Management Deployments at the same time?](#can-i-run-self-service-and-central-management-deployments-at-the-same-time)
   - [How can I increase the level of logging for Chocolatey Central Management?](#how-can-i-increase-the-level-of-logging-for-chocolatey-central-management)
+  - [Can I save an image with the agent already installed that I can deploy new machines from?](#can-i-save-an-image-with-the-agent-already-installed-that-i-can-deploy-new-machines-from)
 - [Common Errors And Resolutions](#common-errors-and-resolutions)
   - [Unable to report computer information to CCM](#unable-to-report-computer-information-to-ccm)
   - [Unable to check for deployments from CCM](#unable-to-check-for-deployments-from-ccm)
   - [Chocolatey Agent Service is unable to communicate with Chocolatey Central Management Service](#chocolatey-agent-service-is-unable-to-communicate-with-chocolatey-central-management-service)
   - [The remote server returned an unexpected response: (413) Request Entity Too Large](#the-remote-server-returned-an-unexpected-response-413-request-entity-too-large)
+  - [Computers checking in are overwriting each other](#computers-checking-in-are-overwriting-each-other)
 
 <!-- /TOC -->
 
@@ -103,6 +105,16 @@ In the following files:
 
 When the value is changed, the services may also need restarted.
 
+### Can I save an image with the agent already installed that I can deploy new machines from?
+Yes, however you need to keep in mind that there is a unique machine Id that will need to be erased so it can be regenerated.
+
+Make sure to include the following in your provisioning script to deploy the new images:
+
+```powershell
+Write-Information "Removing Machine GUID"
+Remove-Item HKLM:\Software\Chocolatey -Recurse -Force
+```
+
 ___
 ## Common Errors And Resolutions
 ### Unable to report computer information to CCM
@@ -136,6 +148,18 @@ There is a known issue with the beta release of Chocolatey Central Management wh
 ### The remote server returned an unexpected response: (413) Request Entity Too Large
 
 When reporting a larger number of packages (approximately 200), this error may be reported.  This is due to the size of the information, in bytes, being too large to send between the Chocolatey Agent Service and the Chocolatey Central Management Service.  This has been identified as a [bug](https://github.com/chocolatey/chocolatey-licensed-issues/issues/95), which is due to be corrected in version 0.1.1 of Chocolatey Central Management
+
+### Computers checking in are overwriting each other
+You are generating machines from a base image that already had Chocolatey commercial code on it. This is okay, but you need to remove the Chocolatey Machine Id Guid, which is used to identify a machine as unique.
+
+When the licensed agent service is installed on a machine, a unique machine id is given to the machine. If you are starting from a template, there is no opportunity for that to be different and when those machines start checking in, they will start overwriting each other.
+
+Basically you need to go find the machine id at `HKEY_LOCAL_MACHINE\SOFTWARE\Chocolatey\` (`UniqueId`) and remove it as part of your image deployment mechanism.
+
+```powershell
+Write-Information "Removing Machine GUID"
+Remove-Item HKLM:\Software\Chocolatey -Recurse -Force
+```
 
 ___
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]

@@ -33,6 +33,8 @@ ___
   - [Where can I find the changelog or release notes for Chocolatey Central Management?](#where-can-i-find-the-changelog-or-release-notes-for-chocolatey-central-management)
   - [How do I get support?](#how-do-i-get-support)
   - [How do I set up Chocolatey Central Management?](#how-do-i-set-up-chocolatey-central-management)
+- [Common Errors and Resolutions](#common-errors-and-resolutions)
+  - [Computers checking in are overwriting each other](#computers-checking-in-are-overwriting-each-other)
 
 <!-- /TOC -->
 
@@ -145,3 +147,17 @@ Please run `choco support` from a licensed edition and follow the instructions.
 ### How do I set up Chocolatey Central Management?
 
 You can start from a pre-configured environment known as [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]], or see [Setup / Installation](#setup--installation).
+
+___
+## Common Errors and Resolutions
+### Computers checking in are overwriting each other
+You are generating machines from a base image that already had Chocolatey commercial code on it. This is okay, but you need to remove the Chocolatey Machine Id Guid, which is used to identify a machine as unique.
+
+When the licensed agent service is installed on a machine, a unique machine id is given to the machine. If you are starting from a template, there is no opportunity for that to be different and when those machines start checking in, they will start overwriting each other.
+
+Basically you need to go find the machine id at `HKEY_LOCAL_MACHINE\SOFTWARE\Chocolatey\` (`UniqueId`) and remove it as part of your image deployment mechanism.
+
+```powershell
+Write-Information "Removing Machine GUID"
+Remove-Item HKLM:\Software\Chocolatey -Recurse -Force
+```

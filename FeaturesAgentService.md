@@ -65,6 +65,7 @@ The Chocolatey Agent can be independently configured to support any or all of th
   - [How would someone potentially get access to the managed password?](#how-would-someone-potentially-get-access-to-the-managed-password)
   - [Do you rotate the managed password on a schedule?](#do-you-rotate-the-managed-password-on-a-schedule)
   - [Can I take advantage of Chocolatey managed passwords with my own Windows services?](#can-i-take-advantage-of-chocolatey-managed-passwords-with-my-own-windows-services)
+  - [Can I save an image with the agent already installed that I can deploy new machines from?](#can-i-save-an-image-with-the-agent-already-installed-that-i-can-deploy-new-machines-from)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Installs from custom source locations are not allowed in background mode. Please remove custom source and try again using default (configured) package source locations.](#installs-from-custom-source-locations-are-not-allowed-in-background-mode-please-remove-custom-source-and-try-again-using-default-configured-package-source-locations)
   - [I'm getting the following: "There are no sources enabled for packages and none were passed as arguments."](#im-getting-the-following-there-are-no-sources-enabled-for-packages-and-none-were-passed-as-arguments)
@@ -552,6 +553,16 @@ We are looking to do this in a future release. We may make the schedule configur
 
 ### Can I take advantage of Chocolatey managed passwords with my own Windows services?
 Yes, absolutely. If you use C4B's PowerShell Windows Services code, you will be able to install services and have Chocolatey manage the password for those as well.
+
+### Can I save an image with the agent already installed that I can deploy new machines from?
+Yes, however you need to keep in mind that there is a unique machine Id that will need to be erased so it can be regenerated.
+
+Make sure to include the following in your provisioning script to deploy the new images:
+
+```powershell
+Write-Information "Removing Machine GUID"
+Remove-Item HKLM:\Software\Chocolatey -Recurse -Force
+```
 
 
 ## Common Errors and Resolutions
