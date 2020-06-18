@@ -152,6 +152,14 @@ As recommended, we will assume you have access to the internet from this server.
     > This guide assumes you are starting form scratch. It may be easier, if you are following this verbatim and don't have anything in your repositoryyet, to simply run `choco uninstall nexus-repository -y` and then `choco install nexus-repository -y`. 
     > As the next step requires a freshly-installed Nexus repository, with admin passwords not reset, this would be the most compatible approach.
 
+1. Versions of Nexus newer than 3.21 have disabled the ability to run automated scripting by default. However, we'll need this to be enabled in order to automate our repository cleanup and creation.
+From an Administrator PowerShell Window, run the following command to install the enable Nexus scripting, and to restart the Nexus service for the changes to take effect:
+
+    ```powershell
+    Add-Content C:\ProgramData\sonatype-work\nexus3\etc\nexus.properties "nexus.scripts.allowCreation=true"
+    Restart-Service -Name nexus
+    ```
+
 1.  Download the `chocolatey-nexus-setup` package from the link provided in your trial email, and save it to the `\choco-setup\packages` directory on the Nexus server. From an Administrator PowerShell console, run:
 
     ```powershell
@@ -166,14 +174,6 @@ As recommended, we will assume you have access to the internet from this server.
     >- Add an "Install.ps1" script to the "choco-install" raw repository
     >- Enable the Nuget API key realm
     >- Output the API key for the Nexus server (copy this key for a later step)
-
-1. Versions of Nexus newer than 3.21 have disabled the ability to run automated scripting by default. However, we'll need this to be enabled in order to automate our repository cleanup and creation.
-From an Administrator PowerShell Window, run the following command to install the enable Nexus scripting, and to restart the Nexus service for the changes to take effect:
-
-    ```powershell
-    Add-Content C:\ProgramData\sonatype-work\nexus3\etc\nexus.properties "nexus.scripts.allowCreation=true"
-    Restart-Service -Name nexus
-    ```
 
 1. You will require Google Chrome in order to login to the Nexus web UI (site can appear unresponsive in IE). From an Administrator PowerShell console, run:
 
