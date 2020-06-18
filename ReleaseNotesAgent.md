@@ -13,7 +13,7 @@ This covers the release notes for the Chocolatey Agent Service (`chocolatey-agen
 * Some issues may be held internally, please follow your support routes to learn more.
 
 
-## 0.10.0 (unreleased)
+## 0.10.0 (June 18, 2020)
 ### BREAKING CHANGES
  * Chocolatey Agent v0.10.0 will only work with Central Management v0.2.0+. Please upgrade Central Management first if you are using CCM with the agent service.
 
