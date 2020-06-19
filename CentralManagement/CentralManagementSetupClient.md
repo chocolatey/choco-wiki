@@ -111,8 +111,9 @@ Yes, however you need to keep in mind that there is a unique machine Id that wil
 Make sure to include the following in your provisioning script to deploy the new images:
 
 ```powershell
-Write-Information "Removing Machine GUID"
-Remove-Item HKLM:\Software\Chocolatey -Recurse -Force
+Write-Host "Removing Chocolatey Unique Machine GUID"
+Remove-ItemProperty -Path "HKLM:\Software\Chocolatey" -Name "UniqueId" -Force
+# Restart the Agent Service if it is running
 ```
 
 Once you've removed this, you'll need to restart the Agent Service to get it regenerated.
@@ -159,8 +160,9 @@ When the licensed agent service is installed on a machine, a unique machine id i
 Basically you need to go find the machine id at `HKEY_LOCAL_MACHINE\SOFTWARE\Chocolatey\` (`UniqueId`) and remove it as part of your image deployment mechanism.
 
 ```powershell
-Write-Information "Removing Machine GUID"
-Remove-Item HKLM:\Software\Chocolatey -Recurse -Force
+Write-Host "Removing Chocolatey Unique Machine GUID"
+Remove-ItemProperty -Path "HKLM:\Software\Chocolatey" -Name "UniqueId" -Force
+# Restart the Agent Service if it is running
 ```
 
 Once you've removed this, you'll need to restart the Agent Service to get it regenerated.

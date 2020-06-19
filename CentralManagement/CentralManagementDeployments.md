@@ -10,7 +10,7 @@
 
 <!-- /TOC -->
 
-JOIN US FOR A WEBINAR on June 23rd, 2020 (or watch on demand after the fact) - https://chocolatey.org/events/chocolatey-deployments
+***JOIN US FOR A WEBINAR on June 23rd, 2020 (or watch on demand after the fact)*** - https://chocolatey.org/events/chocolatey-deployments
 
 
 ## Related Topics
