@@ -44,6 +44,7 @@ Deployments Release - we are excited to bring about managing remote machines wit
 * Fix - Web - After installation of CCM, doing an iisreset breaks the site
 * Fix - All - Monitoring chocolatey.config for changes could potentially lock the file from being written to by choco
 * Fix - All - Logging - CCM service not responding to calls and stops logging after choco configuration file is edited
+* Fix - Service - Changing CentralManagementServiceUrl value in chocolatey.config causes running management service to crash
 
 ### IMPROVEMENTS
 * Web - Allow removing computers as a default permission for ccmadmin role - see [licensed #133](https://github.com/chocolatey/chocolatey-licensed-issues/issues/133)
