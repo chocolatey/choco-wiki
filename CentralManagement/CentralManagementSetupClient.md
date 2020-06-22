@@ -100,7 +100,7 @@ This can be done by changing the level value, which should be currently `INFO`, 
 
 In the following files:
 
-* `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service\chocolatey-central-management.exe.config`
+* `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service\log4net.config`. If you are on a version less than 0.2.0, then it will be in `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service\chocolatey-central-management.exe.config`.
 * `$env:ChocolateyInstall\lib\chocolatey-agent\tools\service\chocolatey-agent.exe.config`
 
 When the value is changed, the services may also need restarted.

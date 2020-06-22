@@ -194,6 +194,9 @@ ___
 ### Step 4.1: Login And Change Default Credentials
 When you access the CCM Website you will be prompted to provide a username and password to access the site.  By default, the username is `ccmadmin` and the password is `123qwe`.  After you input this, you will be prompted to change the password.
 
+![First time login - change password](images/features/ccm/change_password.png)
+
+
 ### Step 4.2: SMTP Configuration
 
 The CCM Site needs to be able to send email for certain actions.  For example, when a new user is registering with the system, or when sending out forgotten password emails.  Valid SMTP Configuration has to be provided in order for these emails to be sent out.  Follow these steps to configure SMTP for CCM.
