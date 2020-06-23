@@ -35,6 +35,8 @@ ___
   - [How do I set up Chocolatey Central Management?](#how-do-i-set-up-chocolatey-central-management)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Computers checking in are overwriting each other](#computers-checking-in-are-overwriting-each-other)
+  - [An Internal error occurred during your request](#an-internal-error-occurred-during-your-request)
+  - [System.Data.SqlClient.SqlException: Invalid column name](#systemdatasqlclientsqlexception-invalid-column-name)
 
 <!-- /TOC -->
 
@@ -164,3 +166,10 @@ Remove-ItemProperty -Path "HKLM:\Software\Chocolatey" -Name "UniqueId" -Force
 ```
 
 Once you've removed this, you'll need to restart the Agent Service to get it regenerated.
+
+### An Internal error occurred during your request
+Check the log files. You may have incorrect database access, but most likely it can come because you didn't follow the steps for setup appropriately.
+
+### System.Data.SqlClient.SqlException: Invalid column name
+This means you are upgrading things out of order. Please make sure your database is upgraded first, then the service, then the web.
+
