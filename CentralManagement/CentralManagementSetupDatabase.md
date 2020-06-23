@@ -215,9 +215,9 @@ function Add-DatabaseUserAndRoles {
   )
 
 
-  $LoginOptions = 'FROM WINDOWS WITH'
+  $LoginOptions = "FROM WINDOWS WITH DEFAULT_DATABASE=[$DatabaseName]"
   if ($CreateSqlUser) {
-    $LoginOptions = "WITH PASSWORD '$SqlUserPassword'"
+    $LoginOptions = "WITH PASSWORD='$SqlUserPassword', DEFAULT_DATABASE=[$DatabaseName], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF"
   }
 
   $addUserSQLCommand = @"
@@ -226,7 +226,8 @@ IF EXISTS(SELECT * FROM msdb.sys.syslogins WHERE UPPER([name]) = UPPER('$Usernam
   BEGIN
     DROP LOGIN [$Username]
   END
-CREATE LOGIN [$Username] $LoginOptions DEFAULT_DATABASE=[$DatabaseName]
+
+CREATE LOGIN [$Username] $LoginOptions
 
 USE [$DatabaseName]
 IF EXISTS(SELECT * FROM sys.sysusers WHERE UPPER([name]) = UPPER('$Username'))
