@@ -26,6 +26,7 @@ ___
 - [Step 4: Verify Installation](#step-4-verify-installation)
 - [FAQ](#faq)
   - [Can I use MySQL (or PostgreSQL)?](#can-i-use-mysql-or-postgresql)
+  - [What is the CCM compatibility matrix?](#what-is-the-ccm-compatibility-matrix)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Chocolatey Central Management database package installs without error, but ChocolateyManagement database is not created](#chocolatey-central-management-database-package-installs-without-error-but-chocolateymanagement-database-is-not-created)
   - [The term 'Install-ChocolateyAppSettingsJsonFile' is not recognized as the name of a cmdlet, function, script file, or operable program.](#the-term-install-chocolateyappsettingsjsonfile-is-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
@@ -281,6 +282,9 @@ ___
 
 ### Can I use MySQL (or PostgreSQL)?
 Unfortunately only SQL Server SKUs work with Chocolatey Central Management at this time. You can use SQL Server Express in smaller shops.
+
+### What is the CCM compatibility matrix?
+Central Management has specific compatibility requirements with quite a few moving parts. It is important to understand that there are some Chocolatey Agent versions that may not be able to communicate with some versions of CCM and vice versa.  Please see the [[CCM Component Compatibility Matrix|CentralManagement#ccm-component-compatibility-matrix]] for details.
 
 ___
 ## Common Errors and Resolutions

@@ -14,6 +14,7 @@ ___
   - [Can I run Self-Service and Central Management Deployments at the same time?](#can-i-run-self-service-and-central-management-deployments-at-the-same-time)
   - [How can I increase the level of logging for Chocolatey Central Management?](#how-can-i-increase-the-level-of-logging-for-chocolatey-central-management)
   - [Can I save an image with the agent already installed that I can deploy new machines from?](#can-i-save-an-image-with-the-agent-already-installed-that-i-can-deploy-new-machines-from)
+  - [What is the CCM compatibility matrix?](#what-is-the-ccm-compatibility-matrix)
 - [Common Errors And Resolutions](#common-errors-and-resolutions)
   - [Unable to report computer information to CCM](#unable-to-report-computer-information-to-ccm)
   - [Unable to check for deployments from CCM](#unable-to-check-for-deployments-from-ccm)
@@ -117,6 +118,9 @@ Remove-ItemProperty -Path "HKLM:\Software\Chocolatey" -Name "UniqueId" -Force
 ```
 
 Once you've removed this, you'll need to restart the Agent Service to get it regenerated.
+
+### What is the CCM compatibility matrix?
+Central Management has specific compatibility requirements with quite a few moving parts. It is important to understand that there are some Chocolatey Agent versions that may not be able to communicate with some versions of CCM and vice versa.  Please see the [[CCM Component Compatibility Matrix|CentralManagement#ccm-component-compatibility-matrix]] for details.
 
 ___
 ## Common Errors And Resolutions

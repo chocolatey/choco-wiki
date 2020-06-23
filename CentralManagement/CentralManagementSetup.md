@@ -18,6 +18,11 @@ When setting up Central Management, currently, the CCM packages do not provision
 >
 > If this seems like a lot to set up, you have the ability to get access to the [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]]. It comes preloaded with Central Management and other Chocolatey recommended infrastructure. Please see [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]].
 
+>:warning: **WARNING**
+>
+> All deployed components of the CCM packages should **always** be the ***SAME VERSION***. The only time you should not have this is when you are in a state of upgrading and that transition time should be quite short.
+
+
 ___
 <!-- TOC depthFrom:2 depthTo:5 -->
 
@@ -42,6 +47,10 @@ Each package further defines dependencies that they include.
 
 ___
 ## Step 1: Internalize Packages
+
+> :memo: **NOTE**
+>
+> Make sure you have read over the [[CCM Compability Matrix|CentralManagement#ccm-component-compatibility-matrix]] prior to starting internalization as this will save you some headaches.
 
 The complete installation of CCM requires several packages that are available from the community repository. Let's get them internalized. We will internalize them to a `C:\packages` directory. It is highly recommended that you push the packages to an internal repository before continuing with other steps in this guide. Change the values in the first lines of this script to match what you need in your environment.
 

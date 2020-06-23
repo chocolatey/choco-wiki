@@ -30,6 +30,7 @@ ___
   - [Step 4.3: Application Settings File](#step-43-application-settings-file)
 - [FAQ](#faq)
   - [Can I install the Chocolatey Central Management Web Site under a Virtual Directory in IIS?](#can-i-install-the-chocolatey-central-management-web-site-under-a-virtual-directory-in-iis)
+  - [What is the CCM compatibility matrix?](#what-is-the-ccm-compatibility-matrix)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [The specified path, file name, or both are too long](#the-specified-path-file-name-or-both-are-too-long)
   - [HTTP Error when trying to access Chocolatey Central Management Website](#http-error-when-trying-to-access-chocolatey-central-management-website)
@@ -275,6 +276,9 @@ ___
 ### Can I install the Chocolatey Central Management Web Site under a Virtual Directory in IIS?
 
 Currently no.  The Chocolatey Central Management Web Site expects to reside at the site level within IIS.
+
+### What is the CCM compatibility matrix?
+Central Management has specific compatibility requirements with quite a few moving parts. It is important to understand that there are some Chocolatey Agent versions that may not be able to communicate with some versions of CCM and vice versa.  Please see the [[CCM Component Compatibility Matrix|CentralManagement#ccm-component-compatibility-matrix]] for details.
 
 ___
 ## Common Errors and Resolutions

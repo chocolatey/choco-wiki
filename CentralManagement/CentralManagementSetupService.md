@@ -41,6 +41,7 @@ ___
   - [How would someone potentially get access to the managed password?](#how-would-someone-potentially-get-access-to-the-managed-password)
   - [Do you rotate the managed password on a schedule?](#do-you-rotate-the-managed-password-on-a-schedule)
   - [Can I take advantage of Chocolatey managed passwords with my own Windows services?](#can-i-take-advantage-of-chocolatey-managed-passwords-with-my-own-windows-services)
+  - [What is the CCM compatibility matrix?](#what-is-the-ccm-compatibility-matrix)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Chocolatey Agent Service is unable to communicate with Chocolatey Central Management Service](#chocolatey-agent-service-is-unable-to-communicate-with-chocolatey-central-management-service)
   - [A parameter cannot be found that matches parameter name KeyUsage](#a-parameter-cannot-be-found-that-matches-parameter-name-keyusage)
@@ -349,6 +350,8 @@ We are looking to do this in a future release. We may make the schedule configur
 
 Yes, absolutely. If you use C4B's PowerShell Windows Services code, you will be able to install services and have Chocolatey manage the password for those as well.
 
+### What is the CCM compatibility matrix?
+Central Management has specific compatibility requirements with quite a few moving parts. It is important to understand that there are some Chocolatey Agent versions that may not be able to communicate with some versions of CCM and vice versa.  Please see the [[CCM Component Compatibility Matrix|CentralManagement#ccm-component-compatibility-matrix]] for details.
 
 ___
 ## Common Errors and Resolutions

@@ -17,6 +17,7 @@ ___
 <!-- TOC depthFrom:2 depthTo:5 -->
 
 - [CCM Components](#ccm-components)
+  - [CCM Component Compatibility Matrix](#ccm-component-compatibility-matrix)
 - [Getting CCM](#getting-ccm)
 - [Stay Up To Date](#stay-up-to-date)
 - [Links](#links)
@@ -33,6 +34,7 @@ ___
   - [Where can I find the changelog or release notes for Chocolatey Central Management?](#where-can-i-find-the-changelog-or-release-notes-for-chocolatey-central-management)
   - [How do I get support?](#how-do-i-get-support)
   - [How do I set up Chocolatey Central Management?](#how-do-i-set-up-chocolatey-central-management)
+  - [What is the CCM compatibility matrix?](#what-is-the-ccm-compatibility-matrix)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Computers checking in are overwriting each other](#computers-checking-in-are-overwriting-each-other)
   - [An Internal error occurred during your request](#an-internal-error-occurred-during-your-request)
@@ -55,6 +57,20 @@ The following are all of the Chocolatey components required for Central Manageme
   * This installs the CCM Service, which the Chocolatey Agent will communicate with.
 * CCM Website (`chocolatey-management-web` package) v0.1.0+
   * This is the CCM front end website that is the main user interface of the application
+
+### CCM Component Compatibility Matrix
+Central Management has specific needs that are mostly handled by packaging aspects. As the Chocolatey Agent and Central Management communicate with each other, there are some versions that may not be compatible with each other due to mistakes or fixes that needed to be implemented. This serves as a means of capturing that for you.
+
+> :memo: **NOTE**
+>
+> Central Management packages (all three) are treated as a singular unit, meaning all three packages across one or more machines must all be on the same version. Using different versions of Central Management packages (db, service, web) is completely unsupported and likely will not even work properly.
+
+|Central Management|Chocolatey Agent|Chocolatey Licensed Extension|Chocolatey|
+|------------------|----------------|-----------------------------|----------|
+|0.3.0+            |0.11.0+         | 2.1.0+                      | 0.10.15+ |
+|0.2.x             |0.10.x          | 2.1.0+                      | 0.10.15+ |
+|0.1.1             |0.9.x           | 2.0.3+                      | 0.10.15+ |
+|0.1.0             |0.9.x           | 2.0.0+                      | 0.10.12+ |
 
 ____
 ## Getting CCM
@@ -149,6 +165,9 @@ Please run `choco support` from a licensed edition and follow the instructions.
 ### How do I set up Chocolatey Central Management?
 
 You can start from a pre-configured environment known as [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]], or see [Setup / Installation](#setup--installation).
+
+### What is the CCM compatibility matrix?
+Central Management has specific compatibility requirements with quite a few moving parts. It is important to understand that there are some Chocolatey Agent versions that may not be able to communicate with some versions of CCM and vice versa.  Please see the [CCM Component Compatibility Matrix](#ccm-component-compatibility-matrix) for details.
 
 ___
 ## Common Errors and Resolutions
