@@ -47,7 +47,7 @@ ___
 
 The following are all of the Chocolatey components required for Central Management to work.
 
-* Chocolatey (`chocolatey` package) v0.10.14+
+* Chocolatey (`chocolatey` package) v0.10.12+
 * Chocolatey for Business (C4B) Edition.
 * Chocolatey Licensed Extension (`chocolatey.extension` package) v2.0.0+
 * Chocolatey Agent (`chocolatey-agent` package) v0.9.0+
