@@ -33,6 +33,7 @@ ___
 - [Step 3: Setup Central Mangement Windows Service(s)](#step-3-setup-central-mangement-windows-services)
 - [Step 4: Setup Central Management Website](#step-4-setup-central-management-website)
 - [Step 5: Setting up Agent Machines](#step-5-setting-up-agent-machines)
+- [Upgrading?](#upgrading)
 
 <!-- /TOC -->
 
@@ -118,6 +119,10 @@ ___
 
 Please see [[Central Management Client Setup|CentralManagementSetupClient]].
 
+
+## Upgrading?
+
+Looking for upgrade instructions? See [[Central Management Upgrade|CentralManagementSetupUpgrade]].
 
 ___
 [[Chocolatey Central Management|CentralManagement]]
