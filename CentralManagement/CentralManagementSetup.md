@@ -64,8 +64,11 @@ if(!(Test-Path C:\packages)){
   $null = New-Item C:\packages -ItemType Directory
 }
 
-# This is for Chocolatey and other Community Related Items
-choco download chocolatey chocolateygui dotnet4.5.2 dotnet4.6.1 --force --internalize --internalize-all-urls --append-use-original-location --source="'https://chocolatey.org/api/v2/'" --output-directory="'C:\packages'"
+# Download Chocolatey community related items, no internalization necessary
+choco download chocolatey chocolateygui --force --source="'https://chocolatey.org/api/v2/'" --output-directory="'C:\packages'"
+
+# This is for other Community Related Items
+choco download dotnet4.5.2 dotnet4.6.1 --force --internalize --internalize-all-urls --append-use-original-location --source="'https://chocolatey.org/api/v2/'" --output-directory="'C:\packages'"
 
 
 # This is for SQL Server Express
@@ -79,9 +82,10 @@ choco download chocolatey chocolateygui dotnet4.5.2 dotnet4.6.1 --force --intern
   choco download $_ --version 2.2.7 --force --internalize --internalize-all-urls --append-use-original-location --source="'https://chocolatey.org/api/v2/'" --output-directory="'C:\packages'"
 }
 
-# Internalize Licensed Packages
+# Download Licensed Packages
 # Trial? You have download links, download the files - then place them in the c:\packages folder. Comment out this section
-choco download chocolatey-agent chocolatey.extension chocolatey-management-database chocolatey-management-service chocolatey-management-web --force --internalize --internalize-all-urls --append-use-original-location --source="'https://licensedpackages.chocolatey.org/api/v2/'" --ignore-dependencies --output-directory="'C:\packages'"  --user="'user'" --password="'$YourBusinessLicenseGuid'"
+## DO NOT RUN WITH `--internalize` and `--internalize-all-urls` - see https://github.com/chocolatey/chocolatey-licensed-issues/issues/155
+choco download chocolatey-agent chocolatey.extension chocolatey-management-database chocolatey-management-service chocolatey-management-web --force --source="'https://licensedpackages.chocolatey.org/api/v2/'" --ignore-dependencies --output-directory="'C:\packages'"  --user="'user'" --password="'$YourBusinessLicenseGuid'"
 
 # Push all downloaded packages to your internal repository
 Get-ChildItem C:\packages -Recurse -Filter *.nupkg | Foreach-Object { choco push $_.Fullname --source="'$YourInternalRepositoryPushUrl'" --api-key="'$YourInternalRepositoryApiKey'"}
