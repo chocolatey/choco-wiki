@@ -1,118 +1,153 @@
 # Chocolatey Central Mangement Upgrade
-This will guide us through upgrading an existinc Chocolatey Central Management installation to the newest version (including Deployments).
+This will guide us through upgrading an existing Chocolatey Central Management installation to newer versions. Install or upgrade `Chocolatey-Management-Database`; then `Chocolatey-Management-Service`; then `Chocolatey-Management-Web`. **IMPORTANT:** IN. THAT. ORDER.
+
+> :memo: **NOTE**: Looking for installation instructions? See [[Central Management Setup|CentralManagementSetup]].
+
+> :warning: **WARNING**
+>
+> Unless otherwise noted, please follow these steps in ***exact*** order. These steps build on each other and need to be completed in order.
+
+>:warning: **WARNING**
+>
+> All deployed components of the CCM packages should **always** be the ***SAME VERSION***. The only time you should not have this is when you are in a state of upgrading and that transition time should be quite short.
 
 ___
-<!-- TOC depthFrom:2 -->
+<!-- TOC depthFrom:2 depthTo:5 -->
 
-- [Setup](#setup)
-    - [On Chocolatey Central Management Server](#on-chocolatey-central-management-server)
-        - [Step 1: Copy Packages](#step-1-copy-packages)
-        - [Step 2: Upgrade Chocolatey Licensed Extension](#step-2-upgrade-chocolatey-licensed-extension)
-        - [Step 3: Upgrade CCM Packages](#step-3-upgrade-ccm-packages)
-        - [Step 4: Upgrade Chocolatey Agent (optional)](#step-4-upgrade-chocolatey-agent-optional)
-        - [Step 5: Configure Additional Settings](#step-5-configure-additional-settings)
-    - [On Endpoints](#on-endpoints)
-        - [Step 1: Upgrade Chocolatey Agent](#step-1-upgrade-chocolatey-agent)
-        - [Step 2: Configure Additional Settings](#step-2-configure-additional-settings)
+- [Step 1: Download Latest Packages](#step-1-download-latest-packages)
+- [Step 2: Upgrade Central Management Database](#step-2-upgrade-central-management-database)
+- [Step 3: Setup Central Mangement Windows Service(s)](#step-3-setup-central-mangement-windows-services)
+- [Step 4: Setup Central Management Website](#step-4-setup-central-management-website)
+- [Step 5: Upgrade Agent Machines](#step-5-upgrade-agent-machines)
+  - [New Deployments Feature Example](#new-deployments-feature-example)
+- [FAQs](#faqs)
+  - [Can I simply upgrade all three CCM packages in the same command?](#can-i-simply-upgrade-all-three-ccm-packages-in-the-same-command)
+- [Common Errors and Resolutions](#common-errors-and-resolutions)
+  - [ERROR: There was an error deserializing the requested JSON file: C:\ProgramData\chocolatey\lib\chocolatey-management-database\tools\app\appsettings.json Padding is invalid and cannot be removed.](#error-there-was-an-error-deserializing-the-requested-json-file-c\programdata\chocolatey\lib\chocolatey-management-database\tools\app\appsettingsjson-padding-is-invalid-and-cannot-be-removed)
 
 <!-- /TOC -->
 
 ___
-## Setup
+## Step 1: Download Latest Packages
 
-### On Chocolatey Central Management Server
+> :memo: **NOTE**
+>
+> Make sure you have read over the [[CCM Compability Matrix|CentralManagement#ccm-component-compatibility-matrix]] prior to starting internalization as this will save you some headaches.
 
-#### Step 1: Copy Packages
-Download all the `.nupkg` files from the trial/license emails. Place these packages in the `C:\choco-setup\packages` folder. Be sure that the versions of packages you have match up with the [[Complatibility Matrix|CentralManagement#ccm-component-compatibility-matrix]].
+Similar to how we internalized in [[Setup - Internalize Packages|CentralManagementSetup#step-1-internalize-packages]], we need to get the latest editions of everything compatible. Be sure that the versions of packages you have match up with the [[Complatibility Matrix|CentralManagement#ccm-component-compatibility-matrix]].
 
-___
-#### Step 2: Upgrade Chocolatey Licensed Extension
-Install or upgrade Chocolatey Licensed Extension. The order is not enforced in this release, so make sure you start with this.
-Assuming you’ve place the packages in the `C:\choco-setup\packages` folder, enter the following command in an administrative PowerShell window:
 
-    ```
-    choco upgrade chocolatey.extension -y  --source "'C:\choco-setup\packages\'"
-    ```
+```powershell
+# Update the values and remove the < >
+$YourInternalRepositoryPushUrl = '<INSERT REPOSITORY URL HERE>'
+$YourInternalRepositoryApiKey = '<YOUR API KEY HERE>'
+$YourBusinessLicenseGuid = '<INSERT NON-TRIAL C4B LICENSE GUID HERE>'
 
-___
-#### Step 3: Upgrade CCM Packages
-Install or upgrade `Chocolatey-Management-Database`; then `Chocolatey-Management-Service`; then `Chocolatey-Management-Web`. **IMPORTANT:** IN. THAT. ORDER. Assuming you’ve place the packages in the `C:\choco-setup\packages` folder, enter the following commands in an administrative PowerShell window:
+# Download Chocolatey community related items, no internalization necessary
+choco download chocolatey chocolatey chocolateygui --force --source="'https://chocolatey.org/api/v2/'" --output-directory="'C:\packages'"
 
-    First (this command is longer, as we need to cleanup and explicitly pass package parameters):
-    ```
-    Remove-Item -Force -Path "C:\ProgramData\chocolatey\lib\chocolatey-management-database\tools\app\appsettings.json" -ErrorAction SilentlyContinue
-    choco upgrade chocolatey-management-database -y --package-parameters="'/SqlServerInstance:localhost\SQLEXPRESS'" --source="'c:\choco-setup\packages'"
-    ```
+# Download Licensed Packages
+# Trial? Please reach out to your sales person to get the latest binaries.
+## DO NOT RUN WITH `--internalize` and `--internalize-all-urls` - see https://github.com/chocolatey/chocolatey-licensed-issues/issues/155
+choco download chocolatey-agent chocolatey.extension chocolatey-management-database chocolatey-management-service chocolatey-management-web --force --source="'https://licensedpackages.chocolatey.org/api/v2/;https://chocolatey.org/api/v2/'" --output-directory="'C:\packages'"  --user="'user'" --password="'$YourBusinessLicenseGuid'"
 
-    Second:
-    ```
-    choco upgrade chocolatey-management-service -y --source "'C:\choco-setup\packages\'"
-    ```
-
-    Third:
-    ```
-    choco upgrade chocolatey-management-web -y --source "'C:\choco-setup\packages\'"
-    ```
+# Push all downloaded packages to your internal repository
+Get-ChildItem C:\packages -Recurse -Filter *.nupkg | Foreach-Object { choco push $_.Fullname --source="'$YourInternalRepositoryPushUrl'" --api-key="'$YourInternalRepositoryApiKey'"}
+```
 
 ___
-#### Step 4: Upgrade Chocolatey Agent (optional)
+## Step 2: Upgrade Central Management Database
 
-If you plan on having the CCM server check into CCM as well, upgrade the `Chocolatey-Agent` package here. Assuming you’ve place the packages in the `C:\choco-setup\packages` folder, enter the following command in an administrative PowerShell window:
+> :memo: **NOTE**: Please see [[Central Management Database Setup|CentralManagementSetupDatabase]] for details about all arguments that can be passed and set.
 
-    ```
-    choco upgrade chocolatey-agent -y --source "'C:\choco-setup\packages\'"
-    ```
+```powershell
+choco upgrade chocolatey.extension -y
+choco upgrade chocolatey-management-database -y
+```
+
+> :warning: **WARNING** If you are using QDE and receive an error about deserializing and padding, see the resolution below.
+
+___
+## Step 3: Setup Central Mangement Windows Service(s)
+
+> :memo: **NOTE**: Please see [[Central Management Service Setup|CentralManagementSetupService]] for details about all arguments that can be passed and set.
+
+```powershell
+choco upgrade chocolatey.extension -y
+choco upgrade chocolatey-management-service -y
+```
+
+There may be additional (new) things you will want to configure. Please see [[Central Management Service Setup|CentralManagementSetupService]] for details.
+
+___
+## Step 4: Setup Central Management Website
+
+> :memo: **NOTE**: Please see [[Central Management Web Setup|CentralManagementSetupWeb]] for details about all arguments that can be passed and set.
+
+```powershell
+choco upgrade chocolatey.extension -y
+choco upgrade chocolatey-management-web -y
+```
+
+> :warning: **WARNING**
+>
+> You may need to adjust permissions/roles for your user if not using the default `ccmadmin` account. Please see the roles and permissions your account has versus what is available in `Administration -> Settings`.
+
+___
+## Step 5: Upgrade Agent Machines
+
+
+> :memo: **NOTE**: Please see [[Central Management Client Setup|CentralManagementSetupClient]] for details about all arguments that can be passed and set.
+
+```powershell
+choco upgrade chocolatey.extension -y
+choco upgrade chocolatey-agent -y
+```
+
+There may be additional (new) things you will want to configure. Please see [[Central Management Client Setup|CentralManagementSetupClient]] for details.
+
+> :memo: **NOTE**: This could include the agent(s) on the CCM machine(s).
 
 > :warning: **WARNING**: The Chocolatey Agent installed on the same machine that has the CCM Service installed will share the `centralManagementServiceUrl` setting, so that agent can only report into that CCM Service.
 
-___
-#### Step 5: Configure Additional Settings
+### New Deployments Feature Example
+As an example, configuring using Deployments would have the folllowing:
 
-Set configuration properly on your endpoints:
-
-    ```
-    choco config set CentralManagementServiceUrl https://<FQDN_CCM_SERVICE>:24020/ChocolateyManagementService
-    choco feature enable --name="'useChocolateyCentralManagement'"
-
-    # Requires Chocolatey Licensed Extension v2.1.0+, Chocolatey-Agent v0.10.0+, and Chocolatey Central Management v0.2.0+:
-    choco feature enable --name="'useChocolateyCentralManagementDeployments'"
-    ```
-
-> :memo: **NOTE:** If you are upgrading, and you had the endpoint checking into CCM already, you will likely only need the last item above (i.e. you can ignore the commands to set CentralManagementServiceUrl and enable usage of Central Management)
-
-That should get you setup and running. Just a note that you may need to adjust permissions/roles for your user if not using the default `ccmadmin` account.
-
-___
-### On Endpoints
-
-___
-#### Step 1: Upgrade Chocolatey Agent
-If you plan on having the CCM/QDE server check into CCM as well, upgrade the `Chocolatey-Agent` package here. Assuming you’ve place the packages in the `C:\choco-setup\packages` folder, enter the following command in an administrative PowerShell window:
-
-    ```
-    choco upgrade chocolatey-agent -y --source "'C:\choco-setup\packages\'"
-    ```
-
-___
-#### Step 2: Configure Additional Settings
-
-Set configuration properly on your endpoints:
-
-    ```
-    choco config set CentralManagementServiceUrl https://<FQDN_CCM_SERVICE>:24020/ChocolateyManagementService
-    choco feature enable --name="'useChocolateyCentralManagement'"
-
-    # Requires Chocolatey Licensed Extension v2.1.0+, Chocolatey-Agent v0.10.0+, and Chocolatey Central Management v0.2.0+:
-    choco feature enable --name="'useChocolateyCentralManagementDeployments'"
-    ```
-
-> :memo: **NOTE:** If you are upgrading, and you had the endpoint checking into CCM already, you will likely only need the last item above (i.e. you can ignore the commands to set CentralManagementServiceUrl and enable usage of Central Management)
+```powershell
+# Requires Chocolatey Licensed Extension v2.1.0+, Chocolatey-Agent v0.10.0+, and Chocolatey Central Management v0.2.0+:
+choco feature enable --name="'useChocolateyCentralManagementDeployments'"
+```
 
 > :warning: **WARNING**
 >
 > As these features have security considerations (it is enabling cross-machine communication), they must be turned on explicitly.
 > If you decide you want to open this up for over the internet communication, you should also set `centralManagementClientCommunicationSaltAdditivePassword` and `centralManagementServiceCommunicationSaltAdditivePassword`.
 > For more in-depth configuration options and settings for your endpoints, you can view the [[CCM Client Setup page|CentralManagemenSetupClient]]
+
+
+___
+## FAQs
+### Can I simply upgrade all three CCM packages in the same command?
+We strongly advise against it as there is an explicit order that things must be upgraded in. Since CCM components can be installed on separate machines, there is no explicit dependency that can be taken. Just note that running
+
+```powershell
+choco upgrade chocolatey-management-database chocolatey-management-service chocolatey-management-web -y
+```
+
+when you have everything on the same box may work, but it may not. Please follow the steps here for best success.
+
+___
+## Common Errors and Resolutions
+### ERROR: There was an error deserializing the requested JSON file: C:\ProgramData\chocolatey\lib\chocolatey-management-database\tools\app\appsettings.json Padding is invalid and cannot be removed.
+This means that the Chocolatey Unique Machine GUID has been changed since you installed the database, as you might see with some versions of QDE (which might be corrected in a version you have.)
+
+In that case you should run the following script:
+
+```powershell
+Remove-Item -Force -Path "$env:ChocolateyInstall\lib\chocolatey-management-database\tools\app\appsettings.json" -ErrorAction SilentlyContinue
+choco upgrade chocolatey-management-database -y --package-parameters="'/SqlServerInstance:localhost\SQLEXPRESS'" --source="'c:\choco-setup\packages'"
+```
+
 
 ___
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]

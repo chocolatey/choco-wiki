@@ -22,6 +22,7 @@ ___
 - [Stay Up To Date](#stay-up-to-date)
 - [Links](#links)
   - [Setup / Installation](#setup--installation)
+  - [Setup / Upgrade](#setup--upgrade)
   - [Using Central Management](#using-central-management)
 - [Related Articles](#related-articles)
 - [Roadmap](#roadmap)
@@ -99,6 +100,9 @@ ___
     * [[Central Management Service Setup|CentralManagementSetupService]]
     * [[Central Management Web Setup|CentralManagementSetupWeb]]
 * [[Central Management Client Setup|CentralManagementSetupClient]]
+
+### Setup / Upgrade
+* [[Upgrading Central Management|CentralManagementSetupUpgrade]]
 
 ### Using Central Management
 

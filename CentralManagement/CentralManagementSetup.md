@@ -18,10 +18,11 @@ When setting up Central Management, currently, the CCM packages do not provision
 >
 > If this seems like a lot to set up, you have the ability to get access to the [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]]. It comes preloaded with Central Management and other Chocolatey recommended infrastructure. Please see [[Quick Deployment Environment (QDE)|QuickDeploymentEnvironment]].
 
->:warning: **WARNING**
+> :warning: **WARNING**
 >
 > All deployed components of the CCM packages should **always** be the ***SAME VERSION***. The only time you should not have this is when you are in a state of upgrading and that transition time should be quite short.
 
+> :memo: **NOTE**: Looking for upgrade instructions? See [[Central Management Upgrade|CentralManagementSetupUpgrade]].
 
 ___
 <!-- TOC depthFrom:2 depthTo:5 -->
@@ -55,7 +56,7 @@ ___
 The complete installation of CCM requires several packages that are available from the community repository. Let's get them internalized. We will internalize them to a `C:\packages` directory. It is highly recommended that you push the packages to an internal repository before continuing with other steps in this guide. Change the values in the first lines of this script to match what you need in your environment.
 
 ```powershell
-# Remove the < >
+# Update the values and remove the < >
 $YourInternalRepositoryPushUrl = '<INSERT REPOSITORY URL HERE>'
 $YourInternalRepositoryApiKey = '<YOUR API KEY HERE>'
 $YourBusinessLicenseGuid = '<INSERT NON-TRIAL C4B LICENSE GUID HERE>'
@@ -92,7 +93,6 @@ Get-ChildItem C:\packages -Recurse -Filter *.nupkg | Foreach-Object { choco push
 ```
 
 ___
-
 ## Step 2: Setup Central Management Database
 
 Please see [[Central Management Database Setup|CentralManagementSetupDatabase]].
@@ -100,7 +100,6 @@ Please see [[Central Management Database Setup|CentralManagementSetupDatabase]].
 > :memo: **NOTE**: While we'd like to support different database engines at some point in the distant future, currently only SQL Server is supported.
 
 ___
-
 ## Step 3: Setup Central Mangement Windows Service(s)
 
 Please see [[Central Management Service Setup|CentralManagementSetupService]].
@@ -108,7 +107,6 @@ Please see [[Central Management Service Setup|CentralManagementSetupService]].
 > :memo: **NOTE**: If Step 1 is not succesful, do not move on to this step until you resolve issues with database setup.
 
 ___
-
 ## Step 4: Setup Central Management Website
 
 Please see [[Central Management Web Setup|CentralManagementSetupWeb]].

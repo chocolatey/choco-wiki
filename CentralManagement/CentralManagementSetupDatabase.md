@@ -97,7 +97,7 @@ We've prepared a handy script (that may turn into a package later) to help you e
 
 The following is a script for SQL Server Express. You may be configuring a default instance. This should be run on the computer that has SQL Server Express installed as it will have the right binaries necessary for accessing SQL Server programmatically.
 
-> :warning: ##WARNING##
+> :warning: **WARNING**
 >
 > This script is SQL Server version dependent! Please see the TODO in the script below and adjust accordingly.
 
@@ -190,6 +190,9 @@ Scenario 2: You are installing the database package on a single server, but conn
 ```powershell
 choco install chocolatey-management-database -y --package-parameters-sensitive="'/ConnectionString=""Server=DatabaseServer;Database=ChocolateyManagement;Trusted_Connection=true;""'"
 ```
+
+> :memo: **NOTE**:
+
 
 ___
 ## Step 3: Set up SQL Server Logins And Access
