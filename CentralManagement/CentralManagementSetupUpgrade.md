@@ -122,7 +122,7 @@ choco feature enable --name="'useChocolateyCentralManagementDeployments'"
 >
 > As these features have security considerations (it is enabling cross-machine communication), they must be turned on explicitly.
 > If you decide you want to open this up for over the internet communication, you should also set `centralManagementClientCommunicationSaltAdditivePassword` and `centralManagementServiceCommunicationSaltAdditivePassword`.
-> For more in-depth configuration options and settings for your endpoints, you can view the [[CCM Client Setup page|CentralManagemenSetupClient]]
+> For more in-depth configuration options and settings for your endpoints, you can view the [[CCM Client Setup page|CentralManagementSetupClient]]
 
 
 ___
