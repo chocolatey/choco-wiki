@@ -36,8 +36,12 @@ ___
 
 Similar to how we internalized in [[Setup - Internalize Packages|CentralManagementSetup#step-1-internalize-packages]], we need to get the latest editions of everything compatible. Be sure that the versions of packages you have match up with the [[Complatibility Matrix|CentralManagement#ccm-component-compatibility-matrix]].
 
+> :warning: **TRIALS**: You need to ***first reach out*** to your sales representative to get the latest binaries - your trial license won't have direct access to the licensed repository.
 
 ```powershell
+# To run this, you need Chocolatey for Business installed (chocolatey / chocolatey.extension).
+# - TRIALS are fine, but there are modifications noted in the script.
+
 # Update the values and remove the < >
 $YourInternalRepositoryPushUrl = '<INSERT REPOSITORY URL HERE>'
 $YourInternalRepositoryApiKey = '<YOUR API KEY HERE>'
@@ -47,7 +51,7 @@ $YourBusinessLicenseGuid = '<INSERT NON-TRIAL C4B LICENSE GUID HERE>'
 choco download chocolatey chocolatey chocolateygui --force --source="'https://chocolatey.org/api/v2/'" --output-directory="'C:\packages'"
 
 # Download Licensed Packages
-# Trial? Please reach out to your sales person to get the latest binaries.
+# TRIAL? Please reach out to your sales person to get the latest binaries.
 ## DO NOT RUN WITH `--internalize` and `--internalize-all-urls` - see https://github.com/chocolatey/chocolatey-licensed-issues/issues/155
 choco download chocolatey-agent chocolatey.extension chocolatey-management-database chocolatey-management-service chocolatey-management-web --force --source="'https://licensedpackages.chocolatey.org/api/v2/;https://chocolatey.org/api/v2/'" --output-directory="'C:\packages'"  --user="'user'" --password="'$YourBusinessLicenseGuid'"
 
@@ -61,7 +65,6 @@ ___
 > :memo: **NOTE**: Please see [[Central Management Database Setup|CentralManagementSetupDatabase]] for details about all arguments that can be passed and set.
 
 ```powershell
-choco upgrade chocolatey.extension -y
 choco upgrade chocolatey-management-database -y
 ```
 
@@ -73,7 +76,6 @@ ___
 > :memo: **NOTE**: Please see [[Central Management Service Setup|CentralManagementSetupService]] for details about all arguments that can be passed and set.
 
 ```powershell
-choco upgrade chocolatey.extension -y
 choco upgrade chocolatey-management-service -y
 ```
 
@@ -85,7 +87,6 @@ ___
 > :memo: **NOTE**: Please see [[Central Management Web Setup|CentralManagementSetupWeb]] for details about all arguments that can be passed and set.
 
 ```powershell
-choco upgrade chocolatey.extension -y
 choco upgrade chocolatey-management-web -y
 ```
 
@@ -100,7 +101,6 @@ ___
 > :memo: **NOTE**: Please see [[Central Management Client Setup|CentralManagementSetupClient]] for details about all arguments that can be passed and set.
 
 ```powershell
-choco upgrade chocolatey.extension -y
 choco upgrade chocolatey-agent -y
 ```
 
