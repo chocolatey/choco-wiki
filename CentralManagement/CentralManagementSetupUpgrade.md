@@ -1,5 +1,5 @@
 # Chocolatey Central Mangement Upgrade
-This will guide us through upgrading an existing Chocolatey Central Management installation to newer versions. Install or upgrade `Chocolatey-Management-Database`; then `Chocolatey-Management-Service`; then `Chocolatey-Management-Web`. **IMPORTANT:** IN. THAT. ORDER.
+This will guide us through upgrading an existing Chocolatey Central Management installation to newer versions.
 
 > :memo: **NOTE**: Looking for installation instructions? See [[Central Management Setup|CentralManagementSetup]].
 
