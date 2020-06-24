@@ -175,7 +175,7 @@ The CCM database package will add or update a database to an existing SQL Server
 Scenario 1: You are installing the database package on the same machine as a SQL Server Express installation:
 
 ```powershell
-choco install chocolatey-management-database -y --package-paramaeters-sensitive="'/ConnectionString=""Server=Localhost\SQLEXRESS;Database=ChocolateyManagement;Trusted_Connection=true;""'"
+choco install chocolatey-management-database -y --package-parameters-sensitive="'/ConnectionString=""Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;Trusted_Connection=true;""'"
 ```
 
 Scenario 2: You are installing the database package on a single server, but connecting to an existing SQL Server in your environment:
