@@ -70,6 +70,7 @@ The Chocolatey Agent can be independently configured to support any or all of th
   - [Installs from custom source locations are not allowed in background mode. Please remove custom source and try again using default (configured) package source locations.](#installs-from-custom-source-locations-are-not-allowed-in-background-mode-please-remove-custom-source-and-try-again-using-default-configured-package-source-locations)
   - [I'm getting the following: "There are no sources enabled for packages and none were passed as arguments."](#im-getting-the-following-there-are-no-sources-enabled-for-packages-and-none-were-passed-as-arguments)
   - [I'm having trouble seeing packages on a file share source](#im-having-trouble-seeing-packages-on-a-file-share-source)
+  - [The agent service is not picking up the new license](#the-agent-service-is-not-picking-up-the-new-license)
 
 <!-- /TOC -->
 
@@ -599,3 +600,11 @@ A way to do this with LocalSystem:
 1. Add this group to the NTFS permissions with "Read" Access
 
 **Note**:  You'll need to add this group itself and not nest it inside of another one.
+
+### The agent service is not picking up the new license
+Currently, you do need to restart agents. Here's a handy script:
+
+```powershell
+Get-Service chocolatey-* | Stop-Service
+Get-Service chocolatey-* | Start-Service
+```

@@ -49,6 +49,7 @@ ___
   - [Cannot process command because of one or more missing mandatory parameters: FilePath](#cannot-process-command-because-of-one-or-more-missing-mandatory-parameters-filepath)
   - [The remote server returned an unexpected response: (413) Request Entity Too Large](#the-remote-server-returned-an-unexpected-response-413-request-entity-too-large)
   - [ERROR: Cannot index into a null array](#error-cannot-index-into-a-null-array)
+  - [The new license is not being picked up](#the-new-license-is-not-being-picked-up)
 
 <!-- /TOC -->
 
@@ -412,6 +413,15 @@ When reporting a larger number of packages (approximately 200), this error may b
 ### ERROR: Cannot index into a null array
 
 This error can be reported when installing the Chocolatey Central Management Service.  This can happen depending on the netsh binding that are currently present on the machine that is being installed on.  If for example, you have enabled SNI on a website on the machine that you are installing onto, then this error may occur.  This has been identified as a [bug](https://github.com/chocolatey/chocolatey-licensed-issues/issues/96), which is due to be corrected in version 0.1.1 of Chocolatey Central Management.
+
+### The new license is not being picked up
+You need to restart services and CCM web to pick up the license. Here's a handy script:
+
+```powershell
+Get-Service chocolatey-* | Stop-Service
+Get-Process ChocolateySoftware.ChocolateyManagement.Web.Mvc | Stop-Process
+Get-Service chocolatey-* | Start-Service
+```
 
 ___
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]

@@ -36,6 +36,7 @@ ___
   - [How do I get support?](#how-do-i-get-support)
   - [How do I set up Chocolatey Central Management?](#how-do-i-set-up-chocolatey-central-management)
   - [What is the CCM compatibility matrix?](#what-is-the-ccm-compatibility-matrix)
+  - [If I update the license file, do I need to restart my services and web?](#if-i-update-the-license-file-do-i-need-to-restart-my-services-and-web)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Computers checking in are overwriting each other](#computers-checking-in-are-overwriting-each-other)
   - [An Internal error occurred during your request](#an-internal-error-occurred-during-your-request)
@@ -172,6 +173,23 @@ You can start from a pre-configured environment known as [[Quick Deployment Envi
 
 ### What is the CCM compatibility matrix?
 Central Management has specific compatibility requirements with quite a few moving parts. It is important to understand that there are some Chocolatey Agent versions that may not be able to communicate with some versions of CCM and vice versa.  Please see the [CCM Component Compatibility Matrix](#ccm-component-compatibility-matrix) for details.
+
+### If I update the license file, do I need to restart my services and web?
+Yes, you do need to restart the agents, the service, and the web to pick up the license. Here's a handy script:
+
+```powershell
+Get-Service chocolatey-* | Stop-Service
+Get-Process ChocolateySoftware.ChocolateyManagement.Web.Mvc | Stop-Process
+Get-Service chocolatey-* | Start-Service
+```
+
+For your agent machines:
+
+```powershell
+Get-Service chocolatey-* | Stop-Service
+Get-Service chocolatey-* | Start-Service
+```
+
 
 ___
 ## Common Errors and Resolutions

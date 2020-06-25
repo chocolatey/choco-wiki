@@ -21,6 +21,7 @@ ___
   - [Chocolatey Agent Service is unable to communicate with Chocolatey Central Management Service](#chocolatey-agent-service-is-unable-to-communicate-with-chocolatey-central-management-service)
   - [The remote server returned an unexpected response: (413) Request Entity Too Large](#the-remote-server-returned-an-unexpected-response-413-request-entity-too-large)
   - [Computers checking in are overwriting each other](#computers-checking-in-are-overwriting-each-other)
+  - [The agent services are not picking up the new license](#the-agent-services-are-not-picking-up-the-new-license)
 
 <!-- /TOC -->
 
@@ -170,6 +171,14 @@ Remove-ItemProperty -Path "HKLM:\Software\Chocolatey" -Name "UniqueId" -Force
 ```
 
 Once you've removed this, you'll need to restart the Agent Service to get it regenerated.
+
+### The agent services are not picking up the new license
+Currently, you do need to restart agents. Here's a handy script:
+
+```powershell
+Get-Service chocolatey-* | Stop-Service
+Get-Service chocolatey-* | Start-Service
+```
 
 ___
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]

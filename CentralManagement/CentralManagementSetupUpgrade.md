@@ -22,6 +22,7 @@ ___
   - [New Deployments Feature Example](#new-deployments-feature-example)
 - [FAQs](#faqs)
   - [Can I simply upgrade all three CCM packages in the same command?](#can-i-simply-upgrade-all-three-ccm-packages-in-the-same-command)
+  - [If I update the license file, do I need to restart my services and web?](#if-i-update-the-license-file-do-i-need-to-restart-my-services-and-web)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [ERROR: There was an error deserializing the requested JSON file: C:\ProgramData\chocolatey\lib\chocolatey-management-database\tools\app\appsettings.json Padding is invalid and cannot be removed.](#error-there-was-an-error-deserializing-the-requested-json-file-c\programdata\chocolatey\lib\chocolatey-management-database\tools\app\appsettingsjson-padding-is-invalid-and-cannot-be-removed)
 
@@ -135,6 +136,15 @@ choco upgrade chocolatey-management-database chocolatey-management-service choco
 ```
 
 when you have everything on the same box may work, but it may not. Please follow the steps here for best success.
+
+### If I update the license file, do I need to restart my services and web?
+Yes, you do need to restart the agents, the service, and the web to pick up the license. Here's a script to handle that:
+
+```powershell
+Get-Service chocolatey-* | Stop-Service
+Get-Process ChocolateySoftware.ChocolateyManagement.Web.Mvc | Stop-Process
+Get-Service chocolatey-* | Start-Service
+```
 
 ___
 ## Common Errors and Resolutions
