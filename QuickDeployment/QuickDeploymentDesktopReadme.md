@@ -165,7 +165,7 @@ Our documentation can assist with ensuring this is done correctly.
 To allow access to all services firewall ports have been opened on QDE as follows:
 
 * 8443: Nexus WebUI
-* 8081: Jenkins WebUI
+* 8080: Jenkins WebUI
 * 443: Central Management WebUI
 * 24020: Central Management Service communications for Agent check-in
 
