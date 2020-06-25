@@ -395,6 +395,8 @@ When reporting a larger number of packages (approximately 200), this error may b
 ### ERROR: Cannot index into a null array
 This error can be reported when installing the Chocolatey Central Management Service.  This can happen depending on the netsh binding that are currently present on the machine that is being installed on.  If for example, you have enabled SNI on a website on the machine that you are installing onto, then this error may occur.  This has been identified as a [bug](https://github.com/chocolatey/chocolatey-licensed-issues/issues/96), which is due to be corrected in version 0.1.1 of Chocolatey Central Management.
 
+This could also be when you are providing an existing certificate - see https://github.com/chocolatey/chocolatey-licensed-issues/issues/143. This was fixed in v0.2.0.
+
 ### The new license is not being picked up
 You need to restart services and CCM web to pick up the license. Here's a handy script:
 
