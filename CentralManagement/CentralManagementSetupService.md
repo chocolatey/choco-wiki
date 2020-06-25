@@ -250,7 +250,6 @@ The `chocolatey-management-service` is responsible for making a number of change
 ___
 ## FAQ
 ### How can I increase the level of logging for Chocolatey Central Management?
-
 This can be done by changing the level value, which should be currently INFO, to use DEBUG, as per the following:
 
 ~~~xml
@@ -276,7 +275,6 @@ netsh http show sslcert
 ~~~
 
 ### How can I remove a netsh binding that has been created
-
 If you need to remove a netsh binding, you can do that using the following command:
 
 ~~~powershell
@@ -286,7 +284,6 @@ netsh http delete sslcert ipport=0.0.0.0:<port_number>
 **NOTE:** Here `<port_number>` should be replaced with the Port Number that has been registered
 
 ### Can I manually create an SSL binding?
-
 If required, it is possible to manually create a netsh binding.  This is done using the following command:
 
 ~~~powershell
@@ -296,7 +293,6 @@ netsh http add sslcert ipport=0.0.0.0:<port_number> certhash=<certificate_thumbp
 **NOTE:** Here, `<port_number>` should be replaced with the Port Number to be used for the registration.  `<certifcate_thumbprint>` should be replaced with the thumbprint for the certificate that is to be used for the registration.  `<random_guid>` should be replaced with a random guid in the following format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
 
 ### We want to set up the Chocolatey Central Management service to use a domain account that will have local admin on each box. Can we do this?
-
 Yes, absolutely. You will pass those credentials through at install/upgrade time, and you will also want to turn on the feature useRememberedArgumentsForUpgrades (see [configuration](https://chocolatey.org/docs/chocolatey-configuration#features)) so that future upgrades will have that information available. The remembered arguments are stored encrypted on the box (that encryption is reversible so you may opt to pass that information each time).
 
 * `/Username`: - provide username - instead of using the default 'ChocolateyLocalAdmin' user.
@@ -306,17 +302,14 @@ Yes, absolutely. You will pass those credentials through at install/upgrade time
 You would pass something like `choco install chocolatey-management-service -y --params="'/Username:domain\account /EnterPassword'"` to securely pass the password at runtime. You could also run `choco install chocolatey-management-service -y --params="'/Username:<domain\account>'" --package-parameters-sensitive="'/Password:<password>'"` (or do it as part of `choco upgrade`).
 
 ### Is the password stored anywhere?
-
 No, that would reduce the security of the password. It exists in memory long enough to set the value on user and the service and then it is cleared.
 
 There is no storage of the password anywhere other than how Windows stores passwords.
 
 ### We are going to use our own account with a rotating password. When we rotate the password for the account that we use for the Chocolatey Management Service, what do we need to do?
-
 Like with any service that uses rotating passwords, you will need to redeploy the service or go into the services management console and update the password. As it is much faster to deploy out that update, you can do something like `choco upgrade chocolatey-management-service -y --params="'/Username:domain\account'" --package-parameters-sensitive="'/Password:newpassword'" --force` (the `--force` ensures the code is redeployed).
 
 ### Tell me more about the Chocolatey managed password.
-
 So you've seen from above that
 
 * It is 32 characters long.
@@ -328,27 +321,22 @@ So you've seen from above that
 Chocolatey uses something unique about each system, along with an encrypted value in the licensed code base to generate base password, then it makes some other changes to ensure that the password meets complexity requirements. We won't give you the full algorithm of how the password is generated as knowing the algorithm would be a security issue - like having a partial picture of a key, you could start working on how to break in. Unlike a picture of a key, even knowing the full algorithm doesn't get you everything you need as you would need local access to each box to determine the password for **each** machine.
 
 ### Is the managed password stored or logged anywhere?
-
 No, that would reduce the security of the password. It exists in memory long enough to set the value on user and the service and then it is cleared.
 
 There is no storage of the password anywhere other than how Windows stores passwords.
 
 ### Is the managed password the same on every machine?
-
 No, it is different for every machine it is deployed to.
 
 ### How would someone potentially get access to the managed password?
-
 The Chocolatey licensed code base is encrypted, so only people that work at Chocolatey Software would be able to determine the password for a particular box (just that one) **IF** they have local access to that box. Even with all of the information and the algorithm, it's still going to take our folks a while to determine the password. That gets them access to one machine. Of course, Chocolatey folks are not going to do this for obvious reasons.
 
 So let's realize this to its full potential - If someone were able to hack the Chocolatey licensed codebase, they would be able to determine the full password algorithm. Then they'd also need to hack into your infrastructure and get local access to every box that they wanted to get the Chocolatey-managed password so they could get admin access to just that box. Taking this out a bit further, it's reasonable to assume that if someone has hacked into your infrastructure, it's highly unlikely they are going to be using a non-administrator account to get local access to a box so they can get the password for an administrator account for just that one box. It's more likely they would would already have a local admin account for the boxes they are attacking, and are likely to seek other attack vectors that are much less sophisticated.
 
 ### Do you rotate the managed password on a schedule?
-
 We are looking to do this in a future release. We may make the schedule configurable.
 
 ### Can I take advantage of Chocolatey managed passwords with my own Windows services?
-
 Yes, absolutely. If you use C4B's PowerShell Windows Services code, you will be able to install services and have Chocolatey manage the password for those as well.
 
 ### What is the CCM compatibility matrix?
@@ -356,9 +344,7 @@ Central Management has specific compatibility requirements with quite a few movi
 
 ___
 ## Common Errors and Resolutions
-
 ### Chocolatey Agent Service is unable to communicate with Chocolatey Central Management Service
-
 There is a known issue with the beta release of Chocolatey Central Management where an inconsistent Port Number is used between these two services.  One used 24020 and the other used 24040.  The correct default Port Number is 24020, and this is used in the 0.1.0 release of Chocolatey Central Management.  If required, the Port Number can be explicitly set during the installation of the Chocolatey Central Management packages using the following option when installing `chocolatey-management-service`:
 
 ~~~powershell
@@ -366,7 +352,6 @@ There is a known issue with the beta release of Chocolatey Central Management wh
 ~~~
 
 ### A parameter cannot be found that matches parameter name KeyUsage
-
 This is known issue with the beta release of Chocolatey Central Management regarding the creation of a Self Signed Certificate.  You may see the error:
 
 `A parameter cannot be found that matches parameter name KeyUsage`
@@ -393,13 +378,11 @@ $null = Move-Item -Path $certPath.PsPath -Destination 'Cert:\\LocalMachine\\Trus
 ~~~
 
 ### The term 'Install-ChocolateyAppSettingsJsonFile' is not recognized as the name of a cmdlet, function, script file, or operable program.
-
 In the beta version of Chocolatey.Extension, there was a Cmdlet named Install-ChocolateyAppSettingsJsonFile and this was used in the 0.1.0-beta-20181009 release of the Chocolatey Central Management components. In the final released version of the Chocolatey.Extension, this was renamed to Install-AppSettingsJsonFile.
 
 As a result, the Chocolatey Central Management beta no longer works with the released version of Chocolatey.Extension. This will be corrected once the next release of the Chocolatey Central Management components is completed.
 
 ### Cannot process command because of one or more missing mandatory parameters: FilePath
-
 During the creation of Chocolatey Central Management, some additional PowerShell cmdlets were created, and these are installed as part of the Chocolatey Extension package.  These cmdlets went through a number of iterations, and as a result, different combinations of Chocolatey Central Management packages were incompatible with the Chocolatey Extension package, resulting in the error:
 
 `Cannot process command because of one or more missing mandatory parameters: FilePath`
@@ -407,11 +390,9 @@ During the creation of Chocolatey Central Management, some additional PowerShell
 The guidance in this case is either to pin to the specific version of the Chocolatey Extension package required by the version of Chocolatey Central Management being used, or, update to the latest versions of all packages, where the situation should be addressed.
 
 ### The remote server returned an unexpected response: (413) Request Entity Too Large
-
 When reporting a larger number of packages (approximately 200), this error may be reported.  This is due to the size of the information, in bytes, being too large to send between the Chocolatey Agent Service and the Chocolatey Central Management Service.  This has been identified as a [bug](https://github.com/chocolatey/chocolatey-licensed-issues/issues/95), which is due to be corrected in version 0.1.1 of Chocolatey Central Management
 
 ### ERROR: Cannot index into a null array
-
 This error can be reported when installing the Chocolatey Central Management Service.  This can happen depending on the netsh binding that are currently present on the machine that is being installed on.  If for example, you have enabled SNI on a website on the machine that you are installing onto, then this error may occur.  This has been identified as a [bug](https://github.com/chocolatey/chocolatey-licensed-issues/issues/96), which is due to be corrected in version 0.1.1 of Chocolatey Central Management.
 
 ### The new license is not being picked up

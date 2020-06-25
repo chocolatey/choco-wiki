@@ -101,33 +101,28 @@ Get-ChildItem C:\packages -Recurse -Filter *.nupkg | Foreach-Object { choco push
 
 ___
 ## Step 2: Setup Central Management Database
-
 Please see [[Central Management Database Setup|CentralManagementSetupDatabase]].
 
 > :memo: **NOTE**: While we'd like to support different database engines at some point in the distant future, currently only SQL Server is supported.
 
 ___
 ## Step 3: Setup Central Mangement Windows Service(s)
-
 Please see [[Central Management Service Setup|CentralManagementSetupService]].
 
 > :memo: **NOTE**: If Step 1 is not succesful, do not move on to this step until you resolve issues with database setup.
 
 ___
 ## Step 4: Setup Central Management Website
-
 Please see [[Central Management Web Setup|CentralManagementSetupWeb]].
 
 > :memo: **NOTE**: If Step 1 or 2 is not succesful, do not move on to this step until you resolve issues with previous steps.
 
 ___
 ## Step 5: Setting up Agent Machines
-
 Please see [[Central Management Client Setup|CentralManagementSetupClient]].
 
-
+___
 ## Upgrading?
-
 Looking for upgrade instructions? See [[Central Management Upgrade|CentralManagementSetupUpgrade]].
 
 ___
