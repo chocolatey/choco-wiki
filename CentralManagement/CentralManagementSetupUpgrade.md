@@ -50,7 +50,7 @@ $YourInternalRepositoryApiKey = '<YOUR API KEY HERE>'
 $YourBusinessLicenseGuid = '<INSERT NON-TRIAL C4B LICENSE GUID HERE>'
 
 # Download Chocolatey community related items, no internalization necessary
-choco download chocolatey chocolatey chocolateygui --force --source="'https://chocolatey.org/api/v2/'" --output-directory="'C:\packages'"
+choco download chocolatey chocolateygui --force --source="'https://chocolatey.org/api/v2/'" --output-directory="'C:\packages'"
 
 # Download Licensed Packages
 # TRIAL? Please reach out to your sales person to get the latest binaries.
