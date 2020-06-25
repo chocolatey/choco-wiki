@@ -34,6 +34,8 @@ ___
 - [Step 4: Setup Central Management Website](#step-4-setup-central-management-website)
 - [Step 5: Setting up Agent Machines](#step-5-setting-up-agent-machines)
 - [Upgrading?](#upgrading)
+- [Common Errors and Resolutions](#common-errors-and-resolutions)
+  - [Executable script code found in signature block](#executable-script-code-found-in-signature-block)
 
 <!-- /TOC -->
 
@@ -124,6 +126,13 @@ Please see [[Central Management Client Setup|CentralManagementSetupClient]].
 ___
 ## Upgrading?
 Looking for upgrade instructions? See [[Central Management Upgrade|CentralManagementSetupUpgrade]].
+
+___
+## Common Errors and Resolutions
+### Executable script code found in signature block
+When attempting to install some components of Chocolatey, you may have seen this error. This was a bug due to how the script at [Step 1: Internalize Packages](#step-1-internalize-packages) was exasperating a known issue at https://github.com/chocolatey/chocolatey-licensed-issues/issues/155.
+
+Please go back through Step 1 and re-internalize those packages. You may need to overwrite any you would have pushed up (many if it won't let you do a push). In Nexus, you can remove the existing items and then upload through there. In other repositories you may need to remove the existing package versions you deployed first.
 
 ___
 [[Chocolatey Central Management|CentralManagement]]
