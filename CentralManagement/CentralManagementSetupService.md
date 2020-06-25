@@ -266,8 +266,8 @@ In the following files:
 * `$env:ChocolateyInstall\lib\chocolatey-agent\tools\service\chocolatey-agent.exe.config`
 
 When the value is changed, the services may also need restarted.
-### How can I view what SSL registrations have been made by the installation of chocolatey-management-service
 
+### How can I view what SSL registrations have been made by the installation of chocolatey-management-service
 By default, the installation of the `chocolatey-management-service` package will register a single netsh binding between a self-signed certificate (created at the point of installation) and port 24020.  This can be verified using the following command:
 
 ~~~powershell
