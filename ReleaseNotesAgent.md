@@ -12,6 +12,14 @@ This covers the release notes for the Chocolatey Agent Service (`chocolatey-agen
 * Please see https://github.com/chocolatey/chocolatey-licensed-issues/labels/AgentService
 * Some issues may be held internally, please follow your support routes to learn more.
 
+## 0.11.0 (June 25, 2020)
+### BREAKING CHANGES
+ * Chocolatey Agent v0.11.0 will only work with Central Management v0.3.0+. Upgrade order doesn't matter as you'll need to be on CCM v0.3.0 and Agent v0.11.0 before things start working again. See https://chocolatey.org/docs/central-management#ccm-component-compatibility-matrix.
+
+### BUG FIXES
+ * Fix - CCM - passphrases do not match on check-in (report_computer_information) - see [Licensed #152](https://github.com/chocolatey/chocolatey-licensed-issues/issues/152)
+ * Fix - CCM Deployments - Deployments agent exit code of -1 reports successful deployment - see [Licensed #153](https://github.com/chocolatey/chocolatey-licensed-issues/issues/153)
+
 
 ## 0.10.0 (June 18, 2020)
 ### BREAKING CHANGES

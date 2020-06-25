@@ -15,6 +15,14 @@ This covers the release notes for the Chocolatey Central Management (`chocolatey
 * Please see https://github.com/chocolatey/chocolatey-licensed-issues/labels/CentralManagement
 * Some issues may be held internally, please follow your support routes to learn more.
 
+## 0.3.0 (June 25, 2020)
+### BREAKING CHANGES
+ * Chocolatey Central Management v0.3.0 will only work with Chocolatey Agent v0.11.0+. Upgrade order doesn't matter as you'll need to be on CCM v0.3.0 and Agent v0.11.0 before things start working again.See https://chocolatey.org/docs/central-management#ccm-component-compatibility-matrix.
+
+### BUG FIXES
+* Fix - Service - Communication with Chocolatey Agent fails on Incorrect Passphrase - see [Licensed #152](https://github.com/chocolatey/chocolatey-licensed-issues/issues/152)
+* Fix - Web - Do not recreate website w/bindings on upgrade - see [Licensed #156](https://github.com/chocolatey/chocolatey-licensed-issues/issues/156)
+
 
 ## 0.2.0 (June 18, 2020)
 Deployments Release - we are excited to bring about managing remote machines with [Central Management Deployments](https://chocolatey.org/blog/announcing-deployments) coming in this release! There are quite a few things we've brought into the initial release and we think you'll agree that it is a powerful, yet easy to use interface. Read [the announcement.](https://chocolatey.org/blog/announcing-deployments). We've also overhauled the documentation to make it understandable and approachable. Please see https://chocolatey.org/docs/central-management.
@@ -36,7 +44,7 @@ Deployments Release - we are excited to bring about managing remote machines wit
   * Report on completed deployments including exporting to PDF for sharing with executive staff
 
 ### BUG FIXES
-* [Security] [REDACTED] - see [licensed #144](https://github.com/chocolatey/chocolatey-licensed-issues/issues/144)
+* [Security] Fix - Framework does not encrypt LDAP Password in the database - see [licensed #144](https://github.com/chocolatey/chocolatey-licensed-issues/issues/144)
 * Fix - Service - Error on installation when providing existing certificate: Cannot index into a null array - see [licensed #143](https://github.com/chocolatey/chocolatey-licensed-issues/issues/143)
 * Fix - Web - Do not enable recaptcha by default for site registration - see [licensed #128](https://github.com/chocolatey/chocolatey-licensed-issues/issues/128)
 * Fix - Web - Create/Edit Computer and Software modals are not saving changes - see [licensed #125](https://github.com/chocolatey/chocolatey-licensed-issues/issues/125)
