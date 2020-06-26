@@ -320,7 +320,7 @@ It depends. You can simply go to the appsettings.json file and adjust the connec
 
 1. Then restart the website by running from admin powershell: `Get-Process ChocolateySoftware.ChocolateyManagement.Web.Mvc | Stop-Process`
 
-> :warning: **WARNING**: Do not put `sec:` in front of any values that you are adding/modifying directly. That tells Chocolatey components they are encrypted and it will attempt to decrypt them for use. If that is done incorrectly, it will cause things to crash.
+> :warning: **WARNING**: Do not put `sec:` or `secure-` at the start (prefix) of any values that you are adding/modifying directly. That tells Chocolatey components they are encrypted and it will attempt to decrypt them for use. If that is done incorrectly, it will cause things to crash.
 
 
 ___
