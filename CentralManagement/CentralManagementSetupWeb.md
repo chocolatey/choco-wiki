@@ -18,6 +18,7 @@ ___
     - [SQL Server Windows Authentication](#sql-server-windows-authentication)
       - [Use Active Directory Domain Account](#use-active-directory-domain-account)
       - [Use Local Windows Account to Local SQL Server](#use-local-windows-account-to-local-sql-server)
+      - [Use Windows Account to Attach SQL Server](#use-windows-account-to-attach-sql-server)
       - [Use Local Windows Account to Remote SQL Server](#use-local-windows-account-to-remote-sql-server)
     - [SQL Server Account Authentication](#sql-server-account-authentication)
       - [Use SQL Server Authentication Locally](#use-sql-server-authentication-locally)
@@ -31,6 +32,7 @@ ___
 - [FAQ](#faq)
   - [Can I install the Chocolatey Central Management Web Site under a Virtual Directory in IIS?](#can-i-install-the-chocolatey-central-management-web-site-under-a-virtual-directory-in-iis)
   - [What is the CCM compatibility matrix?](#what-is-the-ccm-compatibility-matrix)
+  - [I entered incorrect database details on install, do I need to reinstall to fix that?](#i-entered-incorrect-database-details-on-install-do-i-need-to-reinstall-to-fix-that)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [The specified path, file name, or both are too long](#the-specified-path-file-name-or-both-are-too-long)
   - [HTTP Error when trying to access Chocolatey Central Management Website](#http-error-when-trying-to-access-chocolatey-central-management-website)
@@ -40,6 +42,7 @@ ___
   - [Emails sent from CCM to users has links that contains localhost, rather than actual CCM Server name](#emails-sent-from-ccm-to-users-has-links-that-contains-localhost-rather-than-actual-ccm-server-name)
   - [The updated license file is not being picked up in the website](#the-updated-license-file-is-not-being-picked-up-in-the-website)
   - [A computer or group is not showing as available for deployments but I have plenty of available licenses](#a-computer-or-group-is-not-showing-as-available-for-deployments-but-i-have-plenty-of-available-licenses)
+  - [Failed to generate a user instance of SQL Server due to failure in retrieving the user's local application data path.](#failed-to-generate-a-user-instance-of-sql-server-due-to-failure-in-retrieving-the-users-local-application-data-path)
 
 <!-- /TOC -->
 
@@ -136,6 +139,20 @@ choco install chocolatey-management-web -y --package-parameters="'/ConnectionStr
 > Please ensure the user `IIS APPPOOL\ChocolateyCentralManagement` has been given `db_datareader` and `db_datawriter` access to the database. See [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].
 
 > :memo: **NOTE**: Note the connection string doesn't include credentials. That's because Windows Authentication for SQL Server uses the context of what is running it and why the service itself needs the right user/password. Whatever is running the IIS Application Pool is the user you need to ensure is in the database.
+
+##### Use Windows Account to Attach SQL Server
+You are using AttachDBFile or User Instance in your Connection String. This is effectively asking to attach a database file to the User's Data directory.
+
+```powershell
+choco install chocolatey-management-service -y --package-parameters="'/ConnectionString:Data Source=.\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|SomeDbFile.mdf;User Instance=true;'"
+```
+
+> :warning: **WARNING**
+>
+> STOP right here. This is an unsupported scenario.
+>
+> While it may work, it's a really bad idea. Please look at one of the other options.
+> It can also result in "Failed to generate a user instance of SQL Server due to failure in retrieving the user's local application data path."
 
 
 ##### Use Local Windows Account to Remote SQL Server
@@ -282,6 +299,30 @@ Currently no.  The Chocolatey Central Management Web Site expects to reside at t
 ### What is the CCM compatibility matrix?
 Central Management has specific compatibility requirements with quite a few moving parts. It is important to understand that there are some Chocolatey Agent versions that may not be able to communicate with some versions of CCM and vice versa.  Please see the [[CCM Component Compatibility Matrix|CentralManagement#ccm-component-compatibility-matrix]] for details.
 
+
+### I entered incorrect database details on install, do I need to reinstall to fix that?
+It depends. You can simply go to the appsettings.json file and adjust the connection string to be plaintext. It will remain in plaintext though (at least until upgrade), so if you have actual password details you need to keep secure, you should do a force installation.
+
+1. The file is located at `c:\tools\chocolatey-management-web\appsettings.json`.
+1. You would open that up in an editor and modify the `"Default"` connection string.
+1. It would look something like the following (adjust the connection string as necessary):
+
+    ```json
+    {
+      "ConnectionStrings": {
+            "Default": "Server=Localhost\SQLEXPRESS; Database=ChocolateyManagement; Trusted_Connection=True;"
+      },
+      "App": {
+        "WebSiteRootAddress": "http://<FQDN OR Binding HERE>"
+      }
+    }
+    ```
+
+1. Then restart the website by running from admin powershell: `Get-Process ChocolateySoftware.ChocolateyManagement.Web.Mvc | Stop-Process`
+
+> :warning: **WARNING**: Do not put `sec:` in front of any values that you are adding/modifying directly. That tells Chocolatey components they are encrypted and it will attempt to decrypt them for use. If that is done incorrectly, it will cause things to crash.
+
+
 ___
 ## Common Errors and Resolutions
 ### The specified path, file name, or both are too long
@@ -385,6 +426,12 @@ Get-Service chocolatey-* | Start-Service
 
 ### A computer or group is not showing as available for deployments but I have plenty of available licenses
 Once you upgrade to Central Management v0.2.0+, you have upgraded the Agent on the machine to v0.10.0+, and it has successfully completed a check in, then that messaging should go away. Note that clients do not get a message back that there was a failure as a security feature - you'll need to consult the Central Management Service logs. You can find that at `$env:ChocolateyInstall\logs\ccm-service.log`, or if you are on a version of CCM prior to 0.2.0, the log will be located at `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service\logs\chocolatey.service.host.log`.
+
+### Failed to generate a user instance of SQL Server due to failure in retrieving the user's local application data path.
+You may see the following: "System.Data.SqlClient.SqlException (0x80131904): Failed to generate a user instance of SQL Server due to failure in retrieving the user's local application data path. Please make sure the user has a local user profile on the computer. The connection will be closed."
+
+This means you are attempting to attach a Local DB file as part of your connection. This is an invalid scenario as noted at [Use Windows Account to Attach SQL Server](#use-windows-account-to-attach-sql-server).
+
 
 ___
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]
