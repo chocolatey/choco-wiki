@@ -370,7 +370,7 @@ It depends. You can simply go to the appsettings.json file and adjust the connec
     ```json
     {
       "ConnectionStrings": {
-            "Default": "Server=Localhost\SQLEXPRESS; Database=ChocolateyManagement; Trusted_Connection=True;"
+            "Default": "Server=Localhost\\SQLEXPRESS; Database=ChocolateyManagement; Trusted_Connection=True;"
       }
     }
     ```
