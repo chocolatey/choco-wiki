@@ -94,7 +94,7 @@ choco upgrade chocolatey-management-web -y
 
 > :warning: **WARNING**
 >
-> You may need to adjust permissions/roles for your user if not using the default `ccmadmin` account. Please see the roles and permissions your account has versus what is available in `Administration -> Settings`.
+> You may need to adjust permissions/roles for your user if not using the default `ccmadmin` account. Please see the roles and permissions your account has versus what is available in `Administration -> Users`.
 
 ___
 ## Step 5: Upgrade Agent Machines
