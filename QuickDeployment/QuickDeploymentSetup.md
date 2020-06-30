@@ -11,20 +11,20 @@ You will receive a download link via email for an archive of the VM image. Once 
 <!-- TOC depthFrom:2 -->
 
 - [Step 0: Setup Considerations](#step-0-setup-considerations)
-    - [Step 0.1: QDE Rename Considerations](#step-01-qde-rename-considerations)
+  - [Step 0.1: QDE Rename Considerations](#step-01-qde-rename-considerations)
 - [Step 1: Import Virtual Environment](#step-1-import-virtual-environment)
-    - [Platform: Hyper-V (Appliance)](#platform-hyper-v-appliance)
-    - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
-    - [Platform: VMware (VMDK file)](#platform-vmware-vmdk-file)
-    - [Platform: VMware (OVF template)](#platform-vmware-ovf-template)
-    - [Platform: Other](#platform-other)
+  - [Platform: Hyper-V (Appliance)](#platform-hyper-v-appliance)
+  - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
+  - [Platform: VMware (VMDK file)](#platform-vmware-vmdk-file)
+  - [Platform: VMware (OVF template)](#platform-vmware-ovf-template)
+  - [Platform: Other](#platform-other)
 - [Step 2: Other Considerations for Virtual Environment](#step-2-other-considerations-for-virtual-environment)
-    - [Step 2.1: DNS Settings](#step-21-dns-settings)
+  - [Step 2.1: DNS Settings](#step-21-dns-settings)
 - [Step 3: Virtual Environment Setup](#step-3-virtual-environment-setup)
-    - [Step 3.1: Expand Disk Size](#step-31-expand-disk-size)
-    - [Step 3.2: Add License File to QDE](#step-32-add-license-file-to-qde)
-    - [Step 3.3: Regenerate SSL Certificates](#step-33-regenerate-ssl-certificates)
-    - [Step 3.4: Database Password Changes (Optional)](#step-34-database-password-changes-optional)
+  - [Step 3.1: Expand Disk Size](#step-31-expand-disk-size)
+  - [Step 3.2: Add License File to QDE](#step-32-add-license-file-to-qde)
+  - [Step 3.3: Regenerate SSL Certificates](#step-33-regenerate-ssl-certificates)
+  - [Step 3.4: Database Password Changes (Optional)](#step-34-database-password-changes-optional)
 - [Step 4: Firewall Changes](#step-4-firewall-changes)
 - [Step 5: Install and Configure Chocolatey on Clients](#step-5-install-and-configure-chocolatey-on-clients)
 
@@ -73,12 +73,12 @@ Chooose one of the following methods for what your hypervisor environment suppor
 
 1. Download zip archive containing the Hyper-V VM directory structure, and unzip it to the directory you wish to store it in.
 2. Open Hyper-V Manager, and select `Import Virtual Machine` from the right sidebar (or  Action menu), and choose the folder you extracted from the above archive (e.g. ChocoServer).
-3. Increase the size of the VHD, for example, to 100GB. Increase to what you feel comfortable with.
+3. Increase the size of the VHD, for example, to 500GB. Increase to what you feel comfortable with.
 
 ```powershell
 # This only increases the available size of the image
 # You will still need to increase the space for the C drive
-Resize-VHD -Path C:\path\to\QuickDeploy Environment.vhd -Size 100GB
+Resize-VHD -Path C:\path\to\QuickDeploy Environment.vhd -Size 500GB
 ```
 
 4. Windows 10 and Windows Server 2016/2019 version of Hyper-V now come with built-in support for Hyper-V Integration Services, as they automatically get pushed to guest VM's.
@@ -92,12 +92,12 @@ Video Summary:
 ### Platform: Hyper-V (VHD file)
 
 1. Download VHD from provided link, and unzip it to the directory you wish to store it in.
-2. Increase the size of the VHD, for example to 100GB. Increase to what you feel comfortable with.
+2. Increase the size of the VHD, for example to 500GB. Increase to what you feel comfortable with.
 
 ```powershell
 # This only increases the available size of the image
 # You will still need to increase the space for the C drive
-Resize-VHD -Path C:\path\to\QuickDeploy Environment.vhd -Size 100GB
+Resize-VHD -Path C:\path\to\QuickDeploy Environment.vhd -Size 500GB
 ```
 
 3. Open Hyper-V Manager.
@@ -127,7 +127,7 @@ Video Summary:
 7. Adjust the hardware specifications of the VM. For a performant system, the following are recommended:
     - 4 vCPUs
     - 8 GB RAM
-8. Once you click Finish, go back into the `Edit settings` context menu for the VM, and expand the disk you attached to 100GB (double-check in OS, and extend if needed). **NOTE**: likely you will need to allocate the additional space to the C drive.
+8. Once you click Finish, go back into the `Edit settings` context menu for the VM, and expand the disk you attached to 500GB (double-check in OS, and extend if needed). **NOTE**: likely you will need to allocate the additional space to the C drive.
 9. Boot up VM, and Install VMware Tools using the console menus (this will require a reboot).
 
 Video Summary:
@@ -175,7 +175,7 @@ A version of this readme file can be found in the [[Quick Deployment Desktop Rea
 
 ### Step 3.1: Expand Disk Size
 
-On the machine, please check the size of the C drive. If the volume needs to be expanded, expand it to the space you've allocated for the machine by running this command in a PowerShell administrative console: 
+On the machine, please check the size of the C drive. If the volume needs to be expanded, expand it to the space you've allocated for the machine by running this command in a PowerShell administrative console:
 
 ```powershell
 # This should increase the space available on the C drive.
