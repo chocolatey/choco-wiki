@@ -119,6 +119,8 @@ Remove-ItemProperty -Path "HKLM:\Software\Chocolatey" -Name "UniqueId" -Force
 
 Once you've removed this, you'll need to restart the Agent Service to get it regenerated.
 
+> :information_source: You may ***also*** need to remove the ChocolateyLocalAdmin user (if you are using it for services) and reinstall the Agent service (and CCM service if on this machine) to get that password corrected.
+
 ### What is the CCM compatibility matrix?
 Central Management has specific compatibility requirements with quite a few moving parts. It is important to understand that there are some Chocolatey Agent versions that may not be able to communicate with some versions of CCM and vice versa.  Please see the [[CCM Component Compatibility Matrix|CentralManagement#ccm-component-compatibility-matrix]] for details.
 
@@ -166,6 +168,8 @@ Remove-ItemProperty -Path "HKLM:\Software\Chocolatey" -Name "UniqueId" -Force
 ```
 
 Once you've removed this, you'll need to restart the Agent Service to get it regenerated.
+
+> :information_source: You may ***also*** need to remove the ChocolateyLocalAdmin user (if you are using it for services) and reinstall the Agent service (and CCM service if on this machine) to get that password corrected.
 
 ### The agent services are not picking up the new license
 Currently, you do need to restart agents. Here's a handy script:

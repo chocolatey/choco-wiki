@@ -208,6 +208,8 @@ Remove-ItemProperty -Path "HKLM:\Software\Chocolatey" -Name "UniqueId" -Force
 
 Once you've removed this, you'll need to restart the Agent Service to get it regenerated.
 
+> :information_source: You may ***also*** need to remove the ChocolateyLocalAdmin user (if you are using it for services) and reinstall the Agent service (and CCM service if on this machine) to get that password corrected.
+
 ### An Internal error occurred during your request
 Check the log files. You may have incorrect database access, but most likely it can come because you didn't follow the steps for setup appropriately.
 
