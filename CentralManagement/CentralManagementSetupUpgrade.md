@@ -81,6 +81,13 @@ ___
 choco upgrade chocolatey-management-service -y
 ```
 
+> :warning: **WARNING**: If you passed options for any of the following, you ***will need to pass*** those items again for upgrades in current releases of CCM:
+> * `/Username:` / `/Password:` / `/EnterPassword`
+> * `/PortNumber:`
+> * `/CertificateDnsName:` / `/CertificateThumbprint:`
+>
+> Database details that have not changed will not need to be passed.
+
 There may be additional (new) things you will want to configure. Please see [[Central Management Service Setup|CentralManagementSetupService]] for details.
 
 ___
@@ -98,7 +105,6 @@ choco upgrade chocolatey-management-web -y
 
 ___
 ## Step 5: Upgrade Agent Machines
-
 
 > :memo: **NOTE**: Please see [[Central Management Client Setup|CentralManagementSetupClient]] for details about all arguments that can be passed and set.
 
