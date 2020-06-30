@@ -25,7 +25,8 @@ ___
   - [If I update the license file, do I need to restart my services and web?](#if-i-update-the-license-file-do-i-need-to-restart-my-services-and-web)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [ERROR: There was an error deserializing the requested JSON file: C:\ProgramData\chocolatey\lib\chocolatey-management-database\tools\app\appsettings.json Padding is invalid and cannot be removed.](#error-there-was-an-error-deserializing-the-requested-json-file-c\programdata\chocolatey\lib\chocolatey-management-database\tools\app\appsettingsjson-padding-is-invalid-and-cannot-be-removed)
-- [When I upgrade the website, it wipes out any http port bindings I created](#when-i-upgrade-the-website-it-wipes-out-any-http-port-bindings-i-created)
+  - [When I upgrade the website, it wipes out any http port bindings I created](#when-i-upgrade-the-website-it-wipes-out-any-http-port-bindings-i-created)
+  - [ERROR: The term ‘Install-SettingsJsonFile’ is not recognized as the name of a cmdlet, function, script file, or operable program.](#error-the-term-install-settingsjsonfile-is-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
 
 <!-- /TOC -->
 
@@ -165,9 +166,16 @@ Remove-Item -Force -Path "$env:ChocolateyInstall\lib\chocolatey-management-datab
 choco upgrade chocolatey-management-database -y --package-parameters="'/SqlServerInstance:localhost\SQLEXPRESS'" --source="'c:\choco-setup\packages'"
 ```
 
-## When I upgrade the website, it wipes out any http port bindings I created
+### When I upgrade the website, it wipes out any http port bindings I created
 This was an issue in releases prior to upgrading to CCM v0.3.0 - see  https://github.com/chocolatey/chocolatey-licensed-issues/issues/156.
 If you run into this, please recreate the bindings again.
+
+### ERROR: The term ‘Install-SettingsJsonFile’ is not recognized as the name of a cmdlet, function, script file, or operable program.
+This is https://github.com/chocolatey/chocolatey-licensed-issues/issues/161.
+
+There are two workarounds noted:
+* Delete the appsettings.json file prior to upgrade
+* Do not pass database details if they have not changed during upgrade.
 
 ___
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]

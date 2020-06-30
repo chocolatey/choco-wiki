@@ -31,6 +31,7 @@ ___
   - [Chocolatey Central Management database package installs without error, but ChocolateyManagement database is not created](#chocolatey-central-management-database-package-installs-without-error-but-chocolateymanagement-database-is-not-created)
   - [The term 'Install-ChocolateyAppSettingsJsonFile' is not recognized as the name of a cmdlet, function, script file, or operable program.](#the-term-install-chocolateyappsettingsjsonfile-is-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
   - [Cannot process command because of one or more missing mandatory parameters: FilePath](#cannot-process-command-because-of-one-or-more-missing-mandatory-parameters-filepath)
+  - [ERROR: The term ‘Install-SettingsJsonFile’ is not recognized as the name of a cmdlet, function, script file, or operable program.](#error-the-term-install-settingsjsonfile-is-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
 
 <!-- /TOC -->
 
@@ -290,7 +291,6 @@ The purpose of the `chocolatey-management-database` package is to create and dep
 
 ___
 ## FAQ
-
 ### Can I use MySQL (or PostgreSQL)?
 Unfortunately only SQL Server SKUs work with Chocolatey Central Management at this time. You can use SQL Server Express in smaller shops.
 
@@ -299,26 +299,29 @@ Central Management has specific compatibility requirements with quite a few movi
 
 ___
 ## Common Errors and Resolutions
-
 ### Chocolatey Central Management database package installs without error, but ChocolateyManagement database is not created
-
 In the beta version of the Chocolatey Central Management database package, if there was an error during the creation of the database, no exit code was used.  As a result, the package could state that it was installed correctly, but the database would not have been created.  This has been corrected in the 0.1.0 release of Chocolatey Central Management.
 
 When this occurs, the problem is typically the connection string being used to connect to the database.  The advice is to verify that the connecting string is valid, and attempt the installation again.
 
 ### The term 'Install-ChocolateyAppSettingsJsonFile' is not recognized as the name of a cmdlet, function, script file, or operable program.
-
 In the beta version of Chocolatey.Extension, there was a Cmdlet named Install-ChocolateyAppSettingsJsonFile and this was used in the 0.1.0-beta-20181009 release of the Chocolatey Central Management components. In the final released version of the Chocolatey.Extension, this was renamed to Install-AppSettingsJsonFile.
 
 As a result, the Chocolatey Central Management beta no longer works with the released version of Chocolatey.Extension. This will be corrected once the next release of the Chocolatey Central Management components is completed.
 
 ### Cannot process command because of one or more missing mandatory parameters: FilePath
-
 During the creation of Chocolatey Central Management, some additional PowerShell cmdlets were created, and these are installed as part of the Chocolatey Extension package.  These cmdlets went through a number of iterations, and as a result, different combinations of Chocolatey Central Management packages were incompatible with the Chocolatey Extension package, resulting in the error:
 
 `Cannot process command because of one or more missing mandatory parameters: FilePath`
 
 The guidance in this case is either to pin to the specific version of the Chocolatey Extension package required by the version of Chocolatey Central Management being used, or, update to the latest versions of all packages, where the situation should be addressed.
+
+### ERROR: The term ‘Install-SettingsJsonFile’ is not recognized as the name of a cmdlet, function, script file, or operable program.
+This is https://github.com/chocolatey/chocolatey-licensed-issues/issues/161.
+
+There are two workarounds noted:
+* Delete the appsettings.json file prior to upgrade
+* Do not pass database details if they have not changed during upgrade.
 
 ___
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]
