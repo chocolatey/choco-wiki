@@ -110,7 +110,7 @@ This package creates the CCM Website and Application Pool with the following def
 Scenario 1: Active Directory - you have set up the [[database|CentralManagementSetupDatabase]] to use Windows Authentication (or Mixed Mode Authentication).
 
 ```powershell
-choco install chocolatey-management-web -y --package-parameters="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;Trusted_Connection=True;"" /Username:<DomainAccount>'" --package-parammeters-sensitive="'/Password:<domain account password>'"
+choco install chocolatey-management-web -y --package-parameters="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;Trusted_Connection=True;"" /Username:<DomainAccount>'" --package-parameters-sensitive="'/Password:<domain account password>'"
 ```
 
 > :memo: **NOTE**: Note the connection string doesn't include credentials. That's because Windows Authentication for SQL Server uses the context of what is running it and why the service itself needs the right user/password. In this case, whatever is running the IIS Application Pool is the user you need to ensure has access to the database.
@@ -121,7 +121,7 @@ Scenario 2: Monolithic - you have set up the [[database|CentralManagementSetupDa
 * Specify User:
 
 ```powershell
-choco install chocolatey-management-web -y --package-parameters="'/ConnectionString:""Server=<Localhost\SQLEXPRESS>;Database=ChocolateyManagement;Trusted_Connection=True;"" /Username:<LocalWindowsAccount>'" --package-parammeters-sensitive="'/Password:<Local account password>'"
+choco install chocolatey-management-web -y --package-parameters="'/ConnectionString:""Server=<Localhost\SQLEXPRESS>;Database=ChocolateyManagement;Trusted_Connection=True;"" /Username:<LocalWindowsAccount>'" --package-parameters-sensitive="'/Password:<Local account password>'"
 ```
 
 > :warning: **WARNING**
@@ -192,7 +192,7 @@ choco install chocolatey-management-service -y --package-parameters-sensitive="'
 Scenario 5: Split - you are installing the management service(s) on a server, and targeting an existing SQL Server instance in your organization. You have set up the [[database|CentralManagementSetupDatabase]] to use Mixed Mode Authentication.
 
 ```powershell
-choco install chocolatey-management-service -y --package-parammeters-sensitive="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+choco install chocolatey-management-service -y --package-parameters-sensitive="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
 
 > :warning: **WARNING**
