@@ -18,6 +18,14 @@ Please see [[Install the Licensed Edition|Installation-Licensed]] for informatio
 
 * **NOTE:** We've identified an issue with Self-Service "Interactive" and UAC - we are working on a fix. Please see [#36](https://github.com/chocolatey/chocolatey-licensed-issues/issues/36) and subscribe for details. Until then, do not turn on the interactive feature of self-service or nothing will work.
 
+## 2.1.1 (July 3, 2020)
+### BUG FIXES
+ * Self-Service / Background Mode:
+    * Fix - Chocolatey GUI does not work with Self-Service in v2.1.0 - see [licensed #162](https://github.com/chocolatey/chocolatey-licensed-issues/issues/162)
+ * Fix - Chocolatey Licensed Extension not reporting version in configuration logs
+ * Fix - Warnings seen in Chocolatey Agent and Central Management about "Unable to set Chocolatey Version to Semantic version"
+
+
 ## 2.1.0 (June 18, 2020)
 ### BUG FIXES
  * Self-Service / Background Mode:
