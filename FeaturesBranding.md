@@ -27,11 +27,11 @@ to the bottom left corner of the application.
 
 ## Requirements for branding
 
-**NOTE:** Branding of Chocolatey GUI will only available to our Business License
-customers, and requires a special build of Chocolatey GUI.  The version of Chocolatey
-GUI that ships on the Chocolatey Community Repository does not include the
-ability to apply branding.  If you would like more information about the branded
-version of Chocolatey GUI, please reach out to support via the normal channels.
+> :memo: **NOTE:** Branding of Chocolatey GUI is only available to our Business
+License customers, and requires the **Chocolatey GUI licensed extension**
+(chocolateygui.extension) to be installed, alongside Chocolatey GUI.  Currently,
+the chocolateygui.extension package is only available in a beta version, please
+reach out to support via the normal channels to get access to the package.
 
 In order for branding to work, there are a number of image files that are required.
 These have to be named exactly as the following:
@@ -43,7 +43,7 @@ These have to be named exactly as the following:
 * splash_1250x540.png
 
 
-**NOTE:** The reason that there are multiple splash screen images is because
+> :memo: **NOTE:** The reason that there are multiple splash screen images is because
 Chocolatey GUI makes a decision, based on the resolution of the screen, which
 splash screen image to display to the user.
 
@@ -75,16 +75,16 @@ would then expect to find the above asset files in this location:
 
 ## ChocolateyGuiBranding.dll
 
-The first time a Business Licensed version of Chocolatey GUI is executed, and there
-are the above asset files in one of the defined locations, a new file will
-be generated in the same location called `ChocolateyGuiBranding.dll`.  The new
-file actually contains all the image files that were created, as they have been
-embedded as resources within this assembly file.  This approach is used in order to
-optimize the loading of the assets.  Once this ChocolateyGuiBranding.dll has been
-created, Chocolatey GUI will use it each time the application runs.  The original
-image asset files are actually no longer required, and can be removed.  If at any
-point you need to re-generate the branding that is being used, simply delete the
-following two files:
+The first time Chocolatey GUI, with the Chocolatey GUI licensed extension installed,
+is executed, and the above asset files are in one of the defined locations, a new
+file will be generated in the same location called `ChocolateyGuiBranding.dll`.
+The new file actually contains all the image files that were created, as they have 
+been embedded as resources within this assembly file.  This approach is used in
+order to optimize the loading of the assets.  Once this ChocolateyGuiBranding.dll
+has been created, Chocolatey GUI will use it each time the application runs.  The
+original image asset files are actually no longer required, and can be removed.
+If at any point you need to re-generate the branding that is being used, simply
+delete the following two files:
 
 * ChocolateyGuiBranding.dll
 * ChocolateyGuiBranding.resources
@@ -110,6 +110,10 @@ In this GIF, we see branding being applied to the Chocolatey GUI application.
 Notice that the splash screen image has been replaced, as well as the logo at the
 top left of the application, and the icon in the taskbar.
 
+> :memo: **NOTE:** There is an open issue regarding the icon in the taskbar not
+being correctly replaced, visit https://github.com/chocolatey/chocolatey-licensed-issues/issues/157
+for more information.
+
 > :memo: **NOTE**: To see all feature videos for Chocolatey for Business, please visit https://chocolatey.org/resources/features#c4b.
 
 # Deploying Branding
@@ -117,10 +121,8 @@ top left of the application, and the icon in the taskbar.
 What follows is a suggestion on how a branded version of Chocolatey GUI can be
 deployed out to your environment.
 
-**NOTE:** In order for the below to work, you must have the privately released
-version of Chocolatey GUI, not the version that is available on the Chocolatey
-Community Repository.  In addition, this package must be available on the same
-source as the package that is produced below.
+> :memo: **NOTE:** In order for the below to work, you must have the Chocolatey GUI licensed 
+extension (chocolateygui.extension) installed.
 
 1. Follow the steps above to place the branding image assets into the correct location.
 1. Run the Chocolatey GUI application to generate the ChocolateyGuiBranding.dll
