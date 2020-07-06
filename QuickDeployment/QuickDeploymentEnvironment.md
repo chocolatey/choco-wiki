@@ -23,8 +23,8 @@ This is an overview on the Chocolatey Quick Deployment Environment (QDE). It pro
 
 <!-- /TOC -->
 
+___
 ## QDE Components
-
 The QDE appliance provides a unified architecture containing the following components:
 
 * **Sonatype Nexus Repository OSS** (pre-configured with repositories) - This is your repository, where you'll be storing your Chocolatey packages (nupkg files).
@@ -38,12 +38,13 @@ The QDE appliance provides a unified architecture containing the following compo
 > If you need a solution for a larger environment, QDE would still be suitable as a proof-of-concept, however, best practices would recommend a distributed infrastructure, separating each component into its own discrete node.
 > If you find yourself in need of a more scalable solution, please contact Support and we'll be more than happy to provide guidance for larger solutions.
 
+___
 ## Getting QDE
-
 To get QDE into your environment, please [reach out to us](https://chocolatey.org/contact/quick-deployment) and we can work to get you set up.
 
 > :memo: **NOTE**: A QDE environment is a fully functional Chocolatey for Business (C4B) environment, as such it will require a business or trial license.
 
+___
 ## Links
 
 * [[QDE Setup|QuickDeploymentSetup]]
@@ -52,6 +53,7 @@ To get QDE into your environment, please [reach out to us](https://chocolatey.or
 * [[QDE Firewall Changes|QuickDeploymentFirewallChanges]]
 * [[QDE Client Setup|QuickDeploymentClientSetup]] (setting up your client machines)
 
+___
 ## Related Articles
 
 A lot of what is done in QDE compresses the work or completely removes the work found in these related articles.
@@ -63,6 +65,7 @@ A lot of what is done in QDE compresses the work or completely removes the work 
 
 > :memo: **NOTE**: If you find that QDE is only good for a proof-of-concept in your environment due to having thousands of endpoints, you will want to understand how to scale out that infrastructure. The above articles address how that is done.
 
+___
 ## FAQ
 ### What does the QDE (Quick Deployment Environment) include?
 
