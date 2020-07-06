@@ -32,7 +32,6 @@ You will receive a download link via email for an archive of the VM image. Once 
 
 ___
 ## Step 0: Setup Considerations
-
 The following are points to keep in mind during initial setup:
 
 * You will need access to AWS to download the environment (specifically `s3.amazonaws.com`).
@@ -218,12 +217,10 @@ Choco install chocolatey-management-web -y --package-parameters-sensitive=”’
 
 ___
 ## Step 4: Firewall Changes
-
 See [[QDE Firewall Changes|QuickDeploymentFirewallChanges]].
 
 ___
 ## Step 5: Install and Configure Chocolatey on Clients
-
 See [[QDE Client Setup|QuickDeploymentClientSetup]].
 
 

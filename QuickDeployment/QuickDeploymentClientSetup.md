@@ -8,21 +8,21 @@
 
 <!-- /TOC -->
 
+___
 ## Summary
-
 Once you have QDE set up in your environment, you'll need to get clients talking to it. To do that, we'll need to do the following:
 
 * Setting up DNS on the client to access QDE.
 * Install the QDE SSL/TLS certificate so clients can access HTTPS components
 * Install Chocolatey and friends
 
+___
 ## DNS
-
 Typically in your environment, onces you've added QDE, it should be able to start talking to the QDE.
 In some situations, you may need to add the host name with the IP address to your HOSTS file to reach your environment.
 
+___
 ## Client Installation
-
 On your client machines, you will be running the following script in an administrative context:
 
 ```powershell
@@ -64,4 +64,5 @@ The `ClientSetup.ps1` script will:
 * Configure Self-Service mode
 * Configure Central Management check-in
 
+___
 [[Quick Deployment Environment|QuickDeploymentEnvironment]]

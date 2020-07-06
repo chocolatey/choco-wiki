@@ -17,19 +17,19 @@ This system has been pre-configured as a fully functioning C4B environment.
 - [Step 3: Regenerate SSL Certificates](#step-3-regenerate-ssl-certificates)
 - [Step 4: Enable Central Management](#step-4-enable-central-management)
 - [Step 5: Review Server Information](#step-5-review-server-information)
-    - [Nexus Repository](#nexus-repository)
-    - [Jenkins](#jenkins)
-    - [Chocolatey Central Management](#chocolatey-central-management)
-    - [Firewall ports](#firewall-ports)
-    - [Browser considerations](#browser-considerations)
+  - [Nexus Repository](#nexus-repository)
+  - [Jenkins](#jenkins)
+  - [Chocolatey Central Management](#chocolatey-central-management)
+  - [Firewall ports](#firewall-ports)
+  - [Browser considerations](#browser-considerations)
 - [Step 6: Change the API Key (Optional, Recommended)](#step-6-change-the-api-key-optional-recommended)
-        - [Choco Apikey Command](#choco-apikey-command)
+    - [Choco Apikey Command](#choco-apikey-command)
 - [Step 7: Install and Configure Chocolatey On Clients](#step-7-install-and-configure-chocolatey-on-clients)
 - [Step 8: Turn On Package Internalization](#step-8-turn-on-package-internalization)
 - [Step 9: License the QDE VM](#step-9-license-the-qde-vm)
 - [Common Errors And Resolutions](#common-errors-and-resolutions)
-    - [Unable login to Jenkins website, after browsing to Nexus website](#unable-login-to-jenkins-website-after-browsing-to-nexus-website)
-    - ["Server Error" warning when resetting "admin" credential in Nexus](#server-error-warning-when-resetting-admin-credential-in-nexus)
+  - [Unable login to Jenkins website, after browsing to Nexus website](#unable-login-to-jenkins-website-after-browsing-to-nexus-website)
+  - ["Server Error" warning when resetting "admin" credential in Nexus](#server-error-warning-when-resetting-admin-credential-in-nexus)
 
 <!-- /TOC -->
 
@@ -118,7 +118,6 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; . 'C:\choco-setup\files\Enable
 
 ___
 ## Step 5: Review Server Information
-
 ### Nexus Repository
 
 * Url: [https://chocoserver:8443](https://chocoserver:8443)
@@ -204,7 +203,6 @@ choco apikey add --key="'$YourApiKey'" --source="'https://chocoserver:8443/repos
 ___
 ## Step 7: Install and Configure Chocolatey On Clients
 
-
 This script, like all of the others here would need to be run in an administrative PowerShell context. However, this one is run from your client machines and not the QDE.
 
 ```powershell
@@ -260,7 +258,6 @@ Example Usage:
 ___
 ## Step 9: License the QDE VM
 
-
 This VM is running an **UNACTIVATED** Server 2019 Standard Operating System. If you plan to use this virtual machine long-term, you _will_ need to apply a license to the VM. If you use a KMS server in your environment, and have it configured on clients via Group Policy, you likely have nothing to do here, but verify.
 
 If you rely on Retail or MAK licensing, you will need to apply the license using the following, replacing the x's with your actual product key:
@@ -273,9 +270,7 @@ slmgr.vbs /ipk xxxxx-xxxxx-xxxxx-xxxxx
 
 ___
 ## Common Errors And Resolutions
-
 ### Unable login to Jenkins website, after browsing to Nexus website
-
 On the QDE VM, once you browse to the Nexus website at `https://chocoserver:8443`, you will receive the following error when trying to browse to the Jenkins website at `http://chocoserver:8080`:
 
 ```
@@ -305,11 +300,11 @@ Restart-Service nexus
 After the Nexus service has completed restarting, you should now be able to browse to the Jenkins website at `http://chocoserver:8080`.
 
 ### "Server Error" warning when resetting "admin" credential in Nexus
-
 When attempting to reset the `admin` account credential in Nexus, you receive a "Server Error" warning in the top right corner of the page, as shown below:
 
 ![QDE Nexus pw error](images/quickdeploy/QDE-nexus-pw-error.png)
 
 Though it may not be obvious, this is actually caused by Nexus not having enough disk space to function properly. We often see this occur if the `Expand disk size` step from above was missed. Please confirm that you have completed the [Step 1: Expand Disk Size](#step-1-expand-disk-size) step. Please keep in mind, this step is **NOT** the same as expanding the disk at the hypervisor level.
 
+___
 [[Quick Deployment Environment|QuickDeploymentEnvironment]]

@@ -75,7 +75,6 @@ A lot of what is done in QDE compresses the work or completely removes the work 
 * Scripts for Internal Deployment
 
 ### How much time does this save?
-
 Typically, setting up a proper Chocolatey Central Management server and any accompanying infrastructure takes somewhere between 1-5 days, even when you have everything you need to get started. Setting up a new piece of infrastructure can be pretty cumbersome, we know. The QDE contains pretty much everything you need to get started in a single image, all ready to go. At most, it should only take a couple of hours to get everything ready to go from there.
 
 ### How do I take advantage of QDE?
@@ -91,5 +90,4 @@ While this solution will be great to get a glimpse of what Chocolatey can really
 If you have a larger environment, we would strongly recommend taking the time to set up the various services on separate hosts to make them easier to manage and ensure they have the necessary resources to handle heavier loads.
 
 ### Can we brag about how fast we were able to get configured?
-
 Please do! :slightly_smiling_face:
