@@ -16,9 +16,9 @@ This is an overview on the Chocolatey Quick Deployment Environment (QDE). It pro
 - [FAQ](#faq)
   - [What does the QDE (Quick Deployment Environment) include?](#what-does-the-qde-quick-deployment-environment-include)
   - [How much time does this save?](#how-much-time-does-this-save)
-  - [How do I take advantage of QDE?](#how-do-i-take-advantage-of-qde)
-  - [I'm already a C4B customer?](#im-already-a-c4b-customer)
-  - [What if I have a larger environment? (> 1k nodes)](#what-if-i-have-a-larger-environment--1k-nodes)
+  - [How do we take advantage of QDE?](#how-do-we-take-advantage-of-qde)
+  - [We're already a C4B customer?](#were-already-a-c4b-customer)
+  - [What if we have a larger environment? (> 1k nodes)](#what-if-we-have-a-larger-environment--1k-nodes)
   - [Can we brag about how fast we were able to get configured?](#can-we-brag-about-how-fast-we-were-able-to-get-configured)
 
 <!-- /TOC -->
@@ -79,14 +79,14 @@ ___
 ### How much time does this save?
 Typically, setting up a proper Chocolatey Central Management server and any accompanying infrastructure takes somewhere between 1-5 days, even when you have everything you need to get started. Setting up a new piece of infrastructure can be pretty cumbersome, we know. The QDE contains pretty much everything you need to get started in a single image, all ready to go. At most, it should only take a couple of hours to get everything ready to go from there.
 
-### How do I take advantage of QDE?
+### How do we take advantage of QDE?
 You must have a [Business edition of Chocolatey](https://chocolatey.org/compare) or be on an active trial license. Fill out the [quick deployment request form](https://chocolatey.org/contact/quick-deployment) and we will reach out with all the necessary information to get you started.
 
-### I'm already a C4B customer?
+### We're already a C4B customer?
 Fill out the [quick deployment request form](https://chocolatey.org/contact/quick-deployment) and we will reach out with all the necessary information to get you started. Be sure to mention you are already a C4B customer.
 
-### What if I have a larger environment? (> 1k nodes)
 
+### What if we have a larger environment? (> 1k nodes)
 While this solution will be great to get a glimpse of what Chocolatey can really do for you, by its nature it isn't the silver bullet for every environment.
 
 If you have a larger environment, we would strongly recommend taking the time to set up the various services on separate hosts to make them easier to manage and ensure they have the necessary resources to handle heavier loads.
