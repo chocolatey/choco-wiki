@@ -4,8 +4,8 @@
 
 - [External Ports](#external-ports)
 - [Internal Ports](#internal-ports)
-  - [FAQs](#faqs)
-    - [Can I open up the CCM Service's port to allow machines to report in from anywhere?](#can-i-open-up-the-ccm-services-port-to-allow-machines-to-report-in-from-anywhere)
+- [FAQ](#faq)
+  - [Can I open up the CCM Service's port to allow machines to report in from anywhere?](#can-i-open-up-the-ccm-services-port-to-allow-machines-to-report-in-from-anywhere)
 
 <!-- /TOC -->
 
@@ -38,10 +38,8 @@ These are the ports that are already opened on Windows Firewall on the QDE.
 * Jenkins - 8080
 * CCM Service - 24020
 
-### FAQs
-
-#### Can I open up the CCM Service's port to allow machines to report in from anywhere?
-
+## FAQ
+### Can I open up the CCM Service's port to allow machines to report in from anywhere?
 While it is technically possible, we recommend using a VPN connection for client check-ins.
 The CCM service connection is authenticated over SSL, but our best practice recommendation is to secure the connection over a VPN as well.
 

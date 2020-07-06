@@ -13,7 +13,7 @@ This is an overview on the Chocolatey Quick Deployment Environment (QDE). It pro
 - [Getting QDE](#getting-qde)
 - [Links](#links)
 - [Related Articles](#related-articles)
-- [FAQs](#faqs)
+- [FAQ](#faq)
   - [What does the QDE (Quick Deployment Environment) include?](#what-does-the-qde-quick-deployment-environment-include)
   - [How much time does this save?](#how-much-time-does-this-save)
   - [How do I take advantage of QDE?](#how-do-i-take-advantage-of-qde)
@@ -63,8 +63,7 @@ A lot of what is done in QDE compresses the work or completely removes the work 
 
 > :memo: **NOTE**: If you find that QDE is only good for a proof-of-concept in your environment due to having thousands of endpoints, you will want to understand how to scale out that infrastructure. The above articles address how that is done.
 
-## FAQs
-
+## FAQ
 ### What does the QDE (Quick Deployment Environment) include?
 
 * Repository Server - Nexus (pre-configured with repositories)
