@@ -22,6 +22,14 @@ ___
 - [Step 2: Install Central Management Database Package](#step-2-install-central-management-database-package)
   - [Package Parameters](#package-parameters)
   - [Scenarios](#scenarios)
+    - [SQL Server Windows Authentication](#sql-server-windows-authentication)
+      - [Use Windows Authentication to Local SQL Server](#use-windows-authentication-to-local-sql-server)
+      - [Use Active Directory Account to Remote SQL Server](#use-active-directory-account-to-remote-sql-server)
+      - [Use Local Windows Account to Remote SQL Server](#use-local-windows-account-to-remote-sql-server)
+      - [Use Windows Account to Attach SQL Server](#use-windows-account-to-attach-sql-server)
+    - [SQL Server Account Authentication](#sql-server-account-authentication)
+      - [Use SQL Server Authentication to Local SQL Server](#use-sql-server-authentication-to-local-sql-server)
+      - [Use SQL Server Account to Remote SQL Server](#use-sql-server-account-to-remote-sql-server)
 - [Step 3: Set up SQL Server Logins And Access](#step-3-set-up-sql-server-logins-and-access)
 - [Step 4: Verify Installation](#step-4-verify-installation)
 - [FAQ](#faq)
@@ -179,21 +187,129 @@ The CCM database package will add or update a database to an existing SQL Server
 > :memo: **NOTE**: Items suffixed with "`:`" mean a value should be provided, items without are simply switches.
 
 ### Scenarios
-
-Scenario 1: You are installing the database package on the same machine as a SQL Server Express installation:
-
-```powershell
-choco install chocolatey-management-database -y --package-parameters-sensitive="'/ConnectionString=""Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;Trusted_Connection=true;""'"
-```
-
-Scenario 2: You are installing the database package on a single server, but connecting to an existing SQL Server in your environment:
+#### SQL Server Windows Authentication
+##### Use Windows Authentication to Local SQL Server
+Scenario 1: You have set up the database to use Windows Authentication (or Mixed Mode Authentication). You are installing the database package on a single server, but connecting to an existing SQL Server in your environment.
 
 ```powershell
-choco install chocolatey-management-database -y --package-parameters-sensitive="'/ConnectionString=""Server=DatabaseServer;Database=ChocolateyManagement;Trusted_Connection=true;""'"
+choco install chocolatey-management-database -y --package-parameters="'/ConnectionString=""Server=Localhost;Database=ChocolateyManagement;Trusted_Connection=true;""'"
 ```
 
-> :memo: **NOTE**:
+> :memo: **NOTE**: Note the connection string doesn't include credentials. That's because Windows Authentication for SQL Server uses the context of what is running the process, whether that be a domain account or a local Windows account.
 
+> :memo: **NOTE**: You can use `--package-parameters` and/or `--package-parameters-sensitive` here, depending on whether you are specifying things that should not be logged (`--package-parameters-sensitve` is guaranteed to stay out of logs).
+
+> :warning: **WARNING**
+>
+> **Installs**: Please ensure the user running the package installation is able to create databases unless you also pass `/SkipDatabasePermissionCheck` (in that case you simply need `db_owner` to the database being managed if it was precreated).
+>
+> **Upgrades**: Please ensure the user running the package installation has been granted `db_owner` access to an existing database.
+
+* SQL Server Express:
+
+```powershell
+choco install chocolatey-management-database -y --package-parameters="'/ConnectionString=""Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;Trusted_Connection=true;""'"
+```
+
+> :memo: **NOTE**: The above warnings and notes apply here as well.
+
+##### Use Active Directory Account to Remote SQL Server
+Scenario 2: You have set up the database to use Windows Authentication (or Mixed Mode Authentication). You are installing the database package on a different server than your existing SQL Server is located on.
+
+```powershell
+choco install chocolatey-management-database -y --package-parameters="'/ConnectionString=""Server=<RemoteSqlHost>;Database=ChocolateyManagement;Trusted_Connection=true;""'"
+```
+
+> :warning: **WARNING**
+>
+> SLOW DOWN right here.
+>
+> We recommend keeping the package installations on the same machine that SQL Server is in. It will reduce confusion and increase the accuracy of reporting. Run the installs/upgrades on the machine they apply to, so this should be the same machine that contains SQL Server (if on Windows).
+>
+
+> :warning: **WARNING**
+>
+> **Installs**: Please ensure the user running the package installation is able to create databases unless you also pass `/SkipDatabasePermissionCheck` (in that case you simply need `db_owner` to the database being managed if it was precreated).
+>
+> **Upgrades**: Please ensure the user running the package installation has been granted `db_owner` access to an existing database.
+
+> :memo: **NOTE**: This is not a normal scenario.
+
+##### Use Local Windows Account to Remote SQL Server
+Scenario 3: you have set up the database to use Windows Authentication (or Mixed Mode Authentication). You wish to use a local Windows account to connect to a remote database (on another computer).
+
+> :warning: **WARNING**
+>
+> STOP right here.
+>
+> This is an invalid scenario and will not work. Please look at one of the other options. If you don't have LDAP, you will want to look at [SQL Server Account Authentication](#sql-server-account-authentication) below.
+
+We typically recommend you run installations and upgrades for the databse on the local machine anyway, so that the information is left with that machine, especially when checking in.
+
+
+##### Use Windows Account to Attach SQL Server
+
+> :memo: **NOTE**: This is not a normal scenario, and it is not a good idea.
+
+Scenario 4: You are using AttachDBFile or User Instance in your Connection String. This is effectively asking to attach a database file to the User's Data directory.
+
+```powershell
+choco install chocolatey-management-database -y --package-parameters="'/ConnectionString:Data Source=.\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|SomeDbFile.mdf;User Instance=true;'"
+```
+
+> :warning: **WARNING**
+>
+> STOP right here. This is an unsupported scenario.
+>
+> While it may work, it's a really bad idea. Please look at one of the other options.
+> It can also result in "Failed to generate a user instance of SQL Server due to failure in retrieving the user's local application data path."
+
+
+#### SQL Server Account Authentication
+##### Use SQL Server Authentication to Local SQL Server
+Scenario 5: The database has been setup to use Mixed Mode Authentication. Someone has already precreated the login credentials for a SQL Server account and ensured the user has `db_owner` permissions to allow for changing schema. There is a high likelihood that the database has been precreated. Now you want to install the package on the same machine where the sql server instance is located.
+
+
+```powershell
+choco install chocolatey-management-database -y --package-parameters="'/SkipDatabasePermissionCheck'" --package-parameters-sensitive="'/ConnectionString:""Server=Localhost;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+```
+
+> :warning: **WARNING**
+>
+> **Installs**: Please ensure the login credentials provided are able to create databases unless you also pass `/SkipDatabasePermissionCheck` (in that case you simply need `db_owner` to the database being managed if it was precreated).
+>
+> **Upgrades**: Please ensure the login credentials provided have been given `db_owner` access to an existing database.
+
+
+* SQL Server Express:
+
+```powershell
+choco install chocolatey-management-database -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+```
+
+> :memo: **NOTE**: The above warnings and notes apply here as well.
+
+##### Use SQL Server Account to Remote SQL Server
+
+> :memo: **NOTE**: This is not a normal scenario.
+
+Scenario 6: The database has been setup to use Mixed Mode Authentication. Someone has already precreated the login credentials for a SQL Server account and ensured the user has `db_owner` permissions to allow for changing schema. There is a high likelihood that the database has been precreated. Now you want to install the package on a different machine than where the sql server instance is located.
+
+```powershell
+choco install chocolatey-management-database -y --package-parameters="'/SkipDatabasePermissionCheck'" --package-parameters-sensitive="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+```
+
+> :warning: **WARNING**
+>
+> SLOW DOWN right here.
+>
+> We recommend keeping the package installations on the same machine that SQL Server is in. It will reduce confusion and increase the accuracy of reporting. Run the installs/upgrades on the machine they apply to, so this should be the same machine that contains SQL Server (if on Windows).
+
+> :warning: **WARNING**
+>
+> **Installs**: Please ensure the login credentials provided are able to create databases unless you also pass `/SkipDatabasePermissionCheck` (in that case you simply need `db_owner` to the database being managed if it was precreated).
+>
+> **Upgrades**: Please ensure the login credentials provided have been given `db_owner` access to an existing database.
 
 ___
 ## Step 3: Set up SQL Server Logins And Access
