@@ -409,7 +409,7 @@ The purpose of the `chocolatey-management-database` package is to create and dep
 ___
 ## FAQ
 ### Can I use MySQL (or PostgreSQL)?
-Unfortunately only SQL Server SKUs work with Chocolatey Central Management at this time. You can use SQL Server Express in smaller shops.
+Unfortunately only SQL Server SKUs work with Chocolatey Central Management at this time. You can use SQL Server Express in smaller shops without additional costs.
 
 ### What is the CCM compatibility matrix?
 Central Management has specific compatibility requirements with quite a few moving parts. It is important to understand that there are some Chocolatey Agent versions that may not be able to communicate with some versions of CCM and vice versa.  Please see the [[CCM Component Compatibility Matrix|CentralManagement#ccm-component-compatibility-matrix]] for details.
