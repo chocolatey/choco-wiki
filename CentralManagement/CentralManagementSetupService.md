@@ -197,7 +197,6 @@ choco install chocolatey-management-service -y --package-parameters="'/Connectio
 
 > :memo: **NOTE**: Note the connection string doesn't include credentials. That's because Windows Authentication for SQL Server uses the context of what is running it and why the service itself needs the right user/password.
 
-
 ##### Use Windows Account to Attach SQL Server
 You are using AttachDBFile or User Instance in your Connection String. This is effectively asking to attach a database file to the User's Data directory.
 
@@ -231,6 +230,7 @@ Scenario 4: Monolithic - you are installing the management service on the same m
 ```powershell
 choco install chocolatey-management-service -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
+
 > :warning: **WARNING**
 >
 > Please ensure the login has been given `db_datareader` and `db_datawriter` access to the database. See [[logins and access|CentralManagementSetupDatabase#step-2-set-up-sql-server-logins-and-access]].

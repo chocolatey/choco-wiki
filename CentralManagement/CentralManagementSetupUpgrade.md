@@ -7,7 +7,7 @@ This will guide us through upgrading an existing Chocolatey Central Management i
 >
 > Unless otherwise noted, please follow these steps in ***exact*** order. These steps build on each other and need to be completed in order.
 
->:warning: **WARNING**
+> :warning: **WARNING**
 >
 > All deployed components of the CCM packages should **always** be the ***SAME VERSION***. The only time you should not have this is when you are in a state of upgrading and that transition time should be quite short.
 
