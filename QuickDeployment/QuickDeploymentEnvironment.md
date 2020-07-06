@@ -18,6 +18,7 @@ This is an overview on the Chocolatey Quick Deployment Environment (QDE). It pro
   - [How much time does this save?](#how-much-time-does-this-save)
   - [How do we take advantage of QDE?](#how-do-we-take-advantage-of-qde)
   - [We're already a C4B customer?](#were-already-a-c4b-customer)
+  - [How do we upgrade QDE?](#how-do-we-upgrade-qde)
   - [What if we have a larger environment? (> 1k nodes)](#what-if-we-have-a-larger-environment--1k-nodes)
   - [Can we brag about how fast we were able to get configured?](#can-we-brag-about-how-fast-we-were-able-to-get-configured)
 
@@ -52,6 +53,7 @@ ___
 * [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]]
 * [[QDE Firewall Changes|QuickDeploymentFirewallChanges]]
 * [[QDE Client Setup|QuickDeploymentClientSetup]] (setting up your client machines)
+* Upgrading? See [How do I upgrade QDE?](#how-do-i-upgrade-qde).
 
 ___
 ## Related Articles
@@ -85,6 +87,10 @@ You must have a [Business edition of Chocolatey](https://chocolatey.org/compare)
 ### We're already a C4B customer?
 Fill out the [quick deployment request form](https://chocolatey.org/contact/quick-deployment) and we will reach out with all the necessary information to get you started. Be sure to mention you are already a C4B customer.
 
+### How do we upgrade QDE?
+While we will continue to make improvements to the QDE, there is no upgrade path for the Virtual Machine itself. You can choose to start over with a newer version, but that feels like the wrong way to go.
+
+It is simple to upgrade the components and that it how we recommend upgrading aspects of QDE. Should you want to upgrade say Central Management, you can follow the Central Management steps for upgrade at [[Upgrade Central Management|CentralManagementSetupUpgrade]].
 
 ### What if we have a larger environment? (> 1k nodes)
 While this solution will be great to get a glimpse of what Chocolatey can really do for you, by its nature it isn't the silver bullet for every environment.
