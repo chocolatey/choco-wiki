@@ -82,12 +82,20 @@ ___
 choco upgrade chocolatey-management-service -y
 ```
 
-> :warning: **WARNING**: If you passed options for any of the following, you ***will need to pass*** those items again for upgrades in current releases of CCM:
+> :warning: **WARNING**: If you passed non-default options for any of the following:
 > * `/Username:` / `/Password:` / `/EnterPassword`
 > * `/PortNumber:`
+>
+> You ***will need to pass*** those items again for upgrades in current releases of CCM.
+
+
+> :warning: **WARNING**: If you passed a non-default option for the following:
 > * `/CertificateDnsName:` / `/CertificateThumbprint:`
 >
-> Database details that have not changed will not need to be passed.
+> You ***may need to pass*** those items again under the following conditions:
+> * Your certificate's DNS name does not match `<hostname>*`(a certficate that at least starts with the hostname).
+
+> :memo: **NOTE**: Database details that have not changed will not need to be passed.
 
 There may be additional (new) things you will want to configure. Please see [[Central Management Service Setup|CentralManagementSetupService]] for details.
 
