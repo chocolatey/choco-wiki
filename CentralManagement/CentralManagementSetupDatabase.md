@@ -12,6 +12,7 @@ At the end of this, we should have a fully ready to go SQL Server:
 > Unless otherwise noted, please follow these steps in ***exact*** order. These steps build on each other and need to be completed in order.
 
 ___
+
 <!-- TOC depthFrom:2 depthTo:5 -->
 
 - [Step 1: Complete Prerequisites](#step-1-complete-prerequisites)
