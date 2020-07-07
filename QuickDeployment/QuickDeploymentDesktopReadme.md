@@ -30,6 +30,7 @@ This system has been pre-configured as a fully functioning C4B environment.
 - [Common Errors And Resolutions](#common-errors-and-resolutions)
   - [Unable login to Jenkins website, after browsing to Nexus website](#unable-login-to-jenkins-website-after-browsing-to-nexus-website)
   - ["Server Error" warning when resetting "admin" credential in Nexus](#server-error-warning-when-resetting-admin-credential-in-nexus)
+  - [Context menu items for Package Builder and Package Uploader not available](context-menu-items-for-package-builder-and-package-uploader-not-available)
 
 <!-- /TOC -->
 
@@ -305,6 +306,16 @@ When attempting to reset the `admin` account credential in Nexus, you receive a 
 ![QDE Nexus pw error](images/quickdeploy/QDE-nexus-pw-error.png)
 
 Though it may not be obvious, this is actually caused by Nexus not having enough disk space to function properly. We often see this occur if the `Expand disk size` step from above was missed. Please confirm that you have completed the [Step 1: Expand Disk Size](#step-1-expand-disk-size) step. Please keep in mind, this step is **NOT** the same as expanding the disk at the hypervisor level.
+
+### Context menu items for Package Builder and Package Uploader not available
+When right-clicking an exe or msi file on QDE, you may notice that the context menu items for Package Builder are missing. As well, when right-clicking on a nupkg file, you may also see the Package Uploader context menu entry is missing. This feature can be controlled by passing a custom parameter when installing the Chocolatey Licensed Extension package, but can be restored to its default state quite simply. 
+
+Assuming the latest `chocolatey.extension.nupkg` is in your `C:\choco-setup\packages` folder, open up an Administrative PowerShell window and reinstall the Chocolatey Licensed Extension (and reset Explorer for your changes to take effect immediately):
+
+```powershell
+choco upgrade chocolatey.extension -y --source="'C:\choco-setup\packages'"
+Stop-Process -Name explorer -Force
+```
 
 ___
 [[Quick Deployment Environment|QuickDeploymentEnvironment]]
