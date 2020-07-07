@@ -30,7 +30,7 @@ This system has been pre-configured as a fully functioning C4B environment.
 - [Common Errors And Resolutions](#common-errors-and-resolutions)
   - [Unable login to Jenkins website, after browsing to Nexus website](#unable-login-to-jenkins-website-after-browsing-to-nexus-website)
   - ["Server Error" warning when resetting "admin" credential in Nexus](#server-error-warning-when-resetting-admin-credential-in-nexus)
-  - [Context menu items for Package Builder and Package Uploader not available](context-menu-items-for-package-builder-and-package-uploader-not-available)
+  - [Context menu items for Package Builder and Package Uploader not available](#context-menu-items-for-package-builder-and-package-uploader-not-available)
 
 <!-- /TOC -->
 
