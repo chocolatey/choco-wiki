@@ -444,9 +444,33 @@ $licenseLocation = "$env:ChocolateyInstall\license\chocolatey.license.xml"
 $packagingFolder = "$env:SystemDrive\choco-setup\packaging"
 $packagesFolder = "$env:SystemDrive\choco-setup\packages"
 $packageId = "chocolatey-license"
-$licenseVersion = $(Get-Date -Format "yyyy.MM.dd")
 $licensePackageFolder = "$packagingFolder\$packageId"
 $licensePackageNuspec = "$licensePackageFolder\$packageId.nuspec"
+
+# Validations
+if (-Not(Test-Path $licenseLocation)) {
+  Write-Warning "Please add the license file manually to $licenseLocation prior to running this. Throwing error..."
+  throw "No license found to use. Please add license to $licenseLocation as per instructions PRIOR to running this script."
+}
+
+Write-Warning "Prior to running this, please ensure you've updated the license file manually in the Chocolatey installation at $env:ChocolateyInstall\license\chocolatey.license.xml"
+Write-Warning "REPEATED: This script will OVERWRITE the license file you might have dropped into the packaging at '$licensePackageFolder'"
+& choco
+Write-Warning "If there is is a note about invalid license above, you're going to run into issues."
+
+# Get license expiration from the license file for version and validation
+[xml]$licenseFile = Get-Content $env:ChocolateyInstall\license\chocolatey.license.xml
+$licenseExpiration = Get-Date($licenseFile.license.expiration)
+
+# Validate the expiration date is in the future
+if ($licenseExpiration -lt $(Get-Date)) {
+  Write-Warning "THE LICENSE FILE AT $env:ChocolateyInstall\license is EXPIRED. This is the file used by this script to generate this package, not at '$licensePackageFolder'"
+  Write-Warning "Please update the license file correctly in the environment FIRST, then rerun this script. Throwing error..."
+  throw "Please use an up to date license. License is expired as of $($licenseExpiration.ToString())."
+}
+
+# Use the license expiration as the license version
+$licensePackageVersion = $licenseExpiration.ToString("yyyy.MM.dd")
 
 # Ensure the packaging folder exists
 Write-Output "Generating package/packaging folders at '$packagingFolder'"
@@ -487,7 +511,7 @@ Write-Output "Setting nuspec..."
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>chocolatey-license</id>
-    <version>$licenseVersion</version>
+    <version>$licensePackageVersion</version>
     <!--<owners>__REPLACE_YOUR_NAME__</owners>-->
     <title>Chocolatey License</title>
     <authors>__REPLACE_AUTHORS_OF_SOFTWARE_COMMA_SEPARATED__</authors>
