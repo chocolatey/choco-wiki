@@ -11,6 +11,7 @@
   - [What is the CCM compatibility matrix?](#what-is-the-ccm-compatibility-matrix)
   - [Why do I see some machines have not opted in for Deployments?](#why-do-i-see-some-machines-have-not-opted-in-for-deployments)
   - [I have plenty of licenses, why do some machines show not opted in for deployments and also exceeds your current license count?](#i-have-plenty-of-licenses-why-do-some-machines-show-not-opted-in-for-deployments-and-also-exceeds-your-current-license-count)
+  - [Can I use Chocolatey Deployments to upgrade CCM based components?](#can-i-use-chocolatey-deployments-to-upgrade-ccm-based-components)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [The updated license file is not being picked up in the website](#the-updated-license-file-is-not-being-picked-up-in-the-website)
   - [A computer or group is not showing as available for deployments but I have plenty of available licenses](#a-computer-or-group-is-not-showing-as-available-for-deployments-but-i-have-plenty-of-available-licenses)
@@ -46,6 +47,9 @@ This is telling you that you need to ensure you set the client to allow for the 
 
 ### I have plenty of licenses, why do some machines show not opted in for deployments and also exceeds your current license count?
 Once you upgrade to at least CCM v0.2.0, every machine will show that until they check in the next time. Once they check in, that will go away. So it's basically normal to see that until those machines check in again.
+
+### Can I use Chocolatey Deployments to upgrade CCM based components?
+Likely you absolutely can, just keep in mind that there may be a specific ordering in how you would upgrade everything and adhere to that order. In some instances, you may need to upgrade agents first, then CCM components as once CCM is upgraded it may not be able to talk to the agents. However agents will stop being able to talk to CCM for a small period of time while you are upgrading CCM, but then things will start working again.
 
 ___
 ## Common Errors and Resolutions
