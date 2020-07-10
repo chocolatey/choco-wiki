@@ -148,7 +148,8 @@ ___
 We strongly advise against it as there is an explicit order that things must be upgraded in. Since CCM components can be installed on separate machines, there is no explicit dependency that can be taken. Just note that running
 
 ```powershell
-choco upgrade chocolatey-management-database chocolatey-management-service chocolatey-management-web -y
+# !!!DO NOT DO THIS!!!
+# choco upgrade chocolatey-management-database chocolatey-management-service chocolatey-management-web -y
 ```
 
 when you have everything on the same box may work, but it may not. Please follow the steps here for best success.
