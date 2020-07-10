@@ -46,6 +46,7 @@ ___
   - [I entered incorrect database details on install, do I need to reinstall to fix that?](#i-entered-incorrect-database-details-on-install-do-i-need-to-reinstall-to-fix-that)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Chocolatey Agent Service is unable to communicate with Chocolatey Central Management Service](#chocolatey-agent-service-is-unable-to-communicate-with-chocolatey-central-management-service)
+  - [The client reports successful checkin, but nothing is showing up in CCM](#the-client-reports-successful-checkin-but-nothing-is-showing-up-in-ccm)
   - [A parameter cannot be found that matches parameter name KeyUsage](#a-parameter-cannot-be-found-that-matches-parameter-name-keyusage)
   - [The term 'Install-ChocolateyAppSettingsJsonFile' is not recognized as the name of a cmdlet, function, script file, or operable program.](#the-term-install-chocolateyappsettingsjsonfile-is-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
   - [Cannot process command because of one or more missing mandatory parameters: FilePath](#cannot-process-command-because-of-one-or-more-missing-mandatory-parameters-filepath)
@@ -388,6 +389,12 @@ There is a known issue with the beta release of Chocolatey Central Management wh
 ~~~powershell
 --params="'/PortNumber=24020'"
 ~~~
+
+### The client reports successful checkin, but nothing is showing up in CCM
+You need to check the CCM service logs. The agent will always report success when it communicates with the service successfully. The service may reject what it receives, but due to security settings, it won't tell the client about that.
+
+The logs are located at `$env:ChocolateyInstall\logs\ccm-service.log`. If you are on a version of CCM prior to 0.2.0, the log will be located at `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service\logs\chocolatey.service.host.log`.
+
 
 ### A parameter cannot be found that matches parameter name KeyUsage
 This is known issue with the beta release of Chocolatey Central Management regarding the creation of a Self Signed Certificate.  You may see the error:

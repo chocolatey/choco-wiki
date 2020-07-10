@@ -36,6 +36,7 @@ ___
 - [Upgrading?](#upgrading)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Executable script code found in signature block](#executable-script-code-found-in-signature-block)
+  - [The client reports successful checkin, but nothing is showing up in CCM](#the-client-reports-successful-checkin-but-nothing-is-showing-up-in-ccm)
 
 <!-- /TOC -->
 
@@ -133,6 +134,12 @@ ___
 When attempting to install some components of Chocolatey, you may have seen this error. This was a bug due to how the script at [Step 1: Internalize Packages](#step-1-internalize-packages) was exasperating a known issue at https://github.com/chocolatey/chocolatey-licensed-issues/issues/155.
 
 Please go back through Step 1 and re-internalize those packages. You may need to overwrite any you would have pushed up (many if it won't let you do a push). In Nexus, you can remove the existing items and then upload through there. In other repositories you may need to remove the existing package versions you deployed first.
+
+### The client reports successful checkin, but nothing is showing up in CCM
+You need to check the CCM service logs. The agent will always report success when it communicates with the service successfully. The service may reject what it receives, but due to security settings, it won't tell the client about that.
+
+The logs are located at `$env:ChocolateyInstall\logs\ccm-service.log`. If you are on a version of CCM prior to 0.2.0, the log will be located at `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service\logs\chocolatey.service.host.log`.
+
 
 ___
 [[Chocolatey Central Management|CentralManagement]]

@@ -18,6 +18,7 @@ ___
 - [Common Errors And Resolutions](#common-errors-and-resolutions)
   - [Unable to report computer information to CCM](#unable-to-report-computer-information-to-ccm)
   - [Unable to check for deployments from CCM](#unable-to-check-for-deployments-from-ccm)
+  - [The client reports successful checkin, but nothing is showing up in CCM](#the-client-reports-successful-checkin-but-nothing-is-showing-up-in-ccm)
   - [Chocolatey Agent Service is unable to communicate with Chocolatey Central Management Service](#chocolatey-agent-service-is-unable-to-communicate-with-chocolatey-central-management-service)
   - [The remote server returned an unexpected response: (413) Request Entity Too Large](#the-remote-server-returned-an-unexpected-response-413-request-entity-too-large)
   - [Computers checking in are overwriting each other](#computers-checking-in-are-overwriting-each-other)
@@ -143,6 +144,11 @@ This is due to having a Chocolatey Agent that is v0.10.0+ versus an older Centra
 
 ### Unable to check for deployments from CCM
 This will provide similar messaging as the above. The fix is the same, upgrade Chocolatey Central Management to v0.2.0+. Or if you are on CCM v0.3.0+, your agents need to be on v0.11.0+. Please refer to the [[CCM Compability Matrix|CentralManagement#ccm-component-compatibility-matrix]].
+
+### The client reports successful checkin, but nothing is showing up in CCM
+You need to check the CCM service logs. The agent will always report success when it communicates with the service successfully. The service may reject what it receives, but due to security settings, it won't tell the client about that.
+
+The logs are located at `$env:ChocolateyInstall\logs\ccm-service.log`. If you are on a version of CCM prior to 0.2.0, the log will be located at `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service\logs\chocolatey.service.host.log`.
 
 ### Chocolatey Agent Service is unable to communicate with Chocolatey Central Management Service
 There is a known issue with the beta release of Chocolatey Central Management where an inconsistent Port Number is used between these two services.  One used 24020 and the other used 24040.  The correct default Port Number is 24020, and this is used in the 0.1.0 release of Chocolatey Central Management.  If required, the Port Number can be explicitly set during the installation of the Chocolatey Central Management packages using the following option when installing `chocolatey-management-service`:

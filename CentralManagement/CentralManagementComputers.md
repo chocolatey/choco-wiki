@@ -12,6 +12,8 @@ ___
 - [Registering a New Computer](#registering-a-new-computer)
 - [Viewing Installed Software on a Computer](#viewing-installed-software-on-a-computer)
 - [Removing a Computer from Central Management](#removing-a-computer-from-central-management)
+- [Common Errors and Resolutions](#common-errors-and-resolutions)
+  - [Computers are not showing up in CCM](#computers-are-not-showing-up-in-ccm)
 - [Related Topics](#related-topics)
 
 <!-- /TOC -->
@@ -55,6 +57,16 @@ Select the **:gear: Actions** menu in the corresponding right-hand column, and c
 You will be prompted to confirm the deletion.
 
 ![Prompt to confirm deletion of a computer in Central Management](images/computers/ccm-computers-delete-confirm.png)
+
+
+___
+## Common Errors and Resolutions
+### Computers are not showing up in CCM
+You need to check the CCM service logs. The agent will always report success when it communicates with the service successfully. The service may reject what it receives, but due to security settings, it won't tell the client about that.
+
+The logs are located at `$env:ChocolateyInstall\logs\ccm-service.log`. If you are on a version of CCM prior to 0.2.0, the log will be located at `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service\logs\chocolatey.service.host.log`.
+
+For more common errors related to checking in, see the [[setup section (and component setup sub-sections)|CentralManagementSetup]] as they dive deeper into common errors and resolutions related to things such as this.
 
 ___
 ## Related Topics
