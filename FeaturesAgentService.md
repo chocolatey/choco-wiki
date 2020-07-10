@@ -49,6 +49,7 @@ The Chocolatey Agent can be independently configured to support any or all of th
   - [How do I take advantage of Chocolatey Agent?](#how-do-i-take-advantage-of-chocolatey-agent)
   - [I'm a licensed customer, now what?](#im-a-licensed-customer-now-what)
   - [Will this become available for lower editions of Chocolatey?](#will-this-become-available-for-lower-editions-of-chocolatey)
+  - [I have questions regarding Agent and Central Management](#i-have-questions-regarding-agent-and-central-management)
   - [I have Puppet or some other configuration management tool (RMM tool, infrastructure automation tool, etc.) that also runs Chocolatey. Can I configure it to skip background mode?](#i-have-puppet-or-some-other-configuration-management-tool-rmm-tool-infrastructure-automation-tool-etc-that-also-runs-chocolatey-can-i-configure-it-to-skip-background-mode)
   - [How does it work?](#how-does-it-work)
   - [What's the minimum Chocolatey licensed extension version that I need to install the agent?](#whats-the-minimum-chocolatey-licensed-extension-version-that-i-need-to-install-the-agent)
@@ -67,6 +68,7 @@ The Chocolatey Agent can be independently configured to support any or all of th
   - [Can I take advantage of Chocolatey managed passwords with my own Windows services?](#can-i-take-advantage-of-chocolatey-managed-passwords-with-my-own-windows-services)
   - [Can I save an image with the agent already installed that I can deploy new machines from?](#can-i-save-an-image-with-the-agent-already-installed-that-i-can-deploy-new-machines-from)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
+  - [I have issues regarding Central Management](#i-have-issues-regarding-central-management)
   - [Installs from custom source locations are not allowed in background mode. Please remove custom source and try again using default (configured) package source locations.](#installs-from-custom-source-locations-are-not-allowed-in-background-mode-please-remove-custom-source-and-try-again-using-default-configured-package-source-locations)
   - [I'm getting the following: "There are no sources enabled for packages and none were passed as arguments."](#im-getting-the-following-there-are-no-sources-enabled-for-packages-and-none-were-passed-as-arguments)
   - [I'm having trouble seeing packages on a file share source](#im-having-trouble-seeing-packages-on-a-file-share-source)
@@ -419,6 +421,7 @@ ___
 ### Chocolatey Central Management Agent Setup
 Please see [[Central Management Client Setup|CentralManagementSetupClient]] for details.
 
+> :memo: **NOTE**: This will also contain more FAQs and Common Errors and Resolutions related to communication with Central Management.
 
 ### Log File Location For Chocolatey Agent
 The Chocolatey Agent log file is located at `$env:ChocolateyInstall\logs\chocolatey-agent.log`. If you are on a version of Chocolatey Agent prior to v0.10.0, the log will be located at `$env:ChocolateyInstall\lib\chocolatey-agent\tools\service\logs\chocolatey-agent.log`.
@@ -443,6 +446,9 @@ Once you have the agent service installed and Chocolatey for Business configured
 
 ### Will this become available for lower editions of Chocolatey?
 The background service and Central Management UI Console will only be available in C4B (Chocolatey for Business).
+
+### I have questions regarding Agent and Central Management
+Please see [[Central Management Client Setup|CentralManagementSetupClient]] as the FAQs related to Central Management (CCM) are kept there.
 
 ### I have Puppet or some other configuration management tool (RMM tool, infrastructure automation tool, etc.) that also runs Chocolatey. Can I configure it to skip background mode?
 Yes! Add `--run-actual` to your install options. Most likely your tool won't need to be reconfigured though as it will just work with background mode. You will need Chocolatey v0.10.3+ installed across your environment so Chocolatey handles the unknown arguments appropriately.
@@ -565,7 +571,11 @@ Remove-ItemProperty -Path "HKLM:\Software\Chocolatey" -Name "UniqueId" -Force
 
 Once you've removed this, you'll need to restart the Agent Service to get it regenerated.
 
+___
 ## Common Errors and Resolutions
+### I have issues regarding Central Management
+Please see [[Central Management Client Setup|CentralManagementSetupClient]] as the common errors and resolutions related to Central Management (CCM) are kept there.
+
 ### Installs from custom source locations are not allowed in background mode. Please remove custom source and try again using default (configured) package source locations.
 You can not pass custom source arguments to Chocolatey, it will error. You need to set up sources in the Chocolatey configuration and any that are marked as allowed for self-service will be passed by the background service.
 
