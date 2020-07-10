@@ -46,6 +46,9 @@ ___
   - [I entered incorrect database details on install, do I need to reinstall to fix that?](#i-entered-incorrect-database-details-on-install-do-i-need-to-reinstall-to-fix-that)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Chocolatey Agent Service is unable to communicate with Chocolatey Central Management Service](#chocolatey-agent-service-is-unable-to-communicate-with-chocolatey-central-management-service)
+  - [Unable to report computer information to CCM](#unable-to-report-computer-information-to-ccm)
+  - [Unable to check for deployments from CCM](#unable-to-check-for-deployments-from-ccm)
+  - [We are seeing the error "attempted to call report_computer_information with an improper passphrase" in the CCM Service log](#we-are-seeing-the-error-attempted-to-call-report_computer_information-with-an-improper-passphrase-in-the-ccm-service-log)
   - [The client reports successful checkin, but nothing is showing up in CCM](#the-client-reports-successful-checkin-but-nothing-is-showing-up-in-ccm)
   - [A parameter cannot be found that matches parameter name KeyUsage](#a-parameter-cannot-be-found-that-matches-parameter-name-keyusage)
   - [The term 'Install-ChocolateyAppSettingsJsonFile' is not recognized as the name of a cmdlet, function, script file, or operable program.](#the-term-install-chocolateyappsettingsjsonfile-is-not-recognized-as-the-name-of-a-cmdlet-function-script-file-or-operable-program)
@@ -389,6 +392,27 @@ There is a known issue with the beta release of Chocolatey Central Management wh
 ~~~powershell
 --params="'/PortNumber=24020'"
 ~~~
+
+### Unable to report computer information to CCM
+You may see messaging like the following in the chocolatey-agent.log:
+
+```sh
+[INFO ] - Creating secure channel to https://ccmserver:24020/ChocolateyManagementService ahead of CCM check-in...
+[ERROR] - Unable to report computer information to CCM.:
+ The message with Action 'http://tempuri.org/IChocolateyManagementService/report_computer_information' cannot be
+ processed at the receiver, due to a ContractFilter mismatch at the EndpointDispatcher. This may be because of either a
+ contract mismatch (mismatched Actions between sender and receiver) or a binding/security mismatch between the sender
+ and the receiver.  Check that sender and receiver have the same contract and the same binding (including security
+ requirements, e.g. Message, Transport, None).
+```
+
+This is due to having a Chocolatey Agent that is v0.10.0+ versus an older Central Management Service (< v0.2.0). Newer agents are incompatible because they use newer and more secure methods of communication. Please upgrade Central Management to v0.2.0+ at your earliest convenience. Or if you are on CCM v0.3.0+, your agents need to be on v0.11.0+. Please refer to the [[CCM Compability Matrix|CentralManagement#ccm-component-compatibility-matrix]].
+
+### Unable to check for deployments from CCM
+This will provide similar messaging as the above. The fix is the same, upgrade Chocolatey Central Management to v0.2.0+. Or if you are on CCM v0.3.0+, your agents need to be on v0.11.0+. Please refer to the [[CCM Compability Matrix|CentralManagement#ccm-component-compatibility-matrix]]. You may need to be on at least v0.3.0 and agents on v0.11.0+ if you are experiencing improper passphrase issues noted below, it means you need to likely upgrade to v0.3.0+ / v0.11.0 across your infrastructure.
+
+### We are seeing the error "attempted to call report_computer_information with an improper passphrase" in the CCM Service log
+If you are in the CCM service logs, you may be seeing the above error. That is a bug that was found with the communication of CCM v0.2.0 and Chocolatey Agent v0.10.0. That was resolved in CCM v0.3.0 and Chocolatey Agent v0.11.0. Please see the [[CCM Component Compatibility Matrix|CentralManagement#ccm-component-compatibility-matrix]] and [Licensed Issue #152](https://github.com/chocolatey/chocolatey-licensed-issues/issues/152) for more details.
 
 ### The client reports successful checkin, but nothing is showing up in CCM
 You need to check the CCM service logs. The agent will always report success when it communicates with the service successfully. The service may reject what it receives, but due to security settings, it won't tell the client about that.
