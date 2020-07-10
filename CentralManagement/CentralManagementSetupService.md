@@ -466,6 +466,8 @@ This error can be reported when installing the Chocolatey Central Management Ser
 
 This could also be when you are providing an existing certificate - see https://github.com/chocolatey/chocolatey-licensed-issues/issues/143. This was fixed in v0.2.0.
 
+There is a known issue with CCM v.0.3.0 affecting at least French machines. Please reach out to support if you are experiencing this (run `choco support` for options).
+
 ### The new license is not being picked up
 You need to restart services and CCM web to pick up the license. Here's a handy script:
 
