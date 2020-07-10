@@ -482,6 +482,7 @@ You may see the following: "System.Data.SqlClient.SqlException (0x80131904): Fai
 
 This means you are attempting to attach a Local DB file as part of your connection. This is an invalid scenario as noted at [Use Windows Account to Attach SQL Server](#use-windows-account-to-attach-sql-server).
 
+This could also mean that there is something wrong with your connection strings format in the `appsettings.json`.
 
 ___
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]
