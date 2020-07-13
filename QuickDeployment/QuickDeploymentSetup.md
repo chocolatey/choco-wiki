@@ -68,7 +68,7 @@ If you rename the QDE Environment, here's a small list of things you'll need to 
 ___
 ## Step 1: Import Virtual Environment
 
-Chooose one of the following methods for what your hypervisor environment supports.
+Choose one of the following methods for what your hypervisor environment supports.
 
 ### Platform: Hyper-V (Appliance)
 
@@ -183,7 +183,7 @@ On the machine, please check the size of the C drive. If the volume needs to be 
 Resize-Partition -DriveLetter C -Size ((Get-PartitionSupportedSize -DriveLetter C).SizeMax)
 ```
 
-Alternativley, you can use the Disk Management utility to expand the disk, if a GUI is preferred.
+Alternatively, you can use the Disk Management utility to expand the disk, if a GUI is preferred.
 
 ### Step 3.2: Add License File to QDE
 In the [[Quick Deployment Desktop Readme|QuickDeploymentDesktopReadme]], it is going to ask you to use the license file. That license file comes from an external location. It is best to copy/paste the file into QDE as a whole file, but you may have needed to set up any kind of extensions available for that.
