@@ -4,6 +4,12 @@ This covers changes for the "chocolateygui" package, which is available as FOSS.
 
 **NOTE**: For commercial editions, please also refer to [[Licensed Release Notes|ReleaseNotesLicensed]].
 
+## [0.17.2](https://github.com/chocolatey/ChocolateyGUI/milestone/21?closed=1) (July 13, 2020)
+
+### BUGS
+
+* Ensure earlier versions of Chocolatey GUI assemblies can be resolved when using an older version of Chocolatey GUI extension - see [#785](https://github.com/chocolatey/ChocolateyGUI/issues/785)
+
 ## [0.17.1](https://github.com/chocolatey/ChocolateyGUI/milestone/20?closed=1) (June 11, 2020)
 
 ### BUGS
