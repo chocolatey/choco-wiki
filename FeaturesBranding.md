@@ -78,7 +78,7 @@ would then expect to find the above asset files in this location:
 The first time Chocolatey GUI, with the Chocolatey GUI licensed extension installed,
 is executed, and the above asset files are in one of the defined locations, a new
 file will be generated in the same location called `ChocolateyGuiBranding.dll`.
-The new file actually contains all the image files that were created, as they have 
+The new file actually contains all the image files that were created, as they have
 been embedded as resources within this assembly file.  This approach is used in
 order to optimize the loading of the assets.  Once this ChocolateyGuiBranding.dll
 has been created, Chocolatey GUI will use it each time the application runs.  The
@@ -121,7 +121,7 @@ for more information.
 What follows is a suggestion on how a branded version of Chocolatey GUI can be
 deployed out to your environment.
 
-> :memo: **NOTE:** In order for the below to work, you must have the Chocolatey GUI licensed 
+> :memo: **NOTE:** In order for the below to work, you must have the Chocolatey GUI licensed
 extension (chocolateygui.extension) installed.
 
 1. Follow the steps above to place the branding image assets into the correct location.
