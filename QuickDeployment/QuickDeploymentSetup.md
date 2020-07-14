@@ -13,6 +13,7 @@ You will receive a download link via email for an archive of the VM image. Once 
 - [Step 0: Setup Considerations](#step-0-setup-considerations)
   - [Step 0.1: QDE Rename Considerations](#step-01-qde-rename-considerations)
 - [Step 1: Import Virtual Environment](#step-1-import-virtual-environment)
+  - [Platform: Azure](#platform-azure)
   - [Platform: Hyper-V (Appliance)](#platform-hyper-v-appliance)
   - [Platform: Hyper-V (VHD file)](#platform-hyper-v-vhd-file)
   - [Platform: VMware (VMDK file)](#platform-vmware-vmdk-file)
@@ -68,7 +69,41 @@ If you rename the QDE Environment, here's a small list of things you'll need to 
 ___
 ## Step 1: Import Virtual Environment
 
-Chooose one of the following methods for what your hypervisor environment supports.
+Choose one of the following methods for what your hypervisor environment supports.
+
+### Platform: Azure
+
+If you choose to use the scripts provided inside the Zip archive, there are a number of pre-requisites that are needed:
+
+* Having both the `Az` and `AzureRm` PowerShell modules installed is not [supported](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-4.3.0#install-the-azure-powershell-module). You can see if you have `AzureRm` installed by running `Get-Module -Name AzureRm -ListAvilable`. If there is no output it is not installed.
+* Install the `Az` PowerShell Module. To find out if you have the module installed run `Get-Module -Name az -ListAvailable` from an elevated PowerShell session.
+  * To install the `Az` module using Chocolatey, run `choco install az.powershell -y`.
+  * Using PowerShell `Install-Module -Name Az -AllowClobber -Scope CurrentUser`.
+* For the Azure PowerShell module you will need _either_ PowerShell 5.1 and .NET 4.7.2 **or** PowerShell Core installed:
+  * PowerShell 5.1 and .NET 4.7.2:
+    * You can find out the current version of PowerShell you are running using the command `$PsVersionTable.PSVersion` from a PowerShell session.
+    * To install PowerShell 5.1 use Chocolatey by running `choco install powershell -y` or see [Microsoft Docs](https://docs.microsoft.com/en-us/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7#upgrading-existing-windows-powershell).
+    * To install .NET 4.7.2 use Chocolatey by running `choco install dotnet4.7.2 -y` or see the [Microsoft docs](https://docs.microsoft.com/en-us/dotnet/framework/install/).
+  * PowerShell Core:
+    * To install PowerShell Core use Chocolatey by running `choco install powershell-core -y` or see the [Microsoft Docs](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7).
+* AzCopy v10 or later - this is needed to copy the disk to Azure. To find out if you have `azcopy` installed and which version, run `azcopy --version`.
+  * To install AzCopy v10 or later, using Chocolatey run `choco install azcopy10 -y` or see the [Microsoft Docs](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10#download-and-install-azcopy).
+* The scripts provided with the QDE virtual machine disk image have defaults that you need to ensure you are comfortable with and extensive help. You can see the help, and the default, by running `Get-Help <SCRIPT-NAME> -full`.
+* The scripts will create resources in Azure which will cost you real money. Please ensure you are comfortable with this before continuing. See above to get help with the scripts.
+* The execution policy must allow running scripts. If it does not, you can set it _for the current PowerShell session_ by running `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process`.
+* Any code or scripts must be run in an _elevated_ PowerShell session.
+
+Steps to create a QDE virtual machine in Azure:
+
+1. Download the Zip archive containing the Azure virtual machine disk (VHD), and unzip it to the directory you wish to store it in. You should have three files:
+  * `QuickDeployEnvironment-Azure.vhd`
+  * `Set-QDEAzureDisk.ps1`
+  * `New-QDEAzureVM.ps1`
+2. While the scripts will do the majority of the hard work needed to create a QDE virtual machine in Azure, we do need to setup a resource group. The default resource group that the scripts will use is `qdeserver-resgrp` however you can supply an existing resource group using the `-ResourceGroupName <YOUR-RESOURCEGROUPNAME>` parameter. To create a resource group run `New-AzResourceGroup -Name <RESOURCEGROUPNAME> -Location <YOUR-AZURE-LOCATION>`.
+3. We need convert the disk you have downloaded to the size required, and then upload it to Azure so we can attach it to the QDE virtual machine we will create in the following steps. Note that the script we are about to run contains defaults that should work for the majority of users. However, please run `Get-Help Set-QDEAzureDisk.ps1 -full` to get help on the parameters you can provide and the defaults that have been set. Once you are comfortable, in the directory you extracted the files to, run `.\Set-QDEAzureDisk.ps1 -Verbose <PARAMETERS>` (where `<PARAMETERS>` is any parameters you want to provide). Providing the `-Verbose` switch produces output on the screen. Note that the processes of converting the disk and uploading it can take a long time.
+4. Before we connect to the QDE virtual machine in Azure we must reset the password. To create a password we can provide to the next script, run `$qdePwd = '<YOUR-PASSWORD> | ConvertTo-SecureString -AsPlainText -Force` (where `<YOUR-PASSWORD>` is the password you want to set **and is longer than 12 characters**).
+5. Once the disk has been uploaded we need to create the QDE virtual machine in Azure and attach the disk we uploaded as the operating system disk. Note that the script we are about to run contains defaults that should work for the majority of users. However, please run `Get-Help New-QDEAzureVM.ps1 -full` to get help on the parameters you can provide and the defaults that have been set. Once you are comfortable, in the directory you extracted the files to, run `.\New-QDEAzureVM.ps1 -Verbose -AdministratorComplexPassword $qdePwd <PARAMETERS>` (where `<PARAMETERS>` is any parameters you want to provide and `$qdePwd` is the password we created in the previous step). Providing the `-Verbose` switch produces output on the screen.
+6. Once this is complete the script will output the command you can run to connect to the virtual machine, including the IP address (if you are using the `-Verbose` switch). Use `mstsc.exe /v:<IP-ADDRESS>` to connect and login with the password you created in a previous step.
 
 ### Platform: Hyper-V (Appliance)
 
@@ -183,7 +218,7 @@ On the machine, please check the size of the C drive. If the volume needs to be 
 Resize-Partition -DriveLetter C -Size ((Get-PartitionSupportedSize -DriveLetter C).SizeMax)
 ```
 
-Alternativley, you can use the Disk Management utility to expand the disk, if a GUI is preferred.
+Alternatively, you can use the Disk Management utility to expand the disk, if a GUI is preferred.
 
 ### Step 3.2: Add License File to QDE
 In the [[Quick Deployment Desktop Readme|QuickDeploymentDesktopReadme]], it is going to ask you to use the license file. That license file comes from an external location. It is best to copy/paste the file into QDE as a whole file, but you may have needed to set up any kind of extensions available for that.
