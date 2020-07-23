@@ -44,6 +44,7 @@ ___
   - [Can I take advantage of Chocolatey managed passwords with my own Windows services?](#can-i-take-advantage-of-chocolatey-managed-passwords-with-my-own-windows-services)
   - [What is the CCM compatibility matrix?](#what-is-the-ccm-compatibility-matrix)
   - [I entered incorrect database details on install, do I need to reinstall to fix that?](#i-entered-incorrect-database-details-on-install-do-i-need-to-reinstall-to-fix-that)
+  - [Can we use an account for the service that is not a local administrator?](#can-we-use-an-account-for-the-service-that-is-not-a-local-administrator)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Chocolatey Agent Service is unable to communicate with Chocolatey Central Management Service](#chocolatey-agent-service-is-unable-to-communicate-with-chocolatey-central-management-service)
   - [Unable to report computer information to CCM](#unable-to-report-computer-information-to-ccm)
@@ -57,6 +58,7 @@ ___
   - [ERROR: Cannot index into a null array](#error-cannot-index-into-a-null-array)
   - [The new license is not being picked up](#the-new-license-is-not-being-picked-up)
   - [Failed to generate a user instance of SQL Server due to failure in retrieving the user's local application data path.](#failed-to-generate-a-user-instance-of-sql-server-due-to-failure-in-retrieving-the-users-local-application-data-path)
+- [System.ServiceModel.AddressAccessDeniedException: HTTP could not register URL . Your process does not have access rights to this namespace](#systemservicemodeladdressaccessdeniedexception-http-could-not-register-url--your-process-does-not-have-access-rights-to-this-namespace)
 
 <!-- /TOC -->
 
@@ -109,7 +111,7 @@ choco config set --name="'centralManagementServiceUrl'" --value="'https://<acces
 ### Package Parameters
 Note items with "`:`" mean a value should be provided, items without are simply switches.
 
-* `/Username:` - Username to run the service under. Defaults to `ChocolateyLocalAdmin`.
+* `/Username:` - Username to run the service under. Defaults to `ChocolateyLocalAdmin`. This should be a local administrator - this is typically ensured during installation. `Logon as Service` and `Logon as Batch` privileges are also ensured.
 * `/Password:` - Password for the user. Default is the [Chocolatey Managed Password](#chocolatey-managed-password).
 * `/EnterPassword` - Receive the password at runtime as a secure string. Requires input at runtime whe installing/upgrading the package.
 * `/NoRestartService` - Do not shut down and restart the service. You will need to restart later to take advantage of new service information.
@@ -317,7 +319,7 @@ netsh http add sslcert ipport=0.0.0.0:<port_number> certhash=<certificate_thumbp
 ### We want to set up the Chocolatey Central Management service to use a domain account that will have local admin on each box. Can we do this?
 Yes, absolutely. You will pass those credentials through at install/upgrade time, and you will also want to turn on the feature useRememberedArgumentsForUpgrades (see [configuration](https://chocolatey.org/docs/chocolatey-configuration#features)) so that future upgrades will have that information available. The remembered arguments are stored encrypted on the box (that encryption is reversible so you may opt to pass that information each time).
 
-* `/Username`: - provide username - instead of using the default 'ChocolateyLocalAdmin' user.
+* `/Username`: - provide username - instead of using the default 'ChocolateyLocalAdmin' user. This user should be a local administrator.
 * `/Password`: - optional password for the user.
 * `/EnterPassword` - receive the password at runtime as a secure string
 
@@ -383,6 +385,15 @@ It depends. You can simply go to the appsettings.json file and adjust the connec
 1. Then restart the service by running the following from an admin powershell session: `Get-Service chocolatey-management-service | Stop-Service; Get-Service chocolatey-management-service | Start-Service`
 
 > :warning: **WARNING**: Do not put `sec:` or `secure-` at the start (prefix) of any values that you are adding/modifying directly. That tells Chocolatey components they are encrypted and it will attempt to decrypt them for use. If that is done incorrectly, it will cause things to crash.
+
+### Can we use an account for the service that is not a local administrator?
+This is not a supported scenario, especially considering the installation will attempt to ensure that the user becomes an administrator if they are not, in addition to `Logon as Service` and `Logon as Batch` privileges.
+
+If you would like to attempt this scenario, please do the following:
+
+* Ensure the user has `Logon As Service` privilege
+* Ensure the user has `Logon as Batch` privilege
+* Run `netsh http add urlacl url=https://+:24020/ChocolateyManagementService user=<DOMAIN\USERNAME>` from an elevated shell (replacing `<DOMAIN\USERNAME>` with the account)
 
 ___
 ## Common Errors and Resolutions
@@ -483,6 +494,17 @@ You may see the following: "System.Data.SqlClient.SqlException (0x80131904): Fai
 This means you are attempting to attach a Local DB file as part of your connection. This is an invalid scenario as noted at [Use Windows Account to Attach SQL Server](#use-windows-account-to-attach-sql-server).
 
 This could also mean that there is something wrong with your connection strings format in the `appsettings.json`.
+
+## System.ServiceModel.AddressAccessDeniedException: HTTP could not register URL . Your process does not have access rights to this namespace
+
+You may see the following: "System.ServiceModel.AddressAccessDeniedException: HTTP could not register URL https://+:24020/ChocolateyManagementService/. Your process does not have access rights to this namespace (see http://go.microsoft.com/fwlink/?LinkId=70353 for details). ---> System.Net.HttpListenerException: Access is denied"
+
+You are attempting to set up a user that is not in the local Administrators group with the Central Management Service. While this is not officially supported, you can use the following to ensure all is good:
+
+* Ensure the user has `Logon As Service` privilege
+* Ensure the user has `Logon as Batch` privilege
+* Run `netsh http add urlacl url=https://+:24020/ChocolateyManagementService user=<DOMAIN\USERNAME>` from an elevated shell (replacing `<DOMAIN\USERNAME>` with the account)
+
 
 ___
 [[Central Management Setup|CentralManagementSetup]] | [[Chocolatey Central Management|CentralManagement]]

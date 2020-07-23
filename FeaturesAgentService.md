@@ -31,7 +31,7 @@ The Chocolatey Agent can be independently configured to support any or all of th
     - [Option 2 - Use Chocolatey Software's Professional Packaging Support Services](#option-2---use-chocolatey-softwares-professional-packaging-support-services)
     - [Option 3 - Window Automation Scripting](#option-3---window-automation-scripting)
     - [Recommendation](#recommendation-1)
-  - [Chocolatey Central Management](#chocolatey-central-management)
+- [Chocolatey Central Management](#chocolatey-central-management)
 - [Setup](#setup)
   - [Requirements](#requirements)
   - [Chocolatey Agent Install Options](#chocolatey-agent-install-options)
@@ -67,15 +67,16 @@ The Chocolatey Agent can be independently configured to support any or all of th
   - [Do you rotate the managed password on a schedule?](#do-you-rotate-the-managed-password-on-a-schedule)
   - [Can I take advantage of Chocolatey managed passwords with my own Windows services?](#can-i-take-advantage-of-chocolatey-managed-passwords-with-my-own-windows-services)
   - [Can I save an image with the agent already installed that I can deploy new machines from?](#can-i-save-an-image-with-the-agent-already-installed-that-i-can-deploy-new-machines-from)
+  - [Can we use an account for the service that is not a local administrator?](#can-we-use-an-account-for-the-service-that-is-not-a-local-administrator)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [I have issues regarding Central Management](#i-have-issues-regarding-central-management)
   - [Installs from custom source locations are not allowed in background mode. Please remove custom source and try again using default (configured) package source locations.](#installs-from-custom-source-locations-are-not-allowed-in-background-mode-please-remove-custom-source-and-try-again-using-default-configured-package-source-locations)
   - [I'm getting the following: "There are no sources enabled for packages and none were passed as arguments."](#im-getting-the-following-there-are-no-sources-enabled-for-packages-and-none-were-passed-as-arguments)
   - [I'm having trouble seeing packages on a file share source](#im-having-trouble-seeing-packages-on-a-file-share-source)
   - [The agent service is not picking up the new license](#the-agent-service-is-not-picking-up-the-new-license)
+  - [Background Service is not being used for my non-administrator accounts](#background-service-is-not-being-used-for-my-non-administrator-accounts)
 
 <!-- /TOC -->
-
 
 ___
 ## Chocolatey Background Service / Self-Service Installer
@@ -273,7 +274,7 @@ There are tools like Autohotkey (AHK) and AutoIT that can handle the user intera
 MSI repackaging is always preferred. At the end of creating that, you have something that can be deployed silently with any method you prefer to deploy it with.
 
 ___
-### Chocolatey Central Management
+## Chocolatey Central Management
 
 Chocolatey for Business has centralized reporting and supports endpoint management through [[Chocolatey Central Management (CCM)|CentralManagement]]. On machines that will take advantage of CCM, you will need the Chocolatey Agent installed and properly configured to manage them centrally.
 
@@ -302,7 +303,7 @@ Starting with Chocolatey Agent v0.8.0+, the service will install as a local admi
 ### Package Parameters
 Note items with "`:`" mean a value should be provided, items without are simply switches.
 
-* `/Username:` - provide username - instead of using the default 'ChocolateyLocalAdmin' user.
+* `/Username:` - provide username - instead of using the default 'ChocolateyLocalAdmin' user. This user will need to be a member of local administrators due to the privileges needed for this service - this is typically ensured during installation. `Logon as Service` and `Logon as Batch` privileges are also ensured.
 * `/Password:` - optional password for the user.
 * `/EnterPassword` - receive the password at runtime as a secure string
 * `/UseDefaultChocolateyConfigUser` - use the default username from Chocolatey's configuration. This may be LocalSystem.
@@ -502,7 +503,7 @@ The one exception is when someone calls `--run-actual` in their arguments. But t
 ### We want to set up the chocolatey agent service to use a domain account that will have local admin on each box. Can we do this?
 Yes, absolutely. You will pass those credentials through at install/upgrade time, and you will also want to turn on the feature `useRememberedArgumentsForUpgrades` (see [[configuration|ChocolateyConfiguration#features]]) so that future upgrades will have that information available. The remembered arguments are stored encrypted on the box (that encryption is reversible so you may opt to pass that information each time).
 
-* `/Username:` - provide username - instead of using the default 'ChocolateyLocalAdmin' user.
+* `/Username:` - provide username - instead of using the default 'ChocolateyLocalAdmin' user. This user will need to be a member of local administrators due to the privileges needed for this service.
 * `/Password:` - optional password for the user.
 * `/EnterPassword` - receive the password at runtime as a secure string
 
@@ -571,6 +572,9 @@ Remove-ItemProperty -Path "HKLM:\Software\Chocolatey" -Name "UniqueId" -Force
 
 Once you've removed this, you'll need to restart the Agent Service to get it regenerated.
 
+### Can we use an account for the service that is not a local administrator?
+Unfortunately no. The user account for the service must be a member of local administrators due to the privileges needed for this service. Typically the installation scripts will ensure the user becomes an administrator if they are not.
+
 ___
 ## Common Errors and Resolutions
 ### I have issues regarding Central Management
@@ -614,3 +618,9 @@ Currently, you do need to restart agents. Here's a handy script:
 Get-Service chocolatey-* | Stop-Service
 Get-Service chocolatey-* | Start-Service
 ```
+
+### Background Service is not being used for my non-administrator accounts
+If a user is a member of the Built-in AD group `Network Configuration Operators`, then that means they have an elevation token available and will be treated in the same way as administrative accounts. To fix this, you have two options:
+
+* Remove the users from `Network Configuration Operators`
+* OR `choco feature disable --name="'useBackgroundServiceWithNonAdministratorsOnly'"`
