@@ -58,7 +58,7 @@ ___
   - [ERROR: Cannot index into a null array](#error-cannot-index-into-a-null-array)
   - [The new license is not being picked up](#the-new-license-is-not-being-picked-up)
   - [Failed to generate a user instance of SQL Server due to failure in retrieving the user's local application data path.](#failed-to-generate-a-user-instance-of-sql-server-due-to-failure-in-retrieving-the-users-local-application-data-path)
-- [System.ServiceModel.AddressAccessDeniedException: HTTP could not register URL . Your process does not have access rights to this namespace](#systemservicemodeladdressaccessdeniedexception-http-could-not-register-url--your-process-does-not-have-access-rights-to-this-namespace)
+  - [System.ServiceModel.AddressAccessDeniedException: HTTP could not register URL . Your process does not have access rights to this namespace](#systemservicemodeladdressaccessdeniedexception-http-could-not-register-url--your-process-does-not-have-access-rights-to-this-namespace)
 
 <!-- /TOC -->
 
@@ -495,7 +495,7 @@ This means you are attempting to attach a Local DB file as part of your connecti
 
 This could also mean that there is something wrong with your connection strings format in the `appsettings.json`.
 
-## System.ServiceModel.AddressAccessDeniedException: HTTP could not register URL . Your process does not have access rights to this namespace
+### System.ServiceModel.AddressAccessDeniedException: HTTP could not register URL . Your process does not have access rights to this namespace
 
 You may see the following: "System.ServiceModel.AddressAccessDeniedException: HTTP could not register URL https://+:24020/ChocolateyManagementService/. Your process does not have access rights to this namespace (see http://go.microsoft.com/fwlink/?LinkId=70353 for details). ---> System.Net.HttpListenerException: Access is denied"
 

@@ -19,7 +19,7 @@ If you are running into any issues with using the Chocolatey GUI extension along
 ### Chocolatey GUI asking for credentials for my non-administrator accounts
 If a user is a member of the Built-in AD group `Network Configuration Operators`, then that means they have an elevation token available and will be treated in the same way as administrative accounts. To fix this, you have two options:
 
-* Remove the users from `Network Configuration Operators` - PowerShell offers an alternative to `ipconfig /flushdn` that does not require admin permissions - `Clear-DnsClientCache`.
+* Remove the users from `Network Configuration Operators` - PowerShell offers an alternative to `ipconfig /flushdns` that does not require admin permissions - `Clear-DnsClientCache`.
 * OR change the ChocolateyGui.exe.manifest file in v0.17.0+ in the Chocolatey GUI folder under Program Files to `<requestedExecutionLevel level="asInvoker" uiAccess="false" />` (from `highestAvailable`).
 
 Please see for more details: https://github.com/chocolatey/ChocolateyGUI/issues/629

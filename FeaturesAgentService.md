@@ -622,5 +622,5 @@ Get-Service chocolatey-* | Start-Service
 ### Background Service is not being used for my non-administrator accounts
 If a user is a member of the Built-in AD group `Network Configuration Operators`, then that means they have an elevation token available and will be treated in the same way as administrative accounts. To fix this, you have two options:
 
-* Remove the users from `Network Configuration Operators` - PowerShell offers an alternative to `ipconfig /flushdn` that does not require admin permissions - `Clear-DnsClientCache`.
+* Remove the users from `Network Configuration Operators` - PowerShell offers an alternative to `ipconfig /flushdns` that does not require admin permissions - `Clear-DnsClientCache`.
 * OR `choco feature disable --name="'useBackgroundServiceWithNonAdministratorsOnly'"`
