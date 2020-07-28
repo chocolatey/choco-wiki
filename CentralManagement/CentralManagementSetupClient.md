@@ -16,6 +16,7 @@ ___
   - [Can I save an image with the agent already installed that I can deploy new machines from?](#can-i-save-an-image-with-the-agent-already-installed-that-i-can-deploy-new-machines-from)
   - [What is the CCM compatibility matrix?](#what-is-the-ccm-compatibility-matrix)
   - [What is Run Actual?](#what-is-run-actual)
+  - [Where is the agent service installed?](#where-is-the-agent-service-installed)
 - [Common Errors And Resolutions](#common-errors-and-resolutions)
   - [Unable to report computer information to CCM](#unable-to-report-computer-information-to-ccm)
   - [Unable to check for deployments from CCM](#unable-to-check-for-deployments-from-ccm)
@@ -80,6 +81,7 @@ ___
 ### Step 3: Verify Installation
 
 * Open the services snap-in (services.msc) and check for the presence of the `Chocolatey Agent` which should be in the started state.
+* The installation folder for `chocolatey-agent` is at `$env:ChocolateyInstall\lib\chocolatey-agent\tools\service`.
 * Open the Service log file located at `$env:ChocolateyInstall\logs\chocolatey-agent.log` and verify that there are no recently reported errors. If you are on a version of Chocolatey Agent prior to 0.10.0, the log will be located at `$env:ChocolateyInstall\lib\chocolatey-agent\tools\service\logs\chocolatey-agent.log`.
 * There should be messages of connecting to the ccm server and checking in. It will be similar to this:
   ![Agent Setup For CCM](images/features/ccm/agent_ccm_setup_good.png)
@@ -131,6 +133,9 @@ Central Management has specific compatibility requirements with quite a few movi
 You may have seen `--run-actual`, what is that?
 
 This is a switch that is passed to opt out of Chocolatey Self-Service. It's typically passed by the agent service back to choco to run a command for a user. You typically would not issue this, but the agent service will, so you are likely to see it in the logs if you are looking closely.
+
+### Where is the agent service installed?
+The installation folder for `chocolatey-agent` is at `$env:ChocolateyInstall\lib\chocolatey-agent\tools\service`.
 
 ___
 ## Common Errors And Resolutions

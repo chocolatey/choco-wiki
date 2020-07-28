@@ -69,6 +69,7 @@ The Chocolatey Agent can be independently configured to support any or all of th
   - [Can I save an image with the agent already installed that I can deploy new machines from?](#can-i-save-an-image-with-the-agent-already-installed-that-i-can-deploy-new-machines-from)
   - [Can we use an account for the service that is not a local administrator?](#can-we-use-an-account-for-the-service-that-is-not-a-local-administrator)
   - [What is Run Actual?](#what-is-run-actual)
+  - [Where is the agent service installed?](#where-is-the-agent-service-installed)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [I have issues regarding Central Management](#i-have-issues-regarding-central-management)
   - [Installs from custom source locations are not allowed in background mode. Please remove custom source and try again using default (configured) package source locations.](#installs-from-custom-source-locations-are-not-allowed-in-background-mode-please-remove-custom-source-and-try-again-using-default-configured-package-source-locations)
@@ -580,6 +581,9 @@ Unfortunately no. The user account for the service must be a member of local adm
 You may have seen `--run-actual`, what is that?
 
 This is a switch that is passed to opt out of Chocolatey Self-Service. It's typically passed by the agent service back to choco to run a command for a user. You typically would not issue this, but the agent service will, so you are likely to see it in the logs if you are looking closely.
+
+### Where is the agent service installed?
+The installation folder for `chocolatey-agent` is at `$env:ChocolateyInstall\lib\chocolatey-agent\tools\service`.
 
 ___
 ## Common Errors and Resolutions

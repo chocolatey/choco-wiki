@@ -45,6 +45,7 @@ ___
   - [What is the CCM compatibility matrix?](#what-is-the-ccm-compatibility-matrix)
   - [I entered incorrect database details on install, do I need to reinstall to fix that?](#i-entered-incorrect-database-details-on-install-do-i-need-to-reinstall-to-fix-that)
   - [Can we use an account for the service that is not a local administrator?](#can-we-use-an-account-for-the-service-that-is-not-a-local-administrator)
+  - [Where is the management service installed?](#where-is-the-management-service-installed)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Chocolatey Agent Service is unable to communicate with Chocolatey Central Management Service](#chocolatey-agent-service-is-unable-to-communicate-with-chocolatey-central-management-service)
   - [Unable to report computer information to CCM](#unable-to-report-computer-information-to-ccm)
@@ -268,7 +269,8 @@ ___
 
 The `chocolatey-management-service` is responsible for making a number of changes to your system.  A successful installation of this package can be verified by:
 
-* Open the services snap-in (services.msc) and check for the presence of the `Chocolatey Management Service` which should be in the started state
+* Open the services snap-in (services.msc) and check for the presence of the `Chocolatey Management Service` which should be in the "Started" state.
+* The installation folder for `chocolatey-management-service` is at `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service`.
 * Open the Service log file located at `$env:ChocolateyInstall\logs\ccm-service.log` and verify that there are no recently reported errors. If you are on a version of CCM prior to 0.2.0, the log will be located at `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service\logs\chocolatey.service.host.log`.
 
 ___
@@ -394,6 +396,9 @@ If you would like to attempt this scenario, please do the following:
 * Ensure the user has `Logon As Service` privilege
 * Ensure the user has `Logon as Batch` privilege
 * Run `netsh http add urlacl url=https://+:24020/ChocolateyManagementService user=<DOMAIN\USERNAME>` from an elevated shell (replacing `<DOMAIN\USERNAME>` with the account)
+
+### Where is the management service installed?
+The installation folder for `chocolatey-management-service` is at `$env:ChocolateyInstall\lib\chocolatey-management-service\tools\service`.
 
 ___
 ## Common Errors and Resolutions

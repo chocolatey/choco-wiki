@@ -34,6 +34,7 @@ ___
   - [Can I install the Chocolatey Central Management Web Site under a Virtual Directory in IIS?](#can-i-install-the-chocolatey-central-management-web-site-under-a-virtual-directory-in-iis)
   - [What is the CCM compatibility matrix?](#what-is-the-ccm-compatibility-matrix)
   - [I entered incorrect database details on install, do I need to reinstall to fix that?](#i-entered-incorrect-database-details-on-install-do-i-need-to-reinstall-to-fix-that)
+  - [Where is the management website installed?](#where-is-the-management-website-installed)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [The specified path, file name, or both are too long](#the-specified-path-file-name-or-both-are-too-long)
   - [HTTP Error when trying to access Chocolatey Central Management Website](#http-error-when-trying-to-access-chocolatey-central-management-website)
@@ -215,8 +216,9 @@ ___
 
 The `chocolatey-management-web` package is responsible for creating and deploying the CCM Website within IIS.  A successful installation of this package can be verified by:
 
-* Opening an internet browser on the machine to the following address `http://localhost` which should result in the login page for CCM being displayed
+* Opening an internet browser on the machine to the following address `http://localhost` which should result in the login page for CCM being displayed.
 * It should be possible to login to the site using the default credentials mentioned in Step 4 (below).
+* The installation folder for `chocolatey-management-web` is at `c:\tools\chocolatey-management-web` (this is configurable by `$env:ChocolateyToolsLocation`).
 * Open the website log file located at `c:\tools\chocolatey-management-web\App_Data\Logs\ccm-website.log` and verify that there are no recently reported errors. If you are on a version of CCM prior to 0.2.0, the log will be located at `c:\tools\chocolatey-management-web\App_Data\Logs\Logs.txt`.
 
 ___
@@ -333,6 +335,8 @@ It depends. You can simply go to the appsettings.json file and adjust the connec
 
 > :warning: **WARNING**: Do not put `sec:` or `secure-` at the start (prefix) of any values that you are adding/modifying directly. That tells Chocolatey components they are encrypted and it will attempt to decrypt them for use. If that is done incorrectly, it will cause things to crash.
 
+### Where is the management website installed?
+The default installation folder for `chocolatey-management-web` is at `c:\tools\chocolatey-management-web`. However, this is configurable based on `$env:ChocolateyToolsLocation`. We would not suggest changing that value once you have installed anything that makes use of it as permissions and other things will be pointing to that set of folders.
 
 ___
 ## Common Errors and Resolutions
