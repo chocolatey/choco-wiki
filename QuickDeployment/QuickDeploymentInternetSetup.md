@@ -1,4 +1,4 @@
-# Setting up QDE to be Accessible over the Internet
+# Internet-Accessible QDE setup
 
 With an unprecedented amount of employees working from home, there is a much greater demand to serve their software lifecycle needs remotely. Thus, many organizations would like the option to make the Chocolatey Quick Deployment Environment (QDE) Internet-accessible. This document walks you through some options you will need to consider, if you choose this route.
 
@@ -6,6 +6,9 @@ With an unprecedented amount of employees working from home, there is a much gre
 
 - [Firewall Considerations](#firewall-considerations)
 - [SSL Certificate Setup](#ssl-certificate-setup)
+    - [Secnario 1: Domain Server Certificates](#secnario-1-domain-server-certificates)
+    - [Secnario 2: Purchased/Acquired Certificates from CA](#secnario-2-purchasedacquired-certificates-from-ca)
+    - [Secnario 3: Self-Signed SSL Certificates](#secnario-3-self-signed-ssl-certificates)
 - [Nexus Setup](#nexus-setup)
 - [CCM Setup](#ccm-setup)
 - [Adjusting Scripts for Client Setup](#adjusting-scripts-for-client-setup)
@@ -20,48 +23,92 @@ When we talk about making QDE Internet-accessible, we are referring to exposing 
 * **Chocolatey Central Management (CCM) Service (24020)**: This port is used for communication between Chocolatey Agent on your endpoint and the CCM server.
 * **Sonatype Nexus repository (8443)**: This is the port on which endpoints will connect to your Nexus repository (over HTTPS), in order to download packages for install/upgrade.
 
-There are, of course, additional applications and ports on the QDE server, but it is not required to have these accessible externally. The CCM Webs dashboard is on port 443, and Jenkins is on port 8080. You can access these by remoting to the server itself, or opening their ports up in your internal network only.
+There are, of course, additional applications and ports on the QDE server, but it is not required to have these accessible externally. The CCM Web dashboard is on port 443, and Jenkins is on port 8080. You can access these by remoting to the server itself, or opening their ports up in your internal network only.
 
 Further details on firewall changes can be found on the [[QDE Firewall Setup|QuickDeploymentFirewallChanges]] page.
 
 
 ## SSL Certificate Setup
 
-It is highly recommended that the default certificates generated for you are not used, but rather new ones generated. This is required for the following scenarios:
+It is highly recommended that the default certificates generated for you are not used, but rather new ones generated. Some common reasons for this change are:
 
 * If you want to expose QDE to the internet, so clients can connect from outside your network.
 * If you change the hostname of this server.
 * If you add QDE to a domain.
 * If you would like to use your own SSL/TLS certificates.
 
-This script will generate new SSL certificates for all services, move them to the appropriate locations, and configure the services to use them.
+Essentially, in any scenario where the **fully-qualified domain name (FQDN)** of the QDE server is being modified, you will need to ensure that the the "Subject/Common Name" attribute on the SSL certificates matches this FQDN. If you are making any of the above changes, please generate new SSL certificates _after_ any changes to the FQDN have been completed. 
 
-> :memo: **NOTE**: Please run the below from an administrative PowerShell session.
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1
-```
+The `New-SslCertificates.ps1` script in the "C:\choco-setup\files" folder on the QDE VM will generate new SSL certificates for all services, move them to the appropriate locations, and configure the Nexus and Chocoaltey Central Management (CCM) services to use them. This script can be utilized in multiple certificate scenarios outlined below. Any time this script is run, please be mindful of the warnings below. 
 
 > :warning: **WARNINGS**
->
-> Please take note of the following warnings here:
-> * This script will seemingly prompt for input, and have other strange output.
-> This is due to poor Java tooling and console output which cannot be suppressed.
-> Just let things happen, as things are working as expected.
-> * If you provide your own certificate, it needs to include the private key to allow for export. Nexus requires this.
-> * **Timezones** and time synchronization is critical when generating SSL Certificates. You'll wan to ensure all hosts are utili. Otherwise there is a potential edge case you could generate an SSL Certificate that is not yet valid.
-> * If you are planning to **rename** the QDE VM to a hostname other than `chocoserver`, this step needs to be completed FIRST prior to ANYTHING that is done on the QDE box. It is strongly recommended **NOT** to rename unless you absolutely need to. The most important reason has to do with how a client installs from QDE - it must learn to trust the QDE certificate. Once renamed, the easy option that's provided for you goes away and you will need to provide a hosted solution with an already trusted certificate.
-> * You can provide your own certificate that is already trusted on machines as part of the [[SSL/TLS Setup|QuickDeploymentSslSetup]]. Your other option is to host the script to trust the certificate with an already trusted certificate. You will find a template that you will need to edit at `c:\choco_setup_files` (in the QDE) named `Import-ChocoServerCertificate.ps1`.
+> * The `New-SslCertificates.ps1` script will appear to prompt for input, and also display some misleading output. This is due to the nature of the Java tooling by which the script interacts with Nexus. Please ingore any spurious prompts and output.
+> * If you provide your own SSL certificate, your private key needs to be exportable into a Java Keystore. The Nexus application requires this.
+> * **Timezones** and time synchronization is critical when generating SSL Certificates. You'll want to ensure all hosts are utilizing the same NTP time source. Otherwise, there is a potential edge case of generating an SSL Certificate that is not yet valid.
 
 3 Scenarios for SSL Certificates:
 Self-Signed certs generated by New-SslCertificates.ps1 script
 Domain certificate for FQDN of server
 Web SSL certificate purchased from an external CA (different FQDN)
 
+### Secnario 1: Domain Server Certificates
+
+If you manage a Windows AD Domain, this is goig to be the most common scenario. Most customers will want to join the QDE server to their domain, and possibly even change the hostname to match their organizational naming conventions. As this process will change your FQDN, please go ahead and do this **_first_**, before proceeding any further in this document.
+
+Once you have your new valid FQDN associated to your QDE server (that is DNS-resolvable on all your endpoints), you will now want to ensure the domain server certificate associated with that FQDN is utilized for the Nexus and CCM services on QDE.
+
+Firstly, open the "Certificates - Local Computer" MMC snap-in by pressing the Windows key, and when the Start menu pops up, type certificates. You should now see an option under the "Settings" section that says "Mange computer certificates". Alternatively, you can open the Run dialog (Windows key + R) and type `certlm.msc` and click "OK".
+
+Under the "Personal" store, you should see a server certificate matching the FQDN of your QDE server. Double-click on the certificate to open it, and under the details tab, copy out the `Thumbprint` value of the certificate.
+
+Now, you can run the `New-SslCertificates.ps1` and pass the thumbprint you copied above using the `-CertificateThumbprint` parameter. Please run the below command from a PowerShell Administrator window:
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1 -CertificateThumbprint "<YOUR_CERT_THUMPBRINT_HERE>
+```
+
+<span style="color: red">**NOTE: THE SSL GENERATION SCRIPT CURRENTLY DOES NOT WORK THIS WAY, AND WILL NEED TO BE FIXED. WE CAN'T JUST WAIT FOR QDE V2. EVERYONE USING V1 WILL BE PERMA-BROKEN IF THEY WANT TO WEB-ENABLE, UNTIL THIS IS RESOLVED. EITHER THAT, OR EVERY ONE OF THESE WILL REQUIRE A SUPPORT TICKET (NOT SCALABLE).**</span>
+
+In this Domain scenario, it is assumed that the endpoints connecting to Nexus and CCM are also on the same domain. As such, they will inherently trust the domain server certificate of the QDE server. If some endpoints are not on the domain, or on a different domain, you will need to ensure that the Nexus and CCM certificates of QDE are copied to the `Local Computer\Trusted People\Certificates` store on the endpoint as well.
+
+### Secnario 2: Purchased/Acquired Certificates from CA
+
+If you have purchased or acquired a certificate from an external Certificate Authority (CA; e.g. LetsEncrypt), this process is simliar to the Domain scenario.
+
+Firstly, you must ensure that a DNS record exists, resolving the desired FQDN from your purchased/acquired SSL certificate to its external IP address.
+
+You will then need to import this certificate into the `Local Computer\Personal\Certificates` and `Local Computer\Trusted People\Certificates` stores on the QDE server. Open the "Certificates - Local Computer" MMC snap-in by pressing the Windows key, and when the Start menu pops up, type certificates. You should now see an option under the "Settings" section that says "Mange computer certificates". Alternatively, you can open the Run dialog (Windows key + R) and type `certlm.msc` and click "OK". Ensure that the SSL certificate you have purchased does not end up
+
+Under the "Personal" store, you should see a server certificate matching the FQDN of the certificate your QDE server. Double-click on the certificate to open it, and under the details tab, copy out the `Thumbprint` value of the certificate.
+
+Now, you can run the `New-SslCertificates.ps1` and pass the thumbprint you copied above using the `-CertificateThumbprint` parameter. Please run the below command from a PowerShell Administrator window:
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1 -CertificateThumbprint "<YOUR_CERT_THUMPBRINT_HERE>
+```
+
+<span style="color: red">**NOTE: THE SSL GENERATION SCRIPT CURRENTLY DOES NOT WORK THIS WAY, AND WILL NEED TO BE FIXED. WE CAN'T JUST WAIT FOR QDE V2. EVERYONE USING V1 WILL BE PERMA-BROKEN IF THEY WANT TO WEB-ENABLE, UNTIL THIS IS RESOLVED. EITHER THAT, OR EVERY ONE OF THESE WILL REQUIRE A SUPPORT TICKET (NOT SCALABLE).**</span>
+
+In this Domain scenario, it is assumed that the endpoints connecting to Nexus and CCM are also on the same domain. As such, they will inherently trust the domain server certificate of the QDE server. If some endpoints are not on the domain, or on a different domain, you will need to ensure that the Nexus and CCM certificates of QDE are copied to the `Local Computer\Trusted People\Certificates` store on the endpoint as well.
+
+### Secnario 3: Self-Signed SSL Certificates
+
+If you are planning to use self-signed SSL sertificates to secure your communication with Nexus and CCM on QDE, then you will be required to run the `New-SslCertificates.ps1` script using the commmand above at least once. As you will be exposing these two services via the Internet, you must have your certificates be unique from the default ones provided to every customer on the QDE image.
+
+This scenario is the least desirable for an Internet-accessible setup, as you will have to ensure requirements manually. Firstly, you will need to have a valid DNS record for the fully-qualified domain name of the QDE VM, that resolves to the external IP of QDE. Secondly, you will need to add the SSL to the 
+
+
+
+
+
+
+
+
+
 
 ## Nexus Setup
 
-By default, you can check a box to allow “Anonymous” access when initially setting up Nexus. This is good initially, but will need to be changed if planning to expose it over the Internet.
+By default, you can check a box to allow “Anonymous” access when initially setting up Nexus. This is good initially, but will need to be changed if you are planning to expose Nexus to your endpoints over the Internet.
 
 As well, exposing Nexus to the Web means having to secure all the different parts of it:
 SSL Certificate for HTTPS URI
@@ -74,7 +121,7 @@ Both the following scripts on the “choco-install” raw repository will need t
 ChocolateyInstall.ps1
 ClientSetup.ps1
 
-See below.
+See "Adjusting Scripts for Client Setup" section below.
 
 ## CCM Setup
 
@@ -98,4 +145,8 @@ CCM Deployments opt-in will need to be done, if CCM has been upgraded
 
 ## Jenkins?
 
-Jenkins is currently accessible over HTTP. Do we tell users to just use this only on the QDE server itself, and not expose it to the web at all? Is there a security concern with this?
+The Jenkins open source automation server application is intalled on QDE, and available locally on the VM at port 8080. As this is a local website, and accessible over HTTP, it is our recommendation to just utilize the tool locally on the VM itself, instead of making it accessible elsewhere.
+
+If you must open up access to Jenkins internally, we advise you to review the follwing documentation in order to better secure that access:
+http://sam.gleske.net/blog/engineering/2016/05/04/jenkins-with-ssl.html
+https://www.jenkins.io/doc/book/system-administration/security/
