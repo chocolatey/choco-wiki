@@ -68,6 +68,7 @@ The Chocolatey Agent can be independently configured to support any or all of th
   - [Can I take advantage of Chocolatey managed passwords with my own Windows services?](#can-i-take-advantage-of-chocolatey-managed-passwords-with-my-own-windows-services)
   - [Can I save an image with the agent already installed that I can deploy new machines from?](#can-i-save-an-image-with-the-agent-already-installed-that-i-can-deploy-new-machines-from)
   - [Can we use an account for the service that is not a local administrator?](#can-we-use-an-account-for-the-service-that-is-not-a-local-administrator)
+  - [What is Run Actual?](#what-is-run-actual)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [I have issues regarding Central Management](#i-have-issues-regarding-central-management)
   - [Installs from custom source locations are not allowed in background mode. Please remove custom source and try again using default (configured) package source locations.](#installs-from-custom-source-locations-are-not-allowed-in-background-mode-please-remove-custom-source-and-try-again-using-default-configured-package-source-locations)
@@ -574,6 +575,11 @@ Once you've removed this, you'll need to restart the Agent Service to get it reg
 
 ### Can we use an account for the service that is not a local administrator?
 Unfortunately no. The user account for the service must be a member of local administrators due to the privileges needed for this service. Typically the installation scripts will ensure the user becomes an administrator if they are not.
+
+### What is Run Actual?
+You may have seen `--run-actual`, what is that?
+
+This is a switch that is passed to opt out of Chocolatey Self-Service. It's typically passed by the agent service back to choco to run a command for a user. You typically would not issue this, but the agent service will, so you are likely to see it in the logs if you are looking closely.
 
 ___
 ## Common Errors and Resolutions

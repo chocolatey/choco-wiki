@@ -15,6 +15,7 @@ ___
   - [How can I increase the level of logging for Chocolatey Central Management?](#how-can-i-increase-the-level-of-logging-for-chocolatey-central-management)
   - [Can I save an image with the agent already installed that I can deploy new machines from?](#can-i-save-an-image-with-the-agent-already-installed-that-i-can-deploy-new-machines-from)
   - [What is the CCM compatibility matrix?](#what-is-the-ccm-compatibility-matrix)
+  - [What is Run Actual?](#what-is-run-actual)
 - [Common Errors And Resolutions](#common-errors-and-resolutions)
   - [Unable to report computer information to CCM](#unable-to-report-computer-information-to-ccm)
   - [Unable to check for deployments from CCM](#unable-to-check-for-deployments-from-ccm)
@@ -125,6 +126,11 @@ Once you've removed this, you'll need to restart the Agent Service to get it reg
 
 ### What is the CCM compatibility matrix?
 Central Management has specific compatibility requirements with quite a few moving parts. It is important to understand that there are some Chocolatey Agent versions that may not be able to communicate with some versions of CCM and vice versa.  Please see the [[CCM Component Compatibility Matrix|CentralManagement#ccm-component-compatibility-matrix]] for details.
+
+### What is Run Actual?
+You may have seen `--run-actual`, what is that?
+
+This is a switch that is passed to opt out of Chocolatey Self-Service. It's typically passed by the agent service back to choco to run a command for a user. You typically would not issue this, but the agent service will, so you are likely to see it in the logs if you are looking closely.
 
 ___
 ## Common Errors And Resolutions

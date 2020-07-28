@@ -12,6 +12,7 @@
   - [Why do I see some machines have not opted in for Deployments?](#why-do-i-see-some-machines-have-not-opted-in-for-deployments)
   - [I have plenty of licenses, why do some machines show not opted in for deployments and also exceeds your current license count?](#i-have-plenty-of-licenses-why-do-some-machines-show-not-opted-in-for-deployments-and-also-exceeds-your-current-license-count)
   - [Can I use Chocolatey Deployments to upgrade CCM based components?](#can-i-use-chocolatey-deployments-to-upgrade-ccm-based-components)
+  - [What is Run Actual?](#what-is-run-actual)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [The updated license file is not being picked up in the website](#the-updated-license-file-is-not-being-picked-up-in-the-website)
   - [A computer or group is not showing as available for deployments but I have plenty of available licenses](#a-computer-or-group-is-not-showing-as-available-for-deployments-but-i-have-plenty-of-available-licenses)
@@ -50,6 +51,11 @@ Once you upgrade to at least CCM v0.2.0, every machine will show that until they
 
 ### Can I use Chocolatey Deployments to upgrade CCM based components?
 Likely you absolutely can, just keep in mind that there may be a specific ordering in how you would upgrade everything and adhere to that order. In some instances, you may need to upgrade agents first, then CCM components as once CCM is upgraded it may not be able to talk to the agents. However agents will stop being able to talk to CCM for a small period of time while you are upgrading CCM, but then things will start working again.
+
+### What is Run Actual?
+You may have seen `--run-actual` get attached to scripts where you are running choco commands - what is it?
+
+This is a switch that is passed to opt out of Chocolatey Self-Service. It's typically passed by the agent service back to choco to run a command for a user. You typically would not issue this, but the agent service will, so you are likely to see it in the logs if you are looking closely.
 
 ___
 ## Common Errors and Resolutions
