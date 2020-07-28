@@ -198,7 +198,7 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
 #### Script: `Get-UpdatedPackage.ps1`
 
 ```powershell
-  [CmdletBinding()]
+[CmdletBinding()]
   Param (
       [Parameter(Mandatory)]
       [string]
@@ -211,17 +211,18 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
       [Parameter(Mandatory)]
       [string]
       $RemoteRepo
+
   )
 
   . .\ConvertTo-ChocoObject.ps1
 
   Write-Verbose "Getting list of local packages from '$LocalRepo'."
-  $localPkgs = choco list --source $LocalRepo | Select-Object -Skip 1 | Select-Object -SkipLast 1 | ConvertTo-ChocoObject
+  $localPkgs = choco list --source $LocalRepo --limit-output | ConvertTo-ChocoObject
   Write-Verbose "Retrieved list of $(($localPkgs).count) packages from '$Localrepo'."
 
   $localPkgs | ForEach-Object {
       Write-Verbose "Getting remote package information for '$($_.name)'."
-      $remotePkg = choco list $_.name --source $RemoteRepo --exact | Select-Object -Skip 1 | Select-Object -SkipLast 1 | ConvertTo-ChocoObject
+      $remotePkg = choco list $_.name --source $RemoteRepo --exact --limit-output | ConvertTo-ChocoObject
       if ([version]($remotePkg.version) -gt ([version]$_.version)) {
           Write-Verbose "Package '$($_.name)' has a remote version of '$($remotePkg.version)' which is later than the local version '$($_.version)'."
           Write-Verbose "Internalizing package '$($_.name)' with version '$($remotePkg.version)'."
@@ -247,13 +248,14 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
       else {
           Write-Verbose "Package '$($_.name)' has a remote version of '$($remotePkg.version)' which is not later than the local version '$($_.version)'."
       }
-  }
+}
 ```
 
 #### Script: `Update-ProdRepoFromTest.ps1`
 
 ```powershell
   [CmdletBinding()]
+
   Param (
       [Parameter(Mandatory)]
       [string]
@@ -271,9 +273,10 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
   . .\ConvertTo-ChocoObject.ps1
 
   # get all of the packages from the test repo
-  $testPkgs = choco list --source $TestRepo | Select-Object -Skip 1 | Select-Object -SkipLast 1 | ConvertTo-ChocoObject
-  $prodPkgs = choco list --source $ProdRepo | Select-Object -Skip 1 | Select-Object -SkipLast 1 | ConvertTo-ChocoObject
+  $testPkgs = choco list --source $TestRepo --limit-output | ConvertTo-ChocoObject
+  $prodPkgs = choco list --source $ProdRepo --limit-output | ConvertTo-ChocoObject
   $tempPath = Join-Path -Path $env:TEMP -ChildPath ([GUID]::NewGuid()).GUID
+
   if ($null -eq $testPkgs) {
       Write-Verbose "Test repository appears to be empty. Nothing to push to production."
   }
@@ -287,7 +290,6 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
   $pkgs | ForEach-Object {
       Write-Verbose "Downloading package '$($_.name)' to '$tempPath'."
       choco download $_.name --no-progress --output-directory=$tempPath --source=$TestRepo
-
       if ($LASTEXITCODE -eq 0) {
           $pkgPath = (Get-Item -Path (Join-Path -Path $tempPath -ChildPath '*.nupkg')).FullName
 
@@ -299,7 +301,6 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
           if ($LASTEXITCODE -eq 0) {
               Write-Verbose "Pushing downloaded package '$(Split-Path -Path $pkgPath -Leaf)' to production repository '$ProdRepo'."
               choco push $pkgPath --source=$ProdRepo --api-key=$ProdRepoApiKey --force
-
               if ($LASTEXITCODE -eq 0) {
                   Write-Verbose "Pushed package successfully."
               }
@@ -310,7 +311,6 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
           else {
               Write-Verbose "Package testing failed."
           }
-
           Remove-Item -Path $pkgPath -Force
       }
       else {
@@ -332,10 +332,10 @@ Note the section above where you should insert the code to test your packages be
       )
 
       Process {
-          # format of the 'choco list' output is:
-          # <PACKAGE NAME> <VERSION> (ie. adobereader 2015.6.7)
+          # format of the 'choco list --limit-output' output is:
+          # <PACKAGE NAME> <VERSION> (ie. adobereader|2015.6.7)
           if (-not [string]::IsNullOrEmpty($InputObject)) {
-              $props = $_.split(' ')
+              $props = $_.split('|')
               New-Object -TypeName psobject -Property @{ name = $props[0]; version = $props[1] }
           }
       }
