@@ -37,13 +37,13 @@ It is highly recommended that the default certificates generated for you are not
 * If you add QDE to a domain.
 * If you would like to use your own SSL/TLS certificates.
 
-Essentially, in any scenario where the **fully-qualified domain name (FQDN)** of the QDE server is being modified, you will need to ensure that the the "Subject/Common Name" attribute on the SSL certificates matches this FQDN. If you are making any of the above changes, please generate new SSL certificates _after_ any changes to the FQDN have been completed. 
+Essentially, in any scenario where the **fully-qualified domain name (FQDN)** of the QDE server is being modified, you will need to ensure that the "Subject/Common Name" attribute on the SSL certificates matches this FQDN. If you are making any of the above changes, please generate new SSL certificates _after_ any changes to the FQDN have been completed. 
 
-The `New-SslCertificates.ps1` script in the "C:\choco-setup\files" folder on the QDE VM will generate new SSL certificates for all services, move them to the appropriate locations, and configure the Nexus and Chocoaltey Central Management (CCM) services to use them. This script can be utilized in multiple certificate scenarios outlined below. Any time this script is run, please be mindful of the warnings below. 
+The `New-SslCertificates.ps1` script in the "C:\choco-setup\files" folder on the QDE VM will generate new SSL certificates for all services, move them to the appropriate locations, and configure the Nexus and Chocolatey Central Management (CCM) services to use them. This script can be utilized in multiple certificate scenarios outlined below. Any time this script is run, please be mindful of the warnings below. 
 
 > :warning: **WARNINGS**
-> * The `New-SslCertificates.ps1` script will appear to prompt for input, and also display some misleading output. This is due to the nature of the Java tooling by which the script interacts with Nexus. Please ingore any spurious prompts and output.
-> * If you provide your own SSL certificate, your private key needs to be exportable into a Java Keystore. The Nexus application requires this.
+> * The `New-SslCertificates.ps1` script will appear to prompt for input, and also display some misleading output. This is due to the nature of the Java tooling by which the script interacts with Nexus. Please ignore any spurious prompts and output.
+> * If you provide your own SSL certificate, your **private key** needs to be **exportable** into a Java Keystore. The Nexus application requires this.
 > * **Timezones** and time synchronization is critical when generating SSL Certificates. You'll want to ensure all hosts are utilizing the same NTP time source. Otherwise, there is a potential edge case of generating an SSL Certificate that is not yet valid.
 
 3 Scenarios for SSL Certificates:
@@ -53,11 +53,11 @@ Web SSL certificate purchased from an external CA (different FQDN)
 
 ### Scenario 1: Domain Server Certificates
 
-If you manage a Windows AD Domain, this is goig to be the most common scenario. Most customers will want to join the QDE server to their domain, and possibly even change the hostname to match their organizational naming conventions. As this process will change your FQDN, please go ahead and do this **_first_**, before proceeding any further in this document.
+If you manage a Windows AD Domain, this is going to be the most common scenario. Most customers will want to join the QDE server to their domain, and possibly even change the hostname to match their organizational naming conventions. As this process will change your FQDN, please go ahead and do this **_first_**, before proceeding any further in this document.
 
 Once you have your new valid FQDN associated to your QDE server (that is DNS-resolvable on all your endpoints), you will now want to ensure the domain server certificate associated with that FQDN is utilized for the Nexus and CCM services on QDE.
 
-Firstly, open the "Certificates - Local Computer" MMC snap-in by pressing the Windows key, and when the Start menu pops up, type certificates. You should now see an option under the "Settings" section that says "Mange computer certificates". Alternatively, you can open the Run dialog (Windows key + R) and type `certlm.msc` and click "OK".
+Firstly, open the "Certificates - Local Computer" MMC snap-in by pressing the Windows key, and when the Start menu pops up, type certificates. You should now see an option under the "Settings" section that says "Manage computer certificates". Alternatively, you can open the Run dialog (Windows key + R) and type `certlm.msc` and click "OK".
 
 Under the "Personal" store, you should see a server certificate matching the FQDN of your QDE server. Double-click on the certificate to open it, and under the details tab, copy out the `Thumbprint` value of the certificate.
 
@@ -73,7 +73,7 @@ In this Domain scenario, it is assumed that the endpoints connecting to Nexus an
 
 ### Scenario 2: Purchased/Acquired Certificates from CA
 
-If you have purchased or acquired a certificate from an external Certificate Authority (CA; e.g. LetsEncrypt), this process is simliar to the Domain scenario.
+If you have purchased or acquired a certificate from an external Certificate Authority (CA; e.g. LetsEncrypt), this process is similar to the Domain scenario.
 
 Firstly, you must ensure that a DNS record exists, resolving the desired FQDN from your purchased/acquired SSL certificate to its external IP address.
 
@@ -104,7 +104,7 @@ The `New-SslCertificates.ps1` mentioned above will create a Java KeyStore (JKS) 
 
 When logging in and resetting your administrative credential in the Nexus web UI, there is a checkbox to allow “Anonymous” access. This is good initially, but will need to be changed if you are planning to expose Nexus to your endpoints over the Internet. You can accomplish this as follows:
 
-1. Login to the Nexus Web UI and authenticate as your `admin` user. Select the gear icon a tthe top middle of the screen, to access the "Server administration and configuration" view.
+1. Login to the Nexus Web UI and authenticate as your `admin` user. Select the gear icon at the top middle of the screen, to access the "Server administration and configuration" view.
 
 1. Under the `Security` sidebar menu, select `Roles`. Then click the `Create role` button, and choose `Nexus role` in the dropdown menu.
 
@@ -124,7 +124,7 @@ When logging in and resetting your administrative credential in the Nexus web UI
 
 1. Under the `Security` sidebar menu, select `Anonymous Access`. Uncheck the box next to the option `Allow anonymous users to access the server`, and click `Save`.
 
-1. On your endpoints, you can now setup your internal source repository using this newly created `chocouser` credential. The below command is an example; please adjust according to your FQDN, repository name, and user credential created:
+1. On your endpoints, you can now set up your internal source repository using this newly created `chocouser` credential. The below command is an example; please adjust according to your FQDN, repository name, and user credential created:
 
     ```powershell
     choco source add -n "'ChocolateyInternal'" -s "'https://chocoserver:8443/repository/ChocolateyInternal/'" --user='chocouser' --password='YOUR_PASSWORD' --allow-self-service
@@ -137,18 +137,18 @@ As we will learn in the next section on CCM, there will be more changes we need 
 
 ## CCM Setup
 
-QDE V1 does not currently include the most up-to-date version of the CCM packages (version 0.3.0, as of this writing). If you have already purchased your Chocolatey for Business (C4B) licenses, you can upgrade by following the [[Central Management Upgrade|CentralManagementSetupUpgrade]] documentation. If your are a trial user, please reach out to your Sales representative for the apporopriate packages and procedure for upgrading CCM.
+QDE V1 does not currently include the most up-to-date version of the CCM packages (version 0.3.0, as of this writing). If you have already purchased your Chocolatey for Business (C4B) licenses, you can upgrade by following the [[Central Management Upgrade|CentralManagementSetupUpgrade]] documentation. If you are a trial user, please reach out to your Sales representative for the appropriate packages and procedure for upgrading CCM.
 
-An additional mechanism of security that is highly recommended is the addition of salt additives to the encrypted communication between your endpoints and the CCM Service. As we know, communication from the endpoints to CCM occur over port 24020, and are secured by SSL certificates. Adding a salt additive on both ends further hashes this encrypted data, and provides another layer of verification. These salt additives should be at least 8 characters, and you will need to provide both additives on the CCM and enpoint ends when setting up your communication. These are both configuration items that can be set using the `choco config` command, as shown in the example here:
+An additional mechanism of security that is highly recommended is the addition of salt additives to the encrypted communication between your endpoints and the CCM Service. As we know, communication from the endpoints to CCM occurs over port 24020, and are secured by SSL certificates. Adding a salt additive on both ends further hashes this encrypted data, and provides another layer of verification. These salt additives should be at least 8 characters, and you will need to provide both additives on the CCM and endpoint ends when setting up your communication. These are both configuration items that can be set using the `choco config` command, as shown in the example here:
 
 ```powershell
 choco config set centralManagementClientCommunicationSaltAdditivePassword = 'YourSuperSecureSalt1'
 choco config set centralManagementServerCommunicationSaltAdditivePassword = 'YourSuperSecureSalt2'
 ```
 
-Further details on configuring CCM, and all available settings, can be found in the [[Central Management Client Setup|CentralManagementSetupClient#config-settings]] documnetation.
+Further details on configuring CCM, and all available settings, can be found in the [[Central Management Client Setup|CentralManagementSetupClient#config-settings]] documentation.
 
-In the next section, you will need to incorporate both these salt additives into the scripts that help you setup your endloint clients. 
+In the next section, you will need to incorporate both these salt additives into the scripts that help you setup your endpoint clients. 
 
 ## Adjusting Scripts for Client Setup
 
