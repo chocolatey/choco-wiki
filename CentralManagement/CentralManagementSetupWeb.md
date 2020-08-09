@@ -156,7 +156,7 @@ choco install chocolatey-management-web -y --package-parameters="'/ConnectionStr
 You are using AttachDBFile or User Instance in your Connection String. This is effectively asking to attach a database file to the User's Data directory.
 
 ```powershell
-choco install chocolatey-management-service -y --package-parameters="'/ConnectionString:Data Source=.\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|SomeDbFile.mdf;User Instance=true;'"
+choco install chocolatey-management-web -y --package-parameters="'/ConnectionString:Data Source=.\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|SomeDbFile.mdf;User Instance=true;'"
 ```
 
 > :warning: **WARNING**
@@ -183,7 +183,7 @@ It's worth noting here that `ChocolateyLocalAdmin` on two boxes is NOT the same 
 Scenario 4: Monolithic - you are installing the management service on the same machine as a SQL Server Express instance. You likely have a smaller environment where you have up to 1,000 machines. You have set up the [[database|CentralManagementSetupDatabase]] to use Mixed Mode Authentication.
 
 ```powershell
-choco install chocolatey-management-service -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+choco install chocolatey-management-web -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
 
 > :warning: **WARNING**
@@ -193,7 +193,7 @@ choco install chocolatey-management-service -y --package-parameters-sensitive="'
 * SQL Server Express:
 
 ```powershell
-choco install chocolatey-management-service -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+choco install chocolatey-management-web -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
 
 > :warning: **WARNING**
@@ -204,7 +204,7 @@ choco install chocolatey-management-service -y --package-parameters-sensitive="'
 Scenario 5: Split - you are installing the management service(s) on a server, and targeting an existing SQL Server instance in your organization. You have set up the [[database|CentralManagementSetupDatabase]] to use Mixed Mode Authentication.
 
 ```powershell
-choco install chocolatey-management-service -y --package-parameters-sensitive="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+choco install chocolatey-management-web -y --package-parameters-sensitive="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
 ```
 
 > :warning: **WARNING**
