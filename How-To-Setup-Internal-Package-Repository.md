@@ -289,7 +289,7 @@ Jenkins requires several PowerShell scripts to automate the processes. Create a 
 
   $pkgs | ForEach-Object {
       Write-Verbose "Downloading package '$($_.name)' to '$tempPath'."
-      choco download $_.name --no-progress --output-directory=$tempPath --source=$TestRepo --ignore-dependencies
+      choco download $_.name --no-progress --output-directory=$tempPath --source=$TestRepo --force --ignore-dependencies
       if ($LASTEXITCODE -eq 0) {
           $pkgPath = (Get-Item -Path (Join-Path -Path $tempPath -ChildPath '*.nupkg')).FullName
 
