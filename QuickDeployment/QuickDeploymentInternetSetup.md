@@ -6,70 +6,85 @@ With an unprecedented amount of employees working from home, there is a much gre
 
 - [Firewall Considerations](#firewall-considerations)
 - [SSL Certificate Setup](#ssl-certificate-setup)
+    - [SSL Certificate Scenarios](#ssl-certificate-scenarios)
     - [Scenario 1: Domain Server Certificates](#scenario-1-domain-server-certificates)
     - [Scenario 2: Purchased/Acquired Certificates from CA](#scenario-2-purchasedacquired-certificates-from-ca)
     - [Scenario 3: Self-Signed SSL Certificates](#scenario-3-self-signed-ssl-certificates)
 - [Nexus Setup](#nexus-setup)
 - [CCM Setup](#ccm-setup)
 - [Adjusting Scripts for Client Setup](#adjusting-scripts-for-client-setup)
-- [Jenkins?](#jenkins)
+- [Jenkins](#jenkins)
 
 <!-- /TOC -->
 
 
 ## Firewall Considerations
 
-When we talk about making QDE Internet-accessible, we are referring to exposing at least certain application ports on QDE via your VM/Organizational firewall; namely:
-* **Chocolatey Central Management (CCM) Service (24020)**: This port is used for communication between Chocolatey Agent on your endpoint and the CCM server.
+When we talk about making QDE Internet-accessible, we are referring to exposing certain application ports on QDE via your VM/Organizational firewall:
+* **Chocolatey Central Management Service (24020)**: This port is used for communication between Chocolatey Agent on your endpoint and the Chocolatey Central Management (CCM) server.
 * **Sonatype Nexus repository (8443)**: This is the port on which endpoints will connect to your Nexus repository (over HTTPS), in order to download packages for install/upgrade.
 
-There are, of course, additional applications and ports on the QDE server, but it is not required to have these accessible externally. The CCM Web dashboard is on port 443 (HTTPS), and Jenkins is on port 8080 (HTTP). You can access these by remoting to the server itself, or opening their ports up in your internal network only.
+There are, of course, additional applications and ports on the QDE server; however, it is not required or advisable to have these accessible externally. The CCM Web dashboard is on port 443 (HTTPS), and Jenkins is on port 8080 (HTTP). You can access these by remoting to the server itself, or opening their ports up in your internal network. Again, we **strongly** advise against opening these ports up to the public Internet.
 
 Further details on firewall changes can be found on the [[QDE Firewall Setup|QuickDeploymentFirewallChanges]] page.
 
 
 ## SSL Certificate Setup
 
-It is highly recommended that the default certificates generated for you are not used, but rather new ones generated. Some common reasons for this change are:
+If you are planning to expose QDE to the Internet, it is essential to **not** use the default self-signed certificates generated for you.
+Rather, new ones should be generated. Some additional common reasons for this change are:
 
-* If you want to expose QDE to the internet, so clients can connect from outside your network.
 * If you change the hostname of this server.
 * If you add QDE to a domain.
-* If you would like to use your own SSL/TLS certificates.
+* If you have purchased your own SSL/TLS certificates.
 
-Essentially, in any scenario where the **fully-qualified domain name (FQDN)** of the QDE server is being modified, you will need to ensure that the "Subject/Common Name" attribute on the SSL certificates matches this FQDN. If you are making any of the above changes, please generate new SSL certificates _after_ any changes to the FQDN have been completed. 
+Essentially, in any scenario where the **fully-qualified domain name (FQDN)** of the QDE server is being modified, you will need to ensure that the "Subject/Common Name" attribute on the SSL certificates matches this FQDN. If you are making any of the above changes, please generate new SSL certificates **_after_** any changes to the FQDN have been completed. 
 
-The `New-SslCertificates.ps1` script in the "C:\choco-setup\files" folder on the QDE VM will generate new SSL certificates for all services, move them to the appropriate locations, and configure the Nexus and Chocolatey Central Management (CCM) services to use them. This script can be utilized in multiple certificate scenarios outlined below. Any time this script is run, please be mindful of the warnings below. 
+The `New-SslCertificates.ps1` script in the "C:\choco-setup\files" folder on the QDE VM will:
+* Generate new SSL certificates for your Nexus and CCM Service applications
+* Move these certificates to the appropriate certificate stores
+* Configure the Nexus and CCM services to use these certificates in communication with endpoints
+
+**IMPORTANT:** There is a good chance that the current version of the `New-SslCertificates.ps1` script in the "C:\choco-setup\files" folder on your QDE VM is out-of-date, as we have made numerous updates to it over the past few months. Please use the following command to update your version of this file (to be run in a PowerShell Administrator window):
+
+```powershell
+Invoke-WebRequest -Uri 'https://ch0.co/newssl' -OutFile "$env:SystemDrive\choco-setup\files\New-SslCertificates.ps1"
+```
+
+This script can be utilized in multiple certificate scenarios outlined below. Any time this script is run, please be mindful of the warnings below. 
 
 > :warning: **WARNINGS**
 > * The `New-SslCertificates.ps1` script will appear to prompt for input, and also display some misleading output. This is due to the nature of the Java tooling by which the script interacts with Nexus. Please ignore any spurious prompts and output.
 > * If you provide your own SSL certificate, your **private key** needs to be **exportable** into a Java Keystore. The Nexus application requires this.
 > * **Timezones** and time synchronization is critical when generating SSL Certificates. You'll want to ensure all hosts are utilizing the same NTP time source. Otherwise, there is a potential edge case of generating an SSL Certificate that is not yet valid.
 
-3 Scenarios for SSL Certificates:
-Self-Signed certs generated by New-SslCertificates.ps1 script
-Domain certificate for FQDN of server
-Web SSL certificate purchased from an external CA (different FQDN)
+### SSL Certificate Scenarios
+
+There are three possible approaches to acquiring SSL certificates for QDE:
+
+* [Scenario 1: Domain Server Certificates](#scenario-1-domain-server-certificates): This would be the domain server SSL certificate, generated on domain join and trusted by all endpoints on your domain.
+* [Scenario 2: Purchased/Acquired Certificates from CA](#scenario-2-purchasedacquired-certificates-from-ca): This would be an SSL certificate that you purchased or acquired from an external Certificate Authority (CA; e.g. LetsEncrypt).
+* [Scenario 3: Self-Signed SSL Certificates](#scenario-3-self-signed-ssl-certificates): This would be a self-generated SSL certificate, similar to the one that comes with QDE (least-desirable).
+
+Each approach is discussed individually in the sections below.
 
 ### Scenario 1: Domain Server Certificates
 
-If you manage a Windows AD Domain, this is going to be the most common scenario. Most customers will want to join the QDE server to their domain, and possibly even change the hostname to match their organizational naming conventions. As this process will change your FQDN, please go ahead and do this **_first_**, before proceeding any further in this document.
+If you manage a Windows AD Domain, this is going to be the most common scenario. The majority of customers will want to join the QDE server to their domain, and possibly even change the hostname to match their organizational naming conventions. As this process will change your FQDN, please go ahead and do this **_first_**, before proceeding any further in this document.
 
 Once you have your new valid FQDN associated to your QDE server (that is DNS-resolvable on all your endpoints), you will now want to ensure the domain server certificate associated with that FQDN is utilized for the Nexus and CCM services on QDE.
 
-Firstly, open the "Certificates - Local Computer" MMC snap-in by pressing the Windows key, and when the Start menu pops up, type certificates. You should now see an option under the "Settings" section that says "Manage computer certificates". Alternatively, you can open the Run dialog (Windows key + R) and type `certlm.msc` and click "OK".
+Firstly, open the "Certificates - Local Computer" MMC snap-in by pressing the Windows key, and when the Start menu pops up, type certificates. You should now see an option under the "Settings" section that says "Manage computer certificates". Alternatively, open the Run dialog (Windows key + R), type `certlm.msc`, and click "OK".
 
-Under the "Personal" store, you should see a server certificate matching the FQDN of your QDE server. Double-click on the certificate to open it, and under the details tab, copy out the `Thumbprint` value of the certificate.
+Under the "Personal" store, you should see a server certificate matching the FQDN of your QDE server. Double-click on the certificate to open it, and under the details tab, copy out the `Thumbprint` value of the certificate. You will require this for later steps.
 
-Now, you can run the `New-SslCertificates.ps1` and pass the thumbprint you copied above using the `-CertificateThumbprint` parameter. Please run the below command from a PowerShell Administrator window:
+Now, you can run the `New-SslCertificates.ps1` script and pass the thumbprint you copied above using the `-Thumbprint` parameter. Please run the below command from a PowerShell Administrator window:
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1 -CertificateThumbprint "<YOUR_CERT_THUMPBRINT_HERE>
+Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1 -Thumbprint '<YOUR_CERT_THUMBPRINT_HERE>'
 ```
 
-<span style="color: red">**NOTE: THE SSL GENERATION SCRIPT CURRENTLY DOES NOT WORK THIS WAY, AND WILL NEED TO BE FIXED. WE CAN'T JUST WAIT FOR QDE V2. EVERYONE USING V1 WILL BE PERMA-BROKEN IF THEY WANT TO WEB-ENABLE, UNTIL THIS IS RESOLVED. EITHER THAT, OR EVERY ONE OF THESE WILL REQUIRE A SUPPORT TICKET (NOT SCALABLE).**</span>
-
-In this Domain scenario, it is assumed that the endpoints connecting to Nexus and CCM are also on the same domain. As such, they will inherently trust the domain server certificate of the QDE server. If some endpoints are not on the domain, or on a different domain, you will need to ensure that the Nexus and CCM certificates of QDE are copied to the `Local Computer\Trusted People\Certificates` store on the endpoint as well.
+In this Domain scenario, it is assumed that the endpoints connecting to Nexus and CCM are also on the same domain. As such, they will inherently trust the domain server certificate of the QDE server. If some endpoints are not on the domain, or on a different domain, you will need to ensure that the Nexus and CCM certificates of QDE are copied to the `Local Computer\Trusted People\Certificates` store on those endpoints as well.
 
 ### Scenario 2: Purchased/Acquired Certificates from CA
 
@@ -77,32 +92,32 @@ If you have purchased or acquired a certificate from an external Certificate Aut
 
 Firstly, you must ensure that a DNS record exists, resolving the desired FQDN from your purchased/acquired SSL certificate to its external IP address.
 
-You will then need to import this certificate into the `Local Computer\Personal\Certificates` and `Local Computer\Trusted People\Certificates` stores on the QDE server. Open the "Certificates - Local Computer" MMC snap-in by pressing the Windows key, and when the Start menu pops up, type certificates. You should now see an option under the "Settings" section that says "Mange computer certificates". Alternatively, you can open the Run dialog (Windows key + R) and type `certlm.msc` and click "OK". Ensure that the SSL certificate you have purchased does not end up
+You will then need to import this certificate into the `Local Computer\Personal\Certificates` and `Local Computer\Trusted People\Certificates` stores on the QDE server. Open the "Certificates - Local Computer" MMC snap-in by pressing the Windows key, and when the Start menu pops up, type certificates. You should now see an option under the "Settings" section that says "Mange computer certificates". Alternatively, open the Run dialog (Windows key + R) and type `certlm.msc` and click "OK". Double-check to ensure that the SSL certificate you have purchased is place din the correct stores, otherwise this process will not succeed.
 
 Under the "Personal" store, you should see a server certificate matching the FQDN of the certificate your QDE server. Double-click on the certificate to open it, and under the details tab, copy out the `Thumbprint` value of the certificate.
 
-Now, you can run the `New-SslCertificates.ps1` and pass the thumbprint you copied above using the `-CertificateThumbprint` parameter. Please run the below command from a PowerShell Administrator window:
+Now, you can run the `New-SslCertificates.ps1` script and pass the thumbprint you copied above using the `-Thumbprint` parameter. Please run the below command from a PowerShell Administrator window:
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1 -CertificateThumbprint "<YOUR_CERT_THUMPBRINT_HERE>
+Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1 -Thumbprint '<YOUR_CERT_THUMBPRINT_HERE>'
 ```
 
-<span style="color: red">**NOTE: THE SSL GENERATION SCRIPT CURRENTLY DOES NOT WORK THIS WAY, AND WILL NEED TO BE FIXED. WE CAN'T JUST WAIT FOR QDE V2. EVERYONE USING V1 WILL BE PERMA-BROKEN IF THEY WANT TO WEB-ENABLE, UNTIL THIS IS RESOLVED. EITHER THAT, OR EVERY ONE OF THESE WILL REQUIRE A SUPPORT TICKET (NOT SCALABLE).**</span>
-
-In this Domain scenario, it is assumed that the endpoints connecting to Nexus and CCM are also on the same domain. As such, they will inherently trust the domain server certificate of the QDE server. If some endpoints are not on the domain, or on a different domain, you will need to ensure that the Nexus and CCM certificates of QDE are copied to the `Local Computer\Trusted People\Certificates` store on the endpoint as well.
+Assuming you've acquired your SSL certificate from an already-trusted Certificate Authority, your endpoints should trust this certificate natively as well. If you run into any issues with this, you will need to ensure that QDE certificate is copied to the `Local Computer\Trusted People\Certificates` store on those endpoints as well.
 
 ### Scenario 3: Self-Signed SSL Certificates
 
-If you are planning to use self-signed SSL certificates to secure your communication with Nexus and CCM on QDE, then you will be required to run the `New-SslCertificates.ps1` script using the command above at least once. As you will be exposing these two services via the Internet, you must have your certificates be unique from the default ones provided to every customer on the QDE image.
+If you are planning to use self-signed SSL certificates to secure your communication with Nexus and CCM on QDE, then you will be required to run the `New-SslCertificates.ps1` script using the command above _at least once_. As you will be exposing these two services via the Internet, you must make sure your certificates are unique from the default ones provided to every customer on the QDE image.
 
-This scenario is the least desirable for an Internet-accessible setup, as you will have to ensure requirements manually. Firstly, you will need to have a valid DNS record for the fully-qualified domain name of the QDE VM, that resolves to the external IP of QDE. Secondly, you will need to add the SSL to the 
+This scenario is the least desirable for an Internet-accessible setup, as you will have to ensure requirements manually. Firstly, you will need to have a valid DNS record for the fully-qualified domain name of the QDE VM, that resolves to the external IP of QDE. Secondly, you will need to add the SSL certificate to the `Local Computer\Trusted People\Certificates` store on all endpoints as well.
 
+> :warning: **WARNING**:
+> As valid and trusted SSL certificates are now available form CA's such as LetsEncrypt for free, there really is no good reason to continue using self-signed certificates for Internet-accessible resources, as they offer dangerously-less verifiability.
 
 ## Nexus Setup
 
 The `New-SslCertificates.ps1` mentioned above will create a Java KeyStore (JKS) version of an SSL certificate, that can be used to secure communication between your endpoints and your Nexus repositories. As mentioned in the section above, this certificate will need to be trusted by your endpoints.
 
-When logging in and resetting your administrative credential in the Nexus web UI, there is a checkbox to allow “Anonymous” access. This is good initially, but will need to be changed if you are planning to expose Nexus to your endpoints over the Internet. You can accomplish this as follows:
+Additionally, when logging in and resetting your administrative credential in the Nexus web UI, there is a checkbox to allow “Anonymous” access. This is good initially, but will need to be changed if you are planning to expose Nexus to your endpoints over the Internet. You can accomplish this as follows:
 
 1. Login to the Nexus Web UI and authenticate as your `admin` user. Select the gear icon at the top middle of the screen, to access the "Server administration and configuration" view.
 
@@ -118,11 +133,11 @@ When logging in and resetting your administrative credential in the Nexus web UI
     
     Click the `Create role` button to create the role.
 
-1. We will now add a User to this Role. Under the `Security` sidebar menu, select `Users`. Then click the `Create local user` button. Fill in the ID, First name, Last name, and Email fields as desired (e.g. `ChocoUser`). Create a secure Password for this user. Set the Status to `Active`.
+1. We will now add a User to this Role. Under the `Security` sidebar menu, select `Users`. Then click the `Create local user` button. Fill in the ID, First name, Last name, and Email fields as desired (e.g. `chocouser`). Create a secure Password for this user. Set the Status to `Active`.
 
 1. In the Roles section, double-click the `chocorole` Role to to add it to the `Granted` section. Click the `Create local user` button to create your user.
 
-1. Under the `Security` sidebar menu, select `Anonymous Access`. Uncheck the box next to the option `Allow anonymous users to access the server`, and click `Save`.
+1. Under the `Security` sidebar menu, select `Anonymous Access`. Un-check the box next to the option `Allow anonymous users to access the server`, and click `Save`.
 
 1. On your endpoints, you can now set up your internal source repository using this newly created `chocouser` credential. The below command is an example; please adjust according to your FQDN, repository name, and user credential created:
 
@@ -139,33 +154,63 @@ As we will learn in the next section on CCM, there will be more changes we need 
 
 QDE V1 does not currently include the most up-to-date version of the CCM packages (version 0.3.0, as of this writing). If you have already purchased your Chocolatey for Business (C4B) licenses, you can upgrade by following the [[Central Management Upgrade|CentralManagementSetupUpgrade]] documentation. If you are a trial user, please reach out to your Sales representative for the appropriate packages and procedure for upgrading CCM.
 
-An additional mechanism of security that is highly recommended is the addition of salt additives to the encrypted communication between your endpoints and the CCM Service. As we know, communication from the endpoints to CCM occurs over port 24020, and are secured by SSL certificates. Adding a salt additive on both ends further hashes this encrypted data, and provides another layer of verification. These salt additives should be at least 8 characters, and you will need to provide both additives on the CCM and endpoint ends when setting up your communication. These are both configuration items that can be set using the `choco config` command, as shown in the example here:
+An additional mechanism of security that is highly recommended is the addition of salt additives to the encrypted communication between your endpoints and the CCM Service. As we know, communication from the endpoints to CCM occurs over port 24020, and is secured by SSL certificates. Adding a salt additive on both ends further hashes this encrypted data, and provides another layer of verification. These salt additives should be at least 8 characters, and you will need to provide both additives on the CCM server and endpoint ends when setting up your communication. These are both configuration items that can be set using the `choco config` command, as shown in the example here:
 
 ```powershell
-choco config set centralManagementClientCommunicationSaltAdditivePassword = 'YourSuperSecureSalt1'
-choco config set centralManagementServerCommunicationSaltAdditivePassword = 'YourSuperSecureSalt2'
+choco config set centralManagementClientCommunicationSaltAdditivePassword 'YourSuperSecureSalt1'
+choco config set centralManagementServerCommunicationSaltAdditivePassword 'YourSuperSecureSalt2'
 ```
 
 Further details on configuring CCM, and all available settings, can be found in the [[Central Management Client Setup|CentralManagementSetupClient#config-settings]] documentation.
 
-In the next section, you will need to incorporate both these salt additives into the scripts that help you setup your endpoint clients. 
+In the next section, you will need to incorporate both these salt additives into the script that helps you setup your endpoint clients.
 
 ## Adjusting Scripts for Client Setup
 
-Both the following scripts on the “choco-install” raw repository will need to be modified:
-ChocolateyInstall.ps1
-ClientSetup.ps1
+On-boarding endpoints into CCM will require the running of a `ClientSetup.ps1` script on those endpoints.
 
-Considerations:
-User credential when connecting to other repo’s will need to be passed
-Salt additive for server and client will need to be added, if checking into CCM
-Both the above will need to be turned into variables/parameters that can be passed at runtime, so that the credentials themselves don’t need to live in these files
-CCM Deployments opt-in will need to be done, if CCM has been upgraded
+**IMPORTANT:** There is a good chance that the current version of the `ClientSetup.ps1` script in the "C:\choco-setup\files" folder on your QDE VM is out-of-date, as we have made numerous updates to it over the past few months. Please use the following command to update your version of this file (to be run in a PowerShell Administrator window):
 
-## Jenkins?
+```powershell
+Invoke-WebRequest -Uri 'https://ch0.co/clientsetup' -OutFile "$env:SystemDrive\choco-setup\files\ClientSetup.ps1"
+```
 
-The Jenkins open source automation server application is installed on QDE, and available locally on the VM at port 8080. As this is a local website, and accessible over HTTP, it is our recommendation to just utilize the tool locally on the VM itself, instead of making it accessible elsewhere.
+Running this script will require passing the following parameters:
 
-If you must open up access to Jenkins internally, we advise you to review the following documentation in order to better secure that access:
-http://sam.gleske.net/blog/engineering/2016/05/04/jenkins-with-ssl.html
-https://www.jenkins.io/doc/book/system-administration/security/
+* `$Fqdn`: This is the FQDN of the QDE server, where the "choco-install" and "ChocolateyInternal" Nexus repositories are. If you don't specify one, simply `chocoserver` will be used by default.
+* `$Credential`: This is the `chocouser` credential used to connect to Nexus that we specified earlier in [Nexus Setup](#nexus-setup). You should generate this ahead of time via a command like $Credential = Get-Credential
+
+* `$ClientSalt`: This is the client-side salt additive we discussed in the [CCM Setup](#ccm-setup) section above.
+* `$ServerSalt`: This is the server-side salt additive we discussed in the [CCM Setup](#ccm-setup) section above.
+
+An example of running this script with the requisite parameters on an endpoint is as follows (to be run from a PowerShell Administrator window):
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\PATH\TO\ClientSetup.ps1 -Fqdn "'<YOUR_FQDN_HERE>'" -Credential $(Get-Credential) -ClientSalt "'YourSuperSecureSalt1'" -ServerSalt "'YourSuperSecureSalt2'"
+```
+
+This script will accomplish the following:
+
+* Install Chocolatey from the installation script hosted in your internal raw Nexus repository
+* Add the `ChocolateyInternal` source, and enable it for self-service
+* Disable the default `Chocolatey` Community Repository on your endpoints
+* Install your Chocolatey license using the `chocolatey-license` package you created
+* Install the Chocolatey Licensed Extension (without context menus for Package Builder)
+* Install the `ChocolateyGUI` package on the endpoint, for self-service support
+* Install the `chocolatey-agent` package, which supports self-service and CCM communication
+* Enable and disable features related to configuring self-service access on the endpoint
+* Setup the communication channel between the endpoint and CCM, using the correct URL and salts
+* Opt the endpoint into CCM Deployments
+
+Currently, the easiest way to accomplish this on-boarding is to copy this script over to your endpoints, and just run it from there in a PowerShell Administrator window. We are working on a process to make this simpler, and we hope to release that shortly. We will update this document as soon as an alternate method becomes available.
+
+## Jenkins
+
+The Jenkins open source automation server application is installed on QDE, and available locally on the VM at port 8080 (https://localhost:8080). As this is a local website, and accessible over HTTP, it is our recommendation to just utilize the tool locally on the VM itself, instead of making it accessible elsewhere.
+
+If you **must** open up access to Jenkins internally, we advise you to review the following documentation in order to better secure that access:
+[Jenkins Security Recommendations](https://www.jenkins.io/doc/book/system-administration/security/)
+[Jenkins SSL Setup by Sam Gleske](http://sam.gleske.net/blog/engineering/2016/05/04/jenkins-with-ssl.html)
+
+> :warning: **WARNING:**
+> As Jenkins is more of a "set-it-and-forget-it" service, we strongly advise you **do not** open up access to the Jenkins web console, but rather just use the web console on the QDE VM itself.
