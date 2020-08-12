@@ -92,7 +92,7 @@ If you have purchased or acquired a certificate from an external Certificate Aut
 
 Firstly, you must ensure that a DNS record exists, resolving the desired FQDN from your purchased/acquired SSL certificate to its external IP address.
 
-You will then need to import this certificate into the `Local Computer\Personal\Certificates` and `Local Computer\Trusted People\Certificates` stores on the QDE server. Open the "Certificates - Local Computer" MMC snap-in by pressing the Windows key, and when the Start menu pops up, type certificates. You should now see an option under the "Settings" section that says "Mange computer certificates". Alternatively, open the Run dialog (Windows key + R) and type `certlm.msc` and click "OK". Double-check to ensure that the SSL certificate you have purchased is place din the correct stores, otherwise this process will not succeed.
+You will then need to import this certificate into the `Local Computer\Personal\Certificates` and `Local Computer\Trusted People\Certificates` stores on the QDE server. Open the "Certificates - Local Computer" MMC snap-in by pressing the Windows key, and when the Start menu pops up, type certificates. You should now see an option under the "Settings" section that says "Manage computer certificates". Alternatively, open the Run dialog (Windows key + R) and type `certlm.msc` and click "OK". Double-check to ensure that the SSL certificate you have purchased is placed in the correct stores, otherwise this process will not succeed.
 
 Under the "Personal" store, you should see a server certificate matching the FQDN of the certificate your QDE server. Double-click on the certificate to open it, and under the details tab, copy out the `Thumbprint` value of the certificate.
 
@@ -102,7 +102,7 @@ Now, you can run the `New-SslCertificates.ps1` script and pass the thumbprint yo
 Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1 -Thumbprint '<YOUR_CERT_THUMBPRINT_HERE>'
 ```
 
-Assuming you've acquired your SSL certificate from an already-trusted Certificate Authority, your endpoints should trust this certificate natively as well. If you run into any issues with this, you will need to ensure that QDE certificate is copied to the `Local Computer\Trusted People\Certificates` store on those endpoints as well.
+Assuming you've acquired your SSL certificate from an already-trusted Certificate Authority, your endpoints should trust this certificate natively as well. If you run into any issues with this, you will need to ensure that the QDE certificate is copied to the `Local Computer\Trusted People\Certificates` store on those endpoints as well.
 
 ### Scenario 3: Self-Signed SSL Certificates
 
@@ -163,7 +163,7 @@ choco config set centralManagementServerCommunicationSaltAdditivePassword 'YourS
 
 Further details on configuring CCM, and all available settings, can be found in the [[Central Management Client Setup|CentralManagementSetupClient#config-settings]] documentation.
 
-In the next section, you will need to incorporate both these salt additives into the script that helps you setup your endpoint clients.
+In the next section, you will need to incorporate both these salt additives into the script that helps you set up your endpoint clients.
 
 ## Adjusting Scripts for Client Setup
 
@@ -178,8 +178,7 @@ Invoke-WebRequest -Uri 'https://ch0.co/clientsetup' -OutFile "$env:SystemDrive\c
 Running this script will require passing the following parameters:
 
 * `$Fqdn`: This is the FQDN of the QDE server, where the "choco-install" and "ChocolateyInternal" Nexus repositories are. If you don't specify one, simply `chocoserver` will be used by default.
-* `$Credential`: This is the `chocouser` credential used to connect to Nexus that we specified earlier in [Nexus Setup](#nexus-setup). You should generate this ahead of time via a command like $Credential = Get-Credential
-
+* `$Credential`: This is the `chocouser` credential used to connect to Nexus that we specified earlier in [Nexus Setup](#nexus-setup). You can generate this ahead of time via a command like `$Credential = Get-Credential`
 * `$ClientSalt`: This is the client-side salt additive we discussed in the [CCM Setup](#ccm-setup) section above.
 * `$ServerSalt`: This is the server-side salt additive we discussed in the [CCM Setup](#ccm-setup) section above.
 
@@ -209,8 +208,8 @@ Currently, the easiest way to accomplish this on-boarding is to copy this script
 The Jenkins open source automation server application is installed on QDE, and available locally on the VM at port 8080 (https://localhost:8080). As this is a local website, and accessible over HTTP, it is our recommendation to just utilize the tool locally on the VM itself, instead of making it accessible elsewhere.
 
 If you **must** open up access to Jenkins internally, we advise you to review the following documentation in order to better secure that access:
-[Jenkins Security Recommendations](https://www.jenkins.io/doc/book/system-administration/security/)
-[Jenkins SSL Setup by Sam Gleske](http://sam.gleske.net/blog/engineering/2016/05/04/jenkins-with-ssl.html)
+* [Jenkins Security Recommendations](https://www.jenkins.io/doc/book/system-administration/security/)
+* [Jenkins SSL Setup by Sam Gleske](http://sam.gleske.net/blog/engineering/2016/05/04/jenkins-with-ssl.html)
 
 > :warning: **WARNING:**
 > As Jenkins is more of a "set-it-and-forget-it" service, we strongly advise you **do not** open up access to the Jenkins web console, but rather just use the web console on the QDE VM itself.
