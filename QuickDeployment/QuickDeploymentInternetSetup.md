@@ -45,7 +45,7 @@ The `New-SslCertificates.ps1` script in the "C:\choco-setup\files" folder on the
 * Move these certificates to the appropriate certificate stores
 * Configure the Nexus and CCM services to use these certificates in communication with endpoints
 
-**IMPORTANT:** There is a good chance that the current version of the `New-SslCertificates.ps1` script in the "C:\choco-setup\files" folder on your QDE VM is out-of-date, as we have made numerous updates to it over the past few months. Please use the following command to update your version of this file (to be run in a PowerShell Administrator window):
+**:exclamation: IMPORTANT:** There is a good chance that the current version of the `New-SslCertificates.ps1` script in the "C:\choco-setup\files" folder on your QDE VM is out-of-date, as we have made numerous updates to it over the past few months. Please use the following command to update your version of this file (to be run in a PowerShell Administrator window):
 
 ```powershell
 Invoke-WebRequest -Uri 'https://ch0.co/newssl' -OutFile "$env:SystemDrive\choco-setup\files\New-SslCertificates.ps1"
@@ -110,7 +110,7 @@ If you are planning to use self-signed SSL certificates to secure your communica
 
 This scenario is the least desirable for an Internet-accessible setup, as you will have to ensure requirements manually. Firstly, you will need to have a valid DNS record for the fully-qualified domain name of the QDE VM, that resolves to the external IP of QDE. Secondly, you will need to add the SSL certificate to the `Local Computer\Trusted People\Certificates` store on all endpoints as well.
 
-> :warning: **WARNING**:
+> :unlock: **SECURITY NOTE**:
 > As valid and trusted SSL certificates are now available form CA's such as LetsEncrypt for free, there really is no good reason to continue using self-signed certificates for Internet-accessible resources, as they offer dangerously-less verifiability.
 
 ## Nexus Setup
@@ -145,7 +145,7 @@ Additionally, when logging in and resetting your administrative credential in th
     choco source add -n "'ChocolateyInternal'" -s "'https://chocoserver:8443/repository/ChocolateyInternal/'" --user='chocouser' --password='YOUR_PASSWORD' --allow-self-service
     ```
 
-> :warning: **WARNING**
+> :memo: **Note**
 > Now that you've added a credential to your Nexus repositories, access to the `ChocolateyInstall.ps1` and `ClientSetup.ps1` scripts in your `choco-install` raw repository will require this credential as well. 
 
 As we will learn in the next section on CCM, there will be more changes we need to incorporate into these two scripts. Script adjustments are discussed further in the [Adjusting Scripts for Client Setup](#adjusting-scripts-for-client-setup) section below.
@@ -169,7 +169,7 @@ In the next section, you will need to incorporate both these salt additives into
 
 On-boarding endpoints into CCM will require the running of a `ClientSetup.ps1` script on those endpoints.
 
-**IMPORTANT:** There is a good chance that the current version of the `ClientSetup.ps1` script in the "C:\choco-setup\files" folder on your QDE VM is out-of-date, as we have made numerous updates to it over the past few months. Please use the following command to update your version of this file (to be run in a PowerShell Administrator window):
+**:exclamation: IMPORTANT:** There is a good chance that the current version of the `ClientSetup.ps1` script in the "C:\choco-setup\files" folder on your QDE VM is out-of-date, as we have made numerous updates to it over the past few months. Please use the following command to update your version of this file (to be run in a PowerShell Administrator window):
 
 ```powershell
 Invoke-WebRequest -Uri 'https://ch0.co/clientsetup' -OutFile "$env:SystemDrive\choco-setup\files\ClientSetup.ps1"
