@@ -145,7 +145,7 @@ Additionally, when logging in and resetting your administrative credential in th
     choco source add -n "'ChocolateyInternal'" -s "'https://chocoserver:8443/repository/ChocolateyInternal/'" --user='chocouser' --password='YOUR_PASSWORD' --allow-self-service
     ```
 
-> :memo: **Note**
+> :memo: **Note:**
 > Now that you've added a credential to your Nexus repositories, access to the `ChocolateyInstall.ps1` and `ClientSetup.ps1` scripts in your `choco-install` raw repository will require this credential as well. 
 
 As we will learn in the next section on CCM, there will be more changes we need to incorporate into these two scripts. Script adjustments are discussed further in the [Adjusting Scripts for Client Setup](#adjusting-scripts-for-client-setup) section below.
