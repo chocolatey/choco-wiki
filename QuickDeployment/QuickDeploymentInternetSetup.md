@@ -108,7 +108,7 @@ If you have purchased or acquired a certificate from an external Certificate Aut
 
 If you are planning to use self-signed SSL certificates to secure your communication with Nexus and CCM on QDE, then you will be required to run the `New-SslCertificates.ps1` script using the command above _at least once_. As you will be exposing these two services via the Internet, you must make sure your certificates are unique from the default ones provided to every customer on the QDE image.
 
-1. Ensure you have a valid DNS record for the `CHOCOSERVER` hostname of the QDE VM, that resolves to the external IP of QDE. If not, create a host record for the hostname `CHOCOSERVER` in your Windows HOSTS file on your endpoints. In recent versions of Windows, this is located at: `“C:\Windows\System32\drivers\etc\hosts”`.
+1. Ensure you have a valid DNS record for the `CHOCOSERVER` hostname of the QDE VM, that resolves to the external IP of QDE. If not, create a host record for the hostname `CHOCOSERVER` in your Windows HOSTS file on your endpoints. This is located at: `“C:\Windows\System32\drivers\etc\hosts”`.
 1. Run the `New-SslCertificates.ps1` script, from a PowerShell Administrator window:
 
     ```powershell
