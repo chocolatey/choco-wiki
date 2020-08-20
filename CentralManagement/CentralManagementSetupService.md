@@ -29,10 +29,10 @@ ___
       - [Use SQL Server Account to Remote SQL Server](#use-sql-server-account-to-remote-sql-server)
 - [Step 3: Verify Installation](#step-3-verify-installation)
 - [FAQ](#faq)
-  - [How can I increase the level of logging for Chocolatey Central Management?](#how-can-i-increase-the-level-of-logging-for-chocolatey-central-management)
-  - [How can I view what SSL registrations have been made by the installation of chocolatey-management-service](#how-can-i-view-what-ssl-registrations-have-been-made-by-the-installation-of-chocolatey-management-service)
-  - [How can I remove a netsh binding that has been created](#how-can-i-remove-a-netsh-binding-that-has-been-created)
-  - [Can I manually create an SSL binding?](#can-i-manually-create-an-ssl-binding)
+  - [How can we increase the level of logging for Chocolatey Central Management?](#how-can-we-increase-the-level-of-logging-for-chocolatey-central-management)
+  - [How can we view what SSL registrations have been made by the installation of chocolatey-management-service](#how-can-we-view-what-ssl-registrations-have-been-made-by-the-installation-of-chocolatey-management-service)
+  - [How can we remove a netsh binding that has been created](#how-can-we-remove-a-netsh-binding-that-has-been-created)
+  - [Can we manually create an SSL binding?](#can-we-manually-create-an-ssl-binding)
   - [We want to set up the Chocolatey Central Management service to use a domain account that will have local admin on each box. Can we do this?](#we-want-to-set-up-the-chocolatey-central-management-service-to-use-a-domain-account-that-will-have-local-admin-on-each-box-can-we-do-this)
   - [Is the password stored anywhere?](#is-the-password-stored-anywhere)
   - [We are going to use our own account with a rotating password. When we rotate the password for the account that we use for the Chocolatey Management Service, what do we need to do?](#we-are-going-to-use-our-own-account-with-a-rotating-password-when-we-rotate-the-password-for-the-account-that-we-use-for-the-chocolatey-management-service-what-do-we-need-to-do)
@@ -275,7 +275,7 @@ The `chocolatey-management-service` is responsible for making a number of change
 
 ___
 ## FAQ
-### How can I increase the level of logging for Chocolatey Central Management?
+### How can we increase the level of logging for Chocolatey Central Management?
 This can be done by changing the level value, which should be currently INFO, to use DEBUG, as per the following:
 
 ~~~xml
@@ -293,14 +293,14 @@ In the following files:
 
 When the value is changed, the services may also need restarted.
 
-### How can I view what SSL registrations have been made by the installation of chocolatey-management-service
+### How can we view what SSL registrations have been made by the installation of chocolatey-management-service
 By default, the installation of the `chocolatey-management-service` package will register a single netsh binding between a self-signed certificate (created at the point of installation) and port 24020.  This can be verified using the following command:
 
 ~~~powershell
 netsh http show sslcert
 ~~~
 
-### How can I remove a netsh binding that has been created
+### How can we remove a netsh binding that has been created
 If you need to remove a netsh binding, you can do that using the following command:
 
 ~~~powershell
@@ -309,7 +309,7 @@ netsh http delete sslcert ipport=0.0.0.0:<port_number>
 
 **NOTE:** Here `<port_number>` should be replaced with the Port Number that has been registered
 
-### Can I manually create an SSL binding?
+### Can we manually create an SSL binding?
 If required, it is possible to manually create a netsh binding.  This is done using the following command:
 
 ~~~powershell
