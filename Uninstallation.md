@@ -27,65 +27,112 @@ There are no warranties on this script whatsoever, but here is something you can
 <button type="button" class="btn btn-danger btn-hide">Yes, I understand the dangers of running these scripts</button>
 <div id="uninstall-scripts" class="d-none">
 remove-->
-If you also intend to delete the Chocolatey directory, remove the `-WhatIf`:
+If you also intend to delete the Chocolatey directory, remove the `-WhatIf` switch from the `Remove-Item` call near the bottom:
 
 ~~~powershell
-if (!$env:ChocolateyInstall) {
-  Write-Warning "The ChocolateyInstall environment variable was not found. `n Chocolatey is not detected as installed. Nothing to do"
-  return
+$VerbosePreference = 'Continue'
+if (-not $env:ChocolateyInstall) {
+    $message = @(
+        "The ChocolateyInstall environment variable was not found."
+        "Chocolatey is not detected as installed. Nothing to do."
+    ) -join "`n"
+
+    Write-Warning $message
+    return
 }
-if (!(Test-Path "$env:ChocolateyInstall")) {
-  Write-Warning "Chocolatey installation not detected at '$env:ChocolateyInstall'. `n Nothing to do."
-  return
+
+if (-not (Test-Path $env:ChocolateyInstall)) {
+    $message = @(
+        "No Chocolatey installation detected at '$env:ChocolateyInstall'."
+        "Nothing to do."
+    ) -join "`n"
+
+    Write-Warning $message
+    return
 }
 
-$userPath = [Microsoft.Win32.Registry]::CurrentUser.OpenSubKey('Environment').GetValue('PATH', '', [Microsoft.Win32.RegistryValueOptions]::DoNotExpandEnvironmentNames).ToString()
-$machinePath = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey('SYSTEM\CurrentControlSet\Control\Session Manager\Environment\').GetValue('PATH', '', [Microsoft.Win32.RegistryValueOptions]::DoNotExpandEnvironmentNames).ToString()
+<#
+    Using the .NET registry calls is necessary here in order to preserve environment variables embedded in PATH values;
+    Powershell's registry provider doesn't provide a method of preserving variable references, and we don't want to
+    accidentally overwrite them with absolute path values. Where the registry allows us to see "%SystemRoot%" in a PATH
+    entry, PowerShell's registry provider only sees "C:\Windows", for example.
+#>
+$userKey = [Microsoft.Win32.Registry]::CurrentUser.OpenSubKey('Environment')
+$userPath = $userKey.GetValue('PATH', [string]::Empty, 'DoNotExpandEnvironmentNames').ToString()
 
-@"
-User PATH:
-$userPath
+$machineKey = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey('SYSTEM\ControlSet001\Control\Session Manager\Environment\')
+$machinePath = $machineKey.GetValue('PATH', [string]::Empty, 'DoNotExpandEnvironmentNames').ToString()
 
-Machine PATH:
-$machinePath
-"@ | Out-File "C:\PATH_backups_ChocolateyUninstall.txt" -Encoding UTF8 -Force
+$backupPATHs = @(
+    "User PATH: $userPath"
+    "Machine PATH: $machinePath"
+)
+$backupFile = "C:\PATH_backups_ChocolateyUninstall.txt"
+$backupPATHs | Set-Content -Path $backupFile -Encoding UTF8 -Force
+
+$warningMessage = @"
+    This could cause issues after reboot where nothing is found if something goes wrong.
+    In that case, look at the backup file for the original PATH values in '$backupFile'.
+"@
 
 if ($userPath -like "*$env:ChocolateyInstall*") {
-  Write-Output "Chocolatey Install location found in User Path. Removing..."
-  # WARNING: This could cause issues after reboot where nothing is
-  # found if something goes wrong. In that case, look at the backed up
-  # files for PATH.
-  [System.Text.RegularExpressions.Regex]::Replace($userPath, [System.Text.RegularExpressions.Regex]::Escape("$env:ChocolateyInstall\bin") + '(?>;)?', '', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase) | %{[System.Environment]::SetEnvironmentVariable('PATH', $_.Replace(";;",";"), 'User')}
+    Write-Verbose "Chocolatey Install location found in User Path. Removing..."
+    Write-Warning $warningMessage
+
+    $newUserPATH = @(
+        $userPath -split [System.IO.Path]::PathSeparator |
+            Where-Object { $_ -and $_ -ne "$env:ChocolateyInstall\bin" }
+    ) -join [System.IO.Path]::PathSeparator
+
+    # NEVER use [Environment]::SetEnvironmentVariable() for PATH values; see https://github.com/dotnet/corefx/issues/36449
+    # This issue exists in ALL released versions of .NET and .NET Core as of 12/19/2019
+    $userKey.SetValue('PATH', $newUserPATH, 'ExpandString')
 }
 
 if ($machinePath -like "*$env:ChocolateyInstall*") {
-  Write-Output "Chocolatey Install location found in Machine Path. Removing..."
-  # WARNING: This could cause issues after reboot where nothing is
-  # found if something goes wrong. In that case, look at the backed up
-  # files for PATH.
-  [System.Text.RegularExpressions.Regex]::Replace($machinePath, [System.Text.RegularExpressions.Regex]::Escape("$env:ChocolateyInstall\bin") + '(?>;)?', '', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase) | %{[System.Environment]::SetEnvironmentVariable('PATH', $_.Replace(";;",";"), 'Machine')}
+    Write-Verbose "Chocolatey Install location found in Machine Path. Removing..."
+    Write-Warning $warningMessage
+
+    $newMachinePATH = @(
+        $machinePath -split [System.IO.Path]::PathSeparator |
+            Where-Object { $_ -and $_ -ne "$env:ChocolateyInstall\bin" }
+    ) -join [System.IO.Path]::PathSeparator
+
+    # NEVER use [Environment]::SetEnvironmentVariable() for PATH values; see https://github.com/dotnet/corefx/issues/36449
+    # This issue exists in ALL released versions of .NET and .NET Core as of 12/19/2019
+    $machineKey.SetValue('PATH', $newMachinePATH, 'ExpandString')
 }
 
 # Adapt for any services running in subfolders of ChocolateyInstall
 $agentService = Get-Service -Name chocolatey-agent -ErrorAction SilentlyContinue
-if ($agentService -and $agentService.Status -eq 'Running') { $agentService.Stop() }
+if ($agentService -and $agentService.Status -eq 'Running') {
+    $agentService.Stop()
+}
 # TODO: add other services here
 
-# delete the contents (remove -WhatIf to actually remove)
-Remove-Item -Recurse -Force "$env:ChocolateyInstall" -WhatIf
+Remove-Item -Path $env:ChocolateyInstall -Recurse -Force -WhatIf
 
-[System.Environment]::SetEnvironmentVariable("ChocolateyInstall", $null, 'User')
-[System.Environment]::SetEnvironmentVariable("ChocolateyInstall", $null, 'Machine')
-[System.Environment]::SetEnvironmentVariable("ChocolateyLastPathUpdate", $null, 'User')
-[System.Environment]::SetEnvironmentVariable("ChocolateyLastPathUpdate", $null, 'Machine')
+'ChocolateyInstall', 'ChocolateyLastPathUpdate' | ForEach-Object {
+    foreach ($scope in 'User', 'Machine') {
+        [Environment]::SetEnvironmentVariable($_, [string]::Empty, $scope)
+    }
+}
+
+$machineKey.Close()
+$userKey.Close()
 ~~~
 
-If you also intend to delete the tools directory that was managed by Chocolatey, remove both of the `-WhatIf` switches:
+Additionally, the below code will remove the environment variables pointing to the tools directory that was managed by Chocolatey.
+If you want to remove the actual directory from disk, remove the `-WhatIf` switch from the `Remove-Item` call below as well.
 
 ~~~powershell
-if ($env:ChocolateyToolsLocation) { Remove-Item -Recurse -Force "$env:ChocolateyToolsLocation" -WhatIf }
-[System.Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", $null, 'User')
-[System.Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", $null, 'Machine')
+if ($env:ChocolateyToolsLocation -and (Test-Path $env:ChocolateyToolsLocation)) {
+    Remove-Item -Path $env:ChocolateyToolsLocation -WhatIf -Recurse -Force
+}
+
+foreach ($scope in 'User', 'Machine') {
+    [Environment]::SetEnvironmentVariable('ChocolateyToolsLocation', [string]::Empty, $scope)
+}
 ~~~
 <!--remove
 </div>
