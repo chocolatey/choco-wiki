@@ -14,6 +14,7 @@
 - [Additional Configuration](#additional-configuration)
   - [Performance](#performance)
     - [Future](#future)
+  - [Configure Simple Server alongside WSUS admin-site](#configure-simple-server-alongside-wsus-admin-site)
 - [Common Errors and Resolutions](#common-errors-and-resolutions)
   - [Error 404 on Push](#error-404-on-push)
   - [Error 500](#error-500)
@@ -46,7 +47,7 @@ When you install it, it will install the website typically to `c:\tools\chocolat
 * 50GB of free space for where ever you will put packages.
 * We recommend at least 8GB RAM, but more if you can.
 * Ability to set up an IIS site and unblock website ports.
-* If you have an IIS site for WSUS administration, Chocolatey.Server website will not come up at all, even if everything looks right. We have not yet been able to determine the issue, but believe it is related to ASP.NET 4.6+. Installing all of the required components for Chocolatey.Server may also affect your WSUS admin site. Please seek a different box.
+* If you have an IIS site for WSUS administration, see [Configure Simple Server alongside WSUS admin-site](#configure-simple-server-alongside-wsus-admin-site) for instructions on how to make Chocolatey Simple Server work alongside the WSUS admin-site.
 * If you can ensure your server is up to date with all of the Windows Updates, you will move through this process quite a bit quicker.
 
 ## Setup
@@ -203,6 +204,46 @@ To configure for performance, you will want to do the following:
 We are looking to add support for the package source to automatically handle this aspect - http://blog.nuget.org/20150922/Accelerate-Package-Source.html
 
 
+### Configure Simple Server alongside WSUS admin-site
+
+If you are running the Simple Server next to a WSUS admin-site, you need to change some settings in the IIS-Configuration for making the Simple Server work correctly again.
+This is due to the fact that the WSUS admin-site installation registers two modules in the IIS root configuration, which will be passed down to all other sites running on that IIS instance, including the Chocolatey Simple Server site.
+
+To make the Chocolatey Simple Server work again, you will need to disable inheritance for these modules in order to remove them from the Chocolatey Simple Server site.  
+
+*Before making changes to your IIS configuration, read all steps carefully and make sure that you have a backup*  
+   
+You can do this either by powershell:
+``` powershell
+# Import WebAdministration
+Import-Module WebAdministration
+
+# Remove locks from modules
+Remove-WebConfigurationLock -Filter "system.webServer/modules/add[@name='DynamicCompressionModule']" -PSPath IIS:\
+Remove-WebConfigurationLock -Filter "system.webServer/modules/add[@name='StaticCompressionModule']" -PSPath IIS:\
+
+# Remove modules from the Chocolatey Simple Server site
+Disable-WebGlobalModule -PSPath 'IIS:\Sites\ChocolateyServer\' -Name DynamicCompressionModule
+Disable-WebGlobalModule -PSPath 'IIS:\Sites\ChocolateyServer\' -Name StaticCompressionModule
+
+# Restart website
+Stop-Website -Name "ChocolateyServer"
+Start-Website -Name "ChocolateyServer"
+```
+or manual:  
+  1. Open the IIS Management Console
+  2. Click on the server name on the upper left pane
+  3. On the right pane doubleclick on `Modules`. All available modules will show up
+  4. Search for `DynamicCompressionModule`, right-click it and choose `Unlock`
+  5. Do the same for `StaticCompressionModule`
+  6. Under `Sites` on the left pane click on the site for your Chocolatey Simple Server, most likely `ChocolateyServer`
+  7. Again, search for `Modules` on the right pane and doubleclick it
+  8. Search for `DynamicCompressionModule`, right-click it and choose `Remove`
+  9. Restart the Chocolatey Simple Server site
+
+The Chocolatey Simple Server should now be able to handle requests correctly again.
+   
+
 ## Common Errors and Resolutions
 
 When you are attempting to install the Simple Server, you may run into some errors depending on your configuration. Here are some common ones we've seen that you may get when you browse to the the site.
@@ -220,7 +261,7 @@ This can mean a couple of things:
 
 * You missed ensuring the website is using an app pool that is at least .NET 4.0. Check the app pool that your site is using, then ensure that app pool has `32-bit` enabled and the managed runtime version is `v4.0` (or some version of 4).
 * You have made a change to the xml file and it is not valid xml. This typically happens if you put an xml escape character into the password (`&`). To do that you would need to set CData around the value or use a different password. It could also happen if you accidentallly change the xml and it is no longer valid.
-* You are attempting to set up Chocolatey Server next to WSUS Administration website. For an unknown reason, something won't register correctly with Chocolatey Server and its need for ASP.NET 4.6+. So we recommend not putting the Chocolatey Server next to that website. Find a machine with the WSUS administration site.
+* You are attempting to set up Chocolatey Server next to WSUS Administration website. See [Configure Simple Server alongside WSUS admin-site](#configure-simple-server-alongside-wsus-admin-site) for instructions on how to make Chocolatey Simple Server work alongside the WSUS admin-site.
 
 ### Other error
 
@@ -229,4 +270,3 @@ Turn on customErrors under system.web - <customErrors mode="Off" /> - see this g
 Then browse to the site to see if you can gather any more information.
 
 If so, and you are a commercial edition customer, please open a support ticket. If you are using open source Chocolatey, please open a ticket at https://github.com/chocolatey/simple-server/issues.
-
