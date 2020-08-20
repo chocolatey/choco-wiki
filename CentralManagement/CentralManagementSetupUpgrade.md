@@ -49,6 +49,7 @@ Similar to how we internalized in [[Setup - Internalize Packages|CentralManageme
 # Update the values and remove the < >
 $YourInternalRepositoryPushUrl = '<INSERT REPOSITORY URL HERE>'
 $YourInternalRepositoryApiKey = '<YOUR API KEY HERE>'
+# You get this from the chocolatey.license.xml file:
 $YourBusinessLicenseGuid = '<INSERT NON-TRIAL C4B LICENSE GUID HERE>'
 
 # Download Chocolatey community related items, no internalization necessary
