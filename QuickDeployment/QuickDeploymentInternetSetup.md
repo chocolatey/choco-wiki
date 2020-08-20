@@ -17,6 +17,8 @@ With an unprecedented amount of employees working from home, there is a much gre
 
 <!-- /TOC -->
 
+> :closed_lock_with_key:**WARNING:** 
+> This document assumes you have an understanding of the underlying principles behind **SSL Certificates** and **Public Key Infrastructure**. Therefore, it does not exhaustively cover these topics, but rather presents steps and examples of what you will need to accomplish. You should be able to manage certificates in your organizational environment before proceeding any further.
 
 ## Firewall Considerations
 
@@ -89,11 +91,15 @@ Once you have your new valid and resolvable FQDN for QDE, you will now want to e
 
 1. **[OPTIONAL]** If some endpoints are not on the domain, or on a different domain, you will need to ensure that the Nexus and CCM certificates of QDE are copied to the `Local Computer\Trusted People\Certificates` store on those endpoints as well. If the endpoints connecting to Nexus and CCM are also on the same domain, this step may not be necessary as they will inherently trust the domain server certificate of the QDE server.
 
+> :warning:**WARNING:** 
+> Again, we are assuming you are able to manage certificates in your Active Directory (AD) domain environment. You should have a server with the Active Directory Certificate Services (AD CS) role in place, that can issue and mange digital certificates. A detailed explanation of Certificate Authorities is beyond the scope of this document.
+
 ### Scenario 2: Purchased/Acquired Certificates from CA
 
-If you have purchased or acquired a certificate from an external Certificate Authority (CA; e.g. LetsEncrypt), this process is similar to the Domain scenario, with some slight adjustments:
+Organizations can also opt to purchase or acquire a certificate from an external Certificate Authority (CA; e.g. [LetsEncrypt](https://github.com/win-acme/win-acme)). As mentioned before, you will need to ensure that the "Subject/Common Name" attribute on the SSL certificates matches the FQDN you are using. For example, if you purchase an SSL certificate for your server with the "Subject/Common Name" attribute `chocoserver.example.com`, you will of course need to ensure that you have a DNS record resolving `chocoserver.example.com` to the external IP of your QDE server.
 
-1. Ensure that a DNS record exists, resolving the desired FQDN from your purchased/acquired SSL certificate to its external IP address.
+The steps involved in this scenario are similar to the Domain certificates above, with some slight adjustments:
+1. Ensure that a DNS record exists, resolving the desired "Subject/Common Name" attribute from your purchased/acquired SSL certificate to its external IP address.
 1. Import your certificate into the `Local Computer\Personal\Certificates` and `Local Computer\Trusted People\Certificates` stores on the QDE server. Open the "Certificates - Local Computer" MMC snap-in by pressing the Windows key, and when the Start menu pops up, type certificates. You should now see an option under the "Settings" section that says "Manage computer certificates". Alternatively, open the Run dialog (Windows key + R) and type `certlm.msc` and click "OK". Double-check to ensure that the SSL certificate you have purchased is placed in the correct stores, otherwise this process will not succeed.
 1. Under the "Personal" store, you should see a server certificate matching the FQDN of the certificate your QDE server. Double-click on the certificate to open it, and under the details tab, copy out the `Thumbprint` value of the certificate.
 1. Run the `New-SslCertificates.ps1` script and pass the thumbprint you copied above using the `-Thumbprint` parameter. Please run the below command from a PowerShell Administrator window:
