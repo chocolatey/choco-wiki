@@ -33,6 +33,7 @@ ___
   - [How can we view what SSL registrations have been made by the installation of chocolatey-management-service](#how-can-we-view-what-ssl-registrations-have-been-made-by-the-installation-of-chocolatey-management-service)
   - [How can we remove a netsh binding that has been created](#how-can-we-remove-a-netsh-binding-that-has-been-created)
   - [Can we manually create an SSL binding?](#can-we-manually-create-an-ssl-binding)
+  - [Can we install Central Management Service behind a load balancer?](#can-we-install-central-management-service-behind-a-load-balancer)
   - [We want to set up the Chocolatey Central Management service to use a domain account that will have local admin on each box. Can we do this?](#we-want-to-set-up-the-chocolatey-central-management-service-to-use-a-domain-account-that-will-have-local-admin-on-each-box-can-we-do-this)
   - [Is the password stored anywhere?](#is-the-password-stored-anywhere)
   - [We are going to use our own account with a rotating password. When we rotate the password for the account that we use for the Chocolatey Management Service, what do we need to do?](#we-are-going-to-use-our-own-account-with-a-rotating-password-when-we-rotate-the-password-for-the-account-that-we-use-for-the-chocolatey-management-service-what-do-we-need-to-do)
@@ -317,6 +318,11 @@ netsh http add sslcert ipport=0.0.0.0:<port_number> certhash=<certificate_thumbp
 ~~~
 
 **NOTE:** Here, `<port_number>` should be replaced with the Port Number to be used for the registration.  `<certifcate_thumbprint>` should be replaced with the thumbprint for the certificate that is to be used for the registration.  `<random_guid>` should be replaced with a random guid in the following format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
+
+### Can we install Central Management Service behind a load balancer?
+Unfortunately, it's not a supported scenario. If you are trying to load balance requests to CCM service, you should install multiple instances on multiple machines and point clients explicitly to an instance so they can work together. If you are trying to load balance other things on a machine and CCM service just happens to be there (like with QDE), move CCM service to a different machine or allow direct connections to the box for CCM.
+
+> :memo: **NOTE:** If you are an expert in managing X509 certificates with load balancing, you can certainly set this up, but if you can't get it to work, move to a supported scenario. Support folks will tell you the same.
 
 ### We want to set up the Chocolatey Central Management service to use a domain account that will have local admin on each box. Can we do this?
 Yes, absolutely. You will pass those credentials through at install/upgrade time, and you will also want to turn on the feature useRememberedArgumentsForUpgrades (see [configuration](https://chocolatey.org/docs/chocolatey-configuration#features)) so that future upgrades will have that information available. The remembered arguments are stored encrypted on the box (that encryption is reversible so you may opt to pass that information each time).
