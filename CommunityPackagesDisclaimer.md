@@ -58,7 +58,7 @@ Another aspect to keep in mind is that the community package repository is meant
 
 **Blocks are meant to be temporary bans, but require you to act to remedy the situation.** If you have been blocked, please see the next sections for corrective actions.
 
-**NOTE**: If you or your organization feels you will need to go over this limit and need whitelisted, please reach out at https://chocolatey.org/contact, choose "Blocked IP Address". As we have limited information, please include your name, email address, phone number, and the IP addresses you believe are blocked so we can contact you and verify if there is a ban. Once you have resolved any issues on your side, we can lift the ban.
+**NOTE**: If you or your organization feels you will need to go over this limit with good reason and need whitelisted, please reach out at https://chocolatey.org/contact, choose "Blocked IP Address". As we have limited information, please include your name, email address, phone number, and the IP addresses you believe are blocked so we can contact you and verify if there is a ban. Once you have resolved any issues on your side, we can lift the ban.
 
 ### How To Avoid Excessive Use
 To avoid excessive use, please see our [[organizational deployment guide|How-To-Setup-Offline-Installation]]. Installation of Chocolatey itself and everything else should be from your internal repository and not directly from the community package repository. There are even ways to automate caching (see below) / [[internalizing|How-To-Recompile-Packages]] (caching and internalizing are entirely different concepts) packages so you still get a pretty good hands off experience.
@@ -115,10 +115,16 @@ If you have found that you have been rate limited, please see [How To Avoid Exce
 #### Special Requests on Rate Limiting
 If you have special needs and are being rate limited, please reach out to us as in special instances, we can whitelist your IP address for a small period of time. Do the following:
 
+> :warning: **WARNING**
+>
+> Rate limits are temporary and expire within an hour, but will trigger again if you go over the limits. You may not need to file a special request if you can determine alternative means of use or if you [implement best practices](#how-to-avoid-excessive-use).
+
 * Go to https://chocolatey.org/contact.
-* Select ***Blocked IP Address*** in "Send message to" drop down (this is important to get it routed to the right folks)
+* Select ***Blocked IP Address*** in "Send message to" drop down (this is important to get it routed to the right folks).
 * **IMPORTANT**: Mention you are being rate limited, include your IP address.
-* Our team will typically put in a temporary one time 7 day whitelist for you to [implement best practices](#how-to-avoid-excessive-use).
+* **IMPORTANT**: Note what special need your organization has in the message as well.
+* You will typically receive a response somewhat quickly with options for you to implement. These are considered [best practices](#how-to-avoid-excessive-use) and can typically be implemented within 15-30 minutes.
+* Our team will evaluate your request within a few business days and make a determination if your need qualifies for whitelisting. If so, the team will typically put in a temporary one time 7 day whitelist for you to [implement best practices](#how-to-avoid-excessive-use).
 
 **NOTE: These are subjective, and special requests ONLY. Please ensure you [implement best practices](#how-to-avoid-excessive-use) so that you are not rate limited.**
 
