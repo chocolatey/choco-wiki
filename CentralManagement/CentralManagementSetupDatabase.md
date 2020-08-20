@@ -193,7 +193,7 @@ The CCM database package will add or update a database to an existing SQL Server
 Scenario 1: You have set up the database to use Windows Authentication (or Mixed Mode Authentication). You are installing the database package on a single server, but connecting to an existing SQL Server in your environment.
 
 ```powershell
-choco install chocolatey-management-database -y --package-parameters="'/ConnectionString=""Server=Localhost;Database=ChocolateyManagement;Trusted_Connection=true;""'"
+choco install chocolatey-management-database -y --package-parameters="'/ConnectionString=Server=Localhost;Database=ChocolateyManagement;Trusted_Connection=true;'"
 ```
 
 > :memo: **NOTE**: Note the connection string doesn't include credentials. That's because Windows Authentication for SQL Server uses the context of what is running the process, whether that be a domain account or a local Windows account.
@@ -209,7 +209,7 @@ choco install chocolatey-management-database -y --package-parameters="'/Connecti
 * SQL Server Express:
 
 ```powershell
-choco install chocolatey-management-database -y --package-parameters="'/ConnectionString=""Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;Trusted_Connection=true;""'"
+choco install chocolatey-management-database -y --package-parameters="'/ConnectionString=Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;Trusted_Connection=true;'"
 ```
 
 > :memo: **NOTE**: The above warnings and notes apply here as well.
@@ -218,7 +218,7 @@ choco install chocolatey-management-database -y --package-parameters="'/Connecti
 Scenario 2: You have set up the database to use Windows Authentication (or Mixed Mode Authentication). You are installing the database package on a different server than your existing SQL Server is located on.
 
 ```powershell
-choco install chocolatey-management-database -y --package-parameters="'/ConnectionString=""Server=<RemoteSqlHost>;Database=ChocolateyManagement;Trusted_Connection=true;""'"
+choco install chocolatey-management-database -y --package-parameters="'/ConnectionString=Server=<RemoteSqlHost>;Database=ChocolateyManagement;Trusted_Connection=true;'"
 ```
 
 > :warning: **WARNING**
@@ -272,7 +272,7 @@ Scenario 5: The database has been setup to use Mixed Mode Authentication. Someon
 
 
 ```powershell
-choco install chocolatey-management-database -y --package-parameters="'/SkipDatabasePermissionCheck'" --package-parameters-sensitive="'/ConnectionString:""Server=Localhost;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+choco install chocolatey-management-database -y --package-parameters="'/SkipDatabasePermissionCheck'" --package-parameters-sensitive="'/ConnectionString:Server=Localhost;Database=ChocolateyManagement;User ID=ChocoUser;Password=Ch0c0R0cks;'"
 ```
 
 > :warning: **WARNING**
@@ -285,7 +285,7 @@ choco install chocolatey-management-database -y --package-parameters="'/SkipData
 * SQL Server Express:
 
 ```powershell
-choco install chocolatey-management-database -y --package-parameters-sensitive="'/ConnectionString:""Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+choco install chocolatey-management-database -y --package-parameters-sensitive="'/ConnectionString:Server=Localhost\SQLEXPRESS;Database=ChocolateyManagement;User ID=ChocoUser;Password=Ch0c0R0cks;'"
 ```
 
 > :memo: **NOTE**: The above warnings and notes apply here as well.
@@ -297,7 +297,7 @@ choco install chocolatey-management-database -y --package-parameters-sensitive="
 Scenario 6: The database has been setup to use Mixed Mode Authentication. Someone has already precreated the login credentials for a SQL Server account and ensured the user has `db_owner` permissions to allow for changing schema. There is a high likelihood that the database has been precreated. Now you want to install the package on a different machine than where the sql server instance is located.
 
 ```powershell
-choco install chocolatey-management-database -y --package-parameters="'/SkipDatabasePermissionCheck'" --package-parameters-sensitive="'/ConnectionString:""Server=<RemoteSqlHost>;Database=ChocolateyManagement;User ID=ChocoUser;Password='Ch0c0R0cks';""'"
+choco install chocolatey-management-database -y --package-parameters="'/SkipDatabasePermissionCheck'" --package-parameters-sensitive="'/ConnectionString:Server=<RemoteSqlHost>;Database=ChocolateyManagement;User ID=ChocoUser;Password=Ch0c0R0cks;'"
 ```
 
 > :warning: **WARNING**
