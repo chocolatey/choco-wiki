@@ -118,7 +118,7 @@ If you have special needs and are being rate limited, please reach out to us as 
 * Go to https://chocolatey.org/contact.
 * Select ***Blocked IP Address*** in "Send message to" drop down (this is important to get it routed to the right folks)
 * **IMPORTANT**: Mention you are being rate limited, include your IP address.
-* For typical requests, our team will put in a temporary one time 7 day whitelist for you to get things in order (e.g. [implement best practices](#how-to-avoid-excessive-use)).
+* Our team will typically put in a temporary one time 7 day whitelist for you to [implement best practices](#how-to-avoid-excessive-use).
 
 **NOTE: These are subjective, and special requests ONLY. Please ensure you [implement best practices](#how-to-avoid-excessive-use) so that you are not rate limited.**
 
