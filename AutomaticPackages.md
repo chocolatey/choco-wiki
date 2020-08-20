@@ -8,9 +8,7 @@ Automatic packaging is a process that **package maintainers can run on *their ow
 - [Automatic update methods](#automatic-update-methods)
 - [Automatic Updater (AU)](#automatic-updater-au)
   - [Credits](#credits)
-  - [Requirements](#requirements)
   - [Setup](#setup)
-  - [Everything Related to AU](#everything-related-to-au)
 - [Chocolatey Package Updater aka chocopkgup [DEPRECATED]](#chocolatey-package-updater-aka-chocopkgup-deprecated)
   - [Licensing](#licensing)
   - [Credits](#credits-1)
@@ -36,29 +34,17 @@ There are currently two methods that can be used to maintain automatic packages:
 
 ## Automatic Updater (AU)
 
-You can learn more about the AU updater via its [documentation](https://github.com/majkinetor/au/blob/master/README.md). It is a PowerShell module, so you are doing everything with PowerShell scripts. You can also run everything on AppVeyor so you are not required to schedule updater on your own machine.
+The [Chocolatey Automatic Package Updater Module](https://github.com/majkinetor/au/blob/master/README.md) is a PowerShell module which implements functions that can be used to automate Chocolatey package updates.
 
 ### Credits
 
 AU is brought to you by a Chocolatey community member [Miodrag Milic](https://github.com/majkinetor) and it is becoming more awesome all the time.
 
-### Requirements
-
-* PowerShell v5+.
-* The [AU module](https://chocolatey.org/packages/au).
-
 ### Setup
 
-1. Fork [`chocolatey-packages-template`](https://github.com/chocolatey/chocolatey-packages-template#fork-destination-box) and rename it to something like `chocolatey-packages` (on GitHub - go into Settings, Repository name and rename).
-1. Clone the repo locally.
-1. Head into the setup folder and look for `au_setup.ps1`. Review that file and then run it.
-1. Follow the [README](https://github.com/chocolatey/chocolatey-packages-template/blob/master/setup/README.md) in the setup folder.
+Follow the instructions at the [AU Wiki](https://github.com/majkinetor/au/wiki).
 
 When creating packages, do not use `--auto` as AU doesn't use token replacement for updating packages, it replaces the xml elements and code directly.
-
-### Everything Related to AU
-AU maintains its own documentation at [documentation](https://github.com/majkinetor/au/blob/master/README.md).
-
 
 ## Chocolatey Package Updater aka chocopkgup [DEPRECATED]
 <a name="chocolatey-package-updater-aka-chocopkgup"></a>
