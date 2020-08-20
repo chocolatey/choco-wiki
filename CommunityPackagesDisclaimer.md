@@ -2,7 +2,7 @@
 
 **Bottom line** - As an individual using Chocolatey, you are more likely okay if something breaks when setting up your personal machines - the Community Package Repository is typically fine for you. When it comes to using Chocolatey in an organizational context, you want reliability, control, and trust. You can gain trust over some packages on the community repository, and possibly some reliability if the binaries are included in the package. However there is a limiting factor with a public repository - distribution rights. This creates a large failure point that organizations just don't have when they are hosting their own internal packages.
 
-<!-- TOC -->
+<!-- TOC depthFrom:2 -->
 
 - [Organizations](#organizations)
   - [Summary](#summary)
