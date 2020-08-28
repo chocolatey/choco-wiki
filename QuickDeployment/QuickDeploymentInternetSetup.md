@@ -134,23 +134,39 @@ Additionally, when logging in and resetting your administrative credential in th
 
 1. Login to the Nexus Web UI and authenticate as your `admin` user. Select the gear icon at the top middle of the screen, to access the "Server administration and configuration" view.
 
+    ![Nexus Server Admin](images/quickdeploy/QDE-nexus-web-1.gif)
+
 1. Under the `Security` sidebar menu, select `Roles`. Then click the `Create role` button, and choose `Nexus role` in the dropdown menu.
+
+    ![Nexus Create Role](images/quickdeploy/QDE-nexus-web-2.gif)
 
 1. Set the `Role ID` and `Role name` values to something reflecting the purpose of the role; for example, `chocorole`.
 
-1. Now you need to ensure that users of this Role can browse and read the relevant source feeds. Under the `Privileges` section, double-click  the following options to add them to the `Given` section:
+    ![Nexus chocorole](images/quickdeploy/QDE-nexus-web-3.gif)
+
+1. Now you need to ensure that users of this Role can browse and read the relevant source feeds. Under the `Privileges` section, double-click the following options to add them to the `Given` section:
     * `nx-repository-view-nuget-*-browse`
     * `nx-repository-view-nuget-*-read`
     * `nx-repository-view-raw-*-browse`
     * `nx-repository-view-raw-*-browse`
+
+    ![Nexus roles](images/quickdeploy/QDE-nexus-web-4.gif)
     
     Click the `Create role` button to create the role.
 
+    ![Nexus Create Role button](images/quickdeploy/QDE-nexus-web-5.gif)
+
 1. We will now add a User to this Role. Under the `Security` sidebar menu, select `Users`. Then click the `Create local user` button. Fill in the ID, First name, Last name, and Email fields as desired (e.g. `chocouser`). Create a secure Password for this user. Set the Status to `Active`.
+
+    ![Nexus Create chocouser](images/quickdeploy/QDE-nexus-web-6.gif)
 
 1. In the Roles section, double-click the `chocorole` Role to to add it to the `Granted` section. Click the `Create local user` button to create your user.
 
+    ![Nexus Assign chocorole](images/quickdeploy/QDE-nexus-web-7.gif)
+
 1. Under the `Security` sidebar menu, select `Anonymous Access`. Un-check the box next to the option `Allow anonymous users to access the server`, and click `Save`.
+
+    ![Nexus Disable Anonymous Access](images/quickdeploy/QDE-nexus-web-8.gif)
 
 1. On your endpoints, you can now set up your internal source repository using this newly created `chocouser` credential. The below command is an example; please adjust according to your FQDN, repository name, and user credential created:
 
