@@ -1,4 +1,4 @@
-# Internet-Accessible QDE Setup
+# Internet-Accessible QDE Setup - QDE Version 1
 
 With an unprecedented amount of employees working from home, there is a much greater demand to serve their software lifecycle needs remotely. Thus, many organizations would like the option to make the Chocolatey Quick Deployment Environment (QDE) Internet-accessible. This document walks you through some options you will need to consider, if you choose this route.
 
