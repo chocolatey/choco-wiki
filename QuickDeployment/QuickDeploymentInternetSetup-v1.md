@@ -206,7 +206,7 @@ Invoke-WebRequest -Uri 'https://ch0.co/clientsetup' -OutFile "$env:SystemDrive\c
 
 Running this script will require passing the following parameters:
 
-* `$Fqdn`: This is the FQDN of the QDE server, where the "choco-install" and "ChocolateyInternal" Nexus repositories are. If you don't specify one, simply `chocoserver` will be used by default.
+* `$RepositoryUrl`: This is the "ChocolateyInternal" Nexus repository URL on the QDE server, where the  Nexus repositories are. If you don't specify one, the following will be used by default: `https://chocoserver:8443/repository/ChocolateyInternal`
 * `$Credential`: This is the `chocouser` credential used to connect to Nexus that we specified earlier in [Nexus Setup](#nexus-setup). You can generate this ahead of time via a command like `$Credential = Get-Credential`
 * `$ClientSalt`: This is the client-side salt additive we discussed in the [CCM Setup](#ccm-setup) section above.
 * `$ServerSalt`: This is the server-side salt additive we discussed in the [CCM Setup](#ccm-setup) section above.
@@ -214,7 +214,7 @@ Running this script will require passing the following parameters:
 An example of running this script with the requisite parameters on an endpoint is as follows (to be run from a PowerShell Administrator window):
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\PATH\TO\ClientSetup.ps1 -Fqdn "'<YOUR_FQDN_HERE>'" -Credential $(Get-Credential) -ClientSalt "'YourSuperSecureSalt1'" -ServerSalt "'YourSuperSecureSalt2'"
+Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\PATH\TO\ClientSetup.ps1 -RepositoryUrl "'<YOUR_ChocolateyInternal_REPO_URL_HERE>'" -Credential $(Get-Credential) -ClientSalt "'YourSuperSecureSalt1'" -ServerSalt "'YourSuperSecureSalt2'"
 ```
 
 This script will accomplish the following:
