@@ -11,6 +11,8 @@ With an unprecedented amount of employees working from home, there is a much gre
     - [Scenario 2: Purchased/Acquired Certificates from CA](#scenario-2-purchasedacquired-certificates-from-ca)
     - [Scenario 3: Self-Signed SSL Certificates](#scenario-3-self-signed-ssl-certificates)
 - [Nexus Setup](#nexus-setup)
+    - [Option 1: Manual Configuration Of Nexus](#option-1-manual-configuration-of-nexus)
+    - [Option 2: Scripted approach](#option-2-scripted-approach)
 - [CCM Setup](#ccm-setup)
 - [Adjusting Scripts for Client Setup](#adjusting-scripts-for-client-setup)
 - [Jenkins](#jenkins)
@@ -130,8 +132,10 @@ This scenario is the least desirable for an Internet-accessible setup, as you wi
 
 The `New-SslCertificates.ps1` mentioned above will create a Java KeyStore (JKS) version of an SSL certificate, that can be used to secure communication between your endpoints and your Nexus repositories. As mentioned in the section above, this certificate will need to be trusted by your endpoints.
 
-Additionally, when logging in and resetting your administrative credential in the Nexus web UI, there is a checkbox to allow “Anonymous” access. This is good initially, but will need to be changed if you are planning to expose Nexus to your endpoints over the Internet. You can accomplish this as follows:
+Additionally, when logging in and resetting your administrative credential in the Nexus web UI, there is a checkbox to allow “Anonymous” access. This is good initially, but will need to be changed if you are planning to expose Nexus to your endpoints over the Internet. You can follow two paths to accomplish this:
 
+
+### Option 1: Manual Configuration Of Nexus
 1. Login to the Nexus Web UI and authenticate as your `admin` user. Select the gear icon at the top middle of the screen, to access the "Server administration and configuration" view.
 
     ![Nexus Server Admin](images/quickdeploy/QDE-nexus-web-1.gif)
@@ -174,12 +178,29 @@ Additionally, when logging in and resetting your administrative credential in th
     choco source add -n "'ChocolateyInternal'" -s "'https://chocoserver:8443/repository/ChocolateyInternal/'" --user='chocouser' --password='YOUR_PASSWORD' --allow-self-service
     ```
 
+
+### Option 2: Scripted approach
+
+:NOTE: QDE v1 customers, download the script from [here](), and save it to `C:\choco-setup\files\Set-QDEnvironmentInternetSecurity.ps1` on your QDE instance.
+
+From an administrative PowerShell console execute the following: 
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force ; . C:\choco-setup\files\Set-QDEnvironmentInternetSecurity.ps1 -FullyQualifiedDomainName $YourQDEFQDN -PasswordLength 32 -SpecialCharCount 12
+```
+:Warning: This script will throw an error if you have logged into Nexus and changed your password from the default found in the README when you first got started with the appliance. If this occurs, re-run the above command with the `-NexusAdminPassword` parameter.
+
 > :memo: **Note:**
 > Now that you've added a credential to your Nexus repositories, access to the `ChocolateyInstall.ps1` and `ClientSetup.ps1` scripts in your `choco-install` raw repository will require this credential as well. 
 
-As we will learn in the next section on CCM, there will be more changes we need to incorporate into these two scripts. Script adjustments are discussed further in the [Adjusting Scripts for Client Setup](#adjusting-scripts-for-client-setup) section below.
+>:memo: **Note:**
+> This script will emit random passwords for your nexus user, your client salt, and your service salt. 
+
 
 ## CCM Setup
+
+>:memo: **Note**
+>If you ran option 2 above, you can skip this step as the configuration has been applied to the server.
 
 QDE V1 does not currently include the most up-to-date version of the CCM packages (version 0.3.0, as of this writing). If you have already purchased your Chocolatey for Business (C4B) licenses, you can upgrade by following the [[Central Management Upgrade|CentralManagementSetupUpgrade]] documentation. If you are a trial user, please reach out to your Sales representative for the appropriate packages and procedure for upgrading CCM.
 
@@ -204,6 +225,9 @@ On-boarding endpoints into CCM will require the running of a `ClientSetup.ps1` s
 Invoke-WebRequest -Uri 'https://ch0.co/clientsetup' -OutFile "$env:SystemDrive\choco-setup\files\ClientSetup.ps1"
 ```
 
+:WARNING: **Important** This new ClientSetup.ps1 script will need to be uploaded to your Nexus instance before attempting to install and configure Chocolatey on a client.
+
+
 Running this script will require passing the following parameters:
 
 * `$RepositoryUrl`: This is the "ChocolateyInternal" Nexus repository URL on the QDE server, where the  Nexus repositories are. If you don't specify one, the following will be used by default: `https://chocoserver:8443/repository/ChocolateyInternal`
@@ -211,10 +235,39 @@ Running this script will require passing the following parameters:
 * `$ClientSalt`: This is the client-side salt additive we discussed in the [CCM Setup](#ccm-setup) section above.
 * `$ServerSalt`: This is the server-side salt additive we discussed in the [CCM Setup](#ccm-setup) section above.
 
+Because this script is stored on your Nexus instance, and clients will need to authenticate to Nexus in order to download and execute the script,
+the following code can be ran using any tool which can run PowerShell, so long as it is ran in an elevated context.
+
 An example of running this script with the requisite parameters on an endpoint is as follows (to be run from a PowerShell Administrator window):
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\PATH\TO\ClientSetup.ps1 -RepositoryUrl "'<YOUR_ChocolateyInternal_REPO_URL_HERE>'" -Credential $(Get-Credential) -ClientSalt "'YourSuperSecureSalt1'" -ServerSalt "'YourSuperSecureSalt2'"
+# Change these values!
+$clientCommunicationSalt = '2iLYko*f9y9kiv!Aw7kpZhBz7RnWQVHg' # example 32 character password. MUST BE UNIQUE
+$serverCommunicationSalt = 'QQmgDxagB@nBR*.UyHx!-qrw4kWvwrT!' # example 32 character password. MUST BE UNIQUE
+$fqdn = 'chocoserver'
+$password = 'x3mrj3NbGtkZBzJatLe9AcUtT8G_Y4Ra' # example 32 character password
+
+# Touch NOTHING below this line
+$user = 'chocouser'
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+$repositoryUrl = "https://$fqdn:8443/repository/ChocolateyInternal/
+
+$credential = [System.Management.Automation.PSCredential]::New($user, $securePassword)
+
+$downloader = [System.Net.WebClient]::new()
+$downloader.Credentials  = $credential
+
+$script =  $downloader.DownloadString("https://$fqdn:8443/repository/choco-install/ClientSetup.ps1")
+
+$params = @{
+    Credential = $credential
+    ClientSalt = $clientCommunicationSalt
+    ServerSalt = $serverCommunicationSalt
+    InternetEnabled = $true
+    RepositoryUrl = $repositoryUrl
+}
+
+& ([scriptblock]::Create($script)) @params
 ```
 
 This script will accomplish the following:
@@ -229,8 +282,6 @@ This script will accomplish the following:
 1. Enable and disable features related to configuring self-service access on the endpoint
 1. Setup the communication channel between the endpoint and CCM, using the correct URL and salts
 1. Opt the endpoint into CCM Deployments
-
-Currently, the easiest way to accomplish this on-boarding is to copy this script over to your endpoints, and just run it from there in a PowerShell Administrator window. We are working on a process to make this simpler, and we hope to release that shortly. We will update this document as soon as an alternate method becomes available.
 
 ## Jenkins
 
