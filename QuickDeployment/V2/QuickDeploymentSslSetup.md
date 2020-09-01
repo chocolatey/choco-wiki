@@ -3,48 +3,39 @@
 > :memo: **NOTE**
 >
 > This document is for **Version 2.0** of the Quick Deployment Environment.
-> If you're using an older version of QDE, please refer to the [[document for that version|QuickDeploymentSslSetup_v1]]
+> If you're using an older version of QDE, please refer to the [[document for that version||QuickDeploymentSslSetup_v1]]
 
-All services have been protected with Self-Signed SSL certificates and are placed in the appropriate stores.
-Under the following situations you would want to run the script that follows:
+During normal setup, all required SSL certificates are retrieved or generated as needed.
+You will only need to run this script yourself in the following cases:
 
-* If you want to expose this to the internet so clients can connect from outside your network.
-* If you change the hostname of this server.
-* If you add the QDE to a domain.
-* If you would like to use your own SSL/TLS certificates.
+* You want to expose this to the internet so clients can connect from outside your network, and you didn't set this up initially.
+  See [[the Firewall Changes document||QuickDeploymentFirewallChanges]] document for more information and additional scripts to run in this case.
+* If you change the hostname of the QDE server, or add it to a domain after having already completed setup.
+* If you would like to change/replace the initial SSL/TLS certificates that were provided or generated during setup, for example to replace an expiring certificate.
 
-> :warning: **WARNING**
+> :warning: **Warning**
 >
-> This script will seemingly prompt for input, and have other strange output.
-> This is due to poor Java tooling and console output which cannot be suppressed.
-> Just let things happen, as things are working as expected.
-
-
-> :warning: **WARNING**
->
-> If you provide your own certificate, it needs to include the private key to allow for export. Nexus requires this.
-
-> :memo: **NOTE**: Please run the below from an administrative PowerShell session.
+> * This script will seemingly prompt for input, and have other strange output.
+>   This is due to poor Java tooling and console output which cannot be suppressed.
+>   Just let things happen, as things are working as expected.
+> * If you provide your own certificate, it **must** include a private key / be exportable.
+>   This is required in order for Nexus to be able to utilise the certificate.
 
 Once complete, this script will generate new SSL certificates for all services and move them to the appropriate locations and configure the services to use them.
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1
 ```
-> :warning: **WARNING**
->
-> Timezones are super important here and time synchronization is really important when generating SSL Certificates. You want to make sure you have this correct and good. Otherwise there is a potential edge case you could generate an SSL Certificate that is not yet valid.
 
+| Parameter     | Description                                                                                                                                            |
+| :------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-Subject`    | The subject of the certificate to retrieve from the local machine store. Overrides a -Thumbprint if both are specified.                                |
+| `-Thumbprint` | The thumbprint of the certificate to retrieve from the local machine store. Ignored if -Subject is also provided.                                      |
+| `-Hostname`   | The hostname of the QDE instance. Only required if you want to generate self-signed certificates.                                                      |
 
-
-> :warning: **WARNING**
+> :warning: **Warning**
 >
-> tl;dr: Think long and hard before changing the QDE hostname
->
-> Renaming the QDE host requires a lot of things and needs to be completed FIRST prior to ANYTHING that is done on the QDE box. It is strongly recommended **NOT** to rename unless you absolutely need to. The most important reason has to do with how a client installs from QDE - it must learn to trust the QDE certificate. Once renamed, the easy option that's provided for you goes away and you will need to provide a hosted solution with an already trusted certificate.
-> You can provide your own certificate that is already trusted on machines as part of the [[SSL/TLS Setup|QuickDeploymentSslSetup]]. Your other option is to host the script to trust the certificate with an already trusted certificate. You will find a template that you will need to edit at `c:\choco_setup_files` (in the QDE) named `Import-ChocoServerCertificate.ps1`.
->
-> Please contact support if you need help here.
-
+> Timezones are super important here and time synchronization is really important when generating SSL Certificates.
+> You will need make sure you have this correct, otherwise there is a potential edge case you could generate an SSL Certificate that is not yet valid.
 
 [[Quick Deployment Environment|QuickDeploymentEnvironment]]

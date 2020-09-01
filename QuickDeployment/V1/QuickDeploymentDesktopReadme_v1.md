@@ -43,18 +43,18 @@ If you run into any issues as you set up your QDE and clients, please reach out 
 
 Additional information can be found in our [Online Documentation](https://chocolatey.org/docs/quick-deployment-environment).
 
-* [[QDE Setup|QuickDeploymentSetup]]
-* [[QDE Desktop ReadMe File|QuickDeploymentDesktopReadme]] (online version of the desktop readme, online is most up to date)
-* [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]]
-* [[QDE Firewall Changes|QuickDeploymentFirewallChanges]]
-* [[QDE Client Setup|QuickDeploymentClientSetup]] (setting up your client machines)
+* [[QDE Setup|QuickDeploymentSetup_v2]]
+* [[QDE Desktop ReadMe File|QuickDeploymentDesktopReadme_v1]] (online version of the desktop readme, online is most up to date)
+* [[QDE SSL/TLS Setup|QuickDeploymentSslSetup_v1]]
+* [[QDE Firewall Changes|QuickDeploymentFirewallChanges_v1]]
+* [[QDE Client Setup|QuickDeploymentClientSetup_v1]] (setting up your client machines)
 
 ___
 ## Step 0: Complete Prerequisites
 
 There are some steps you will have taken before you come to this readme. Please make sure you have taken those steps ahead of time. Please see the [Online Documentation](https://chocolatey.org/docs/quick-deployment-environment) for the most up to date information.
 
-* [[QDE Setup|QuickDeploymentSetup]]
+* [[QDE Setup|QuickDeploymentSetup_v1]]
 
 ___
 ## Step 1: Expand Disk Size
@@ -308,7 +308,7 @@ When attempting to reset the `admin` account credential in Nexus, you receive a 
 Though it may not be obvious, this is actually caused by Nexus not having enough disk space to function properly. We often see this occur if the `Expand disk size` step from above was missed. Please confirm that you have completed the [Step 1: Expand Disk Size](#step-1-expand-disk-size) step. Please keep in mind, this step is **NOT** the same as expanding the disk at the hypervisor level.
 
 ### Context menu items for Package Builder and Package Uploader not available
-When right-clicking an exe or msi file on QDE, you may notice that the context menu items for Package Builder are missing. As well, when right-clicking on a nupkg file, you may also see the Package Uploader context menu entry is missing. This feature can be controlled by passing a custom parameter when installing the Chocolatey Licensed Extension package, but can be restored to its default state quite simply. 
+When right-clicking an exe or msi file on QDE, you may notice that the context menu items for Package Builder are missing. As well, when right-clicking on a nupkg file, you may also see the Package Uploader context menu entry is missing. This feature can be controlled by passing a custom parameter when installing the Chocolatey Licensed Extension package, but can be restored to its default state quite simply.
 
 Assuming the latest `chocolatey.extension.nupkg` is in your `C:\choco-setup\packages` folder, open up an Administrative PowerShell window and reinstall the Chocolatey Licensed Extension (and reset Explorer for your changes to take effect immediately):
 

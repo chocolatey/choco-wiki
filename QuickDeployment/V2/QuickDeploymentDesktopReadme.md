@@ -1,326 +1,360 @@
-# Thanks for trying Chocolatey For Business!
+# Chocolatey Quick Deployment Environment README
 
 > :memo: **NOTE**
 >
 > This document is for **Version 2.0** of the Quick Deployment Environment.
-> If you're using an older version of QDE, please refer to the [[document for that version|QuickDeploymentDesktopReadme_v1]]
+> If you're using an older version of QDE, please refer to the [[document for that version||QuickDeploymentEnvironment_v1]].
 
+Thanks for trying Chocolatey for Business!
 This system has been pre-configured as a fully functioning C4B environment.
-
-> :warning: **WARNING**
->
-> Please follow these steps in ***exact*** order. These steps build on each other and need to be completed in order.
-
-> :memo: **NOTE**: This is likely more up to date than the ReadMe you will find on the desktop (not including redacted items like credentials). If there are conflicts between the desktop readme and what you see here, use this document.
+To finish setting up QDE (Quick Deployment Environment), you'll need to closely follow the steps outlined in this document.
 
 <!-- TOC depthFrom:2 -->
 
 - [Summary](#summary)
 - [Step 0: Complete Prerequisites](#step-0-complete-prerequisites)
 - [Step 1: Expand Disk Size](#step-1-expand-disk-size)
-- [Step 2: Create a License Package](#step-2-create-a-license-package)
-- [Step 3: Regenerate SSL Certificates](#step-3-regenerate-ssl-certificates)
-- [Step 4: Enable Central Management](#step-4-enable-central-management)
-- [Step 5: Review Server Information](#step-5-review-server-information)
+- [Step 2: Environment Setup](#step-2-environment-setup)
+  - [1. Add Your Chocolatey License](#1-add-your-chocolatey-license)
+  - [2. (Optional) Change the VM Hostname](#2-optional-change-the-vm-hostname)
+  - [3. Run the Set-QDEnvironment.ps1 Script](#3-run-the-set-qdenvironmentps1-script)
+    - [Option 1: Default Self-Signed Certificate](#option-1-default-self-signed-certificate)
+    - [Option 2: Custom Certificate](#option-2-custom-certificate)
+  - [4. Select Community Packages to Internalize](#4-select-community-packages-to-internalize)
+- [Step 3: Review Hosted Services](#step-3-review-hosted-services)
   - [Nexus Repository](#nexus-repository)
   - [Jenkins](#jenkins)
   - [Chocolatey Central Management](#chocolatey-central-management)
   - [Firewall ports](#firewall-ports)
-  - [Browser considerations](#browser-considerations)
-- [Step 6: Change the API Key (Optional, Recommended)](#step-6-change-the-api-key-optional-recommended)
-    - [Choco Apikey Command](#choco-apikey-command)
-- [Step 7: Install and Configure Chocolatey On Clients](#step-7-install-and-configure-chocolatey-on-clients)
-- [Step 8: Turn On Package Internalization](#step-8-turn-on-package-internalization)
-- [Step 9: License the QDE VM](#step-9-license-the-qde-vm)
-- [Common Errors And Resolutions](#common-errors-and-resolutions)
-  - [Unable login to Jenkins website, after browsing to Nexus website](#unable-login-to-jenkins-website-after-browsing-to-nexus-website)
+  - [Browser Considerations](#browser-considerations)
+- [Step 4: Change the API Key (Recommended)](#step-4-change-the-api-key-recommended)
+  - [Choco Apikey Command](#choco-apikey-command)
+  - [Update pre-configured Jenkins jobs with the new API Key](#update-pre-configured-jenkins-jobs-with-the-new-api-key)
+- [Step 5: Install and Configure Chocolatey On Clients](#step-5-install-and-configure-chocolatey-on-clients)
+- [Step 6: License the QDE VM](#step-6-license-the-qde-vm)
+- [Common Issues And Solutions](#common-issues-and-solutions)
   - ["Server Error" warning when resetting "admin" credential in Nexus](#server-error-warning-when-resetting-admin-credential-in-nexus)
   - [Context menu items for Package Builder and Package Uploader not available](#context-menu-items-for-package-builder-and-package-uploader-not-available)
+- [See Also](#see-also)
 
 <!-- /TOC -->
 
 ## Summary
 
+> :warning: **Warning**
+>
+> The commands outlined in this document need to be run from an administrative PowerShell session.
+> Many of these scripts will function poorly or not at all in a non-administrative shell.
+
 To finish setting up QDE (Quick Deployment Environment), you'll need to work through this document and run the different commands you find here.
-Please note that nearly _all_ the commands need to be run from an administrative context.
 
-If you run into any issues as you set up your QDE and clients, please reach out to support at [REDACTED] and folks can set up a session to work with you on this.
+If you run into any issues as you set up your QDE and clients, please reach out to support and we can set up a session to work with you on this.
 
-Additional information can be found in our [Online Documentation](https://chocolatey.org/docs/quick-deployment-environment).
+---
 
-* [[QDE Setup|QuickDeploymentSetup]]
-* [[QDE Desktop ReadMe File|QuickDeploymentDesktopReadme]] (online version of the desktop readme, online is most up to date)
-* [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]]
-* [[QDE Firewall Changes|QuickDeploymentFirewallChanges]]
-* [[QDE Client Setup|QuickDeploymentClientSetup]] (setting up your client machines)
-
-___
 ## Step 0: Complete Prerequisites
 
-There are some steps you will have taken before you come to this readme. Please make sure you have taken those steps ahead of time. Please see the [Online Documentation](https://chocolatey.org/docs/quick-deployment-environment) for the most up to date information.
+There are some initial steps you will need to have taken before you work through this document.
+Please make sure you have taken those steps ahead of time.
+See the [Online Documentation](https://chocolatey.org/docs/quick-deployment-setup#step-3-virtual-environment-setup) for the most up to date information.
 
 * [[QDE Setup|QuickDeploymentSetup]]
 
-___
+---
+
 ## Step 1: Expand Disk Size
 
-On the machine, please check the size of the C drive. If it needs expanded, expand it to the space you've allocated for the machine.
+By default, QDE is provisioned with a 100GB hard disk drive.
+We typically recommend around 2TB of storage space to be available for a package repository server, which is part of QDE's services.
+Before starting the VM, you may want to expand the hard drive to a size suitable for your purposes.
+After starting the VM, you can run the below command to resize the Windows partition to fill any additional available space you have allocated.
 
 ```powershell
-# This should increase the space available on the C drive.
 Resize-Partition -DriveLetter C -Size ((Get-PartitionSupportedSize -DriveLetter C).SizeMax)
 ```
 
-___
-## Step 2: Create a License Package
+---
 
-To leverage all of the features of C4B, copy the license file you received via email to `C:\ProgramData\chocolatey\license`.
-Make sure the name of the file is exactly `chocolatey.license.xml`.
+## Step 2: Environment Setup
 
-In an administrative Powershell session, execute the following:
+### 1. Add Your Chocolatey License
 
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; . 'C:\choco-setup\files\CreateLicensePackage.ps1'
-```
+Copy your Chocolatey license file to: `C:\ProgramData\chocolatey\license\chocolatey.license.xml`
 
-This will create the licensed package at `C:\choco-setup\packages` and push it up to your Nexus repository for use.
+### 2. (Optional) Change the VM Hostname
 
-___
-## Step 3: Regenerate SSL Certificates
+If you would like to change the hostname of this VM, please do so **before** going any further with setup.
 
-Under almost all circumstances for security purposes, you are going to want to complete this step. We've made it easy for you with a script. Once complete, the script will generate new SSL certificates for all services and move them to the appropriate locations and configure the services to use them. Please see [[SSL/TLS Setup|QuickDeploymentSslSetup]] for more details.
+### 3. Run the Set-QDEnvironment.ps1 Script
 
-> :memo: **NOTE**: Please run the below from an administrative PowerShell session.
+First, you'll need to open PowerShell as Administrator.
 
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; . C:\choco-setup\files\New-SslCertificates.ps1
-```
+#### Option 1: Default Self-Signed Certificate
 
-> :warning: **WARNING**
->
-> This script will seemingly prompt for input, and have other strange output.
-> This is due to poor Java tooling and console output which cannot be suppressed.
-> Just let things happen, as things are working as expected.
-
-> :warning: **WARNING**
->
-> Timezones are super important here and time synchronization is really important when generating SSL Certificates. You want to make sure you have this correct and good. Otherwise there is a potential edge case you could generate an SSL Certificate that is not yet valid.
-
-Once complete, this script will generate new SSL certificates for all services and move them to the appropriate locations and configure the services to use them.
-
-___
-## Step 4: Enable Central Management
-
-> :memo: **NOTE**
->
-> This step should _only_ be completed once the license package has been created in the step above.
-> All licensed features are already installed, but will not be functional without a valid license file.
-
-Run the following to turn on the Central Management services in an administrative PowerShell session:
+This is the standard method of setup, and will initialize all the services using a newly-generated self-signed certificate.
+Enter the following command:
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; . 'C:\choco-setup\files\EnableCCM.ps1'
+& C:\choco-setup\files\Set-QDEnvironment.ps1 -NexusApiKey "{{NugetApiKey}}"
 ```
 
-___
-## Step 5: Review Server Information
+#### Option 2: Custom Certificate
+
+If you have a domain certificate or you have otherwise already created / obtained a certificate you'd like to use,
+please ensure the certificate is present in either the `Cert:\LocalMachine\My` or `Cert:\LocalMachine\TrustedPeople` stores before continuing.
+If you're not familiar with how to do this, please refer to [this DigiCert article for instructions](https://www.digicert.com/kb/managing-client-certificates.htm).
+
+You will need either the certificate thumbprint or the subject in order to use the certificate for setup:
+
+> :memo: **Note**
+>
+> * `-CertificateDnsName` is optional if you're providing the `-CertificateSubject`, but only if the subject does **not** contain wildcards.
+> * You can also optionally provide the `-InternetEnabled` switch if your QDE instance has a certificate with a public hostname and will be operating over the internet.
+>   This will enable additional security features; take note of the additional output and do not lose the newly-generated passwords or salt values.
+
+```powershell
+# If you have the thumbprint, run:
+& C:\choco-setup\files\Set-QDEnvironment.ps1 -NexusApiKey "{{NugetApiKey}}" -CertificateThumbprint "INSERT_CERTIFICATE_THUMBPRINT_HERE" -CertificateDnsName "INSERT_DNS_NAME_HERE"
+
+# If you have the subject instead, run:
+& C:\choco-setup\files\Set-QDEnvironment.ps1 -NexusApiKey "{{NugetApiKey}}" -CertificateSubject "INSERT_CERTIFICATE_SUBJECT_HERE" -CertificateDnsName "INSERT_DNS_NAME_HERE"
+```
+
+Parameter descriptions are provided below for your convenience.
+You can also call `Get-Help C:\choco-setup\files\Set-QDEnvironment.ps1 -Full` for more information.
+
+| Parameter Name           | Description                                                                                                                                                                          |
+| :----------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-NexusApiKey`           | The api key for your nexus installation.                                                                                                                                             |
+| `-CertificateThumbprint` | If using a thumbprint, specify it with this parameter.                                                                                                                               |
+| `-CertificateSubject`    | If using a subject name for your certificate, specify it with this parameter (**NOTE** this does not include the 'CN=' portion of the subject returned by the certificate provider). |
+| `-CertificateDnsName`    | If using a wildcard certificate this _must_ be included with either `-CertificateThumbprint` or `-CertificateSubject`.                                                               |
+| `-InternetEnabled`       | When this parameter is used, the QDE Server is configured for internet-facing clients.                                                                                               |
+
+---
+
+### 4. Select Community Packages to Internalize
+
+> :memo: **Note**
+>
+> If your environment is air-gapped or you have otherwise locked down access to the Community Repository, you will need to ensure the community repository is accessible for this part of the script to work.
+> It is completely optional, and you're more than welcome to skip this by selecting **Cancel** and only utilize the built in Jenkins tasks for internalization.
+
+When the script completes, you will be shown an Out-GridView prompt where you can select any of the most popular community packages to automatically internalize.
+Use `Shift` or `Ctrl` and click to select multiple.
+When you're happy with your selections (don't worry, you can always use the built-in Jenkins tasks to internalize additional packages at any time) select OK, or select Cancel to opt-out.
+
+This internalization will happen automatically in the background, and will generally take about a minute or two per package, depending on the size of the package.
+We recommend you leave the VM running while it's happening; you can keep tabs on its progress by opening Nexus to the ChocolateyInternal repository and checking the available packages.
+
+---
+
+## Step 3: Review Hosted Services
+
 ### Nexus Repository
 
-* Url: [https://chocoserver:8443](https://chocoserver:8443)
-* Username: admin
-* Password: [REDACTED] (credentials included on desktop readme)
-* API Key: [REDACTED] (credentials included on desktop readme)
-
-When you first log in to Nexus, you will immediately be asked you change your password.
-You will then be asked if you'd like to enable Anonymous Access to the repositories.
-We typically recommend doing this, unless security requirements in your organization stipulate that RBAC controls be in place.
-
-> :warning: **WARNING**
+> :memo: **Note**
 >
-> If you plan to allow clients to connect in from outside your network (over the internet), please contact support for the right options.
-> There will be more work you'll need to do to limit access to specific repositories.
+> If you have changed the hostname from the default, or you're using a FQDN for the server setup, this hostname will have changed.
+> In that case, substitute the hostname for the new FQDN.
+
+|            URL             |  Login  |  Initial Password   |      API Key      |
+| :------------------------: | :-----: | :-----------------: | :---------------: |
+| <https://chocoserver:8443> | `admin` | `{{NexusPassword}}` | `{{NugetApiKey}}` |
+
+If you have not setup QDE as internet-enabled, Nexus will be initially configured with anonymous authentication enabled.
+On first logging in to the admin account, you will be prompted to change your password and then select whether or not to enable anonymous authentication going forward.
+If you intend to set up QDE as an internet-facing server, we recommend you keep anonymous authentication **OFF**.
+If your QDE instance will **not** be internet-facing and only used over a VPN or other secured network, it is generally safe to leave anonymous authentication turned on.
+
+Unless security requirements in your organization stipulate that role-based access controls be in place, this is our recommended configuration for QDE in its default configuration.
 
 Sources configured in Chocolatey can only read data from their remote endpoints, and cannot delete items.
 If you need to limit the packages people have access to, control this with separate Hosted and Group repositories.
-Consult the Nexus documentation or reach out to Chocolatey Support for more information.
+Consult the [Nexus documentation](https://help.sonatype.com/repomanager3) or reach out to Chocolatey Support for more information.
 
 ### Jenkins
 
-* Url: [http://chocoserver:8080](http://chocoserver:8080)
-* Username: admin
-* Password: [REDACTED] (credentials included on desktop readme)
+|           URL           |  Login  |   Initial Password    |
+| :---------------------: | :-----: | :-------------------: |
+| <http://localhost:8080> | `admin` | `{{JenkinsPassword}}` |
 
-For using Jenkins, please refer to our documentation here: [https://chocolatey.org/docs/how-to-setup-internal-package-repository](https://chocolatey.org/docs/how-to-setup-internal-package-repository).
-At most, you will need to login to Jenkins, change the password (`By going to People on the Sidebar > Click on admin > Click Configure on the Sidebar, scroll down to change password section`), and enable the pre-configured jobs to run on the schedule of your choosing.
-Our documentation can assist with ensuring this is done correctly.
+For using Jenkins, please refer to our [online documentation](https://chocolatey.org/docs/how-to-setup-internal-package-repository).
+
+At most, you will need to:
+
+1. Login to Jenkins and complete first-time setup (see below).
+1. Change your password (by going to `People > admin > Configure` on the sidebar, scroll down to change password section).
+1. Enable the pre-configured jobs to run on the schedule of your choosing.
+   Our documentation can assist with ensuring this is done correctly.
+
+<details>
+    <summary><strong>First-Time Setup</strong></summary>
+
+In order to begin using Jenkins, the following steps will need to be performed:
+
+1. Visit <http://localhost:8080> in a web browser
+2. Enter the administrator password into the textbox and click `Continue`
+3. From the Plugin Installation Page select "Install Suggested Plugins"
+   > :memo: **Note**
+   >
+   > Some of these may fail to install, and that is OK.
+4. Once the plugin installation completes, select `Continue`
+5. Click `Continue As Admin` on the Create First Admin User page
+6. Update the Jenkins URL _if_ you have changed the hostname of the server prior to beginning with this setup document.
+7. Click `Save and Finish`
+8. Click `Restart` to restart your Jenkins instance.
+   This _does_ take a while.
+   If after 30 seconds you don't see your browser auto-refresh, go ahead and do so manually.
+
+</details>
 
 ### Chocolatey Central Management
 
-* Url: [https://chocoserver](https://chocoserver)
-* Username: ccmadmin
-* Default Password: 123qwe (You will be prompted to change this on first login)
-
-> :memo: **NOTE**
+> :memo: **Note**
 >
-> You will see 2 packages (aspnetcore-runtimepackagestore and dotnetcore-windowshosting) listed as outdated at version 2.2.7.
-> These packages have been pinned to that version, as they are required at that level for the current version of CCM to function correctly.
+> If you have changed the hostname from the default, or you're using a FQDN for the server setup, this hostname will have changed.
+> In that case, substitute the hostname for the new FQDN.
+
+|            URL            |   Login    | Initial Password |
+| :-----------------------: | :--------: | :--------------: |
+| <https://chocoserver:443> | `ccmadmin` |     `123qwe`     |
 
 ### Firewall ports
 
-To allow access to all services firewall ports have been opened on QDE as follows:
+To allow access to all services, the following firewall ports have been opened on QDE by default.
 
-* 8443: Nexus WebUI
-* 8080: Jenkins WebUI
-* 443: Central Management WebUI
-* 24020: Central Management Service communications for Agent check-in
+| Port  | Service                                                                      |
+| :---: | :--------------------------------------------------------------------------- |
+| 8443  | Nexus (HTTPS)                                                                |
+|  443  | Central Management Dashboard (HTTPS)                                         |
+| 24020 | Central Management Service communications for Agent communication over HTTPS |
 
-### Browser considerations
+### Browser Considerations
 
-We recommend you use Google Chrome to interact with all Web interfaces for the different services installed. You will find Google Chrome pre-installed in the environment.
+We recommend you use either Mozilla Firefox or Google Chrome to interact with all Web interfaces for the different services installed.
+You will find Google Chrome pre-installed in the environment.
 
-___
-## Step 6: Change the API Key (Optional, Recommended)
+> :warning: **Warning**
+>
+> There is a known issue in some QDE configurations where Firefox will be unable to load Nexus correctly.
+> If this occurs, you need to disable the `Block dangerous and deceptive content` option under **Security** in order to load Nexus.
+
+---
+
+## Step 4: Change the API Key (Recommended)
 
 You may wish to change the API key before you start using things.
 To do so, log in to Nexus using the information above, or your new credentials if you have already gone through the first run wizard.
 Once logged in perform the following steps:
 
+<details>
+    <summary>Click to show animated summary</summary>
+
+![changing the choco API key](images/gifs/choco_qde_update_apikey.gif)
+</details>
+
 1. Click on your username in the upper right-hand side of the homepage.
-2. Select "NuGet API Key" from the left-hand navigation window.
-3. Select "Reset API key"
-4. Enter your password
-5. Take note of the new API key
+1. Select "NuGet API Key" from the left-hand navigation window.
+1. Select "Reset API key"
+1. Enter your password
+1. Select "Access API Key"
+1. Take note of the new API key
 
 If you change your API key, you will need to change the key in the Jenkins jobs that are pre-configured for you.
 See the next section for information on how to connect to Jenkins.
 
-#### Choco Apikey Command
+### Choco Apikey Command
 
 To help make pushing packages easier, the `choco apikey` command is available.
 This will store your API key for a specific source as part of Chocolatey's configuration.
 This will be encrypted. To setup, do the following:
 
-> :memo: **NOTE**: Please run the below from an administrative PowerShell session.
+> :memo: **Note**
+>
+> If you have changed the hostname from the default, or you're using a FQDN for the server setup, this hostname will have changed.
+> In that case, substitute the hostname for the new FQDN.
 
 ```powershell
-choco apikey add --key="'$YourApiKey'" --source="'https://chocoserver:8443/repository/ChocolateyInternal/'"
+choco apikey add --key="'{{NexusApiKey}}'" --source="'https://chocoserver:8443/repository/ChocolateyInternal/'"
 ```
 
-___
-## Step 7: Install and Configure Chocolatey On Clients
+### Update pre-configured Jenkins jobs with the new API Key
 
-This script, like all of the others here would need to be run in an administrative PowerShell context. However, this one is run from your client machines and not the QDE.
+After updating the Nexus API Key, you'll need to ensure that the preconfigured Jenkins jobs are also updated with the new API key.
+To do so:
 
-```powershell
-Set-ExecutionPolicy RemoteSigned -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/Import-QuickDeployCertificate.ps1')); Set-ExecutionPolicy RemoteSigned -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocoserver:8443/repository/choco-install/ClientSetup.ps1'))
-```
+1. Login to Jenkins after completing the first-time setup (see [above](#jenkins))
+1. For each of the pre-existing jobs shown (e.g., `Internalize packages from the Community Repository`), do the following:
+   1. Hover over the name of the job and select the drop-down arrow that shows up.
+   1. Select **:gear: Configure**
+   1. Scroll down until you see the **Password Parameter** named `P_API_KEY`.
+   1. Select **Change Password** next to the **:lock: Concealed** Default Value.
+   1. Replace the contents of the field with the new API key.
+   1. Press the **Save** button at the bottom of the page.
 
-What does this do?
+---
 
-* Sets the execution policy for this script run to remote signed scripts. This is only in the scope of this process and not permanent.
-* Imports the SSL Certificate from the Quick Deploy Environment. **NOTE**: This is a signed script that is used to import a certificate. Due to how it works and security considerations, there are very few options allowed.
-* Switches execution policy to bypass for the internal script. This is only in the scope of this process and not permanent.
-* Calls Client setup script from the QDE environment (see below for what it does).
+## Step 5: Install and Configure Chocolatey On Clients
 
-> :warning: **WARNING**
+Refer to [the Client Setup documentation](https://chocolatey.org/docs/quick-deployment-client-setup).
+
+---
+
+## Step 6: License the QDE VM
+
+This VM is running an **UNACTIVATED** Server 2019 Standard Operating System.
+If you plan to use this virtual machine long-term, you _will_ need to apply a license to the VM.
+If you use a KMS server in your environment, and have it configured on clients via Group Policy, you likely have nothing to do here, but verify.
+
+If you rely on Retail or MAK licensing, you will need to apply the license using the following command, replacing the `x`'s with your actual product key:
+
+> :memo: **Note**
 >
-> If your clients are airgapped or you have changed the hostname, you will need to find a different means to import the QDE Certificate.
-> Please reach out to support for options.
-
-> :warning: **WARNING**
->
-> If the QDE hostname has been changed, the above script most likely will fail.
->
-> You won't be able to use the above script, and you will need to host your own script somewhere that is trusted so that the QDE certificates can be trusted. Please see [[SSL/TLS Setup|QuickDeploymentSslSetup]] for options.
->
-> Please contact support if you need help here.
-
-
-The ClientSetup.ps1 script will:
-
-* Install Chocolatey
-* License Chocolatey
-* Install the licensed extension (without the PackageBuilder/Internalizer shims)
-* Install the licensed agent
-* Configure ChocolateyInternal source
-* Configure Self-Service mode
-* Configure Central Management check-in
-
-___
-## Step 8: Turn On Package Internalization
-
-Chocolatey For Business includes the Package Internalizer feature, which takes a package from the Community Repository and rewrites the package to include all the binaries necessary to complete the installation of the application. You'll find in the C:\choco-setup\files directory a script named `Invoke-ChocolateyInternalizer.ps1` to help you with the process of internalizing additional packages into your environment.
-
-The script accepts an array of Packages, your Local Nexus repository URL, the remote URL to look to for internalization, and your Nexus repository API key.
-
-Example Usage:
-
-```powershell
-. C:\choco-setup\files\Invoke-ChocolateyInternalizer.ps1 -Packages adobereader,vlc,vscode -RepositoryUrl https://chocoserver:8443/repository/ChocolateyTest/ -RemoteRepo https://chocolatey.org/api/v2 -LocalRepoApiKey [REDACTED_API_KEY]
-```
-
-> :memo: **NOTE**: Please run the above from an administrative PowerShell session.
-
-___
-## Step 9: License the QDE VM
-
-This VM is running an **UNACTIVATED** Server 2019 Standard Operating System. If you plan to use this virtual machine long-term, you _will_ need to apply a license to the VM. If you use a KMS server in your environment, and have it configured on clients via Group Policy, you likely have nothing to do here, but verify.
-
-If you rely on Retail or MAK licensing, you will need to apply the license using the following, replacing the x's with your actual product key:
-
-> :memo: **NOTE**: Please run the below from an administrative PowerShell session.
+> Please run the below from an administrative PowerShell session.
 
 ```powershell
 slmgr.vbs /ipk xxxxx-xxxxx-xxxxx-xxxxx
 ```
 
-___
-## Common Errors And Resolutions
-### Unable login to Jenkins website, after browsing to Nexus website
-On the QDE VM, once you browse to the Nexus website at `https://chocoserver:8443`, you will receive the following error when trying to browse to the Jenkins website at `http://chocoserver:8080`:
+---
 
-```
-This site can’t provide a secure connection
-ERR_SSL_PROTOCOL_ERROR
-```
-
-This is due to the fact that Nexus has enforced an HSTS policy on the browser, blocking access to unsecured `http:` addresses. This will be fixed in future versions of QDE. In the interim, you can bypass this limitation with the following steps:
-
-1. Add the following line to the file `C:\ProgramData\sonatype-work\nexus3\etc\nexus.properties`:
-
-```
-jetty.https.stsMaxAge=-1
-```
-
-2. Close all instances and tabs of Chrome. Open Chrome again, so that only the one tab is open.
-3. Type `chrome://net-internals/#hsts`  into the address bar to access the network internals page.
-4. In the `Delete domain security policies` section near the bottom of the page, type `CHOCOSERVER` (or the hostname if you changed it) and press the `Delete` button.
-5. In the `Query HSTS/PKP domain` field, type `CHOCOSERVER` (or the hostname if you changed it) , and click the `Query` button to confirm that the output is `Not found` (this means the HSTS settings have been removed).
-6. Close all Chrome browser tabs and windows.
-7. Open up an Administrative PowerShell window, and use the following command to restart the Nexus service:
-
-```powershell
-Restart-Service nexus
-```
-
-After the Nexus service has completed restarting, you should now be able to browse to the Jenkins website at `http://chocoserver:8080`.
+## Common Issues And Solutions
 
 ### "Server Error" warning when resetting "admin" credential in Nexus
+
 When attempting to reset the `admin` account credential in Nexus, you receive a "Server Error" warning in the top right corner of the page, as shown below:
 
 ![QDE Nexus pw error](images/quickdeploy/QDE-nexus-pw-error.png)
 
-Though it may not be obvious, this is actually caused by Nexus not having enough disk space to function properly. We often see this occur if the `Expand disk size` step from above was missed. Please confirm that you have completed the [Step 1: Expand Disk Size](#step-1-expand-disk-size) step. Please keep in mind, this step is **NOT** the same as expanding the disk at the hypervisor level.
+Though it may not be obvious, this is actually caused by Nexus not having enough disk space to function properly.
+We sometimes see this occur if [Step 1: Expand Disk Size](#step-1-expand-disk-size) was skipped.
+Confirm that you have completed that step and then try again.
+
+Keep in mind, this step is **NOT** the same as expanding the disk at the hypervisor level.
+You will need to both expand the hypervisor disk space allocation, _and_ expand the partition within the VM.
 
 ### Context menu items for Package Builder and Package Uploader not available
-When right-clicking an exe or msi file on QDE, you may notice that the context menu items for Package Builder are missing. As well, when right-clicking on a nupkg file, you may also see the Package Uploader context menu entry is missing. This feature can be controlled by passing a custom parameter when installing the Chocolatey Licensed Extension package, but can be restored to its default state quite simply.
 
-Assuming the latest `chocolatey.extension.nupkg` is in your `C:\choco-setup\packages` folder, open up an Administrative PowerShell window and reinstall the Chocolatey Licensed Extension (and reset Explorer for your changes to take effect immediately):
+When right-clicking an exe or msi file on QDE, you may notice that the context menu items for Package Builder are missing.
+As well, when right-clicking on a nupkg file, you may also see the Package Uploader context menu entry is missing.
+This feature can be controlled by passing a custom parameter when installing the Chocolatey Licensed Extension package, but can be restored to its default state quite simply.
+
+Assuming the latest `chocolatey.extension.nupkg` is in your `C:\choco-setup\packages` folder, open up an Administrative PowerShell window and reinstall the Chocolatey Licensed Extension.
+Then, restart Explorer for your changes to take effect immediately.
 
 ```powershell
 choco upgrade chocolatey.extension -y --source="'C:\choco-setup\packages'"
 Stop-Process -Name explorer -Force
 ```
 
-___
-[[Quick Deployment Environment|QuickDeploymentEnvironment]]
+---
+
+## See Also
+
+* [[Quick Deployment Environment|QuickDeploymentEnvironment]]
+* [[QDE Setup|QuickDeploymentSetup]]
+* [[QDE Desktop ReadMe File|QuickDeploymentDesktopReadme]]
+* [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]]
+* [[QDE Firewall Changes|QuickDeploymentFirewallChanges]]
+* [[QDE Client Setup|QuickDeploymentClientSetup]] (setting up your client machines)

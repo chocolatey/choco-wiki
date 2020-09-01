@@ -3,7 +3,7 @@
 > :memo: **NOTE**
 >
 > This document is for **Version 2.0** of the Quick Deployment Environment.
-> If you're using an older version of QDE, please refer to the [[document for that version|QuickDeploymentClientSetup_v1]]
+> If you're using an older version of QDE, please refer to the [[this document||QuickDeploymentClientSetup_v1]]
 
 <!-- TOC depthFrom:2 -->
 
@@ -13,67 +13,63 @@
 
 <!-- /TOC -->
 
-___
+---
 
 ## Summary
 
-Once you have QDE set up in your environment, you'll need to get clients talking to it. To do that, we'll need to do the following:
+Once you have QDE set up in your environment, you'll need to get clients talking to it.
+To do that, you'll need to do the following on the clients:
 
-* Setting up DNS on the client to access QDE.
-* Install the QDE SSL/TLS certificate so clients can access HTTPS components
-* Install Chocolatey and friends
+1. Setup DNS to allow access to QDE.
+1. Install the QDE SSL/TLS certificate so clients can access HTTPS components.
+1. Install Chocolatey components.
 
-___
+---
 
 ## DNS
 
-Typically in your environment, onces you've added QDE, it should be able to start talking to the QDE.
+In most environments, once you've added the QDE server, clients should be able to access it.
 In some situations, you may need to add the host name with the IP address to your HOSTS file to reach your environment.
 
-___
+---
 
 ## Client Installation
 
-On your client machines, you will be running the following script in an administrative context:
+On your client machines, you will need to run the following script in an administrative context:
+
+> :memo: **NOTE**
+>
+> `chocoserver` is the default hostname for QDE.
+> If you've adjusted the QDE server hostname or added custom HOSTS entries, use the appropriate hostname instead.
 
 ```powershell
-Set-ExecutionPolicy RemoteSigned -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/Import-QuickDeployCertificate.ps1')); Set-ExecutionPolicy RemoteSigned -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocoserver:8443/repository/choco-install/ClientSetup.ps1'))
+$downloader = New-Object -TypeName System.Net.WebClient
+Invoke-Expression ($downloader.DownloadString('https://chocoserver:4431/Import-ChocoServerCertificate.ps1'))
+Invoke-Expression ($downloader.DownloadString('https://chocoserver:8443/repository/choco-install/ClientSetup.ps1'))
 ```
 
-What does this do?
+> :warning: **WARNING**
+>
+> If your clients are air-gapped, you will need to ensure that they can at least access the QDE server itself in order to import the QDE Certificate.
 
-* Sets the execution policy for this script run to remote signed scripts.
-  This is only in the scope of this process and not permanent.
+This takes care of the following actions:
+
 * Imports the SSL Certificate from the Quick Deploy Environment.
-  **NOTE**: This is a signed script that is used to import a certificate.
-  Due to how it works and security considerations, there are very few options allowed.
-* Switches execution policy to bypass for the internal script.
-  This is only in the scope of this process and not permanent.
 * Calls Client setup script from the QDE environment (see below for what it does).
-
-> :warning: **WARNING**
->
-> If your clients are air-gapped or you have changed the hostname, you will need to find a different means to import the QDE Certificate.
->
-> Please reach out to support for options.
-
-> :warning: **WARNING**
->
-> If the QDE hostname has been changed, the above script most likely will fail.
->
-> You won't be able to use the above script, and you will need to host your own script somewhere that is trusted so that the QDE certificates can be trusted. Please see [[SSL/TLS Setup|QuickDeploymentSslSetup]] for options.
->
-> Please contact support if you need help here.
 
 The `ClientSetup.ps1` script will:
 
-* Install Chocolatey
-* License Chocolatey
-* Install the licensed extension (without the PackageBuilder/Internalizer shims)
-* Install the licensed agent
-* Configure ChocolateyInternal source
-* Configure Self-Service mode
-* Configure Central Management check-in
+1. Install Chocolatey
+1. License Chocolatey
+1. Install the licensed extension (without the PackageBuilder/Internalizer shims)
+1. Install the agent service
+1. Configure ChocolateyInternal source
+1. Configure Self-Service mode
+1. Configure Central Management check-in
 
-___
-[[Quick Deployment Environment|QuickDeploymentEnvironment]]
+---
+
+> :memo: **NOTE**
+> For internet enabled client setup please refer to [[Quick deployment Environment Internet Setup||QuickDeploymentEnvironmentInternetSetup]]
+
+[[Quick Deployment Environment||QuickDeploymentEnvironment]]
