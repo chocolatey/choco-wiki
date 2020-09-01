@@ -11,8 +11,8 @@ With an unprecedented amount of employees working from home, there is a much gre
     - [Scenario 2: Purchased/Acquired Certificates from CA](#scenario-2-purchasedacquired-certificates-from-ca)
     - [Scenario 3: Self-Signed SSL Certificates](#scenario-3-self-signed-ssl-certificates)
 - [Nexus Setup](#nexus-setup)
-    - [Option 1: Manual Configuration Of Nexus](#option-1-manual-configuration-of-nexus)
-    - [Option 2: Scripted approach](#option-2-scripted-approach)
+    - [Option 1: Scripted Nexus Configuration](#option-1-scripted-nexus-configuration)
+    - [Option 2: Manual Configuration Of Nexus](#option-2-manual-configuration-of-nexus)
 - [CCM Setup](#ccm-setup)
 - [Adjusting Scripts for Client Setup](#adjusting-scripts-for-client-setup)
 - [Jenkins](#jenkins)
@@ -134,8 +134,25 @@ The `New-SslCertificates.ps1` mentioned above will create a Java KeyStore (JKS) 
 
 Additionally, when logging in and resetting your administrative credential in the Nexus web UI, there is a checkbox to allow “Anonymous” access. This is good initially, but will need to be changed if you are planning to expose Nexus to your endpoints over the Internet. You can follow two paths to accomplish this:
 
+### Option 1: Scripted Nexus Configuration
 
-### Option 1: Manual Configuration Of Nexus
+> :NOTE: NOTE: QDE v1 customers, please download the `Set-QDEnvironmentInternetSecurity.ps1` script and save it to the `C:\choco-setup\files\` directory on your QDE instance. You can accomplist this with the following script:
+>    ```powershell
+>    Invoke-WebRequest -Uri 'https://ch0.co/qdenetsec' -OutFile "$env:SystemDrive\choco-setup\files\Set-QDEnvironmentInternetSecurity.ps1"
+>    ```
+
+Now, you will use `Set-QDEnvironmentInternetSecurity.ps1` to update the scripts in your `choco-install` Nexus raw repository to reflect the additional security measures you've implemented above. Remember, it is **required** to pass your FQDN for your QDE server with the `-FullyQualifiedDomainName` parameter. From an administrative PowerShell console, execute the following: 
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force ; . C:\choco-setup\files\Set-QDEnvironmentInternetSecurity.ps1 -FullyQualifiedDomainName '<YOUR_FQDN_HERE>' -PasswordLength 32 -SpecialCharCount 12
+```
+:Warning: **WARNING:** This script will throw an error if you have logged into Nexus and changed your password from the default found in the README when you first got started with the appliance. If this occurs, re-run the above command with the `-NexusAdminPassword` parameter.
+
+> :memo: **Notes:**
+> 1. This script will emit random passwords for your nexus user, your client salt, and your service salt. Please record these for later steps.
+> 1. Now that you've added a credential to your Nexus repositories, access to the `ChocolateyInstall.ps1` and `ClientSetup.ps1` scripts in your `choco-install` raw repository will require this credential as well. 
+
+### Option 2: Manual Configuration of Nexus
 1. Login to the Nexus Web UI and authenticate as your `admin` user. Select the gear icon at the top middle of the screen, to access the "Server administration and configuration" view.
 
     ![Nexus Server Admin](images/quickdeploy/QDE-nexus-web-1.gif)
@@ -179,28 +196,10 @@ Additionally, when logging in and resetting your administrative credential in th
     ```
 
 
-### Option 2: Scripted approach
-
-:NOTE: QDE v1 customers, download the script from [here](), and save it to `C:\choco-setup\files\Set-QDEnvironmentInternetSecurity.ps1` on your QDE instance.
-
-From an administrative PowerShell console execute the following: 
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force ; . C:\choco-setup\files\Set-QDEnvironmentInternetSecurity.ps1 -FullyQualifiedDomainName $YourQDEFQDN -PasswordLength 32 -SpecialCharCount 12
-```
-:Warning: This script will throw an error if you have logged into Nexus and changed your password from the default found in the README when you first got started with the appliance. If this occurs, re-run the above command with the `-NexusAdminPassword` parameter.
-
-> :memo: **Note:**
-> Now that you've added a credential to your Nexus repositories, access to the `ChocolateyInstall.ps1` and `ClientSetup.ps1` scripts in your `choco-install` raw repository will require this credential as well. 
-
->:memo: **Note:**
-> This script will emit random passwords for your nexus user, your client salt, and your service salt. 
-
-
 ## CCM Setup
 
 >:memo: **Note**
->If you ran option 2 above, you can skip this step as the configuration has been applied to the server.
+>If you ran option 1 above (Scripted Nexus Configuration), you can skip this step, as the configuration has already been applied to the server.
 
 QDE V1 does not currently include the most up-to-date version of the CCM packages (version 0.3.0, as of this writing). If you have already purchased your Chocolatey for Business (C4B) licenses, you can upgrade by following the [[Central Management Upgrade|CentralManagementSetupUpgrade]] documentation. If you are a trial user, please reach out to your Sales representative for the appropriate packages and procedure for upgrading CCM.
 
@@ -236,15 +235,15 @@ Running this script will require passing the following parameters:
 * `$ServerSalt`: This is the server-side salt additive we discussed in the [CCM Setup](#ccm-setup) section above.
 
 Because this script is stored on your Nexus instance, and clients will need to authenticate to Nexus in order to download and execute the script,
-the following code can be ran using any tool which can run PowerShell, so long as it is ran in an elevated context.
+the following code can be run using any tool which can run PowerShell, so long as it is run in an elevated context.
 
 An example of running this script with the requisite parameters on an endpoint is as follows (to be run from a PowerShell Administrator window):
 
 ```powershell
-# Change these values!
+# CHANGE THESE VALUES!
 $clientCommunicationSalt = '2iLYko*f9y9kiv!Aw7kpZhBz7RnWQVHg' # example 32 character password. MUST BE UNIQUE
 $serverCommunicationSalt = 'QQmgDxagB@nBR*.UyHx!-qrw4kWvwrT!' # example 32 character password. MUST BE UNIQUE
-$fqdn = 'chocoserver'
+$fqdn = 'chocoserver' # If you have adjusted your FQDN, please reflect that change here
 $password = 'x3mrj3NbGtkZBzJatLe9AcUtT8G_Y4Ra' # example 32 character password
 
 # Touch NOTHING below this line
