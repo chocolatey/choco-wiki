@@ -75,6 +75,9 @@ Choose one of the following methods for what your hypervisor environment support
 
 If you choose to use the scripts provided inside the Zip archive, there are a number of pre-requisites that are needed:
 
+* The Hyper-V PowerShell module is required.
+  * For Windows 10 run `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Management-PowerShell` from an elevated PowerShell prompt.
+  * For Windows Server 2012 and later, run `Install-WindowsFeature -Name Hyper-V-PowerShell` from an elevated PowerShell prompt.
 * Having both the `Az` and `AzureRm` PowerShell modules installed is not [supported](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-4.3.0#install-the-azure-powershell-module). You can see if you have `AzureRm` installed by running `Get-Module -Name AzureRm -ListAvilable`. If there is no output it is not installed.
 * Install the `Az` PowerShell Module. To find out if you have the module installed run `Get-Module -Name az -ListAvailable` from an elevated PowerShell session.
   * To install the `Az` module using Chocolatey, run `choco install az.powershell -y`.
