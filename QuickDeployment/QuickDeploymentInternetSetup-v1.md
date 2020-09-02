@@ -229,7 +229,7 @@ Invoke-WebRequest -Uri 'https://ch0.co/clientsetup' -OutFile "$env:SystemDrive\c
 
 Running this script will require passing the following parameters:
 
-* `$RepositoryUrl`: This is the "ChocolateyInternal" Nexus repository URL on the QDE server, where the  Nexus repositories are. If you don't specify one, the following will be used by default: `https://chocoserver:8443/repository/ChocolateyInternal`
+* `$RepositoryUrl`: This is the "ChocolateyInternal" Nexus repository URL on the QDE server, where the  Nexus repositories are. You are sbsolutely **required** to update this in QDE V1.
 * `$Credential`: This is the `chocouser` credential used to connect to Nexus that we specified earlier in [Nexus Setup](#nexus-setup). You can generate this ahead of time via a command like `$Credential = Get-Credential`
 * `$ClientSalt`: This is the client-side salt additive we discussed in the [CCM Setup](#ccm-setup) section above.
 * `$ServerSalt`: This is the server-side salt additive we discussed in the [CCM Setup](#ccm-setup) section above.
@@ -243,13 +243,13 @@ An example of running this script with the requisite parameters on an endpoint i
 # CHANGE THESE VALUES!
 $clientCommunicationSalt = '2iLYko*f9y9kiv!Aw7kpZhBz7RnWQVHg' # example 32 character password. MUST BE UNIQUE
 $serverCommunicationSalt = 'QQmgDxagB@nBR*.UyHx!-qrw4kWvwrT!' # example 32 character password. MUST BE UNIQUE
-$fqdn = 'chocoserver' # If you have adjusted your FQDN, please reflect that change here
+$fqdn = 'chocoserver' # If you have adjusted your FQDN, you HAVE to CHANGE this to reflect that 
 $password = 'x3mrj3NbGtkZBzJatLe9AcUtT8G_Y4Ra' # example 32 character password
 
 # Touch NOTHING below this line
 $user = 'chocouser'
 $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
-$repositoryUrl = "https://$fqdn:8443/repository/ChocolateyInternal/
+$repositoryUrl = "https://$($fqdn):8443/repository/ChocolateyInternal/"
 
 $credential = [System.Management.Automation.PSCredential]::New($user, $securePassword)
 
