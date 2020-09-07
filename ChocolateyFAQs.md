@@ -531,6 +531,8 @@ The [verifier](https://github.com/chocolatey/package-verifier) is a service that
 ### What is the package scanner?
 All packages (and the binaries they contain or download at runtime) on community repository are scanned by 50-60 antivirus scanners. We have partnered with [VirusTotal](https://virustotal.com) to provide this information back to the website so you can know when you are on a package page whether it is something you should be concerned with or not. It falls just under the files section of the package pages.
 
+**NOTE**: Only en-US installers are tested by default via Chocolatey's Package Scanner
+
 **NOTE**: Did you know that 60% or more of the sofware that is submitted to the community repository has its first scans by VirusTotal through Chocolatey's package scanner submissions? It's helped many of those anti-virus manufacturers get a clearer picture of heuristics and hopefully ends up in better anti-virus products with less false positives.
 
 **NOTE**: Need runtime malware protection? Learn more about [[runtime malware protection|]]
