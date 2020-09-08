@@ -2,8 +2,8 @@
 
 > :memo: **NOTE**
 >
-> This document is for **Version 2.0** of the Quick Deployment Environment.
-> If you're using an older version of QDE, please refer to the [[this document||QuickDeploymentClientSetup_v1]]
+> This document is for **Version 2** of the Quick Deployment Environment.
+> If you're using an older version of QDE, please refer to the [[document for that version|QuickDeploymentClientSetupV1]]
 
 <!-- TOC depthFrom:2 -->
 
@@ -35,34 +35,38 @@ In some situations, you may need to add the host name with the IP address to you
 
 ## Client Installation
 
-On your client machines, you will need to run the following script in an administrative context:
+On your client machines, you will need to run the following PowerShell scripts in an administrative context:
 
 > :memo: **NOTE**
 >
 > `chocoserver` is the default hostname for QDE.
-> If you've adjusted the QDE server hostname or added custom HOSTS entries, use the appropriate hostname instead.
+> If you've adjusted the QDE server hostname or added custom HOSTS mappings, use the appropriate hostname instead.
 
-```powershell
-$downloader = New-Object -TypeName System.Net.WebClient
-Invoke-Expression ($downloader.DownloadString('https://chocoserver:4431/Import-ChocoServerCertificate.ps1'))
-Invoke-Expression ($downloader.DownloadString('https://chocoserver:8443/repository/choco-install/ClientSetup.ps1'))
-```
+### Import Self-Signed Certificate from QDE Server
 
 > :warning: **WARNING**
 >
-> If your clients are air-gapped, you will need to ensure that they can at least access the QDE server itself in order to import the QDE Certificate.
+> - If you're using a CA-signed or domain certificate that is already trusted by client machines for QDE, you can skip this step.
+> - If your clients are air-gapped, you will need to ensure that they can at least access the QDE server itself in order to import the QDE Certificate.
 
-This takes care of the following actions:
+```powershell
+$downloader = New-Object -TypeName System.Net.WebClient
+Invoke-Expression ($downloader.DownloadString('http://chocoserver:80/Import-ChocoServerCertificate.ps1'))
+```
 
-* Imports the SSL Certificate from the Quick Deploy Environment.
-* Calls Client setup script from the QDE environment (see below for what it does).
+### Run ClientSetup.ps1
 
-The `ClientSetup.ps1` script will:
+```powershell
+$downloader = New-Object -TypeName System.Net.WebClient
+Invoke-Expression ($downloader.DownloadString('https://chocoserver:8443/repository/choco-install/ClientSetup.ps1'))
+```
+
+The `ClientSetup.ps1` script executed here will:
 
 1. Install Chocolatey
-1. License Chocolatey
-1. Install the licensed extension (without the PackageBuilder/Internalizer shims)
-1. Install the agent service
+1. License Chocolatey by installing the license package (`chocolatey-license`) created during QDE setup
+1. Install the Chocolatey Licensed Extension (`chocolatey.extension`) without context menus
+1. Install the Chocolatey Agent service (`chocolatey-agent`)
 1. Configure ChocolateyInternal source
 1. Configure Self-Service mode
 1. Configure Central Management check-in
@@ -70,6 +74,7 @@ The `ClientSetup.ps1` script will:
 ---
 
 > :memo: **NOTE**
-> For internet enabled client setup please refer to [[Quick deployment Environment Internet Setup||QuickDeploymentEnvironmentInternetSetup]]
+>
+> For internet enabled client setup please refer to [[Quick deployment Environment Internet Setup|QuickDeploymentEnvironmentInternetSetup]] for additional information.
 
-[[Quick Deployment Environment||QuickDeploymentEnvironment]]
+[[Quick Deployment Environment|QuickDeploymentEnvironment]]

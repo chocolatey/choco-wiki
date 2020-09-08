@@ -2,8 +2,8 @@
 
 > :memo: **Note**
 >
-> This document is for **Version 2.0** of the Quick Deployment Environment.
-> If you're using an older version of QDE, please refer to the [[document for that version||QuickDeploymentFirewallChanges_v1]]
+> This document is for **Version 2** of the Quick Deployment Environment.
+> If you're using an older version of QDE, please refer to the [[document for that version|QuickDeploymentFirewallChangesV1]]
 
 <!-- TOC depthFrom:2 -->
 

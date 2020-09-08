@@ -1,5 +1,10 @@
 # Quick Deployment Client Setup
 
+> :memo: **NOTE**
+>
+> This document is for **Version 1** of the Quick Deployment Environment.
+> If you're using a newer version of QDE, please refer to [[this document|QuickDeploymentClientSetup]]
+
 <!-- TOC depthFrom:2 -->
 
 - [Summary](#summary)
@@ -50,7 +55,7 @@ What does this do?
 >
 > If the QDE hostname has been changed, the above script most likely will fail.
 >
-> You won't be able to use the above script, and you will need to host your own script somewhere that is trusted so that the QDE certificates can be trusted. Please see [[SSL/TLS Setup|QuickDeploymentSslSetup]] for options.
+> You won't be able to use the above script, and you will need to host your own script somewhere that is trusted so that the QDE certificates can be trusted. Please see [[SSL/TLS Setup|QuickDeploymentSslSetupV1]] for options.
 >
 > Please contact support if you need help here.
 

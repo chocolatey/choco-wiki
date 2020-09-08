@@ -1,5 +1,10 @@
 # Thanks for trying Chocolatey For Business!
 
+> :memo: **NOTE**
+>
+> This document is for **Version 1** of the Quick Deployment Environment.
+> If you're using a newer version of QDE, please refer to [[this document|QuickDeploymentDesktopReadme]]
+
 This system has been pre-configured as a fully functioning C4B environment.
 
 > :warning: **WARNING**
@@ -43,18 +48,18 @@ If you run into any issues as you set up your QDE and clients, please reach out 
 
 Additional information can be found in our [Online Documentation](https://chocolatey.org/docs/quick-deployment-environment).
 
-* [[QDE Setup|QuickDeploymentSetup_v2]]
-* [[QDE Desktop ReadMe File|QuickDeploymentDesktopReadme_v1]] (online version of the desktop readme, online is most up to date)
-* [[QDE SSL/TLS Setup|QuickDeploymentSslSetup_v1]]
-* [[QDE Firewall Changes|QuickDeploymentFirewallChanges_v1]]
-* [[QDE Client Setup|QuickDeploymentClientSetup_v1]] (setting up your client machines)
+* [[QDE Setup|QuickDeploymentSetupV1]]
+* [[QDE Desktop ReadMe File|QuickDeploymentDesktopReadmeV1]] (online version of the desktop readme, online is most up to date)
+* [[QDE SSL/TLS Setup|QuickDeploymentSslSetupV1]]
+* [[QDE Firewall Changes|QuickDeploymentFirewallChangesV1]]
+* [[QDE Client Setup|QuickDeploymentClientSetupV1]] (setting up your client machines)
 
 ___
 ## Step 0: Complete Prerequisites
 
 There are some steps you will have taken before you come to this readme. Please make sure you have taken those steps ahead of time. Please see the [Online Documentation](https://chocolatey.org/docs/quick-deployment-environment) for the most up to date information.
 
-* [[QDE Setup|QuickDeploymentSetup_v1]]
+* [[QDE Setup|QuickDeploymentSetupV1]]
 
 ___
 ## Step 1: Expand Disk Size

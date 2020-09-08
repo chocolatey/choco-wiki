@@ -2,8 +2,8 @@
 
 > :memo: **NOTE**
 >
-> This document is for **Version 2.0** of the Quick Deployment Environment.
-> If you're using an older version of QDE, please refer to the [[document for that version||QuickDeploymentEnvironment_v1]].
+> This document is for **Version 2** of the Quick Deployment Environment.
+> If you're using an older version of QDE, please refer to the [[document for that version|QuickDeploymentDesktopReadmeV1]].
 
 Thanks for trying Chocolatey for Business!
 This system has been pre-configured as a fully functioning C4B environment.
@@ -21,7 +21,7 @@ To finish setting up QDE (Quick Deployment Environment), you'll need to closely 
     - [Option 1: Default Self-Signed Certificate](#option-1-default-self-signed-certificate)
     - [Option 2: Custom Certificate](#option-2-custom-certificate)
   - [4. Select Community Packages to Internalize](#4-select-community-packages-to-internalize)
-- [Step 3: Review Hosted Services](#step-3-review-hosted-services)
+- [Step 3: Review & Configure Host Services](#step-3-review--configure-host-services)
   - [Nexus Repository](#nexus-repository)
   - [Jenkins](#jenkins)
   - [Chocolatey Central Management](#chocolatey-central-management)
@@ -32,7 +32,7 @@ To finish setting up QDE (Quick Deployment Environment), you'll need to closely 
   - [Update pre-configured Jenkins jobs with the new API Key](#update-pre-configured-jenkins-jobs-with-the-new-api-key)
 - [Step 5: Install and Configure Chocolatey On Clients](#step-5-install-and-configure-chocolatey-on-clients)
 - [Step 6: License the QDE VM](#step-6-license-the-qde-vm)
-- [Common Issues And Solutions](#common-issues-and-solutions)
+- [Common Errors and Resolutions](#common-errors-and-resolutions)
   - ["Server Error" warning when resetting "admin" credential in Nexus](#server-error-warning-when-resetting-admin-credential-in-nexus)
   - [Context menu items for Package Builder and Package Uploader not available](#context-menu-items-for-package-builder-and-package-uploader-not-available)
 - [See Also](#see-also)
@@ -43,8 +43,9 @@ To finish setting up QDE (Quick Deployment Environment), you'll need to closely 
 
 > :warning: **Warning**
 >
-> The commands outlined in this document need to be run from an administrative PowerShell session.
-> Many of these scripts will function poorly or not at all in a non-administrative shell.
+> - The commands outlined in this document need to be run from an administrative PowerShell session.
+>   Many of these scripts will function poorly or not at all in a non-administrative shell.
+> - Ensure you go through these steps in **exact** order.
 
 To finish setting up QDE (Quick Deployment Environment), you'll need to work through this document and run the different commands you find here.
 
@@ -137,8 +138,10 @@ You can also call `Get-Help C:\choco-setup\files\Set-QDEnvironment.ps1 -Full` fo
 
 > :memo: **Note**
 >
-> If your environment is air-gapped or you have otherwise locked down access to the Community Repository, you will need to ensure the community repository is accessible for this part of the script to work.
-> It is completely optional, and you're more than welcome to skip this by selecting **Cancel** and only utilize the built in Jenkins tasks for internalization.
+> - If your environment is air-gapped or you have otherwise locked down access to the Community Repository, you will need to ensure the community repository is accessible for this part of the script to work.
+>   It is completely optional, and you're more than welcome to skip this by selecting **Cancel** and only utilize the built in Jenkins tasks for internalization.
+> - This will **not** currently update the builtin Jenkins configuration.
+>   If you intend to setup automatic updates for Jenkins, you will need to use the Jenkins jobs
 
 When the script completes, you will be shown an Out-GridView prompt where you can select any of the most popular community packages to automatically internalize.
 Use `Shift` or `Ctrl` and click to select multiple.
@@ -149,7 +152,7 @@ We recommend you leave the VM running while it's happening; you can keep tabs on
 
 ---
 
-## Step 3: Review Hosted Services
+## Step 3: Review & Configure Host Services
 
 ### Nexus Repository
 
@@ -194,16 +197,18 @@ At most, you will need to:
 In order to begin using Jenkins, the following steps will need to be performed:
 
 1. Visit <http://localhost:8080> in a web browser
-2. Enter the administrator password into the textbox and click `Continue`
-3. From the Plugin Installation Page select "Install Suggested Plugins"
+1. Enter the administrator password into the textbox and click `Continue`
+1. From the Plugin Installation Page select "Install Suggested Plugins"
+
    > :memo: **Note**
    >
    > Some of these may fail to install, and that is OK.
-4. Once the plugin installation completes, select `Continue`
-5. Click `Continue As Admin` on the Create First Admin User page
-6. Update the Jenkins URL _if_ you have changed the hostname of the server prior to beginning with this setup document.
-7. Click `Save and Finish`
-8. Click `Restart` to restart your Jenkins instance.
+
+1. Once the plugin installation completes, select `Continue`
+1. Click `Continue As Admin` on the Create First Admin User page
+1. Update the Jenkins URL _if_ you have changed the hostname of the server prior to beginning with this setup document.
+1. Click `Save and Finish`
+1. Click `Restart` to restart your Jenkins instance.
    This _does_ take a while.
    If after 30 seconds you don't see your browser auto-refresh, go ahead and do so manually.
 
@@ -224,11 +229,12 @@ In order to begin using Jenkins, the following steps will need to be performed:
 
 To allow access to all services, the following firewall ports have been opened on QDE by default.
 
-| Port  | Service                                                                      |
-| :---: | :--------------------------------------------------------------------------- |
-| 8443  | Nexus (HTTPS)                                                                |
-|  443  | Central Management Dashboard (HTTPS)                                         |
-| 24020 | Central Management Service communications for Agent communication over HTTPS |
+| Port  | Service                                                                                               |
+| :---: | :---------------------------------------------------------------------------------------------------- |
+| 8443  | Nexus (HTTPS)                                                                                         |
+|  443  | Central Management Dashboard (HTTPS)                                                                  |
+| 24020 | Central Management Service communications for Agent communication over HTTPS                          |
+|  80   | QDE Certificate script endpoint (HTTP), to allow client machines to import the QDE HTTPS certificate. |
 
 ### Browser Considerations
 
@@ -254,11 +260,12 @@ Once logged in perform the following steps:
 ![changing the choco API key](images/gifs/choco_qde_update_apikey.gif)
 </details>
 
-1. Click on your username in the upper right-hand side of the homepage.
-1. Select "NuGet API Key" from the left-hand navigation window.
-1. Select "Reset API key"
+1. Click on your username in the upper right-hand side of the homepage
+1. Select **NuGet API Key** from the left-hand navigation window
+1. Select **Reset API Key**
 1. Enter your password
-1. Select "Access API Key"
+1. Select **Access API Key**
+1. Enter your password again
 1. Take note of the new API key
 
 If you change your API key, you will need to change the key in the Jenkins jobs that are pre-configured for you.
@@ -286,12 +293,12 @@ To do so:
 
 1. Login to Jenkins after completing the first-time setup (see [above](#jenkins))
 1. For each of the pre-existing jobs shown (e.g., `Internalize packages from the Community Repository`), do the following:
-   1. Hover over the name of the job and select the drop-down arrow that shows up.
+   1. Hover over the name of the job and select the drop-down arrow that shows up
    1. Select **:gear: Configure**
-   1. Scroll down until you see the **Password Parameter** named `P_API_KEY`.
-   1. Select **Change Password** next to the **:lock: Concealed** Default Value.
-   1. Replace the contents of the field with the new API key.
-   1. Press the **Save** button at the bottom of the page.
+   1. Scroll down until you see the **Password Parameter**; these will be named either `P_API_KEY`, `P_PROD_REPO_API_KEY`, or `P_LOCAL_REPO_API_KEY`, depending on the job you're editing
+   1. Select **Change Password** next to the **:lock: Concealed** Default Value
+   1. Replace the contents of the field with the new API key
+   1. Press the **Save** button at the bottom of the page
 
 ---
 
@@ -319,7 +326,12 @@ slmgr.vbs /ipk xxxxx-xxxxx-xxxxx-xxxxx
 
 ---
 
-## Common Issues And Solutions
+## Common Errors and Resolutions
+
+> :memo: **NOTE**
+>
+> This document is for **Version 2** of the Quick Deployment Environment.
+> If you're using an older version of QDE, please refer to the [[document for that version|QuickDeploymentDesktopReadmeV1]].
 
 ### "Server Error" warning when resetting "admin" credential in Nexus
 

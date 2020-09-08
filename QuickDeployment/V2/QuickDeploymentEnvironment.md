@@ -20,6 +20,7 @@ It provides a single virtual machine appliance to be imported into your hypervis
 - [QDE Components](#qde-components)
 - [Getting QDE](#getting-qde)
 - [Related Articles](#related-articles)
+- [Links](#links)
 - [FAQ](#faq)
   - [How do we take advantage of QDE?](#how-do-we-take-advantage-of-qde)
   - [How much time does this save?](#how-much-time-does-this-save)
@@ -27,7 +28,6 @@ It provides a single virtual machine appliance to be imported into your hypervis
   - [How do we upgrade QDE?](#how-do-we-upgrade-qde)
   - [What if we have a larger environment? (> 1k nodes)](#what-if-we-have-a-larger-environment--1k-nodes)
   - [Can we brag about how fast we were able to get configured?](#can-we-brag-about-how-fast-we-were-able-to-get-configured)
-- [See Also](#see-also)
 
 <!-- /TOC -->
 
@@ -70,6 +70,17 @@ The above articles document how that is done.
 
 ---
 
+## Links
+
+* [[QDE Setup|QuickDeploymentSetup]]
+* [[QDE Desktop ReadMe File|QuickDeploymentDesktopReadme]] (included here for convenience)
+* [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]]
+* [[QDE Firewall Changes|QuickDeploymentFirewallChanges]]
+* [[QDE Client Setup|QuickDeploymentClientSetup]] (setting up your client machines)
+* [How do I upgrade QDE?](#how-do-i-upgrade-qde).
+
+---
+
 ## FAQ
 
 ### How do we take advantage of QDE?
@@ -100,14 +111,3 @@ If you have a larger environment, we would strongly recommend taking the time to
 ### Can we brag about how fast we were able to get configured?
 
 Please do! :slightly_smiling_face:
-
----
-
-## See Also
-
-* [[QDE Setup|QuickDeploymentSetup]]
-* [[QDE Desktop ReadMe File|QuickDeploymentDesktopReadme]] (included here for convenience)
-* [[QDE SSL/TLS Setup|QuickDeploymentSslSetup]]
-* [[QDE Firewall Changes|QuickDeploymentFirewallChanges]]
-* [[QDE Client Setup|QuickDeploymentClientSetup]] (setting up your client machines)
-* [How do I upgrade QDE?](#how-do-i-upgrade-qde).
