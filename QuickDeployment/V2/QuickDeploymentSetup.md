@@ -348,6 +348,34 @@ You can choose to start over with a newer version, but that would mean going thr
 Instead, it is much easier to upgrade the components individually, and that is how we recommend upgrading aspects of QDE.
 Should you want to upgrade say Central Management, you can follow the Central Management steps for upgrade at [[Upgrade Central Management|CentralManagementSetupUpgrade]].
 
+### Should I upgrade Jenkins?
+
+The Jenkins package in QDE is pinned at version **2.222.4**; this is the latest version we have currently tested.
+An upgrade is possible, however we recommend you approach this with caution for the time being.
+Upgrading to a newer version via the typical Jenkins installer package requires some additional work due to the way Jenkins handles upgrades with their installer.
+
+<details>
+    <summary><strong>Upgrading through the Web UI</strong></summary>
+
+Upgrading through the Web UI is the simpler way to go, and doesn't seem to carry any of the complications that can arise when upgrading via their MSI installer.
+When an upgrade is available, Jenkins will show a new notification that looks like this when clicked:
+
+![Jenkins upgrade notification, showing the notification message prompting to upgrade](images/jenkins-upgrade-notification.png)
+
+To upgrade via the web UI:
+
+1. Login to Jenkins
+1. Click the :bell: notifications bell
+1. Select **Or Upgrade Automatically** &mdash; _not_ the **download** link
+1. When you are taken to the **Installing Plugins/Upgrades** screen, check the **Restart Jenkins when installation is complete and no jobs are running** checkbox
+1. Once Jenkins indicates the process is complete and has restarted, log back in
+
+</details>
+
+If you would like to upgrade Jenkins to a newer version using the installer, please refer to [Jenkins' Upgrade Guide](https://www.jenkins.io/doc/upgrade-guide/2.235/#upgrading-to-jenkins-lts-2-235-5).
+Some or all of the complexities in the upgrade process will likely be made automatic in the Chocolatey package as we're able to test and verify that the upgrade path works.
+Until then, approach with caution and follow the Jenkins documentation closely when attempting an upgrade.
+
 ---
 
 [[Quick Deployment Environment|QuickDeploymentEnvironment]]
