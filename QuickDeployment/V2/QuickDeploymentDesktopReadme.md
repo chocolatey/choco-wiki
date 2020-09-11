@@ -46,6 +46,8 @@ To finish setting up QDE (Quick Deployment Environment), you'll need to closely 
 > - The commands outlined in this document need to be run from an administrative PowerShell session.
 >   Many of these scripts will function poorly or not at all in a non-administrative shell.
 > - Ensure you go through these steps in **exact** order.
+>   If you miss out on a step or two, and something breaks, it's very likely you'll need to re-import the QDE VM from scratch and start over.
+>   You may want to take a snapshot before continuing just in case.
 
 To finish setting up QDE (Quick Deployment Environment), you'll need to work through this document and run the different commands you find here.
 
@@ -104,6 +106,11 @@ Enter the following command:
 If you have a domain certificate or you have otherwise already created / obtained a certificate you'd like to use,
 please ensure the certificate is present in either the `Cert:\LocalMachine\My` or `Cert:\LocalMachine\TrustedPeople` stores before continuing.
 If you're not familiar with how to do this, please refer to [this DigiCert article for instructions](https://www.digicert.com/kb/managing-client-certificates.htm).
+
+> :warning: **Warning**
+>
+> The private key of the certificate you're using **must** be exportable.
+> If it is not, configuring Nexus will fail, as Nexus does not work with the Windows certificate store directly and maintains its own certificate store.
 
 You will need either the certificate thumbprint or the subject in order to use the certificate for setup:
 
