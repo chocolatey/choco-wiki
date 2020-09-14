@@ -3,7 +3,7 @@
 > :memo: **NOTE**
 >
 > This document is for **Version 1** of the Quick Deployment Environment.
-> If you're using a newer version of QDE, please refer to [[this document|QuickDeploymentDesktopReadme]]
+> If you're using a newer version of QDE, please refer to the [[newer QDE Desktop Readme page|QuickDeploymentDesktopReadme]].
 
 This system has been pre-configured as a fully functioning C4B environment.
 

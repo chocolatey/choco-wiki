@@ -3,7 +3,7 @@
 > :memo: **NOTE**
 >
 > This document is for **Version 1** of the Quick Deployment Environment.
-> If you're using a newer version of QDE, please refer to the [[this document|QuickDeploymentSslSetup]]
+> If you're using a newer version of QDE, please refer to the [[newer QDE SSL Setup page|QuickDeploymentSslSetup]].
 
 All services have been protected with Self-Signed SSL certificates and are placed in the appropriate stores.
 Under the following situations you would want to run the script that follows:

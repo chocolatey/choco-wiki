@@ -3,7 +3,7 @@
 > :memo: **NOTE**
 >
 > This document is for **Version 2** of the Quick Deployment Environment.
-> If you're using an older version of QDE, please refer to the [[document for that version|QuickDeploymentSslSetupV1]]
+> If you're using an older version of QDE, please refer to the [[QDEv1 SSL Setup page|QuickDeploymentSslSetupV1]].
 
 During normal setup, all required SSL certificates are retrieved or generated as needed.
 You will only need to run this script yourself in the following cases:

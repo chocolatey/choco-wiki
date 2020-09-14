@@ -3,7 +3,7 @@
 > :memo: **NOTE**
 >
 > This document is for **Version 1** of the Quick Deployment Environment.
-> If you're using a newer version of QDE, please refer to [[this document|QuickDeploymentClientSetup]]
+> If you're using a newer version of QDE, please refer to the [[newer QDE Client Setup page|QuickDeploymentClientSetup]].
 
 <!-- TOC depthFrom:2 -->
 

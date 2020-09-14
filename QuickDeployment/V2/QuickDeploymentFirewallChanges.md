@@ -3,7 +3,7 @@
 > :memo: **Note**
 >
 > This document is for **Version 2** of the Quick Deployment Environment.
-> If you're using an older version of QDE, please refer to the [[document for that version|QuickDeploymentFirewallChangesV1]]
+> If you're using an older version of QDE, please refer to the [[QDEv1 Firewall Changes page|QuickDeploymentFirewallChangesV1]].
 
 <!-- TOC depthFrom:2 -->
 

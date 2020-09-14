@@ -3,7 +3,7 @@
 > :memo: **NOTE**
 >
 > This document is for **Version 2** of the Quick Deployment Environment.
-> If you're using an older version of QDE, please refer to the [[document for that version|QuickDeploymentDesktopReadmeV1]].
+> If you're using an older version of QDE, please refer to the [[QDEv1 Desktop Readme page|QuickDeploymentDesktopReadmeV1]].
 
 Thanks for trying Chocolatey for Business!
 This system has been pre-configured as a fully functioning C4B environment.

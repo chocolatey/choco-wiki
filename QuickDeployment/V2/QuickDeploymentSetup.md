@@ -3,7 +3,7 @@
 > :memo: **NOTE**
 >
 > This document is for **Version 2** of the Quick Deployment Environment.
-> If you're using an older version of QDE, please refer to the [[document for that version|QuickDeploymentSetupV1]]
+> If you're using an older version of QDE, please refer to the [[QDEv1 Setup page|QuickDeploymentSetupV1]].
 
 This document contains instructions for importing the QuickDeploy appliance/VM, or creating a VM and attaching the QuickDeploy disk image to it.
 You will receive a download link via email for an archive of the VM image.
