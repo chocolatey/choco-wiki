@@ -146,7 +146,7 @@ Now, you will use `Set-QDEnvironmentInternetSecurity.ps1` to update the scripts 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force ; . C:\choco-setup\files\Set-QDEnvironmentInternetSecurity.ps1 -FullyQualifiedDomainName '<YOUR_FQDN_HERE>' -PasswordLength 32 -SpecialCharCount 12
 ```
-:Warning: **WARNING:** This script will throw an error if you have logged into Nexus and changed your password from the default found in the README when you first got started with the appliance. If this occurs, re-run the above command with the `-NexusAdminPassword` parameter.
+:warning: **WARNING:** This script will throw an error if you have logged into Nexus and changed your password from the default found in the README when you first got started with the appliance. If this occurs, re-run the above command with the `-NexusAdminPassword` parameter.
 
 > :memo: **Notes:**
 > 1. This script will emit random passwords for your nexus user, your client salt, and your service salt. Please record these for later steps.
