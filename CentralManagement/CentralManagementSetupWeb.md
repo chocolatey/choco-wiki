@@ -28,6 +28,7 @@ ___
 - [Step 4: Set Up Website](#step-4-set-up-website)
   - [Step 4.1: Login And Change Default Credentials](#step-41-login-and-change-default-credentials)
   - [Step 4.2: SMTP Configuration](#step-42-smtp-configuration)
+  - [Step 4.3: LDAP Configuration](#step-43-ldap-configuration)
     - [appsettings.json configuration](#appsettingsjson-configuration)
   - [Step 4.3: Application Settings File](#step-43-application-settings-file)
 - [FAQ](#faq)
@@ -246,6 +247,32 @@ The CCM Site needs to be able to send email for certain actions.  For example, w
 You should received a notification similar to this:
 
 ![Test email sent successfully](images/features/ccm/test_email_sent_correctly.png)
+
+### Step 4.3: LDAP Configuration
+
+:memo: **Note**
+>
+> The Central Management Server must be joined to the Active Directory Doamin.
+>
+
+1. Open the CCM Site in the browser.
+1. Login with the `ccmadmin` user.
+1. In the left hand menu click on `Administration` and then `Settings`.
+1. Click on the `User management` tab in the `Settings` screen.
+1. Under LDAP Setting click the `Enable LDAP Authentication` button.
+1. Fill in your FQDN for the `Domain name` field.
+1. Fill in the `User name` field with an active directory account that has access to query user accounts within your active directory environment.
+1. Fill the `Password` field with the password for the active driectory user name used above.
+1. Click the `Save All` button at the top right of the page to save your settings.
+
+> :memo: **Note**
+>
+> In order for LDAP authentication to succeed in versions of Central Management 0.3.1 and lower
+> an email address must be configured on the properties of the Active Directory user you are
+> attempting to use for login.
+>
+
+![CCM LDAP Setup](images/features/ccm/ccm_ldap_setup.png)
 
 #### appsettings.json configuration
 
