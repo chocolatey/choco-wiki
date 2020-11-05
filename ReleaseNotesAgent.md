@@ -12,7 +12,7 @@ This covers the release notes for the Chocolatey Agent Service (`chocolatey-agen
 * Please see https://github.com/chocolatey/chocolatey-licensed-issues/labels/AgentService
 * Some issues may be held internally, please follow your support routes to learn more.
 
-## 0.11.2 (Unreleased)
+## 0.11.2 (November 5, 2020)
 ### BUG FIXES
  * Fix - Deployments - An execution timeout in seconds value of `0` for a deployment step is not treated as infinite
 
