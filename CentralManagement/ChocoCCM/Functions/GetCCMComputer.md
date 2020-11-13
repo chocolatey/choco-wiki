@@ -52,7 +52,7 @@ Get-CCMComputer -Computer web1
 ~~~powershell
 Get-CCMComputer -Id 13
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -69,31 +69,29 @@ Returns the specified computer(s)
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Id &lt;Int32&gt;
 Returns the information for the computer with the specified id
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
 Default Value          | 0
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Get-CCMComputer -Full`.
-
-View the source for [Get-CCMComputer](/Get-CCMComputer.ps1)

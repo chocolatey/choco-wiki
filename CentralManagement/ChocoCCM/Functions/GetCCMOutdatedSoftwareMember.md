@@ -35,7 +35,7 @@ Get-CCMOutdatedSoftwareMember -Software 'VLC Media Player'
 ~~~powershell
 Get-CCMOutdatedSoftwareMember -Package vlc
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -53,31 +53,29 @@ Example: If you have VLC installed, this shows as 'VLC Media Player' in Programs
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | 1
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Package [&lt;String&gt;]
 This is the Chocolatey package name to search for.
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | 2
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Get-CCMOutdatedSoftwareMember -Full`.
-
-View the source for [Get-CCMOutdatedSoftwareMember](/Get-CCMOutdatedSoftwareMember.ps1)

@@ -36,7 +36,7 @@ Connect-CCMServer -Hostname localhost:8090
 ~~~powershell
 $cred = Get-Credential ; Connect-CCMServer -Hostname localhost:8090 -Credential $cred
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -53,40 +53,39 @@ The hostname and port number of your Central Management installation
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | 1
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Credential &lt;PSCredential&gt;
 The credentials for your Central Management installation. You'll be prompted if left blank
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -UseSSL
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | named
 Default Value          | False
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Connect-CCMServer -Full`.
 
-View the source for [Connect-CCMServer](/Connect-CCMServer.ps1)

@@ -39,7 +39,7 @@ Get-CCMRole
 ~~~powershell
 Get-CCMRole -Name CCMAdmin
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -56,20 +56,18 @@ The name of a role to query
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Get-CCMRole -Full`.
-
-View the source for [Get-CCMRole](/Get-CCMRole.ps1)

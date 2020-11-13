@@ -38,7 +38,7 @@ Add-CCMGroup -Name PowerShell -Description "I created this via the ChocoCCM modu
 ~~~powershell
 Add-CCMGroup -Name PowerShell -Description "I created this via the ChocoCCM module" -Group Webservers
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -55,53 +55,51 @@ The name you wish to give the group
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | 1
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Description [&lt;String&gt;]
 A short description of the group
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | 2
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Group [&lt;String[]&gt;]
 The group(s) to include as members
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | 3
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Computer [&lt;String[]&gt;]
 The computer(s) to include as members
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | 4
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Add-CCMGroup -Full`.
-
-View the source for [Add-CCMGroup](/Add-CCMGroup.ps1)

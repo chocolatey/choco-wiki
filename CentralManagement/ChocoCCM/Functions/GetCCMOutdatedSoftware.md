@@ -26,7 +26,7 @@ None
 ~~~powershell
 Get-CCMOutdatedSoftware
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -37,15 +37,14 @@ None
 None
 
 ## Parameters
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Get-CCMOutdatedSoftware -Full`.
 
-View the source for [Get-CCMOutdatedSoftware](/Get-CCMOutdatedSoftware.ps1)

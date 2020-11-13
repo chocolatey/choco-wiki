@@ -37,7 +37,7 @@ Export-CCMDeployment -Deployment TestDeployment -OutFile C:\temp\testdeployment.
 ~~~powershell
 Export-CCMDeployment -Deployment UpgradeChrome -OutFile C:\temp\upgradechrome_ccmdeployment.xml -AllowClobber
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -54,53 +54,51 @@ The CCM Deployment to Export
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | 1
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -DeploymentStepsOnly
 Only export a deployment's steps
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | named
 Default Value          | False
 Accept Pipeline Input? | false
- 
+
 ###  -OutFile &lt;String&gt;
 The xml file to save the deployment as
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | 2
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -AllowClobber
 Allow a file to be overwritten if it already exists
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | named
 Default Value          | False
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Export-CCMDeployment -Full`.
-
-View the source for [Export-CCMDeployment](/Export-CCMDeployment.ps1)

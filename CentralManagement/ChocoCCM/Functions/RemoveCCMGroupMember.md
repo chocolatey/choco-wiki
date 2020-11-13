@@ -30,7 +30,7 @@ None
 ~~~powershell
 Remove-CCMGroupMember -Group TestLab -Member TestPC1
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -47,49 +47,47 @@ The group you want to remove a member from
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | 1
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Member &lt;String&gt;
 The member you want to remove
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | 2
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -WhatIf
 Property               | Value
 ---------------------- | -----
 Aliases                | wi
 Required?              | false
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Confirm
 Property               | Value
 ---------------------- | -----
 Aliases                | cf
 Required?              | false
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Remove-CCMGroupMember -Full`.
-
-View the source for [Remove-CCMGroupMember](/Remove-CCMGroupMember.ps1)

@@ -52,7 +52,7 @@ Get-CCMGroup -Id 1
 ~~~powershell
 Get-CCMGroup -Group 'Web Servers'
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -69,31 +69,29 @@ Returns group with the provided name
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Id &lt;String[]&gt;
 Returns group withe the provided id
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Get-CCMGroup -Full`.
-
-View the source for [Get-CCMGroup](/Get-CCMGroup.ps1)

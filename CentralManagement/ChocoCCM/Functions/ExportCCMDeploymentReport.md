@@ -36,7 +36,7 @@ Export-CCMDeploymentReport -Deployment 'Complex' -Type PDF -OutputFolder C:\temp
 ~~~powershell
 Export-CCMDeploymentReport -Deployment 'Complex -Type Excel -OutputFolder C:\CCMReports
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -53,42 +53,40 @@ The deployment from which to generate and download a report
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | 1
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Type &lt;String&gt;
 The type  of report, either PDF or Excel
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | 2
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -OutputFolder &lt;String&gt;
 The path to save the report too
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | 3
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Export-CCMDeploymentReport -Full`.
-
-View the source for [Export-CCMDeploymentReport](/Export-CCMDeploymentReport.ps1)

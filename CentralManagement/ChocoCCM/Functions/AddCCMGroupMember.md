@@ -35,7 +35,7 @@ None
 ~~~powershell
 Add-CCMGroupMember -Group 'Newly Imaged' -Computer Lab1,Lab2,Lab3
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -52,42 +52,40 @@ The group to edit
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Computer &lt;String[]&gt;
 The computer(s) to add
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Group [&lt;String[]&gt;]
 The group(s) to add
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Add-CCMGroupMember -Full`.
-
-View the source for [Add-CCMGroupMember](/Add-CCMGroupMember.ps1)

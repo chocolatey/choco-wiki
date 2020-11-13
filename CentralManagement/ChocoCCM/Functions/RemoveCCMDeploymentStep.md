@@ -37,7 +37,7 @@ Remove-CCMDeploymentStep -Name 'Super Complex Deployment' -Step 'Kill web servic
 ~~~powershell
 Remove-CCMDeploymentStep -Name 'Deployment Alpha' -Step 'Copy Files' -Confirm:$false
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -54,49 +54,47 @@ The Deployment to  remove a step from
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | 1
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Step &lt;String&gt;
 The Step to remove
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | 2
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -WhatIf
 Property               | Value
 ---------------------- | -----
 Aliases                | wi
 Required?              | false
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Confirm
 Property               | Value
 ---------------------- | -----
 Aliases                | cf
 Required?              | false
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Remove-CCMDeploymentStep -Full`.
-
-View the source for [Remove-CCMDeploymentStep](/Remove-CCMDeploymentStep.ps1)

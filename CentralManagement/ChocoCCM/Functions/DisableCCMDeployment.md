@@ -37,7 +37,7 @@ Disable-CCMDeployment -Deployment 'Upgrade VLC'
 ~~~powershell
 Archive-CCMDeployment -Deployment 'Upgrade VLC'
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -54,38 +54,36 @@ The deployment to archive
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | 1
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -WhatIf
 Property               | Value
 ---------------------- | -----
 Aliases                | wi
 Required?              | false
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Confirm
 Property               | Value
 ---------------------- | -----
 Aliases                | cf
 Required?              | false
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Disable-CCMDeployment -Full`.
-
-View the source for [Disable-CCMDeployment](/Disable-CCMDeployment.ps1)

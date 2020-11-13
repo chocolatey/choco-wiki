@@ -65,7 +65,7 @@ Get-CCMSoftware -Package vlc
 ~~~powershell
 Get-CCMSoftware -Id 37
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -82,42 +82,40 @@ Return information about a specific piece of software by friendly name
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Package &lt;String&gt;
 Return information about a specific package
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Id &lt;Int32&gt;
 Return information about a specific piece of software by id
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
 Default Value          | 0
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Get-CCMSoftware -Full`.
-
-View the source for [Get-CCMSoftware](/Get-CCMSoftware.ps1)

@@ -40,7 +40,7 @@ Set-CCMNotificationStatus -Enable
 ~~~powershell
 Set-CCMNotificationStatus -Disable
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -57,31 +57,29 @@ Enables notifications
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
 Default Value          | False
 Accept Pipeline Input? | false
- 
+
 ###  -Disable
 Disables notifications
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
 Default Value          | False
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Set-CCMNotificationStatus -Full`.
-
-View the source for [Set-CCMNotificationStatus](/Set-CCMNotificationStatus.ps1)

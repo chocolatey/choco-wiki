@@ -30,7 +30,7 @@ None
 ~~~powershell
 Import-PDQDeployPackage
 
-~~~ 
+~~~
 
 ## Inputs
 
@@ -47,20 +47,18 @@ The pdq xml file to import
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | 1
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
 
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Import-PDQDeployPackage -Full`.
-
-View the source for [Import-PDQDeployPackage](/Import-PDQDeployPackage.ps1)

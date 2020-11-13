@@ -77,7 +77,7 @@ $stepParams = @{
     }
 }
 Set-CCMDeploymentStep @stepParams
-~~~ 
+~~~
 
 ## Inputs
 
@@ -94,119 +94,116 @@ The Deployment to modify
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Step &lt;String&gt;
 The step to modify
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -TargetGroup [&lt;String[]&gt;]
 Set the target group of the deployment
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -ExecutionTimeoutSeconds [&lt;String&gt;]
 Modify the execution timeout of the deployment in seconds
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -FailOnError
 Set the FailOnError flag for the deployment step
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | named
 Default Value          | False
 Accept Pipeline Input? | false
- 
+
 ###  -RequireSuccessOnAllComputers
 Set the RequreSuccessOnAllComputers for the deployment step
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | named
 Default Value          | False
 Accept Pipeline Input? | false
- 
+
 ###  -ValidExitCodes [&lt;String[]&gt;]
 Set valid exit codes for the deployment
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | false
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -ChocoCommand &lt;String&gt;
 For a basic step, set the choco command to execute. Install, Upgrade, or Uninstall
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -PackageName &lt;String&gt;
 For a basic step, the choco package to use in the deployment
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ###  -Script &lt;ScriptBlock&gt;
 For an advanced step, this is a script block of PowerShell code to execute in the step
 
 Property               | Value
 ---------------------- | -----
-Aliases                | 
+Aliases                |
 Required?              | true
 Position?              | named
-Default Value          | 
+Default Value          |
 Accept Pipeline Input? | false
- 
+
 ### &lt;CommonParameters&gt;
 
 This cmdlet supports the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, and -OutVariable. For more information, see `about_CommonParameters` http://go.microsoft.com/fwlink/p/?LinkID=113216 .
 
 
-
-[[Function Reference|HelpersReference]]
+[[Function Reference|ChocoCCMFunctionReference]]
 
 ***NOTE:*** This documentation has been automatically generated from `Import-Module "ChocoCCM" -Force; Get-Help Set-CCMDeploymentStep -Full`.
-
-View the source for [Set-CCMDeploymentStep](/Set-CCMDeploymentStep.ps1)
