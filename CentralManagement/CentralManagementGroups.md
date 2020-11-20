@@ -36,7 +36,7 @@ Then, select the computer(s) or existing group(s) you would like to include in t
 
 ![New Group Modal](images/groups/ccm-groups-modal-new.png)
 
-Click **:floppy_disk: Save** to close the modal and create the new group.
+Click :floppy_disk: **Save** to close the modal and create the new group.
 
 ___
 ## Editing a Group
