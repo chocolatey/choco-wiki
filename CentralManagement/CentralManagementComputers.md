@@ -34,7 +34,7 @@ ___
 ## Viewing Installed Software on a Computer
 
 From the main Computers page in Central Management, locate the computer of interest in the list or by providing a search term in the table filter.
-Select the **:gear: Actions** menu in the corresponding right-hand column, and click **Details**.
+Select the :gear: **Actions** menu in the corresponding right-hand column, and click **Details**.
 
 ![Finding a computer's details menu option](images/computers/ccm-computers-details-menu.png)
 
@@ -50,7 +50,7 @@ ___
 > Unless you first uninstall (at minimum) the `chocolatey-agent` or disable Central Management by disabling the feature setting, the deleted computer will reappear when the Chocolatey Agent performs its next check-in.
 
 From the main Computers page in Central Management, locate the computer of interest in the list or by providing a search term in the table filter.
-Select the **:gear: Actions** menu in the corresponding right-hand column, and click **Delete**.
+Select the :gear: **Actions** menu in the corresponding right-hand column, and click **Delete**.
 
 ![Deleting a computer in Central Management](images/computers/ccm-computers-delete-menu.png)
 

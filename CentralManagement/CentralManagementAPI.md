@@ -27,7 +27,7 @@
 ## Description
 
 As of CCM v0.4.0, the API for Chocolatey Central Management is exposed via Swagger.
-The API documentation and examples can be reached from your CCM dashboard by selecting the **:gear: API** option on the left sidebar.
+The API documentation and examples can be reached from your CCM dashboard by selecting the :gear: **API** option on the left sidebar.
 The information contained there is referenced here, but you can additionally try out the various API endpoints directly from the Swagger API page for your own CCM environment.
 
 ## ChocoCCM
@@ -64,7 +64,7 @@ Invoke-WebRequest -Uri "https://$CcmServerHostname/$endpointUrl" -Method $Method
 ## Endpoints
 
 Below is a list of the API endpoints available for CCM as of v0.4.0.
-For more detailed information on the API endpoints and their parameters for your version of CCM, select the **:gear: API** option from the sidebar on the Central Management dashboard, or navigate to `https://CCM_SERVER_HOSTNAME/swagger/`.
+For more detailed information on the API endpoints and their parameters for your version of CCM, select the :gear: **API** option from the sidebar on the Central Management dashboard, or navigate to `https://CCM_SERVER_HOSTNAME/swagger/`.
 
 ### AuditLog
 

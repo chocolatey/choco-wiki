@@ -93,7 +93,7 @@ If you would like to change the hostname of this VM, please do so **before** goi
 > :memo: **Note**
 >
 > When running the `Set-QDEnvironment` script ensure you are logged into the QDE VM with the _local admininistrator_ account.
-> This is necessary for SQL to work properly initially. 
+> This is necessary for SQL to work properly initially.
 >
 > Do _NOT_ attempt to run this script from the Powershell ISE. It will not work. Aspects of the script output
 > are treated as part of the error stream incorrectly when ran from ISE, which causes the script to terminate unexpectedly.
@@ -309,7 +309,7 @@ To do so:
 1. Login to Jenkins after completing the first-time setup (see [above](#jenkins))
 1. For each of the pre-existing jobs shown (e.g., `Internalize packages from the Community Repository`), do the following:
    1. Hover over the name of the job and select the drop-down arrow that shows up
-   1. Select **:gear: Configure**
+   1. Select :gear: **Configure**
    1. Scroll down until you see the **Password Parameter**; these will be named either `P_API_KEY`, `P_PROD_REPO_API_KEY`, or `P_LOCAL_REPO_API_KEY`, depending on the job you're editing
    1. Select **Change Password** next to the **:lock: Concealed** Default Value
    1. Replace the contents of the field with the new API key
