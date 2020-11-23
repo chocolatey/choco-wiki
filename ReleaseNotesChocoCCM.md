@@ -1,6 +1,6 @@
 # Chocolatey Release Notes - ChocoCCM
 ## Summary
-This covers the release notes for the ChocoCCM PowerShell Module, which is available for installation from the [PowerShell Gallery](https://www.powershellgallery.com/packages/ChocoCCM). For more information, installation options, etc, please refer to [ChocoCCM](xref:chococcm).
+This covers the release notes for the ChocoCCM PowerShell Module, which is available for installation from the [PowerShell Gallery](https://www.powershellgallery.com/packages/ChocoCCM). For more information, installation options, etc, please refer to [[ChocoCCM|ChocoCCMFunctionReference]].
 
 > :memo: **NOTE**: This PowerShell Module requires an installation of at least CCM v0.4.0 in order to be fully compatible.
 
